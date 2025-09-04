@@ -83,6 +83,21 @@ export interface Stats {
   weeklyNew: number
   totalForks: string
   avgContributors: number
+  activityScore: number
+}
+
+export interface LanguageData {
+  name: string
+  count: number
+  percentage: number
+  colorClass: string
+}
+
+export interface TrendDataItem {
+  label: string
+  value: number
+  change: number
+  colorClass: string
 }
 
 export interface TrendsData {
@@ -94,6 +109,13 @@ export interface TrendsData {
     language: string
     count: number
     avg_stars: number
+    stars?: number
+    forks?: number
+    contributor_count?: number
+    created_at?: string
+    updated_at?: string
+    open_issues?: number
+    watchers?: number
   }[]
   most_frequent_languages: [string, number][]
   surging_projects: {
@@ -173,16 +195,17 @@ export const reportApi = {
         topLanguage: 'N/A',
         weeklyNew: 0,
         totalForks: '0',
-        avgContributors: 0
+        avgContributors: 0,
+        activityScore: 0
       }
     }
   },
 
   // 获取趋势数据
-  async getTrends(): Promise<TrendsData> {
+  async getTrends(params?: { days?: number }): Promise<TrendsData> {
     try {
-      const response = await api.get('/api/trends')
-      console.log('📈 获取趋势数据成功')
+      const response = await api.get('/api/trends', { params })
+      console.log(`📈 获取趋势数据成功 (时间范围: ${params?.days || 7}天)`)
       return response.data
     } catch (error) {
       console.error('获取趋势数据失败:', error)
@@ -199,6 +222,43 @@ export const reportApi = {
       return false
     }
   },
+
+  // 获取语言分布数据
+  async getLanguageDistribution(): Promise<LanguageData[]> {
+    try {
+      const response = await api.get('/api/language-distribution')
+      console.log('🌐 获取语言分布数据成功')
+      return response.data
+    } catch (error) {
+      console.error('获取语言分布数据失败:', error)
+      // 返回默认数据，避免页面崩溃
+      return [
+        { name: 'TypeScript', count: 35, percentage: 35, colorClass: 'bg-gradient-to-r from-blue-500 to-blue-600' },
+        { name: 'JavaScript', count: 28, percentage: 28, colorClass: 'bg-gradient-to-r from-yellow-500 to-yellow-600' },
+        { name: 'Python', count: 20, percentage: 20, colorClass: 'bg-gradient-to-r from-green-500 to-green-600' },
+        { name: 'Go', count: 10, percentage: 10, colorClass: 'bg-gradient-to-r from-cyan-500 to-cyan-600' },
+        { name: 'Rust', count: 7, percentage: 7, colorClass: 'bg-gradient-to-r from-orange-500 to-orange-600' }
+      ]
+    }
+  },
+
+  // 获取趋势数据
+  async getTrendData(): Promise<TrendDataItem[]> {
+    try {
+      const response = await api.get('/api/trend-data')
+      console.log('📈 获取趋势数据成功')
+      return response.data
+    } catch (error) {
+      console.error('获取趋势数据失败:', error)
+      // 返回默认数据，避免页面崩溃
+      return [
+        { label: '新项目', value: 10, change: 1, colorClass: 'bg-green-400' },
+        { label: '活跃项目', value: 30, change: 1, colorClass: 'bg-blue-400' },
+        { label: '热门项目', value: 10, change: 0, colorClass: 'bg-purple-400' },
+        { label: '趋势项目', value: 5, change: -1, colorClass: 'bg-pink-400' }
+      ]
+    }
+  }
 }
 
 // 导出便利函数
@@ -209,6 +269,7 @@ export const getReportByDate = reportApi.getReportContent
 export const getStats = reportApi.getStats
 export const getTrends = reportApi.getTrends
 export const healthCheck = reportApi.healthCheck
+export const getTrendData = reportApi.getTrendData
 
 // 导出API基础URL用于调试
 export const getApiBaseUrl = () => API_BASE_URL

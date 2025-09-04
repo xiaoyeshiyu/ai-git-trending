@@ -156,8 +156,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import type { Stats } from '../api/reports'
+import { ref, computed, onMounted, watch } from 'vue'
+import type { Stats, LanguageData, TrendDataItem } from '../api/reports'
+import { reportApi } from '../api/reports'
 
 // Props
 const props = defineProps<{
@@ -191,6 +192,8 @@ const TrendingUpIcon = {
 
 // 响应式数据
 const activityScore = ref(0)
+const languageData = ref<LanguageData[]>([])
+const trendData = ref<TrendDataItem[]>([])
 
 // 计算属性
 const statsData = computed(() => [
@@ -240,30 +243,41 @@ const statsData = computed(() => [
   }
 ])
 
-const languageData = computed(() => {
-  // 模拟语言分布数据
-  const languages = [
-    { name: 'TypeScript', percentage: 35, colorClass: 'bg-gradient-to-r from-blue-500 to-blue-600' },
-    { name: 'JavaScript', percentage: 28, colorClass: 'bg-gradient-to-r from-yellow-500 to-yellow-600' },
-    { name: 'Python', percentage: 20, colorClass: 'bg-gradient-to-r from-green-500 to-green-600' },
-    { name: 'Go', percentage: 10, colorClass: 'bg-gradient-to-r from-cyan-500 to-cyan-600' },
-    { name: 'Rust', percentage: 7, colorClass: 'bg-gradient-to-r from-orange-500 to-orange-600' }
-  ]
-  return languages
-})
+// 从后端获取数据的方法
+const fetchLanguageDistribution = async () => {
+  try {
+    const data = await reportApi.getLanguageDistribution()
+    languageData.value = data
+  } catch (error) {
+    console.error('获取语言分布数据失败:', error)
+  }
+}
 
-const trendData = computed(() => [
-  { label: '新项目', value: props.stats.weeklyNew, change: 1, colorClass: 'bg-green-400' },
-  { label: '活跃项目', value: Math.round(props.stats.totalProjects * 0.3), change: 1, colorClass: 'bg-blue-400' },
-  { label: '热门项目', value: Math.round(props.stats.totalProjects * 0.1), change: 0, colorClass: 'bg-purple-400' },
-  { label: '趋势项目', value: Math.round(props.stats.totalProjects * 0.05), change: -1, colorClass: 'bg-pink-400' }
-])
+const fetchTrendData = async () => {
+  try {
+    const data = await reportApi.getTrendData()
+    trendData.value = data
+  } catch (error) {
+    console.error('获取趋势数据失败:', error)
+  }
+}
 
 // 生命周期
 onMounted(() => {
-  // 动画延迟显示活跃度分数
-  setTimeout(() => {
-    activityScore.value = Math.round(75 + Math.random() * 20) // 75-95% 的随机活跃度
-  }, 1000)
+  // 使用从后端获取的真实活跃度数据
+  if (props.stats.activityScore !== undefined) {
+    activityScore.value = props.stats.activityScore
+  }
+  
+  // 获取语言分布和趋势数据
+  fetchLanguageDistribution()
+  fetchTrendData()
+})
+
+// 监听stats变化，更新活跃度数据
+watch(() => props.stats.activityScore, (newValue) => {
+  if (newValue !== undefined) {
+    activityScore.value = newValue
+  }
 })
 </script>

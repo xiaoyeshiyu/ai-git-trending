@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home-simple.vue'
+import Home from '../views/Home.vue'
 
 const routes = [
   {
@@ -7,7 +7,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'GitHub Trending Reporter'
+      title: 'GitTrend Insights - 发现GitHub热门技术趋势'
     }
   },
   {
@@ -15,7 +15,7 @@ const routes = [
     name: 'ProjectList',
     component: () => import('../views/ProjectList.vue'),
     meta: {
-      title: '项目列表 - GitHub Trending Reporter'
+      title: '项目列表 - GitTrend Insights'
     }
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     name: 'About',
     component: () => import('../views/About.vue'),
     meta: {
-      title: '关于我们 - GitHub Trending Reporter'
+      title: '关于我们 - GitTrend Insights'
     }
   }
 ]

@@ -183,27 +183,130 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, onUnmounted } from 'vue'
+import { ref, computed, onMounted, nextTick, onUnmounted, watch } from 'vue'
 import type { Report } from '../api/reports'
 import MarkdownIt from 'markdown-it'
+// 导入已安装的markdown-it插件
+import abbrPlugin from 'markdown-it-abbr'
+import anchorPlugin from 'markdown-it-anchor'
+import * as emojiPlugin from 'markdown-it-emoji'
+import footnotePlugin from 'markdown-it-footnote'
+import insPlugin from 'markdown-it-ins'
+import markPlugin from 'markdown-it-mark'
+import subPlugin from 'markdown-it-sub'
+import supPlugin from 'markdown-it-sup'
+import taskListsPlugin from 'markdown-it-task-lists'
+import tocPlugin from 'markdown-it-toc-done-right'
 
-// 创建基础MarkdownIt实例，简化插件配置以确保稳定性
+// 创建增强的MarkdownIt实例，添加更多配置以支持复杂的markdown格式
 const md = new MarkdownIt({
   html: true,
   xhtmlOut: false,
   breaks: true,
   langPrefix: 'language-',
   linkify: true,
-  typographer: true
+  typographer: true,
+  highlight: function(str, lang) {
+    // 添加代码高亮支持
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: lang }).value;
+      } catch (__) {}
+    }
+    return ''; // use external default escaping
+  }
 })
+
+// 启用所有已安装的markdown-it插件
+try {
+  md.use(abbrPlugin)
+  md.use(anchorPlugin, {
+    level: 1,
+    permalink: true,
+    permalinkClass: 'header-anchor',
+    permalinkSymbol: '🔗'
+  })
+  md.use(emojiPlugin)
+  md.use(footnotePlugin)
+  md.use(insPlugin)
+  md.use(markPlugin)
+  md.use(subPlugin)
+  md.use(supPlugin)
+  md.use(taskListsPlugin)
+  md.use(tocPlugin, {
+    level: 2,
+    title: '目录'
+  })
+} catch (error) {
+  console.error('Error loading markdown-it plugins:', error)
+}
+
+// 引入highlight.js用于代码高亮
+import hljs from 'highlight.js/lib/core';
+// 导入常用语言的高亮支持
+import javascript from 'highlight.js/lib/languages/javascript';
+import python from 'highlight.js/lib/languages/python';
+import typescript from 'highlight.js/lib/languages/typescript';
+import go from 'highlight.js/lib/languages/go';
+import rust from 'highlight.js/lib/languages/rust';
+import html from 'highlight.js/lib/languages/xml';
+import css from 'highlight.js/lib/languages/css';
+
+// 注册语言
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('python', python);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('go', go);
+hljs.registerLanguage('rust', rust);
+hljs.registerLanguage('html', html);
+hljs.registerLanguage('css', css);
+
+// 预处理Markdown内容的函数
+function preprocessMarkdown(content: string): string {
+  if (!content) return ''
+  
+  // 添加调试日志（可根据需要启用）
+  // console.log('原始内容预览:', content.substring(0, 100) + '...')
+  
+  // 清理可能存在的特殊字符和格式问题
+  let processedContent = content
+    // 处理转义字符问题 - 正确处理实际的转义序列
+    .replace(/\\([\nrt])/g, (match, char) => {
+      const escapeMap = { 'n': '\n', 'r': '\r', 't': '\t' }
+      return escapeMap[char as keyof typeof escapeMap] || match
+    })
+    // 修复表格格式问题
+    .replace(/\|\s+\|/g, '||')
+    // 确保代码块的正确格式
+    .replace(/```([\w]+)?\s*\n/g, (match, lang) => {
+      return '```' + (lang || '') + '\n'
+    })
+    // 修复标题格式 - 确保标题前没有多余空格
+    .replace(/^(\s*#)/gm, (match) => match.trimStart())
+    // 处理列表项 - 确保列表标记后的空格正确
+    .replace(/^(\s*[*+-]|\d+\.)\s*/gm, (match) => {
+      // 确保列表标记后至少有一个空格
+      return match.trimEnd() + ' '
+    })
+    // 处理可能存在的引用格式问题
+    .replace(/^(\s*>)/gm, (match) => match.trimEnd() + ' ')
+    
+  // 调试日志
+  // console.log('处理后内容预览:', processedContent.substring(0, 100) + '...')
+  
+  return processedContent
+}
 
 // 渲染Markdown内容
 function renderMarkdown(content: string): string {
-  return md.render(content)
+  const processedContent = preprocessMarkdown(content || '')
+  return md.render(processedContent)
 }
 
-// 增强Markdown显示的函数
+// 增强Markdown显示的函数，现在在内容更新后也会调用
 function enhanceMarkdownDisplay(container: HTMLElement): void {
+  // 确保container存在
+  if (!container) return;
   // 添加代码块复制功能
   const codeBlocks = container.querySelectorAll('pre code')
   codeBlocks.forEach(block => {
@@ -269,8 +372,16 @@ const showBackToTop = ref(false)
 
 // 计算属性
 const renderedContent = computed(() => {
-  if (!props.report.content) return ''
+  if (!props.report.content) return '<p class="text-slate-400">暂无报告内容</p>'
   return renderMarkdown(props.report.content)
+})
+
+// 监听content变化，重新应用增强显示
+watch(() => props.report.content, async () => {
+  await nextTick()
+  if (markdownContainer.value) {
+    enhanceMarkdownDisplay(markdownContainer.value)
+  }
 })
 
 const wordCount = computed(() => {
@@ -281,7 +392,7 @@ const wordCount = computed(() => {
 const readingTime = computed(() => {
   const wordsPerMinute = 300 // 中文阅读速度
   const minutes = Math.ceil(wordCount.value / wordsPerMinute)
-  return `${minutes} 分钟`
+  return minutes + ' 分钟'
 })
 
 // 生命周期钩子
@@ -384,34 +495,38 @@ function exportReport(format: 'md' | 'html' = 'md') {
   
   switch (format) {
     case 'html':
-      content = `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub 热门项目报告 - ${props.report.date}</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
-    h1, h2, h3, h4, h5, h6 { color: #2c3e50; margin-top: 1.5em; margin-bottom: 0.5em; }
-    p { margin: 1em 0; }
-    code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; font-family: 'Consolas', 'Monaco', monospace; }
-    pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
-    pre code { background: transparent; padding: 0; }
-    a { color: #3498db; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    blockquote { border-left: 4px solid #ddd; padding-left: 1em; margin: 1em 0; color: #666; }
-    ul, ol { margin: 1em 0; padding-left: 2em; }
-    li { margin: 0.5em 0; }
-    img { max-width: 100%; height: auto; }
-    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
-    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
-    th { background-color: #f4f4f4; }
-  </style>
-</head>
-<body>
-${renderedContent.value}
-</body>
-</html>`
+      // 使用简单的字符串拼接避免模板字符串解析问题
+      let htmlContent = ''
+      htmlContent += '<!DOCTYPE html>\n'
+      htmlContent += '<html lang="zh-CN">\n'
+      htmlContent += '<head>\n'
+      htmlContent += '  <meta charset="UTF-8">\n'
+      htmlContent += '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+      htmlContent += '  <title>GitHub 热门项目报告 - ' + props.report.date + '</title>\n'
+      htmlContent += '  <style>\n'
+      htmlContent += '    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }\n'
+      htmlContent += '    h1, h2, h3, h4, h5, h6 { color: #2c3e50; margin-top: 1.5em; margin-bottom: 0.5em; }\n'
+      htmlContent += '    p { margin: 1em 0; }\n'
+      htmlContent += '    code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; font-family: "Consolas", "Monaco", monospace; }\n'
+      htmlContent += '    pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }\n'
+      htmlContent += '    pre code { background: transparent; padding: 0; }\n'
+      htmlContent += '    a { color: #3498db; text-decoration: none; }\n'
+      htmlContent += '    a:hover { text-decoration: underline; }\n'
+      htmlContent += '    blockquote { border-left: 4px solid #ddd; padding-left: 1em; margin: 1em 0; color: #666; }\n'
+      htmlContent += '    ul, ol { margin: 1em 0; padding-left: 2em; }\n'
+      htmlContent += '    li { margin: 0.5em 0; }\n'
+      htmlContent += '    img { max-width: 100%; height: auto; }\n'
+      htmlContent += '    table { border-collapse: collapse; width: 100%; margin: 1em 0; }\n'
+      htmlContent += '    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }\n'
+      htmlContent += '    th { background-color: #f4f4f4; }\n'
+      htmlContent += '  </style>\n'
+      htmlContent += '</head>\n'
+      htmlContent += '<body>\n'
+      htmlContent += renderedContent.value + '\n'
+      htmlContent += '</body>\n'
+      htmlContent += '</html>'
+      
+      content = htmlContent
       mimeType = 'text/html'
       extension = 'html'
       break
@@ -421,18 +536,18 @@ ${renderedContent.value}
       extension = 'md'
   }
   
-  const blob = new Blob([content], { type: `${mimeType};charset=utf-8` })
+  const blob = new Blob([content], { type: mimeType + ';charset=utf-8' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
-  link.download = `github_trending_${props.report.date}.${extension}`
+  link.download = 'github_trending_' + props.report.date + '.' + extension
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
   URL.revokeObjectURL(url)
   
   showExportMenu.value = false
-  console.log(`📥 报告已导出为 ${format.toUpperCase()} 格式`)
+  console.log('📥 报告已导出为 ' + format.toUpperCase() + ' 格式')
 }
 
 async function copyToClipboard() {
@@ -458,3 +573,213 @@ async function copyToClipboard() {
 }
 
 </script>
+
+<style scoped>
+  /* 增强markdown样式 */
+  .markdown-content :deep(h1),
+  .markdown-content :deep(h2),
+  .markdown-content :deep(h3),
+  .markdown-content :deep(h4),
+  .markdown-content :deep(h5),
+  .markdown-content :deep(h6) {
+    color: #e2e8f0;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  
+  .markdown-content :deep(h1) {
+    font-size: 1.8rem;
+    border-bottom: 2px solid #475569;
+    padding-bottom: 0.3em;
+  }
+  
+  .markdown-content :deep(h2) {
+    font-size: 1.5rem;
+    border-bottom: 1px solid #475569;
+    padding-bottom: 0.3em;
+  }
+  
+  .markdown-content :deep(p) {
+    margin: 1em 0;
+    line-height: 1.7;
+  }
+  
+  .markdown-content :deep(blockquote) {
+    border-left: 4px solid #8b5cf6;
+    padding-left: 1em;
+    margin: 1em 0;
+    color: #94a3b8;
+    background-color: rgba(139, 92, 246, 0.1);
+    padding: 1em;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+  .markdown-content :deep(ul),
+  .markdown-content :deep(ol) {
+    margin: 1em 0;
+    padding-left: 2em;
+  }
+  
+  .markdown-content :deep(li) {
+    margin: 0.5em 0;
+  }
+  
+  .markdown-content :deep(code) {
+    background-color: #334155;
+    color: #e2e8f0;
+    padding: 0.2em 0.4em;
+    border-radius: 0.375rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875em;
+  }
+  
+  .markdown-content :deep(pre) {
+    background-color: #1e293b;
+    padding: 1em;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5em 0;
+  }
+  
+  .markdown-content :deep(pre code) {
+    background-color: transparent;
+    padding: 0;
+    display: block;
+    line-height: 1.5;
+  }
+  
+  .markdown-content :deep(a) {
+    color: #8b5cf6;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .markdown-content :deep(a:hover) {
+    color: #a78bfa;
+    text-decoration: underline;
+  }
+  
+  .markdown-content :deep(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+  }
+  
+  .markdown-content :deep(th) {
+    background-color: #334155;
+    color: #e2e8f0;
+    text-align: left;
+    padding: 0.75em;
+    border: 1px solid #475569;
+  }
+  
+  .markdown-content :deep(td) {
+    padding: 0.75em;
+    border: 1px solid #475569;
+  }
+  
+  .markdown-content :deep(tr:nth-child(even)) {
+    background-color: #0f172a;
+  }
+  
+  .markdown-content :deep(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.375rem;
+    margin: 1em 0;
+  }
+  
+  /* 代码高亮样式 */
+  .markdown-content :deep(.hljs) {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+  
+  .markdown-content :deep(.hljs-comment),
+  .markdown-content :deep(.hljs-quote) {
+    color: #94a3b8;
+    font-style: italic;
+  }
+  
+  .markdown-content :deep(.hljs-keyword),
+  .markdown-content :deep(.hljs-selector-tag),
+  .markdown-content :deep(.hljs-subst) {
+    color: #f472b6;
+    font-weight: bold;
+  }
+  
+  .markdown-content :deep(.hljs-number),
+  .markdown-content :deep(.hljs-literal),
+  .markdown-content :deep(.hljs-variable),
+  .markdown-content :deep(.hljs-template-variable),
+  .markdown-content :deep(.hljs-tag .hljs-attr) {
+    color: #fbbf24;
+  }
+  
+  .markdown-content :deep(.hljs-string),
+  .markdown-content :deep(.hljs-doctag) {
+    color: #4ade80;
+  }
+  
+  .markdown-content :deep(.hljs-title),
+  .markdown-content :deep(.hljs-section),
+  .markdown-content :deep(.hljs-selector-id) {
+    color: #60a5fa;
+    font-weight: bold;
+  }
+  
+  .markdown-content :deep(.hljs-subst) {
+    font-weight: normal;
+  }
+  
+  .markdown-content :deep(.hljs-type),
+  .markdown-content :deep(.hljs-class .hljs-title) {
+    color: #60a5fa;
+    font-weight: bold;
+  }
+  
+  .markdown-content :deep(.hljs-tag),
+  .markdown-content :deep(.hljs-name),
+  .markdown-content :deep(.hljs-attribute) {
+    color: #93c5fd;
+    font-weight: normal;
+  }
+  
+  .markdown-content :deep(.hljs-regexp),
+  .markdown-content :deep(.hljs-link) {
+    color: #4ade80;
+  }
+  
+  .markdown-content :deep(.hljs-symbol),
+  .markdown-content :deep(.hljs-bullet) {
+    color: #60a5fa;
+  }
+  
+  .markdown-content :deep(.hljs-built_in),
+  .markdown-content :deep(.hljs-builtin-name) {
+    color: #f472b6;
+  }
+  
+  .markdown-content :deep(.hljs-meta) {
+    color: #94a3b8;
+    font-weight: bold;
+  }
+  
+  .markdown-content :deep(.hljs-deletion) {
+    background: #ef4444;
+    color: #ffffff;
+  }
+  
+  .markdown-content :deep(.hljs-addition) {
+    background: #10b981;
+    color: #ffffff;
+  }
+  
+  .markdown-content :deep(.hljs-emphasis) {
+    font-style: italic;
+  }
+  
+  .markdown-content :deep(.hljs-strong) {
+    font-weight: bold;
+  }
+</style>
