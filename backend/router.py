@@ -70,7 +70,7 @@ def get_report_content(date_str):
         report = {
             "date": date_str,
             "content": content,
-            "project_count": project_count if project_count > 0 else 4
+            "project_count": project_count if project_count > 0 else 0
         }
         
         return jsonify(report)
@@ -343,18 +343,25 @@ def get_project_details(project_name):
         logger.error(f"获取项目详情错误: {e}")
         return jsonify({"error": str(e), "project_name": project_name}), 500
 
-@app.route('/api/project', methods=['POST'])
-def get_project_details_post():
-    """通过POST请求获取单个项目的详细信息，参数放在请求体中"""
+@app.route('/api/project', methods=['GET', 'POST'])
+def get_project_details_api():
+    """通过GET或POST请求获取单个项目的详细信息，GET请求从查询参数获取，POST请求从请求体获取"""
     try:
-        # 从请求体中获取项目名称
-        data = request.get_json()
-        if not data or 'project_name' not in data:
-            logger.warning("POST请求缺少project_name参数")
-            return jsonify({"error": "Missing project_name parameter in request body"}), 400
-        
-        project_name = data['project_name']
-        logger.info(f"通过POST请求获取项目详情: {project_name}")
+        if request.method == 'GET':
+            # 从查询参数中获取项目名称
+            project_name = request.args.get('name')
+            if not project_name:
+                logger.warning("GET请求缺少name查询参数")
+                return jsonify({"error": "Missing name parameter in query string"}), 400
+        else:  # POST请求
+            # 从请求体中获取项目名称
+            data = request.get_json()
+            if not data or 'project_name' not in data:
+                logger.warning("POST请求缺少project_name参数")
+                return jsonify({"error": "Missing project_name parameter in request body"}), 400
+            
+            project_name = data['project_name']
+        logger.info(f"通过{request.method}请求获取项目详情: {project_name}")
         
         with db._get_connection() as conn:
             cursor = conn.cursor()

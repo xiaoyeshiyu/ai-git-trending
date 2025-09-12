@@ -183,176 +183,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import type { Report } from '../api/reports'
-import MarkdownIt from 'markdown-it'
-// 导入已安装的markdown-it插件
-import abbrPlugin from 'markdown-it-abbr'
-import anchorPlugin from 'markdown-it-anchor'
-import * as emojiPlugin from 'markdown-it-emoji'
-import footnotePlugin from 'markdown-it-footnote'
-import insPlugin from 'markdown-it-ins'
-import markPlugin from 'markdown-it-mark'
-import subPlugin from 'markdown-it-sub'
-import supPlugin from 'markdown-it-sup'
-import taskListsPlugin from 'markdown-it-task-lists'
-import tocPlugin from 'markdown-it-toc-done-right'
-
-// 创建增强的MarkdownIt实例，添加更多配置以支持复杂的markdown格式
-const md = new MarkdownIt({
-  html: true,
-  xhtmlOut: false,
-  breaks: true,
-  langPrefix: 'language-',
-  linkify: true,
-  typographer: true,
-  highlight: function(str, lang) {
-    // 添加代码高亮支持
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(str, { language: lang }).value;
-      } catch (__) {}
-    }
-    return ''; // use external default escaping
-  }
-})
-
-// 启用所有已安装的markdown-it插件
-try {
-  md.use(abbrPlugin)
-  md.use(anchorPlugin, {
-    level: 1,
-    permalink: true,
-    permalinkClass: 'header-anchor',
-    permalinkSymbol: '🔗'
-  })
-  md.use(emojiPlugin)
-  md.use(footnotePlugin)
-  md.use(insPlugin)
-  md.use(markPlugin)
-  md.use(subPlugin)
-  md.use(supPlugin)
-  md.use(taskListsPlugin)
-  md.use(tocPlugin, {
-    level: 2,
-    title: '目录'
-  })
-} catch (error) {
-  console.error('Error loading markdown-it plugins:', error)
-}
-
-// 引入highlight.js用于代码高亮
-import hljs from 'highlight.js/lib/core';
-// 导入常用语言的高亮支持
-import javascript from 'highlight.js/lib/languages/javascript';
-import python from 'highlight.js/lib/languages/python';
-import typescript from 'highlight.js/lib/languages/typescript';
-import go from 'highlight.js/lib/languages/go';
-import rust from 'highlight.js/lib/languages/rust';
-import html from 'highlight.js/lib/languages/xml';
-import css from 'highlight.js/lib/languages/css';
-
-// 注册语言
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('python', python);
-hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('go', go);
-hljs.registerLanguage('rust', rust);
-hljs.registerLanguage('html', html);
-hljs.registerLanguage('css', css);
-
-// 预处理Markdown内容的函数
-function preprocessMarkdown(content: string): string {
-  if (!content) return ''
-  
-  // 添加调试日志（可根据需要启用）
-  // console.log('原始内容预览:', content.substring(0, 100) + '...')
-  
-  // 清理可能存在的特殊字符和格式问题
-  let processedContent = content
-    // 处理转义字符问题 - 正确处理实际的转义序列
-    .replace(/\\([\nrt])/g, (match, char) => {
-      const escapeMap = { 'n': '\n', 'r': '\r', 't': '\t' }
-      return escapeMap[char as keyof typeof escapeMap] || match
-    })
-    // 修复表格格式问题
-    .replace(/\|\s+\|/g, '||')
-    // 确保代码块的正确格式
-    .replace(/```([\w]+)?\s*\n/g, (match, lang) => {
-      return '```' + (lang || '') + '\n'
-    })
-    // 修复标题格式 - 确保标题前没有多余空格
-    .replace(/^(\s*#)/gm, (match) => match.trimStart())
-    // 处理列表项 - 确保列表标记后的空格正确
-    .replace(/^(\s*[*+-]|\d+\.)\s*/gm, (match) => {
-      // 确保列表标记后至少有一个空格
-      return match.trimEnd() + ' '
-    })
-    // 处理可能存在的引用格式问题
-    .replace(/^(\s*>)/gm, (match) => match.trimEnd() + ' ')
-    
-  // 调试日志
-  // console.log('处理后内容预览:', processedContent.substring(0, 100) + '...')
-  
-  return processedContent
-}
-
-// 渲染Markdown内容
-function renderMarkdown(content: string): string {
-  const processedContent = preprocessMarkdown(content || '')
-  return md.render(processedContent)
-}
-
-// 增强Markdown显示的函数，现在在内容更新后也会调用
-function enhanceMarkdownDisplay(container: HTMLElement): void {
-  // 确保container存在
-  if (!container) return;
-  // 添加代码块复制功能
-  const codeBlocks = container.querySelectorAll('pre code')
-  codeBlocks.forEach(block => {
-    const pre = block.parentElement
-    if (!pre) return
-    
-    const button = document.createElement('button')
-    button.className = 'absolute top-2 right-2 bg-slate-700/80 hover:bg-slate-600/80 text-white rounded px-2 py-1 text-xs transition-colors'
-    button.textContent = '复制'
-    button.onclick = () => {
-      navigator.clipboard.writeText(block.textContent || '')
-        .then(() => {
-          const originalText = button.textContent
-          button.textContent = '已复制!'
-          button.classList.add('bg-green-600/80')
-          setTimeout(() => {
-            button.textContent = originalText
-            button.classList.remove('bg-green-600/80')
-          }, 2000)
-        })
-        .catch(err => {
-          console.error('复制失败:', err)
-          button.textContent = '复制失败'
-          button.classList.add('bg-red-600/80')
-          setTimeout(() => {
-            button.textContent = '复制'
-            button.classList.remove('bg-red-600/80')
-          }, 2000)
-        })
-    }
-    
-    pre.style.position = 'relative'
-    pre.appendChild(button)
-  })
-  
-  // 添加链接打开新窗口的target属性
-  const links = container.querySelectorAll('a:not([target])')
-  links.forEach(link => {
-    link.setAttribute('target', '_blank')
-    link.setAttribute('rel', 'noopener noreferrer')
-  })
-}
+import { renderMarkdown, enhanceMarkdownDisplay } from '../utils/markdown-simple'
 
 // Props
 const props = defineProps<{
   report: Report
+  theme: 'light' | 'dark' // Add theme prop
 }>()
 
 // Emits
@@ -370,19 +208,8 @@ const showExportMenu = ref(false)
 const scrollProgress = ref(0)
 const showBackToTop = ref(false)
 
-// 计算属性
-const renderedContent = computed(() => {
-  if (!props.report.content) return '<p class="text-slate-400">暂无报告内容</p>'
-  return renderMarkdown(props.report.content)
-})
-
-// 监听content变化，重新应用增强显示
-watch(() => props.report.content, async () => {
-  await nextTick()
-  if (markdownContainer.value) {
-    enhanceMarkdownDisplay(markdownContainer.value)
-  }
-})
+// 使用ref存储渲染后的内容
+const renderedContent = ref('<p class="text-slate-400">暂无报告内容</p>')
 
 const wordCount = computed(() => {
   if (!props.report.content) return 0
@@ -395,19 +222,40 @@ const readingTime = computed(() => {
   return minutes + ' 分钟'
 })
 
+// 异步渲染Markdown内容
+async function updateRenderedContent(content: string) {
+  if (!content) {
+    renderedContent.value = '<p class="text-slate-400">暂无报告内容</p>'
+    return
+  }
+  try {
+    const html = await renderMarkdown(content)
+    renderedContent.value = html
+  } catch (error) {
+    console.error('渲染Markdown内容失败:', error)
+    renderedContent.value = `<div class="text-red-500 p-4 border border-red-200 rounded-lg bg-red-50">渲染失败: ${error}</div>`
+  }
+}
+
+// 监听报告内容变化
+watch(() => props.report.content, async (newContent: string | undefined) => {
+  await updateRenderedContent(newContent || '')
+}, { immediate: true })
+
 // 生命周期钩子
 onMounted(async () => {
-  await nextTick()
-  if (markdownContainer.value) {
-    enhanceMarkdownDisplay(markdownContainer.value)
-  }
-  
   // 添加事件监听器
   document.addEventListener('keydown', handleKeydown)
   document.addEventListener('click', handleOutsideClick)
   
   // 防止背景滚动
   document.body.style.overflow = 'hidden'
+  
+  // 等待DOM渲染完成后增强Markdown显示效果
+  await nextTick()
+  if (markdownContainer.value) {
+    enhanceMarkdownDisplay(markdownContainer.value)
+  }
 })
 
 onUnmounted(() => {

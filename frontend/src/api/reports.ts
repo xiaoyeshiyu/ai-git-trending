@@ -171,7 +171,10 @@ export const reportApi = {
   // 获取单个项目详情
   async getProjectDetails(projectName: string): Promise<Project> {
     try {
-      const response = await api.get(`/api/project/${encodeURIComponent(projectName)}`)
+      // 修改为使用查询参数，而不是路径参数，以更好地处理包含特殊字符的项目名称
+      const response = await api.get('/api/project', {
+        params: { name: projectName }
+      })
       console.log(`📦 获取项目详情: ${projectName}`)
       return response.data
     } catch (error) {

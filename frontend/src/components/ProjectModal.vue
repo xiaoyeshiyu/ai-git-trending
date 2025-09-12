@@ -190,6 +190,7 @@ const loadProjectDetails = async () => {
   
   loading.value = true
   try {
+    // 修改为使用查询参数，而不是路径参数，以更好地处理包含特殊字符的项目名称
     project.value = await getProjectDetails(props.projectName)
   } catch (error) {
     console.error('Failed to load project details:', error)

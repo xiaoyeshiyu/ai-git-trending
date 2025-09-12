@@ -16,20 +16,28 @@ def analyze_trends(days=7):
     
     # 最频繁项目查询
     sql_most_frequent = """
-    SELECT p.name, COALESCE(sp.url, p.url) as url, COALESCE(sp.description, p.description) as description, \
-           COALESCE(sp.language, l.name, 'Unknown') as language, COUNT(f.snapshot_id) as count, \
-           AVG(f.stars) as avg_stars, sp.stars, sp.forks, sp.contributor_count, \
-           sp.created_at, sp.updated_at, sp.open_issues, sp.watchers \
-    FROM fact_trending_snapshots f \
-    JOIN dim_projects p ON f.project_id = p.project_id \
-    JOIN dim_dates d ON f.date_id = d.date_id \
-    LEFT JOIN dim_languages l ON p.language_id = l.language_id \
-    LEFT JOIN summarized_projects sp ON p.name = sp.name \
-    WHERE d.full_date BETWEEN ? AND ? \
-    GROUP BY p.name, sp.url, sp.description, sp.language, l.name, \
-             sp.stars, sp.forks, sp.contributor_count, sp.created_at, \
-             sp.updated_at, sp.open_issues, sp.watchers \
-    ORDER BY count DESC \
+    SELECT
+        p.name,
+        MAX(COALESCE(sp.url, p.url)) as url,
+        MAX(COALESCE(sp.description, p.description)) as description,
+        MAX(COALESCE(sp.language, l.name, 'Unknown')) as language,
+        COUNT(f.snapshot_id) as count,
+        AVG(f.stars) as avg_stars,
+        MAX(sp.stars) as stars,
+        MAX(sp.forks) as forks,
+        MAX(sp.contributor_count) as contributor_count,
+        MAX(sp.created_at) as created_at,
+        MAX(sp.updated_at) as updated_at,
+        MAX(sp.open_issues) as open_issues,
+        MAX(sp.watchers) as watchers
+    FROM fact_trending_snapshots f
+    JOIN dim_projects p ON f.project_id = p.project_id
+    JOIN dim_dates d ON f.date_id = d.date_id
+    LEFT JOIN dim_languages l ON p.language_id = l.language_id
+    LEFT JOIN summarized_projects sp ON p.name = sp.name
+    WHERE d.full_date BETWEEN ? AND ?
+    GROUP BY p.name
+    ORDER BY count DESC
     LIMIT 10"""
     
     cursor.execute(sql_most_frequent, (start_date.isoformat(), end_date.isoformat()))

@@ -19,6 +19,30 @@ const routes = [
     }
   },
   {
+    path: '/rankings',
+    name: 'Rankings',
+    component: () => import('../views/Rankings.vue'),
+    meta: {
+      title: '项目排行榜 - GitTrend Insights'
+    }
+  },
+  {
+    path: '/trend-analysis',
+    name: 'TrendAnalysis',
+    component: () => import('../views/TrendAnalysis.vue'),
+    meta: {
+      title: '技术趋势分析 - GitTrend Insights'
+    }
+  },
+  {
+    path: '/favorites',
+    name: 'Favorites',
+    component: () => import('../views/Favorites.vue'),
+    meta: {
+      title: '我的收藏项目 - GitTrend Insights'
+    }
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue'),

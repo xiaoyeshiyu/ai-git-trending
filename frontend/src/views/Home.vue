@@ -12,11 +12,11 @@
           </h1>
         </div>
         
-        <div class="hidden md:flex items-center space-x-6">
-          <button class="text-slate-300 hover:text-white transition-colors">发现</button>
-          <button class="text-slate-300 hover:text-white transition-colors">排行榜</button>
-          <button class="text-slate-300 hover:text-white transition-colors">趋势分析</button>
-          <button class="text-slate-300 hover:text-white transition-colors">收藏</button>
+        <div class="hidden md:flex items-center space-x-8">
+          <router-link to="/" class="text-white border-b-2 border-primary px-3 py-2 text-sm font-medium">发现</router-link>
+          <router-link to="/rankings" class="text-slate-300 hover:text-white transition-colors px-3 py-2 text-sm font-medium">排行榜</router-link>
+          <router-link to="/trend-analysis" class="text-slate-300 hover:text-white transition-colors px-3 py-2 text-sm font-medium">趋势分析</router-link>
+          <router-link to="/favorites" class="text-slate-300 hover:text-white transition-colors px-3 py-2 text-sm font-medium">收藏</router-link>
         </div>
         
         <div class="flex items-center space-x-3">
@@ -329,6 +329,7 @@
     <!-- 报告详情模态框 -->
     <ReportModal 
       :report="selectedReport"
+      :theme="theme"
       v-if="isReportModalOpen"
       @close="closeReportModal"
     />
@@ -344,6 +345,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
+import mermaid from 'mermaid';
 import { useRouter } from 'vue-router'
 import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
@@ -534,6 +536,15 @@ const surgingProjects = computed(() => {
 // 初始化数据
 onMounted(async () => {
   await loadInitialData()
+  
+  // Initialize Mermaid
+  mermaid.initialize({
+    startOnLoad: false, // We will manually trigger rendering
+    theme: theme.value === 'dark' ? 'dark' : 'default', // Match app theme
+  });
+  // Run Mermaid to render diagrams
+  mermaid.run();
+
   // 初始化主题
   applyTheme(theme.value)
   

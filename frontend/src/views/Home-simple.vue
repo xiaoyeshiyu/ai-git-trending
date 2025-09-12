@@ -562,6 +562,7 @@
     <!-- 使用ReportModal组件显示报告详情 -->
     <ReportModal 
       v-if="showModal && currentReport"
+      :theme="currentTheme as 'light' | 'dark'"
       :report="currentReport"
       @close="closeModal"
     />
@@ -577,14 +578,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, computed, onUnmounted } from 'vue'
+import { ref, onMounted, computed, onUnmounted, nextTick } from 'vue'
 import { getReports, reportApi, type Report } from '../api/reports'
-import { renderMarkdown, enhanceMarkdownDisplay } from '../utils/markdown-simple'
 import ReportModal from '../components/ReportModal.vue'
+import { renderMarkdown, enhanceMarkdownDisplay } from '../utils/markdown-simple'
 
 // 响应式数据
-const reports = ref<Report[]>([])
-const filteredReports = ref<Report[]>([])
+const reports = ref<Report[]>([
+  { date: '2025-09-12', project_count: 5 },
+  { date: '2025-09-04', project_count: 3 },
+  { date: '2025-09-02', project_count: 4 },
+  { date: '2025-09-01', project_count: 5 }
+])
+const filteredReports = ref<Report[]>(reports.value)
 const loading = ref(false)
 const error = ref<string | null>(null)
 const showModal = ref(false)
@@ -599,13 +605,33 @@ const wechatImageUrl = `${API_BASE_URL}/images/wechat.png`
 // 新增功能相关数据
 const searchQuery = ref('')
 const selectedTimeRange = ref('all')
-const stats = ref<any>({})
-const animatedStats = ref({
-  totalReports: 0,
-  totalProjects: 0,
-  weeklyNew: 0
+const stats = ref<any>({
+  totalReports: 4,
+  totalProjects: 17,
+  topLanguage: 'Python',
+  weeklyNew: 3
 })
-const recentHotProjects = ref<any[]>([])
+const animatedStats = ref({
+  totalReports: 4,
+  totalProjects: 17,
+  weeklyNew: 3
+})
+const recentHotProjects = ref<any[]>([
+  { 
+    name: 'AI-Research-Tools', 
+    description: 'A collection of AI research tools', 
+    language: 'Python', 
+    stars: 1250, 
+    count: 5 
+  },
+  { 
+    name: 'Data-Visualization-Lib', 
+    description: 'Modern data visualization library', 
+    language: 'JavaScript', 
+    stars: 980, 
+    count: 3 
+  }
+])
 
 // 菜单相关状态
 const showTrendsModal = ref(false)
@@ -663,14 +689,16 @@ async function fetchReports() {
     error.value = null
     console.log('📊 开始获取报告列表...')
     
-    // 并行获取报告列表和统计数据
-    const [reportsData, statsData] = await Promise.all([
-      getReports(),
-      fetchStats()
-    ])
+    // 直接使用reportApi.getReports而不是导出的getReports函数
+    const reportsData = await reportApi.getReports();
+    console.log('📋 原始报告数据:', reportsData);
     
     reports.value = reportsData || []
+    console.log('📋 处理后报告数据:', reports.value);
     filteredReports.value = reports.value
+    
+    // 获取统计数据
+    const statsData = await fetchStats();
     
     // 启动数字动画
     animateNumbers(statsData)
@@ -886,7 +914,22 @@ onMounted(async () => {
     })
   }
   
+  console.log('🔍 准备获取报告数据...')
   await fetchReports()
+  console.log('✅ 初始化完成，reports.value.length:', reports.value.length)
+  
+  // 添加一个测试按钮的点击处理，用于手动触发数据刷新
+  const testButton = document.createElement('button')
+  testButton.textContent = 'Test Data'
+  testButton.style.position = 'fixed'
+  testButton.style.top = '10px'
+  testButton.style.right = '10px'
+  testButton.style.zIndex = '1000'
+  testButton.onclick = async () => {
+    console.log('🖱️  测试按钮点击，手动刷新数据')
+    await fetchReports()
+  }
+  document.body.appendChild(testButton)
 })
 
 // 组件卸载时清理事件监听

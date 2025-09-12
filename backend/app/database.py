@@ -145,12 +145,29 @@ class ProjectDatabase:
     def add_summarized_project(self, project):
         if not project: return
         today_str = date.today().isoformat()
+        
+        # Helper to safely convert 'N/A' or other non-integers to 0
+        def safe_int(value, default=0):
+            if value == 'N/A':
+                return default
+            try:
+                return int(value)
+            except (ValueError, TypeError):
+                return default
+
         project_data = (
-            project.get('name'), project.get('url'), project.get('description', 'N/A'),
-            project.get('language', 'N/A'), project.get('stars', 0), project.get('forks', 0),
-            project.get('contributor_count', 0), project.get('created_at', 'N/A'),
-            project.get('updated_at', 'N/A'), project.get('open_issues', 0),
-            project.get('watchers', 0), today_str
+            project.get('name'), 
+            project.get('url'), 
+            project.get('description', 'N/A'),
+            project.get('language', 'N/A'), 
+            safe_int(project.get('stars')), 
+            safe_int(project.get('forks')),
+            safe_int(project.get('contributor_count')), 
+            project.get('created_at', 'N/A'),
+            project.get('updated_at', 'N/A'), 
+            safe_int(project.get('open_issues')),
+            safe_int(project.get('watchers')), 
+            today_str
         )
         try:
             with self._get_connection() as conn:

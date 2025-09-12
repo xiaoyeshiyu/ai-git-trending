@@ -49,7 +49,6 @@ SINGLE_PROJECT_PROMPT_TEMPLATE = """
     - 创建日期: `{created_at}` | 最近更新: `{updated_at}`
 
 #### 1.2. 项目 README 内容
-```markdown
 {readme_content}
 ````
 

@@ -76,13 +76,21 @@ def scrape_github_trending():
                 except (ValueError, TypeError):
                     repo_stars = 0
             
+            fork_element = repo_element.find('a', href=f"{repo_url.replace('https://github.com','').strip()}/forks")
+            repo_forks = 0
+            if fork_element:
+                try:
+                    repo_forks = int(fork_element.get_text(strip=True).replace(',', ''))
+                except (ValueError, TypeError):
+                    repo_forks = 0
+
             repo_data = {
                 "name": repo_name,
                 "url": repo_url,
                 "description": scraped_description,
                 "language": scraped_language,
                 "stars": repo_stars,
-                "forks": "N/A",
+                "forks": repo_forks,
                 "tags": [],
                 "created_at": "N/A",
                 "updated_at": "N/A",
