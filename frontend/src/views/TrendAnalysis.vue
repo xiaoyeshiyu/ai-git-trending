@@ -148,75 +148,7 @@ const analysisTypes = [
   { label: '增长速度', value: 'growth' }
 ]
 
-// 模拟图表数据
-const languageData = ref({
-  labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
-  datasets: [
-    {
-      label: 'JavaScript',
-      data: [65, 59, 80, 81, 56, 55],
-      borderColor: '#F7DF1E',
-      backgroundColor: 'rgba(247, 223, 30, 0.1)',
-      tension: 0.4
-    },
-    {
-      label: 'Python',
-      data: [28, 48, 40, 45, 86, 95],
-      borderColor: '#3776AB',
-      backgroundColor: 'rgba(55, 118, 171, 0.1)',
-      tension: 0.4
-    },
-    {
-      label: 'TypeScript',
-      data: [45, 32, 46, 50, 58, 70],
-      borderColor: '#3178C6',
-      backgroundColor: 'rgba(49, 120, 198, 0.1)',
-      tension: 0.4
-    },
-    {
-      label: 'Go',
-      data: [20, 25, 35, 40, 45, 55],
-      borderColor: '#00ADD8',
-      backgroundColor: 'rgba(0, 173, 216, 0.1)',
-      tension: 0.4
-    }
-  ]
-})
-
-const domainData = ref({
-  labels: ['AI/ML', 'Web', 'Mobile', 'DevOps', 'Data Science', 'Blockchain'],
-  datasets: [
-    {
-      label: '项目数量',
-      data: [120, 80, 60, 45, 30, 20],
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)',
-        'rgba(255, 159, 64, 0.7)'
-      ]
-    }
-  ]
-})
-
-const domainPieData = ref({
-  labels: ['AI/ML', 'Web', 'Mobile', 'DevOps', 'Data Science'],
-  datasets: [
-    {
-      data: [40, 25, 15, 10, 10],
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)'
-      ]
-    }
-  ]
-})
-
+// 图表配置选项
 const chartOptions = ref({
   responsive: true,
   maintainAspectRatio: false,
@@ -265,12 +197,8 @@ const loadTrendingProjects = async () => {
   try {
     const date = new Date().toISOString().split('T')[0]
     const data = await getProjectsByDate(date)
-    // 模拟趋势数据，按照增长率排序
-    trendingProjects.value = [...data].sort((a, b) => {
-      const growthA = (a.stars || 0) / ((a.created_at ? (new Date().getTime() - new Date(a.created_at).getTime()) / (1000 * 60 * 60 * 24) : 1)) || 0
-      const growthB = (b.stars || 0) / ((b.created_at ? (new Date().getTime() - new Date(b.created_at).getTime()) / (1000 * 60 * 60 * 24) : 1)) || 0
-      return growthB - growthA
-    }).slice(0, 6)
+    // 直接使用API返回的数据，不做额外的模拟排序
+    trendingProjects.value = data.slice(0, 6)
   } catch (error) {
     console.error('Failed to load trending projects:', error)
   } finally {

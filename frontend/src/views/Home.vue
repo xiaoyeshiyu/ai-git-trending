@@ -220,10 +220,10 @@
               <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
                   <span class="text-xs text-slate-400 flex items-center gap-1">
-                    <i class="fa fa-eye"></i> {{ Math.floor(Math.random() * 1000) + 500 }}
+                    <i class="fa fa-eye"></i> {{ (report as any).views || 0 }}
                   </span>
                   <span class="text-xs text-slate-400 flex items-center gap-1">
-                    <i class="fa fa-comment"></i> {{ Math.floor(Math.random() * 50) + 10 }}
+                    <i class="fa fa-comment"></i> {{ (report as any).comments || 0 }}
                   </span>
                 </div>
                 <button class="text-xs text-primary hover:underline flex items-center gap-1">
@@ -398,7 +398,7 @@ const selectedReport = ref<Report>({
 
 // 计算属性 - 热门编程语言
 const topLanguages = computed(() => {
-  // 使用从API获取的真实语言数据
+  // 只使用从API获取的真实语言数据
   if (trendsData.value && trendsData.value.most_frequent_languages && trendsData.value.most_frequent_languages.length > 0) {
     const total = trendsData.value.most_frequent_languages.reduce((sum, [, count]) => sum + count, 0)
     
@@ -423,20 +423,14 @@ const topLanguages = computed(() => {
       }))
   }
   
-  // 如果没有真实数据，使用模拟数据作为备选
-  return [
-    { name: 'TypeScript', percentage: 35, colorClass: 'bg-gradient-to-r from-blue-500 to-blue-600' },
-    { name: 'JavaScript', percentage: 28, colorClass: 'bg-gradient-to-r from-yellow-500 to-yellow-600' },
-    { name: 'Python', percentage: 20, colorClass: 'bg-gradient-to-r from-green-500 to-green-600' },
-    { name: 'Go', percentage: 10, colorClass: 'bg-gradient-to-r from-cyan-500 to-cyan-600' },
-    { name: 'Rust', percentage: 7, colorClass: 'bg-gradient-to-r from-orange-500 to-orange-600' }
-  ]
+  // 如果没有真实数据，返回空数组
+  return []
 })
 
 // 更新热门趋势项目数据
 function updateTrendingProjects() {
   if (trendsData.value && trendsData.value.most_frequent_projects && trendsData.value.most_frequent_projects.length > 0) {
-    // 直接使用后端返回的完整项目数据，不再需要生成默认值
+    // 直接使用后端返回的完整项目数据
     trendingProjects.value = trendsData.value.most_frequent_projects.slice(0, 12).map(project => ({
       name: project.name,
       url: project.url || `https://github.com/${project.name}`,
@@ -452,20 +446,20 @@ function updateTrendingProjects() {
       summary_date: project.created_at ? new Date(project.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
     }))
   } else {
-    // 如果没有真实数据，使用模拟数据
-    trendingProjects.value = generateMockProjectsByTimeFilter(12)
+    // 如果没有真实数据，返回空数组
+    trendingProjects.value = []
   }
 }
 
 // 计算属性 - 新兴技术领域
 const emergingAreas = computed(() => {
-  // 使用从API获取的真实新兴技术领域数据
+  // 只使用从API获取的真实新兴技术领域数据
   if (trendAreasData.value && trendAreasData.value.length > 0) {
     // 为不同的技术领域分配图标和背景色
     const techIcons = ['IconEcosystem', 'IconTooling', 'IconCommunity', 'IconDocumentation']
     const bgClasses = ['bg-purple-500/20', 'bg-blue-500/20', 'bg-green-500/20', 'bg-pink-500/20']
     
-    // 技术领域名称映射
+    // 进一步映射到相应的days参数
     const areaNameMap: Record<string, string> = {
       '新项目': '生成式AI',
       '活跃项目': 'WebAssembly',
@@ -481,18 +475,13 @@ const emergingAreas = computed(() => {
     }))
   }
   
-  // 如果没有真实数据，使用模拟数据作为备选
-  return [
-    { name: '生成式AI', growth: 125, bgClass: 'bg-purple-500/20', icon: 'IconEcosystem' },
-    { name: 'WebAssembly', growth: 87, bgClass: 'bg-blue-500/20', icon: 'IconTooling' },
-    { name: '边缘计算', growth: 63, bgClass: 'bg-green-500/20', icon: 'IconCommunity' },
-    { name: '低代码平台', growth: 45, bgClass: 'bg-pink-500/20', icon: 'IconDocumentation' }
-  ]
+  // 如果没有真实数据，返回空数组
+  return []
 })
 
 // 计算属性 - 上升最快项目
 const surgingProjects = computed(() => {
-  // 使用从API获取的真实上升最快项目数据
+  // 只使用从API获取的真实上升最快项目数据
   if (trendsData.value && trendsData.value.surging_projects && trendsData.value.surging_projects.length > 0) {
     return trendsData.value.surging_projects.slice(0, 4).map((project, index) => ({
       ...project,
@@ -500,37 +489,8 @@ const surgingProjects = computed(() => {
     }))
   }
   
-  // 如果没有真实数据，使用模拟数据作为备选
-  return [
-    {
-      rank: 1,
-      name: 'facebook/react',
-      description: 'A declarative, efficient, and flexible JavaScript library for building user interfaces.',
-      language: 'JavaScript',
-      star_increase: 5280
-    },
-    {
-      rank: 2,
-      name: 'vercel/next.js',
-      description: 'The React Framework for Production',
-      language: 'TypeScript',
-      star_increase: 4720
-    },
-    {
-      rank: 3,
-      name: 'tensorflow/tensorflow',
-      description: 'An Open Source Machine Learning Framework for Everyone',
-      language: 'Python',
-      star_increase: 3890
-    },
-    {
-      rank: 4,
-      name: 'rust-lang/rust',
-      description: 'Empowering everyone to build reliable and efficient software.',
-      language: 'Rust',
-      star_increase: 2980
-    }
-  ]
+  // 如果没有真实数据，返回空数组
+  return []
 })
 
 // 初始化数据
@@ -581,136 +541,36 @@ async function loadInitialData() {
   // 更新新兴技术领域数据
   trendAreasData.value = trendAreasResponse
     
-    // 使用真实数据而不是模拟数据
-    // 根据时间过滤器获取相应的真实项目数据
+    // 使用真实数据
     updateTrendingProjects()
   } catch (error) {
     console.error('加载数据失败:', error)
-    // 加载失败时使用模拟数据
-    loadMockData()
+    // 后端未运行时，显示空状态
+    statsData.value = { totalReports: 0, totalProjects: 0, topLanguage: 'N/A', weeklyNew: 0, totalForks: '0', avgContributors: 0, activityScore: 0 }
+    featuredReports.value = []
+    trendingProjects.value = []
+    trendsData.value = { time_window_days: 7, most_frequent_projects: [], most_frequent_languages: [], surging_projects: [] }
+    trendAreasData.value = []
   }
 }
 
-// 加载模拟数据
-function loadMockData() {
-  // 模拟统计数据
-    statsData.value = {
-      totalReports: 156,
-      totalProjects: 1245,
-      topLanguage: 'TypeScript',
-      weeklyNew: 48,
-      totalForks: '56,234',
-      avgContributors: 128,
-      activityScore: 85
-    }
-  
-  // 模拟报告数据
-  const today = new Date()
-  featuredReports.value = [
-    {
-      date: today.toISOString().split('T')[0],
-      project_count: 27
-    },
-    {
-      date: new Date(today.getTime() - 86400000).toISOString().split('T')[0],
-      project_count: 25
-    },
-    {
-      date: new Date(today.getTime() - 172800000).toISOString().split('T')[0],
-      project_count: 30
-    }
-  ]
-  
-  // 根据当前时间过滤器生成模拟项目数据
-  trendingProjects.value = generateMockProjectsByTimeFilter(12)
-}
 
-// 根据时间过滤器生成模拟项目数据
-function generateMockProjectsByTimeFilter(count: number): Project[] {
-  const languages = ['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'Java', 'C++']
-  const projects: Project[] = []
-  
-  // 根据时间过滤器调整数据生成逻辑
-  let timeRange = 0
-  let starMultiplier = 1
-  
-  switch (timeFilter.value) {
-    case 'today':
-      timeRange = 86400000 // 24小时
-      starMultiplier = 1.5 // 今日项目获得更多星星
-      break
-    case 'week':
-      timeRange = 604800000 // 7天
-      starMultiplier = 1.2
-      break
-    case 'month':
-      timeRange = 2592000000 // 30天
-      starMultiplier = 1
-      break
-  }
-  
-  // 预定义一些更真实的项目名称和描述，让数据看起来更逼真
-  const projectTemplates = [
-    { name: 'deep-learning-framework', desc: 'Advanced neural network framework with distributed training support' },
-    { name: 'web3-wallet', desc: 'Secure cryptocurrency wallet with multi-chain support and dApp integration' },
-    { name: 'data-visualization', desc: 'Powerful data visualization library with real-time rendering capabilities' },
-    { name: 'cloud-infrastructure', desc: 'Modular cloud infrastructure management system with auto-scaling' },
-    { name: 'ai-assistant', desc: 'Intelligent personal assistant with natural language processing' },
-    { name: 'devops-toolkit', desc: 'Comprehensive DevOps toolkit for CI/CD pipelines and infrastructure automation' },
-    { name: 'security-scanner', desc: 'Automated security vulnerability scanner for web applications' },
-    { name: 'edge-computing', desc: 'Edge computing platform for low-latency applications and IoT devices' },
-    { name: 'mobile-framework', desc: 'Cross-platform mobile development framework with native performance' },
-    { name: 'quantum-computing', desc: 'Quantum computing simulator and algorithm development environment' }
-  ]
-  
-  for (let i = 0; i < count; i++) {
-    const language = languages[Math.floor(Math.random() * languages.length)]
-    const templateIndex = Math.floor(Math.random() * projectTemplates.length)
-    const template = projectTemplates[templateIndex]
-    const owner = ['google', 'facebook', 'microsoft', 'apple', 'amazon', 'github', 'apache', 'mozilla', 'netflix', 'spotify'][Math.floor(Math.random() * 10)]
-    
-    // 根据时间过滤器设置项目更新时间
-    const updateTime = new Date(Date.now() - Math.floor(Math.random() * timeRange))
-    
-    projects.push({
-      name: `${owner}/${template.name}`,
-      url: `https://github.com/${owner}/${template.name}`,
-      description: template.desc,
-      language: language,
-      stars: Math.floor((Math.random() * 10000 + 100) * starMultiplier),
-      forks: Math.floor(Math.random() * 1000) + 10,
-      contributor_count: Math.floor(Math.random() * 100) + 1,
-      created_at: new Date(updateTime.getTime() - Math.floor(Math.random() * 31536000000)).toISOString(),
-      updated_at: updateTime.toISOString(),
-      open_issues: Math.floor(Math.random() * 100),
-      watchers: Math.floor(Math.random() * 5000) + 50
-    })
-  }
-  
-  // 按星星数量排序，让热门项目更突出
-  return projects.sort((a, b) => b.stars - a.stars)
-}
-
-// 为了兼容性保留原函数
-function generateMockProjects(count: number): Project[] {
-  return generateMockProjectsByTimeFilter(count)
-}
 
 // 刷新数据
 async function refreshData() {
   isLoading.value = true
   try {
       // 根据timeFilter映射到相应的days参数
-      let days = 7; // 默认7天
+      let days = 1; // 默认1天（今日）
       switch (timeFilter.value) {
         case 'today':
-          days = 7; // 后端目前只支持固定天数，所以'today'也映射到7天
+          days = 1; // 今日数据使用1天
           break;
         case 'week':
-          days = 7;
+          days = 7; // 本周数据使用7天
           break;
         case 'month':
-          days = 30;
+          days = 30; // 本月数据使用30天
           break;
       }
       
@@ -728,8 +588,8 @@ async function refreshData() {
     updateTrendingProjects()
   } catch (error) {
     console.error('刷新数据失败:', error)
-    // 如果失败，使用模拟数据
-    trendingProjects.value = generateMockProjectsByTimeFilter(12)
+    // 如果失败，清空项目数据而不是使用模拟数据
+    trendingProjects.value = []
   } finally {
     isLoading.value = false
   }

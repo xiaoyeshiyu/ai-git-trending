@@ -43,35 +43,38 @@
         
         <!-- 主要数据概览卡片 -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <!-- 项目活跃度指数 -->
           <div class="glass-card p-6 rounded-xl">
             <div class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-semibold text-white">项目活跃度指数</h3>
-              <span class="text-xs font-bold text-green-400">+12.8%</span>
+              <span class="text-xs font-bold text-slate-500">--</span>
             </div>
             <div class="flex items-end space-x-3">
-              <div class="text-3xl font-bold text-white">87.4</div>
+              <div class="text-3xl font-bold text-white">--</div>
               <div class="text-sm text-slate-400 mb-1">活跃度评分</div>
             </div>
           </div>
           
+          <!-- 技术创新热度 -->
           <div class="glass-card p-6 rounded-xl">
             <div class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-semibold text-white">技术创新热度</h3>
-              <span class="text-xs font-bold text-green-400">+23.5%</span>
+              <span class="text-xs font-bold text-slate-500">--</span>
             </div>
             <div class="flex items-end space-x-3">
-              <div class="text-3xl font-bold text-white">76.2</div>
+              <div class="text-3xl font-bold text-white">--</div>
               <div class="text-sm text-slate-400 mb-1">创新指数</div>
             </div>
           </div>
           
+          <!-- 社区参与度 -->
           <div class="glass-card p-6 rounded-xl">
             <div class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-semibold text-white">社区参与度</h3>
-              <span class="text-xs font-bold text-red-400">-2.1%</span>
+              <span class="text-xs font-bold text-slate-500">--</span>
             </div>
             <div class="flex items-end space-x-3">
-              <div class="text-3xl font-bold text-white">62.8</div>
+              <div class="text-3xl font-bold text-white">--</div>
               <div class="text-sm text-slate-400 mb-1">参与指数</div>
             </div>
           </div>
@@ -99,7 +102,9 @@
         <!-- 详细分析表格 -->
         <div class="glass-card p-6 rounded-xl mb-8">
           <h3 class="text-lg font-semibold text-white mb-6">热门技术领域深度分析</h3>
-          <div class="overflow-x-auto">
+          
+          <!-- 有数据状态 -->
+          <div v-if="techAreas && techAreas.length > 0" class="overflow-x-auto">
             <table class="w-full">
               <thead>
                 <tr class="border-b border-slate-800">
@@ -138,35 +143,38 @@
               </tbody>
             </table>
           </div>
+          
+          <!-- 无数据状态 -->
+          <div v-else class="text-center py-8">
+            <div class="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-table text-slate-400 text-xl"></i>
+            </div>
+            <p class="text-slate-400">暂无技术领域数据</p>
+            <p class="text-slate-500 text-sm mt-2">请稍后刷新或联系管理员获取最新数据</p>
+          </div>
         </div>
         
         <!-- 趋势洞察报告 -->
         <div class="glass-card p-6 rounded-xl">
           <h3 class="text-lg font-semibold text-white mb-6">趋势洞察分析报告</h3>
-          <div class="prose prose-invert max-w-none">
+          
+          <!-- 从后端获取的趋势洞察分析报告 -->
+          <!-- 趋势洞察分析报告内容将在有数据时显示 -->
+          <div v-if="false" class="prose prose-invert max-w-none">
             <p class="text-slate-300 mb-4">
               根据最近{{ selectedWindow }}的数据分析，我们观察到以下几个显著的技术趋势:
             </p>
             
-            <h4 class="text-white text-lg font-medium mb-2">生成式AI持续爆发增长</h4>
-            <p class="text-slate-300 mb-4">
-              生成式AI相关项目在过去{{ selectedWindow }}中增长了<span class="text-green-400 font-semibold">125%</span>，特别是在代码生成、内容创作和多模态AI领域出现了大量创新项目。这一趋势反映了开发者社区对AI辅助工具的强烈需求。
-            </p>
-            
-            <h4 class="text-white text-lg font-medium mb-2">TypeScript仍是主流选择</h4>
-            <p class="text-slate-300 mb-4">
-              TypeScript继续保持其主导地位，在所有新项目中占比达到<span class="text-primary font-semibold">35%</span>，超过了JavaScript成为最受欢迎的开发语言。其静态类型系统和现代JavaScript特性为大型项目开发提供了更好的保障。
-            </p>
-            
-            <h4 class="text-white text-lg font-medium mb-2">WebAssembly应用范围扩大</h4>
-            <p class="text-slate-300 mb-4">
-              WebAssembly技术在过去{{ selectedWindow }}展现出<span class="text-green-400 font-semibold">87%</span>的增长率，其应用场景已从Web前端扩展到云原生、边缘计算等领域，为高性能Web应用提供了新的可能性。
-            </p>
-            
-            <h4 class="text-white text-lg font-medium mb-2">结论与建议</h4>
-            <p class="text-slate-300">
-              开发者和技术团队应密切关注生成式AI与各自领域的结合点，同时考虑在新项目中采用TypeScript以提高代码质量和开发效率。对于性能敏感型应用，WebAssembly也是一个值得探索的方向。建议团队在技术选型时充分评估这些新兴技术的潜力和适用场景。
-            </p>
+            <!-- 实际数据将通过API获取后动态渲染 -->
+          </div>
+          
+          <!-- 无数据状态 -->
+          <div v-else class="text-center py-8">
+            <div class="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-bar-chart text-slate-400 text-xl"></i>
+            </div>
+            <p class="text-slate-400">暂无趋势洞察数据</p>
+            <p class="text-slate-500 text-sm mt-2">请稍后刷新或联系管理员获取最新报告</p>
           </div>
         </div>
       </div>
@@ -176,7 +184,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
-import { Chart, registerables } from 'chart.js'
+import { Chart, registerables, type ChartConfiguration } from 'chart.js'
 import type { TrendsData } from '@/api/reports'
 import IconCommunity from './icons/IconCommunity.vue'
 import IconDocumentation from './icons/IconDocumentation.vue'
@@ -207,6 +215,17 @@ const props = withDefaults(defineProps<TechTrendsModalProps>(), {
     surging_projects: []
   })
 })
+
+// 定义技术领域接口
+interface TechArea {
+  name: string
+  project_count: number
+  growth_rate: number
+  avg_stars: number
+  activity_score: number
+  bgClass: string
+  icon: string
+}
 
 // 响应式数据
 const selectedWindow = ref<string>('30天')
@@ -240,63 +259,8 @@ const startDate = computed(() => {
 
 const endDate = computed(() => new Date())
 
-// 模拟技术领域数据
-const techAreas = ref([
-  {
-    name: '生成式AI',
-    project_count: 156,
-    growth_rate: 125,
-    avg_stars: 4872,
-    activity_score: 92,
-    bgClass: 'bg-purple-500/20',
-    icon: 'IconEcosystem'
-  },
-  {
-    name: 'WebAssembly',
-    project_count: 87,
-    growth_rate: 87,
-    avg_stars: 3245,
-    activity_score: 85,
-    bgClass: 'bg-blue-500/20',
-    icon: 'IconTooling'
-  },
-  {
-    name: '边缘计算',
-    project_count: 63,
-    growth_rate: 63,
-    avg_stars: 2876,
-    activity_score: 78,
-    bgClass: 'bg-green-500/20',
-    icon: 'IconCommunity'
-  },
-  {
-    name: '低代码平台',
-    project_count: 45,
-    growth_rate: 45,
-    avg_stars: 3124,
-    activity_score: 72,
-    bgClass: 'bg-pink-500/20',
-    icon: 'IconDocumentation'
-  },
-  {
-    name: '区块链应用',
-    project_count: 38,
-    growth_rate: 12,
-    avg_stars: 1987,
-    activity_score: 65,
-    bgClass: 'bg-orange-500/20',
-    icon: 'IconSupport'
-  },
-  {
-    name: '量子计算',
-    project_count: 24,
-    growth_rate: 35,
-    avg_stars: 2654,
-    activity_score: 60,
-    bgClass: 'bg-cyan-500/20',
-    icon: 'IconEcosystem'
-  }
-])
+// 初始化技术领域数据为空数组，等待从API获取
+const techAreas = ref<TechArea[]>([])
 
 // 监听可见性变化
 watch(() => props.visible, (newVisible) => {
@@ -366,59 +330,53 @@ function destroyCharts() {
 
 // 获取语言趋势图表配置
 function getLanguageTrendChartConfig() {
-  // 根据选择的时间窗口生成模拟数据
+  // 从props获取真实数据
   const labels = generateTimeLabels()
+  
+  // 准备图表数据
+  const datasets: ChartConfiguration<'line'>['data']['datasets'] = []
+  
+  // 如果有真实的语言数据，使用它
+  if (props.trendsData && props.trendsData.most_frequent_languages && props.trendsData.most_frequent_languages.length > 0) {
+    // 语言颜色映射
+    const languageColors = {
+      'TypeScript': '#6366f1',
+      'JavaScript': '#f59e0b',
+      'Python': '#10b981',
+      'Go': '#3b82f6',
+      'Rust': '#f43f5e',
+      'Java': '#ef4444',
+      'C++': '#0ea5e9'
+    }
+    
+    // 将后端数据转换为图表格式
+    props.trendsData.most_frequent_languages.slice(0, 4).forEach(([language, count]) => {
+      const color = languageColors[language as keyof typeof languageColors] || '#94a3b8'
+      
+      // 对于真实数据，这里应该有历史数据，但由于我们没有完整的历史数据，
+      // 我们创建一个简单的数据集来展示当前值
+      const data = new Array(labels.length).fill(0)
+      data[data.length - 1] = count // 只在最后一个点显示当前值
+      
+      datasets.push({
+        label: language,
+        data: data,
+        borderColor: color,
+        backgroundColor: `${color}19`, // 10% opacity
+        fill: false,
+        tension: 0.3,
+        borderWidth: 2,
+        pointRadius: 2,
+        pointBackgroundColor: color
+      })
+    })
+  }
   
   return {
     type: 'line' as const,
     data: {
       labels: labels,
-      datasets: [
-        {
-          label: 'TypeScript',
-          data: generateTrendData(labels.length, 100, 350, 10),
-          borderColor: '#6366f1',
-          backgroundColor: 'rgba(99, 102, 241, 0.1)',
-          fill: true,
-          tension: 0.3,
-          borderWidth: 2,
-          pointRadius: 2,
-          pointBackgroundColor: '#6366f1'
-        },
-        {
-          label: 'JavaScript',
-          data: generateTrendData(labels.length, 80, 300, 5),
-          borderColor: '#f59e0b',
-          backgroundColor: 'rgba(245, 158, 11, 0.1)',
-          fill: true,
-          tension: 0.3,
-          borderWidth: 2,
-          pointRadius: 2,
-          pointBackgroundColor: '#f59e0b'
-        },
-        {
-          label: 'Python',
-          data: generateTrendData(labels.length, 70, 280, 8),
-          borderColor: '#10b981',
-          backgroundColor: 'rgba(16, 185, 129, 0.1)',
-          fill: true,
-          tension: 0.3,
-          borderWidth: 2,
-          pointRadius: 2,
-          pointBackgroundColor: '#10b981'
-        },
-        {
-          label: 'Go',
-          data: generateTrendData(labels.length, 30, 120, 3),
-          borderColor: '#3b82f6',
-          backgroundColor: 'rgba(59, 130, 246, 0.1)',
-          fill: true,
-          tension: 0.3,
-          borderWidth: 2,
-          pointRadius: 2,
-          pointBackgroundColor: '#3b82f6'
-        }
-      ]
+      datasets: datasets
     },
     options: {
       responsive: true,
@@ -501,21 +459,35 @@ function getLanguageTrendChartConfig() {
 
 // 获取项目类型分布图表配置
 function getProjectTypeChartConfig() {
+  // 项目类型颜色映射
+  const typeColors = [
+    '#6366f1', // 主色
+    '#8b5cf6', // 次要色
+    '#ec4899', // 强调色
+    '#10b981', // 成功色
+    '#f59e0b', // 警告色
+    '#6b7280'  // 中性色
+  ]
+  
+  // 仅使用从props获取的真实数据
+  // 使用类型断言安全地访问project_types属性
+  const projectTypes = props.trendsData && (props.trendsData as any).project_types && (props.trendsData as any).project_types.length > 0
+    ? (props.trendsData as any).project_types
+    : []
+  
+  // 转换为图表数据格式
+  const labels = projectTypes.map((item: { type: string }) => item.type)
+  const data = projectTypes.map((item: { count: number }) => item.count)
+  const backgroundColor = typeColors.slice(0, data.length)
+  
   return {
     type: 'doughnut' as const,
     data: {
-      labels: ['前端框架', '后端服务', 'AI/ML', '工具库', 'DevOps', '其他'],
+      labels: labels,
       datasets: [
         {
-          data: [28, 22, 20, 15, 10, 5],
-          backgroundColor: [
-            '#6366f1', // 主色
-            '#8b5cf6', // 次要色
-            '#ec4899', // 强调色
-            '#10b981', // 成功色
-            '#f59e0b', // 警告色
-            '#6b7280'  // 中性色
-          ],
+          data: data,
+          backgroundColor: backgroundColor,
           borderColor: 'rgba(15, 23, 42, 0.3)',
           borderWidth: 2,
           hoverOffset: 8
@@ -534,9 +506,7 @@ function getProjectTypeChartConfig() {
             font: {
               size: 12
             },
-            padding: 20,
-            usePointStyle: true,
-            pointStyle: 'circle'
+            padding: 15
           }
         },
         tooltip: {
@@ -548,16 +518,12 @@ function getProjectTypeChartConfig() {
           padding: 12,
           callbacks: {
             label: function(context: any) {
-              const label = context.label || ''
-              const value = context.raw || 0
-              return `${label}: ${value}%`
+              const total = context.dataset.data.reduce((sum: number, value: number) => sum + value, 0)
+              const percentage = Math.round((context.raw / total) * 100)
+              return `${context.label}: ${context.raw} 个项目 (${percentage}%)`
             }
           }
         }
-      },
-      animation: {
-        animateRotate: true,
-        animateScale: true
       }
     }
   }
@@ -618,21 +584,6 @@ function generateTimeLabels() {
   return labels
 }
 
-// 生成趋势数据
-function generateTrendData(count: number, min: number, max: number, trend: number) {
-  const data: number[] = []
-  let currentValue = Math.floor(Math.random() * (max - min)) + min
-  
-  for (let i = 0; i < count; i++) {
-    // 添加一些随机波动
-    const fluctuation = Math.floor(Math.random() * 20) - 10
-    currentValue = Math.max(min, Math.min(max, currentValue + fluctuation + trend))
-    data.push(currentValue)
-  }
-  
-  return data
-}
-
 // 格式化日期
 function formatDate(date: Date): string {
   return date.toLocaleDateString('zh-CN', {
@@ -651,9 +602,34 @@ function formatNumber(num: number): string {
 }
 
 // 刷新趋势数据
-function refreshTrendsData() {
-  // 这里可以添加实际的数据刷新逻辑
+async function refreshTrendsData() {
+  // 这里可以添加实际的数据刷新逻辑，从API获取最新数据
+  // 例如：
+  // try {
+  //   const newTrendsData = await getTrends({ days: getDaysFromWindow(selectedWindow.value) })
+  //   // 更新组件数据
+  // } catch (error) {
+  //   console.error('刷新趋势数据失败:', error)
+  // }
+  
+  // 目前仅更新图表显示
   updateCharts()
+}
+
+// 将时间窗口转换为天数
+function getDaysFromWindow(window: string): number {
+  switch (window) {
+    case '7天':
+      return 7
+    case '30天':
+      return 30
+    case '90天':
+      return 90
+    case '1年':
+      return 365
+    default:
+      return 30
+  }
 }
 
 // 关闭模态框

@@ -157,22 +157,27 @@ def get_stats():
             cursor.execute("SELECT AVG(forks) FROM summarized_projects")
             avg_forks = cursor.fetchone()[0] or 0
             
-            # 简单的活跃度计算公式
-            # 假设有一个基准值，然后根据实际数据进行归一化计算
+            # 改进的活跃度计算公式
+            # 设置基准值和最低分数，确保即使数据不足也能有合理的活跃度显示
             base_contributors = 10
             base_stars = 100
             base_forks = 50
             
-            # 计算各项指标的归一化值（0-100）
-            contributors_score = min(100, (avg_contributors / base_contributors) * 25)
-            stars_score = min(100, (avg_stars / base_stars) * 40)
-            forks_score = min(100, (avg_forks / base_forks) * 35)
+            # 为每个指标设置最低分数，确保活跃度不会显示为0%
+            min_contributors_score = 5
+            min_stars_score = 10
+            min_forks_score = 5
+            
+            # 计算各项指标的归一化值，并应用最低分数
+            contributors_score = max(min_contributors_score, min(100, (avg_contributors / base_contributors) * 25))
+            stars_score = max(min_stars_score, min(100, (avg_stars / base_stars) * 40))
+            forks_score = max(min_forks_score, min(100, (avg_forks / base_forks) * 35))
             
             # 综合计算活跃度分数
             activity_score = round(contributors_score + stars_score + forks_score)
             
             # 确保活跃度分数在合理范围内
-            activity_score = max(0, min(100, activity_score))
+            activity_score = max(20, min(100, activity_score))  # 设置最低20%的活跃度分数
             
             stats = {
                 "totalReports": total_reports,

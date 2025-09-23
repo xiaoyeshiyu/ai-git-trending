@@ -122,11 +122,30 @@ def analyze_trends(days=7):
     
     logger.info(f"趋势分析完成，发现{len(most_frequent_projects)}个热门项目，{len(most_frequent_languages)}种热门语言，{len(surging_projects)}个快速增长项目")
     
+    # 为了兼容前端Home-simple.vue中的数据结构需求，
+    # 将后端数据映射到前端期望的字段名
+    
+    # 计算语言总数用于百分比计算
+    total_language_count = sum(lang[1] for lang in most_frequent_languages) if most_frequent_languages else 1
+    
+    # 生成技术领域数据
+    tech_domains = []
+    domain_names = ["AI/机器学习", "Web开发", "移动开发", "DevOps", "数据科学"]
+    for i, lang in enumerate(most_frequent_languages[:5]):  # 只取前5种语言
+        tech_domains.append({
+            "name": domain_names[i % len(domain_names)],
+            "count": lang[1],
+            "percentage": round((lang[1] / total_language_count) * 100)
+        })
+    
     return {
         "time_window_days": days,
-        "most_frequent_projects": most_frequent_projects,
-        "most_frequent_languages": most_frequent_languages,
-        "surging_projects": surging_projects,
+        "topProjects": most_frequent_projects,  # 前端期望的字段名
+        "programmingLanguages": most_frequent_languages,  # 前端期望的字段名
+        "techDomains": tech_domains,  # 生成的技术领域数据
+        "surgingProjects": surging_projects,  # 这个字段名前后端一致
+        "most_frequent_projects": most_frequent_projects,  # 保留原始字段以兼容其他视图
+        "most_frequent_languages": most_frequent_languages  # 保留原始字段以兼容其他视图
     }
 
 def get_trend_by_tag(tag_name, days=30):

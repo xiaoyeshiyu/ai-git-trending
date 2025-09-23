@@ -133,6 +133,12 @@
       
       <!-- 项目概览仪表板 -->
       <div v-if="!loading && !error" class="mb-12">
+        <!-- 统计图表 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-600/50 mb-8">
+          <h3 class="text-xl font-bold text-white mb-6">数据统计概览</h3>
+          <StatsChart :stats="stats" />
+        </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <!-- 总报告数 -->
           <div class="glass-card rounded-2xl p-6 border border-slate-600/50 hover:border-blue-400/50 transition-all duration-200">
@@ -185,7 +191,7 @@
                 </svg>
               </div>
               <div class="text-right">
-                <div class="text-xl font-bold text-white">{{ stats.topLanguage || 'Loading...' }}</div>
+                <div class="text-xl font-bold text-white">{{ stats?.topLanguage || 'Loading...' }}</div>
                 <div class="text-xs text-slate-400">热门语言</div>
               </div>
             </div>
@@ -199,28 +205,59 @@
           
           <!-- 本周新增 -->
           <div class="glass-card rounded-2xl p-6 border border-slate-600/50 hover:border-green-400/50 transition-all duration-200">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            <!-- 有数据或加载中 -->
+            <template v-if="!isEmptyWeeklyNew || loading">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-white">
+                    <template v-if="loading">
+                      <svg class="w-6 h-6 inline-block animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                      </svg>
+                    </template>
+                    <span v-else>{{ animatedStats.weeklyNew }}</span>
+                  </div>
+                  <div class="text-xs text-slate-400">本周新增</div>
+                </div>
+              </div>
+              <div class="text-xs text-green-400 flex items-center">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
+                实时更新
               </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-white">{{ animatedStats.weeklyNew }}</div>
-                <div class="text-xs text-slate-400">本周新增</div>
+            </template>
+            
+            <!-- 无数据时显示空状态 -->
+            <template v-else>
+              <div class="text-center py-4">
+                <div class="w-12 h-12 bg-slate-700/50 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </div>
+                <h3 class="text-base font-medium text-slate-300 mb-1">暂无新增数据</h3>
+                <p class="text-xs text-slate-400 mb-3">本周暂无新增项目或数据正在更新</p>
+                <button 
+                  @click="fetchStats()" 
+                  class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition-colors"
+                  :disabled="loading"
+                  :class="{ 'opacity-50 cursor-not-allowed': loading }"
+                >
+                  {{ loading ? '加载中...' : '刷新数据' }}
+                </button>
               </div>
-            </div>
-            <div class="text-xs text-green-400 flex items-center">
-              <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              实时更新
-            </div>
+            </template>
           </div>
         </div>
         
         <!-- 最近热门项目预览 -->
-        <div v-if="recentHotProjects.length > 0" class="glass-card rounded-2xl p-6 border border-slate-600/50 mb-8">
+        <div class="glass-card rounded-2xl p-6 border border-slate-600/50 mb-8">
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-xl font-bold text-white flex items-center">
               <svg class="w-5 h-5 mr-2 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -231,6 +268,8 @@
             <button 
               @click="() => { showTrendsModal = true; loadTrendsData(7); }"
               class="text-blue-400 hover:text-blue-300 transition-colors text-sm flex items-center"
+              :disabled="loading || trendsLoading"
+              :class="{ 'opacity-50 cursor-not-allowed': loading || trendsLoading }"
             >
               查看更多
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,7 +278,8 @@
             </button>
           </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 有数据时显示项目列表 -->
+          <div v-if="recentHotProjects.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div 
               v-for="(project, index) in recentHotProjects.slice(0, 6)" 
               :key="index" 
@@ -263,6 +303,25 @@
                 <span class="text-blue-400 text-xs">上榜 {{ project.count || 1 }} 次</span>
               </div>
             </div>
+          </div>
+          
+          <!-- 无数据时显示空状态 -->
+          <div v-else-if="!loading" class="text-center py-8">
+            <div class="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-300 mb-2">暂无热门项目数据</h3>
+            <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">数据正在加载中或当前暂无热门项目信息</p>
+            <button 
+              @click="fetchRecentHotProjects()" 
+              class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors"
+              :disabled="loading"
+              :class="{ 'opacity-50 cursor-not-allowed': loading }"
+            >
+              {{ loading ? '加载中...' : '刷新数据' }}
+            </button>
           </div>
         </div>
       </div>
@@ -579,18 +638,14 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed, onUnmounted, nextTick } from 'vue'
-import { getReports, reportApi, type Report } from '../api/reports'
+import { getReports, reportApi, type Report, type Stats } from '../api/reports'
 import ReportModal from '../components/ReportModal.vue'
+import StatsChart from '../components/StatsChart.vue'
 import { renderMarkdown, enhanceMarkdownDisplay } from '../utils/markdown-simple'
 
 // 响应式数据
-const reports = ref<Report[]>([
-  { date: '2025-09-12', project_count: 5 },
-  { date: '2025-09-04', project_count: 3 },
-  { date: '2025-09-02', project_count: 4 },
-  { date: '2025-09-01', project_count: 5 }
-])
-const filteredReports = ref<Report[]>(reports.value)
+const reports = ref<Report[]>([])
+const filteredReports = ref<Report[]>([])
 const loading = ref(false)
 const error = ref<string | null>(null)
 const showModal = ref(false)
@@ -605,33 +660,14 @@ const wechatImageUrl = `${API_BASE_URL}/images/wechat.png`
 // 新增功能相关数据
 const searchQuery = ref('')
 const selectedTimeRange = ref('all')
-const stats = ref<any>({
-  totalReports: 4,
-  totalProjects: 17,
-  topLanguage: 'Python',
-  weeklyNew: 3
-})
+const stats = ref<Stats | null>(null)
 const animatedStats = ref({
-  totalReports: 4,
-  totalProjects: 17,
-  weeklyNew: 3
+  totalReports: 0,
+  totalProjects: 0,
+  weeklyNew: 0
 })
-const recentHotProjects = ref<any[]>([
-  { 
-    name: 'AI-Research-Tools', 
-    description: 'A collection of AI research tools', 
-    language: 'Python', 
-    stars: 1250, 
-    count: 5 
-  },
-  { 
-    name: 'Data-Visualization-Lib', 
-    description: 'Modern data visualization library', 
-    language: 'JavaScript', 
-    stars: 980, 
-    count: 3 
-  }
-])
+const recentHotProjects = ref<any[]>([])
+const isEmptyWeeklyNew = ref(false)
 
 // 菜单相关状态
 const showTrendsModal = ref(false)
@@ -718,60 +754,133 @@ async function fetchReports() {
 // 获取统计数据
 async function fetchStats() {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/stats`)
+    // 设置请求超时
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 10000) // 10秒超时
+    
+    const response = await fetch(`${API_BASE_URL}/api/stats`, {
+      signal: controller.signal
+    })
+    clearTimeout(timeoutId)
+    
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
+    
     const data = await response.json()
     stats.value = data
+    
+    // 更新isEmptyWeeklyNew状态
+    isEmptyWeeklyNew.value = !data || !data.weeklyNew || data.weeklyNew <= 0
+    
+    console.log('📊 统计数据获取成功:', data)
     return data
   } catch (err) {
     console.error('❌ 获取统计数据失败:', err)
-    return {
-      totalReports: reports.value.length,
-      totalProjects: 0,
-      topLanguage: 'N/A',
-      weeklyNew: 0
-    }
+    stats.value = null
+    isEmptyWeeklyNew.value = true
+    return null
   }
 }
 
 // 数字动画
 function animateNumbers(targetStats: any) {
+  // 清理之前的定时器，避免多个动画同时运行
+  if (animationTimer !== null) {
+    clearInterval(animationTimer)
+  }
+  
+  // 如果没有统计数据，使用默认值
+  if (!targetStats) {
+    animatedStats.value.totalReports = 0
+    animatedStats.value.totalProjects = 0
+    animatedStats.value.weeklyNew = 0
+    isEmptyWeeklyNew.value = true
+    return
+  }
+  
+  // 更新isEmptyWeeklyNew状态
+  isEmptyWeeklyNew.value = !targetStats.weeklyNew || targetStats.weeklyNew <= 0
+  
   const duration = 1500
   const steps = 60
   const interval = duration / steps
   
   let currentStep = 0
-  const timer = setInterval(() => {
+  
+  // 保存当前值作为起始值
+  const startValues = {
+    totalReports: animatedStats.value.totalReports,
+    totalProjects: animatedStats.value.totalProjects,
+    weeklyNew: animatedStats.value.weeklyNew
+  }
+  
+  animationTimer = window.setInterval(() => {
     const progress = currentStep / steps
     const easeProgress = 1 - Math.pow(1 - progress, 3) // 缓出动画
     
-    animatedStats.value.totalReports = Math.floor((targetStats.totalReports || 0) * easeProgress)
-    animatedStats.value.totalProjects = Math.floor((targetStats.totalProjects || 0) * easeProgress)
-    animatedStats.value.weeklyNew = Math.floor((targetStats.weeklyNew || 0) * easeProgress)
+    // 计算从起始值到目标值的平滑过渡
+    animatedStats.value.totalReports = Math.floor(
+      startValues.totalReports + (targetStats.totalReports - startValues.totalReports) * easeProgress
+    )
+    animatedStats.value.totalProjects = Math.floor(
+      startValues.totalProjects + (targetStats.totalProjects - startValues.totalProjects) * easeProgress
+    )
+    animatedStats.value.weeklyNew = Math.floor(
+      startValues.weeklyNew + (targetStats.weeklyNew - startValues.weeklyNew) * easeProgress
+    )
     
     currentStep++
     if (currentStep > steps) {
-      clearInterval(timer)
+      if (animationTimer !== null) {
+        clearInterval(animationTimer)
+        animationTimer = null
+      }
       // 确保最终值的准确性
       animatedStats.value.totalReports = targetStats.totalReports || 0
       animatedStats.value.totalProjects = targetStats.totalProjects || 0
       animatedStats.value.weeklyNew = targetStats.weeklyNew || 0
     }
-  }, interval)
+  }, interval) as unknown as number
 }
 
 // 获取最近热门项目
 async function fetchRecentHotProjects() {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/trends`)
-    if (response.ok) {
-      const data = await response.json()
-      recentHotProjects.value = data.most_frequent_projects || []
+    console.log('🔥 开始获取最近热门项目...')
+    
+    // 设置请求超时
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 10000) // 10秒超时
+    
+    const response = await fetch(`${API_BASE_URL}/api/trends`, {
+      signal: controller.signal
+    })
+    clearTimeout(timeoutId)
+    
+    if (!response.ok) {
+      throw new Error(`服务器响应错误: ${response.status}`)
     }
-  } catch (err) {
-    console.error('❌ 获取热门项目失败:', err)
+    
+    const data = await response.json()
+    
+    // 确保数据格式正确，只使用有效的数组数据
+    if (data && Array.isArray(data.most_frequent_projects)) {
+      recentHotProjects.value = data.most_frequent_projects
+      console.log('✅ 热门项目获取成功:', data.most_frequent_projects.length, '个项目')
+    } else {
+      recentHotProjects.value = []
+      console.warn('⚠️ 获取的热门项目数据格式不正确')
+    }
+  } catch (err: any) {
+    // 请求失败时清空数据
+    recentHotProjects.value = []
+    
+    if (err.name === 'AbortError') {
+      console.error('❌ 获取热门项目超时:', err)
+    } else {
+      console.error('❌ 获取热门项目失败:', err)
+    }
   }
 }
 
@@ -895,6 +1004,9 @@ function formatDateWeek(dateStr: string): string {
 // 导出功能已移至ReportModal组件中实现
 
 // 组件挂载时获取数据
+let animationTimer: number | null = null
+let mediaQuery: MediaQueryList | null = null
+
 onMounted(async () => {
   console.log('🚀 组件挂载，开始初始化...')
   
@@ -906,36 +1018,40 @@ onMounted(async () => {
   
   // 监听系统主题变化（对于自动主题）
   if (window.matchMedia) {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    mediaQuery.addListener(() => {
-      if (currentTheme.value === 'auto') {
-        applyTheme('auto')
-      }
-    })
+    mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    mediaQuery.addEventListener('change', handleThemeChange)
   }
   
   console.log('🔍 准备获取报告数据...')
   await fetchReports()
   console.log('✅ 初始化完成，reports.value.length:', reports.value.length)
-  
-  // 添加一个测试按钮的点击处理，用于手动触发数据刷新
-  const testButton = document.createElement('button')
-  testButton.textContent = 'Test Data'
-  testButton.style.position = 'fixed'
-  testButton.style.top = '10px'
-  testButton.style.right = '10px'
-  testButton.style.zIndex = '1000'
-  testButton.onclick = async () => {
-    console.log('🖱️  测试按钮点击，手动刷新数据')
-    await fetchReports()
-  }
-  document.body.appendChild(testButton)
 })
 
 // 组件卸载时清理事件监听
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
+  
+  // 清理系统主题变化监听
+  if (mediaQuery) {
+    mediaQuery.removeEventListener('change', handleThemeChange)
+  }
+  
+  // 清理数字动画定时器
+  if (animationTimer !== null) {
+    clearInterval(animationTimer)
+  }
+  
+  // 清理模态框状态
+  closeModal()
+  closeTrendsModal()
 })
+
+// 系统主题变化处理
+function handleThemeChange() {
+  if (currentTheme.value === 'auto') {
+    applyTheme('auto')
+  }
+}
 
 // 加载趋势数据
 async function loadTrendsData(days: number = 7) {
@@ -943,18 +1059,54 @@ async function loadTrendsData(days: number = 7) {
   try {
     trendsLoading.value = true
     trendsError.value = null
+    
+    // 首先清空之前的数据，避免显示旧数据
+    trendsData.value = null
+    
     console.log(`📈 开始获取趋势数据... (days: ${days})`)
     
-    const response = await fetch(`${API_BASE_URL}/api/trends?days=${days}`)
+    // 设置请求超时
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 10000) // 10秒超时
+    
+    const response = await fetch(`${API_BASE_URL}/api/trends?days=${days}`, {
+      signal: controller.signal
+    })
+    clearTimeout(timeoutId)
+    
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      throw new Error(`服务器响应错误: ${response.status}`)
     }
     
     const data = await response.json()
-    trendsData.value = data
-    console.log('✅ 趋势数据获取成功:', data)
+    
+    // 确保只使用有效的数据
+    if (data && typeof data === 'object') {
+      // 验证关键数据字段，如果有缺失则填充空数组
+      const validatedData = {
+        ...data,
+        topProjects: Array.isArray(data.topProjects) ? data.topProjects : [],
+        programmingLanguages: Array.isArray(data.programmingLanguages) ? data.programmingLanguages : [],
+        techDomains: Array.isArray(data.techDomains) ? data.techDomains : [],
+        surgingProjects: Array.isArray(data.surgingProjects) ? data.surgingProjects : []
+      }
+      trendsData.value = validatedData
+      console.log('✅ 趋势数据获取成功并验证:', validatedData)
+    } else {
+      // 如果数据格式不正确，清空数据并设置错误
+      trendsData.value = null
+      trendsError.value = '获取的数据格式不正确'
+      console.warn('⚠️ 获取的数据格式不正确:', data)
+    }
   } catch (err: any) {
-    trendsError.value = err.message || '获取趋势数据失败'
+    // 请求失败时清空数据，不使用默认数据
+    trendsData.value = null
+    
+    if (err.name === 'AbortError') {
+      trendsError.value = '请求超时，请稍后重试'
+    } else {
+      trendsError.value = err.message || '获取趋势数据失败'
+    }
     console.error('❌ 获取趋势数据失败:', err)
   } finally {
     trendsLoading.value = false

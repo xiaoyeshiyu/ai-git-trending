@@ -346,25 +346,6 @@ onMounted(() => {
   
   if (isLoggedIn.value) {
     loadFavorites()
-    
-    // 如果没有收藏数据，使用模拟数据
-    if (favorites.value.length === 0) {
-      // 使用模拟数据填充收藏列表
-      loading.value = true
-      try {
-        const date = new Date().toISOString().split('T')[0]
-        getProjectsByDate(date).then(data => {
-          // 随机选择几个项目作为模拟收藏
-          const mockFavorites = data.slice(0, 3)
-          favorites.value = mockFavorites
-          saveFavorites()
-        })
-      } catch (error) {
-        console.error('Failed to load mock favorites:', error)
-      } finally {
-        loading.value = false
-      }
-    }
   }
 })
 </script>
