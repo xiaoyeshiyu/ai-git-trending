@@ -5,18 +5,21 @@ English | [简体中文](./README.md)
 **An automated bot that analyzes GitHub Trending, curates daily selections, and generates tech insight reports for you.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
+[![Framework](https://img.shields.io/badge/Backend-Flask-green.svg)](https://flask.palletsprojects.com/)
+[![Framework](https://img.shields.io/badge/Frontend-Vue.js-blue.svg)](https://vuejs.org/)
+[![Docker Support](https://img.shields.io/badge/Docker-Supported-blue.svg)](https://www.docker.com/)
 
 ---
 
 ## ✨ Features
 
-- **📈 Daily Tracking**: Fetches the latest popular projects from GitHub Trending at a scheduled time (9 AM daily by default).
-- **🤖 Smart Filtering**: Automatically filters out projects that have already been analyzed, ensuring you get fresh technical perspectives every day.
-- **🧠 AI-Powered In-depth Analysis**: Uses a Large Language Model (LLM) to analyze each new project, producing deep insights including a "one-sentence review," "technical highlights," and "potential impact."
-- **🌐 Interactive Web UI**: Browse, search, and view reports through a beautiful web interface.
-- **📰 Multi-Format Reports**: Automatically generates beautiful Markdown reports, dynamically rendered on the web page.
-- **⚙️ Highly Configurable**: Almost all core parameters (like the number of daily analyses, scrape targets, LLM model, prompt templates, etc.) can be easily customized in the `.env` file.
-- **💾 Local Persistence**: Uses an SQLite database to keep track of analyzed projects, avoiding repetitive work.
+- **📈 Daily Tracking & Analysis**: Automatically fetches the latest trending projects from GitHub and performs in-depth analysis using Large Language Models (LLM), generating "one-sentence reviews," "technical highlights," and "potential impact" insights.
+- **🌐 Interactive Web Interface**: Modern Vue.js-based frontend with beautiful report browsing, search, and filtering capabilities, supporting responsive design.
+- **🚀 Multi-dimensional Data Analysis**: Built-in trend analysis dashboard featuring "most frequent trending projects," "popular programming languages distribution," "fastest growing star projects," and "tech domain analysis."
+- **⚙️ Highly Configurable**: Almost all core parameters (LLM model, API endpoints, scraping frequency, report quantity, etc.) can be easily configured via environment variables.
+- **📦 Out-of-the-box Deployment**: Docker support for one-click deployment without complex environment configuration, supporting multiple running modes (full service, web-only, reporter-only).
+- **💾 Data Persistence**: Uses SQLite database to store historical data, avoiding duplicate analysis and supporting trend analysis features.
 
 ## 📝 Output Example
 
@@ -53,15 +56,37 @@ An HTML file with a modern, card-based design for a better visual reading experi
 
 ## 🛠️ Tech Stack
 
-- **Python 3.x**
-- **Web Framework**: `Flask`
-- **Core Libraries**:
-  - `requests` & `BeautifulSoup4`: For web scraping.
-  - `openai`: For interacting with the Large Language Model API.
-  - `schedule`: For task scheduling.
-  - `python-dotenv`: For environment variable management.
-  - `markdown`: For converting Markdown text to HTML.
+- **Backend**: Python 3.x, Flask
+- **Frontend**: Vue.js, TypeScript
+- **Data Scraping**: `requests`, `BeautifulSoup4`
+- **AI Integration**: `openai`
+- **Task Scheduling**: `schedule`
 - **Database**: `SQLite`
+- **Deployment**: `Docker`
+
+## 📁 Project Structure
+
+The project adopts a frontend-backend separation architecture:
+
+```
+├── backend/           # Backend code directory
+│   ├── app/           # Core functionality modules
+│   │   ├── analyzer.py      # Data analysis functionality
+│   │   ├── summarizer.py    # AI summary generation
+│   │   ├── scraper.py       # GitHub data scraping
+│   │   ├── database.py      # Database operations
+│   │   └── main.py          # Task execution entry point
+│   ├── app.py         # Main program entry
+│   └── router.py      # API route definitions
+├── frontend/          # Frontend code directory
+│   ├── src/           # Vue.js source code
+│   │   ├── components/      # Reusable components
+│   │   ├── views/           # Page views
+│   │   └── api/             # API call encapsulation
+│   └── package.json   # Frontend dependency configuration
+├── .env.example       # Environment variables example file
+└── README.md          # Project documentation
+```
 
 ## 🚀 Installation and Setup
 
@@ -71,9 +96,10 @@ An HTML file with a modern, card-based design for a better visual reading experi
     cd ai-trending
     ```
 
-2.  **Install dependencies**
+2.  **Install backend dependencies**
     It's recommended to install in a virtual environment:
     ```bash
+    cd backend
     pip install -r requirements.txt
     ```
 
@@ -92,63 +118,71 @@ An HTML file with a modern, card-based design for a better visual reading experi
 
 ## 🏃‍♂️ How to Run
 
-The project has two main entry points:
+### Method 1: Using Docker (Recommended)
 
-### 1. Run the Report Generator
-
-Run `run_reporter.py` to scrape and analyze projects, generating daily reports.
-
+Ensure you have Docker installed, then execute:
 ```bash
-python run_reporter.py
+# Build the image
+docker build -t trending-reporter .
+
+# Run the container
+docker run --env-file .env -p 5001:5001 trending-reporter
 ```
 
-### 2. Start the Web Service
+### Method 2: Running Locally
 
-Run `run_web.py` to start the local web server and access the interactive interface through your browser.
-
+Start the backend service (unified entry point):
 ```bash
-python run_web.py
+# Run full service (Web API + scheduled tasks) - Recommended
+cd backend
+python app.py
+
+# Run only Web API service (for frontend development)
+python app.py --mode web --debug
+
+# Run only scheduled report generator
+python app.py --mode reporter
+
+# Custom host and port
+python app.py --host 0.0.0.0 --port 8080 --debug
 ```
 
-Once the service is running, you can access it by default at `http://127.0.0.1:5000`.
+Install and start the frontend service (if you need the web interface):
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## 🐳 Running with Docker
-
-You can also use Docker to build and run this project, avoiding the need to configure a local Python environment.
-
-1.  **Build the Docker image**
-    In the project root directory, run the following command:
-    ```bash
-    docker build -t trending-reporter .
-    ```
-
-2.  **Run the Docker container**
-    Use the `--env-file` flag to load your environment variables from the `.env` file:
-    ```bash
-    docker run --env-file .env trending-reporter
-    ```
-    Once the container starts, the program will run just like it does locally: it will execute one task immediately and then enter scheduled mode.
+Access URLs:
+- **Backend API**: `http://127.0.0.1:5001`
+- **Frontend Interface**: `http://127.0.0.1:5173`
 
 ## ⚙️ Configuration
 
-### Via `.env` file
-The project uses a `.env` file to manage sensitive information. Please copy `.env.example` to `.env`:
+### Environment Variables (`.env`)
 
 - `LLM_API_KEY`: **(Required)** Your Large Language Model service API Key.
 - `LLM_BASE_URL`: **(Required)** The base URL for your Large Language Model service.
 - `LLM_MODEL`: (Optional) The model to use, defaults to `gpt-4-turbo`.
+- `GITHUB_API_TOKEN`: (Optional) Your GitHub API Token. With this configured, you can get more detailed project information and avoid issues caused by API rate limits.
 - `SCHEDULE_TIME`: (Optional) The time for the daily task to run, in "HH:MM" format. Defaults to `"09:00"`.
 - `NUM_PROJECTS_TO_SUMMARIZE`: (Optional) The number of new projects to analyze each day. Defaults to `8`.
 - `MAX_PROJECTS_TO_SCRAPE`: (Optional) The range of projects to filter from the Trending list. Defaults to `25`.
 - `TRENDING_DATE_RANGE`: (Optional) The time range to scrape. Options are `daily`, `weekly`, `monthly`. Defaults to `daily`.
 
-### Via `config/settings.py` file
+### Running Mode Parameters
 
-The following settings are relatively static, but you can modify them in `config/settings.py` if needed:
+The project supports three running modes, specified via the `--mode` parameter:
 
-- `GITHUB_TRENDING_URL`: The URL for GitHub Trending.
-- `SINGLE_PROJECT_PROMPT_TEMPLATE`: The prompt template for analyzing a single project.
-- `OVERVIEW_PROMPT_TEMPLATE`: The prompt template for generating the report's introduction.
+- `full`: Run the full service (Web API + scheduled tasks) [Default]
+- `web`: Run only the Web API service (suitable for frontend development)
+- `reporter`: Run only the scheduled report generator (suitable for background running)
+
+Other common parameters:
+- `--host`: Web service listening address, defaults to `127.0.0.1`
+- `--port`: Web service port, defaults to `5001`
+- `--debug`: Enable debug mode, suitable for development environment
 
 ## 🤝 Contributing
 
