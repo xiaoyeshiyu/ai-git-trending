@@ -1,5 +1,5 @@
 <template>
-  <div class="stats-chart bg-slate-900/30 border border-slate-800/50 rounded-lg p-6">
+  <div class="stats-chart">
     <!-- 空状态显示 -->
     <div v-if="!props.stats" class="flex flex-col items-center justify-center h-64 text-center py-12">
       <svg class="w-16 h-16 text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -10,130 +10,150 @@
     </div>
 
     <!-- 数据展示 -->
-    <div v-else>
-      <!-- 统计卡片网格 - 杂志风格简洁展示 -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div v-else class="space-y-5">
+      <!-- 统计卡片网格 -->
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-3">
         <div
           v-for="(stat, index) in statsData"
           :key="stat.key"
-          class="bg-slate-900/50 border border-slate-800/30 rounded-lg p-4 hover:border-slate-700/50 transition-colors duration-300 animate-fadeInUp"
+          class="rounded-lg border border-slate-800/70 bg-slate-900/50 p-4 transition-colors duration-300 hover:border-amber-500/25 animate-fadeInUp"
           :style="{ animationDelay: `${index * 0.08}s` }"
         >
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-[10px] font-light text-slate-500 tracking-wider uppercase">{{ stat.label }}</span>
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <span class="text-[10px] font-light text-slate-500 tracking-wider uppercase">{{ stat.label }}</span>
+              <div class="mt-3 text-3xl font-light text-slate-100">
+                {{ stat.value }}
+              </div>
+            </div>
+            <div class="h-8 w-8 rounded-md border border-slate-800 bg-slate-950/60 flex items-center justify-center">
+              <component :is="stat.icon" class="text-amber-400/80" />
+            </div>
           </div>
-          <div class="text-2xl font-light text-slate-100">
-            {{ stat.value }}
-          </div>
-          <!-- 简洁的进度条 -->
-          <div class="mt-3 h-px bg-slate-800/50">
+          <div class="mt-4 h-1 rounded-full bg-slate-800/70 overflow-hidden">
             <div
-              class="h-px bg-amber-500/60 transition-all duration-1000"
+              class="h-full rounded-full bg-amber-400/70 transition-all duration-1000"
               :style="{ width: `${stat.progress}%` }"
             ></div>
           </div>
         </div>
       </div>
 
-      <!-- 语言分布 + 四宫格布局 -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- 语言分布 - 左侧 -->
-        <div class="lg:col-span-1">
-          <h4 class="text-sm font-light text-slate-400 mb-4 tracking-wide">编程语言分布</h4>
-          <div v-if="top5LanguageData.length > 0" class="space-y-3">
+      <!-- 数据面板 -->
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+        <section class="xl:col-span-5 rounded-lg border border-slate-800/70 bg-slate-900/40 p-5">
+          <div class="flex items-center justify-between mb-5">
+            <h4 class="text-sm font-light text-slate-300 tracking-wide">编程语言分布</h4>
+            <span class="text-[10px] text-slate-500 tracking-wider uppercase">Top 5</span>
+          </div>
+          <div v-if="top5LanguageData.length > 0" class="space-y-4">
             <div
               v-for="(lang, index) in top5LanguageData"
               :key="lang.name"
               class="flex items-center gap-3"
             >
-              <div class="w-16 text-xs text-slate-500 font-light">{{ lang.name }}</div>
-              <div class="flex-1 h-1.5 bg-slate-800/50 rounded-full overflow-hidden">
+              <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-slate-950/70 text-[10px] text-slate-500">
+                {{ index + 1 }}
+              </div>
+              <div class="w-24 truncate text-sm text-slate-300 font-light">{{ lang.name }}</div>
+              <div class="flex-1 h-2 bg-slate-800/60 rounded-full overflow-hidden">
                 <div
-                  class="h-full rounded-full bg-slate-400/60"
+                  class="h-full rounded-full bg-slate-300/70"
                   :style="{ width: lang.percentage + '%' }"
                 ></div>
               </div>
-              <div class="w-10 text-xs text-slate-400 text-right font-light">{{ lang.percentage }}%</div>
+              <div class="w-12 text-xs text-slate-400 text-right font-light">{{ lang.percentage }}%</div>
             </div>
           </div>
-          <div v-else class="py-8 text-center text-xs text-slate-500">暂无数据</div>
-        </div>
+          <div v-else class="empty-panel">暂无语言数据</div>
+        </section>
 
-        <!-- 四宫格布局 - 右侧 -->
-        <div class="lg:col-span-2 grid grid-cols-2 gap-4">
-          <!-- 项目趋势 -->
-          <div class="bg-slate-900/30 border border-slate-800/30 rounded-lg p-4">
-            <h4 class="text-xs font-light text-slate-400 mb-3 tracking-wide">项目趋势</h4>
-            <div v-if="trendData.length > 0" class="space-y-2">
-              <div v-for="trend in trendData" :key="trend.label" class="flex items-center justify-between py-1.5">
-                <span class="text-sm text-slate-300 font-light">{{ trend.label }}</span>
-                <span :class="trend.change > 0 ? 'text-amber-400' : 'text-slate-500'" class="text-xs font-light">
-                  {{ trend.change > 0 ? '+' : '' }}{{ trend.change }}%
-                </span>
+        <section class="xl:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="rounded-lg border border-slate-800/70 bg-slate-900/40 p-5">
+            <h4 class="text-sm font-light text-slate-300 mb-4 tracking-wide">项目趋势</h4>
+            <div v-if="trendData.length > 0" class="space-y-3">
+              <div v-for="trend in trendData.slice(0, 4)" :key="trend.label">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-sm text-slate-300 font-light">{{ trend.label }}</span>
+                  <span :class="trend.change > 0 ? 'text-amber-400' : 'text-slate-500'" class="text-xs font-light">
+                    {{ trend.change > 0 ? '+' : '' }}{{ trend.change }}%
+                  </span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-800/60 overflow-hidden">
+                  <div class="h-full rounded-full bg-amber-400/60" :style="{ width: `${Math.min(trend.change, 100)}%` }"></div>
+                </div>
               </div>
             </div>
-            <div v-else class="py-4 text-center text-xs text-slate-500">暂无数据</div>
+            <div v-else class="empty-panel">暂无趋势数据</div>
           </div>
 
-          <!-- 活跃度分析 -->
-          <div class="bg-slate-900/30 border border-slate-800/30 rounded-lg p-4">
-            <h4 class="text-xs font-light text-slate-400 mb-3 tracking-wide">活跃度分析</h4>
-            <div class="grid grid-cols-3 gap-2">
-              <div class="text-center py-2">
-                <div class="text-lg font-light text-slate-200">{{ activityBreakdown?.recentlyActive ?? '-' }}</div>
-                <div class="text-[10px] text-slate-500 mt-1">活跃</div>
+          <div class="rounded-lg border border-slate-800/70 bg-slate-900/40 p-5">
+            <h4 class="text-sm font-light text-slate-300 mb-4 tracking-wide">活跃度分析</h4>
+            <div class="grid grid-cols-3 overflow-hidden rounded-lg border border-slate-800/60 bg-slate-950/30">
+              <div class="text-center px-3 py-4">
+                <div class="text-2xl font-light text-slate-100">{{ activityBreakdown?.recentlyActive ?? '-' }}</div>
+                <div class="text-[10px] text-slate-500 mt-2">活跃</div>
               </div>
-              <div class="text-center py-2 border-l border-slate-800/30">
-                <div class="text-lg font-light text-slate-200">{{ activityBreakdown?.stable ?? '-' }}</div>
-                <div class="text-[10px] text-slate-500 mt-1">稳定</div>
+              <div class="text-center px-3 py-4 border-l border-slate-800/60">
+                <div class="text-2xl font-light text-slate-100">{{ activityBreakdown?.stable ?? '-' }}</div>
+                <div class="text-[10px] text-slate-500 mt-2">稳定</div>
               </div>
-              <div class="text-center py-2 border-l border-slate-800/30">
-                <div class="text-lg font-light text-slate-200">{{ activityBreakdown?.needsAttention ?? '-' }}</div>
-                <div class="text-[10px] text-slate-500 mt-1">需关注</div>
+              <div class="text-center px-3 py-4 border-l border-slate-800/60">
+                <div class="text-2xl font-light text-slate-100">{{ activityBreakdown?.needsAttention ?? '-' }}</div>
+                <div class="text-[10px] text-slate-500 mt-2">需关注</div>
               </div>
             </div>
           </div>
 
-          <!-- 新兴技术领域 -->
-          <div class="bg-slate-900/30 border border-slate-800/30 rounded-lg p-4">
-            <h4 class="text-xs font-light text-slate-400 mb-3 tracking-wide">新兴技术</h4>
-            <div v-if="props.emergingAreas && props.emergingAreas.length > 0" class="space-y-2">
-              <div v-for="area in props.emergingAreas" :key="area.name" class="flex items-center justify-between py-1">
-                <span class="text-sm text-slate-300 font-light">{{ area.name }}</span>
-                <span class="text-xs text-amber-400 font-light">+{{ area.growth }}%</span>
+          <div class="rounded-lg border border-slate-800/70 bg-slate-900/40 p-5">
+            <h4 class="text-sm font-light text-slate-300 mb-4 tracking-wide">新兴技术</h4>
+            <div v-if="props.emergingAreas && props.emergingAreas.length > 0" class="flex flex-wrap gap-2">
+              <div v-for="area in props.emergingAreas.slice(0, 4)" :key="area.name" class="rounded-md border border-slate-800 bg-slate-950/40 px-3 py-2">
+                <div class="text-sm text-slate-300 font-light">{{ area.name }}</div>
+                <div class="mt-1 text-xs text-amber-400 font-light">+{{ area.growth }}%</div>
               </div>
             </div>
-            <div v-else class="py-4 text-center text-xs text-slate-500">暂无数据</div>
+            <div v-else class="empty-panel">暂无技术领域数据</div>
           </div>
 
-          <!-- 上升最快项目 -->
-          <div class="bg-slate-900/30 border border-slate-800/30 rounded-lg p-4">
-            <h4 class="text-xs font-light text-slate-400 mb-3 tracking-wide">上升最快</h4>
+          <div class="rounded-lg border border-slate-800/70 bg-slate-900/40 p-5">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <h4 class="text-sm font-light text-slate-300 tracking-wide">
+                {{ props.surgingMode === 'hot' ? '今日高热项目' : '上升最快' }}
+              </h4>
+              <span v-if="props.surgingMode === 'hot'" class="text-[10px] text-slate-500">历史不足</span>
+            </div>
             <div v-if="props.surgingProjects && props.surgingProjects.length > 0" class="space-y-2">
               <div v-for="project in props.surgingProjects" :key="project.name" class="flex items-center gap-2 py-1">
                 <span class="text-xs text-slate-500 w-4">{{ project.rank }}</span>
                 <span class="text-sm text-slate-300 font-light truncate flex-1">{{ project.name.split('/')[1] || project.name }}</span>
-                <span class="text-xs text-amber-400 font-light">+{{ project.star_increase }}</span>
+                <span class="text-xs text-amber-400 font-light">
+                  {{ props.surgingMode === 'hot' ? formatCompactNumber(project.star_increase) : `+${project.star_increase}` }}
+                </span>
               </div>
             </div>
-            <div v-else class="py-4 text-center text-xs text-slate-500">暂无数据</div>
+            <div v-else class="empty-panel">
+              需要连续多日快照后计算
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { computed } from 'vue'
 import type { Stats, LanguageData, TrendDataItem } from '../api/reports'
-import { reportApi } from '../api/reports'
 
 // Props
 const props = defineProps<{
   stats?: Stats | null
+  languageData?: LanguageData[]
+  trendData?: TrendDataItem[]
   emergingAreas?: { name: string; growth: number; bgClass: string; icon: any }[]
   surgingProjects?: { name: string; description: string; star_increase: number; language?: string; rank: number }[]
+  surgingMode?: 'surging' | 'hot'
 }>()
 
 // Icons
@@ -209,67 +229,41 @@ const statsData = computed(() => {
   ]
 })
 
-// 响应式数据
-const languageData = ref<LanguageData[]>([])
-
 // 计算属性：只显示前5个编程语言
 const top5LanguageData = computed(() => {
-  return languageData.value.slice(0, 5)
+  return (props.languageData ?? []).slice(0, 5)
 })
-const trendData = ref<TrendDataItem[]>([])
-const activityScore = ref<number | null>(null)
 
-// 从后端获取数据的方法
-const fetchLanguageDistribution = async () => {
-  try {
-    const data = await reportApi.getLanguageDistribution()
-    languageData.value = data
-  } catch (error) {
-    console.error('获取语言分布数据失败:', error)
+const trendData = computed(() => props.trendData ?? [])
+
+const activityBreakdown = computed(() => {
+  return props.stats?.activityBreakdown ?? {
+    recentlyActive: props.stats?.weeklyNew ?? 0,
+    stable: Math.max((props.stats?.totalProjects ?? 0) - (props.stats?.weeklyNew ?? 0), 0),
+    needsAttention: 0
   }
+})
+
+const formatCompactNumber = (value: number) => {
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M★`
+  if (value >= 1000) return `${(value / 1000).toFixed(1)}K★`
+  return `${value}★`
 }
-
-const fetchTrendData = async () => {
-  try {
-    const data = await reportApi.getTrendData()
-    trendData.value = data
-  } catch (error) {
-    console.error('获取趋势数据失败:', error)
-  }
-}
-
-// 生命周期
-onMounted(() => {
-  // 只有在有数据时才进行处理
-  if (props.stats) {
-    // 使用从后端获取的真实活跃度数据
-    if (props.stats.activityScore !== undefined) {
-      activityScore.value = props.stats.activityScore
-    }
-    
-    // 获取语言分布和趋势数据
-    fetchLanguageDistribution()
-    fetchTrendData()
-  }
-})
-
-// 监听stats变化，更新活跃度数据
-watch(() => props.stats, (newValue, oldValue) => {
-  if (newValue && newValue.activityScore !== undefined) {
-    activityScore.value = newValue.activityScore
-  }
-  
-  // 当stats变为有数据时，重新获取语言分布和趋势数据
-  if (newValue && !oldValue) {
-    fetchLanguageDistribution()
-    fetchTrendData()
-  }
-  
-  // 当stats变为null时，清空相关数据
-  if (!newValue) {
-    languageData.value = []
-    trendData.value = []
-    activityScore.value = null
-  }
-})
 </script>
+
+<style scoped>
+.empty-panel {
+  display: flex;
+  min-height: 6rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(51, 65, 85, 0.7);
+  background: rgba(2, 6, 23, 0.18);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgb(100, 116, 139);
+}
+</style>

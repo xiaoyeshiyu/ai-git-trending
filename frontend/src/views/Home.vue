@@ -1,101 +1,154 @@
 <template>
-  <div class="home-container min-h-screen bg-slate-900 text-slate-100">
-    <!-- 顶部导航栏 - 杂志风格简洁设计 -->
-    <header class="sticky top-0 z-40 bg-slate-950/95 backdrop-blur-sm border-b border-slate-800/30">
-      <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="home-container min-h-screen bg-[#071019] text-slate-100">
+    <!-- 顶部导航栏 - 技术情报终端 -->
+    <header class="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#071019]/95 backdrop-blur-sm">
+      <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
-            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
           </div>
           <div>
-            <h1 class="text-lg font-light tracking-widest text-slate-100">GITTREND</h1>
-            <p class="text-[10px] text-slate-500 tracking-[0.3em] uppercase">Insights</p>
+            <h1 class="text-sm font-semibold tracking-[0.28em] text-slate-100">GITTREND INTEL</h1>
+            <p class="text-[10px] uppercase tracking-[0.26em] text-cyan-400/70">TECH INTELLIGENCE TERMINAL</p>
           </div>
         </div>
 
-        <nav class="hidden md:flex items-center gap-8">
-          <router-link to="/" class="text-sm font-light text-slate-200 hover:text-amber-400 transition-colors tracking-wide">发现</router-link>
-          <router-link to="/rankings" class="text-sm font-light text-slate-400 hover:text-amber-400 transition-colors tracking-wide">排行榜</router-link>
-          <router-link to="/trend-analysis" class="text-sm font-light text-slate-400 hover:text-amber-400 transition-colors tracking-wide">趋势</router-link>
-          <router-link to="/favorites" class="text-sm font-light text-slate-400 hover:text-amber-400 transition-colors tracking-wide">收藏</router-link>
+        <nav class="hidden items-center gap-1 md:flex">
+          <router-link to="/" class="terminal-nav active">情报台</router-link>
+          <router-link to="/rankings" class="terminal-nav">排行榜</router-link>
+          <router-link to="/trend-analysis" class="terminal-nav">趋势图谱</router-link>
+          <router-link to="/favorites" class="terminal-nav">收藏</router-link>
         </nav>
       </div>
     </header>
 
-    <!-- 英雄区域 - 杂志风格大留白 -->
-    <section class="relative overflow-hidden bg-slate-950">
-      <!-- 优雅的渐变背景 -->
-      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950"></div>
-      <!-- 精致的装饰线 -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-amber-500/5 to-transparent pointer-events-none"></div>
+    <!-- 情报终端首屏 -->
+    <section class="terminal-shell border-b border-cyan-400/10">
+      <div class="mx-auto grid max-w-[1500px] gap-4 px-4 py-5 lg:grid-cols-[1.45fr_0.95fr] lg:px-6">
+        <div class="terminal-panel min-h-[360px]">
+          <div class="terminal-panel-head">
+            <span>LIVE BRIEFING</span>
+            <span>{{ currentDateLabel }}</span>
+          </div>
+          <div class="p-5 lg:p-6">
+            <div class="mb-5 flex flex-wrap items-center gap-2">
+              <span class="status-chip online">后端在线</span>
+              <span class="status-chip">GitHub Trending</span>
+              <span class="status-chip">LLM Report</span>
+            </div>
+            <h2 class="max-w-4xl text-3xl font-semibold leading-tight text-slate-50 md:text-5xl">
+              技术情报终端
+            </h2>
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-400 md:text-base">
+              聚合 GitHub 热门项目、语言热度、技术领域和 AI 分析报告，把每日开源变化整理成可扫描、可追踪、可复盘的情报面板。
+            </p>
 
-      <div class="container mx-auto px-6 py-24 md:py-32 relative z-10">
-        <div class="max-w-2xl mx-auto text-center">
-          <!-- 标签 -->
-          <p class="text-xs font-light text-amber-500 tracking-[0.4em] uppercase mb-6 animate-fadeIn">Daily Intelligence</p>
+            <div class="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <div class="terminal-metric">
+                <span>REPORTS</span>
+                <strong>{{ statsData.totalReports }}</strong>
+              </div>
+              <div class="terminal-metric">
+                <span>PROJECTS</span>
+                <strong>{{ statsData.totalProjects }}</strong>
+              </div>
+              <div class="terminal-metric">
+                <span>WEEKLY NEW</span>
+                <strong>{{ statsData.weeklyNew }}</strong>
+              </div>
+              <div class="terminal-metric">
+                <span>AVG CONTRIBUTORS</span>
+                <strong>{{ statsData.avgContributors }}</strong>
+              </div>
+            </div>
 
-          <!-- 大标题 - 杂志风格 -->
-          <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-slate-100 mb-6 leading-tight tracking-tight animate-fadeInUp" style="animation-delay: 0.1s;">
-            发现 GitHub<br/>
-            <span class="text-slate-400">热门技术趋势</span>
-          </h2>
-
-          <!-- 副标题 - 简洁优雅 -->
-          <p class="text-base text-slate-400 mb-10 font-light leading-relaxed animate-fadeInUp" style="animation-delay: 0.2s;">
-            每日精选 AI 与开源领域最具创新性的项目<br/>
-            助您把握技术脉搏，洞察行业前沿
-          </p>
-
-          <!-- 按钮 - 简洁风格 -->
-          <div class="animate-fadeInUp" style="animation-delay: 0.3s;">
-            <button
-              class="group relative inline-flex items-center gap-2 px-8 py-3 text-sm font-light text-slate-900 bg-amber-400 hover:bg-amber-300 transition-all duration-300 tracking-wide"
-              @click="viewTodayTrending"
-            >
-              <span>查看今日热门</span>
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </button>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <button class="terminal-action primary" @click="viewTodayTrending">
+                查看今日热门
+              </button>
+              <button class="terminal-action" @click="openTechTrendsModal">
+                打开趋势雷达
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 底部装饰线 -->
-      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+        <aside class="grid gap-4">
+          <div class="terminal-panel">
+            <div class="terminal-panel-head">
+              <span>REPORT QUEUE</span>
+              <router-link to="/reports" class="text-cyan-300 hover:text-cyan-200">全部</router-link>
+            </div>
+            <div class="divide-y divide-slate-800/80">
+              <button
+                v-for="report in featuredReports.slice(0, 3)"
+                :key="report.date"
+                class="w-full px-4 py-3 text-left transition-colors hover:bg-cyan-400/5"
+                @click="openReportModal(report)"
+              >
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-sm font-medium text-slate-200">{{ formatDate(report.date) }}</span>
+                  <span class="text-[11px] text-slate-500">{{ report.project_count }} projects</span>
+                </div>
+                <p class="mt-1 line-clamp-1 text-xs text-slate-500">{{ getReportTitle(report) }}</p>
+              </button>
+              <div v-if="featuredReports.length === 0" class="px-4 py-8 text-center text-sm text-slate-500">
+                暂无报告
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-panel">
+            <div class="terminal-panel-head">
+              <span>SIGNAL FEED</span>
+              <span>{{ timeFilter.toUpperCase() }}</span>
+            </div>
+            <div class="space-y-3 p-4">
+              <div v-for="item in intelligenceFeed" :key="item.label" class="feed-row">
+                <span>{{ item.label }}</span>
+                <strong>{{ item.value }}</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <!-- 核心内容区域 -->
-    <main class="container mx-auto px-4 py-12">
+    <main class="mx-auto max-w-[1500px] px-4 py-8 lg:px-6">
       <!-- 数据概览 -->
-      <section class="mb-20 animate-fadeInUp">
-        <div class="flex items-end justify-between mb-8 pb-4 border-b border-slate-800/50">
+      <section class="mb-12 animate-fadeInUp">
+        <div class="terminal-section-title">
           <div>
-            <p class="text-xs text-amber-500 tracking-[0.3em] uppercase mb-2">Overview</p>
-            <h3 class="text-2xl font-light text-slate-100">数据概览</h3>
+            <p class="section-kicker">INTELLIGENCE OVERVIEW</p>
+            <h3>情报概览</h3>
           </div>
-          <button class="text-sm text-slate-500 hover:text-amber-400 transition-colors flex items-center gap-1">
-            查看详情
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
-            </svg>
+          <button class="terminal-action compact" @click="openTechTrendsModal">
+            <i class="fa fa-chart-line mr-1"></i> 打开趋势雷达
           </button>
         </div>
-        <StatsChart :stats="statsData" :emergingAreas="emergingAreas" :surgingProjects="surgingProjects" />
+        <StatsChart
+          :stats="statsData"
+          :languageData="topLanguages"
+          :trendData="trendAreasData"
+          :emergingAreas="emergingAreas"
+          :surgingProjects="surgingProjects"
+          :surgingMode="surgingMode"
+        />
       </section>
 
       <!-- 热门项目 -->
-      <section class="mb-20">
-        <div class="flex items-end justify-between mb-8 pb-4 border-b border-slate-800/50 animate-fadeInUp">
+      <section id="trending-projects" class="mb-12">
+        <div class="terminal-section-title animate-fadeInUp">
           <div>
-            <p class="text-xs text-amber-500 tracking-[0.3em] uppercase mb-2">Trending</p>
-            <h3 class="text-2xl font-light text-slate-100">今日热门项目</h3>
+            <p class="section-kicker">TRENDING REPOSITORIES</p>
+            <h3>今日热门项目</h3>
           </div>
           <div class="flex items-center gap-4">
             <div class="relative">
-              <select v-model="timeFilter" class="py-2 pl-3 pr-8 text-sm font-light bg-transparent border border-slate-700 text-slate-300 focus:outline-none cursor-pointer rounded hover:border-slate-600 transition-colors">
+              <select v-model="timeFilter" class="border border-slate-700 bg-slate-950/70 py-2 pl-3 pr-8 text-sm text-slate-300 outline-none transition-colors hover:border-cyan-400/40">
                 <option value="today">今日</option>
                 <option value="week">本周</option>
                 <option value="month">本月</option>
@@ -108,7 +161,7 @@
         </div>
 
         <!-- 项目卡片网格 - 响应式布局 -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <ProjectCard 
             v-for="(project, index) in trendingProjects" 
             :key="project.name"
@@ -119,140 +172,58 @@
         </div>
         
         <div class="text-center mt-8 animate-fadeInUp">
-          <button class="btn-outline text-base py-2 px-6 rounded-lg">
+          <button class="terminal-action">
             查看更多项目 <i class="fa fa-angle-right ml-1"></i>
           </button>
         </div>
       </section>
 
-      <!-- 技术趋势分析 - 提供深度洞察 -->
+      <!-- 分析报告 - 按时间展示 -->
       <section class="mb-12">
-        <div class="flex items-center justify-between mb-6 animate-fadeInUp">
-          <h3 class="text-xl font-bold text-white">技术趋势分析</h3>
-          <button class="btn-secondary text-sm" @click="openTechTrendsModal">
-            <i class="fa fa-bar-chart mr-1"></i> 查看完整分析
-          </button>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- 热门编程语言 -->
-          <div class="glass-card rounded-2xl p-6 animate-fadeInUp" style="animation-delay: 0.1s;">
-            <h4 class="text-lg font-semibold text-white mb-4">热门编程语言</h4>
-            <div class="space-y-4">
-              <div v-for="(lang, index) in topLanguages" :key="lang.name" class="flex items-center space-x-3">
-                <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 border border-slate-700">
-                  <span class="text-xs font-bold">{{ index + 1 }}</span>
-                </div>
-                <div class="flex-grow">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-sm font-medium text-slate-200">{{ lang.name }}</span>
-                    <span class="text-xs text-slate-400">{{ lang.percentage }}%</span>
-                  </div>
-                  <div class="w-full bg-slate-700/50 rounded-full h-1.5">
-                    <div 
-                      class="h-full rounded-full transition-all duration-700 ease-out" 
-                      :class="lang.colorClass"
-                      :style="{ width: lang.percentage + '%' }"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="terminal-section-title animate-fadeInUp">
+          <div>
+            <p class="section-kicker">REPORT ARCHIVE</p>
+            <h3>分析报告</h3>
           </div>
-          
-          <!-- 新兴技术领域 -->
-          <div class="glass-card rounded-2xl p-6 animate-fadeInUp" style="animation-delay: 0.2s;">
-            <h4 class="text-lg font-semibold text-white mb-4">新兴技术领域</h4>
-            <div class="space-y-3">
-              <div v-for="area in emergingAreas" :key="area.name" class="p-3 bg-slate-800/30 rounded-lg flex items-center justify-between hover:bg-slate-800/50 transition-colors cursor-pointer">
-                <div class="flex items-center space-x-3">
-                  <div :class="['w-8 h-8 rounded-lg flex items-center justify-center', area.bgClass]">
-                    <component :is="area.icon" class="w-4 h-4 text-white" />
-                  </div>
-                  <span class="text-sm font-medium text-slate-200">{{ area.name }}</span>
-                </div>
-                <span class="text-xs font-bold text-green-400">+{{ area.growth }}%</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 上升最快项目 -->
-          <div class="glass-card rounded-2xl p-6 animate-fadeInUp" style="animation-delay: 0.3s;">
-            <h4 class="text-lg font-semibold text-white mb-4">上升最快项目</h4>
-            <div class="space-y-4">
-              <div v-for="project in surgingProjects" :key="project.name" class="flex items-start space-x-3">
-                <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-slate-800 border border-slate-700 text-xs font-bold">
-                  {{ project.rank }}
-                </div>
-                <div class="flex-grow">
-                  <h5 class="text-sm font-medium text-slate-200 mb-1 truncate">{{ project.name.split('/')[1] || project.name }}</h5>
-                  <p class="text-xs text-slate-400 mb-1 line-clamp-1">{{ project.description }}</p>
-                  <div class="flex items-center space-x-3 text-xs">
-                    <span class="text-pink-400">🌟 +{{ project.star_increase }}</span>
-                    <span 
-                      v-if="project.language" 
-                      class="language-tag px-2 py-0.5 rounded-full"
-                      :class="getLanguageClass(project.language)"
-                    >
-                      {{ project.language }}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 精选报告 - 提供价值内容 -->
-      <section class="mb-12">
-        <div class="flex items-center justify-between mb-6 animate-fadeInUp">
-          <h3 class="text-xl font-bold text-white">精选分析报告</h3>
-          <router-link to="/reports" class="text-sm text-primary flex items-center gap-1 hover:underline">
+          <router-link to="/reports" class="flex items-center gap-1 text-sm text-cyan-300 hover:text-cyan-200">
             查看全部 <i class="fa fa-angle-right"></i>
           </router-link>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-if="featuredReports.length > 0" class="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
           <div 
             v-for="(report, index) in featuredReports" 
             :key="report.date"
-            class="glass-card rounded-2xl overflow-hidden hover-lift cursor-pointer animate-fadeInUp" 
+            class="report-card report-card-compact animate-fadeInUp" 
             :style="{ animationDelay: `${index * 0.1}s` }"
             @click="openReportModal(report)"
             :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
           >
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">{{ formatDate(report.date) }}</span>
-                <span class="text-xs text-slate-400">{{ report.project_count }} 个项目</span>
+            <div class="p-4">
+              <div class="mb-5 flex items-center justify-between gap-3">
+                <span class="text-[10px] uppercase tracking-[0.18em] text-cyan-400/75">Daily</span>
+                <span class="report-status">已生成</span>
               </div>
-              <h4 class="text-lg font-semibold text-white mb-2">GitHub热门项目报告</h4>
-              <p class="text-sm text-slate-400 mb-4 line-clamp-2">
-                精选当日最具创新性和实用性的开源项目，涵盖AI、Web开发、工具等多个领域...
-              </p>
-              <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                  <span class="text-xs text-slate-400 flex items-center gap-1">
-                    <i class="fa fa-eye"></i> {{ (report as any).views || 0 }}
-                  </span>
-                  <span class="text-xs text-slate-400 flex items-center gap-1">
-                    <i class="fa fa-comment"></i> {{ (report as any).comments || 0 }}
-                  </span>
-                </div>
-                <button class="text-xs text-primary hover:underline flex items-center gap-1">
-                  阅读报告 <i class="fa fa-arrow-right"></i>
-                </button>
+              <div class="report-date">
+                <strong>{{ formatReportDay(report.date) }}</strong>
+                <span>{{ formatReportMonth(report.date) }}</span>
+              </div>
+              <div class="mt-5 flex items-center justify-between border-t border-slate-800/80 pt-3 text-xs">
+                <span class="text-slate-500">{{ report.project_count }} 个项目</span>
+                <span class="text-cyan-300">查看</span>
               </div>
             </div>
-            <div class="h-1 bg-gradient-to-r from-primary to-secondary"></div>
           </div>
+        </div>
+
+        <div v-else class="border border-dashed border-slate-800 bg-slate-950/40 py-12 text-center text-slate-500">
+          暂无分析报告，完成一次后端项目分析后会在这里按时间展示。
         </div>
         
         <!-- 加载提示 -->
-        <div v-if="isLoading" class="fixed inset-0 bg-black/50 flex items-center justify-center z-40">
-          <div class="bg-slate-800 rounded-xl p-6 flex flex-col items-center">
-            <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <div v-if="isLoading" class="fixed inset-0 z-40 flex items-center justify-center bg-black/60">
+          <div class="flex flex-col items-center border border-cyan-400/20 bg-slate-950 p-6 shadow-2xl">
+            <div class="mb-4 h-12 w-12 animate-spin border-4 border-cyan-400/20 border-t-cyan-300"></div>
             <p class="text-slate-300">加载报告内容中...</p>
           </div>
         </div>
@@ -260,76 +231,10 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="bg-slate-900 border-t border-slate-800">
-      <div class="container mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div class="flex items-center space-x-2 mb-4">
-              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-              <h2 class="text-lg font-bold">GitTrend Insights</h2>
-            </div>
-            <p class="text-sm text-slate-400 mb-4">
-              发现GitHub上的热门技术趋势，助您把握行业前沿动态
-            </p>
-            <div class="flex space-x-3">
-              <a href="#" class="text-slate-400 hover:text-white transition-colors">
-                <i class="fa fa-github text-xl"></i>
-              </a>
-              <a href="#" class="text-slate-400 hover:text-white transition-colors">
-                <i class="fa fa-twitter text-xl"></i>
-              </a>
-              <a href="#" class="text-slate-400 hover:text-white transition-colors">
-                <i class="fa fa-linkedin text-xl"></i>
-              </a>
-            </div>
-          </div>
-          
-          <div>
-            <h3 class="text-white font-medium mb-4">产品</h3>
-            <ul class="space-y-2">
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">热门趋势</a></li>
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">分析报告</a></li>
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">技术洞察</a></li>
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">开发者社区</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 class="text-white font-medium mb-4">资源</h3>
-            <ul class="space-y-2">
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">文档中心</a></li>
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">API接口</a></li>
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">常见问题</a></li>
-              <li><a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">更新日志</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 class="text-white font-medium mb-4">订阅更新</h3>
-            <p class="text-sm text-slate-400 mb-4">
-              获取每周技术趋势精选，直接发送到您的邮箱
-            </p>
-            <div class="flex">
-              <input type="email" placeholder="您的邮箱地址" class="flex-grow px-3 py-2 bg-slate-800 border border-slate-700 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-primary text-sm">
-              <button class="bg-primary hover:bg-primary/90 transition-colors px-3 py-2 rounded-r-lg">
-                <i class="fa fa-paper-plane"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="border-t border-slate-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p class="text-sm text-slate-500 mb-4 md:mb-0">
-            &copy; {{ new Date().getFullYear() }} GitTrend Insights. 保留所有权利。
-          </p>
-          <div class="flex space-x-6">
-            <a href="#" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">隐私政策</a>
-            <a href="#" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">服务条款</a>
-            <a href="#" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">联系我们</a>
-          </div>
-        </div>
+    <footer class="border-t border-cyan-400/10 bg-[#071019]">
+      <div class="mx-auto flex max-w-[1500px] flex-col gap-3 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between lg:px-6">
+        <span>GITTREND INTEL / OPEN SOURCE SIGNAL WATCH</span>
+        <span>© {{ new Date().getFullYear() }} GitTrend Insights</span>
       </div>
     </footer>
 
@@ -393,7 +298,9 @@ const featuredReports = ref<Report[]>([])
 const trendsData = ref<TrendsData>({  time_window_days: 30,
   most_frequent_projects: [],
   most_frequent_languages: [],
-  surging_projects: []
+  programmingLanguages: [],
+  surgingProjects: [],
+  techDomains: []
 })
 const trendAreasData = ref<TrendDataItem[]>([]) // 新兴技术领域数据
 
@@ -409,6 +316,34 @@ const selectedReport = ref<Report>({
   date: '',
   project_count: 0
 })
+
+const currentDateLabel = computed(() => {
+  return new Date().toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'short'
+  })
+})
+
+const intelligenceFeed = computed(() => [
+  {
+    label: '最新报告',
+    value: featuredReports.value[0]?.date || '待生成'
+  },
+  {
+    label: '高频语言',
+    value: topLanguages.value[0]?.name || statsData.value.topLanguage || 'N/A'
+  },
+  {
+    label: '项目样本',
+    value: `${trendingProjects.value.length || statsData.value.totalProjects || 0} repos`
+  },
+  {
+    label: surgingMode.value === 'hot' ? '热度样本' : '增长样本',
+    value: `${surgingProjects.value.length} signals`
+  }
+])
 
 // 计算属性 - 热门编程语言
 const topLanguages = computed(() => {
@@ -432,6 +367,7 @@ const topLanguages = computed(() => {
       .slice(0, 5) // 只显示前5种语言
       .map(([name, count], index) => ({
         name,
+        count,
         percentage: Math.round((count / total) * 100),
         colorClass: colorClasses[index % colorClasses.length]
       }))
@@ -483,7 +419,7 @@ const emergingAreas = computed(() => {
     
     return trendAreasData.value.slice(0, 4).map((item, index) => ({
       name: areaNameMap[item.label] || item.label,
-      growth: item.change * 100, // 假设API返回的是小数，转换为百分比
+      growth: item.change,
       bgClass: bgClasses[index % bgClasses.length],
       icon: techIcons[index % techIcons.length]
     }))
@@ -495,16 +431,24 @@ const emergingAreas = computed(() => {
 
 // 计算属性 - 上升最快项目
 const surgingProjects = computed(() => {
-  // 只使用从API获取的真实上升最快项目数据
-  if (trendsData.value && trendsData.value.surging_projects && trendsData.value.surging_projects.length > 0) {
-    return trendsData.value.surging_projects.slice(0, 4).map((project, index) => ({
+  if (trendsData.value && trendsData.value.surgingProjects && trendsData.value.surgingProjects.length > 0) {
+    return trendsData.value.surgingProjects.slice(0, 4).map((project, index) => ({
       ...project,
       rank: index + 1
     }))
   }
-  
-  // 如果没有真实数据，返回空数组
-  return []
+
+  return trendingProjects.value.slice(0, 4).map((project, index) => ({
+    name: project.name,
+    description: project.description,
+    language: project.language,
+    star_increase: project.stars,
+    rank: index + 1
+  }))
+})
+
+const surgingMode = computed<'surging' | 'hot'>(() => {
+  return trendsData.value?.surgingProjects?.length ? 'surging' : 'hot'
 })
 
 // 初始化数据
@@ -534,41 +478,48 @@ onMounted(async () => {
 
 // 加载初始数据
 async function loadInitialData() {
-  try {
-    // 并行请求数据
-  const [statsResponse, reportsResponse, trendsResponse, trendAreasResponse] = await Promise.all([
-    getStats(),
-    getReports(),
-    getTrends(),
-    getTrendData()
+  await Promise.all([
+    loadStatsData(),
+    loadReportCards(),
+    loadTrendOverview()
   ])
-  
-  // 更新统计数据
-  statsData.value = statsResponse
-  
-  // 更新报告数据
-  featuredReports.value = reportsResponse.slice(0, 3)
-  
-  // 更新趋势数据
-  trendsData.value = trendsResponse
-  
-  // 更新新兴技术领域数据
-  trendAreasData.value = trendAreasResponse
-    
-    // 使用真实数据
-    updateTrendingProjects()
+}
+
+async function loadStatsData() {
+  try {
+    statsData.value = await getStats()
   } catch (error) {
-    console.error('加载数据失败:', error)
-    // 后端未运行时，显示空状态
+    console.error('加载统计数据失败:', error)
     statsData.value = { totalReports: 0, totalProjects: 0, topLanguage: 'N/A', weeklyNew: 0, totalForks: '0', avgContributors: 0, activityScore: 0 }
-    featuredReports.value = []
-    trendingProjects.value = []
-    trendsData.value = { time_window_days: 7, most_frequent_projects: [], most_frequent_languages: [], surging_projects: [] }
-    trendAreasData.value = []
   }
 }
 
+async function loadReportCards() {
+  try {
+    const reports = await getReports()
+    featuredReports.value = reports.sort((a, b) => b.date.localeCompare(a.date))
+  } catch (error) {
+    console.error('加载报告列表失败:', error)
+    featuredReports.value = []
+  }
+}
 
+async function loadTrendOverview() {
+  try {
+    const [trendsResponse, trendAreasResponse] = await Promise.all([
+      getTrends(),
+      getTrendData()
+    ])
+    trendsData.value = trendsResponse
+    trendAreasData.value = trendAreasResponse
+    updateTrendingProjects()
+  } catch (error) {
+    console.error('加载趋势数据失败:', error)
+    trendingProjects.value = []
+    trendsData.value = { time_window_days: 7, most_frequent_projects: [], most_frequent_languages: [], programmingLanguages: [], surgingProjects: [], techDomains: [] }
+    trendAreasData.value = []
+  }
+}
 
 // 刷新数据
 async function refreshData() {
@@ -616,7 +567,7 @@ function viewTodayTrending() {
   // 重新加载数据以确保显示今日热门项目
   loadInitialData().then(() => {
     // 滚动到热门趋势项目区域
-    const element = document.querySelector('section:nth-of-type(3)')
+    const element = document.querySelector('#trending-projects')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
@@ -701,28 +652,253 @@ function formatDate(dateStr: string): string {
   })
 }
 
-// 获取编程语言样式
-function getLanguageClass(language: string): string {
-  const languageColors: Record<string, string> = {
-    'JavaScript': 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30',
-    'TypeScript': 'bg-blue-500/20 text-blue-400 border border-blue-500/30',
-    'Python': 'bg-green-500/20 text-green-400 border border-green-500/30',
-    'Java': 'bg-orange-500/20 text-orange-400 border border-orange-500/30',
-    'Go': 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30',
-    'Rust': 'bg-red-500/20 text-red-400 border border-red-500/30',
-    'C++': 'bg-purple-500/20 text-purple-400 border border-purple-500/30',
-    'C': 'bg-gray-500/20 text-gray-400 border border-gray-500/30',
-    'PHP': 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30',
-    'Ruby': 'bg-red-600/20 text-red-400 border border-red-600/30',
-    'Swift': 'bg-orange-600/20 text-orange-400 border border-orange-600/30',
-    'Kotlin': 'bg-purple-600/20 text-purple-400 border border-purple-600/30'
-  }
-  
-  return languageColors[language] || 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
+function formatReportDay(dateStr: string): string {
+  if (!dateStr) return '--'
+  const date = new Date(dateStr)
+  return String(date.getDate()).padStart(2, '0')
+}
+
+function formatReportMonth(dateStr: string): string {
+  if (!dateStr) return ''
+  const date = new Date(dateStr)
+  return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}`
+}
+
+function getReportTitle(report: Report): string {
+  const content = report.content || ''
+  if (!content) return `${formatDate(report.date)} GitHub 趋势分析报告`
+
+  const heading = content
+    .split('\n')
+    .map(line => line.trim())
+    .find(line => line.startsWith('#'))
+
+  return heading?.replace(/^#+\s*/, '') || 'GitHub 热门项目报告'
 }
 </script>
 
 <style scoped>
+.home-container {
+  background:
+    linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 18% 8%, rgba(34, 211, 238, 0.08), transparent 28rem),
+    #071019;
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.terminal-shell {
+  background:
+    linear-gradient(180deg, rgba(14, 116, 144, 0.08), transparent 42%),
+    rgba(2, 6, 23, 0.26);
+}
+
+.terminal-panel,
+.report-card {
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.06);
+}
+
+.terminal-panel {
+  position: relative;
+}
+
+.terminal-panel::before,
+.report-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.65), transparent 60%);
+  opacity: 0.55;
+}
+
+.report-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.report-card:hover {
+  border-color: rgba(34, 211, 238, 0.38);
+  background: rgba(15, 23, 42, 0.9);
+  transform: translateY(-2px);
+}
+
+.report-card-compact {
+  min-height: 10.75rem;
+}
+
+.report-status {
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  background: rgba(34, 197, 94, 0.08);
+  padding: 0.18rem 0.4rem;
+  font-size: 0.68rem;
+  color: #86efac;
+}
+
+.report-date strong {
+  display: block;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.report-date span {
+  margin-top: 0.35rem;
+  display: block;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: #64748b;
+}
+
+.terminal-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+  padding: 0.65rem 1rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: rgba(148, 163, 184, 0.82);
+}
+
+.terminal-nav {
+  border: 1px solid transparent;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.terminal-nav:hover,
+.terminal-nav.active {
+  border-color: rgba(34, 211, 238, 0.22);
+  background: rgba(34, 211, 238, 0.06);
+  color: #67e8f9;
+}
+
+.status-chip {
+  border: 1px solid rgba(51, 65, 85, 0.95);
+  background: rgba(2, 6, 23, 0.45);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+}
+
+.status-chip.online {
+  border-color: rgba(34, 197, 94, 0.24);
+  color: #86efac;
+}
+
+.terminal-metric {
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  background: rgba(2, 6, 23, 0.36);
+  padding: 0.9rem;
+}
+
+.terminal-metric span {
+  display: block;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  color: #64748b;
+}
+
+.terminal-metric strong {
+  margin-top: 0.55rem;
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.terminal-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(51, 65, 85, 0.95);
+  background: rgba(15, 23, 42, 0.75);
+  padding: 0.65rem 1rem;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.terminal-action.compact {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.78rem;
+}
+
+.terminal-action:hover {
+  border-color: rgba(34, 211, 238, 0.38);
+  color: #e0f2fe;
+}
+
+.terminal-action.primary {
+  border-color: rgba(34, 211, 238, 0.36);
+  background: rgba(34, 211, 238, 0.12);
+  color: #a5f3fc;
+}
+
+.feed-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  background: rgba(2, 6, 23, 0.32);
+  padding: 0.75rem;
+}
+
+.feed-row span {
+  font-size: 0.76rem;
+  color: #64748b;
+}
+
+.feed-row strong {
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.terminal-section-title {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+  padding-bottom: 0.85rem;
+}
+
+.terminal-section-title h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.section-kicker {
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  color: #22d3ee;
+}
+
 /* 背景网格图案 */
 .bg-grid-pattern {
   background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),

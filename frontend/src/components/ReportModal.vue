@@ -1,24 +1,25 @@
 <template>
   <Teleport to="body">
-    <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-2 sm:p-4 animate-fadeIn backdrop-blur-sm" @click="handleOverlayClick">
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-2 backdrop-blur-sm sm:p-4 animate-fadeIn" @click="handleOverlayClick">
       <div 
-        class="glass-card rounded-2xl lg:rounded-3xl max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col animate-fadeInUp shadow-2xl"
+        class="report-reader max-h-[95vh] w-full max-w-6xl overflow-hidden flex flex-col animate-fadeInUp shadow-2xl"
         @click.stop
       >
         <!-- 模态框头部 -->
-        <header class="relative p-4 lg:p-6 border-b border-white/10 bg-gradient-to-r from-slate-800/50 to-slate-700/50">
+        <header class="relative border-b border-slate-800 bg-slate-950/90 p-4 lg:p-5">
           <div class="flex justify-between items-center">
               <div class="flex items-center space-x-3 lg:space-x-4 flex-1 min-w-0">
-                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                  <svg class="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 lg:h-11 lg:w-11">
+                  <svg class="h-5 w-5 lg:h-6 lg:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <h3 style="background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899); background-clip: text; -webkit-background-clip: text; color: transparent;" class="text-lg lg:text-2xl font-bold truncate">
+                  <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-cyan-400/80">INTELLIGENCE REPORT</p>
+                  <h3 class="truncate text-lg font-semibold text-slate-100 lg:text-2xl">
                     GitHub 热门项目报告
                   </h3>
-                  <p class="text-xs lg:text-sm text-slate-400 mt-1 truncate">
+                  <p class="mt-1 truncate text-xs text-slate-500 lg:text-sm">
                     {{ formatDate(report.date) }}
                   </p>
                 </div>
@@ -28,7 +29,7 @@
               <!-- 关闭按钮 -->
               <button
                 @click="$emit('close')"
-                class="btn-icon hover:bg-red-500/20 hover:border-red-500/30 hover:text-red-400"
+                class="reader-icon-button hover:bg-red-500/10 hover:border-red-500/30 hover:text-red-300"
                 title="关闭"
               >
                 <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,9 +40,9 @@
           </div>
           
           <!-- 进度条 -->
-          <div class="absolute bottom-0 left-0 w-full h-0.5 lg:h-1 bg-slate-700/50">
+          <div class="absolute bottom-0 left-0 h-0.5 w-full bg-slate-800">
             <div 
-              class="h-full bg-gradient-primary transition-all duration-300 ease-out"
+              class="h-full bg-cyan-300 transition-all duration-300 ease-out"
               :style="{ width: scrollProgress + '%' }"
             ></div>
           </div>
@@ -62,24 +63,24 @@
             <p class="text-slate-400">正在解析报告内容...</p>
           </div>
           
-          <div v-else class="p-4 lg:p-8">
+          <div v-else class="p-4 lg:p-6">
             <!-- 报告统计信息 -->
-            <div class="mb-6 lg:mb-8 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-              <div class="glass-card rounded-xl p-3 lg:p-4 text-center hover:shadow-lg transition-shadow">
-                <div class="text-lg lg:text-2xl font-bold text-blue-400 mb-1">{{ report.project_count }}</div>
-                <div class="text-xs lg:text-sm text-slate-400">项目数量</div>
+            <div class="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <div class="reader-stat">
+                <div class="stat-value">{{ report.project_count }}</div>
+                <div class="stat-label">项目数量</div>
               </div>
-              <div class="glass-card rounded-xl p-3 lg:p-4 text-center hover:shadow-lg transition-shadow">
-                <div class="text-lg lg:text-2xl font-bold text-green-400 mb-1">{{ wordCount.toLocaleString() }}</div>
-                <div class="text-xs lg:text-sm text-slate-400">字数统计</div>
+              <div class="reader-stat">
+                <div class="stat-value">{{ wordCount.toLocaleString() }}</div>
+                <div class="stat-label">字数统计</div>
               </div>
-              <div class="glass-card rounded-xl p-3 lg:p-4 text-center hover:shadow-lg transition-shadow">
-                <div class="text-lg lg:text-2xl font-bold text-purple-400 mb-1">{{ readingTime }}</div>
-                <div class="text-xs lg:text-sm text-slate-400">阅读时间</div>
+              <div class="reader-stat">
+                <div class="stat-value">{{ readingTime }}</div>
+                <div class="stat-label">阅读时间</div>
               </div>
-              <div class="glass-card rounded-xl p-3 lg:p-4 text-center hover:shadow-lg transition-shadow">
-                <div class="text-lg lg:text-2xl font-bold text-pink-400 mb-1">{{ formatDate(report.date).split(' ')[0] }}</div>
-                <div class="text-xs lg:text-sm text-slate-400">发布日期</div>
+              <div class="reader-stat">
+                <div class="stat-value">{{ formatDate(report.date).split(' ')[0] }}</div>
+                <div class="stat-label">发布日期</div>
               </div>
             </div>
             
@@ -88,7 +89,7 @@
             <!-- Markdown 内容 -->
             <div 
               ref="markdownContainer"
-              class="markdown-content prose prose-invert max-w-none bg-slate-900/30 rounded-xl p-4 lg:p-6 border border-slate-600/30 text-sm lg:text-base"
+              class="markdown-content prose prose-invert max-w-none border border-slate-800 bg-slate-950/55 p-4 text-sm lg:p-6 lg:text-base"
               v-html="renderedContent"
             ></div>
           </div>
@@ -107,7 +108,7 @@
         </main>
 
         <!-- 模态框底部 -->
-        <footer class="p-4 lg:p-6 border-t border-white/10 bg-slate-800/30">
+        <footer class="border-t border-slate-800 bg-slate-950/90 p-4 lg:p-5">
           <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
             <div class="flex flex-wrap items-center gap-4 lg:gap-6 text-xs lg:text-sm text-slate-400">
               <div class="flex items-center space-x-1 lg:space-x-2">
@@ -133,7 +134,7 @@
             <div class="flex flex-wrap gap-2 lg:gap-3 w-full lg:w-auto">
               <button
                 @click="copyToClipboard"
-                :class="['btn-secondary flex-1 lg:flex-none text-xs lg:text-sm transition-colors duration-300', isCopying ? 'bg-green-600/80 border-green-500/50' : '']"
+                :class="['reader-action flex-1 lg:flex-none text-xs lg:text-sm transition-colors duration-300', isCopying ? 'bg-green-600/20 border-green-500/50 text-green-200' : '']"
                 title="复制到剪贴板"
                 :disabled="isCopying"
               >
@@ -146,7 +147,7 @@
               <div class="relative" ref="exportDropdown">
                 <button
                   @click="showExportMenu = !showExportMenu"
-                  class="btn-primary flex-1 lg:flex-none text-xs lg:text-sm"
+                  class="reader-action primary flex-1 lg:flex-none text-xs lg:text-sm"
                   title="导出报告"
                 >
                   <svg class="w-3 h-3 lg:w-4 lg:h-4 mr-1 lg:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,7 +160,7 @@
                 </button>
                 
                 <!-- 导出菜单 -->
-                <div v-if="showExportMenu" class="absolute bottom-full right-0 mb-2 w-48 glass-card rounded-xl py-2 shadow-xl">
+                <div v-if="showExportMenu" class="absolute bottom-full right-0 mb-2 w-48 border border-slate-700 bg-slate-950 py-2 shadow-xl">
                   <button @click="exportReport('md')" class="export-menu-item">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -289,10 +290,10 @@ function handleOutsideClick(e: Event) {
   const targetElement = e.target as HTMLElement
   
   // 获取模态框背景遮罩层
-  const modalOverlay = document.querySelector('.fixed.inset-0.bg-black\/80')
+  const modalOverlay = document.querySelector('.fixed.inset-0')
   
   // 获取模态框内容区域
-  const modalContent = document.querySelector('.glass-card.rounded-2xl')
+  const modalContent = document.querySelector('.report-reader')
   
   // 当点击的是背景遮罩层，且不是点击在内容区域上时，关闭模态框
   if (modalOverlay && modalContent && 
@@ -423,6 +424,71 @@ async function copyToClipboard() {
 </script>
 
 <style scoped>
+  .report-reader {
+    position: relative;
+    border: 1px solid rgba(51, 65, 85, 0.95);
+    background:
+      linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.025) 1px, transparent 1px),
+      #071019;
+    background-size: 28px 28px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(148, 163, 184, 0.06);
+  }
+
+  .reader-icon-button {
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(51, 65, 85, 0.9);
+    background: rgba(15, 23, 42, 0.62);
+    color: #94a3b8;
+    transition: all 0.2s ease;
+  }
+
+  .reader-stat {
+    border: 1px solid rgba(51, 65, 85, 0.84);
+    background: rgba(15, 23, 42, 0.72);
+    padding: 0.85rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    margin-bottom: 0.3rem;
+    overflow-wrap: anywhere;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #67e8f9;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: #64748b;
+  }
+
+  .reader-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(51, 65, 85, 0.95);
+    background: rgba(15, 23, 42, 0.78);
+    padding: 0.55rem 0.85rem;
+    color: #cbd5e1;
+    transition: all 0.2s ease;
+  }
+
+  .reader-action:hover {
+    border-color: rgba(34, 211, 238, 0.38);
+    color: #e0f2fe;
+  }
+
+  .reader-action.primary {
+    border-color: rgba(34, 211, 238, 0.36);
+    background: rgba(34, 211, 238, 0.12);
+    color: #a5f3fc;
+  }
+
   /* 增强markdown样式 */
   .markdown-content :deep(h1),
   .markdown-content :deep(h2),
