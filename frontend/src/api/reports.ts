@@ -84,6 +84,11 @@ export interface Stats {
   totalForks: string
   avgContributors: number
   activityScore: number
+  activityBreakdown?: {
+    recentlyActive: number
+    stable: number
+    needsAttention: number
+  }
 }
 
 export interface LanguageData {
@@ -118,7 +123,8 @@ export interface TrendsData {
     watchers?: number
   }[]
   most_frequent_languages: [string, number][]
-  surging_projects: {
+  programmingLanguages: [string, number][]
+  surgingProjects: {
     name: string
     url: string
     description: string
@@ -127,6 +133,7 @@ export interface TrendsData {
     start_stars: number
     end_stars: number
   }[]
+  techDomains: { name: string; count: number; percentage: number }[]
 }
 
 export const reportApi = {
@@ -134,7 +141,7 @@ export const reportApi = {
   async getReports(): Promise<Report[]> {
     try {
       const response = await api.get('/api/reports')
-      const reports = response.data
+      const reports = response.data.data?.items || response.data.data || []
       console.log(`📋 获取到 ${reports.length} 个报告`)
       return reports
     } catch (error) {
@@ -148,7 +155,7 @@ export const reportApi = {
     try {
       const response = await api.get(`/api/report/${date}`)
       console.log(`📄 获取报告内容: ${date}`)
-      return response.data
+      return response.data.data || response.data
     } catch (error) {
       console.error(`获取报告内容失败 (${date}):`, error)
       throw error
@@ -159,7 +166,7 @@ export const reportApi = {
   async getProjectsByDate(date: string): Promise<Project[]> {
     try {
       const response = await api.get(`/api/projects/${date}`)
-      const projects = response.data
+      const projects = response.data.data || []
       console.log(`🚀 获取到 ${projects.length} 个项目 (${date})`)
       return projects
     } catch (error) {
@@ -176,7 +183,7 @@ export const reportApi = {
         params: { name: projectName }
       })
       console.log(`📦 获取项目详情: ${projectName}`)
-      return response.data
+      return response.data.data || response.data
     } catch (error) {
       console.error(`获取项目详情失败 (${projectName}):`, error)
       throw error
@@ -188,7 +195,7 @@ export const reportApi = {
     try {
       const response = await api.get('/api/stats')
       console.log('📊 获取统计数据成功')
-      return response.data
+      return response.data.data || response.data
     } catch (error) {
       console.error('获取统计数据失败:', error)
       // 不返回默认数据，让调用方处理错误
@@ -201,7 +208,7 @@ export const reportApi = {
     try {
       const response = await api.get('/api/trends', { params })
       console.log(`📈 获取趋势数据成功 (时间范围: ${params?.days || 7}天)`)
-      return response.data
+      return response.data.data || response.data
     } catch (error) {
       console.error('获取趋势数据失败:', error)
       throw error
@@ -218,12 +225,21 @@ export const reportApi = {
     }
   },
 
-  // 获取语言分布数据
+  // 获取语言分布数据（从 trends API 获取）
   async getLanguageDistribution(): Promise<LanguageData[]> {
     try {
-      const response = await api.get('/api/language-distribution')
-      console.log('🌐 获取语言分布数据成功')
-      return response.data
+      const response = await api.get('/api/trends')
+      console.log('🌐 获取语言分布数据成功', response.data)
+      // 从 trends API 的 programmingLanguages 字段获取
+      const langData = response.data.data?.programmingLanguages || response.data.data?.most_frequent_languages || []
+      const colorClasses = ['bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-red-500', 'bg-cyan-500', 'bg-pink-500']
+      // 转换为 LanguageData 格式
+      return langData.map((item: [string, number], index: number) => ({
+        name: item[0],
+        count: item[1],
+        percentage: Math.round((item[1] / langData.reduce((sum: number, i: [string, number]) => sum + i[1], 0)) * 100),
+        colorClass: colorClasses[index % colorClasses.length]
+      }))
     } catch (error) {
       console.error('获取语言分布数据失败:', error)
       // 不返回默认数据，让调用方处理错误
@@ -234,9 +250,18 @@ export const reportApi = {
   // 获取趋势数据
   async getTrendData(): Promise<TrendDataItem[]> {
     try {
-      const response = await api.get('/api/trend-data')
-      console.log('📈 获取趋势数据成功')
-      return response.data
+      const response = await api.get('/api/trends')
+      console.log('📈 获取趋势数据成功', response.data)
+      // 从 trends API 的 techDomains 字段获取新兴技术领域数据
+      const data = response.data.data
+      const techDomains = data?.techDomains || []
+      // 转换为 TrendDataItem 格式
+      return techDomains.map((domain: any, index: number) => ({
+        label: domain.name,
+        value: domain.count,
+        change: domain.percentage,
+        colorClass: ['text-green-400', 'text-blue-400', 'text-purple-400', 'text-pink-400', 'text-yellow-400'][index % 5]
+      }))
     } catch (error) {
       console.error('获取趋势数据失败:', error)
       // 不返回默认数据，让调用方处理错误

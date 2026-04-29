@@ -1,95 +1,109 @@
 <template>
   <div class="home-container min-h-screen bg-slate-900 text-slate-100">
-    <!-- 顶部导航栏 - 固定在顶部，提供全局入口 -->
-    <header class="sticky top-0 z-40 backdrop-blur-lg bg-slate-900/80 border-b border-slate-800/50">
-      <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-          <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-            GitTrend Insights
-          </h1>
-        </div>
-        
-        <div class="hidden md:flex items-center space-x-8">
-          <router-link to="/" class="text-white border-b-2 border-primary px-3 py-2 text-sm font-medium">发现</router-link>
-          <router-link to="/rankings" class="text-slate-300 hover:text-white transition-colors px-3 py-2 text-sm font-medium">排行榜</router-link>
-          <router-link to="/trend-analysis" class="text-slate-300 hover:text-white transition-colors px-3 py-2 text-sm font-medium">趋势分析</router-link>
-          <router-link to="/favorites" class="text-slate-300 hover:text-white transition-colors px-3 py-2 text-sm font-medium">收藏</router-link>
-        </div>
-        
-        <div class="flex items-center space-x-3">
-          <button class="btn-icon" @click="toggleTheme">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path v-if="theme === 'dark'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+    <!-- 顶部导航栏 - 杂志风格简洁设计 -->
+    <header class="sticky top-0 z-40 bg-slate-950/95 backdrop-blur-sm border-b border-slate-800/30">
+      <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
-          </button>
-          <button class="btn-primary">登录</button>
+          </div>
+          <div>
+            <h1 class="text-lg font-light tracking-widest text-slate-100">GITTREND</h1>
+            <p class="text-[10px] text-slate-500 tracking-[0.3em] uppercase">Insights</p>
+          </div>
         </div>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <router-link to="/" class="text-sm font-light text-slate-200 hover:text-amber-400 transition-colors tracking-wide">发现</router-link>
+          <router-link to="/rankings" class="text-sm font-light text-slate-400 hover:text-amber-400 transition-colors tracking-wide">排行榜</router-link>
+          <router-link to="/trend-analysis" class="text-sm font-light text-slate-400 hover:text-amber-400 transition-colors tracking-wide">趋势</router-link>
+          <router-link to="/favorites" class="text-sm font-light text-slate-400 hover:text-amber-400 transition-colors tracking-wide">收藏</router-link>
+        </nav>
       </div>
     </header>
 
-    <!-- 英雄区域 - 突出核心价值 -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-slate-800 to-slate-900">
-      <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-      <div class="container mx-auto px-4 py-16 md:py-24 relative z-10">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight animate-fadeIn">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-              发现GitHub热门技术趋势
-            </span>
+    <!-- 英雄区域 - 杂志风格大留白 -->
+    <section class="relative overflow-hidden bg-slate-950">
+      <!-- 优雅的渐变背景 -->
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950"></div>
+      <!-- 精致的装饰线 -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-amber-500/5 to-transparent pointer-events-none"></div>
+
+      <div class="container mx-auto px-6 py-24 md:py-32 relative z-10">
+        <div class="max-w-2xl mx-auto text-center">
+          <!-- 标签 -->
+          <p class="text-xs font-light text-amber-500 tracking-[0.4em] uppercase mb-6 animate-fadeIn">Daily Intelligence</p>
+
+          <!-- 大标题 - 杂志风格 -->
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-slate-100 mb-6 leading-tight tracking-tight animate-fadeInUp" style="animation-delay: 0.1s;">
+            发现 GitHub<br/>
+            <span class="text-slate-400">热门技术趋势</span>
           </h2>
-          <p class="text-lg text-slate-300 mb-8 animate-fadeInUp" style="animation-delay: 0.2s;">
-            每日精选AI与开源领域最具创新性的项目，助您把握技术脉搏，洞察行业前沿
+
+          <!-- 副标题 - 简洁优雅 -->
+          <p class="text-base text-slate-400 mb-10 font-light leading-relaxed animate-fadeInUp" style="animation-delay: 0.2s;">
+            每日精选 AI 与开源领域最具创新性的项目<br/>
+            助您把握技术脉搏，洞察行业前沿
           </p>
-          <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fadeInUp" style="animation-delay: 0.4s;">
-            <button class="btn-primary text-base py-3 px-8 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
-              @click="viewTodayTrending">
-              查看今日热门
-            </button>
-            <button class="btn-secondary text-base py-3 px-8 rounded-xl">
-              <i class="fa fa-bell mr-2"></i>订阅趋势更新
+
+          <!-- 按钮 - 简洁风格 -->
+          <div class="animate-fadeInUp" style="animation-delay: 0.3s;">
+            <button
+              class="group relative inline-flex items-center gap-2 px-8 py-3 text-sm font-light text-slate-900 bg-amber-400 hover:bg-amber-300 transition-all duration-300 tracking-wide"
+              @click="viewTodayTrending"
+            >
+              <span>查看今日热门</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
             </button>
           </div>
         </div>
       </div>
-      <!-- 波浪装饰 -->
-      <div class="absolute bottom-0 left-0 right-0 h-16 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCAwaDEwMHY1MEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0gMCw1MCBDIDI1LDMwIDc1LDMwIDEwMCw1MCBMIDEwMCwwIEwgMCwwIFoiLz48L3N2Zz4=')] bg-repeat-x bg-bottom opacity-30"></div>
+
+      <!-- 底部装饰线 -->
+      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
     </section>
 
     <!-- 核心内容区域 -->
     <main class="container mx-auto px-4 py-12">
-      <!-- 数据概览卡片 - 快速了解平台状态 -->
-      <section class="mb-12 animate-fadeInUp">
-        <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl font-bold text-white">数据概览</h3>
-          <button class="text-sm text-primary flex items-center gap-1 hover:underline">
-            查看详情 <i class="fa fa-angle-right"></i>
+      <!-- 数据概览 -->
+      <section class="mb-20 animate-fadeInUp">
+        <div class="flex items-end justify-between mb-8 pb-4 border-b border-slate-800/50">
+          <div>
+            <p class="text-xs text-amber-500 tracking-[0.3em] uppercase mb-2">Overview</p>
+            <h3 class="text-2xl font-light text-slate-100">数据概览</h3>
+          </div>
+          <button class="text-sm text-slate-500 hover:text-amber-400 transition-colors flex items-center gap-1">
+            查看详情
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+            </svg>
           </button>
         </div>
-        <StatsChart :stats="statsData" />
+        <StatsChart :stats="statsData" :emergingAreas="emergingAreas" :surgingProjects="surgingProjects" />
       </section>
 
-      <!-- 热门趋势项目 - 核心内容模块 -->
-      <section class="mb-12">
-        <div class="flex items-center justify-between mb-6 animate-fadeInUp">
-          <h3 class="text-xl font-bold text-white">热门趋势项目</h3>
-          <div class="flex items-center space-x-2">
+      <!-- 热门项目 -->
+      <section class="mb-20">
+        <div class="flex items-end justify-between mb-8 pb-4 border-b border-slate-800/50 animate-fadeInUp">
+          <div>
+            <p class="text-xs text-amber-500 tracking-[0.3em] uppercase mb-2">Trending</p>
+            <h3 class="text-2xl font-light text-slate-100">今日热门项目</h3>
+          </div>
+          <div class="flex items-center gap-4">
             <div class="relative">
-              <select v-model="timeFilter" class="select-input py-1.5 pl-3 pr-8 text-sm rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary/50 appearance-none cursor-pointer">
+              <select v-model="timeFilter" class="py-2 pl-3 pr-8 text-sm font-light bg-transparent border border-slate-700 text-slate-300 focus:outline-none cursor-pointer rounded hover:border-slate-600 transition-colors">
                 <option value="today">今日</option>
                 <option value="week">本周</option>
                 <option value="month">本月</option>
               </select>
-              <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              <svg class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
-            <button class="btn-icon text-sm" @click="refreshData">
-              <i class="fa fa-refresh mr-1"></i> 刷新
-            </button>
           </div>
         </div>
 
@@ -345,7 +359,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import mermaid from 'mermaid';
+// import mermaid from 'mermaid';
 import { useRouter } from 'vue-router'
 import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
@@ -498,12 +512,12 @@ onMounted(async () => {
   await loadInitialData()
   
   // Initialize Mermaid
-  mermaid.initialize({
-    startOnLoad: false, // We will manually trigger rendering
-    theme: theme.value === 'dark' ? 'dark' : 'default', // Match app theme
-  });
-  // Run Mermaid to render diagrams
-  mermaid.run();
+  // mermaid.initialize({
+  //   startOnLoad: false, // We will manually trigger rendering
+  //   theme: theme.value === 'dark' ? 'dark' : 'default', // Match app theme
+  // });
+  // // Run Mermaid to render diagrams
+  // mermaid.run();
 
   // 初始化主题
   applyTheme(theme.value)
