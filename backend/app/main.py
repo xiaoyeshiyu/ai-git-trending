@@ -48,14 +48,19 @@ def job():
         logger.info("✅ No new projects to summarize today.")
     else:
         logger.info(f"📝 Summarizing {len(repos_to_summarize)} new projects...")
+        from app.summarizer import extract_tech_domain
         individual_summaries = []
         for project in repos_to_summarize:
             summary = get_summary_for_single_project(project)
             if summary:
                 individual_summaries.append(summary)
+                # 提取技术领域并添加到项目数据
+                tech_domain = extract_tech_domain(summary)
+                project['tech_domain'] = tech_domain
+                logger.info(f"🏷️ Tech domain for {project['name']}: {tech_domain}")
                 # Also add it to the legacy summarized_projects table
                 db.add_summarized_project(project)
-                time.sleep(1) 
+                time.sleep(1)
             else:
                 logger.warning(f"❌ Warning: Failed to summarize '{project['name']}'. Skipping this project.")
 

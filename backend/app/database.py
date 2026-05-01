@@ -6,6 +6,10 @@ from config.logging_config import get_logger
 # 创建日志记录器
 logger = get_logger('database', 'INFO')
 
+# 白名单：允许的表名和列名
+ALLOWED_TABLES = {'dim_languages', 'dim_tags'}
+ALLOWED_COLUMNS = {'language', 'tag'}
+
 class ProjectDatabase:
     def __init__(self, db_path=DB_PATH):
         self.db_path = db_path
@@ -17,10 +21,27 @@ class ProjectDatabase:
         return conn
 
     def _create_schema(self):
-        # This method remains the same as it's only called once at init.
+        """
+        创建数据库架构
+        
+        数据模型设计说明：
+        1. 星型模型 (dim_* + fact_*) - 用于历史趋势分析
+           - dim_languages: 语言维度
+           - dim_tags: 标签维度  
+           - dim_projects: 项目维度
+           - dim_dates: 日期维度
+           - fact_trending_snapshots: 趋势快照事实表
+           - assoc_project_tags: 项目-标签关联表
+        
+        2. 汇总表 (summarized_projects) - 用于快速查询展示
+           - 存储最新的项目汇总信息
+           - 适合列表查询、搜索筛选
+        """
         try:
             with self._get_connection() as conn:
                 cursor = conn.cursor()
+                
+                # ==================== 维度表 ====================
                 cursor.execute("CREATE TABLE IF NOT EXISTS dim_languages (language_id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE)")
                 cursor.execute("CREATE TABLE IF NOT EXISTS dim_tags (tag_id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE)")
                 cursor.execute("""
@@ -34,12 +55,16 @@ class ProjectDatabase:
                         date_id INTEGER PRIMARY KEY, full_date DATE NOT NULL UNIQUE, year INTEGER,
                         month INTEGER, day INTEGER, weekday INTEGER, week_of_year INTEGER
                     )""")
+                
+                # ==================== 关联表 ====================
                 cursor.execute("""
                     CREATE TABLE IF NOT EXISTS assoc_project_tags (
                         project_id INTEGER, tag_id INTEGER, PRIMARY KEY (project_id, tag_id),
                         FOREIGN KEY (project_id) REFERENCES dim_projects (project_id),
                         FOREIGN KEY (tag_id) REFERENCES dim_tags (tag_id)
                     )""")
+                
+                # ==================== 事实表 ====================
                 cursor.execute("""
                     CREATE TABLE IF NOT EXISTS fact_trending_snapshots (
                         snapshot_id INTEGER PRIMARY KEY, project_id INTEGER NOT NULL, date_id INTEGER NOT NULL,
@@ -48,19 +73,57 @@ class ProjectDatabase:
                         FOREIGN KEY (project_id) REFERENCES dim_projects (project_id),
                         FOREIGN KEY (date_id) REFERENCES dim_dates (date_id)
                     )""")
+                
+                # ==================== 汇总表 ====================
                 cursor.execute("""
                     CREATE TABLE IF NOT EXISTS summarized_projects (
                         name TEXT PRIMARY KEY, url TEXT, description TEXT, language TEXT, stars INTEGER,
                         forks INTEGER, contributor_count INTEGER, created_at TEXT, updated_at TEXT,
-                        open_issues INTEGER, watchers INTEGER, summary_date TEXT NOT NULL
+                        open_issues INTEGER, watchers INTEGER, summary_date TEXT NOT NULL,
+                        tech_domain TEXT
                     )""")
+                
+                # ==================== 索引优化 ====================
+                # summarized_projects 表索引
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_summarized_language ON summarized_projects(language)")
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_summarized_summary_date ON summarized_projects(summary_date)")
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_summarized_stars ON summarized_projects(stars)")
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_summarized_forks ON summarized_projects(forks)")
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_summarized_tech_domain ON summarized_projects(tech_domain)")
+                
+                # 事实表索引
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_fact_date_id ON fact_trending_snapshots(date_id)")
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_fact_project_id ON fact_trending_snapshots(project_id)")
+                
+                # 维度表索引
+                cursor.execute("CREATE INDEX IF NOT EXISTS idx_dim_projects_language ON dim_projects(language_id)")
+                
                 conn.commit()
+
+                # 迁移：添加 tech_domain 列（如果不存在）
+                try:
+                    cursor.execute("SELECT tech_domain FROM summarized_projects LIMIT 1")
+                except sqlite3.OperationalError:
+                    # 列不存在，添加它
+                    cursor.execute("ALTER TABLE summarized_projects ADD COLUMN tech_domain TEXT")
+                    cursor.execute("CREATE INDEX IF NOT EXISTS idx_summarized_tech_domain ON summarized_projects(tech_domain)")
+                    conn.commit()
+                    logger.info("✅ Migration: Added tech_domain column")
         except sqlite3.Error as e:
             logger.error(f"❌ Database error (_create_schema): {e}")
 
     # --- Refactored Dimension Helpers to use a passed cursor ---
 
     def _get_or_create_dimension_id(self, cursor, table, column, value):
+        """安全地获取或创建维度ID，使用白名单防止SQL注入"""
+        # 验证表名
+        if table not in ALLOWED_TABLES:
+            raise ValueError(f"Invalid table: {table}. Allowed tables: {ALLOWED_TABLES}")
+        
+        # 验证列名
+        if column not in ALLOWED_COLUMNS:
+            raise ValueError(f"Invalid column: {column}. Allowed columns: {ALLOWED_COLUMNS}")
+        
         cursor.execute(f"SELECT {column}_id FROM {table} WHERE name = ?", (value,))
         result = cursor.fetchone()
         if result:
@@ -156,27 +219,28 @@ class ProjectDatabase:
                 return default
 
         project_data = (
-            project.get('name'), 
-            project.get('url'), 
+            project.get('name'),
+            project.get('url'),
             project.get('description', 'N/A'),
-            project.get('language', 'N/A'), 
-            safe_int(project.get('stars')), 
+            project.get('language', 'N/A'),
+            safe_int(project.get('stars')),
             safe_int(project.get('forks')),
-            safe_int(project.get('contributor_count')), 
+            safe_int(project.get('contributor_count')),
             project.get('created_at', 'N/A'),
-            project.get('updated_at', 'N/A'), 
+            project.get('updated_at', 'N/A'),
             safe_int(project.get('open_issues')),
-            safe_int(project.get('watchers')), 
-            today_str
+            safe_int(project.get('watchers')),
+            today_str,
+            project.get('tech_domain', 'Other')  # 技术领域，默认 Other
         )
         try:
             with self._get_connection() as conn:
                 cursor = conn.cursor()
                 cursor.execute(
-                    """INSERT OR REPLACE INTO summarized_projects 
-                       (name, url, description, language, stars, forks, contributor_count, 
-                        created_at, updated_at, open_issues, watchers, summary_date) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                    """INSERT OR REPLACE INTO summarized_projects
+                       (name, url, description, language, stars, forks, contributor_count,
+                        created_at, updated_at, open_issues, watchers, summary_date, tech_domain)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                     project_data
                 )
                 conn.commit()

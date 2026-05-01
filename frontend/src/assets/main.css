@@ -913,3 +913,325 @@ h1, h2, h3, h4, h5, h6 {
 .custom-cursor {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300f5ff' stroke-width='2'%3E%3Cpath d='M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z'/%3E%3C/svg%3E"), auto;
 }
+
+/* ============================================
+   Terminal Intelligence Design System
+   技术情报终端设计系统
+   ============================================ */
+
+.terminal-panel,
+.report-card {
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.06);
+}
+
+.terminal-panel {
+  position: relative;
+  border-radius: 0.5rem;
+}
+
+.terminal-panel::before,
+.report-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.65), transparent 60%);
+  opacity: 0.55;
+}
+
+.report-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.report-card:hover {
+  border-color: rgba(34, 211, 238, 0.38);
+  background: rgba(15, 23, 42, 0.9);
+  transform: translateY(-2px);
+}
+
+.report-card-compact {
+  min-height: 10.75rem;
+}
+
+.terminal-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+  padding: 0.65rem 1rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: rgba(148, 163, 184, 0.82);
+}
+
+.terminal-nav {
+  border: 1px solid transparent;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+.terminal-nav:hover,
+.terminal-nav.active {
+  border-color: rgba(34, 211, 238, 0.22);
+  background: rgba(34, 211, 238, 0.06);
+  color: #67e8f9;
+}
+
+.status-chip {
+  border: 1px solid rgba(51, 65, 85, 0.95);
+  background: rgba(2, 6, 23, 0.45);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  border-radius: 0.25rem;
+}
+
+.status-chip.online {
+  border-color: rgba(34, 197, 94, 0.24);
+  color: #86efac;
+}
+
+.terminal-metric {
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  background: rgba(2, 6, 23, 0.36);
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+}
+
+.terminal-metric span {
+  display: block;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  color: #64748b;
+}
+
+.terminal-metric strong {
+  margin-top: 0.55rem;
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.terminal-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(51, 65, 85, 0.95);
+  background: rgba(15, 23, 42, 0.75);
+  padding: 0.65rem 1rem;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.terminal-action.compact {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.78rem;
+}
+
+.terminal-action:hover {
+  border-color: rgba(34, 211, 238, 0.38);
+  color: #e0f2fe;
+}
+
+.terminal-action.primary {
+  border-color: rgba(34, 211, 238, 0.36);
+  background: rgba(34, 211, 238, 0.12);
+  color: #a5f3fc;
+}
+
+.feed-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  background: rgba(2, 6, 23, 0.32);
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.feed-row span {
+  font-size: 0.76rem;
+  color: #64748b;
+}
+
+.feed-row strong {
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.terminal-section-title {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+  padding-bottom: 0.85rem;
+}
+
+.terminal-section-title h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.section-kicker {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+/* 页面容器 */
+.terminal-page {
+  min-height: 100vh;
+  background-color: #071019;
+  color: #f1f5f9;
+}
+
+/* 页面头部 */
+.terminal-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+  background-color: rgba(7, 16, 25, 0.95);
+  backdrop-filter: blur(4px);
+}
+
+/* 页面主内容区 */
+.terminal-main {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* 空状态 */
+.terminal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 20rem;
+  text-align: center;
+  color: #64748b;
+}
+
+.terminal-empty svg {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* 加载状态 */
+.terminal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid rgba(34, 211, 238, 0.2);
+  border-top-color: #22d3ee;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 搜索框 */
+.terminal-search {
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  background: rgba(15, 23, 42, 0.72);
+  padding: 0.5rem 1rem;
+  color: #cbd5e1;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.terminal-search:focus {
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+.terminal-search::placeholder {
+  color: #64748b;
+}
+
+/* 下拉选择框 */
+.terminal-select {
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  background: rgba(15, 23, 42, 0.72);
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  color: #cbd5e1;
+  outline: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+}
+
+.terminal-select:focus {
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+/* 表格样式 */
+.terminal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.terminal-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+  text-transform: uppercase;
+}
+
+.terminal-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  color: #cbd5e1;
+}
+
+.terminal-table tr:hover td {
+  background: rgba(34, 211, 238, 0.04);
+}

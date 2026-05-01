@@ -175,12 +175,33 @@ export const reportApi = {
     }
   },
 
+  // 获取项目列表（支持日期范围、排序、筛选）
+  async getProjects(params: {
+    date_from?: string
+    date_to?: string
+    language?: string
+    sort_by?: string
+    order?: string
+    page?: number
+    page_size?: number
+    search?: string
+  }): Promise<{ items: Project[]; total: number; page: number; page_size: number; total_pages: number }> {
+    try {
+      const response = await api.get('/api/projects', { params })
+      console.log(`🚀 获取项目列表:`, params)
+      return response.data.data || response.data
+    } catch (error) {
+      console.error('获取项目列表失败:', error)
+      throw error
+    }
+  },
+
   // 获取单个项目详情
   async getProjectDetails(projectName: string): Promise<Project> {
     try {
       // 修改为使用查询参数，而不是路径参数，以更好地处理包含特殊字符的项目名称
       const response = await api.get('/api/project', {
-        params: { name: projectName }
+        params: { project_name: projectName }
       })
       console.log(`📦 获取项目详情: ${projectName}`)
       return response.data.data || response.data
@@ -212,6 +233,39 @@ export const reportApi = {
     } catch (error) {
       console.error('获取趋势数据失败:', error)
       throw error
+    }
+  },
+
+  // 获取所有技术领域分类
+  async getTechDomains(): Promise<{ name: string; count: number }[]> {
+    try {
+      const response = await api.get('/api/tech-domains')
+      return response.data.data || []
+    } catch (error) {
+      console.error('获取技术领域失败:', error)
+      return []
+    }
+  },
+
+  // 获取编程语言分布
+  async getLanguageDistribution(): Promise<{ name: string; count: number }[]> {
+    try {
+      const response = await api.get('/api/language-distribution')
+      return response.data.data || []
+    } catch (error) {
+      console.error('获取语言分布失败:', error)
+      return []
+    }
+  },
+
+  // 获取项目趋势
+  async getProjectTrend(days: number = 7): Promise<{ date: string; count: number }[]> {
+    try {
+      const response = await api.get('/api/project-trend', { params: { days } })
+      return response.data.data || []
+    } catch (error) {
+      console.error('获取项目趋势失败:', error)
+      return []
     }
   },
 
@@ -273,12 +327,16 @@ export const reportApi = {
 // 导出便利函数
 export const getReports = reportApi.getReports
 export const getProjectsByDate = reportApi.getProjectsByDate
+export const getProjects = reportApi.getProjects
 export const getProjectDetails = reportApi.getProjectDetails
 export const getReportByDate = reportApi.getReportContent
 export const getStats = reportApi.getStats
 export const getTrends = reportApi.getTrends
 export const healthCheck = reportApi.healthCheck
 export const getTrendData = reportApi.getTrendData
+export const getTechDomains = reportApi.getTechDomains
+export const getLanguageDistribution = reportApi.getLanguageDistribution
+export const getProjectTrend = reportApi.getProjectTrend
 
 // 导出API基础URL用于调试
 export const getApiBaseUrl = () => API_BASE_URL
