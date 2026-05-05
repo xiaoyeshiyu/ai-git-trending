@@ -95,7 +95,7 @@ SINGLE_PROJECT_PROMPT_TEMPLATE = """
 
 #### 🔗 项目链接
 
-  - **GitHub**: [{name}](https://www.google.com/search?q=%7Burl%7D)
+  - **GitHub**: [{name}]({url})
 
 """
 
