@@ -62,13 +62,18 @@ venv.bak
 backend/.env
 frontend/.env
 
-# Database files
+# Database files (only track the reporter DB)
 *.db
+!output/reporter.db
 *.sqlite3
-output/reporter.db
 
-# Output files
-output/
+# Output directory (track reports and DB only)
+output/*
+!output/md/
+!output/html/
+!output/reporter.db
+output/*.db-journal
+output/*.db-wal
 
 # IDE settings
 .idea/

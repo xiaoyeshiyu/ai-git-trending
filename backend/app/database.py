@@ -13,6 +13,7 @@ ALLOWED_COLUMNS = {'language', 'tag'}
 class ProjectDatabase:
     def __init__(self, db_path=DB_PATH):
         self.db_path = db_path
+        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self._create_schema()
 
     def _get_connection(self):

@@ -49,12 +49,21 @@ def run_scheduler():
             logger.error(f"❌ Scheduler error: {e}")
             time.sleep(60)
 
-def run_reporter_only():
+def run_reporter_only(once=False):
     """
     仅运行报告生成器（不启动Web服务）
+
+    Args:
+        once: 如果为True，仅运行一次job()后退出（用于CI/CD）
     """
-    logger.info("📊 Running GitHub Trending Reporter (Reporter Only Mode)")
-    run_scheduler()
+    if once:
+        logger.info("📊 Running GitHub Trending Reporter (Single Run Mode)")
+        logger.info("🏃 Executing job once...")
+        job()
+        logger.info("✅ Single job execution complete. Exiting.")
+    else:
+        logger.info("📊 Running GitHub Trending Reporter (Reporter Only Mode)")
+        run_scheduler()
 
 def run_web_only(host='127.0.0.1', port=5001, debug=True):
     """
@@ -126,9 +135,15 @@ def main():
     )
     
     parser.add_argument(
-        '--debug', 
+        '--debug',
         action='store_true',
         help='启用调试模式 (仅在web/full模式下生效)'
+    )
+
+    parser.add_argument(
+        '--once',
+        action='store_true',
+        help='仅运行一次报告任务后退出 (用于 CI/CD)'
     )
     
     args = parser.parse_args()
@@ -151,7 +166,7 @@ def main():
         elif args.mode == 'web':
             run_web_only(args.host, args.port, args.debug)
         elif args.mode == 'reporter':
-            run_reporter_only()
+            run_reporter_only(once=args.once)
     except KeyboardInterrupt:
         logger.info("🛑 Application interrupted by user")
         sys.exit(0)

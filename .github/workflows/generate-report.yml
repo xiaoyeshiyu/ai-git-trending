@@ -1,0 +1,68 @@
+name: Generate GitHub Trending Report
+
+on:
+  schedule:
+    # 北京时间 9:00 AM = UTC 1:00 AM
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: report-generation
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'backend/requirements.txt'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Run reporter
+        working-directory: backend
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL || 'gpt-4-turbo' }}
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
+          LLM_MAX_RETRIES: '3'
+          LLM_RETRY_DELAY: '5'
+          LLM_TIMEOUT: '60'
+          NUM_PROJECTS_TO_SUMMARIZE: ${{ vars.NUM_PROJECTS_TO_SUMMARIZE || '8' }}
+          MAX_PROJECTS_TO_SCRAPE: ${{ vars.MAX_PROJECTS_TO_SCRAPE || '25' }}
+        run: |
+          python app.py --mode reporter --once
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git pull --rebase origin main
+
+          git add output/reporter.db output/md/ output/html/
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            TODAY=$(date +%Y-%m-%d)
+            git commit -m "📊 Daily report: $TODAY [skip ci]"
+            git push origin main
+          fi

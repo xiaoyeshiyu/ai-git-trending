@@ -15,6 +15,10 @@ __pycache__/
 venv/
 env/
 
+# Node
+frontend/node_modules/
+node_modules/
+
 # IDE / Editor
 .vscode/
 .idea/
@@ -26,3 +30,6 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Output (runtime data)
+output/

@@ -429,6 +429,34 @@ def get_project_details_api():
         logger.error(f"通过POST请求获取项目详情错误: {e}")
         return jsonify({"error": str(e), "project_name": project_name if 'project_name' in locals() else "N/A"}), 500
 
+# Frontend static file serving (for Docker / production)
+FRONTEND_DIST = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'dist')
+
+
+@app.route('/')
+def serve_index():
+    if os.path.isfile(os.path.join(FRONTEND_DIST, 'index.html')):
+        return send_from_directory(FRONTEND_DIST, 'index.html')
+    return jsonify({"error": "Frontend not built"}), 404
+
+
+@app.route('/<path:path>')
+def serve_frontend(path):
+    # API and image routes are already handled by specific routes above
+    if path.startswith('api/') or path.startswith('images/'):
+        return jsonify({"error": "Not found"}), 404
+
+    file_path = os.path.join(FRONTEND_DIST, path)
+    if os.path.isfile(file_path):
+        return send_from_directory(FRONTEND_DIST, path)
+
+    # SPA fallback: serve index.html for all other paths
+    if os.path.isfile(os.path.join(FRONTEND_DIST, 'index.html')):
+        return send_from_directory(FRONTEND_DIST, 'index.html')
+
+    return jsonify({"error": "Not found"}), 404
+
+
 # 辅助函数：解码URI组件
 def decodeURIComponent(encoded_str):
     """解码URI编码的字符串，适配前端encodeURIComponent的编码"""
