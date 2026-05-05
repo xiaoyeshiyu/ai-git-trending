@@ -222,3 +222,29 @@ jobs:
             git pull --rebase origin main
             git push origin main
           fi
+
+      - name: Send notifications
+        working-directory: backend
+        env:
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          CLAWBOT_WEBHOOK: ${{ secrets.CLAWBOT_WEBHOOK }}
+          PAGES_URL: ${{ vars.PAGES_URL }}
+        run: |
+          python3 -c "
+          import sys, os
+          sys.path.insert(0, '.')
+          sys.path.insert(0, '..')
+          from app.notifier import notify_all, build_notification_text
+          import glob
+
+          md_files = sorted(glob.glob('../output/md/github_trending_*.md'), reverse=True)
+          if not md_files:
+              print('No MD report found, skipping notification')
+              sys.exit(0)
+
+          pages_url = os.getenv('PAGES_URL', '')
+          title, text = build_notification_text(md_files[0], pages_url)
+          results = notify_all(title, text)
+          print(f'Notification results: {results}')
+          "
