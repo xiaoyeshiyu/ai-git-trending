@@ -7,7 +7,13 @@ from config.logging_config import get_logger
 
 logger = get_logger('notifier', 'INFO')
 
-PAGES_URL = os.getenv('PAGES_URL', '').rstrip('/')
+
+def _validate_webhook_url(url: str) -> bool:
+    """确保 webhook 使用 HTTPS"""
+    if not url.startswith('https://'):
+        logger.warning(f"Webhook URL must use HTTPS, got: {url[:50]}...")
+        return False
+    return True
 
 
 def _post_json(url: str, payload: dict) -> bool:
@@ -71,38 +77,41 @@ def notify_all(title: str, text: str) -> dict:
     results = {}
 
     webhook = os.getenv('DINGTALK_WEBHOOK', '')
-    if webhook:
+    if webhook and _validate_webhook_url(webhook):
         ok = send_dingtalk(webhook, title, text)
         results['dingtalk'] = 'ok' if ok else 'failed'
         logger.info(f"📢 DingTalk: {'sent' if ok else 'failed'}")
-    else:
-        logger.debug("DingTalk webhook not configured, skipping")
+    elif webhook:
+        results['dingtalk'] = 'skipped (invalid url)'
 
     webhook = os.getenv('FEISHU_WEBHOOK', '')
-    if webhook:
+    if webhook and _validate_webhook_url(webhook):
         ok = send_feishu(webhook, title, text)
         results['feishu'] = 'ok' if ok else 'failed'
         logger.info(f"📢 Feishu: {'sent' if ok else 'failed'}")
-    else:
-        logger.debug("Feishu webhook not configured, skipping")
+    elif webhook:
+        results['feishu'] = 'skipped (invalid url)'
 
     webhook = os.getenv('CLAWBOT_WEBHOOK', '')
-    if webhook:
+    if webhook and _validate_webhook_url(webhook):
         ok = send_clawbot(webhook, title, text)
         results['clawbot'] = 'ok' if ok else 'failed'
         logger.info(f"📢 ClawBot: {'sent' if ok else 'failed'}")
-    else:
-        logger.debug("ClawBot webhook not configured, skipping")
+    elif webhook:
+        results['clawbot'] = 'skipped (invalid url)'
 
     return results
 
 
 def build_notification_text(latest_md_path: str, pages_url: str = '') -> tuple:
     """从最新报告中提取标题和摘要文本"""
-    with open(latest_md_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+    try:
+        with open(latest_md_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except (FileNotFoundError, PermissionError, OSError) as e:
+        logger.error(f"Failed to read report for notification: {e}")
+        return "GitHub Trending 日报", "今日报告生成完成，请查看 Pages 页面。"
 
-    # 提取标题（第一行 ## 开头）
     title = "GitHub Trending 日报"
     overview_lines = []
     in_overview = False
@@ -120,12 +129,8 @@ def build_notification_text(latest_md_path: str, pages_url: str = '') -> tuple:
 
     overview = '\n'.join(overview_lines[:5]) if overview_lines else content[:500]
 
-    # 构建通知文本
     text = overview
     if pages_url:
         text += f'\n\n[查看完整报告]({pages_url})'
-    if not pages_url:
-        # 尝试从检查 output/html/ 推断
-        pass
 
     return title, text

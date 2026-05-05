@@ -2,7 +2,7 @@ from datetime import datetime
 from config.settings import NUM_PROJECTS_TO_SUMMARIZE, DAYS_TO_SKIP
 from .scraper import scrape_github_trending
 from .database import ProjectDatabase
-from .summarizer import get_summary_for_single_project, get_overview_intro
+from .summarizer import extract_tech_domain, get_summary_for_single_project, get_overview_intro
 from .file_writer import save_summary_files
 from config.logging_config import get_logger
 import time
@@ -45,7 +45,6 @@ def job():
             break
 
     # Build the report from trending projects (always generate an overview)
-    from app.summarizer import extract_tech_domain
     projects_for_overview = all_trending_repos[:NUM_PROJECTS_TO_SUMMARIZE]
 
     individual_summaries = []
