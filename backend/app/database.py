@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from config.settings import DB_PATH
 from datetime import date
