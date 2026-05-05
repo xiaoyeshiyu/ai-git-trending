@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -59,7 +57,7 @@ jobs:
 
           git pull --rebase origin main
 
-          git add output/reporter.db output/md/ output/html/
+          git add output/reporter.db output/md/ output/html/ docs/
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
@@ -71,13 +69,14 @@ jobs:
 
       - name: Build Pages site
         run: |
-          mkdir -p _pages
-          cp -r output/html/*.html _pages/ 2>/dev/null || true
+          rm -rf docs
+          mkdir -p docs
+          cp -r output/html/*.html docs/ 2>/dev/null || true
 
           # Generate reports.json manifest
           reports_json="["
           first=true
-          for f in _pages/github_trending_*.html; do
+          for f in docs/github_trending_*.html; do
             [ -f "$f" ] || continue
             filename=$(basename "$f")
             date_str=$(echo "$filename" | sed 's/github_trending_//' | sed 's/\.html//')
@@ -87,10 +86,10 @@ jobs:
             reports_json+="{\"date\":\"$date_str\",\"display\":\"$display_date\",\"file\":\"$filename\",\"size\":$size_kb}"
           done
           reports_json+="]"
-          echo "$reports_json" > _pages/reports.json
+          echo "$reports_json" > docs/reports.json
 
           # Create index.html
-          cat > _pages/index.html << 'HTMLEOF'
+          cat > docs/index.html << 'HTMLEOF'
           <!DOCTYPE html>
           <html lang="zh-CN">
           <head>
@@ -223,13 +222,3 @@ jobs:
           </html>
           HTMLEOF
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./_pages
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4

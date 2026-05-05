@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Trending 日报</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f8f7f4;--surface:#fff;--text:#1a1a1a;--text-secondary:#6b6b6b;--accent:#1a56db;--border:#e8e5df;--shadow:0 1px 3px rgba(0,0,0,.06);--shadow-hover:0 4px 12px rgba(0,0,0,.08);--radius:12px}
+body{font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#172554 100%);color:#fff;padding:64px 24px 48px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(59,130,246,.15) 0%,transparent 60%),radial-gradient(ellipse at 70% 20%,rgba(139,92,246,.1) 0%,transparent 50%)}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;position:relative}
+.hero p{font-size:1.05rem;opacity:.75;margin-top:8px;position:relative}
+.container{max-width:860px;margin:0 auto;padding:32px 20px 64px}
+.stats-bar{display:flex;gap:24px;flex-wrap:wrap;margin-top:-24px;position:relative;z-index:2}
+.stat-card{flex:1;min-width:120px;background:var(--surface);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);text-align:center;border:1px solid var(--border)}
+.stat-card .num{font-size:2rem;font-weight:700;color:var(--accent);line-height:1.1}
+.stat-card .label{font-size:.85rem;color:var(--text-secondary);margin-top:4px}
+.section-title{font-size:1.3rem;font-weight:700;letter-spacing:-.01em;margin:40px 0 16px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.report-list{display:flex;flex-direction:column;gap:10px}
+.report-card{display:flex;align-items:center;gap:16px;padding:18px 24px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);transition:all .2s ease;text-decoration:none;color:inherit;cursor:pointer}
+.report-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px);border-color:#c8d6e5}
+.report-date{font-weight:600;font-size:1.05rem;white-space:nowrap;min-width:110px}
+.report-meta{font-size:.85rem;color:var(--text-secondary)}
+.report-arrow{margin-left:auto;color:var(--accent);font-weight:600;font-size:.9rem;white-space:nowrap}
+.empty-state{text-align:center;padding:48px 20px;color:var(--text-secondary)}
+.footer{text-align:center;padding:24px;color:var(--text-secondary);font-size:.82rem;border-top:1px solid var(--border);margin-top:40px}
+@media(max-width:540px){.report-card{flex-wrap:wrap;gap:6px}.report-arrow{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>GitHub Trending 日报</h1>
+<p>AI 驱动的技术趋势洞察 · 每日自动更新</p>
+</div>
+<div class="container">
+<div class="stats-bar">
+<div class="stat-card"><div class="num" id="total-count">—</div><div class="label">报告总数</div></div>
+<div class="stat-card"><div class="num" id="latest-date">—</div><div class="label">最新报告</div></div>
+<div class="stat-card"><div class="num" id="latest-size">—</div><div class="label">最新大小 (KB)</div></div>
+</div>
+<div class="section-title">所有报告</div>
+<div class="report-list" id="report-list"></div>
+<div class="empty-state" id="empty-state"><p>暂无报告，等待首次生成…</p></div>
+</div>
+<div class="footer">Powered by GitHub Actions · Reports generated daily</div>
+<script>
+fetch('reports.json')
+.then(r=>r.json())
+.then(reports=>{
+const list=document.getElementById('report-list');
+const empty=document.getElementById('empty-state');
+if(!reports.length){empty.style.display='block';return}
+empty.style.display='none';
+reports.sort((a,b)=>b.date.localeCompare(a.date));
+document.getElementById('total-count').textContent=reports.length;
+document.getElementById('latest-date').textContent=reports[0].display;
+document.getElementById('latest-size').textContent=reports[0].size;
+reports.forEach(r=>{
+const a=document.createElement('a');
+a.className='report-card';
+a.href=r.file;
+a.innerHTML='<span class="report-date">'+r.display+'</span><span class="report-meta">'+r.file+'</span><span class="report-arrow">查看 →</span>';
+list.appendChild(a);
+});
+})
+</script>
+</body>
+</html>
