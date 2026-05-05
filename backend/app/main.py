@@ -44,32 +44,36 @@ def job():
             logger.info(f"👍 Found {len(repos_to_summarize)} new projects to summarize.")
             break
 
-    if not repos_to_summarize:
-        logger.info("✅ No new projects to summarize today.")
-    else:
+    # Build the report from trending projects (always generate an overview)
+    from app.summarizer import extract_tech_domain
+    projects_for_overview = all_trending_repos[:NUM_PROJECTS_TO_SUMMARIZE]
+
+    individual_summaries = []
+    if repos_to_summarize:
         logger.info(f"📝 Summarizing {len(repos_to_summarize)} new projects...")
-        from app.summarizer import extract_tech_domain
-        individual_summaries = []
         for project in repos_to_summarize:
             summary = get_summary_for_single_project(project)
             if summary:
                 individual_summaries.append(summary)
-                # 提取技术领域并添加到项目数据
                 tech_domain = extract_tech_domain(summary)
                 project['tech_domain'] = tech_domain
                 logger.info(f"🏷️ Tech domain for {project['name']}: {tech_domain}")
-                # Also add it to the legacy summarized_projects table
                 db.add_summarized_project(project)
                 time.sleep(1)
             else:
                 logger.warning(f"❌ Warning: Failed to summarize '{project['name']}'. Skipping this project.")
+    else:
+        logger.info("✅ No new projects to summarize today, generating overview only.")
 
-        if individual_summaries:
-            intro = get_overview_intro(repos_to_summarize)
-            final_report = intro + "\n\n" + "\n\n---\n\n".join(individual_summaries)
-            
-            save_summary_files(final_report)
-            logger.info(f"💾 Successfully saved report for {len(repos_to_summarize)} projects.")
+    # Always generate and save the daily report
+    intro = get_overview_intro(projects_for_overview)
+    if individual_summaries:
+        final_report = intro + "\n\n" + "\n\n---\n\n".join(individual_summaries)
+    else:
+        final_report = intro + "\n\n> 今日上榜项目此前均已分析，详见历史报告。"
+
+    save_summary_files(final_report)
+    logger.info(f"💾 Daily report saved ({len(individual_summaries)} new summaries).")
 
     logger.info(f"✅ Job finished at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
