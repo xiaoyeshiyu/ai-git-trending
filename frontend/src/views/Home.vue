@@ -405,6 +405,11 @@ const topLanguages = computed(() => {
 function updateTrendingProjects() {
   if (trendsData.value && trendsData.value.most_frequent_projects && trendsData.value.most_frequent_projects.length > 0) {
     // 直接使用后端返回的完整项目数据
+    const safeDate = (val: string | undefined) => {
+      if (!val || val === 'N/A') return new Date().toISOString().split('T')[0]
+      const d = new Date(val)
+      return isNaN(d.getTime()) ? new Date().toISOString().split('T')[0] : d.toISOString().split('T')[0]
+    }
     trendingProjects.value = trendsData.value.most_frequent_projects.slice(0, 12).map(project => ({
       name: project.name,
       url: project.url || `https://github.com/${project.name}`,
@@ -413,11 +418,11 @@ function updateTrendingProjects() {
       stars: project.stars || project.avg_stars || 0,
       forks: project.forks || 0,
       contributor_count: project.contributor_count || 0,
-      created_at: project.created_at || new Date().toISOString(),
-      updated_at: project.updated_at || new Date().toISOString(),
+      created_at: project.created_at && project.created_at !== 'N/A' ? project.created_at : new Date().toISOString(),
+      updated_at: project.updated_at && project.updated_at !== 'N/A' ? project.updated_at : new Date().toISOString(),
       open_issues: project.open_issues || 0,
       watchers: project.watchers || 0,
-      summary_date: project.created_at ? new Date(project.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
+      summary_date: safeDate(project.created_at)
     }))
   } else {
     // 如果没有真实数据，返回空数组
