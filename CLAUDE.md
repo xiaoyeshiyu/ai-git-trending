@@ -166,3 +166,14 @@ Two parallel access layers exist — prefer `database.py` (raw sqlite3) for curr
 |----------|---------|---------|
 | `VITE_STATIC_MODE` | `false` | `true` = read from `docs/data/*.json` (GitHub Pages) |
 | `VITE_API_BASE_URL` | `http://localhost:5001` | Live API base URL |
+
+## README Maintenance
+
+**When adding or modifying any feature, update README.md and README-EN.md in the same commit.** Sections that commonly need updating:
+
+- `✨ 功能特性 / Features` — add or revise feature bullets
+- `🏗️ 架构设计 / Architecture` — update data flow, file map, or API routes
+- `⚙️ 完整环境变量 / Environment Variables` — add new env vars with defaults
+- `📸 界面截图 / Screenshots` — retake screenshots if the UI changes significantly
+
+Screenshots live in `images/screenshot_*.png`. To regenerate them, start a local static server (`python3 -m http.server 8899` from a directory where `ai-git-trending/` maps to `docs/`) and run the Playwright script at `/tmp/screenshot.mjs`.
