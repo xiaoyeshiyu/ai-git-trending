@@ -1,0 +1,135 @@
+name: Generate GitHub Trending Report
+
+on:
+  schedule:
+    # 北京时间 8:00 AM = UTC 0:00 AM
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: report-generation
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'backend/requirements.txt'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Run reporter
+        working-directory: backend
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL || 'gpt-4-turbo' }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          LLM_MAX_RETRIES: '3'
+          LLM_RETRY_DELAY: '5'
+          LLM_TIMEOUT: '60'
+          NUM_PROJECTS_TO_SUMMARIZE: ${{ vars.NUM_PROJECTS_TO_SUMMARIZE || '8' }}
+          MAX_PROJECTS_TO_SCRAPE: ${{ vars.MAX_PROJECTS_TO_SCRAPE || '25' }}
+        run: |
+          python app.py --mode reporter --once
+
+      - name: Export static data
+        working-directory: backend
+        run: |
+          python export_static_data.py
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build Vue frontend
+        working-directory: frontend
+        env:
+          VITE_STATIC_MODE: 'true'
+        run: |
+          npm ci
+          npx vite build --base=/ai-git-trending/ --outDir=../docs
+
+      - name: Copy HTML reports
+        run: |
+          cp -n output/html/*.html docs/ 2>/dev/null || true
+
+          # Generate reports.json manifest
+          reports_json="["
+          first=true
+          for f in docs/github_trending_*.html; do
+            [ -f "$f" ] || continue
+            filename=$(basename "$f")
+            date_str=$(echo "$filename" | sed 's/github_trending_//' | sed 's/\.html//')
+            display_date=$(date -d "$date_str" "+%Y年%m月%d日" 2>/dev/null || echo "$date_str")
+            size_kb=$(( $(stat -c%s "$f" 2>/dev/null || echo 0) / 1024 ))
+            if [ "$first" = true ]; then first=false; else reports_json+=","; fi
+            reports_json+="{\"date\":\"$date_str\",\"display\":\"$display_date\",\"file\":\"$filename\",\"size\":$size_kb}"
+          done
+          reports_json+="]"
+          echo "$reports_json" > docs/reports.json
+
+          # SPA fallback for GitHub Pages
+          cp docs/index.html docs/404.html 2>/dev/null || true
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add output/reporter.db output/md/ output/html/ docs/
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            TODAY=$(date +%Y-%m-%d)
+            git commit -m "📊 Daily report: $TODAY [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+      - name: Send notifications
+        working-directory: backend
+        env:
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          CLAWBOT_WEBHOOK: ${{ secrets.CLAWBOT_WEBHOOK }}
+          PAGES_URL: ${{ vars.PAGES_URL }}
+        run: |
+          python3 -c "
+          import sys, os
+          sys.path.insert(0, '.')
+          sys.path.insert(0, '..')
+          from app.notifier import notify_all, build_notification_text
+          import glob
+
+          md_files = sorted(glob.glob('../output/md/github_trending_*.md'), reverse=True)
+          if not md_files:
+              print('No MD report found, skipping notification')
+              sys.exit(0)
+
+          pages_url = os.getenv('PAGES_URL', '')
+          title, text = build_notification_text(md_files[0], pages_url)
+          results = notify_all(title, text)
+          print(f'Notification results: {results}')
+          "

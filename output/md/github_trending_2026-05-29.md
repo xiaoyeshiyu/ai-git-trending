@@ -1,0 +1,136 @@
+## 今日热点：AI 代理工程化与内容生产工具集体升温
+今天的 GitHub 热点明显围绕“AI 代理能力工程化”和“生成式内容生产提效”展开，一方面，skills、ECC、superpowers、harness、compound-engineering-plugin、taste-skill、stop-slop 等项目集中指向 Agent 技能体系、协作编排、性能优化、写作风格控制与开发方法论，反映出大模型应用正从单点对话走向可复用、可扩展、可治理的工程阶段；另一方面，MoneyPrinterTurbo、MOSS-TTS、markitdown、crawl4ai、Understand-Anything 等项目覆盖短视频生成、语音与声音合成、文档转 Markdown、面向 LLM 的网页抓取、代码知识图谱理解等关键链路，进一步补齐从数据获取、内容理解到多模态生成的工具栈；同时，twenty、FreeDomain、build-your-own-x 以及英语学习指南等项目，也体现出开源社区对 AI 原生 CRM、基础互联网资源、编程能力训练与个人成长场景的持续关注，整体呈现出“Agent 平台化 + 多模态生产 + 开发者效率工具”三线并进的趋势，具体项目摘要如下：
+
+### ✨ microsoft/markitdown (128035★)
+
+> **一句话**：把 PDF、Office、图片、音频、网页甚至 YouTube 内容直接拆成结构化 Markdown，方便你立刻喂给 LLM、检索系统或文本处理流水线。
+
+- **它是什么**：这是一个面向 Python 生态的文档转 Markdown 项目，重点不是“原样还原排版”，而是尽量保留标题、列表、表格、链接等结构，让输出更适合机器理解。它支持 PDF、Word、Excel、PowerPoint、图片、音频、HTML、CSV/JSON/XML、ZIP、EPub、YouTube URL 等多种输入，还能通过插件和 Azure 服务扩展 OCR、多模态解析和字段提取能力。
+
+- **能解决什么痛点**：一是做 RAG、知识库或文档入库时，原始文件格式五花八门，直接抽文本容易丢结构，后续切块和检索效果差；它能先统一转成 Markdown。二是处理扫描件、图片、音频或复杂文档时，本地解析能力不够，它提供了插件机制以及 Azure Document Intelligence / Content Understanding 这类云能力补位。
+
+- **适合谁用**：做 LLM/RAG 管道、文档清洗、知识库构建的 Python 工程师很适合。需要批量处理企业 Office/PDF/多媒体资料的内部平台开发者、数据工程师也很适合。
+
+- **怎么上手**：安装并转换单个文件：`pip install 'markitdown[all]' && markitdown path-to-file.pdf -o document.md`
+
+- **可以用在哪些场景**：一是把公司积累的 PDF、PPT、Word 批量转成 Markdown 后接入向量库，搭建内部问答系统。二是把财务单据、合同、报告等文档接入 Azure Content Understanding，除了正文还提取结构化字段并输出到 YAML front matter。三是做媒体资料归档时，把图片 OCR、音频转写、YouTube 字幕抓取统一沉淀为 Markdown 文本资产。
+
+- **技术看点**：它把“文档理解”的输出格式统一收敛到 Markdown，这对 LLM 输入很友好，也更省 token。架构上采用可选依赖和插件机制，基础能力可本地离线跑，遇到复杂 OCR、多模态或字段抽取需求时再接 Azure 服务，扩展路径比较清晰。
+
+- **同类对比**：README 明确提到它可类比 textract，但差异在于它更强调保留文档结构并输出 Markdown，而不是只抽取纯文本；目标更偏 LLM 和文本分析链路，而不是面向人工阅读的高保真转换。
+
+- **注意事项**：项目很新，创建于 2024-11，但更新活跃，说明功能迭代很快；同时 673 个 open issues 也说明使用面广、边界场景多，上生产前最好先拿自己的文档样本跑一轮。README 文档较完整，CLI、Python API、插件、Azure 集成都有示例，但依赖是按格式拆分的，首次安装要注意选对 extras。安全上要特别注意：它会以当前进程权限做 I/O，处理不可信输入时应尽量使用更窄的 `convert_*` 接口并做好输入清洗。另一个现实问题是，若接入 Azure Content Understanding / Document Intelligence，每次转换可能产生云侧费用。
+
+- **GitHub**：[microsoft/markitdown](https://github.com/microsoft/markitdown)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：微软是 GitHub 上最具全球影响力的开源组织之一，凭借超大规模项目矩阵与多个现象级仓库，持续主导开发工具与开发者生态。
+**技术栈偏好**：以 TypeScript、C#、Python 为核心，兼顾 C++ 与 JavaScript，明显偏向开发工具、桌面增强、自动化与教育示例等技术方向。
+**核心领域**：主要聚焦开发者工具、操作系统体验增强、开源平台能力建设与面向大众开发者的技术教育。
+
+---
+
+### ✨ revfactory/harness (3978★)
+
+> **一句话**：你只要对 Claude Code 说一句“给这个项目搭一套 agent 团队”，它就会按任务类型自动设计协作架构，并生成对应的 agents 和 skills 文件。
+
+- **它是什么**：这是一个面向 Claude Code 的“团队架构工厂”，核心不是提供单个 agent，而是把一段领域描述转换成一整套可运行的协作团队。它内置了 6 种预定义架构模式，比如流水线、并行汇总、专家池、生产者-评审者、主管调度、分层委派，并自动生成 `.claude/agents/` 和 `.claude/skills/` 下的定义文件。
+- **能解决什么痛点**：一是做复杂任务时，开发者往往知道要拆分成“分析、实现、QA、评审”等角色，但手动写每个 agent 的职责、协作方式和 skill 很费时间，且容易遗漏上下游衔接；二是多 agent 协作常见“谁负责什么、怎么传递结果、怎么验证输出”不清晰，Harness 把这些编排步骤固化成了可复用模板。
+- **适合谁用**：适合已经在使用 Claude Code、并希望把单 agent 工作流升级为多角色协作的开发者；也适合需要为特定领域快速定制 agent 团队的人，比如做代码审查、文档生成、研究分析、内容生产的 AI 工作流设计者。
+- **怎么上手**：`/plugin install harness@harness-marketplace`
+- **可以用在哪些场景**：比如给一个全栈网站项目生成“设计 / 前端 / 后端 / QA”串联团队；给代码库搭建“架构 / 安全 / 性能 / 代码风格”并行审查团队；给技术文档任务生成“接口分析 / 文档撰写 / 示例生成 / 完整性复核”的协作流程。
+- **技术看点**：它的关键设计不是模型能力本身，而是把多 agent 协作抽象成 6 种可选团队模式，并配套生成 orchestration、验证和 skill 结构。README 还强调了 Progressive Disclosure 式 skill 组织，以及 dry-run、触发验证、with-skill vs without-skill 对比测试，说明它比较重视可验证性而不只是“能跑起来”。
+- **同类对比**：README 给出了比较清晰的定位差异：相较于 coleam00/Archon，Harness 更关注“团队架构生成”，而不是“确定性的运行时配置”；相较于 SaehwanPark/meta-harness，它是 Claude Code 生态里的对应实现；相较于 wshobson/agents 这种 agent/skill 目录库，Harness 更像是“按场景组团队”的工厂，而不是零件仓库。
+- **注意事项**：项目创建于 2026-03-26，当前更新时间是 2026-05-29，发布时间较短但更新活跃，说明还处于快速迭代期，接口、目录结构和使用方式后续有变化风险。贡献者只有 3 人、Open Issues 14 个，属于作者驱动型项目；文档本身写得比较完整，含安装、结构、模式说明和用例，但前提是你已经在使用 Claude Code 插件体系，否则很难直接复用。README 中提到的 +60% 质量提升来自作者自测 A/B，第三方复现仍在等待，适合参考，不宜直接当成通用结论。
+
+- **GitHub**：[revfactory/harness](https://github.com/revfactory/harness)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：活跃于开发者工具与 AI 辅助编程社区，凭借多个高星项目在细分领域具备较强传播力和实践影响。
+**技术栈偏好**：以 HTML、JavaScript、MDX 为主，偏好面向文档、交互界面与开发工作流包装的轻量化技术栈。
+**核心领域**：主要聚焦于 AI 编程工具、开发者效率提升与相关实践方法论沉淀。
+
+---
+
+### ✨ unclecode/crawl4ai (67076★)
+
+> **一句话**：把网页连同动态内容、链接、表格和正文一起抓下来，直接整理成适合喂给 LLM 的 Markdown 或结构化数据。
+
+- **它是什么**：Crawl4AI 是一个面向 LLM、RAG 和数据管道场景的开源网页爬取与抓取项目，核心目标不是“把 HTML 抓回来”，而是“把网页整理成干净、可消费的内容”。它基于 Python，支持异步爬取、浏览器渲染、深度爬取、CSS/XPath 提取、结构化 JSON 抽取，以及直接输出适合模型处理的 Markdown。
+- **能解决什么痛点**：一是很多网站内容依赖 JavaScript、懒加载、iframe 或 Shadow DOM，传统 requests/BeautifulSoup 抓不到关键内容；二是即便抓到 HTML，也常常夹杂导航、广告、版权区，不能直接用于 RAG 或信息抽取，开发者还得自己做一轮复杂清洗。
+- **适合谁用**：做 RAG、知识库构建、Agent 数据接入的 Python 工程师；需要批量抓取新闻、文档站、商品页并抽成 Markdown/JSON 的数据工程师或爬虫开发者。
+- **怎么上手**：安装：`pip install -U crawl4ai && crawl4ai-setup`；最小用法：`async with AsyncWebCrawler() as crawler: result = await crawler.arun(url="https://www.nbcnews.com/business")`
+- **可以用在哪些场景**：抓公司官网、产品文档、帮助中心，生成企业内部 RAG 的知识源；批量提取电商页或目录页中的价格、标题、规格等字段，落成结构化 JSON；对新闻站或内容站做深度爬取，把正文和引用链接整理成可索引的 Markdown 数据集。
+- **技术看点**：项目强调“LLM-ready”输出，内置 Markdown 清洗、BM25 过滤、分块与语义相关内容选择，明显不是传统爬虫的原始抓取思路。底层则结合异步浏览器池、Playwright 浏览器能力、会话/代理/缓存/Hook 扩展，以及深度爬取和反爬检测处理，适合从实验走向生产。
+- **同类对比**：README 明确强调自己比一些需要注册、绑定 API Token、收费的“开源替代品”更开放，主打零密钥、本地可跑、对 LLM 结果更友好；但未在文档中系统列出具体竞品对比表。
+- **注意事项**：这是 2024 年创建的新项目，但更新非常活跃，Stars 很高、贡献者 79 人，说明社区热度和迭代速度都很强；同时也意味着版本变化较快，README 已出现安全热修和依赖替换提示，生产使用时要关注版本公告。项目当前 Open Issues 有 98 个，不算失控，但涉及浏览器、反爬、依赖环境时，上手复杂度会高于纯 HTTP 抓取；好在 README 提供了 CLI、Python 示例和安装自检命令，文档整体相对完整。
+
+- **GitHub**：[unclecode/crawl4ai](https://github.com/unclecode/crawl4ai)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：以爆款项目 Crawl4AI 为代表的高影响力独立开发者，在 AI 开发工具与开源社区中具备较强关注度和传播力。
+**技术栈偏好**：明显偏好 Python 为核心栈、辅以 HTML，主要面向 AI 应用、模型调用封装、提示优化与自动化工具开发。
+**核心领域**：聚焦 AI 工具链与智能数据处理，重点方向涵盖网页抓取、合成数据、LLM 应用研发及开发者产品构建。
+
+---
+
+### ✨ OpenMOSS/MOSS-TTS (2332★)
+
+> **一句话**：它把“把一段文字变成像真人在说话”这件事拆成一整套可落地的语音生成能力，既能做长篇配音、多人对话和声音克隆，也能顺手生成环境音效和实时语音回复。
+
+- **它是什么**：MOSS-TTS 是 OpenMOSS 和 MOSI.AI 开源的一组语音与声音生成模型，不只是单一 TTS，而是覆盖长文本语音、多人对话、声音设计、实时流式合成和音效生成的完整家族。README 里明确给出了多个模型分工，比如主力的 MOSS-TTS、做对话的 MOSS-TTSD、做声音设计的 MOSS-VoiceGenerator、做实时语音 agent 的 MOSS-TTS-Realtime，以及做文本到音效的 MOSS-SoundEffect。它还提供了 PyTorch 推理、llama.cpp 无 Torch 推理、SGLang 加速推理和微调教程，定位更像“可研究、可部署”的开源语音底座。
+
+- **能解决什么痛点**：一是常见 TTS 在长文本场景里容易发音漂移、说着说着声音不稳，而它专门强调稳定长语音、零样本声音克隆和细粒度时长/停顿控制。二是很多项目要同时处理配音、角色对话、实时语音回复和环境音，通常得拼多个模型；MOSS-TTS Family 直接把这些能力放在同一套体系里，便于统一选型和部署。
+
+- **适合谁用**：适合做语音产品的 AI 工程师，比如要做配音平台、语音助手、数字人或语音 agent 的团队。也适合需要自建语音能力的多媒体/游戏内容团队，尤其是想同时覆盖角色语音、多人对白和音效生成的场景。
+
+- **怎么上手**：文档未提供快速上手示例。
+
+- **可以用在哪些场景**：一是给有声书、课程解说、长视频旁白做长篇高稳定配音，并根据标点和 pause 标签控制节奏。二是给游戏或互动内容生成多人角色对白、角色音色和环境音，比如城市背景声、动作声、自然场景声。三是给实时语音助手或客服机器人接上低延迟流式 TTS，做边生成边播报的语音交互。
+
+- **技术看点**：项目不是只放一个大模型，而是用 `MossTTSDelay`、`MossTTSLocal`、`MossTTSRealtime` 分别覆盖长上下文稳定性、轻量灵活性和实时多轮语音交互，架构边界比较清晰。部署层面也做得很实用：支持 llama.cpp + ONNX 的无 PyTorch 推理、GGUF 量化权重，以及 SGLang 后端加速，README 提到 Delay 架构推理吞吐可提升约 3 倍，8B 模型还能压到 8GB 显存运行。
+
+- **同类对比**：README 明确提到在主观评测中，MOSS-TTSD 超过了 Doubao 和 Gemini 2.5-pro 这类闭源模型；同时它强调自己是开源方案，并补齐了微调、量化部署和 llama.cpp 推理链路，这一点对想私有化落地的团队更有吸引力。
+
+- **注意事项**：这是 2026 年 2 月刚创建、5 月仍在高频更新的新项目，活跃度很高，但也意味着接口、模型版本和推荐用法仍可能快速变化，近期就已经连续发布了 v1.5、SoundEffect v2.0、Nano、llama.cpp 后端等更新。仓库 issue 数只有 5 个，说明公开问题不多，但不代表踩坑少；好处是文档内容很全，覆盖模型说明、部署后端、评测和微调教程，坏处是体系较大，新手第一次看会有一定选择成本。另一个现实问题是主力模型含 8B 级别版本，虽然有量化和 Nano 分支，但正式部署前仍要先评估显存、延迟和音频链路兼容性。
+
+- **GitHub**：[OpenMOSS/MOSS-TTS](https://github.com/OpenMOSS/MOSS-TTS)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：OpenMOSS 是新近崛起但社区关注度很高的开源研究型组织，凭借 MOSS 及语音相关项目在大模型与开源 AI 社区形成了较强影响力。
+**技术栈偏好**：以 Python 为核心技术栈，明显偏向大模型、语音合成与多模态 AI 方向的研究和工程实现。
+**核心领域**：主要聚焦于开源基础模型、文本到语音（TTS）以及相关智能生成技术。
+
+---
+
+### ✨ EveryInc/compound-engineering-plugin (17846★)
+
+> **一句话**：把 Claude Code、Codex、Cursor 等 AI 编程环境串成一条标准研发流水线，让你按“先想清楚、再计划、再执行、再复盘”的方式驱动代理完成开发工作。
+
+- **它是什么**：这是 Every 官方维护的 Compound Engineering 插件，核心不是单个补全能力，而是一整套面向 AI 协作开发的命令体系。它内置了 `/ce-brainstorm`、`/ce-plan`、`/ce-work`、`/ce-debug`、`/ce-code-review`、`/ce-compound` 等技能，把需求澄清、方案设计、执行、审查、知识沉淀串成闭环。README 显示当前已提供 37 个 skills 和 51 个 agents，并且支持 Claude Code、Cursor、Codex、Copilot、Qwen Code 等多种宿主。
+- **能解决什么痛点**：
+  - 用 AI 写代码时，最常见的问题是“直接开写，后面越改越乱”；这个项目把 brainstorming、plan、review 变成明确步骤，减少拍脑袋改需求和返工。
+  - 团队里很多 bug 修复和设计决策只存在于聊天记录或个人脑子里；`/ce-compound` 和策略/脉搏文档机制可以把这些经验沉淀为后续 agent 可复用的上下文。
+- **适合谁用**：
+  - 已经在用 Claude Code、Codex、Cursor、Copilot CLI 等 AI 编程工具的个人开发者或小团队。
+  - 希望把需求分析、代码评审、故障排查也交给 AI 代理协作完成的产品工程团队、全栈工程师、技术负责人。
+- **怎么上手**：最简单的安装方式之一是在 Claude Code 中执行：`/plugin marketplace add EveryInc/compound-engineering-plugin`
+- **可以用在哪些场景**：
+  - 给一个已有 Web 应用新增功能时，先用 `/ce-brainstorm` 写需求，再用 `/ce-plan` 生成实施方案，最后交给 `/ce-work` 执行。
+  - 排查线上偶发问题，比如支付 webhook 重复创建账单这类间歇性 bug，用 `/ce-debug` 做复现、定位和修复。
+  - 在 PR 合并前做 AI 多代理审查，用 `/ce-code-review` 检查实现缺陷、遗漏边界条件和文档问题。
+- **技术看点**：项目本质上是在 TypeScript/Bun 生态里实现一层跨平台插件/安装器，把同一套 Compound Engineering 能力适配到多种 AI 编程宿主。设计上强调“策略文档 + 需求文档 + 计划 + 执行 + 复盘”的可持续上下文链，而不是一次性生成代码，这对长期维护型项目更有参考价值。
+- **同类对比**：README 没有直接列出竞品，但它和普通“给 AI 加几个斜杠命令”的插件不太一样，重点在完整工作流和多代理协作，而不是单点提示词增强。就定位看，它更像一套工程方法论插件，而不是单纯的编码助手扩展。
+- **注意事项**：项目热度很高，但创建时间是 2025-10，仍算较新的仓库；当前有 76 个 open issues，说明功能迭代和适配工作还在持续推进。虽然 README 很详细、覆盖平台很多，但不同宿主的安装步骤并不统一，例如 Codex 需要 marketplace、Bun 安装 agent、TUI 安装三步配合，上手复杂度不低；此外，多平台兼容层较厚，宿主侧插件规范变化时存在安装方式或行为调整的风险。
+
+- **GitHub**：[EveryInc/compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Every 是一家在 AI 应用与工具社区中具备较强话题度的组织，凭借多款高星仓库在开发者侧形成了明显影响力。
+**技术栈偏好**：以 TypeScript 为核心技术栈，明显偏向 AI 插件、SDK、命令式工作流与知识增强类开发。
+**核心领域**：主要聚焦于生成式 AI 的产品化落地，尤其是面向内容、知识管理与智能助手场景的工具生态构建。

@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+openai
+httpx
+python-dotenv
+schedule
+markdown
+Flask
+flask-cors

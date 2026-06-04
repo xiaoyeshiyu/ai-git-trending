@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 热点日报 (2026-05-15)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.8;
+            color: #34495e;
+            background: linear-gradient(to right bottom, #fdfbfb, #ebedee);
+            margin: 0;
+            padding: 20px;
+        }
+        .main-container {
+            max-width: 850px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: none;
+        }
+        h2 {
+            font-size: 1.6em;
+            margin-top: 50px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        .card {
+            background: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: #e8f6ff;
+            color: #2980b9;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>GitHub 热点日报 (2026-05-15)</h1>
+<h2>今日热点：AI Agent 工程化与多模态基础设施升温</h2>
+<p>今天的 GitHub 热点高度聚焦于 AI Agent 从“能用”走向“可落地”的工程化浪潮，一边是围绕记忆、技能库、规范驱动开发与团队级工作流的智能体开发方法持续升温，涵盖持久化记忆、通用技能框架、科研金融写作能力封装、Spec-Driven Development 以及面向 CEO、工程、发布和 QA 的一体化 Claude Code 配置；另一边则是多模态与基础设施能力快速扩展，从无需摄像头的 WiFi 空间感知、金融市场基础模型、计算机视觉工具链、GPU 加速视频搜索与摘要，到本地多语种 TTS、Android 控制、可观测性数据采集，以及强调隐匿自动化能力的浏览器方案，整体反映出当下开源生态正同时推进智能体生产力、感知理解、语音交互、开发运维与数据采集等关键方向的系统化建设，具体项目摘要如下：</p>
+<h3>✨ ruvnet/RuView (56311★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把普通 WiFi 信号当成“看不见的传感器”，用来实时判断空间里有没有人、人在不在动，甚至监测呼吸等生命体征，全程不依赖摄像头画面。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：RuView 是一个基于 WiFi 信号做空间感知的 Rust 项目，目标是把现成的无线网络设备变成实时空间智能系统。它关注的不是图像识别，而是从 WiFi 信号变化中提取“人在不在、位置状态、生命体征”这类信息，因此更像一种无摄像头的环境感知方案。</li>
+<li><strong>能解决什么痛点</strong>：一是在隐私敏感场景里，很多地方不适合装摄像头，但又确实需要知道房间里是否有人、是否有异常静止或活动，RuView 这类方案能绕开视频采集。二是做居家养老、睡眠监测或室内占用检测时，传统方案往往要额外部署摄像头、雷达或穿戴设备，成本和接受度都不低，而 WiFi 基础设施本身通常已经存在。</li>
+<li><strong>适合谁用</strong>：适合做智能家居、智慧楼宇、养老看护、非接触式健康监测的工程师或创业团队；也适合研究无线感知、室内定位、CSI/信号处理方向的开发者和科研人员。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：一是在养老院、病房、居家看护中做非接触式呼吸/存在监测，减少穿戴设备依赖。二是在办公室、会议室、酒店客房中做房间占用检测，用于自动照明、空调联动或空间利用率分析。三是在对隐私要求高的区域，用 WiFi 感知替代摄像头做基础安防或异常静止告警。</li>
+<li><strong>技术看点</strong>：项目选择 Rust，说明它很可能重视实时处理、性能和系统级稳定性，这对连续采集和低延迟信号分析是加分项。更关键的技术方向在于把“普通 WiFi 信号”转成可用的空间智能信息，这种路线和传统视觉感知不同，核心价值在无像素、低侵入。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：README 素材暂未提供，当前缺少安装、硬件要求、支持芯片/网卡、部署方式和最小示例，实际上手门槛暂时不好判断。项目热度很高，但 Open Issues、更新时间、创建时间、贡献者规模等关键信息暂未提供，暂时无法判断其维护活跃度和稳定性；如果你要评估落地，建议重点确认硬件兼容性、信号采集前提以及不同空间环境下的精度表现。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/ruvnet/RuView">ruvnet/RuView</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ roboflow/supervision (38959★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把目标检测、分割、跟踪结果的可视化、过滤、统计这些重复又琐碎的计算机视觉后处理步骤，整理成一套可直接复用的 Python 组件。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个面向计算机视觉开发流程的 Python 库，核心目标不是训练模型，而是处理模型推理之后的“最后一公里”工作，比如结果封装、标注绘制、区域统计、视频帧处理等。根据项目描述“reusable computer vision tools”来看，它强调的是可复用、可拼装，适合把零散的视觉脚本整理成更稳定的工程代码。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：一是很多视觉项目都会反复手写框框绘制、类别标注、计数逻辑、区域判断，代码分散且难维护，这类重复劳动可以收敛到统一组件里。二是当你接入不同检测模型时，推理输出格式往往不一致，后处理和可视化代码容易越写越乱，这类通用工具库能降低整合成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：做目标检测、分割、跟踪、视频分析的 Python 工程师；需要把模型结果快速接到业务界面、监控画面或数据处理流水线里的计算机视觉开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：在门店摄像头项目里给检测结果实时画框、打标签、做进出人数统计；在工业质检流水线里把缺陷检测结果叠加到图像并导出可追溯记录；在安防或交通视频分析里做目标跟踪后的区域计数、告警触发和可视化展示。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目使用 Python，定位非常明确：不和训练框架抢角色，而是补齐视觉推理后的工程化处理环节。从 GitHub Star 数看，社区认可度较高，说明这类“后处理与可视化标准件”在实际项目里需求很强。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：README 内容暂未提供，因此安装方式、API 设计、兼容哪些检测框架、是否存在破坏性变更风险都无法从当前材料确认。项目 Star 很高，说明成熟度和关注度不错，但由于 issue、更新时间、创建时间均暂未提供，暂时无法判断维护活跃度和升级稳定性；正式落地前建议先查看发布记录与示例代码质量。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/roboflow/supervision">roboflow/supervision</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ Genymobile/scrcpy (141459★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把安卓手机画面直接投到电脑上，并且能用键盘鼠标像操作本地窗口一样控制手机。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：scrcpy 是一个用于显示并控制 Android 设备的桌面端开源项目，核心能力是把手机实时画面镜像到电脑，同时把电脑端的输入事件回传到手机。它常被拿来替代“盯着手机手动点”的调试方式，让开发、演示、录制都能在电脑上完成。</li>
+<li><strong>能解决什么痛点</strong>：做 Android 调试时，开发者经常需要一边看电脑日志一边反复操作真机，来回切设备很低效；scrcpy 让你直接在电脑上操控手机。另一个常见问题是录制 App 演示或复现 Bug 时，手机屏幕太小、触控操作不稳定，用电脑键鼠控制会更顺手，也更容易录屏。</li>
+<li><strong>适合谁用</strong>：Android 应用开发者和测试工程师；需要频繁演示、录屏或远程指导安卓设备操作的技术支持、讲师或内容创作者。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例</li>
+<li><strong>可以用在哪些场景</strong>：在开发阶段连接真机调试 App，边看 IDE 和日志边直接操作手机；录制产品演示视频或复现缺陷步骤时，用电脑统一完成操作和录屏；给同事或客户远程演示某个安卓设置、业务流程或设备问题的复现过程。</li>
+<li><strong>技术看点</strong>：项目以 C 为主，定位非常聚焦，不做臃肿的设备管理平台，而是专注“显示 + 控制”这条链路。能长期获得高星，说明它在跨平台桌面端与 Android 真机交互这件事上，稳定性和实用性已经被大量开发者验证。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标</li>
+<li>
+<p><strong>注意事项</strong>：项目成熟度很高，Star 和 Fork 数都非常高，属于被广泛使用的老牌工具，但当前提供的信息里没有 README 细节、Issue 数和更新时间，无法进一步判断最近维护活跃度。上手通常依赖本机环境和 Android 设备连接方式，实际使用前最好先查看仓库文档确认系统支持、依赖安装和设备授权要求；由于缺少 README 素材，这里无法确认是否存在近期参数变更或兼容性注意点。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Genymobile/scrcpy">Genymobile/scrcpy</a></p>
+</li>
+</ul>
+        <div class="footer">
+            <p>❤️ Generated by GitHub Trending Reporter</p>
+        </div>
+    </div>
+</body>
+</html>
