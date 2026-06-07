@@ -205,10 +205,14 @@ class ProjectDatabase:
 
     # --- Methods for the old reporting feature (to keep it working) ---
     def get_all_summarized_project_names(self):
+        """Return names of projects that already have real analysis content.
+        Projects with empty analysis are excluded so they get re-analyzed."""
         try:
             with self._get_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute("SELECT name FROM summarized_projects")
+                cursor.execute(
+                    "SELECT name FROM summarized_projects WHERE analysis IS NOT NULL AND analysis != ''"
+                )
                 return {row[0] for row in cursor.fetchall()}
         except sqlite3.Error as e:
             logger.error(f"❌ Database error (get_all_summarized_project_names): {e}")

@@ -185,48 +185,73 @@
         </div>
       </section>
 
-      <!-- 分析报告 - 按时间展示 -->
+      <!-- 分析报告日历 -->
       <section class="mb-12">
         <div class="terminal-section-title animate-fadeInUp">
           <div>
             <p class="section-kicker">REPORT ARCHIVE</p>
             <h3>分析报告</h3>
           </div>
-          <router-link to="/reports" class="flex items-center gap-1 text-sm text-cyan-300 hover:text-cyan-200">
+          <router-link to="/rankings" class="flex items-center gap-1 text-sm text-cyan-300 hover:text-cyan-200">
             查看全部 <i class="fa fa-angle-right"></i>
           </router-link>
         </div>
-        
-        <div v-if="featuredReports.length > 0" class="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
-          <div 
-            v-for="(report, index) in featuredReports" 
-            :key="report.date"
-            class="report-card report-card-compact animate-fadeInUp" 
-            :style="{ animationDelay: `${index * 0.1}s` }"
-            @click="openReportModal(report)"
-            :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
-          >
-            <div class="p-4">
-              <div class="mb-5 flex items-center justify-between gap-3">
-                <span class="text-[10px] uppercase tracking-[0.18em] text-cyan-400/75">Daily</span>
-                <span class="report-status">已生成</span>
+
+        <div class="terminal-panel">
+          <!-- 日历头部：年月导航 -->
+          <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800/60">
+            <div class="flex items-center gap-1">
+              <button @click="calYear--" class="terminal-action compact text-xs px-2">‹‹</button>
+              <button @click="prevMonth" class="terminal-action compact text-xs px-2">‹</button>
+            </div>
+            <span class="text-base font-semibold text-slate-100">
+              {{ calYear }}年{{ calMonth + 1 }}月
+              <span class="ml-3 text-xs font-normal text-slate-500">{{ calMonthReportCount }} 份报告</span>
+            </span>
+            <div class="flex items-center gap-1">
+              <button @click="nextMonth" class="terminal-action compact text-xs px-2">›</button>
+              <button @click="calYear++" class="terminal-action compact text-xs px-2">››</button>
+            </div>
+          </div>
+
+          <!-- 星期头 -->
+          <div class="grid grid-cols-7 border-b border-slate-800/60">
+            <div v-for="w in ['一','二','三','四','五','六','日']" :key="w"
+              class="py-2 text-center text-[10px] uppercase tracking-widest text-slate-500">{{ w }}</div>
+          </div>
+
+          <!-- 日期格子 -->
+          <div class="grid grid-cols-7">
+            <div
+              v-for="(cell, i) in calendarCells" :key="i"
+              class="relative border-b border-r border-slate-800/40 min-h-[72px] p-1.5 transition-colors"
+              :class="[
+                !cell.curMonth ? 'bg-slate-950/40' : '',
+                cell.report ? 'cursor-pointer hover:bg-cyan-400/5' : '',
+                cell.isToday ? 'bg-cyan-400/5' : ''
+              ]"
+              @click="cell.report && openReportModal(cell.report)"
+            >
+              <!-- 日期数字 -->
+              <span class="text-xs font-mono leading-none"
+                :class="[
+                  cell.isToday ? 'text-cyan-300 font-bold' : cell.curMonth ? 'text-slate-400' : 'text-slate-700'
+                ]">
+                {{ cell.day }}
+              </span>
+
+              <!-- 有报告时显示 -->
+              <div v-if="cell.report" class="mt-1.5">
+                <div class="text-[10px] text-cyan-300 leading-tight font-medium">已生成</div>
+                <div class="text-[10px] text-slate-500 leading-tight mt-0.5">{{ cell.report.project_count }} 个项目</div>
               </div>
-              <div class="report-date">
-                <strong>{{ formatReportDay(report.date) }}</strong>
-                <span>{{ formatReportMonth(report.date) }}</span>
-              </div>
-              <div class="mt-5 flex items-center justify-between border-t border-slate-800/80 pt-3 text-xs">
-                <span class="text-slate-500">{{ report.project_count }} 个项目</span>
-                <span class="text-cyan-300">查看</span>
-              </div>
+
+              <!-- 今日标记 -->
+              <div v-if="cell.isToday" class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
             </div>
           </div>
         </div>
 
-        <div v-else class="border border-dashed border-slate-800 bg-slate-950/40 py-12 text-center text-slate-500">
-          暂无分析报告，完成一次后端项目分析后会在这里按时间展示。
-        </div>
-        
         <!-- 加载提示 -->
         <div v-if="isLoading" class="fixed inset-0 z-40 flex items-center justify-center bg-black/60">
           <div class="flex flex-col items-center border border-cyan-400/20 bg-slate-950 p-6 shadow-2xl">
@@ -283,6 +308,79 @@ import { renderMarkdown } from '@/utils/markdown-simple'
 const StatsChart = defineAsyncComponent(() => import('@/components/StatsChart.vue'))
 
 const router = useRouter()
+
+// ── 日历 ──────────────────────────────────────────────
+const now = new Date()
+const calYear = ref(now.getFullYear())
+const calMonth = ref(now.getMonth()) // 0-indexed
+
+function prevMonth() {
+  if (calMonth.value === 0) { calYear.value--; calMonth.value = 11 }
+  else calMonth.value--
+}
+function nextMonth() {
+  if (calMonth.value === 11) { calYear.value++; calMonth.value = 0 }
+  else calMonth.value++
+}
+
+const reportMap = computed(() => {
+  const m: Record<string, Report> = {}
+  for (const r of featuredReports.value) m[r.date] = r
+  return m
+})
+
+const calMonthReportCount = computed(() =>
+  calendarCells.value.filter(c => c.curMonth && c.report).length
+)
+
+interface CalCell {
+  day: number
+  date: string
+  curMonth: boolean
+  isToday: boolean
+  report: Report | null
+}
+
+const calendarCells = computed((): CalCell[] => {
+  const y = calYear.value
+  const m = calMonth.value
+  const todayStr = now.toISOString().split('T')[0]
+
+  const firstDay = new Date(y, m, 1)
+  // getDay(): 0=Sun → adjust to Mon-first: Mon=0 … Sun=6
+  const startOffset = (firstDay.getDay() + 6) % 7
+  const daysInMonth = new Date(y, m + 1, 0).getDate()
+  const prevDays = new Date(y, m, 0).getDate()
+
+  const cells: CalCell[] = []
+
+  // Prev month padding
+  for (let i = startOffset - 1; i >= 0; i--) {
+    const d = prevDays - i
+    const mm = m === 0 ? 12 : m
+    const yy = m === 0 ? y - 1 : y
+    const date = `${yy}-${String(mm).padStart(2,'0')}-${String(d).padStart(2,'0')}`
+    cells.push({ day: d, date, curMonth: false, isToday: date === todayStr, report: reportMap.value[date] ?? null })
+  }
+
+  // Current month
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = `${y}-${String(m + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`
+    cells.push({ day: d, date, curMonth: true, isToday: date === todayStr, report: reportMap.value[date] ?? null })
+  }
+
+  // Next month padding to fill 6 rows
+  const remaining = 42 - cells.length
+  for (let d = 1; d <= remaining; d++) {
+    const mm = m === 11 ? 1 : m + 2
+    const yy = m === 11 ? y + 1 : y
+    const date = `${yy}-${String(mm).padStart(2,'0')}-${String(d).padStart(2,'0')}`
+    cells.push({ day: d, date, curMonth: false, isToday: date === todayStr, report: reportMap.value[date] ?? null })
+  }
+
+  return cells
+})
+// ─────────────────────────────────────────────────────
 
 // 渲染好的报告 HTML
 const renderedReport = ref('')
