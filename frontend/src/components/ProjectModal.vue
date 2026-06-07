@@ -131,12 +131,12 @@
 
           <!-- AI 分析报告 -->
           <div v-if="project?.analysis" class="p-6 border-t border-white/10">
-            <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
-              <i class="fa fa-file-text-o text-cyan-400 mr-2"></i>
-              AI 分析报告
+            <h4 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-cyan-400/10 border border-cyan-400/30 text-cyan-300">AI</span>
+              分析报告
             </h4>
             <div
-              class="analysis-content text-sm text-slate-300 leading-relaxed space-y-3 max-h-[50vh] overflow-y-auto"
+              class="markdown-content text-sm max-h-[45vh] overflow-y-auto pr-1"
               v-html="renderedAnalysis"
             ></div>
           </div>
@@ -190,10 +190,18 @@ const projectDisplayName = computed(() => {
   return parts.length > 1 ? parts[1] : props.projectName
 })
 
-const renderedAnalysis = computed(() => {
-  if (!project.value?.analysis) return ''
-  return renderMarkdown(project.value.analysis)
-})
+const renderedAnalysis = ref('')
+
+watch(
+  () => project.value?.analysis,
+  async (analysis) => {
+    if (!analysis) { renderedAnalysis.value = ''; return }
+    // Strip the repeated header line (### ✨ name) — already shown in modal header
+    const cleaned = analysis.replace(/^###\s*✨[^\n]*\n/, '').trim()
+    renderedAnalysis.value = await renderMarkdown(cleaned)
+  },
+  { immediate: true }
+)
 
 watch(() => props.visible, async (visible) => {
   if (visible && props.projectName) {
