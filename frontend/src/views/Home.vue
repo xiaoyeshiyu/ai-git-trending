@@ -77,34 +77,36 @@
         </div>
 
         <aside class="grid gap-4">
-          <!-- 今日报告简报 -->
+          <!-- 高频上榜项目 -->
           <div class="terminal-panel">
             <div class="terminal-panel-head">
-              <span>TODAY'S BRIEF</span>
-              <span v-if="todayBrief.date">{{ formatDate(todayBrief.date) }}</span>
+              <span>TRENDING TOP</span>
+              <span class="text-xs text-slate-500">近7天高频</span>
             </div>
-            <div class="p-4">
-              <template v-if="todayBrief.content">
-                <h3 class="text-base font-semibold text-slate-100 mb-3 leading-snug">
-                  {{ todayBrief.headline }}
-                </h3>
-                <p class="text-sm text-slate-400 leading-relaxed line-clamp-6">
-                  {{ todayBrief.summary }}
-                </p>
-                <div class="mt-4 flex items-center gap-3">
-                  <button class="terminal-action primary text-sm" @click="openTodayReport">
-                    查看完整报告
-                  </button>
-                  <span class="text-xs text-slate-500">{{ todayBrief.project_count || 0 }} 个项目</span>
+            <div class="divide-y divide-slate-800/60">
+              <div
+                v-for="(project, i) in trendingProjects.slice(0, 8)"
+                :key="project.name"
+                class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-800/30 cursor-pointer transition-colors"
+                @click="openProjectModal(project)"
+              >
+                <span class="text-xs font-mono text-slate-600 w-4 shrink-0">{{ i + 1 }}</span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm text-slate-200 truncate">{{ project.name.split('/')[1] || project.name }}</p>
+                  <p class="text-[11px] text-slate-500 truncate">{{ project.name.split('/')[0] }}</p>
                 </div>
-              </template>
-              <div v-else class="py-8 text-center text-sm text-slate-500">
-                <p>今日报告尚未生成</p>
-                <p class="text-xs mt-2 text-slate-600">每日北京时间 8:00 自动生成</p>
+                <div class="flex items-center gap-2 shrink-0">
+                  <span v-if="project.language" class="text-[10px] px-1.5 py-0.5 border border-slate-700 text-slate-400 hidden sm:inline">{{ project.language }}</span>
+                  <span class="text-xs text-slate-500">★ {{ formatStars(project.stars) }}</span>
+                </div>
+              </div>
+              <div v-if="trendingProjects.length === 0" class="py-6 text-center text-sm text-slate-500">
+                加载中...
               </div>
             </div>
           </div>
 
+          <!-- 信号摘要 -->
           <div class="terminal-panel">
             <div class="terminal-panel-head">
               <span>SIGNAL FEED</span>
@@ -153,42 +155,33 @@
         </Suspense>
       </section>
 
-      <!-- 热门项目 -->
+      <!-- 今日报告 -->
       <section id="trending-projects" class="mb-12">
         <div class="terminal-section-title animate-fadeInUp">
           <div>
-            <p class="section-kicker">TRENDING REPOSITORIES</p>
-            <h3>今日热门项目</h3>
+            <p class="section-kicker">DAILY REPORT</p>
+            <h3>今日报告</h3>
           </div>
-          <div class="flex items-center gap-4">
-            <div class="relative">
-              <select v-model="timeFilter" class="border border-slate-700 bg-slate-950/70 py-2 pl-3 pr-8 text-sm text-slate-300 outline-none transition-colors hover:border-cyan-400/40">
-                <option value="today">今日</option>
-                <option value="week">本周</option>
-                <option value="month">本月</option>
-              </select>
-              <svg class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </div>
+          <div class="flex items-center gap-3">
+            <span v-if="todayBrief.date" class="text-sm text-slate-400">{{ formatDate(todayBrief.date) }} · {{ todayBrief.project_count || 0 }} 个项目</span>
+            <button v-if="todayBrief.content" class="terminal-action compact" @click="openTodayReport">全屏查看</button>
           </div>
         </div>
 
-        <!-- 项目卡片网格 - 响应式布局 -->
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <ProjectCard 
-            v-for="(project, index) in trendingProjects" 
-            :key="project.name"
-            :project="project"
-            :index="index"
-            @click="openProjectModal(project)"
-          />
+        <!-- 报告内容 -->
+        <div v-if="todayBrief.content" class="terminal-panel">
+          <div
+            v-html="renderedReport"
+            class="markdown-content px-6 py-5 max-h-[700px] overflow-y-auto"
+          ></div>
         </div>
-        
-        <div class="text-center mt-8 animate-fadeInUp">
-          <router-link to="/rankings" class="terminal-action">
-            查看更多项目 <i class="fa fa-angle-right ml-1"></i>
-          </router-link>
+        <div v-else class="terminal-panel flex flex-col items-center justify-center py-16 text-slate-500">
+          <svg class="w-12 h-12 mb-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <p class="text-sm">今日报告尚未生成</p>
+          <p class="text-xs mt-2 text-slate-600">每日北京时间 8:00 自动生成</p>
+          <router-link to="/rankings" class="terminal-action mt-6">查看历史报告</router-link>
         </div>
       </section>
 
@@ -278,7 +271,6 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, defineAsyncComponent } from 'vue'
-// import mermaid from 'mermaid';
 import { useRouter } from 'vue-router'
 import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
@@ -286,10 +278,29 @@ import ReportModal from '@/components/ReportModal.vue'
 import TechTrendsModal from '@/components/TechTrendsModal.vue'
 import type { Project, Report, Stats, TrendsData, TrendDataItem } from '@/api/reports'
 import { getReports, getStats, getTrends, getReportByDate, getTrendData } from '@/api/reports'
+import { renderMarkdown } from '@/utils/markdown-simple'
 
 const StatsChart = defineAsyncComponent(() => import('@/components/StatsChart.vue'))
 
 const router = useRouter()
+
+// 渲染好的报告 HTML
+const renderedReport = ref('')
+
+function formatStars(stars: number): string {
+  if (!stars) return '0'
+  if (stars >= 1000) return (stars / 1000).toFixed(1) + 'k'
+  return String(stars)
+}
+
+function preprocessReportContent(content: string): string {
+  // 把"详见历史报告"替换成真实链接
+  return content.replace(
+    /今日上榜项目此前均已分析，详见历史报告。/g,
+    '今日上榜项目此前均已分析，[查看历史报告 →](/rankings)'
+  )
+}
+
 
 // 响应式数据
 const theme = ref<'light' | 'dark'>('dark')
@@ -560,12 +571,16 @@ async function loadTodayBrief() {
     const latest = reports.sort((a, b) => b.date.localeCompare(a.date))[0]
     const fullReport = await getReportByDate(latest.date)
     const { headline, summary } = extractBrief(fullReport.content || '')
+    const content = fullReport.content || ''
     todayBrief.value = {
       date: latest.date,
       headline: headline || `GitHub 趋势分析报告 (${latest.date})`,
       summary: summary || '报告正在生成中，请稍后查看。',
       project_count: latest.project_count || fullReport.project_count || 0,
-      content: fullReport.content || ''
+      content
+    }
+    if (content) {
+      renderedReport.value = await renderMarkdown(preprocessReportContent(content))
     }
   } catch (error) {
     console.error('加载今日简报失败:', error)
