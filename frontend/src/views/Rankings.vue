@@ -182,13 +182,11 @@
         </div>
 
         <div v-else class="space-y-3">
-          <a
+          <div
             v-for="report in reportList"
             :key="report.date"
-            :href="`github_trending_${report.date}.html`"
-            target="_blank"
-            rel="noopener"
-            class="terminal-panel p-4 block hover:border-cyan-400/30 transition-colors"
+            @click="openReport(report)"
+            class="terminal-panel p-4 block hover:border-cyan-400/30 transition-colors cursor-pointer"
           >
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1 min-w-0">
@@ -205,7 +203,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 5.5 16 12l-6 6.5"></path>
               </svg>
             </div>
-          </a>
+          </div>
         </div>
       </template>
     </main>
@@ -216,6 +214,14 @@
       :project-name="selectedProjectName"
       @close="showProjectModal = false"
     />
+
+    <!-- 报告详情模态框 -->
+    <ReportModal
+      v-if="showReportModal"
+      :report="selectedReport"
+      theme="dark"
+      @close="showReportModal = false"
+    />
   </div>
 </template>
 
@@ -224,11 +230,12 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { reportApi, type Project, type Report } from '@/api/reports'
 import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
+import ReportModal from '@/components/ReportModal.vue'
 
 const activeTab = ref<'projects' | 'reports'>('projects')
 const loading = ref(false)
 const projects = ref<Project[]>([])
-const selectedPeriod = ref('daily')
+const selectedPeriod = ref('yearly')
 const selectedCategory = ref('all')
 const showProjectModal = ref(false)
 const selectedProjectName = ref('')
@@ -236,6 +243,20 @@ const selectedProjectName = ref('')
 // 报告归档
 const reportList = ref<Report[]>([])
 const reportLoading = ref(false)
+
+// 报告模态框
+const showReportModal = ref(false)
+const selectedReport = ref<Report>({ date: '', project_count: 0 })
+
+async function openReport(report: Report) {
+  try {
+    const full = await reportApi.getReportContent(report.date)
+    selectedReport.value = full
+    showReportModal.value = true
+  } catch (e) {
+    console.error('加载报告失败:', e)
+  }
+}
 
 // 格式化报告日期
 function formatReportDate(dateStr: string): string {

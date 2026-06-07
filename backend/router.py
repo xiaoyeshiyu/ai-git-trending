@@ -19,6 +19,12 @@ app = Flask(__name__, static_folder='../images', static_url_path='/images')
 CORS(app)  # 启用CORS支持
 db = ProjectDatabase()
 
+# Register blueprints
+from routes.projects import projects_bp
+from routes.stats import stats_bp
+app.register_blueprint(projects_bp, url_prefix='/api')
+app.register_blueprint(stats_bp, url_prefix='/api')
+
 def get_report_data_from_filename(filename):
     try:
         date_str = filename.split('_')[-1].replace('.md', '')
