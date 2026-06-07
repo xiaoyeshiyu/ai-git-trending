@@ -1,7 +1,7 @@
 <template>
-  <div class="home-container min-h-screen bg-[#071019] text-slate-100">
+  <div class="home-container min-h-screen bg-[#051a2c] text-slate-100">
     <!-- 顶部导航栏 - 技术情报终端 -->
-    <header class="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#071019]/95 backdrop-blur-sm">
+    <header class="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#051a2c]/95 backdrop-blur-sm">
       <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
         <div class="flex items-center gap-3">
           <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
@@ -125,35 +125,6 @@
 
     <!-- 核心内容区域 -->
     <main class="mx-auto max-w-[1500px] px-4 py-8 lg:px-6">
-      <!-- 数据概览 -->
-      <section class="mb-12 animate-fadeInUp">
-        <div class="terminal-section-title">
-          <div>
-            <p class="section-kicker">INTELLIGENCE OVERVIEW</p>
-            <h3>情报概览</h3>
-          </div>
-          <button class="terminal-action compact" @click="openTechTrendsModal">
-            <i class="fa fa-chart-line mr-1"></i> 打开趋势雷达
-          </button>
-        </div>
-        <Suspense>
-          <template #default>
-            <StatsChart
-              :stats="statsData"
-              :languageData="topLanguages"
-              :trendData="trendAreasData"
-              :emergingAreas="emergingAreas"
-              :surgingProjects="surgingProjects"
-              :surgingMode="surgingMode"
-            />
-          </template>
-          <template #fallback>
-            <div class="terminal-panel flex items-center justify-center py-16">
-              <div class="spinner"></div>
-            </div>
-          </template>
-        </Suspense>
-      </section>
 
       <!-- 今日报告 -->
       <section id="trending-projects" class="mb-12">
@@ -183,6 +154,36 @@
           <p class="text-xs mt-2 text-slate-600">每日北京时间 8:00 自动生成</p>
           <router-link to="/rankings" class="terminal-action mt-6">查看历史报告</router-link>
         </div>
+      </section>
+
+      <!-- 数据概览 -->
+      <section class="mb-12 animate-fadeInUp">
+        <div class="terminal-section-title">
+          <div>
+            <p class="section-kicker">INTELLIGENCE OVERVIEW</p>
+            <h3>情报概览</h3>
+          </div>
+          <button class="terminal-action compact" @click="openTechTrendsModal">
+            <i class="fa fa-chart-line mr-1"></i> 打开趋势雷达
+          </button>
+        </div>
+        <Suspense>
+          <template #default>
+            <StatsChart
+              :stats="statsData"
+              :languageData="topLanguages"
+              :trendData="trendAreasData"
+              :emergingAreas="emergingAreas"
+              :surgingProjects="surgingProjects"
+              :surgingMode="surgingMode"
+            />
+          </template>
+          <template #fallback>
+            <div class="terminal-panel flex items-center justify-center py-16">
+              <div class="spinner"></div>
+            </div>
+          </template>
+        </Suspense>
       </section>
 
       <!-- 分析报告日历 -->
@@ -263,7 +264,7 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="border-t border-cyan-400/10 bg-[#071019]">
+    <footer class="border-t border-cyan-400/10 bg-[#051a2c]">
       <div class="mx-auto flex max-w-[1500px] flex-col gap-3 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between lg:px-6">
         <span>GITTREND INTEL / OPEN SOURCE SIGNAL WATCH</span>
         <span>© {{ new Date().getFullYear() }} GitTrend Insights</span>

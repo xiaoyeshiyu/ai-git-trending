@@ -36,13 +36,13 @@
   --neon-purple-dark: #9900cc;
   --neon-purple-glow: rgba(191, 0, 255, 0.5);
   
-  /* 深色背景层次 */
-  --bg-void: #000000;
-  --bg-deep: #050510;
-  --bg-dark: #0a0a1a;
-  --bg-card: #0f0f24;
-  --bg-elevated: #151530;
-  --bg-surface: #1a1a3a;
+  /* 深色背景层次 — Cyan Ocean Theme */
+  --bg-void: #041320;
+  --bg-deep: #051a2c;
+  --bg-dark: #061f34;
+  --bg-card: #082638;
+  --bg-elevated: #0b2f44;
+  --bg-surface: #0e3650;
   
   /* 文字颜色 */
   --text-primary: #ffffff;
@@ -108,8 +108,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--bg-void);
-  color: var(--text-secondary);
+  background: #051a2c;
+  color: #a8d8ea;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -921,9 +921,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .terminal-panel,
 .report-card {
-  border: 1px solid rgba(51, 65, 85, 0.9);
-  background: rgba(15, 23, 42, 0.72);
-  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.06);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  background: rgba(8, 34, 56, 0.82);
+  box-shadow: inset 0 1px 0 rgba(6, 182, 212, 0.08), 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .terminal-panel {
@@ -939,8 +939,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, rgba(34, 211, 238, 0.65), transparent 60%);
-  opacity: 0.55;
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.8), transparent 60%);
+  opacity: 0.7;
 }
 
 .report-card {
@@ -952,8 +952,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .report-card:hover {
-  border-color: rgba(34, 211, 238, 0.38);
-  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(6, 182, 212, 0.45);
+  background: rgba(10, 40, 65, 0.95);
   transform: translateY(-2px);
 }
 
@@ -966,19 +966,20 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
   padding: 0.65rem 1rem;
+  background: rgba(6, 182, 212, 0.05);
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
   font-size: 0.68rem;
   letter-spacing: 0.18em;
-  color: rgba(148, 163, 184, 0.82);
+  color: rgba(103, 232, 249, 0.75);
 }
 
 .terminal-nav {
   border: 1px solid transparent;
   padding: 0.45rem 0.75rem;
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: #67c8d8;
   transition: all 0.2s ease;
   border-radius: 0.25rem;
   text-decoration: none;
@@ -986,18 +987,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .terminal-nav:hover,
 .terminal-nav.active {
-  border-color: rgba(34, 211, 238, 0.22);
-  background: rgba(34, 211, 238, 0.06);
-  color: #67e8f9;
+  border-color: rgba(6, 182, 212, 0.35);
+  background: rgba(6, 182, 212, 0.12);
+  color: #a5f3fc;
 }
 
 .status-chip {
-  border: 1px solid rgba(51, 65, 85, 0.95);
-  background: rgba(2, 6, 23, 0.45);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  background: rgba(6, 182, 212, 0.06);
   padding: 0.35rem 0.55rem;
   font-size: 0.68rem;
   letter-spacing: 0.12em;
-  color: #94a3b8;
+  color: #67c8d8;
   border-radius: 0.25rem;
 }
 
@@ -1007,8 +1008,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .terminal-metric {
-  border: 1px solid rgba(51, 65, 85, 0.8);
-  background: rgba(2, 6, 23, 0.36);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  background: rgba(6, 182, 212, 0.06);
   padding: 0.9rem;
   border-radius: 0.5rem;
 }
@@ -1018,7 +1019,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
   font-size: 0.64rem;
   letter-spacing: 0.16em;
-  color: #64748b;
+  color: #3d8fa0;
 }
 
 .terminal-metric strong {
@@ -1026,18 +1027,18 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   font-size: 1.65rem;
   font-weight: 500;
-  color: #e2e8f0;
+  color: #a5f3fc;
 }
 
 .terminal-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(51, 65, 85, 0.95);
-  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  background: rgba(6, 182, 212, 0.07);
   padding: 0.65rem 1rem;
   font-size: 0.84rem;
-  color: #cbd5e1;
+  color: #67c8d8;
   transition: all 0.2s ease;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -1049,13 +1050,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .terminal-action:hover {
-  border-color: rgba(34, 211, 238, 0.38);
-  color: #e0f2fe;
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.14);
+  color: #a5f3fc;
 }
 
 .terminal-action.primary {
-  border-color: rgba(34, 211, 238, 0.36);
-  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.18);
   color: #a5f3fc;
 }
 
@@ -1064,15 +1066,15 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border: 1px solid rgba(51, 65, 85, 0.7);
-  background: rgba(2, 6, 23, 0.32);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+  background: rgba(6, 182, 212, 0.04);
   padding: 0.75rem;
   border-radius: 0.25rem;
 }
 
 .feed-row span {
   font-size: 0.76rem;
-  color: #64748b;
+  color: #3d8fa0;
 }
 
 .feed-row strong {
@@ -1082,7 +1084,7 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   font-size: 0.82rem;
   font-weight: 500;
-  color: #cbd5e1;
+  color: #a5f3fc;
 }
 
 .terminal-section-title {
@@ -1091,29 +1093,29 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
   padding-bottom: 0.85rem;
 }
 
 .terminal-section-title h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: #cffafe;
 }
 
 .section-kicker {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
   font-size: 0.65rem;
   letter-spacing: 0.22em;
-  color: #64748b;
+  color: #2d7d8f;
   margin-bottom: 0.25rem;
 }
 
 /* 页面容器 */
 .terminal-page {
   min-height: 100vh;
-  background-color: #071019;
-  color: #f1f5f9;
+  background-color: #051a2c;
+  color: #cffafe;
 }
 
 /* 页面头部 */
@@ -1121,9 +1123,9 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.1);
-  background-color: rgba(7, 16, 25, 0.95);
-  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+  background-color: rgba(5, 26, 44, 0.96);
+  backdrop-filter: blur(8px);
 }
 
 /* 页面主内容区 */
