@@ -1,4 +1,3 @@
-import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
 
 // 导出类型定义，避免直接引用未初始化的模块
@@ -8,6 +7,17 @@ type PluginType = any
 
 // 创建一个异步函数来初始化markdown-it和所有插件
 let markdownInstance: MarkdownIt | null = null
+let highlightInstance: any = null
+
+async function getHighlightInstance() {
+  if (highlightInstance) {
+    return highlightInstance
+  }
+
+  const module = await import('highlight.js/lib/common')
+  highlightInstance = module.default
+  return highlightInstance
+}
 
 /**
  * 初始化并获取MarkdownIt实例
@@ -22,6 +32,7 @@ async function getInitializedMarkdownInstance(): Promise<MarkdownIt> {
     // 使用动态导入加载所有模块
     const [
       { default: MarkdownIt },
+      hljs,
       { default: emojiPlugin },
       { default: taskListsPlugin },
       { default: anchorPlugin },
@@ -33,6 +44,7 @@ async function getInitializedMarkdownInstance(): Promise<MarkdownIt> {
       { default: insPlugin }
     ] = await Promise.all([
       import('markdown-it'),
+      getHighlightInstance(),
       import('markdown-it-emoji'),
       import('markdown-it-task-lists'),
       import('markdown-it-anchor'),

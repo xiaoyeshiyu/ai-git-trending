@@ -1,22 +1,22 @@
 <template>
   <Teleport to="body">
-    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-2 backdrop-blur-sm sm:p-4 animate-fadeIn" @click="handleOverlayClick">
-      <div 
-        class="report-reader max-h-[95vh] w-full max-w-6xl overflow-hidden flex flex-col animate-fadeInUp shadow-2xl"
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-2 backdrop-blur-sm sm:p-4 animate-fadeIn" @click="handleOverlayClick">
+      <div
+        class="report-reader max-h-[95vh] w-full max-w-6xl overflow-hidden flex flex-col animate-fadeInUp"
         @click.stop
       >
         <!-- 模态框头部 -->
-        <header class="relative border-b border-slate-800 bg-slate-950/90 p-4 lg:p-5">
+        <header class="relative border-b border-cyan-100 bg-gradient-to-r from-cyan-50 to-white p-4 lg:p-5">
           <div class="flex justify-between items-center">
               <div class="flex items-center space-x-3 lg:space-x-4 flex-1 min-w-0">
-                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 lg:h-11 lg:w-11">
+                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl border border-cyan-200 bg-cyan-100 text-cyan-700 shadow-sm lg:h-11 lg:w-11">
                   <svg class="h-5 w-5 lg:h-6 lg:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-cyan-400/80">INTELLIGENCE REPORT</p>
-                  <h3 class="truncate text-lg font-semibold text-slate-100 lg:text-2xl">
+                  <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-cyan-700/80">INTELLIGENCE REPORT</p>
+                  <h3 class="truncate text-lg font-semibold text-slate-900 lg:text-2xl">
                     GitHub 热门项目报告
                   </h3>
                   <p class="mt-1 truncate text-xs text-slate-500 lg:text-sm">
@@ -24,12 +24,12 @@
                   </p>
                 </div>
               </div>
-            
+
             <div class="flex items-center space-x-2 lg:space-x-3 flex-shrink-0">
               <!-- 关闭按钮 -->
               <button
                 @click="$emit('close')"
-                class="reader-icon-button hover:bg-red-500/10 hover:border-red-500/30 hover:text-red-300"
+                class="reader-icon-button"
                 title="关闭"
               >
                 <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,11 +38,11 @@
               </button>
             </div>
           </div>
-          
+
           <!-- 进度条 -->
-          <div class="absolute bottom-0 left-0 h-0.5 w-full bg-slate-800">
-            <div 
-              class="h-full bg-cyan-300 transition-all duration-300 ease-out"
+          <div class="absolute bottom-0 left-0 h-0.5 w-full bg-cyan-100">
+            <div
+              class="h-full bg-cyan-500 transition-all duration-300 ease-out"
               :style="{ width: scrollProgress + '%' }"
             ></div>
           </div>
@@ -56,13 +56,13 @@
         >
           <div v-if="loading" class="h-full flex flex-col items-center justify-center py-20">
             <div class="relative mb-8">
-              <div class="w-16 h-16 border-4 border-blue-500/30 rounded-full animate-spin"></div>
-              <div class="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+              <div class="w-16 h-16 border-4 border-cyan-200 rounded-full animate-spin"></div>
+              <div class="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-cyan-500 rounded-full animate-spin"></div>
             </div>
-            <h4 class="text-lg font-medium text-slate-300 mb-2">加载中</h4>
-            <p class="text-slate-400">正在解析报告内容...</p>
+            <h4 class="text-lg font-medium text-slate-700 mb-2">加载中</h4>
+            <p class="text-slate-500">正在解析报告内容...</p>
           </div>
-          
+
           <div v-else class="p-4 lg:p-6">
             <!-- 报告统计信息 -->
             <div class="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -83,13 +83,11 @@
                 <div class="stat-label">发布日期</div>
               </div>
             </div>
-            
 
-            
             <!-- Markdown 内容 -->
-            <div 
+            <div
               ref="markdownContainer"
-              class="markdown-content prose prose-invert max-w-none border border-slate-800 bg-slate-950/55 p-4 text-sm lg:p-6 lg:text-base"
+              class="markdown-content max-w-none border border-cyan-100 bg-white/80 p-4 text-sm lg:p-6 lg:text-base"
               v-html="renderedContent"
             ></div>
           </div>
@@ -108,9 +106,9 @@
         </main>
 
         <!-- 模态框底部 -->
-        <footer class="border-t border-slate-800 bg-slate-950/90 p-4 lg:p-5">
+        <footer class="border-t border-cyan-100 bg-gradient-to-r from-white to-cyan-50 p-4 lg:p-5">
           <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
-            <div class="flex flex-wrap items-center gap-4 lg:gap-6 text-xs lg:text-sm text-slate-400">
+            <div class="flex flex-wrap items-center gap-4 lg:gap-6 text-xs lg:text-sm text-slate-500">
               <div class="flex items-center space-x-1 lg:space-x-2">
                 <svg class="w-3 h-3 lg:w-4 lg:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -160,7 +158,7 @@
                 </button>
                 
                 <!-- 导出菜单 -->
-                <div v-if="showExportMenu" class="absolute bottom-full right-0 mb-2 w-48 border border-slate-700 bg-slate-950 py-2 shadow-xl">
+                <div v-if="showExportMenu" class="absolute bottom-full right-0 mb-2 w-48 border border-cyan-100 bg-white py-2 shadow-lg rounded-lg overflow-hidden">
                   <button @click="exportReport('md')" class="export-menu-item">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -426,30 +424,35 @@ async function copyToClipboard() {
 <style scoped>
   .report-reader {
     position: relative;
-    border: 1px solid rgba(51, 65, 85, 0.95);
-    background:
-      linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34, 211, 238, 0.025) 1px, transparent 1px),
-      #071019;
-    background-size: 28px 28px;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(148, 163, 184, 0.06);
+    border: 1px solid rgba(26, 150, 184, 0.2);
+    border-radius: 1.25rem;
+    background: linear-gradient(160deg, #f4fdff 0%, #ffffff 45%, #e6f7fb 100%);
+    box-shadow: 0 24px 80px rgba(8, 61, 82, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   .reader-icon-button {
     display: inline-flex;
-    height: 2.25rem;
-    width: 2.25rem;
+    height: 2.5rem;
+    width: 2.5rem;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(51, 65, 85, 0.9);
-    background: rgba(15, 23, 42, 0.62);
+    border-radius: 9999px;
+    border: 1px solid rgba(26, 150, 184, 0.18);
+    background: #ffffff;
     color: #94a3b8;
     transition: all 0.2s ease;
   }
 
+  .reader-icon-button:hover {
+    border-color: rgba(248, 113, 113, 0.4);
+    background: rgba(254, 226, 226, 0.6);
+    color: #f87171;
+  }
+
   .reader-stat {
-    border: 1px solid rgba(51, 65, 85, 0.84);
-    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(26, 150, 184, 0.18);
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 0.75rem;
     padding: 0.85rem;
     text-align: center;
   }
@@ -459,241 +462,53 @@ async function copyToClipboard() {
     overflow-wrap: anywhere;
     font-size: 1.35rem;
     font-weight: 600;
-    color: #67e8f9;
+    color: #0e7490;
   }
 
   .stat-label {
     font-size: 0.72rem;
-    color: #64748b;
+    color: #3a9ab8;
   }
 
   .reader-action {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(51, 65, 85, 0.95);
-    background: rgba(15, 23, 42, 0.78);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(26, 150, 184, 0.25);
+    background: #ffffff;
     padding: 0.55rem 0.85rem;
-    color: #cbd5e1;
+    color: #127a98;
     transition: all 0.2s ease;
   }
 
   .reader-action:hover {
-    border-color: rgba(34, 211, 238, 0.38);
-    color: #e0f2fe;
+    border-color: rgba(26, 150, 184, 0.5);
+    background: rgba(26, 150, 184, 0.08);
+    color: #0a2d3d;
   }
 
   .reader-action.primary {
-    border-color: rgba(34, 211, 238, 0.36);
-    background: rgba(34, 211, 238, 0.12);
-    color: #a5f3fc;
+    border-color: rgba(26, 150, 184, 0.45);
+    background: rgba(26, 150, 184, 0.12);
+    color: #0a2d3d;
   }
 
-  /* 增强markdown样式 */
-  .markdown-content :deep(h1),
-  .markdown-content :deep(h2),
-  .markdown-content :deep(h3),
-  .markdown-content :deep(h4),
-  .markdown-content :deep(h5),
-  .markdown-content :deep(h6) {
-    color: #e2e8f0;
-    margin-top: 1.5em;
-    margin-bottom: 0.75em;
-  }
-  
-  .markdown-content :deep(h1) {
-    font-size: 1.8rem;
-    border-bottom: 2px solid #475569;
-    padding-bottom: 0.3em;
-  }
-  
-  .markdown-content :deep(h2) {
-    font-size: 1.5rem;
-    border-bottom: 1px solid #475569;
-    padding-bottom: 0.3em;
-  }
-  
-  .markdown-content :deep(p) {
-    margin: 1em 0;
-    line-height: 1.7;
-  }
-  
-  .markdown-content :deep(blockquote) {
-    border-left: 4px solid #8b5cf6;
-    padding-left: 1em;
-    margin: 1em 0;
-    color: #94a3b8;
-    background-color: rgba(139, 92, 246, 0.1);
-    padding: 1em;
-    border-radius: 0 0.5rem 0.5rem 0;
-  }
-  
-  .markdown-content :deep(ul),
-  .markdown-content :deep(ol) {
-    margin: 1em 0;
-    padding-left: 2em;
-  }
-  
-  .markdown-content :deep(li) {
-    margin: 0.5em 0;
-  }
-  
-  .markdown-content :deep(code) {
-    background-color: #334155;
-    color: #e2e8f0;
-    padding: 0.2em 0.4em;
-    border-radius: 0.375rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875em;
-  }
-  
-  .markdown-content :deep(pre) {
-    background-color: #1e293b;
-    padding: 1em;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin: 1.5em 0;
-  }
-  
-  .markdown-content :deep(pre code) {
-    background-color: transparent;
-    padding: 0;
-    display: block;
-    line-height: 1.5;
-  }
-  
-  .markdown-content :deep(a) {
-    color: #8b5cf6;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  .markdown-content :deep(a:hover) {
-    color: #a78bfa;
-    text-decoration: underline;
-  }
-  
-  .markdown-content :deep(table) {
+  .export-menu-item {
+    display: flex;
     width: 100%;
-    border-collapse: collapse;
-    margin: 1.5em 0;
-  }
-  
-  .markdown-content :deep(th) {
-    background-color: #334155;
-    color: #e2e8f0;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    color: #127a98;
     text-align: left;
-    padding: 0.75em;
-    border: 1px solid #475569;
+    transition: background 0.15s ease, color 0.15s ease;
   }
-  
-  .markdown-content :deep(td) {
-    padding: 0.75em;
-    border: 1px solid #475569;
+
+  .export-menu-item:hover {
+    background: rgba(26, 150, 184, 0.08);
+    color: #0a2d3d;
   }
-  
-  .markdown-content :deep(tr:nth-child(even)) {
-    background-color: #0f172a;
-  }
-  
-  .markdown-content :deep(img) {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.375rem;
-    margin: 1em 0;
-  }
-  
-  /* 代码高亮样式 */
-  .markdown-content :deep(.hljs) {
-    background: #1e293b;
-    color: #e2e8f0;
-  }
-  
-  .markdown-content :deep(.hljs-comment),
-  .markdown-content :deep(.hljs-quote) {
-    color: #94a3b8;
-    font-style: italic;
-  }
-  
-  .markdown-content :deep(.hljs-keyword),
-  .markdown-content :deep(.hljs-selector-tag),
-  .markdown-content :deep(.hljs-subst) {
-    color: #f472b6;
-    font-weight: bold;
-  }
-  
-  .markdown-content :deep(.hljs-number),
-  .markdown-content :deep(.hljs-literal),
-  .markdown-content :deep(.hljs-variable),
-  .markdown-content :deep(.hljs-template-variable),
-  .markdown-content :deep(.hljs-tag .hljs-attr) {
-    color: #fbbf24;
-  }
-  
-  .markdown-content :deep(.hljs-string),
-  .markdown-content :deep(.hljs-doctag) {
-    color: #4ade80;
-  }
-  
-  .markdown-content :deep(.hljs-title),
-  .markdown-content :deep(.hljs-section),
-  .markdown-content :deep(.hljs-selector-id) {
-    color: #60a5fa;
-    font-weight: bold;
-  }
-  
-  .markdown-content :deep(.hljs-subst) {
-    font-weight: normal;
-  }
-  
-  .markdown-content :deep(.hljs-type),
-  .markdown-content :deep(.hljs-class .hljs-title) {
-    color: #60a5fa;
-    font-weight: bold;
-  }
-  
-  .markdown-content :deep(.hljs-tag),
-  .markdown-content :deep(.hljs-name),
-  .markdown-content :deep(.hljs-attribute) {
-    color: #93c5fd;
-    font-weight: normal;
-  }
-  
-  .markdown-content :deep(.hljs-regexp),
-  .markdown-content :deep(.hljs-link) {
-    color: #4ade80;
-  }
-  
-  .markdown-content :deep(.hljs-symbol),
-  .markdown-content :deep(.hljs-bullet) {
-    color: #60a5fa;
-  }
-  
-  .markdown-content :deep(.hljs-built_in),
-  .markdown-content :deep(.hljs-builtin-name) {
-    color: #f472b6;
-  }
-  
-  .markdown-content :deep(.hljs-meta) {
-    color: #94a3b8;
-    font-weight: bold;
-  }
-  
-  .markdown-content :deep(.hljs-deletion) {
-    background: #ef4444;
-    color: #ffffff;
-  }
-  
-  .markdown-content :deep(.hljs-addition) {
-    background: #10b981;
-    color: #ffffff;
-  }
-  
-  .markdown-content :deep(.hljs-emphasis) {
-    font-style: italic;
-  }
-  
-  .markdown-content :deep(.hljs-strong) {
-    font-weight: bold;
-  }
+
 </style>

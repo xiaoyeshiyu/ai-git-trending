@@ -6,7 +6,7 @@
         <div class="flex items-center gap-3">
           <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
             </svg>
           </div>
           <div>
@@ -19,9 +19,7 @@
           <router-link to="/" class="terminal-nav">情报台</router-link>
           <router-link to="/trend" class="terminal-nav">趋势</router-link>
           <router-link to="/rankings" class="terminal-nav">排行榜</router-link>
-          <router-link to="/trend-analysis" class="terminal-nav active">趋势图谱</router-link>
-          <router-link to="/favorites" class="terminal-nav">收藏</router-link>
-        </nav>
+          <router-link to="/trend-analysis" class="terminal-nav active">趋势图谱</router-link>        </nav>
       </div>
     </header>
 
@@ -66,8 +64,11 @@
             <span>LANGUAGE DISTRIBUTION</span>
             <span>TOP 8</span>
           </div>
-          <div class="h-80">
+          <div v-if="hasLanguageData" class="h-80">
             <canvas ref="languageChartRef"></canvas>
+          </div>
+          <div v-else class="flex h-80 items-center justify-center text-sm text-slate-500">
+            暂无语言分布数据
           </div>
         </div>
 
@@ -77,8 +78,11 @@
             <span>TECH DOMAINS</span>
             <span>ALL</span>
           </div>
-          <div class="h-80">
+          <div v-if="hasDomainData" class="h-80">
             <canvas ref="domainChartRef"></canvas>
+          </div>
+          <div v-else class="flex h-80 items-center justify-center text-sm text-slate-500">
+            暂无技术领域数据
           </div>
         </div>
 
@@ -86,10 +90,13 @@
         <div class="terminal-panel p-6">
           <div class="terminal-panel-head">
             <span>PROJECT TREND</span>
-            <span>LAST 7 DAYS</span>
+            <span>LAST {{ selectedDays }} DAYS</span>
           </div>
-          <div class="h-80">
+          <div v-if="hasTrendData" class="h-80">
             <canvas ref="trendChartRef"></canvas>
+          </div>
+          <div v-else class="flex h-80 items-center justify-center text-sm text-slate-500">
+            暂无项目趋势数据
           </div>
         </div>
 
@@ -125,8 +132,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from 'vue'
-import { getProjectsByDate, getLanguageDistribution, getTechDomains, getProjectTrend, type Project } from '@/api/reports'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { getProjects, getLanguageDistribution, getTechDomains, getProjectTrend, type Project } from '@/api/reports'
 import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
 import Chart from 'chart.js/auto'
@@ -136,6 +143,9 @@ const selectedPeriod = ref('monthly')
 const trendingProjects = ref<Project[]>([])
 const showProjectModal = ref(false)
 const selectedProjectName = ref('')
+const hasLanguageData = ref(false)
+const hasDomainData = ref(false)
+const hasTrendData = ref(false)
 
 // Chart refs
 const languageChartRef = ref<HTMLCanvasElement | null>(null)
@@ -153,6 +163,19 @@ const timePeriods = [
   { label: '全年', value: 'yearly' }
 ]
 
+const selectedDays = computed(() => {
+  switch (selectedPeriod.value) {
+    case 'weekly':
+      return 7
+    case 'monthly':
+      return 30
+    case 'yearly':
+      return 365
+    default:
+      return 30
+  }
+})
+
 // 图表颜色
 const chartColors = [
   '#22d3ee', '#f472b6', '#a78bfa', '#34d399', '#fbbf24',
@@ -163,7 +186,15 @@ const chartColors = [
 const loadLanguageChart = async () => {
   try {
     const data = await getLanguageDistribution()
-    if (!languageChartRef.value || data.length === 0) return
+    hasLanguageData.value = data.length > 0
+    await nextTick()
+    if (!languageChartRef.value || data.length === 0) {
+      if (languageChart) {
+        languageChart.destroy()
+        languageChart = null
+      }
+      return
+    }
 
     const labels = data.map(d => d.name)
     const values = data.map(d => d.count)
@@ -210,7 +241,15 @@ const loadLanguageChart = async () => {
 const loadDomainChart = async () => {
   try {
     const data = await getTechDomains()
-    if (!domainChartRef.value || data.length === 0) return
+    hasDomainData.value = data.length > 0
+    await nextTick()
+    if (!domainChartRef.value || data.length === 0) {
+      if (domainChart) {
+        domainChart.destroy()
+        domainChart = null
+      }
+      return
+    }
 
     const labels = data.map(d => d.name)
     const values = data.map(d => d.count)
@@ -257,8 +296,16 @@ const loadDomainChart = async () => {
 // 加载项目趋势图表
 const loadTrendChart = async () => {
   try {
-    const data = await getProjectTrend(7)
-    if (!trendChartRef.value || data.length === 0) return
+    const data = await getProjectTrend(selectedDays.value)
+    hasTrendData.value = data.length > 0
+    await nextTick()
+    if (!trendChartRef.value || data.length === 0) {
+      if (trendChart) {
+        trendChart.destroy()
+        trendChart = null
+      }
+      return
+    }
 
     const labels = data.map(d => {
       const date = new Date(d.date)
@@ -318,15 +365,22 @@ const loadCharts = async () => {
 }
 
 const loadTrendingProjects = async () => {
-  loading.value = true
   try {
-    const date = new Date().toISOString().split('T')[0]
-    const data = await getProjectsByDate(date)
-    trendingProjects.value = data.slice(0, 6)
+    const now = new Date()
+    const cutoff = new Date(now)
+    cutoff.setDate(now.getDate() - selectedDays.value + 1)
+    const response = await getProjects({
+      date_from: cutoff.toISOString().split('T')[0],
+      date_to: now.toISOString().split('T')[0],
+      sort_by: 'stars',
+      order: 'desc',
+      page: 1,
+      page_size: 24
+    })
+
+    trendingProjects.value = response.items.slice(0, 6)
   } catch (error) {
     console.error('Failed to load trending projects:', error)
-  } finally {
-    loading.value = false
   }
 }
 
@@ -336,23 +390,23 @@ const viewProjectDetails = (project: Project) => {
 }
 
 // 初始化
-onMounted(async () => {
+const refreshTrendPage = async () => {
   loading.value = true
   try {
-    await Promise.all([
-      loadCharts(),
-      loadTrendingProjects()
-    ])
+    await loadTrendingProjects()
   } finally {
     loading.value = false
   }
-})
+  // Chart canvases live behind `v-if="!loading"`, so they only exist
+  // in the DOM after `loading` flips to false and Vue re-renders.
+  await nextTick()
+  await loadCharts()
+}
+
+onMounted(refreshTrendPage)
 
 // 监听时间筛选变化
-watch(selectedPeriod, () => {
-  // 重新加载数据
-  loadTrendingProjects()
-})
+watch(selectedPeriod, refreshTrendPage)
 </script>
 
 <style scoped>

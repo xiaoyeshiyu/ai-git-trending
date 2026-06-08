@@ -42,7 +42,7 @@
           <span class="text-sm font-light text-slate-300">{{ formatNumber(project.stars) }}</span>
         </div>
         <div class="flex-1"></div>
-        <span class="text-[10px] text-slate-500 font-light">{{ formatDate(project.created_at) }}</span>
+        <span class="text-[10px] text-slate-500 font-light">创建 {{ formatDate(project.created_at) }}</span>
       </div>
     </div>
   </div>
@@ -78,12 +78,12 @@ const formatNumber = (num: number | string): string => {
 }
 
 const formatDate = (dateStr: string): string => {
-  if (!dateStr || dateStr === 'N/A') return '未知'
+  if (!dateStr || dateStr === 'N/A') return '时间未知'
   try {
     const date = new Date(dateStr)
     return date.getFullYear().toString()
   } catch {
-    return '未知'
+    return '时间未知'
   }
 }
 

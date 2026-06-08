@@ -133,6 +133,22 @@ export interface TrendDataItem {
 
 export interface TrendsData {
   time_window_days: number
+  topProjects?: {
+    name: string
+    url: string
+    description: string
+    language: string
+    count: number
+    avg_stars: number
+    stars?: number
+    forks?: number
+    contributor_count?: number
+    created_at?: string
+    updated_at?: string
+    open_issues?: number
+    watchers?: number
+    analysis?: string
+  }[]
   most_frequent_projects: {
     name: string
     url: string
@@ -401,37 +417,56 @@ export const reportApi = {
 
   // 获取所有技术领域分类
   async getTechDomains(): Promise<{ name: string; count: number }[]> {
-    if (isStaticMode) return []
+    if (isStaticMode) {
+      try {
+        const trends = await fetchStatic<any>('trends.json')
+        const data = trends.daily || trends
+        return data.techDomains || []
+      } catch {
+        return []
+      }
+    }
     try {
-      const response = await api.get('/api/tech-domains')
-      return response.data.data || []
+      const response = await api.get('/api/trends', { params: { days: 30 } })
+      const data = unwrapResponse<TrendsData>(response.data)
+      return data.techDomains || []
     } catch (error) {
       console.error('获取技术领域失败:', error)
       return []
     }
   },
 
-  // 获取编程语言分布
-  async getLanguageDistribution(): Promise<{ name: string; count: number }[]> {
-    if (isStaticMode) return []
-    try {
-      const response = await api.get('/api/language-distribution')
-      return response.data.data || []
-    } catch (error) {
-      console.error('获取语言分布失败:', error)
-      return []
-    }
-  },
-
   // 获取项目趋势
   async getProjectTrend(days: number = 7): Promise<{ date: string; count: number }[]> {
-    if (isStaticMode) return []
+    const buildTrendFromReports = (reports: Report[]) => reports
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(-Math.min(days, 365))
+      .map((report) => ({
+        date: report.date,
+        count: report.project_count || 0
+      }))
+
+    if (isStaticMode) {
+      try {
+        const reports = await fetchStatic<Report[]>('reports.json')
+        return buildTrendFromReports(reports)
+      } catch {
+        return []
+      }
+    }
     try {
       const response = await api.get('/api/project-trend', { params: { days } })
-      return response.data.data || []
+      return unwrapResponse(response.data)
     } catch (error) {
-      console.error('获取项目趋势失败:', error)
-      return []
+      console.warn('项目趋势接口不可用，回退到报告列表生成趋势数据')
+      try {
+        const reportsResponse = await api.get('/api/reports')
+        const reports = unwrapResponse<Report[]>(reportsResponse.data)
+        return buildTrendFromReports(reports)
+      } catch (fallbackError) {
+        console.error('获取项目趋势失败:', fallbackError)
+        return []
+      }
     }
   },
 
@@ -441,7 +476,8 @@ export const reportApi = {
       return { repositories: [], developers: [], updated_at: new Date().toISOString() }
     }
     try {
-      const response = await api.get('/api/trending')
+      // 冷缓存时后端需实时抓取仓库 + 开发者数据，耗时可达 30s+，需要更长的超时时间
+      const response = await api.get('/api/trending', { timeout: 45000 })
       return response.data
     } catch (error) {
       console.error('获取 Trending 数据失败:', error)
@@ -461,18 +497,32 @@ export const reportApi = {
 
   // 获取语言分布数据（从 trends API 获取）
   async getLanguageDistribution(): Promise<LanguageData[]> {
-    if (isStaticMode) return []
-    try {
-      const response = await api.get('/api/trends')
-      console.log('🌐 获取语言分布数据成功', response.data)
-      const langData = response.data.data?.programmingLanguages || response.data.data?.most_frequent_languages || []
+    const toLanguageData = (langData: [string, number][]) => {
       const colorClasses = ['bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-red-500', 'bg-cyan-500', 'bg-pink-500']
+      const total = langData.reduce((sum: number, item: [string, number]) => sum + item[1], 0) || 1
       return langData.map((item: [string, number], index: number) => ({
         name: item[0],
         count: item[1],
-        percentage: Math.round((item[1] / langData.reduce((sum: number, i: [string, number]) => sum + i[1], 0)) * 100),
+        percentage: Math.round((item[1] / total) * 100),
         colorClass: colorClasses[index % colorClasses.length]
       }))
+    }
+
+    if (isStaticMode) {
+      try {
+        const trends = await fetchStatic<any>('trends.json')
+        const data = trends.daily || trends
+        const langData = data.programmingLanguages || data.most_frequent_languages || []
+        return toLanguageData(langData)
+      } catch {
+        return []
+      }
+    }
+    try {
+      const response = await api.get('/api/trends', { params: { days: 30 } })
+      const data = unwrapResponse<TrendsData>(response.data)
+      const langData = data.programmingLanguages || data.most_frequent_languages || []
+      return toLanguageData(langData)
     } catch (error) {
       console.error('获取语言分布数据失败:', error)
       throw error
@@ -497,7 +547,7 @@ export const reportApi = {
     try {
       const response = await api.get('/api/trends')
       console.log('📈 获取趋势数据成功', response.data)
-      const data = response.data.data
+      const data = unwrapResponse<any>(response.data)
       const techDomains = data?.techDomains || []
       return techDomains.map((domain: any, index: number) => ({
         label: domain.name,

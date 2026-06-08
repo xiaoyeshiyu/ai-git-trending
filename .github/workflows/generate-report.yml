@@ -52,6 +52,20 @@ jobs:
         run: |
           python app.py --mode reporter --once
 
+      - name: Backfill missing AI analysis
+        working-directory: backend
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL || 'gpt-4-turbo' }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          LLM_MAX_RETRIES: '3'
+          LLM_RETRY_DELAY: '5'
+          LLM_TIMEOUT: '60'
+          MISSING_ANALYSIS_LIMIT: ${{ vars.MISSING_ANALYSIS_LIMIT || '25' }}
+        run: |
+          python backfill_missing_analysis.py --limit "${MISSING_ANALYSIS_LIMIT}"
+
       - name: Export static data
         working-directory: backend
         run: |

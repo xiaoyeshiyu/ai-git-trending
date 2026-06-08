@@ -11,7 +11,8 @@ import threading
 # 创建日志记录器
 logger = get_logger('router', 'INFO')
 
-# Trending data cache (5-minute TTL)
+# Trending data cache (8-hour TTL) — in-memory, lives only inside this process
+_TRENDING_CACHE_TTL_SECONDS = 8 * 60 * 60
 _trending_cache = {"data": None, "expires_at": 0}
 _trending_cache_lock = threading.Lock()
 
@@ -109,7 +110,12 @@ def download_report(date_str, format):
 
 @app.route('/api/trending')
 def get_trending():
-    """Return live trending repositories and developers with 5-minute caching."""
+    """Return live trending repositories with 8-hour caching.
+
+    Developer scraping was dropped — the frontend only consumes `repositories`,
+    and scraping developers roughly doubled the cold-cache response time (~30s),
+    causing the request to exceed the client timeout.
+    """
     import time
     now = time.time()
     with _trending_cache_lock:
@@ -118,20 +124,19 @@ def get_trending():
             return jsonify(_trending_cache["data"])
 
     try:
-        from app.scraper import scrape_github_trending, scrape_trending_developers
+        from app.scraper import scrape_github_trending
 
         repos = scrape_github_trending() or []
-        developers = scrape_trending_developers() or []
 
         data = {
             "repositories": repos,
-            "developers": developers,
+            "developers": [],
             "updated_at": datetime.now().isoformat(),
         }
 
         with _trending_cache_lock:
             _trending_cache["data"] = data
-            _trending_cache["expires_at"] = now + 300
+            _trending_cache["expires_at"] = now + _TRENDING_CACHE_TTL_SECONDS
 
         return jsonify(data)
     except Exception as e:

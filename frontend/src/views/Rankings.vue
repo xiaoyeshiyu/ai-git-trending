@@ -6,12 +6,12 @@
         <div class="flex items-center gap-3">
           <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
             </svg>
           </div>
           <div>
             <h1 class="text-sm font-semibold tracking-[0.28em] text-slate-100">GITTREND INTEL</h1>
-            <p class="text-[10px] uppercase tracking-[0.26em] text-cyan-400/70">TECH INTELLIGENCE TERMINAL</p>
+            <p class="text-[10px] uppercase tracking-[0.26em] text-cyan-400/70">LEADERBOARD INTELLIGENCE</p>
           </div>
         </div>
 
@@ -19,9 +19,7 @@
           <router-link to="/" class="terminal-nav">情报台</router-link>
           <router-link to="/trend" class="terminal-nav">趋势</router-link>
           <router-link to="/rankings" class="terminal-nav active">排行榜</router-link>
-          <router-link to="/trend-analysis" class="terminal-nav">趋势图谱</router-link>
-          <router-link to="/favorites" class="terminal-nav">收藏</router-link>
-        </nav>
+          <router-link to="/trend-analysis" class="terminal-nav">趋势图谱</router-link>        </nav>
       </div>
     </header>
 
@@ -30,14 +28,14 @@
       <!-- 页面标题 -->
       <div class="mb-6">
         <p class="section-kicker">LEADERBOARD</p>
-        <h2 class="text-3xl font-semibold text-slate-100">排行榜</h2>
-        <p class="mt-2 text-slate-400 max-w-2xl">
-          查看最受欢迎的开源项目与历史分析报告
+        <h2 class="text-3xl font-semibold text-slate-900">排行榜</h2>
+        <p class="mt-2 max-w-2xl text-slate-600">
+          查看最受欢迎的开源项目与历史分析报告，并快速浏览项目级 AI 摘要
         </p>
       </div>
 
       <!-- 子标签切换 -->
-      <div class="mb-6 flex gap-2">
+      <div class="mb-6 flex flex-wrap items-center gap-2 rounded-2xl border border-cyan-100 bg-white/90 p-3 shadow-sm">
         <button
           @click="activeTab = 'projects'"
           :class="['terminal-action', activeTab === 'projects' ? 'primary' : '']"
@@ -56,10 +54,10 @@
           </svg>
           报告归档
         </button>
-        <span v-if="activeTab === 'projects'" class="ml-auto text-xs text-slate-500 self-center">
+        <span v-if="activeTab === 'projects'" class="ml-auto self-center text-xs text-slate-500">
           共 {{ totalProjects }} 个项目
         </span>
-        <span v-else class="ml-auto text-xs text-slate-500 self-center">
+        <span v-else class="ml-auto self-center text-xs text-slate-500">
           共 {{ reportList.length }} 份报告
         </span>
       </div>
@@ -67,7 +65,7 @@
       <!-- ==================== 项目排行 Tab ==================== -->
       <template v-if="activeTab === 'projects'">
       <!-- 筛选选项 -->
-      <div class="mb-8 flex flex-wrap gap-4">
+      <div class="mb-8 flex flex-wrap items-center gap-4 rounded-2xl border border-cyan-100 bg-white/90 p-4 shadow-sm">
         <div class="flex gap-2">
           <button
             v-for="period in timePeriods"
@@ -81,11 +79,12 @@
             {{ period.label }}
           </button>
         </div>
-        <select v-model="selectedCategory" class="terminal-select">
-          <option v-for="category in categories" :key="category" :value="category">
-            {{ category === 'all' ? '全部领域' : category }}
+        <select v-model="selectedCategory" class="terminal-select min-w-[180px]">
+          <option v-for="category in categories" :key="category.value" :value="category.value">
+            {{ category.label }}
           </option>
         </select>
+        <span v-if="loadingDomains" class="text-xs text-slate-500">正在加载领域分类...</span>
       </div>
 
       <!-- 加载状态 -->
@@ -107,21 +106,56 @@
         <div
           v-for="(project, index) in projects"
           :key="project.name"
-          class="terminal-panel p-4 flex items-center gap-4"
+          class="rounded-2xl border border-cyan-100 bg-white/95 p-5 shadow-sm transition-all hover:border-cyan-200"
         >
-          <!-- 排名 -->
-          <div class="w-10 h-10 rounded-lg bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-300 font-bold text-lg">
-            {{ (currentPage - 1) * pageSize + index + 1 }}
-          </div>
+          <div class="flex items-start gap-4">
+            <!-- 排名 -->
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 text-lg font-bold text-cyan-700">
+              {{ (currentPage - 1) * pageSize + index + 1 }}
+            </div>
 
-          <!-- 项目卡片 -->
-          <div class="flex-1 cursor-pointer" @click="viewProjectDetails(project)">
-            <ProjectCard :project="project" />
+            <div class="min-w-0 flex-1 cursor-pointer" @click="viewProjectDetails(project)">
+              <div class="mb-1 flex items-start justify-between gap-4">
+                <div class="min-w-0 flex-1">
+                  <div class="flex min-w-0 items-center gap-2">
+                    <span class="truncate text-lg font-semibold text-slate-900">{{ project.name }}</span>
+                    <span v-if="project.language" class="shrink-0 rounded-full border border-cyan-200 bg-cyan-50 px-2 py-0.5 text-[10px] text-cyan-700">
+                      {{ project.language }}
+                    </span>
+                  </div>
+                  <p class="mt-2 text-sm leading-6 text-slate-600">
+                    {{ project.description || '暂无描述' }}
+                  </p>
+                </div>
+                <div class="shrink-0 flex items-center gap-2">
+                  <button class="inline-flex h-8 items-center rounded-full border border-cyan-200 bg-white px-3 text-[11px] font-medium text-cyan-700 hover:bg-cyan-50">
+                    详情
+                  </button>
+                  <div class="inline-flex h-8 items-center rounded-full border border-cyan-200 bg-cyan-50/80 px-3 text-[11px] font-medium text-slate-800">
+                    ★ {{ formatCompactNumber(project.stars || 0) }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                <span class="rounded-full border border-cyan-100 bg-cyan-50 px-2.5 py-1">Forks {{ formatCompactNumber(project.forks || 0) }}</span>
+                <span class="rounded-full border border-cyan-100 bg-cyan-50 px-2.5 py-1">Contributors {{ formatCompactNumber(project.contributor_count || 0) }}</span>
+                <span class="rounded-full border border-cyan-100 bg-cyan-50 px-2.5 py-1">
+                  {{ project.created_at && project.created_at !== 'N/A' ? `创建 ${String(project.created_at).slice(0, 4)}` : '创建时间未知' }}
+                </span>
+              </div>
+
+              <div v-if="project.analysis" class="mt-3 rounded-xl border border-cyan-100 bg-cyan-50/70 px-4 py-3">
+                <p class="text-sm leading-6 text-slate-700">
+                  {{ getProjectAnalysisPreview(project) }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- 分页控件 -->
-        <div v-if="totalPages > 1" class="flex items-center justify-center gap-2 mt-8">
+        <div v-if="totalPages > 1" class="mt-8 flex items-center justify-center gap-2">
           <button
             class="terminal-action"
             :disabled="currentPage === 1"
@@ -161,7 +195,7 @@
         </div>
 
         <!-- 总数显示 -->
-        <div v-if="totalProjects > 0" class="text-center text-sm text-slate-500 mt-4">
+        <div v-if="totalProjects > 0" class="mt-4 text-center text-sm text-slate-500">
           共 {{ totalProjects }} 个项目，第 {{ currentPage }}/{{ totalPages }} 页
         </div>
       </div>
@@ -186,20 +220,20 @@
             v-for="report in reportList"
             :key="report.date"
             @click="openReport(report)"
-            class="terminal-panel p-4 block hover:border-cyan-400/30 transition-colors cursor-pointer"
+            class="block cursor-pointer rounded-2xl border border-cyan-100 bg-white/95 p-5 shadow-sm transition-all hover:border-cyan-200"
           >
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-3 mb-2">
-                  <span class="text-sm font-semibold text-slate-200">{{ formatReportDate(report.date) }}</span>
-                  <span class="text-[11px] px-2 py-0.5 border border-green-400/20 bg-green-400/8 text-green-400">已生成</span>
+                  <span class="text-sm font-semibold text-slate-900">{{ formatReportDate(report.date) }}</span>
+                  <span class="border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[11px] text-emerald-700">已生成</span>
                   <span class="text-xs text-slate-500">{{ report.project_count }} 个项目</span>
                 </div>
-                <p class="text-sm text-slate-400 leading-relaxed line-clamp-2">
+                <p class="line-clamp-2 text-sm leading-relaxed text-slate-600">
                   {{ getReportBrief(report) }}
                 </p>
               </div>
-              <svg class="w-5 h-5 text-slate-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="mt-1 h-5 w-5 flex-shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 5.5 16 12l-6 6.5"></path>
               </svg>
             </div>
@@ -228,9 +262,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { reportApi, type Project, type Report } from '@/api/reports'
-import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
 import ReportModal from '@/components/ReportModal.vue'
+import { extractAnalysisPreview } from '@/utils/analysis'
 
 const activeTab = ref<'projects' | 'reports'>('projects')
 const loading = ref(false)
@@ -309,6 +343,24 @@ const currentPage = ref(1)
 const pageSize = ref(20)
 const totalProjects = ref(0)
 const totalPages = computed(() => Math.ceil(totalProjects.value / pageSize.value))
+const DOMAIN_LABELS: Record<string, string> = {
+  all: '全部领域',
+  'AI/ML': 'AI/机器学习',
+  'LLM Apps': 'LLM 应用',
+  Web: 'Web开发',
+  Frontend: '前端',
+  Mobile: '移动开发',
+  DevOps: 'DevOps',
+  'Data Science': '数据科学',
+  Database: '数据库',
+  Tools: '工具',
+  Security: '安全',
+  Blockchain: '区块链',
+  Gaming: '游戏开发',
+  OS: '系统编程',
+  IoT: '物联网',
+  Other: '其他'
+}
 
 const timePeriods = [
   { label: '今日', value: 'daily' },
@@ -317,7 +369,9 @@ const timePeriods = [
   { label: '全年', value: 'yearly' }
 ]
 
-const categories = ref<string[]>(['all'])
+const categories = ref<Array<{ value: string; label: string }>>([
+  { value: 'all', label: DOMAIN_LABELS.all }
+])
 const loadingDomains = ref(false)
 
 // 加载技术领域分类
@@ -326,7 +380,20 @@ const loadTechDomains = async () => {
   try {
     const domains = await reportApi.getTechDomains()
     if (domains && domains.length > 0) {
-      categories.value = ['all', ...domains.map(d => d.name)]
+      categories.value = [
+        { value: 'all', label: DOMAIN_LABELS.all },
+        ...domains
+          .filter((domain) => domain.name && domain.name !== 'Other')
+          .map((domain) => ({
+            value: domain.name,
+            label: DOMAIN_LABELS[domain.name] || domain.name
+          })),
+        ...(
+          domains.some((domain) => domain.name === 'Other')
+            ? [{ value: 'Other', label: DOMAIN_LABELS.Other }]
+            : []
+        )
+      ]
     }
   } catch (error) {
     console.error('加载技术领域失败:', error)
@@ -415,6 +482,16 @@ watch(selectedCategory, () => {
 const viewProjectDetails = (project: Project) => {
   selectedProjectName.value = project.name
   showProjectModal.value = true
+}
+
+const getProjectAnalysisPreview = (project: Project) => {
+  return extractAnalysisPreview(project.analysis || '', 180)
+}
+
+const formatCompactNumber = (value: number) => {
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`
+  if (value >= 1000) return `${(value / 1000).toFixed(1)}K`
+  return `${value}`
 }
 
 onMounted(() => {

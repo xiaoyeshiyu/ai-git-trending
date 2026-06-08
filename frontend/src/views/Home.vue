@@ -4,14 +4,14 @@
     <header class="sticky top-0 z-40 border-b border-cyan-400/20 bg-[#0e6685] backdrop-blur-sm">
       <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
         <div class="flex items-center gap-3">
-          <div class="flex h-9 w-9 items-center justify-center border border-white/30 bg-white/15 text-white">
+          <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
             </svg>
           </div>
           <div>
-            <h1 class="text-sm font-semibold tracking-[0.28em] text-white">GITTREND INTEL</h1>
-            <p class="text-[10px] uppercase tracking-[0.26em] text-white/60">TECH INTELLIGENCE TERMINAL</p>
+            <h1 class="text-sm font-semibold tracking-[0.28em] text-slate-100">GITTREND INTEL</h1>
+            <p class="text-[10px] uppercase tracking-[0.26em] text-cyan-400/70">技术情报终端</p>
           </div>
         </div>
 
@@ -19,94 +19,121 @@
           <router-link to="/" class="terminal-nav active">情报台</router-link>
           <router-link to="/trend" class="terminal-nav">趋势</router-link>
           <router-link to="/rankings" class="terminal-nav">排行榜</router-link>
-          <router-link to="/trend-analysis" class="terminal-nav">趋势图谱</router-link>
-          <router-link to="/favorites" class="terminal-nav">收藏</router-link>
-        </nav>
+          <router-link to="/trend-analysis" class="terminal-nav">趋势图谱</router-link>        </nav>
       </div>
     </header>
 
     <!-- 情报终端首屏 -->
     <section class="terminal-shell border-b border-cyan-400/15">
-      <div class="mx-auto grid max-w-[1500px] gap-4 px-4 py-5 lg:grid-cols-[1.45fr_0.95fr] lg:px-6">
-        <div class="terminal-panel min-h-[360px]">
+      <div class="mx-auto max-w-[1500px] px-4 py-5 lg:px-6">
+        <div class="terminal-panel overflow-hidden">
           <div class="terminal-panel-head">
-            <span>LIVE BRIEFING</span>
-            <span>{{ currentDateLabel }}</span>
+            <span>今日热榜与 AI 分析</span>
+            <span>{{ todayTrendingUpdatedAt ? `更新于 ${formatDateTime(todayTrendingUpdatedAt)}` : '实时' }}</span>
           </div>
           <div class="p-5 lg:p-6">
             <div class="mb-5 flex flex-wrap items-center gap-2">
               <span class="status-chip online">后端在线</span>
               <span class="status-chip">GitHub Trending</span>
-              <span class="status-chip">LLM Report</span>
-            </div>
-            <h2 class="max-w-4xl text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
-              技术情报终端
-            </h2>
-            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-700 md:text-base">
-              聚合 GitHub 热门项目、语言热度、技术领域和 AI 分析报告，把每日开源变化整理成可扫描、可追踪、可复盘的情报面板。
-            </p>
-
-            <div class="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
-              <div class="terminal-metric">
-                <span>REPORTS</span>
-                <strong>{{ statsData.totalReports }}</strong>
-              </div>
-              <div class="terminal-metric">
-                <span>PROJECTS</span>
-                <strong>{{ statsData.totalProjects }}</strong>
-              </div>
-              <div class="terminal-metric">
-                <span>WEEKLY NEW</span>
-                <strong>{{ statsData.weeklyNew }}</strong>
-              </div>
-              <div class="terminal-metric">
-                <span>AVG CONTRIBUTORS</span>
-                <strong>{{ statsData.avgContributors }}</strong>
-              </div>
+              <span class="status-chip">LLM Analysis</span>
             </div>
 
-            <div class="mt-8 flex flex-wrap gap-3">
-              <button class="terminal-action primary" @click="viewTodayTrending">
-                查看今日热门
-              </button>
-              <button class="terminal-action" @click="openTechTrendsModal">
-                打开趋势雷达
-              </button>
+            <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <h2 class="max-w-4xl text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
+                  今日热榜
+                </h2>
+                <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-700 md:text-base">
+                  首页直接展开今日 Trending 项目，并填充已生成的 AI 分析内容，方便快速扫描和深入查看。
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:min-w-[520px]">
+                <div class="terminal-metric">
+                  <span>今日项目</span>
+                  <strong>{{ todayTrendingList.length }}</strong>
+                </div>
+                <div class="terminal-metric">
+                  <span>已分析</span>
+                  <strong>{{ analyzedTrendingCount }}</strong>
+                </div>
+                <div class="terminal-metric">
+                  <span>报告数</span>
+                  <strong>{{ statsData.totalReports }}</strong>
+                </div>
+                <div class="terminal-metric">
+                  <span>本周新增</span>
+                  <strong>{{ statsData.weeklyNew }}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="todayTrendingList.length > 0" class="grid grid-cols-1 gap-4 xl:grid-cols-2">
+              <article
+                v-for="(repo, i) in todayTrendingList"
+                :key="repo.name"
+                class="cursor-pointer rounded-2xl border border-cyan-100 bg-gradient-to-br from-white to-cyan-50/70 p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-100/70"
+                @click="openProjectModal(repo)"
+              >
+                <div class="flex items-start justify-between gap-4">
+                  <div class="min-w-0 flex-1">
+                    <div class="mb-2 flex items-center gap-2">
+                      <span class="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-cyan-600 px-2 text-xs font-semibold text-white">
+                        {{ i + 1 }}
+                      </span>
+                      <span class="text-[11px] uppercase tracking-[0.22em] text-cyan-700/70">
+                        {{ repo.name.split('/')[0] }}
+                      </span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900">
+                      {{ repo.name.split('/')[1] || repo.name }}
+                    </h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                      {{ repo.description || '暂无项目描述' }}
+                    </p>
+                  </div>
+                  <div class="shrink-0 text-right">
+                    <div class="text-sm font-semibold text-cyan-700">★ {{ formatStars(repo.stars || 0) }}</div>
+                    <div class="mt-1 text-xs text-slate-500">{{ repo.language || '未知语言' }}</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                  <span class="rounded-full border border-cyan-100 bg-cyan-50 px-2.5 py-1">Forks {{ formatStars(repo.forks || 0) }}</span>
+                  <span class="rounded-full border border-cyan-100 bg-cyan-50 px-2.5 py-1">Contributors {{ formatStars(repo.contributor_count || 0) }}</span>
+                  <span
+                    :class="repo.analysis ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-amber-200 bg-amber-50 text-amber-700'"
+                    class="rounded-full px-2.5 py-1"
+                  >
+                    {{ repo.analysis ? '已生成 AI 分析' : '待分析' }}
+                  </span>
+                </div>
+
+                <div v-if="repo.analysisLoading" class="mt-4 flex items-center gap-3 rounded-xl border border-cyan-100 bg-cyan-50/50 px-4 py-3 text-sm text-slate-500">
+                  <div class="spinner !h-5 !w-5"></div>
+                  正在加载 AI 分析...
+                </div>
+                <template v-else-if="repo.renderedAnalysis">
+                  <div class="mt-4 border-l-4 border-cyan-400 pl-4">
+                    <p class="text-sm leading-7 text-slate-700">
+                      {{ repo.analysisPreview || '该项目已生成 AI 分析，点击卡片查看完整内容。' }}
+                    </p>
+                  </div>
+                </template>
+                <div v-else class="mt-4 rounded-xl border border-dashed border-amber-200 bg-amber-50/70 px-4 py-3">
+                  <p class="mb-1 text-sm font-medium text-amber-800">待分析</p>
+                  <p class="text-sm leading-6 text-amber-700/80">
+                    当前项目还没有可展示的 AI 分析内容，点击卡片可查看项目详情，后续会补充分析结果。
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div v-else class="py-10 text-center text-sm text-slate-400">
+              <div class="spinner mx-auto mb-3"></div>
+              加载今日热榜与 AI 分析中...
             </div>
           </div>
         </div>
-
-        <aside>
-          <!-- 今日 Trending -->
-          <div class="terminal-panel">
-            <div class="terminal-panel-head">
-              <span>TODAY'S TRENDING</span>
-              <span class="text-xs opacity-60">实时</span>
-            </div>
-            <div class="divide-y divide-slate-800/20">
-              <div
-                v-for="(repo, i) in todayTrendingList"
-                :key="repo.name"
-                class="flex items-center gap-3 px-4 py-2.5 hover:bg-cyan-500/5 cursor-pointer transition-colors"
-                @click="openProjectModal(repo)"
-              >
-                <span class="text-xs font-mono text-slate-500 w-5 shrink-0 text-right">{{ i + 1 }}</span>
-                <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium text-slate-800 truncate">{{ repo.name.split('/')[1] || repo.name }}</p>
-                  <p class="text-[11px] text-slate-500 truncate">{{ repo.name.split('/')[0] }}</p>
-                </div>
-                <div class="flex items-center gap-2 shrink-0">
-                  <span v-if="repo.language" class="text-[10px] px-1.5 py-0.5 border border-slate-300 text-slate-500 hidden sm:inline">{{ repo.language }}</span>
-                  <span class="text-xs text-cyan-600">★ {{ formatStars(repo.stars || 0) }}</span>
-                </div>
-              </div>
-              <div v-if="todayTrendingList.length === 0" class="py-6 text-center text-sm text-slate-400">
-                <div class="spinner mx-auto mb-2"></div>
-                加载今日热榜...
-              </div>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -117,7 +144,7 @@
       <section id="trending-projects" class="mb-12">
         <div class="terminal-section-title animate-fadeInUp">
           <div>
-            <p class="section-kicker">DAILY REPORT</p>
+            <p class="section-kicker">每日报告</p>
             <h3>今日报告</h3>
           </div>
           <div class="flex items-center gap-3">
@@ -147,19 +174,16 @@
       <section class="mb-12 animate-fadeInUp">
         <div class="terminal-section-title">
           <div>
-            <p class="section-kicker">INTELLIGENCE OVERVIEW</p>
+            <p class="section-kicker">情报概览</p>
             <h3>情报概览</h3>
           </div>
-          <button class="terminal-action compact" @click="openTechTrendsModal">
-            <i class="fa fa-chart-line mr-1"></i> 打开趋势雷达
-          </button>
         </div>
         <Suspense>
           <template #default>
             <StatsChart
               :stats="statsData"
               :languageData="topLanguages"
-              :trendData="trendAreasData"
+              :trendData="projectTrendData"
               :emergingAreas="emergingAreas"
               :surgingProjects="surgingProjects"
               :surgingMode="surgingMode"
@@ -177,74 +201,74 @@
       <section class="mb-12">
         <div class="terminal-section-title animate-fadeInUp">
           <div>
-            <p class="section-kicker">REPORT ARCHIVE</p>
+            <p class="section-kicker">报告归档</p>
             <h3>分析报告</h3>
           </div>
-          <router-link to="/rankings" class="flex items-center gap-1 text-sm text-cyan-300 hover:text-cyan-200">
+          <router-link to="/rankings" class="flex items-center gap-1 text-sm text-cyan-600 hover:text-cyan-700">
             查看全部 <i class="fa fa-angle-right"></i>
           </router-link>
         </div>
 
-        <div class="terminal-panel">
+        <div class="terminal-panel overflow-hidden">
           <!-- 日历头部：年月导航 -->
-          <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800/60">
+          <div class="flex items-center justify-between gap-4 px-5 py-4" style="background: rgba(26, 150, 184, 0.06); border-bottom: 1px solid rgba(26, 150, 184, 0.15);">
             <div class="flex items-center gap-1">
-              <button @click="calYear--" class="terminal-action compact text-xs px-2">‹‹</button>
-              <button @click="prevMonth" class="terminal-action compact text-xs px-2">‹</button>
+              <button @click="calYear--" title="上一年" class="cal-nav-btn">«</button>
+              <button @click="prevMonth" title="上个月" class="cal-nav-btn">‹</button>
             </div>
-            <span class="text-base font-semibold text-slate-100">
-              {{ calYear }}年{{ calMonth + 1 }}月
-              <span class="ml-3 text-xs font-normal text-slate-500">{{ calMonthReportCount }} 份报告</span>
-            </span>
+            <div class="flex items-baseline gap-2.5">
+              <span class="text-lg font-semibold text-slate-900">{{ calYear }}年{{ calMonth + 1 }}月</span>
+              <span class="status-chip online">{{ calMonthReportCount }} 份报告</span>
+            </div>
             <div class="flex items-center gap-1">
-              <button @click="nextMonth" class="terminal-action compact text-xs px-2">›</button>
-              <button @click="calYear++" class="terminal-action compact text-xs px-2">››</button>
+              <button @click="nextMonth" title="下个月" class="cal-nav-btn">›</button>
+              <button @click="calYear++" title="下一年" class="cal-nav-btn">»</button>
             </div>
           </div>
 
           <!-- 星期头 -->
-          <div class="grid grid-cols-7 border-b border-slate-800/60">
+          <div class="grid grid-cols-7" style="border-bottom: 1px solid rgba(26, 150, 184, 0.12);">
             <div v-for="w in ['一','二','三','四','五','六','日']" :key="w"
-              class="py-2 text-center text-[10px] uppercase tracking-widest text-slate-500">{{ w }}</div>
+              class="py-2.5 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-700/60">{{ w }}</div>
           </div>
 
           <!-- 日期格子 -->
           <div class="grid grid-cols-7">
             <div
               v-for="(cell, i) in calendarCells" :key="i"
-              class="relative border-b border-r border-slate-800/40 min-h-[72px] p-1.5 transition-colors"
+              class="cal-cell relative min-h-[78px] p-2 transition-all duration-150"
               :class="[
-                !cell.curMonth ? 'bg-slate-950/40' : '',
-                cell.report ? 'cursor-pointer hover:bg-cyan-400/5' : '',
-                cell.isToday ? 'bg-cyan-400/5' : ''
+                !cell.curMonth ? 'cal-cell--muted' : '',
+                cell.report ? 'cal-cell--report cursor-pointer' : '',
+                cell.isToday ? 'cal-cell--today' : ''
               ]"
               @click="cell.report && openReportModal(cell.report)"
             >
-              <!-- 日期数字 -->
-              <span class="text-xs font-mono leading-none"
-                :class="[
-                  cell.isToday ? 'text-cyan-300 font-bold' : cell.curMonth ? 'text-slate-400' : 'text-slate-700'
-                ]">
-                {{ cell.day }}
-              </span>
-
-              <!-- 有报告时显示 -->
-              <div v-if="cell.report" class="mt-1.5">
-                <div class="text-[10px] text-cyan-300 leading-tight font-medium">已生成</div>
-                <div class="text-[10px] text-slate-500 leading-tight mt-0.5">{{ cell.report.project_count }} 个项目</div>
+              <!-- 日期数字 + 今日标记 -->
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs leading-none"
+                  :class="[
+                    cell.isToday ? 'font-bold text-cyan-600' : cell.curMonth ? 'text-slate-600' : 'text-slate-300'
+                  ]">
+                  {{ cell.day }}
+                </span>
+                <span v-if="cell.isToday" class="rounded-full bg-cyan-500 px-1.5 py-0.5 text-[9px] font-medium leading-none text-white">今天</span>
               </div>
 
-              <!-- 今日标记 -->
-              <div v-if="cell.isToday" class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+              <!-- 有报告时显示徽章 -->
+              <div v-if="cell.report" class="cal-report-badge mt-2">
+                <span class="cal-report-dot"></span>
+                <span>{{ cell.report.project_count }} 个项目</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 加载提示 -->
         <div v-if="isLoading" class="fixed inset-0 z-40 flex items-center justify-center bg-black/60">
-          <div class="flex flex-col items-center border border-cyan-400/20 bg-slate-950 p-6 shadow-2xl">
+          <div class="flex flex-col items-center border border-cyan-200 bg-white p-6 shadow-2xl">
             <div class="mb-4 h-12 w-12 animate-spin border-4 border-cyan-400/20 border-t-cyan-300"></div>
-            <p class="text-slate-300">加载报告内容中...</p>
+            <p class="text-slate-700">加载报告内容中...</p>
           </div>
         </div>
       </section>
@@ -253,7 +277,7 @@
     <!-- 页脚 -->
     <footer class="border-t border-cyan-400/10 bg-[#dff2f8]">
       <div class="mx-auto flex max-w-[1500px] flex-col gap-3 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between lg:px-6">
-        <span>GITTREND INTEL / OPEN SOURCE SIGNAL WATCH</span>
+        <span>GITTREND INTEL / 开源情报观察站</span>
         <span>© {{ new Date().getFullYear() }} GitTrend Insights</span>
       </div>
     </footer>
@@ -272,40 +296,80 @@
       v-if="isReportModalOpen"
       @close="closeReportModal"
     />
-
-    <!-- 技术趋势分析模态框 -->
-    <TechTrendsModal 
-      :visible="isTechTrendsModalOpen"
-      :trends-data="trendsData"
-      @close="closeTechTrendsModal"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, defineAsyncComponent } from 'vue'
 import { useRouter } from 'vue-router'
-import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
 import ReportModal from '@/components/ReportModal.vue'
-import TechTrendsModal from '@/components/TechTrendsModal.vue'
 import type { Project, Report, Stats, TrendsData, TrendDataItem } from '@/api/reports'
-import { getReports, getStats, getTrends, getReportByDate, getTrendData, getTrending } from '@/api/reports'
+import { getReports, getStats, getTrends, getReportByDate, getTrendData, getTrending, getProjectDetails, getProjectTrend } from '@/api/reports'
 import { renderMarkdown } from '@/utils/markdown-simple'
+import { extractAnalysisPreview, splitAnalysisContent } from '@/utils/analysis'
 
 const StatsChart = defineAsyncComponent(() => import('@/components/StatsChart.vue'))
 
 const router = useRouter()
 
 // ── 今日 Trending ──────────────────────────────────────
-const todayTrendingList = ref<Project[]>([])
+interface TodayTrendingProject extends Project {
+  renderedAnalysis?: string
+  analysisPreview?: string
+  analysisLoading?: boolean
+}
+
+const todayTrendingList = ref<TodayTrendingProject[]>([])
+const todayTrendingUpdatedAt = ref('')
 
 async function loadTodayTrending() {
   try {
     const data = await getTrending()
-    todayTrendingList.value = (data.repositories || []).slice(0, 12)
+    todayTrendingUpdatedAt.value = data.updated_at || ''
+    const repos = (data.repositories || []).slice(0, 8)
+
+    todayTrendingList.value = repos.map((repo) => ({
+      ...repo,
+      renderedAnalysis: '',
+      analysisPreview: '',
+      analysisLoading: true
+    }))
+
+    const enrichedRepos = await Promise.all(
+      repos.map(async (repo) => {
+        try {
+          const detail = await getProjectDetails(repo.name)
+          const analysis = (detail.analysis || '').trim()
+          const parsedAnalysis = splitAnalysisContent(analysis)
+          const renderedAnalysis = parsedAnalysis.detailMarkdown
+            ? await renderMarkdown(parsedAnalysis.detailMarkdown)
+            : ''
+          const analysisPreview = parsedAnalysis.summary || extractAnalysisPreview(analysis, 140)
+
+          return {
+            ...repo,
+            ...detail,
+            analysis,
+            renderedAnalysis,
+            analysisPreview,
+            analysisLoading: false
+          } satisfies TodayTrendingProject
+        } catch {
+          return {
+            ...repo,
+            renderedAnalysis: '',
+            analysisPreview: '',
+            analysisLoading: false
+          } satisfies TodayTrendingProject
+        }
+      })
+    )
+
+    todayTrendingList.value = enrichedRepos
   } catch {
     todayTrendingList.value = []
+    todayTrendingUpdatedAt.value = ''
   }
 }
 // ───────────────────────────────────────────────────────
@@ -402,7 +466,7 @@ function preprocessReportContent(content: string): string {
 
 
 // 响应式数据
-const theme = ref<'light' | 'dark'>('dark')
+const theme = ref<'light' | 'dark'>('light')
 const timeFilter = ref('today')
 
 // 监听timeFilter变化，更新项目数据
@@ -427,6 +491,7 @@ const trendsData = ref<TrendsData>({  time_window_days: 30,
   surgingProjects: [],
   techDomains: []
 })
+const projectTrendData = ref<TrendDataItem[]>([]) // 项目趋势数据
 const trendAreasData = ref<TrendDataItem[]>([]) // 新兴技术领域数据
 
 // 今日简报
@@ -444,21 +509,21 @@ const isLoading = ref(false)
 // 模态框状态
 const isProjectModalOpen = ref(false)
 const isReportModalOpen = ref(false)
-const isTechTrendsModalOpen = ref(false)
 const selectedProject = ref<Project | null>(null)
+
+// 趋势雷达内嵌面板状态
+const trendRadarTab = ref<'areas' | 'languages' | 'activity'>('areas')
+const trendRadarTabs = [
+  { value: 'areas' as const, label: '领域趋势' },
+  { value: 'languages' as const, label: '语言分布' },
+  { value: 'activity' as const, label: '活跃度指标' }
+]
 const selectedReport = ref<Report>({
   date: '',
   project_count: 0
 })
 
-const currentDateLabel = computed(() => {
-  return new Date().toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    weekday: 'short'
-  })
-})
+const analyzedTrendingCount = computed(() => todayTrendingList.value.filter((repo) => !!repo.analysis).length)
 
 const intelligenceFeed = computed(() => [
   {
@@ -586,6 +651,22 @@ const surgingProjects = computed(() => {
   }))
 })
 
+function mapProjectTrendData(points: { date: string; count: number }[]): TrendDataItem[] {
+  return points.map((point, index) => {
+    const previous = index > 0 ? points[index - 1].count : point.count
+    const change = previous > 0
+      ? Math.round(((point.count - previous) / previous) * 100)
+      : 0
+
+    return {
+      label: point.date.slice(5),
+      value: point.count,
+      change,
+      colorClass: ['text-cyan-500', 'text-sky-500', 'text-emerald-500', 'text-blue-500'][index % 4]
+    }
+  })
+}
+
 const surgingMode = computed<'surging' | 'hot'>(() => {
   return trendsData.value?.surgingProjects?.length ? 'surging' : 'hot'
 })
@@ -593,26 +674,8 @@ const surgingMode = computed<'surging' | 'hot'>(() => {
 // 初始化数据
 onMounted(async () => {
   await loadInitialData()
-  
-  // Initialize Mermaid
-  // mermaid.initialize({
-  //   startOnLoad: false, // We will manually trigger rendering
-  //   theme: theme.value === 'dark' ? 'dark' : 'default', // Match app theme
-  // });
-  // // Run Mermaid to render diagrams
-  // mermaid.run();
 
-  // 初始化主题
-  applyTheme(theme.value)
-  
-  // 监听系统主题变化
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (e.matches) {
-      setTheme('dark')
-    } else {
-      setTheme('light')
-    }
-  })
+  applyTheme('light')
 })
 
 // 加载初始数据
@@ -699,17 +762,20 @@ function openTodayReport() {
 
 async function loadTrendOverview() {
   try {
-    const [trendsResponse, trendAreasResponse] = await Promise.all([
+    const [trendsResponse, trendAreasResponse, projectTrendResponse] = await Promise.all([
       getTrends(),
-      getTrendData()
+      getTrendData(),
+      getProjectTrend(7)
     ])
     trendsData.value = trendsResponse
     trendAreasData.value = trendAreasResponse
+    projectTrendData.value = mapProjectTrendData(projectTrendResponse)
     updateTrendingProjects()
   } catch (error) {
     console.error('加载趋势数据失败:', error)
     trendingProjects.value = []
     trendsData.value = { time_window_days: 7, most_frequent_projects: [], most_frequent_languages: [], programmingLanguages: [], surgingProjects: [], techDomains: [] }
+    projectTrendData.value = []
     trendAreasData.value = []
   }
 }
@@ -733,14 +799,16 @@ async function refreshData() {
       }
       
       // 并行获取趋势数据和新兴技术领域数据
-      const [newTrendsResponse, newTrendAreasResponse] = await Promise.all([
+      const [newTrendsResponse, newTrendAreasResponse, newProjectTrendResponse] = await Promise.all([
         getTrends({ days }),
-        getTrendData()
+        getTrendData(),
+        getProjectTrend(days)
       ]);
     
       // 更新趋势数据和新兴技术领域数据
       trendsData.value = newTrendsResponse
       trendAreasData.value = newTrendAreasResponse
+      projectTrendData.value = mapProjectTrendData(newProjectTrendResponse)
     
     // 更新项目数据
     updateTrendingProjects()
@@ -748,6 +816,7 @@ async function refreshData() {
     console.error('刷新数据失败:', error)
     // 如果失败，清空项目数据而不是使用模拟数据
     trendingProjects.value = []
+    projectTrendData.value = []
   } finally {
     isLoading.value = false
   }
@@ -767,19 +836,11 @@ function viewTodayTrending() {
   })
 }
 
-// 主题切换
-function toggleTheme() {
-  const newTheme = theme.value === 'dark' ? 'light' : 'dark'
-  setTheme(newTheme)
-}
-
-// 设置主题
 function setTheme(newTheme: 'light' | 'dark') {
   theme.value = newTheme
   applyTheme(newTheme)
 }
 
-// 应用主题
 function applyTheme(newTheme: 'light' | 'dark') {
   if (newTheme === 'dark') {
     document.documentElement.classList.add('dark')
@@ -804,34 +865,20 @@ function closeProjectModal() {
 
 // 打开报告详情模态框
 async function openReportModal(report: Report) {
+  // 先以已知信息打开模态框，避免与全屏加载遮罩同时出现造成闪屏
+  selectedReport.value = report
+  isReportModalOpen.value = true
   try {
-    // 先显示加载状态
-    isLoading.value = true;
-    // 获取报告完整内容
-    const fullReport = await getReportByDate(report.date);
-    selectedReport.value = fullReport;
-    isReportModalOpen.value = true;
+    const fullReport = await getReportByDate(report.date)
+    selectedReport.value = fullReport
   } catch (error) {
-    console.error('加载报告内容失败:', error);
-    // 可以添加错误提示
-  } finally {
-    isLoading.value = false;
+    console.error('加载报告内容失败:', error)
   }
 }
 
 // 关闭报告详情模态框
 function closeReportModal() {
   isReportModalOpen.value = false
-}
-
-// 打开技术趋势分析模态框
-function openTechTrendsModal() {
-  isTechTrendsModalOpen.value = true
-}
-
-// 关闭技术趋势分析模态框
-function closeTechTrendsModal() {
-  isTechTrendsModalOpen.value = false
 }
 
 // 日期格式化
@@ -842,6 +889,18 @@ function formatDate(dateStr: string): string {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
+  })
+}
+
+function formatDateTime(dateStr: string): string {
+  if (!dateStr) return ''
+  const date = new Date(dateStr)
+  if (Number.isNaN(date.getTime())) return dateStr
+  return date.toLocaleString('zh-CN', {
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
   })
 }
 
@@ -871,331 +930,6 @@ function getReportTitle(report: Report): string {
 </script>
 
 <style scoped>
-.home-container {
-  background:
-    linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at 18% 8%, rgba(34, 211, 238, 0.08), transparent 28rem),
-    #071019;
-  background-size: 28px 28px, 28px 28px, auto;
-}
-
-.terminal-shell {
-  background:
-    linear-gradient(180deg, rgba(14, 116, 144, 0.08), transparent 42%),
-    rgba(2, 6, 23, 0.26);
-}
-
-.terminal-panel,
-.report-card {
-  border: 1px solid rgba(51, 65, 85, 0.9);
-  background: rgba(15, 23, 42, 0.72);
-  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.06);
-}
-
-.terminal-panel {
-  position: relative;
-}
-
-.terminal-panel::before,
-.report-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(90deg, rgba(34, 211, 238, 0.65), transparent 60%);
-  opacity: 0.55;
-}
-
-.report-card {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-}
-
-.report-card:hover {
-  border-color: rgba(34, 211, 238, 0.38);
-  background: rgba(15, 23, 42, 0.9);
-  transform: translateY(-2px);
-}
-
-.report-card-compact {
-  min-height: 10.75rem;
-}
-
-.report-status {
-  border: 1px solid rgba(34, 197, 94, 0.22);
-  background: rgba(34, 197, 94, 0.08);
-  padding: 0.18rem 0.4rem;
-  font-size: 0.68rem;
-  color: #86efac;
-}
-
-.report-date strong {
-  display: block;
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 600;
-  color: #f8fafc;
-}
-
-.report-date span {
-  margin-top: 0.35rem;
-  display: block;
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  color: #64748b;
-}
-
-.terminal-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
-  padding: 0.65rem 1rem;
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  color: rgba(148, 163, 184, 0.82);
-}
-
-.terminal-nav {
-  border: 1px solid transparent;
-  padding: 0.45rem 0.75rem;
-  font-size: 0.78rem;
-  color: #94a3b8;
-  transition: all 0.2s ease;
-}
-
-.terminal-nav:hover,
-.terminal-nav.active {
-  border-color: rgba(34, 211, 238, 0.22);
-  background: rgba(34, 211, 238, 0.06);
-  color: #67e8f9;
-}
-
-.status-chip {
-  border: 1px solid rgba(51, 65, 85, 0.95);
-  background: rgba(2, 6, 23, 0.45);
-  padding: 0.35rem 0.55rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: #94a3b8;
-}
-
-.status-chip.online {
-  border-color: rgba(34, 197, 94, 0.24);
-  color: #86efac;
-}
-
-.terminal-metric {
-  border: 1px solid rgba(51, 65, 85, 0.8);
-  background: rgba(2, 6, 23, 0.36);
-  padding: 0.9rem;
-}
-
-.terminal-metric span {
-  display: block;
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
-  font-size: 0.64rem;
-  letter-spacing: 0.16em;
-  color: #64748b;
-}
-
-.terminal-metric strong {
-  margin-top: 0.55rem;
-  display: block;
-  font-size: 1.65rem;
-  font-weight: 500;
-  color: #e2e8f0;
-}
-
-.terminal-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(51, 65, 85, 0.95);
-  background: rgba(15, 23, 42, 0.75);
-  padding: 0.65rem 1rem;
-  font-size: 0.84rem;
-  color: #cbd5e1;
-  transition: all 0.2s ease;
-}
-
-.terminal-action.compact {
-  padding: 0.5rem 0.8rem;
-  font-size: 0.78rem;
-}
-
-.terminal-action:hover {
-  border-color: rgba(34, 211, 238, 0.38);
-  color: #e0f2fe;
-}
-
-.terminal-action.primary {
-  border-color: rgba(34, 211, 238, 0.36);
-  background: rgba(34, 211, 238, 0.12);
-  color: #a5f3fc;
-}
-
-.feed-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  border: 1px solid rgba(51, 65, 85, 0.7);
-  background: rgba(2, 6, 23, 0.32);
-  padding: 0.75rem;
-}
-
-.feed-row span {
-  font-size: 0.76rem;
-  color: #64748b;
-}
-
-.feed-row strong {
-  max-width: 12rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #cbd5e1;
-}
-
-.terminal-section-title {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
-  padding-bottom: 0.85rem;
-}
-
-.terminal-section-title h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #f8fafc;
-}
-
-.section-kicker {
-  margin-bottom: 0.25rem;
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
-  font-size: 0.66rem;
-  letter-spacing: 0.2em;
-  color: #22d3ee;
-}
-
-/* 背景网格图案 */
-.bg-grid-pattern {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* 按钮样式 */
-.btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
-  transition: all 0.2s ease;
-}
-
-.btn-icon:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: white;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  border-color: rgba(99, 102, 241, 0.5);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* 输入框样式 */
-.select-input {
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(100, 116, 139, 0.5);
-  color: #e2e8f0;
-  transition: all 0.2s ease;
-}
-
-.select-input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
-/* 动画 */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1207,35 +941,69 @@ function getReportTitle(report: Report): string {
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease forwards;
-}
-
 .animate-fadeInUp {
   animation: fadeInUp 0.5s ease forwards;
 }
 
-/* 玻璃态卡片样式 */
-.glass-card {
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(100, 116, 139, 0.2);
-  transition: all 0.3s ease;
+/* ── 分析报告日历 ── */
+.cal-nav-btn {
+  display: inline-flex;
+  height: 1.85rem;
+  width: 1.85rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(26, 150, 184, 0.25);
+  background: #ffffff;
+  font-size: 0.78rem;
+  color: #127a98;
+  transition: all 0.15s ease;
 }
 
-.glass-card:hover {
-  background: rgba(15, 23, 42, 0.6);
-  border-color: rgba(100, 116, 139, 0.3);
-  transform: translateY(-2px);
+.cal-nav-btn:hover {
+  border-color: rgba(26, 150, 184, 0.5);
+  background: rgba(26, 150, 184, 0.1);
+  color: #0a2d3d;
 }
 
-/* 悬停提升效果 */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.cal-cell {
+  border-bottom: 1px solid rgba(26, 150, 184, 0.12);
+  border-right: 1px solid rgba(26, 150, 184, 0.12);
 }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+.cal-cell--muted {
+  background: rgba(26, 150, 184, 0.025);
+}
+
+.cal-cell--report:hover {
+  background: rgba(26, 150, 184, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(26, 150, 184, 0.18);
+}
+
+.cal-cell--today {
+  background: rgba(26, 150, 184, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(26, 150, 184, 0.3);
+}
+
+.cal-report-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(26, 150, 184, 0.22);
+  background: rgba(26, 150, 184, 0.08);
+  padding: 0.2rem 0.4rem;
+  font-size: 10px;
+  line-height: 1.1;
+  color: #127a98;
+  font-weight: 500;
+}
+
+.cal-report-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: #1a96b8;
 }
 </style>

@@ -8,6 +8,33 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) {
+            return
+          }
+
+          if (id.includes('highlight.js')) {
+            return 'highlight'
+          }
+
+          if (id.includes('markdown-it') || id.includes('mdurl') || id.includes('linkify-it') || id.includes('uc.micro') || id.includes('entities')) {
+            return 'markdown'
+          }
+
+          if (id.includes('chart.js')) {
+            return 'charts'
+          }
+
+          if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
+            return 'vue-vendor'
+          }
+        }
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

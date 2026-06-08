@@ -212,7 +212,9 @@ const props = withDefaults(defineProps<TechTrendsModalProps>(), {
     time_window_days: 30,
     most_frequent_projects: [],
     most_frequent_languages: [],
-    surging_projects: []
+    programmingLanguages: [],
+    surgingProjects: [],
+    techDomains: []
   })
 })
 

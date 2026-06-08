@@ -44,14 +44,6 @@ const routes = [
     }
   },
   {
-    path: '/favorites',
-    name: 'Favorites',
-    component: () => import('../views/Favorites.vue'),
-    meta: {
-      title: '我的收藏项目 - GitTrend Insights'
-    }
-  },
-  {
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue'),
