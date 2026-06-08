@@ -1,17 +1,17 @@
 <template>
   <div class="home-container min-h-screen bg-[#e8f6fa] text-slate-100">
     <!-- 顶部导航栏 - 技术情报终端 -->
-    <header class="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#e8f6fa]/95 backdrop-blur-sm">
+    <header class="sticky top-0 z-40 border-b border-cyan-400/20 bg-[#0e6685] backdrop-blur-sm">
       <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
         <div class="flex items-center gap-3">
-          <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+          <div class="flex h-9 w-9 items-center justify-center border border-white/30 bg-white/15 text-white">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
           </div>
           <div>
-            <h1 class="text-sm font-semibold tracking-[0.28em] text-slate-100">GITTREND INTEL</h1>
-            <p class="text-[10px] uppercase tracking-[0.26em] text-cyan-400/70">TECH INTELLIGENCE TERMINAL</p>
+            <h1 class="text-sm font-semibold tracking-[0.28em] text-white">GITTREND INTEL</h1>
+            <p class="text-[10px] uppercase tracking-[0.26em] text-white/60">TECH INTELLIGENCE TERMINAL</p>
           </div>
         </div>
 
@@ -26,7 +26,7 @@
     </header>
 
     <!-- 情报终端首屏 -->
-    <section class="terminal-shell border-b border-cyan-400/10">
+    <section class="terminal-shell border-b border-cyan-400/15">
       <div class="mx-auto grid max-w-[1500px] gap-4 px-4 py-5 lg:grid-cols-[1.45fr_0.95fr] lg:px-6">
         <div class="terminal-panel min-h-[360px]">
           <div class="terminal-panel-head">
