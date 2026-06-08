@@ -16,21 +16,21 @@
 
 - **📈 每日自动分析**：抓取 GitHub Trending，通过 LLM 生成"一句话点评 + 技术亮点 + 潜在影响"的中文洞察报告
 - **🤖 零服务器运行**：GitHub Actions 每天 08:00（北京时间）自动执行，报告提交回仓库，部署到 GitHub Pages
-- **🖥️ 情报终端界面**：深色系仪表盘，展示实时统计数据、最新报告摘要与项目侧边栏
+- **🖥️ 情报终端界面**：浅青色海洋风格仪表盘，展示实时统计数据、最新报告摘要与项目侧边栏
+- **📅 分析报告日历**：日历视图浏览历史日报，点击即可在统一风格弹窗中阅读报告内容
 - **📊 多维趋势分析**：高频上榜项目、星标增速排名、语言分布图谱、技术领域分类
 - **🏆 项目排行榜**：按 Star 数排列全量收录项目，支持按时间段和技术领域筛选
 - **📁 报告归档**：所有历史日报一览，支持 Markdown / HTML 双格式下载
-- **⭐ 收藏夹**：本地持久化收藏感兴趣的项目
 - **🔧 高度可配**：LLM 模型、API 地址、抓取数量、推送渠道等均通过环境变量控制
 
 ## 📸 界面截图
 
 | 页面 | 截图 |
 |------|------|
-| **情报台** — 实时统计 + 最新报告摘要 | ![情报台](images/screenshot_home.png) |
+| **情报台** — 今日概览 + 分析报告日历 + 热门项目 | ![情报台](images/screenshot_home.png) |
 | **趋势** — 高频上榜项目 / 星标增速排名 | ![趋势](images/screenshot_trend.png) |
-| **排行榜** — 全量项目 Star 排名 + 报告归档 | ![排行榜](images/screenshot_rankings.png) |
-| **趋势图谱** — 语言分布 + 技术领域分析 | ![趋势图谱](images/screenshot_analysis.png) |
+| **排行榜** — 全量项目 Star 排名 | ![排行榜](images/screenshot_rankings.png) |
+| **趋势图谱** — 语言分布 + 技术领域 + 新兴项目 | ![趋势图谱](images/screenshot_analysis.png) |
 
 ## 🛠️ 技术栈
 
@@ -86,16 +86,16 @@ GitHub Trending HTML
 ```
 frontend/src/
 ├── views/
-│   ├── Home.vue          ← 情报台：实时统计 + 最新报告 + 项目侧边栏
+│   ├── Home.vue          ← 情报台：概览 + 分析报告日历 + 热门项目
 │   ├── Trend.vue         ← 趋势：高频项目 / 上升最快（7天/30天）
-│   ├── Rankings.vue      ← 排行榜：项目 Star 排名 + 报告归档
-│   ├── TrendAnalysis.vue ← 趋势图谱：语言分布 + 技术领域（Chart.js）
-│   ├── Favorites.vue     ← 收藏夹（localStorage 持久化）
-│   └── Reports.vue       ← 日报列表
+│   ├── Rankings.vue      ← 排行榜：项目 Star 排名
+│   ├── TrendAnalysis.vue ← 趋势图谱：语言分布 + 技术领域 + 新兴项目 (Chart.js)
+│   ├── Reports.vue       ← 日报列表
+│   └── About.vue         ← 关于页面
 ├── components/
 │   ├── ProjectCard.vue   ← 项目卡片
-│   ├── ProjectModal.vue  ← 项目详情弹窗
-│   ├── ReportModal.vue   ← 报告阅读弹窗（markdown-it 渲染）
+│   ├── ProjectModal.vue  ← 项目详情弹窗（浅青主题）
+│   ├── ReportModal.vue   ← 报告阅读弹窗（markdown-it + 浅青主题）
 │   └── StatsChart.vue    ← 统计图表
 └── api/reports.ts        ← 统一 API 层（双模式：Live API / 静态 JSON）
 ```
@@ -164,8 +164,8 @@ docker run -d \
 # 后端
 cd backend
 pip install -r requirements.txt
-cp .env.example .env   # 填写 LLM_API_KEY 和 LLM_BASE_URL
-python app.py --mode web --debug
+# 通过环境变量传入 LLM_API_KEY 和 LLM_BASE_URL
+LLM_API_KEY=sk-xxx LLM_BASE_URL=https://api.openai.com python app.py --mode web --debug
 
 # 前端（新开终端）
 cd frontend

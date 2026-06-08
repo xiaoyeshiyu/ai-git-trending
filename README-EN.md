@@ -16,21 +16,21 @@ English | [简体中文](./README.md)
 
 - **📈 Daily Automated Analysis**: Scrapes GitHub Trending and generates Chinese insight reports (one-sentence review, tech highlights, potential impact) via LLM
 - **🤖 Zero-Server Operation**: GitHub Actions runs daily at 08:00 Beijing time, commits reports back to the repo, and deploys to GitHub Pages
-- **🖥️ Intelligence Terminal UI**: Dark-themed dashboard showing real-time stats, latest report summary, and a project sidebar
+- **🖥️ Intelligence Terminal UI**: Light cyan ocean-themed dashboard showing real-time stats, latest report summary, and project sidebar
+- **📅 Analysis Report Calendar**: Calendar view for browsing historical reports; click any date to read in a unified styled modal
 - **📊 Multi-dimensional Trend Analysis**: Most frequently trending projects, star growth rankings, language distribution charts, tech domain classification
 - **🏆 Project Leaderboard**: Full project ranking by stars, filterable by time period and tech domain
 - **📁 Report Archive**: All daily reports with Markdown / HTML dual-format download
-- **⭐ Favorites**: Locally persisted project bookmarks
 - **🔧 Highly Configurable**: LLM model, API endpoint, scrape count, notification channels — all via environment variables
 
 ## 📸 Screenshots
 
 | Page | Screenshot |
 |------|------------|
-| **Intelligence Terminal** — live stats + latest report summary | ![Home](images/screenshot_home.png) |
+| **Intelligence Terminal** — overview + analysis calendar + trending projects | ![Home](images/screenshot_home.png) |
 | **Trend** — most frequent projects / fastest star growth | ![Trend](images/screenshot_trend.png) |
-| **Rankings** — full project star leaderboard + report archive | ![Rankings](images/screenshot_rankings.png) |
-| **Trend Analysis** — language distribution + tech domain charts | ![Analysis](images/screenshot_analysis.png) |
+| **Rankings** — full project star leaderboard | ![Rankings](images/screenshot_rankings.png) |
+| **Trend Analysis** — language + domain charts + emerging projects | ![Analysis](images/screenshot_analysis.png) |
 
 ## 🛠️ Tech Stack
 
@@ -86,16 +86,16 @@ GitHub Trending HTML
 ```
 frontend/src/
 ├── views/
-│   ├── Home.vue          ← Intelligence terminal: stats + latest report + project sidebar
+│   ├── Home.vue          ← Intelligence terminal: overview + calendar + trending
 │   ├── Trend.vue         ← Trend: most frequent / fastest rising (7d/30d)
-│   ├── Rankings.vue      ← Rankings: star leaderboard + report archive
-│   ├── TrendAnalysis.vue ← Trend analysis: language + domain charts (Chart.js)
-│   ├── Favorites.vue     ← Favorites (localStorage persistence)
-│   └── Reports.vue       ← Daily report list
+│   ├── Rankings.vue      ← Rankings: star leaderboard
+│   ├── TrendAnalysis.vue ← Trend analysis: language + domain + emerging projects (Chart.js)
+│   ├── Reports.vue       ← Daily report list
+│   └── About.vue         ← About page
 ├── components/
 │   ├── ProjectCard.vue   ← Project card component
-│   ├── ProjectModal.vue  ← Project detail modal
-│   ├── ReportModal.vue   ← Report reader modal (markdown-it rendering)
+│   ├── ProjectModal.vue  ← Project detail modal (light cyan theme)
+│   ├── ReportModal.vue   ← Report reader modal (markdown-it + light cyan theme)
 │   └── StatsChart.vue    ← Statistics charts
 └── api/reports.ts        ← Unified API layer (dual-mode: Live API / Static JSON)
 ```
@@ -164,8 +164,8 @@ Visit `http://localhost:5001`
 # Backend
 cd backend
 pip install -r requirements.txt
-cp .env.example .env   # fill in LLM_API_KEY and LLM_BASE_URL
-python app.py --mode web --debug
+# Pass LLM_API_KEY and LLM_BASE_URL via environment variables
+LLM_API_KEY=sk-xxx LLM_BASE_URL=https://api.openai.com python app.py --mode web --debug
 
 # Frontend (new terminal)
 cd frontend
