@@ -388,14 +388,20 @@ def call_llm_with_retry(prompt, model, temperature, max_retries=None, delay=None
         except Exception as e:
             last_exception = e
             error_msg = str(e)
-            if "timeout" in error_msg.lower() or "504" in error_msg or "Gateway" in error_msg:
+            is_rate_limited = "429" in error_msg or "上游负载已饱和" in error_msg
+            if is_rate_limited:
+                logger.warning(f"Attempt {attempt + 1}/{max_retries} rate-limited (429)")
+            elif "timeout" in error_msg.lower() or "504" in error_msg or "Gateway" in error_msg:
                 logger.warning(f"Attempt {attempt + 1}/{max_retries} timed out")
             else:
                 logger.warning(f"Attempt {attempt + 1}/{max_retries} failed: {e}")
 
             if attempt < max_retries - 1:
-                logger.info(f"Retrying in {delay} seconds...")
-                time.sleep(delay)
+                # Rate-limit errors need longer, exponentially growing backoff —
+                # the upstream is saturated, not just briefly unavailable.
+                wait_seconds = delay * (2 ** attempt) if is_rate_limited else delay
+                logger.info(f"Retrying in {wait_seconds} seconds...")
+                time.sleep(wait_seconds)
 
     logger.error(f"All {max_retries} attempts failed. Last error: {last_exception}")
     return None
