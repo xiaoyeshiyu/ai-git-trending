@@ -325,6 +325,7 @@ async function loadData() {
       watchers: p.watchers || 0,
       count: (p as any).count || 0,
       avg_stars: p.avg_stars || 0,
+      analysis: (p as any).analysis || '',
     }))
 
     surgingProjects.value = (trends.surgingProjects || []).map(p => ({

@@ -108,8 +108,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: #051a2c;
-  color: #a8d8ea;
+  background: #071e28;
+  color: #a2e2ef;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -1114,8 +1114,8 @@ h1, h2, h3, h4, h5, h6 {
 /* 页面容器 */
 .terminal-page {
   min-height: 100vh;
-  background-color: #051a2c;
-  color: #cffafe;
+  background-color: #071e28;
+  color: #d0f1f8;
 }
 
 /* 页面头部 */
@@ -1123,8 +1123,8 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
-  background-color: rgba(5, 26, 44, 0.96);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+  background-color: rgba(7, 30, 40, 0.96);
   backdrop-filter: blur(8px);
 }
 

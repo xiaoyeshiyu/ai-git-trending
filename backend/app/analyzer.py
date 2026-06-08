@@ -29,7 +29,8 @@ def analyze_trends(days=7):
         MAX(sp.created_at) as created_at,
         MAX(sp.updated_at) as updated_at,
         MAX(sp.open_issues) as open_issues,
-        MAX(sp.watchers) as watchers
+        MAX(sp.watchers) as watchers,
+        MAX(sp.analysis) as analysis
     FROM fact_trending_snapshots f
     JOIN dim_projects p ON f.project_id = p.project_id
     JOIN dim_dates d ON f.date_id = d.date_id
@@ -57,7 +58,8 @@ def analyze_trends(days=7):
             "created_at": row[9] if row[9] is not None else end_date.isoformat(),
             "updated_at": row[10] if row[10] is not None else end_date.isoformat(),
             "open_issues": row[11] if row[11] is not None else 0,
-            "watchers": row[12] if row[12] is not None else 0
+            "watchers": row[12] if row[12] is not None else 0,
+            "analysis": row[13] if row[13] is not None else ""
         }
         for row in most_frequent_projects_raw
     ]
