@@ -1,5 +1,5 @@
 from datetime import datetime
-from config.settings import NUM_PROJECTS_TO_SUMMARIZE, DAYS_TO_SKIP
+from config.settings import NUM_PROJECTS_TO_SUMMARIZE
 from .scraper import scrape_github_trending
 from .database import ProjectDatabase
 from .summarizer import extract_tech_domain, get_summary_for_single_project, get_overview_intro
@@ -32,45 +32,31 @@ def job():
     
     logger.info(f"✅ Successfully ingested {len(all_trending_repos)} snapshots into the database.")
 
-    # Get project names that have been summarized recently
-    existing_project_names = db.get_all_summarized_project_names()
-    
-    repos_to_summarize = []
-    logger.info(f"🕵️‍♀️ Filtering for {NUM_PROJECTS_TO_SUMMARIZE} new projects to summarize...")
-    for repo in all_trending_repos:
-        if repo['name'] not in existing_project_names:
-            repos_to_summarize.append(repo)
-        if len(repos_to_summarize) >= NUM_PROJECTS_TO_SUMMARIZE:
-            logger.info(f"👍 Found {len(repos_to_summarize)} new projects to summarize.")
-            break
-
-    # Build the report from trending projects (always generate an overview)
+    # Re-analyze today's top trending projects every run — even if they were
+    # summarized before, we want the latest write-up to show up in today's report.
     projects_for_overview = all_trending_repos[:NUM_PROJECTS_TO_SUMMARIZE]
 
     individual_summaries = []
-    if repos_to_summarize:
-        logger.info(f"📝 Summarizing {len(repos_to_summarize)} new projects...")
-        for project in repos_to_summarize:
-            summary = get_summary_for_single_project(project)
-            if summary:
-                individual_summaries.append(summary)
-                tech_domain = extract_tech_domain(summary, project)
-                project['tech_domain'] = tech_domain
-                project['analysis'] = summary
-                logger.info(f"🏷️ Tech domain for {project['name']}: {tech_domain}")
-                db.add_summarized_project(project)
-                time.sleep(1)
-            else:
-                logger.warning(f"❌ Warning: Failed to summarize '{project['name']}'. Skipping this project.")
-    else:
-        logger.info("✅ No new projects to summarize today, generating overview only.")
+    logger.info(f"📝 Re-analyzing {len(projects_for_overview)} trending projects for today's report...")
+    for project in projects_for_overview:
+        summary = get_summary_for_single_project(project)
+        if summary:
+            individual_summaries.append(summary)
+            tech_domain = extract_tech_domain(summary, project)
+            project['tech_domain'] = tech_domain
+            project['analysis'] = summary
+            logger.info(f"🏷️ Tech domain for {project['name']}: {tech_domain}")
+            db.add_summarized_project(project)
+            time.sleep(1)
+        else:
+            logger.warning(f"❌ Warning: Failed to summarize '{project['name']}'. Skipping this project.")
 
     # Always generate and save the daily report
     intro = get_overview_intro(projects_for_overview)
     if individual_summaries:
         final_report = intro + "\n\n" + "\n\n---\n\n".join(individual_summaries)
     else:
-        final_report = intro + "\n\n> 今日上榜项目此前均已分析，详见历史报告。"
+        final_report = intro
 
     save_summary_files(final_report)
     logger.info(f"💾 Daily report saved ({len(individual_summaries)} new summaries).")
