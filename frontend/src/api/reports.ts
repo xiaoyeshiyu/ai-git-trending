@@ -473,7 +473,20 @@ export const reportApi = {
   // 获取实时 Trending 数据（仓库 + 开发者）—— 需要后端实时抓取
   async getTrending(): Promise<TrendingData> {
     if (isStaticMode) {
-      return { repositories: [], developers: [], updated_at: new Date().toISOString() }
+      // 静态模式无实时后端可用，回退为最近一次已生成报告对应的项目列表
+      try {
+        const projects = await fetchStatic<Project[]>('projects.json')
+        const latestDate = projects.reduce<string | undefined>((latest, p) => {
+          if (!p.summary_date) return latest
+          return !latest || p.summary_date > latest ? p.summary_date : latest
+        }, undefined)
+        const repositories = latestDate
+          ? projects.filter((p) => p.summary_date === latestDate)
+          : []
+        return { repositories, developers: [], updated_at: latestDate || new Date().toISOString() }
+      } catch {
+        return { repositories: [], developers: [], updated_at: new Date().toISOString() }
+      }
     }
     try {
       // 冷缓存时后端需实时抓取仓库 + 开发者数据，耗时可达 30s+，需要更长的超时时间
