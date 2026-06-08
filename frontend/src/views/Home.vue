@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container min-h-screen bg-[#e8f6fa] text-slate-100">
+  <div class="home-container min-h-screen bg-[#dff2f8] text-slate-100">
     <!-- 顶部导航栏 - 技术情报终端 -->
     <header class="sticky top-0 z-40 border-b border-cyan-400/20 bg-[#0e6685] backdrop-blur-sm">
       <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
@@ -76,46 +76,33 @@
           </div>
         </div>
 
-        <aside class="grid gap-4">
-          <!-- 高频上榜项目 -->
+        <aside>
+          <!-- 今日 Trending -->
           <div class="terminal-panel">
             <div class="terminal-panel-head">
-              <span>TRENDING TOP</span>
-              <span class="text-xs text-slate-500">近7天高频</span>
+              <span>TODAY'S TRENDING</span>
+              <span class="text-xs opacity-60">实时</span>
             </div>
-            <div class="divide-y divide-slate-800/60">
+            <div class="divide-y divide-slate-800/20">
               <div
-                v-for="(project, i) in trendingProjects.slice(0, 8)"
-                :key="project.name"
-                class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-800/30 cursor-pointer transition-colors"
-                @click="openProjectModal(project)"
+                v-for="(repo, i) in todayTrendingList"
+                :key="repo.name"
+                class="flex items-center gap-3 px-4 py-2.5 hover:bg-cyan-500/5 cursor-pointer transition-colors"
+                @click="openProjectModal(repo)"
               >
-                <span class="text-xs font-mono text-slate-600 w-4 shrink-0">{{ i + 1 }}</span>
+                <span class="text-xs font-mono text-slate-500 w-5 shrink-0 text-right">{{ i + 1 }}</span>
                 <div class="flex-1 min-w-0">
-                  <p class="text-sm text-slate-200 truncate">{{ project.name.split('/')[1] || project.name }}</p>
-                  <p class="text-[11px] text-slate-500 truncate">{{ project.name.split('/')[0] }}</p>
+                  <p class="text-sm font-medium text-slate-800 truncate">{{ repo.name.split('/')[1] || repo.name }}</p>
+                  <p class="text-[11px] text-slate-500 truncate">{{ repo.name.split('/')[0] }}</p>
                 </div>
                 <div class="flex items-center gap-2 shrink-0">
-                  <span v-if="project.language" class="text-[10px] px-1.5 py-0.5 border border-slate-700 text-slate-400 hidden sm:inline">{{ project.language }}</span>
-                  <span class="text-xs text-slate-500">★ {{ formatStars(project.stars) }}</span>
+                  <span v-if="repo.language" class="text-[10px] px-1.5 py-0.5 border border-slate-300 text-slate-500 hidden sm:inline">{{ repo.language }}</span>
+                  <span class="text-xs text-cyan-600">★ {{ formatStars(repo.stars || 0) }}</span>
                 </div>
               </div>
-              <div v-if="trendingProjects.length === 0" class="py-6 text-center text-sm text-slate-500">
-                加载中...
-              </div>
-            </div>
-          </div>
-
-          <!-- 信号摘要 -->
-          <div class="terminal-panel">
-            <div class="terminal-panel-head">
-              <span>SIGNAL FEED</span>
-              <span>{{ timeFilter.toUpperCase() }}</span>
-            </div>
-            <div class="space-y-3 p-4">
-              <div v-for="item in intelligenceFeed" :key="item.label" class="feed-row">
-                <span>{{ item.label }}</span>
-                <strong>{{ item.value }}</strong>
+              <div v-if="todayTrendingList.length === 0" class="py-6 text-center text-sm text-slate-400">
+                <div class="spinner mx-auto mb-2"></div>
+                加载今日热榜...
               </div>
             </div>
           </div>
@@ -264,7 +251,7 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="border-t border-cyan-400/10 bg-[#e8f6fa]">
+    <footer class="border-t border-cyan-400/10 bg-[#dff2f8]">
       <div class="mx-auto flex max-w-[1500px] flex-col gap-3 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between lg:px-6">
         <span>GITTREND INTEL / OPEN SOURCE SIGNAL WATCH</span>
         <span>© {{ new Date().getFullYear() }} GitTrend Insights</span>
@@ -303,12 +290,25 @@ import ProjectModal from '@/components/ProjectModal.vue'
 import ReportModal from '@/components/ReportModal.vue'
 import TechTrendsModal from '@/components/TechTrendsModal.vue'
 import type { Project, Report, Stats, TrendsData, TrendDataItem } from '@/api/reports'
-import { getReports, getStats, getTrends, getReportByDate, getTrendData } from '@/api/reports'
+import { getReports, getStats, getTrends, getReportByDate, getTrendData, getTrending } from '@/api/reports'
 import { renderMarkdown } from '@/utils/markdown-simple'
 
 const StatsChart = defineAsyncComponent(() => import('@/components/StatsChart.vue'))
 
 const router = useRouter()
+
+// ── 今日 Trending ──────────────────────────────────────
+const todayTrendingList = ref<Project[]>([])
+
+async function loadTodayTrending() {
+  try {
+    const data = await getTrending()
+    todayTrendingList.value = (data.repositories || []).slice(0, 12)
+  } catch {
+    todayTrendingList.value = []
+  }
+}
+// ───────────────────────────────────────────────────────
 
 // ── 日历 ──────────────────────────────────────────────
 const now = new Date()
@@ -621,7 +621,8 @@ async function loadInitialData() {
     loadStatsData(),
     loadReportCards(),
     loadTrendOverview(),
-    loadTodayBrief()
+    loadTodayBrief(),
+    loadTodayTrending(),
   ])
 }
 

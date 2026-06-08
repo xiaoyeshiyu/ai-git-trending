@@ -921,8 +921,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .terminal-panel,
 .report-card {
-  border: 1px solid rgba(26, 150, 184, 0.2);
-  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(26, 150, 184, 0.2) !important;
+  background: #ffffff !important;
   box-shadow: 0 1px 4px rgba(26, 150, 184, 0.08), 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -1116,7 +1116,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 页面容器 */
 .terminal-page {
   min-height: 100vh;
-  background-color: #e8f6fa;
+  background-color: #dff2f8 !important;
   color: #0d4459;
 }
 

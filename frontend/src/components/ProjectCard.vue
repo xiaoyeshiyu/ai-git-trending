@@ -1,6 +1,6 @@
 <template>
   <div
-    class="project-card bg-slate-900/50 border border-slate-800/50 rounded-lg overflow-hidden cursor-pointer animate-fadeInUp group hover:border-slate-700/80 hover:bg-slate-800/30 transition-all duration-300"
+    class="project-card bg-white/90 border border-slate-200 rounded-lg overflow-hidden cursor-pointer animate-fadeInUp group hover:border-cyan-400/50 hover:bg-cyan-50/50 transition-all duration-300"
     @click="$emit('click', project)"
     :style="{ animationDelay: `${index * 0.08}s` }"
   >
@@ -17,24 +17,24 @@
               :href="project.url"
               target="_blank"
               rel="noopener"
-              class="project-link text-base font-medium text-slate-200 truncate hover:text-amber-400 transition-colors"
+              class="project-link text-base font-medium text-slate-800 truncate hover:text-cyan-600 transition-colors"
               @click.stop
             >{{ projectName }}</a>
           </div>
-          <p class="text-sm text-slate-400 line-clamp-2 leading-relaxed">
+          <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed">
             {{ project.description || '暂无描述' }}
           </p>
         </div>
         <span
           v-if="project.language"
-          class="flex-shrink-0 px-2 py-0.5 text-[10px] font-light text-slate-400 border border-slate-700 rounded tracking-wide"
+          class="flex-shrink-0 px-2 py-0.5 text-[10px] font-light text-slate-600 border border-slate-300 rounded tracking-wide"
         >
           {{ project.language }}
         </span>
       </div>
 
       <!-- 统计数据 - 杂志风格简洁展示 -->
-      <div class="flex items-center gap-6 pt-3 border-t border-slate-800/50">
+      <div class="flex items-center gap-6 pt-3 border-t border-slate-200">
         <div class="flex items-center gap-1.5">
           <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
