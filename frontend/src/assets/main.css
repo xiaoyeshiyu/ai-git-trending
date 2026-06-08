@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force light cyan background everywhere */
+html, body, #app {
+  background-color: #dff2f8 !important;
+  min-height: 100vh;
+}
+
 /* ============================================
    CSS Variables - Cyberpunk Color System
    ============================================ */
@@ -108,8 +114,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: #e8f6fa;
-  color: #0d4459;
+  background: #dff2f8 !important;
+  color: #083d52 !important;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -1009,8 +1015,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .terminal-metric {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(26, 150, 184, 0.25);
+  background: rgba(255, 255, 255, 0.7);
   padding: 0.9rem;
   border-radius: 0.5rem;
 }
@@ -1020,15 +1026,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
   font-size: 0.64rem;
   letter-spacing: 0.16em;
-  color: rgba(255,255,255,0.65);
+  color: #3a9ab8;
 }
 
 .terminal-metric strong {
   margin-top: 0.55rem;
   display: block;
   font-size: 1.65rem;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 600;
+  color: #0a2d3d;
 }
 
 .terminal-action {
@@ -1132,7 +1138,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 首屏英雄区 — 浅青色 */
 .terminal-shell {
-  background: #dff2f8;
+  background: #dff2f8 !important;
 }
 
 .terminal-shell .terminal-panel {

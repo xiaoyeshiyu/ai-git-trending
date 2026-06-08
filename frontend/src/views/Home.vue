@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container min-h-screen bg-[#dff2f8] text-slate-100">
+  <div class="home-container min-h-screen bg-[#dff2f8] text-slate-900">
     <!-- 顶部导航栏 - 技术情报终端 -->
     <header class="sticky top-0 z-40 border-b border-cyan-400/20 bg-[#0e6685] backdrop-blur-sm">
       <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
@@ -39,10 +39,10 @@
               <span class="status-chip">GitHub Trending</span>
               <span class="status-chip">LLM Report</span>
             </div>
-            <h2 class="max-w-4xl text-3xl font-semibold leading-tight text-slate-50 md:text-5xl">
+            <h2 class="max-w-4xl text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
               技术情报终端
             </h2>
-            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-400 md:text-base">
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-700 md:text-base">
               聚合 GitHub 热门项目、语言热度、技术领域和 AI 分析报告，把每日开源变化整理成可扫描、可追踪、可复盘的情报面板。
             </p>
 
