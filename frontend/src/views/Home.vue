@@ -1,7 +1,7 @@
 <template>
-  <div class="home-container min-h-screen bg-[#071e28] text-slate-100">
+  <div class="home-container min-h-screen bg-[#e8f6fa] text-slate-100">
     <!-- 顶部导航栏 - 技术情报终端 -->
-    <header class="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#071e28]/95 backdrop-blur-sm">
+    <header class="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#e8f6fa]/95 backdrop-blur-sm">
       <div class="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-6">
         <div class="flex items-center gap-3">
           <div class="flex h-9 w-9 items-center justify-center border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
@@ -264,7 +264,7 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="border-t border-cyan-400/10 bg-[#071e28]">
+    <footer class="border-t border-cyan-400/10 bg-[#e8f6fa]">
       <div class="mx-auto flex max-w-[1500px] flex-col gap-3 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between lg:px-6">
         <span>GITTREND INTEL / OPEN SOURCE SIGNAL WATCH</span>
         <span>© {{ new Date().getFullYear() }} GitTrend Insights</span>
