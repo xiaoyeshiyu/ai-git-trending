@@ -2,7 +2,7 @@ import os
 import sys
 import tempfile
 import unittest
-from datetime import date
+from datetime import date, timedelta
 
 
 BACKEND_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -120,6 +120,85 @@ class AnalyzerTests(unittest.TestCase):
             [domain["name"] for domain in trends["techDomains"]],
             ["AI/ML", "Web"],
         )
+
+
+class ReporterJobTests(unittest.TestCase):
+    def test_job_reports_all_today_projects_and_reuses_recent_analysis(self):
+        import app.main as main
+
+        today = date.today()
+        projects = [
+            {"name": "owner/recent", "url": "https://github.com/owner/recent", "description": "recent", "language": "Python", "stars": 3, "forks": 1},
+            {"name": "owner/stale", "url": "https://github.com/owner/stale", "description": "stale", "language": "Python", "stars": 2, "forks": 1},
+            {"name": "owner/new", "url": "https://github.com/owner/new", "description": "new", "language": "Python", "stars": 1, "forks": 1},
+        ]
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            db = ProjectDatabase(os.path.join(tmpdir, "reporter.db"))
+            with db._get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute(
+                    """
+                    INSERT INTO summarized_projects
+                    (name, url, description, language, stars, forks, contributor_count,
+                     created_at, updated_at, open_issues, watchers, summary_date, tech_domain, analysis)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        "owner/recent", "https://github.com/owner/recent", "recent", "Python",
+                        3, 1, 0, "N/A", "N/A", 0, 0,
+                        (today - timedelta(days=7)).isoformat(),
+                        "AI/ML", "RECENT ANALYSIS"
+                    )
+                )
+                cursor.execute(
+                    """
+                    INSERT INTO summarized_projects
+                    (name, url, description, language, stars, forks, contributor_count,
+                     created_at, updated_at, open_issues, watchers, summary_date, tech_domain, analysis)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        "owner/stale", "https://github.com/owner/stale", "stale", "Python",
+                        2, 1, 0, "N/A", "N/A", 0, 0,
+                        (today - timedelta(days=15)).isoformat(),
+                        "AI/ML", "STALE ANALYSIS"
+                    )
+                )
+                conn.commit()
+
+            analyzed_names = []
+            saved_reports = []
+
+            originals = {
+                "ProjectDatabase": main.ProjectDatabase,
+                "scrape_github_trending": main.scrape_github_trending,
+                "get_summary_for_single_project": main.get_summary_for_single_project,
+                "get_overview_intro": main.get_overview_intro,
+                "save_summary_files": main.save_summary_files,
+                "time_sleep": main.time.sleep,
+            }
+            main.ProjectDatabase = lambda: db
+            main.scrape_github_trending = lambda: [dict(project) for project in projects]
+            main.get_summary_for_single_project = lambda project: analyzed_names.append(project["name"]) or f"FRESH {project['name']}"
+            main.get_overview_intro = lambda overview_projects: "## 今日热点\n具体项目摘要如下："
+            main.save_summary_files = saved_reports.append
+            main.time.sleep = lambda _: None
+            try:
+                main.job()
+            finally:
+                main.ProjectDatabase = originals["ProjectDatabase"]
+                main.scrape_github_trending = originals["scrape_github_trending"]
+                main.get_summary_for_single_project = originals["get_summary_for_single_project"]
+                main.get_overview_intro = originals["get_overview_intro"]
+                main.save_summary_files = originals["save_summary_files"]
+                main.time.sleep = originals["time_sleep"]
+
+        self.assertEqual(analyzed_names, ["owner/stale", "owner/new"])
+        self.assertEqual(len(saved_reports), 1)
+        self.assertIn("RECENT ANALYSIS", saved_reports[0])
+        self.assertIn("FRESH owner/stale", saved_reports[0])
+        self.assertIn("FRESH owner/new", saved_reports[0])
 
 
 class RouterValidationTests(unittest.TestCase):

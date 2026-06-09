@@ -18,6 +18,7 @@ SCHEDULE_TIME = os.getenv('SCHEDULE_TIME', "08:00")
 NUM_PROJECTS_TO_SUMMARIZE = int(os.getenv('NUM_PROJECTS_TO_SUMMARIZE', 8))
 MAX_PROJECTS_TO_SCRAPE = int(os.getenv('MAX_PROJECTS_TO_SCRAPE', 25))
 DAYS_TO_SKIP = int(os.getenv('DAYS_TO_SKIP', 7))
+AI_ANALYSIS_TTL_DAYS = int(os.getenv('AI_ANALYSIS_TTL_DAYS', 14))
 
 # 设置输出目录路径 - 指向项目根目录下的output目录
 OUTPUT_DIR = os.path.join(BASE_DIR, 'output')

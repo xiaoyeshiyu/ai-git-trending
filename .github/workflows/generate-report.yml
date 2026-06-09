@@ -47,6 +47,7 @@ jobs:
           LLM_MAX_RETRIES: '3'
           LLM_RETRY_DELAY: '5'
           LLM_TIMEOUT: '60'
+          AI_ANALYSIS_TTL_DAYS: ${{ vars.AI_ANALYSIS_TTL_DAYS || '14' }}
           NUM_PROJECTS_TO_SUMMARIZE: ${{ vars.NUM_PROJECTS_TO_SUMMARIZE || '8' }}
           MAX_PROJECTS_TO_SCRAPE: ${{ vars.MAX_PROJECTS_TO_SCRAPE || '25' }}
         run: |

@@ -242,6 +242,31 @@ class ProjectDatabase:
 
 
     # --- Methods for the old reporting feature (to keep it working) ---
+    def get_summarized_project(self, name):
+        """Return the latest stored AI analysis for a project."""
+        try:
+            with self._get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute(
+                    """
+                    SELECT name, url, description, language, stars, forks, contributor_count,
+                           created_at, updated_at, open_issues, watchers, summary_date,
+                           tech_domain, analysis
+                    FROM summarized_projects
+                    WHERE name = ?
+                    """,
+                    (name,)
+                )
+                row = cursor.fetchone()
+                if not row:
+                    return None
+
+                columns = [description[0] for description in cursor.description]
+                return dict(zip(columns, row))
+        except sqlite3.Error as e:
+            logger.error(f"❌ Database error (get_summarized_project): {e}")
+            return None
+
     def get_all_summarized_project_names(self):
         """Return names of projects that already have real analysis content.
         Projects with empty analysis are excluded so they get re-analyzed."""
