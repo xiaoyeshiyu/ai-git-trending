@@ -1,2 +1,462 @@
-## 今日热点：GitHub 热门趋势
-今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
+## 今日热点：AI Agent 工具链加速走向实用化
+今天的 GitHub 热点明显围绕 AI Agent 的能力扩展、基础设施和落地工作流展开：从面向全网信息检索与摘要的 last30days-skill、Agent-Reach，到 Google Skills、OpenAI Plugins、pm-skills 等技能与插件生态，再到 Personal_AI_Infrastructure、goose、CopilotKit 这类 Agent 开发与运行框架，显示开发者正在把大模型从“对话工具”推向可执行、可集成、可协作的生产系统；同时，turbovec、MemPalace、whichllm 分别补齐向量检索、记忆系统和本地模型评测能力，career-ops、tolaria、claude-howto 则聚焦求职、知识库管理和 Claude Code 实操场景，roboflow/supervision 延续计算机视觉工具化趋势，ChinaTextbook 代表高价值开放资料库仍具关注度。具体项目摘要如下：
+
+### ✨ mvanhorn/last30days-skill (33635★)
+
+> **一句话**：让 AI 自动搜集并整合 Reddit、X、YouTube、Hacker News、Polymarket 等平台的最新热门内容，生成一份真实、带引用的主题摘要。
+
+- **它是什么**：这是一个基于 Python 的 AI 搜索与摘要引擎，能并行抓取多个社交、社区和预测市场平台的公开数据，按用户关注度（如点赞、转发、真实资金下注）自动评分，最后由 AI 生成一份带出处的综合简报。它不仅能查关键词，还能智能识别相关人物、社区、频道等，聚合多源内容并去重。
+- **能解决什么痛点**：解决了传统搜索引擎只能查编辑内容、无法获取社区实时讨论和多平台碎片化信息的难题；让用户能快速了解某人、某事件、某产品在过去 30 天内的真实动态和舆论热度，避免信息孤岛和滞后。
+- **适合谁用**：适合需要快速掌握行业动态、人物近况或产品最新讨论的 AI 从业者、市场分析师、销售、产品经理，以及需要多源情报的开发者。
+- **怎么上手**：最简安装方式：`/plugin marketplace add mvanhorn/last30days-skill`，或用 `npx skills add mvanhorn/last30days-skill -g`（支持 50+ agent host 平台）。无需配置，部分源即开即用，更多平台可通过引导快速解锁。
+- **可以用在哪些场景**：
+  - 会前速查人物近况，获取其最新社交动态和社区讨论。
+  - 跟踪行业事件、产品发布、技术争议，快速了解多平台真实反馈。
+  - 旅行、消费决策前查社区评价、实际体验和最新变动。
+- **技术看点**：采用多平台 API/爬虫并行抓取、基于用户行为（点赞、资金下注等）评分，AI 智能聚合与去重，支持 HTML 简报导出和实体识别预研，极大提升信息整合能力。
+- **近期动向与发展方向**：近期主要在修复 Reddit 抓取路径、提升结果相关性、优化安装流程和文档，活跃度高，贡献者多，功能持续迭代。最近还增强了 humor/virality 评分、HTML 导出和多源聚合能力，社区贡献者活跃。
+- **同类对比**：README 明确对比 Google、ChatGPT、Gemini 等传统/AI搜索，强调其能跨平台抓取社区内容（如 Reddit、X、TikTok），而这些竞品各自受限于平台壁垒，无法做到全网实时整合。
+- **注意事项**：项目成熟度高（创建于 2026 年初，更新频繁，issue 数适中），但多平台抓取依赖 API/token，部分源需手动配置；文档详实但功能丰富，初次上手建议按官方引导操作。注意部分功能可能受平台政策变动影响。
+
+- **GitHub**：[mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Matt Van Horn 在开源社区具有较高影响力，多个项目获得上万 Star，受到广泛关注。
+**技术栈偏好**：主要使用 Go 和 Python，兼顾 TypeScript，偏好高效后端与自动化工具开发。
+**核心领域**：专注于自动化工具、命令行应用和智能插件的开发与创新。
+
+---
+
+### ✨ RyanCodrai/turbovec (8319★)
+
+> **一句话**：turbovec 用 Rust 实现了基于 Google TurboQuant 算法的高效向量检索库，支持 Python 和 Rust，能将千万级向量压缩到极低内存并实现高速本地搜索。
+
+- **它是什么**：turbovec 是一个支持在线增量写入、无需训练即可用的向量索引库，底层用 Rust 实现，并通过 Python 绑定方便集成。它基于 TurboQuant 算法，将高维向量极致压缩（如 1000 万条 float32 向量仅占 4GB 内存），还能在 ARM 和 x86 平台上实现比 FAISS 更快的检索速度。
+- **能解决什么痛点**：解决了大规模向量检索时内存占用过高、需要预训练/重建索引、过滤查询效率低等问题，尤其适合对隐私、本地部署和低延迟有要求的场景。
+- **适合谁用**：适合需要本地化大规模向量检索的开发者，如构建私有 RAG（检索增强生成）系统的 AI 工程师、对嵌入库有高性能和低内存需求的 NLP/推荐/搜索方向开发者。
+- **怎么上手**：Python 用户可直接安装并用如下方式快速构建索引：
+  pip install turbovec
+  from turbovec import TurboQuantIndex
+  index = TurboQuantIndex(dim=1536, bit_width=4)
+  index.add(vectors)
+  scores, indices = index.search(query, k=10)
+- **可以用在哪些场景**：
+  - 本地化 RAG 系统，确保数据不出本地或 VPC，适合对隐私有要求的企业或科研环境
+  - 替换 LangChain、LlamaIndex、Haystack 等框架自带的内存向量库，提升检索速度和内存效率
+  - 需要高效过滤（如多租户、ACL、时间窗口）的大规模向量检索服务
+- **技术看点**：采用 TurboQuant 数据无关量化算法，无需训练即可达到接近信息论极限的压缩率；内核用 Rust 手写 SIMD（支持 NEON/AVX-512），并针对 ARM/x86 优化，支持在线增量写入和高效过滤。
+- **近期动向与发展方向**：项目近一个月持续高频提交，重点在内核性能优化（如 BLAS 链接、SIMD 优化）、CI 测试集成、跨平台兼容性修复和文档完善。近期多次发版，说明维护活跃且功能迭代快。贡献者主要集中在核心作者，外部贡献较少。
+- **同类对比**：README 明确对标 FAISS，TurboQuant 算法在压缩率和检索速度上均有优势，尤其在无需训练和在线增量写入方面优于 FAISS 的 PQ 索引。
+- **注意事项**：项目 2026 年 3 月才创建，属于新兴项目，虽然活跃但生态和社区尚在建设中；issue 数量不多，文档较详细但部分高级用法需参考源码或 API 文档。破坏性变更风险中等，建议关注版本更新说明。
+
+- **GitHub**：[RyanCodrai/turbovec](https://github.com/RyanCodrai/turbovec)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Ryan Codrai 在开源社区以 Python 相关项目获得了较高关注，尤其以 turbovec 项目为代表，具有一定影响力。
+**技术栈偏好**：主要使用 Python 和 Jupyter Notebook，偏好数据科学与机器学习相关技术。
+**核心领域**：聚焦于机器学习工具、向量计算和情感分析等人工智能领域。
+
+---
+
+### ✨ google/skills (12204★)
+
+> 提供一套可直接集成到智能体（Agent）中的 Google 产品与技术技能集，帮助开发者快速为 AI Agent 增加对 Google Cloud、BigQuery、Gemini API 等服务的操作能力。
+
+- **它是什么**：google/skills 是 Google 官方维护的 Agent Skills 集合，涵盖了 Gemini API、BigQuery、Cloud Run、Firebase、GKE 等主流云服务的操作技能。用户可以通过简单命令为自己的 AI Agent 按需安装这些技能，让 Agent 具备调用和管理 Google 云服务的能力。
+- **能解决什么痛点**：开发者在构建 AI Agent 时，往往需要手动集成各类 Google 云服务的 API，流程繁琐且易出错。该项目将常用服务的集成流程标准化、模块化，极大降低了 Agent 对接 Google 技术栈的门槛。
+- **适合谁用**：适合需要让 AI Agent 自动化操作 Google Cloud、BigQuery、Gemini 等服务的开发者、数据工程师、云平台运维人员，以及希望快速扩展 Agent 能力的团队。
+- **怎么上手**：一行命令即可安装技能：`npx skills add google/skills`，随后可按需选择具体技能集成到自己的 Agent 项目中。
+- **可以用在哪些场景**：
+    - 为企业内部 Agent 增加自动化管理 Google Cloud 资源的能力（如自动部署、监控、网络观测）。
+    - 构建能自动调用 Gemini API 进行文本/对话处理的智能应用。
+    - 快速搭建数据分析 Agent，自动操作 BigQuery 进行数据查询、异常检测、预测等任务。
+- **技术看点**：采用模块化技能（Skill）设计，用户可按需集成，降低耦合度；以 Python 为主，便于与主流 AI Agent 框架对接；官方维护，技能覆盖面广且持续更新。
+- **近期动向与发展方向**：近期提交以新增和优化 Google Cloud 相关技能为主，如平台端点管理、推理、模型注册、RAG 引擎管理等，说明项目正快速扩展云服务覆盖面，并持续对接最新的 Google AI 能力。提交频繁，活跃度高，主要由 Cloud IX Team 维护。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：项目自 2026 年 3 月创建，发展迅速但仍在活跃开发中（官方 README 明确标注）；文档较为简明，部分技能细节或用法需结合源码或 issue 跟进；贡献者数量较少，社区协作氛围有待观察。
+
+- **GitHub**：[google/skills](https://github.com/google/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Google作为全球顶级技术组织，在开源社区拥有极高影响力和广泛贡献，推动众多核心项目发展。
+**技术栈偏好**：主要采用Java、JavaScript和HTML等主流语言，兼顾多种技术栈，强调跨平台和高性能。
+**核心领域**：聚焦于基础软件、开发工具、设计规范及数据库等核心技术领域。
+
+---
+
+### ✨ refactoringhq/tolaria (13377★)
+
+> **一句话**：Tolaria 让你像管理本地文件夹一样，跨平台高效管理和检索你的 Markdown 笔记库，所有数据都在你手里。
+
+- **它是什么**：Tolaria 是一款开源桌面应用，支持 macOS、Windows 和 Linux，专为管理本地 Markdown 笔记和知识库而设计。它以文件为核心，所有笔记都是标准 Markdown 文件，并且每个知识库天然就是一个 Git 仓库，方便版本管理和同步。无需注册账号，也没有云端依赖，数据完全本地可控。
+
+- **能解决什么痛点**：解决了市面上许多笔记应用数据被锁定、格式不兼容、迁移困难的问题；让用户能够随时用任意编辑器访问笔记，且完整保留历史版本，避免数据丢失或被平台绑架。
+
+- **适合谁用**：适合习惯用 Markdown 记笔记、重视数据可迁移性的知识工作者；也适合希望将个人或团队知识库与 Git 结合、需要离线管理大量文档的开发者和文档维护者。
+
+- **怎么上手**：macOS 用户可通过 Homebrew 一键安装：`brew install --cask tolaria`。也可在 GitHub Release 页面下载适用于 Windows、Linux 的安装包。
+
+- **可以用在哪些场景**：
+  - 个人“第二大脑”知识库管理，随时检索和整理日常笔记、想法和资料
+  - 团队内部文档协作，利用 Git 做版本管理和同步，替代传统 Wiki 工具
+  - 为 AI 助手或自动化工具提供结构化的知识上下文，便于集成智能检索
+
+- **技术看点**：基于 Tauri + React + TypeScript 构建，结合 Git 作为底层存储和版本管理，所有数据均为标准 Markdown 文件并支持 YAML frontmatter，极大提升了数据的可移植性和可扩展性。
+
+- **近期动向与发展方向**：近期开发非常活跃，主要集中在修复编辑器相关 bug、完善多语言本地化（如新增瑞典语、乌克兰语）、提升 AI 相关功能的稳定性和测试覆盖。核心开发者持续高频提交，社区贡献者数量也较多，项目迭代节奏快。
+
+- **同类对比**：暂无明显同类对标。
+
+- **注意事项**：项目创建时间较短但活跃度高，文档较为完善，支持多平台安装。当前有 30 个 open issue，说明仍在快速迭代中，部分功能可能存在小问题。Linux 下开发需手动安装部分依赖，初次本地开发需注意环境配置。数据完全本地，适合重视隐私和可控性的用户。
+
+- **GitHub**：[refactoringhq/tolaria](https://github.com/refactoringhq/tolaria)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Refactoring 以高质量内容和社区影响力吸引了大量开发者关注，核心项目在开源社区具有较高知名度。
+**技术栈偏好**：主要采用 TypeScript 进行前端或全栈开发，辅以 CSS，展现出现代 Web 技术栈倾向。
+**核心领域**：专注于提升软件开发效率与最佳实践，聚焦于开发者工具和工程效能领域。
+
+---
+
+### ✨ Panniantong/Agent-Reach (23821★)
+
+> **一句话**：让你的 AI Agent 能直接读、搜、分析 Twitter、Reddit、YouTube、GitHub、小红书、B站等主流互联网平台，无需 API Key、无需复杂配置，一句命令全自动搞定。
+
+- **它是什么**：Agent Reach 是一个为 AI Agent（如 Claude Code、OpenClaw、Cursor 等）提供互联网访问能力的 Python 工具，自动集成了各类 CLI 工具和脚本，让 Agent 能读网页、抓取社交内容、搜索全网信息。安装后，Agent 可直接调用 Twitter、Reddit、YouTube、GitHub、小红书、B站等渠道，无需手动配置 API、Cookie 或代理。
+- **能解决什么痛点**：解决了 AI Agent 无法访问主流社交平台（如 Twitter 需付费 API、Reddit 403、B站/小红书需登录/代理等）的问题，省去了开发者手动踩坑、配置、集成各平台工具的繁琐流程。
+- **适合谁用**：适合需要让 AI Agent自动读、搜、分析互联网内容的开发者、AI Agent 用户、自动化运维人员，尤其是希望 Agent 能处理社交舆情、技术教程、社区问答等场景的用户。
+- **怎么上手**：复制给你的 Agent 一句话即可安装：
+  帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md
+  已安装过可用：
+  帮我更新 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/update.md
+- **可以用在哪些场景**：
+  - 让 AI Agent自动抓取并总结 YouTube/B站技术视频内容（字幕、讲解）
+  - 自动搜集 Twitter、Reddit 上的产品舆情、用户评价
+  - 让 Agent 读 GitHub 仓库、Issue、PR，辅助代码分析和项目管理
+- **技术看点**：采用脚手架式可插拔架构，每个平台背后都是独立 CLI 工具（如 twitter-cli、yt-dlp、rdt-cli 等），Agent 直接调用，无需经过额外包装层；所有渠道均开源、免费，凭据本地存储，安全可审查。
+- **近期动向与发展方向**：近期 commit 主要集中在文档多语言翻译、渠道认证流程优化（如 Reddit/Twitter Cookie 检测）、架构图修正、渠道拆分与重构（如 Discord、头条渠道移除），并持续跟进各平台 API/反爬变化。社区贡献者活跃，功能迭代频繁，bug 修复及时。
+- **同类对比**：暂无明显同类对标，市面上大多数 Agent 仅支持有限渠道或需手动集成，Agent Reach主打一站式自动化和免费方案。
+- **注意事项**：项目活跃度高但 issue 数量较多（62 个），说明用户反馈和问题处理在持续进行；部分渠道需 Cookie 登录，存在账号封禁风险，建议用小号；部分功能依赖第三方 CLI 工具，需本地具备 Python 环境和 shell 执行权限；文档详实，安装流程简洁，但对新手 Agent 用户可能有一定理解门槛。
+
+- **GitHub**：[Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Pnant 在开源社区具有较高影响力，尤其以 Agent-Reach 项目获得广泛关注。
+**技术栈偏好**：主要使用 Python，兼顾 TypeScript 和 Shell，偏向自动化与智能代理相关技术。
+**核心领域**：聚焦于智能代理、自动化工具及 AI 相关应用的开发与实践。
+
+---
+
+### ✨ danielmiessler/Personal_AI_Infrastructure (15290★)
+
+> **一句话**：这是一个将个人生活、目标和习惯与 AI 深度结合，打造“数字助理+生活操作系统”的开源项目。
+
+- **它是什么**：Personal AI Infrastructure（PAI）把你的个人信息、目标、工作、关系等全部结构化，利用 AI（如 Claude）持续帮助你从当前状态迈向理想状态。它包含三层：底层是 PAI OS（技能、算法、身份等），中间是 Pulse（本地仪表盘），顶层是 DA（数字助理，具备语音和个性）。
+- **能解决什么痛点**：解决“AI工具无法理解个人上下文、目标和偏好”导致的无效建议；让用户能统一管理生活、工作、健康等多维目标，自动追踪进展和自我提升。
+- **适合谁用**：希望用 AI 管理个人目标和成长的开发者、知识工作者；对数字助理和自动化生活有兴趣的技术爱好者。
+- **怎么上手**：一行命令即可安装：`curl -sSL https://ourpai.ai/install.sh | bash`。安装过程自动配置 Bun、Git、AI 验证、DA 身份、语音等，支持迁移个人上下文到 PAI/USER/ 目录。
+- **可以用在哪些场景**：
+  - 用 Pulse 仪表盘实时追踪个人目标、工作进度和理想状态
+  - 让数字助理自动整理和优化你的知识库、日常任务和学习记录
+  - 团队或公司统一定义目标和状态，自动分解任务、追踪执行和反馈
+- **技术看点**：以 TypeScript+Bun 构建，强调“文本优先、透明存储”，避免数据库和 RAG，所有数据都可直接用 cat/rg 检索；核心算法采用七阶段科学方法，支持自我改进和反馈。
+- **近期动向与发展方向**：近期主要围绕 v5.0.0 大版本发布，重构 README 和技能包，新增 45 项技能、171 个工作流、37 个钩子，强化 Pulse 仪表盘和算法模块。多位贡献者活跃，持续修复兼容性、目录结构和安全问题，项目更新频繁且结构性调整较多。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：项目处于快速迭代期，issue 数量较多（211），存在破坏性变更和结构重构风险；文档较详细但建议先阅读迁移指南，适合有一定技术背景的用户尝试。
+
+- **GitHub**：[danielmiessler/Personal_AI_Infrastructure](https://github.com/danielmiessler/Personal_AI_Infrastructure)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Daniel Miessler 是安全与 AI 领域极具影响力的开源贡献者，拥有众多高星项目和大量关注者。
+**技术栈偏好**：主要使用 PHP、Go 和 TypeScript，兼顾自动化、安全工具及 AI 基础设施开发。
+**核心领域**：专注于信息安全、渗透测试资源与 AI 驱动的人类能力升级工具。
+
+---
+
+### ✨ santifer/career-ops (50192★)
+
+> **一句话**：用 AI 自动批量筛选、评估和定制简历，帮求职者精准锁定值得申请的岗位。
+
+- **它是什么**：Career-Ops 是一个基于 Claude Code 的开源智能求职系统，支持 14 种技能模式、Go 终端仪表盘、PDF 简历生成和批量处理。它能自动扫描招聘门户、分析岗位与个人简历的匹配度，并生成针对每个岗位优化的 ATS（自动筛选系统）简历。
+- **能解决什么痛点**：解决了手动筛选海量职位、反复修改简历、记录申请进度繁琐的问题，尤其适合需要针对每个岗位定制简历、避免无效投递的场景。
+- **适合谁用**：适合技术岗位求职者、需要批量申请但又想精准筛选职位的工程师，以及希望用 AI 辅助优化求职流程的个人。
+- **怎么上手**：最简方式是 `git clone https://github.com/santifer/career-ops.git && cd career-ops && npm install`，再运行 `npx playwright install chromium` 安装 PDF 生成依赖，然后配置个人信息和简历即可。
+- **可以用在哪些场景**：
+  - 技术求职者批量评估多个岗位，自动生成定制简历并筛选出优质职位。
+  - 招聘季快速追踪申请进度、整理面试故事和谈判脚本。
+  - 用于 AI 辅助职业规划、评估培训课程或项目经历的价值。
+- **技术看点**：核心采用 Claude Code 作为智能代理，结合 Playwright 自动化页面操作，支持多语言终端 UI（Go Bubble Tea），并能与 Gemini CLI、OpenCode 等多种 AI CLI 集成。
+- **近期动向与发展方向**：最近提交主要集中在文档国际化、SEO 优化、PDF 生成细节修复、ATS 解析器扩展和功能配置增强。社区活跃，贡献者多，功能持续迭代，bug 修复和新特性并行推进。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：项目较新（2026 年创建），但更新频繁、贡献者活跃。Issue 数量较多（171），说明用户反馈和需求丰富。上手需配置个人信息和简历，文档较详细但需一定英文阅读能力。系统不会自动提交申请，需人工最终确认。
+
+- **GitHub**：[santifer/career-ops](https://github.com/santifer/career-ops)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Santiago Fernández de Valderrama在AI工作流和LLM集成领域拥有显著影响力，代表项目career-ops获得了极高关注度。
+**技术栈偏好**：其主要使用JavaScript、HTML和Astro，偏向前端与现代Web开发技术。
+**核心领域**：专注于应用型AI、智能工作流和大语言模型集成相关的创新开发。
+
+---
+
+### ✨ phuryn/pm-skills (12480★)
+
+> 一套面向产品经理的 AI 技能市场，集成 100+ 结构化 PM 框架和插件，覆盖从需求发现、战略制定到执行、上线和增长的全流程。
+
+- **它是什么**：PM Skills Marketplace 是一个为 Claude Code、Cowork 等 AI 助手设计的插件集合，内置 68 项 PM 技能和 42 个工作流命令，涵盖产品管理全链路。用户通过简单的指令（如 `/discover`、`/strategy`）即可调用成熟的产品管理方法论，获得结构化输出和流程化指导。
+- **能解决什么痛点**：解决了产品经理日常工作中缺乏系统化流程、容易遗漏关键环节的问题；避免只依赖通用 AI 聊天，提供了可复用的专业框架（如 OST、Lean Canvas、SWOT、OKR 等），让 AI 能按 PM 规范输出结果。
+- **适合谁用**：产品经理、创业团队负责人、需要系统化产品流程的技术 Leader，尤其适合已在用 Claude Code、Cowork、Codex CLI 等 AI 辅助工具的用户。
+- **怎么上手**：以 Claude Cowork 为例，直接在插件市场添加 `phuryn/pm-skills` 即可一键安装全部 9 个插件和命令。命令行用户可用 `claude plugin marketplace add phuryn/pm-skills` 安装，其他 AI 工具可复制技能文件到对应目录。
+- **可以用在哪些场景**：
+  - 新产品立项时，快速梳理假设、优先级和实验设计
+  - 制定产品战略、商业模式、定价策略等高阶决策
+  - 日常需求分析、PRD 编写、OKR 拆解、Roadmap 规划和复盘
+- **技术看点**：采用模块化插件设计，技能与命令解耦，支持多种 AI 助手（Claude、Codex、Gemini CLI、OpenCode 等）无缝集成，技能文件通用、易于扩展。
+- **近期动向与发展方向**：近期主要更新集中在 v2.0.0 版本，新增了 AI 代码交付相关插件（pm-ai-shipping）、红队执行等新技能，并持续优化文档和插件结构。提交活跃，主要由核心作者维护，偶有外部贡献。
+- **同类对比**：暂无明显同类对标，主流 AI 助手多为通用型对话，缺乏 PM 领域的结构化技能市场。
+- **注意事项**：项目自 2026 年 3 月创建，更新频率高但贡献者较少（2 人），部分技能和命令依赖特定 AI 平台（如 Claude），其他平台仅支持技能文件。当前有 17 个 open issue，文档较详尽但仍建议结合实际场景测试兼容性。
+
+- **GitHub**：[phuryn/pm-skills](https://github.com/phuryn/pm-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Pawel Huryn在产品管理与AI工具领域具有显著影响力，拥有大量关注者和高星项目。
+**技术栈偏好**：主要使用Python和TypeScript，侧重于数据处理与现代前端开发。
+**核心领域**：聚焦于产品管理技能、AI应用及相关工具的开发与分享。
+
+---
+
+### ✨ openai/plugins (2392★)
+
+> **一句话**：OpenAI 官方维护的一组 Codex 插件示例集合，展示如何把 Figma、Notion、Google Slides、Expo、Netlify 等外部工作流接入 Codex。
+
+- **它是什么**：这是一个面向 Codex 插件生态的示例仓库，每个插件位于 `plugins//` 目录下，并通过 `.codex-plugin/plugin.json` 描述插件元数据。仓库中还包含 `skills/`、`.mcp.json`、`.app.json`、`agents/`、`commands/`、`hooks.json`、`assets/` 等配套文件，用来展示插件如何声明能力、接入 MCP、提供技能和交互入口。README 特别提到的示例包括 Figma、Notion、iOS/macOS/Web 应用构建、Expo、Netlify、Remotion 和 Google Slides。
+
+- **能解决什么痛点**：开发者想为 Codex 接入外部产品或内部工作流时，通常缺少可参考的插件目录结构、manifest 写法和技能组织方式；这个仓库提供了多个真实插件样板。对于需要把设计、文档、移动端构建、部署、演示文稿生成等流程接入 Codex 的团队，它能减少从零摸索插件规范的成本。
+
+- **适合谁用**：适合正在开发 Codex 插件、MCP 集成或 Agent 工作流的开发者。也适合希望把 Figma、Notion、Google Drive、Google Slides、Expo、Netlify 等工具接入 AI 编程流程的工程团队参考。
+
+- **怎么上手**：文档未提供快速上手示例。
+
+- **可以用在哪些场景**：
+  - 参考 `plugins/figma`，把设计稿读取、Code to Canvas、设计系统规则接入前端开发流程。
+  - 参考 `plugins/notion`，让 Codex 参与需求规划、会议记录整理、研究资料归档和知识库写入。
+  - 参考 `plugins/build-ios-apps`、`plugins/expo`、`plugins/build-web-apps`，为移动端或 Web 项目封装构建、调试、部署和运行指导。
+
+- **技术看点**：仓库采用“每个插件独立目录 + manifest + 可选 companion surfaces”的组织方式，便于插件能力按文件边界拆分。它不仅展示插件元数据，还覆盖 skills、MCP 配置、agents、commands、hooks 等扩展面，对设计 Codex 插件结构有直接参考价值。
+
+- **近期动向与发展方向**：最近提交非常活跃，6 月 3 日到 9 日连续更新，重点集中在插件版本 bump、插件分类调整、图标适配浅色/深色模式，以及 Google Drive、Gmail、Google Slides、Metabase、S&P Global 等插件能力和提示词的细化。近期还新增了 MagicPath、Superhuman、Shopify 等插件元数据，并发布 OpenAI Developers MCP server，说明项目正在快速扩充插件覆盖范围，同时加强 MCP 和实际产品工作流的集成。
+
+- **同类对比**：暂无明显同类对标。
+
+- **注意事项**：仓库创建时间较新，但更新频率很高，说明生态仍在快速演进，插件结构和分类可能会继续调整。当前 README 更偏概览和目录说明，没有提供明确的安装、运行或本地调试步骤，新用户需要直接阅读具体插件目录。Open Issues 为 27，结合近期大量版本和分类变更，使用时应关注 manifest 规范、插件版本和相关配置是否发生变化。
+
+- **GitHub**：[openai/plugins](https://github.com/openai/plugins)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：OpenAI 是全球 AI 开源与开发者生态中影响力极高的组织，多个代表项目在语音、智能体、开发工具和机器学习社区具备标杆地位。
+**技术栈偏好**：其技术栈以 Python 和 Jupyter Notebook 为核心，兼顾 Rust 等高性能系统语言，偏向 AI 研究、模型应用与开发者工具建设。
+**核心领域**：主要聚焦人工智能基础模型、语音识别、多模态学习、强化学习以及 AI 应用生态与工具链。
+
+---
+
+### ✨ Andyyyy64/whichllm (3636★)
+
+> **一句话**：输入一次命令，它会识别你的显卡、CPU 和内存，从 HuggingFace 模型里挑出真正跑得动且综合表现最好的本地 LLM。
+
+- **它是什么**：whichllm 是一个 Python 命令行项目，核心功能是自动检测本机硬件，并按显存占用、推理速度、真实 benchmark 分数和模型新旧程度给本地大模型排序。它不只是判断“哪个模型能塞进显存”，还会结合 LiveBench、Artificial Analysis、Aider、Chatbot Arena 等来源，给出更偏实际使用的推荐。除了推荐模型，它还支持 GPU 模拟、硬件升级对比、反查某个模型需要什么显卡、直接启动聊天和生成可复制的 Python 代码片段。
+- **能解决什么痛点**：本地跑 LLM 时，开发者经常不知道 8GB、24GB 或 Apple Silicon 统一内存到底适合跑哪个量化版本，靠参数量和显存粗估很容易选到“能跑但不好用”的模型。另一个痛点是硬件采购前缺少直观判断，whichllm 可以用 `--gpu "RTX 4090"` 或 `upgrade` 先模拟不同显卡下的推荐结果。
+- **适合谁用**：适合经常在本地部署 GGUF、AWQ、GPTQ、FP16/BF16 模型的 AI 应用开发者和个人玩家；也适合需要评估工作站、Mac、GPU 服务器采购方案的机器学习工程师或技术负责人。
+- **怎么上手**：最简单的一次性运行命令是 `uvx whichllm@latest`；如果想模拟某张显卡，可以运行 `uvx whichllm@latest --gpu "RTX 4090"`。
+- **可以用在哪些场景**：用于给自己的笔记本、台式机或服务器挑选合适的本地聊天模型；用于比较 RTX 4090、RTX 5090、H100、Apple M 系列等硬件升级后的模型可用性；用于脚本化接入本地推理流程，比如通过 `whichllm --top 1 --json` 取出推荐的 HuggingFace 模型 ID。
+- **技术看点**：它的排序逻辑不是简单按参数量或显存匹配，而是把 benchmark 证据等级、模型发布时间、量化损失、MoE active/total 参数、KV cache、显存带宽和 partial offload 都纳入评分。数据侧同时使用 HuggingFace 实时数据和离线缓存，并对继承分数、上传者自报分数做置信度折扣。
+- **近期动向与发展方向**：最近提交非常活跃，6 月 9 日仍在合并硬件支持和 bug 修复，包括 Kepler-era Quadro、Apple M5 系列模拟、GGUF benchmark lookup 修复。6 月初的重点集中在硬件覆盖、ranker 准确性、缓存文档和数据包重构，说明项目正在从早期快速功能扩展转向提升推荐可信度、硬件兼容性和数据维护结构。
+- **同类对比**：README 明确强调它不同于“只看哪个最大模型能塞进显存”的工具；whichllm 会因为真实 benchmark 和模型新鲜度，把较新的 27B 模型排在能跑的 32B 模型前面。
+- **注意事项**：项目创建时间是 2026 年 3 月，仍然较新，但 Stars 增长快、近期维护频繁、已有 17 位贡献者；当前有 20 个 open issues，说明仍可能遇到硬件识别、模型元数据或 ranking 边界问题。文档覆盖较完整，包含 CLI、评分、硬件检测、run/snippet 和 troubleshooting，但其推荐结果依赖 HuggingFace 与 benchmark 数据质量，实时数据变化也可能导致不同时间运行结果不完全一致。
+
+- **GitHub**：[Andyyyy64/whichllm](https://github.com/Andyyyy64/whichllm)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：andy 是一位活跃的个人开发者，凭借高星 Python 项目 whichllm 在细分开源社区具备一定可见度和技术影响力。
+**技术栈偏好**：主要使用 TypeScript、Python 和 C，偏好围绕开发工具、类型安全接口和底层实验类项目进行构建。
+**核心领域**：主要聚焦于 AI/LLM 工具、Web API 类型化开发以及轻量级系统工具。
+
+---
+
+### ✨ MemPalace/mempalace (55060★)
+
+> **一句话**：MemPalace 把本地对话、项目文件和代理记录原文存进可检索的“记忆宫殿”，让 Claude Code、MCP 客户端或命令行在新会话里找回旧上下文。
+
+- **它是什么**：MemPalace 是一个 local-first 的 AI 记忆系统，核心思路不是总结或改写历史内容，而是把原始文本按 people/projects、topics、drawers 这样的结构存储起来，再用语义搜索召回。它提供 CLI、MCP server、知识图谱和多种向量存储后端，默认使用 ChromaDB，也支持 `sqlite_exact`、Qdrant、pgvector 等后端。官方强调核心路径不需要 API key，数据默认不离开本机。
+
+- **能解决什么痛点**：长时间使用 Claude Code、Gemini CLI 或本地 Agent 时，会遇到会话过期、上下文压缩后丢失关键决策的问题，MemPalace 可以把历史对话和项目上下文重新检索出来。另一个痛点是项目知识散在聊天记录、代码目录和 agent 日志里，普通全文搜索很难问出“当时为什么切到 GraphQL”这类语义问题。
+
+- **适合谁用**：适合重度使用 Claude Code、MCP 客户端、本地 LLM 或多 Agent 工作流的开发者。也适合希望把项目对话、技术决策、知识图谱都留在本机管理的 Python 工程师和 AI 工具链维护者。
+
+- **怎么上手**：`uv tool install mempalace && mempalace init ~/projects/myapp`
+
+- **可以用在哪些场景**：可以给 Claude Code 配置自动保存 hooks，防止 30 天会话过期后上下文彻底丢失；可以把项目目录或 `~/.claude/projects/` 历史会话挖掘进本地索引，用 `mempalace search "why did we switch to GraphQL"` 查询旧决策；也可以作为 MCP server 接入支持 MCP 的客户端，让 agent 在执行任务时读取历史记忆、知识图谱和代理 diary。
+
+- **技术看点**：它采用可插拔后端设计，向量存储接口抽象在 backend 层，默认 ChromaDB，同时支持本地精确向量校验、Qdrant REST 和 Postgres pgvector。README 给出了较完整的基准复现路径，LongMemEval raw R@5 标称 96.6%，并明确区分 raw、hybrid、LLM rerank 的成绩，技术口径相对克制。
+
+- **近期动向与发展方向**：最近提交非常集中，6 月 8 日连续合入了 backend 相关功能，包括 embedder identity contract、Qdrant identity、pgvector indexed-build path、maintenance hooks，以及 searcher 的 metric-aware 距离到相似度转换。6 月 6 日还在修 EmbeddingCollection 对 `OneOrMany` 输入的兼容问题，并整理发布工作流和 3.4.0 版本发布，说明近期重点是把多后端存储契约做稳、增强可观测维护能力，并改善发布可靠性。提交主要由 Igor Lins e Silva 合入，但也有外部贡献者 PR，项目更新频率很高。
+
+- **同类对比**：README 明确提到 Mem0、Mastra、Hindsight、Supermemory、Zep，但没有做直接横向跑分，因为这些项目使用的指标和数据切分不同。MemPalace 的差异点在于强调本地优先、原文存储、无 API key 的核心召回路径，以及面向 Claude Code/MCP 的记忆保留工作流。
+
+- **注意事项**：项目创建于 2026-04-05，但已经有 55060 stars、7162 forks、586 个 open issues，热度很高但仍处在快速演进阶段，后端契约和发布流程近期仍在频繁调整。默认本地存储较安全，但一旦选择 Qdrant 或 pgvector 并指向非本地服务，原文 drawer 内容和 metadata 会被发送到对应服务，需要自己评估数据边界。README 文档相当详细，包含安装、Docker、MCP、benchmark 和后端说明，但功能面较宽，新用户需要先明确自己只是做 CLI 检索、Claude Code 留存，还是要接入完整 MCP/知识图谱流程。
+
+- **GitHub**：[MemPalace/mempalace](https://github.com/MemPalace/mempalace)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：MemPalace 以高星 Python 项目迅速获得关注，在 AI 记忆系统细分方向具备较强社区影响力。
+**技术栈偏好**：主要采用 Python 构建核心 AI/记忆系统能力，并辅以 TypeScript 支撑工程化或辅助工具。
+**核心领域**：聚焦于 AI Agent 记忆、长期上下文管理与高性能智能记忆系统。
+
+---
+
+### ✨ roboflow/supervision (42512★)
+
+> **一句话**：把模型输出变成可用的计算机视觉应用流水线，从读取数据、转换检测结果，到画框、分割标注、区域计数和数据集导出都能直接接上。
+
+- **它是什么**：supervision 是 Roboflow 维护的 Python 计算机视觉工具库，定位在“模型之后、应用之前”的通用层。它不绑定某一个模型框架，而是提供 `Detections`、annotators、dataset utils 等组件，能接入 Ultralytics、Transformers、MMDetection、Roboflow Inference、RF-DETR 等模型输出，并继续完成可视化、数据集格式转换、检测结果处理等工作。
+- **能解决什么痛点**：做视觉应用时，开发者经常要反复手写“模型输出转统一格式、画框/画 mask/画标签、COCO 与 YOLO 数据集互转、按区域统计目标”这类胶水代码；supervision 把这些常见环节封装成可复用 API。另一个痛点是不同模型库输出结构不一致，它通过连接器和统一的 `sv.Detections` 降低了替换模型或混用模型时的适配成本。
+- **适合谁用**：适合用 Python 搭建目标检测、分割、跟踪或视频分析应用的计算机视觉工程师。也适合正在整理 COCO、YOLO、Pascal VOC 数据集，或需要把模型结果快速可视化给业务方看的数据科学家和 ML 工程师。
+- **怎么上手**：安装方式：`pip install supervision`；最小使用示例：`import supervision as sv` 后使用 `sv.Detections(...)` 和 `sv.BoxAnnotator().annotate(...)` 对检测结果进行标注。
+- **可以用在哪些场景**：
+  - 给 YOLO、RF-DETR、Roboflow Inference 等模型输出快速叠加检测框、标签、mask，生成可检查的图片或视频结果。
+  - 在门店、交通、工厂等视频流中做区域计数、停留时间分析、速度估计、目标跟踪后的可视化。
+  - 将 COCO、YOLO、Pascal VOC 数据集加载、拆分、合并、转换和重新导出，减少训练前数据整理脚本的维护成本。
+- **技术看点**：项目的核心设计是模型无关，围绕统一的 `Detections` 数据结构做转换、过滤、可视化和导出，因此更适合作为视觉应用的中间层，而不是单独的模型训练框架。README 中也明确提供了 annotators、dataset utils 和多模型连接器，覆盖从数据到结果展示的常见工程路径。
+- **近期动向与发展方向**：最近 20 条提交非常活跃，集中在数据集导入导出、OBB 旋转框、COCO/YOLO 兼容性、灰度图 letterbox、空 detections 边界情况、HeatMapAnnotator 除零问题等修复，说明维护重点偏向稳定性和格式正确性。近期也出现了 keypoints 转换桥接、API 设计原则文档、验证 helper 重构等提交，表明项目正在继续扩展检测结构能力，同时收紧内部 API 设计。
+- **同类对比**：README 明确提到它可以连接 Ultralytics、Transformers、MMDetection、Roboflow Inference 等生态，但 supervision 本身不是这些框架的替代品；它更像是模型推理结果之后的通用处理层，差异在于统一数据结构、标注器和数据集工具。
+- **注意事项**：项目创建于 2022 年底，已有 4.2 万 Star、160 位贡献者，更新频率高，成熟度和社区活跃度都不错。当前仍有 105 个 open issues，且近期出现过 keypoints 功能合入后又回滚的记录，说明新能力可能存在 API 调整风险；生产环境使用时建议锁定版本并关注 changelog。README 和文档入口较完整，上手门槛主要来自计算机视觉数据格式本身，而不是库的安装使用。
+
+- **GitHub**：[roboflow/supervision](https://github.com/roboflow/supervision)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Roboflow 是计算机视觉开源生态中的高影响力组织，凭借 supervision、rf-detr 等项目在视觉模型应用与工具链社区具备很强号召力。
+**技术栈偏好**：技术栈明显偏向 Python 与 Jupyter Notebook，重点服务于模型训练、推理、标注、跟踪和实验型视觉工作流。
+**核心领域**：核心聚焦于计算机视觉、目标检测、视觉数据集管理与视觉 AI 应用落地。
+
+---
+
+### ✨ CopilotKit/CopilotKit (34280★)
+
+> **一句话**：CopilotKit 把聊天、工具调用、动态 UI 渲染和共享状态接到前端应用里，让同一个 AI Agent 可以出现在 Web、移动端、Slack、Teams 等界面中。
+
+- **它是什么**：CopilotKit 是一个面向 agent-native 应用的 TypeScript/前端 SDK，核心能力包括 Chat UI、Generative UI、后端工具渲染、共享状态和 human-in-the-loop 工作流。它最早偏 React 生态，现在扩展到 React/Next.js、Angular、Vue、React Native，并通过 AG-UI Protocol 连接前端界面与后端 Agent。
+- **能解决什么痛点**：开发者想把 Agent 接进产品时，常常不只是做一个聊天框，还要处理流式消息、工具调用结果展示、用户确认、状态同步和跨端 UI 表达，CopilotKit 把这些前端交互层做成了现成框架。另一个痛点是同一套 Agent 逻辑要在 Web、移动端、Slack 或 Teams 里复用，AG-UI 提供了统一的交互协议。
+- **适合谁用**：适合正在给 React/Next.js、React Native、Angular 或 Vue 应用加入 AI Agent 能力的前端团队；也适合做企业内部助手、工作流审批、客服/运营 Copilot 的全栈开发者。
+- **怎么上手**：新项目可直接运行：`npx copilotkit@latest create -f `；已有项目可运行：`npx copilotkit@latest init`。
+- **可以用在哪些场景**：在 SaaS 后台里加入可读取页面状态、调用业务工具并渲染结果卡片的产品 Copilot；在内部运营系统中构建需要用户确认、修改或审批后继续执行的 Agent 工作流；把同一个业务 Agent 部署到 Web 应用、移动端和 Slack/Teams 频道中，减少多端重复实现。
+- **技术看点**：项目围绕 AG-UI Protocol 设计，把 Agent 事件流、工具调用、状态更新和 UI 渲染抽象成统一协议，前端 SDK 负责把这些能力落到具体框架。README 中还提到 useAgent Hook，可直接操作 Agent 状态，适合需要精细控制 UI 与 Agent 同步的应用。
+- **近期动向与发展方向**：最近 20 条提交集中在 showcase、AG-UI reasoning 支持、文档补齐和测试加固上，包括升级 `@ag-ui/client`、修复不同后端的 reasoning emission、完善 promote 测试夹具与帮助文档。整体看项目仍在高频迭代，近期重点不是单纯加新页面，而是在把 AG-UI reasoning、示例可靠性和跨后端兼容性打磨得更稳。
+- **同类对比**：README 没有直接列出明确竞品；它更强调自己与 LangChain、CrewAI、Mastra、PydanticAI 等 agentic stack 的集成关系，而不是替代这些后端 Agent 框架。差异点在于 CopilotKit 主要站在“用户界面与 Agent 交互层”，而不是模型编排或 Agent 后端本身。
+- **注意事项**：项目 Star 和贡献者数量都很高，更新也非常频繁，但 Open Issues 达到 542，说明使用面广的同时也有不少待处理问题。README 覆盖面较大，涉及 React、Angular、Vue、React Native、Slack、Teams、AG-UI、自学习等多个方向，新用户需要先明确自己只接入哪一层，否则容易被概念淹没。部分能力标注为 early access，例如 Slack/Teams 扩展和 Self-Learning Agents，生产落地前需要确认成熟度、授权方式和部署边界。
+
+- **GitHub**：[CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：CopilotKit 是一个增长迅速且具有较高社区关注度的开源组织，核心项目在 AI 应用开发工具链中具备显著影响力。
+**技术栈偏好**：其技术栈明显偏向 TypeScript，重点围绕前端框架、生成式 UI、AI Agent 与 MCP 客户端生态构建。
+**核心领域**：主要聚焦于 AI Copilot、生成式 UI、Agent 应用开发和大模型交互基础设施。
+
+---
+
+### ✨ TapXWorld/ChinaTextbook (73153★)
+
+> **一句话**：把小学、初中、高中到大学阶段的中文 PDF 教材集中整理在 GitHub 仓库里，按学段和学科目录直接访问。
+
+- **它是什么**：这是一个面向中文教材资源归档的开源仓库，收录了大量小初高和大学阶段的 PDF 教材。README 中以数学为例，列出了小学一到六年级、初中七到九年级、高中人教 A 版，以及大学高等数学、线性代数、离散数学、概率论等资料入口。项目目标是减少教育资源获取门槛，尤其方便普通用户和海外华人家庭查找国内教材。
+
+- **能解决什么痛点**：一是教材 PDF 分散在不同网站，普通用户很难快速找到完整、可直接下载的版本；二是部分资源被二次售卖或加私人水印，项目通过集中归档降低重复付费和信息不对称问题。对于海外用户，也能避免跨地区访问国内教育资源站点不稳定的问题。
+
+- **适合谁用**：适合需要查阅国内教材的学生、家长、教师和自学者；也适合做教育资源整理、教材检索、学习资料归档的开发者或内容维护者参考目录结构。
+
+- **怎么上手**：README 未提供命令式安装流程，最简单方式是在 GitHub 仓库目录中按“学段 / 学科 / 版本”查找并下载对应 PDF；若遇到被拆分的大文件，可下载 `mergePDFs-windows-amd64.exe` 放到同一目录后双击合并。
+
+- **可以用在哪些场景**：用于家长为孩子查找人教版小学、初中数学教材；用于海外中文家庭同步了解国内课程内容；用于教师或教育内容创作者快速定位不同学段教材，作为备课、对照或资料索引来源。
+
+- **技术看点**：项目本质不是代码库，而是大体量 PDF 教材资源仓库；由于 GitHub 单文件大小限制，README 明确说明了超过 50MB 文件会被拆分为约 35MB 分片，并提供独立合并工具处理大文件。仓库语言显示为 Roff，更多是 GitHub 对文件内容的自动识别结果，不能代表项目采用了某种应用开发技术栈。
+
+- **近期动向与发展方向**：最近提交主要集中在 README 更新、疑似病毒问题处理和少量内容修正，说明维护重点偏向资源说明、访问安全感和公共信息纠错，而不是新增软件功能。2025 年有合并 PR 和外部贡献修正，但贡献者总数仅 4 人，整体更像长期维护型资料仓库，开发活跃度有限。
+
+- **同类对比**：README 提到了 `tchMaterial-parser` 可用于在内地网络环境下重新下载教材资源；相比之下，本仓库更偏向已经整理好的离线资源镜像，适合直接签出或下载，而不是从源站解析抓取。
+
+- **注意事项**：仓库体量可能较大，直接 clone 会占用较多带宽和磁盘空间；部分 PDF 因 GitHub 限制被拆分，下载后需要额外合并步骤。项目已有 113 个 open issues，且近期提交多为 README 和维护性修正，使用时应自行核对教材版本、完整性和来源合规性。README 对目录和合并方式说明较清楚，但没有提供完整的索引搜索、校验哈希或自动化下载流程。
+
+- **GitHub**：[TapXWorld/ChinaTextbook](https://github.com/TapXWorld/ChinaTextbook)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：TapXWorld 凭借 ChinaTextbook 项目的超高关注度具备显著社区传播影响力，但整体仓库数量较少，更偏向单一爆款驱动型开发者。
+**技术栈偏好**：技术栈以 Go、Roff 和 PowerShell 为主，体现出工具开发、文档整理与自动化脚本方向的实践偏好。
+**核心领域**：主要聚焦于中文教材资料整理、配套工具开发以及环境部署与安全相关自动化工具。
+
+---
+
+### ✨ luongnv89/claude-howto (35963★)
+
+> **一句话**：把 Claude Code 的命令、记忆、技能、Hooks、MCP、Subagents 等能力拆成一套可照着复制的周末学习路线和实战模板。
+
+- **它是什么**：这是一本面向 Claude Code 的视觉化、示例驱动教程，不是单纯 API 或功能清单。项目按 10 个模块组织内容，覆盖 Slash Commands、Memory、Skills、Subagents、MCP、Hooks、Plugins、Checkpoints、CLI 和高级功能，并提供可直接复制到项目里的配置、命令模板和工作流示例。README 还提供学习路线、自测入口和从 15 分钟入门到 11-13 小时完整掌握的路径。
+- **能解决什么痛点**：很多开发者装好 Claude Code 后只会聊天或跑零散提示词，不知道如何把 slash command、CLAUDE.md、hooks、subagent 和 MCP 串成可复用流程。它也解决了官方文档偏“功能说明”、缺少组合用法和真实生产模板的问题。
+- **适合谁用**：适合已经在日常开发中使用 Claude Code、想把它接入代码审查、文档生成、重构、安全扫描等流程的工程师。也适合团队负责人或平台工程师，用来整理团队级 Claude Code 配置、模板和 onboarding 材料。
+- **怎么上手**：`git clone https://github.com/luongnv89/claude-howto.git && cd claude-howto && cp 01-slash-commands/optimize.md /path/to/your-project/.claude/commands/`
+- **可以用在哪些场景**：可用于搭建基于 Claude Code 的自动代码审查流程，把 Slash Commands、Subagents、Memory 和 MCP 组合起来；可用于团队新人入职，把项目约定写入 `CLAUDE.md` 并配套常用命令；可用于 DevOps 或 CI/CD 辅助流程，通过 Hooks、CLI 和后台任务做发布前检查、文档生成或安全审计。
+- **技术看点**：项目核心价值在内容结构和模板体系，而不是复杂运行时；Python 主要用于脚本能力，例如从 Markdown 源生成静态网站、校验 Markdown 渲染、生成 EPUB 离线读物。教程大量使用 Mermaid 图解释 Claude Code 各能力的内部协作方式，便于做团队技术选型和流程设计时复用。
+- **近期动向与发展方向**：最近 20 条提交以文档同步和修复为主，频繁跟进 Claude Code v2.1.126 到 v2.1.160，并适配 Claude Opus 4.8，说明维护节奏紧贴上游版本。5 月新增了 Markdown 渲染校验器和静态网站生成脚本，方向上不只是维护教程内容，也在把文档工程化；同时多次修复 i18n、图片路径、表格转义和配置优先级问题，社区贡献者参与度较活跃。
+- **同类对比**：README 明确对比的是官方文档：官方文档偏功能参考，这个项目强调渐进式学习路径、可视化教程、生产可用模板和自测题。它更适合作为“从会用到会组合”的实战指南，而不是替代官方参考文档。
+- **注意事项**：项目创建时间为 2025-11-07，增长和更新都很快，但仍属于较新的知识库型项目，可能随 Claude Code 上游版本变化频繁调整。当前有 35 个 Open Issues，说明仍有内容修正、翻译和兼容性细节在持续处理；如果团队要直接采用其中模板，建议先按自己的安全策略、目录结构和 Claude Code 版本做一次审查。
+
+- **GitHub**：[luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有近 800 Followers 和多个高星项目，尤其 `claude-howto` 影响力突出，是 AI 工具实践与知识分享型开发者。
+**技术栈偏好**：主要使用 Python 与 TypeScript，偏好 AI 应用、开发者工具、前端工程与自动化方向。
+**核心领域**：核心聚焦 AI 工程实践、网络安全相关技术，以及面向开发者的工具与学习资源建设。
+
+---
+
+### ✨ aaif-goose/goose (48204★)
+
+> **一句话**：goose 让本地桌面端、终端和 API 都能直接调用 AI 代理，由它读取上下文、执行命令、编辑文件、运行测试，并接入不同 LLM 和 MCP 扩展完成开发与自动化任务。
+
+- **它是什么**：goose 是运行在本机的通用 AI Agent，提供桌面应用、CLI 和 API 三种形态，不只做代码补全，而是可以参与研究、写作、自动化、数据分析和开发流程。它用 Rust 构建，强调跨 macOS、Linux、Windows 的性能与可移植性，并支持 Anthropic、OpenAI、Google、Ollama、OpenRouter、Azure、Bedrock 等 15+ 模型提供方。项目还支持通过 ACP 使用 Claude、ChatGPT、Gemini 订阅，并可连接 70+ 个 MCP 扩展。
+
+- **能解决什么痛点**：当开发者需要让 AI 真正落到本地项目里执行任务时，单纯聊天或代码建议往往不够，goose 可以直接安装依赖、修改文件、运行测试，把“问 AI 怎么做”推进到“让 AI 在当前机器上做”。另一个痛点是模型和工具链分散：不同 LLM、企业云模型、本地 Ollama、MCP 扩展通常需要分别集成，goose 提供了统一入口。
+
+- **适合谁用**：适合希望在终端或桌面环境中使用 AI 代理处理代码库任务的软件工程师、全栈开发者和运维/SRE。也适合需要把 AI Agent 嵌入内部工具、工作流平台或定制发行版的团队。
+
+- **怎么上手**：`curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash`
+
+- **可以用在哪些场景**：可以用于在现有代码仓库中让 AI 读取上下文后修 bug、改配置并跑测试；用于把重复的终端工作流自动化，例如依赖安装、脚本执行、结果整理；也可以用于连接 MCP 扩展，把内部工具、数据源或开发环境接入统一的 AI Agent 工作台。
+
+- **技术看点**：核心实现语言是 Rust，适合构建跨平台桌面端、CLI 和后台能力共用的本地代理。近期拆出了 `goose-providers` crate，并引入 canonical models、conversation 等类型，说明项目正在把模型提供方与对话格式抽象成更清晰的基础层，利于后续扩展和 SDK 化。
+
+- **近期动向与发展方向**：最近提交非常活跃，既有功能新增，也有结构性重构。重点包括 ACP 配置扩展方法、TUI 中 ACP 调用兼容性修复、仅在客户端声明 capability 时发送通知、跨语言 SDK 的 uniffi 初始支持，以及图片读取工具。与此同时，依赖更新和 token counting LRU 缓存也在推进，说明项目正在从“功能快速扩展”走向“多客户端、多语言 SDK、模型提供方模块化”的方向。
+
+- **同类对比**：README 没有明确点名竞品。它的差异点主要在于同时提供桌面 app、CLI 和 API，并强调本地运行、任意 LLM 接入、ACP 订阅接入和 MCP 扩展生态，而不是只停留在 IDE 内代码建议。
+
+- **注意事项**：项目创建于 2024 年 8 月，但已有 48204 stars、493 位贡献者和非常密集的近期提交，社区热度和开发速度都很高。当前仍有 341 个 open issues，且 README 明确提到项目刚从 `block/goose` 迁移到 Linux Foundation 旗下 AAIF，部分链接和引用仍在更新；再加上近期有 provider crate 拆分、SDK 初始化、ACP 重构等变化，短期内集成方式和内部接口可能仍会调整。生产环境采用前建议先锁定版本，并关注 release notes 与文档更新。
+
+- **GitHub**：[aaif-goose/goose](https://github.com/aaif-goose/goose)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：goose 是一个新兴但已具备高关注度的 AI Agent 平台组织，核心仓库在社区中拥有显著影响力。
+**技术栈偏好**：技术栈以 Rust 为核心，辅以 Swift、JavaScript/TypeScript，覆盖高性能后端、移动端与开发者工具生态。
+**核心领域**：主要聚焦 AI Agent 平台、跨端智能助手与开发者工具链建设。
