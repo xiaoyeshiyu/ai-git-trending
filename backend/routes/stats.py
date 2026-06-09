@@ -52,14 +52,11 @@ def get_stats():
             cursor.execute("SELECT COUNT(*) FROM summarized_projects WHERE summary_date >= ?", (one_week_ago,))
             weekly_new = cursor.fetchone()[0]
 
-            total_reports = len([f for f in os.listdir(MD_DIR) if f.endswith('.md')])
+            total_reports = len([f for f in os.listdir(MD_DIR) if f.endswith('.md')]) if os.path.isdir(MD_DIR) else 0
 
             # New Stats
             cursor.execute("SELECT SUM(forks) FROM summarized_projects")
             total_forks = cursor.fetchone()[0] or 0
-
-            cursor.execute("SELECT AVG(contributor_count) FROM summarized_projects WHERE contributor_count != 'N/A'")
-            avg_contributors = cursor.fetchone()[0] or 0
 
             # 计算活跃度分数 - 基于贡献者数量、stars和forks等指标
             cursor.execute("SELECT AVG(contributor_count) FROM summarized_projects WHERE contributor_count != 'N/A'")
@@ -108,7 +105,7 @@ def get_stats():
                 "totalReports": total_reports,
                 "totalProjects": total_projects,
                 "weeklyNew": weekly_new,
-                "totalForks": total_forks,
+                "totalForks": f"{total_forks:,}",
                 "avgStars": round(avg_stars, 1),
                 "avgForks": round(avg_forks, 1),
                 "avgContributors": round(avg_contributors, 1),
@@ -185,6 +182,8 @@ def get_project_trend():
     """获取项目趋势（最近N天的每日项目数）"""
     try:
         days = request.args.get('days', 7, type=int)
+        if days < 1:
+            days = 1
         if days > 30:
             days = 30
 

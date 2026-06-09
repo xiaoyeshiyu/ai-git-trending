@@ -167,7 +167,7 @@ def get_projects():
         order = request.args.get('order', 'desc')
 
         # 验证排序字段
-        allowed_sort_fields = ['stars', 'forks', 'contributor_count', 'name', 'summary_date', 'score']
+        allowed_sort_fields = ['stars', 'forks', 'contributor_count', 'name', 'summary_date']
         if sort_by not in allowed_sort_fields:
             sort_by = 'stars'
 
@@ -180,11 +180,18 @@ def get_projects():
         tech_domain_filter = request.args.get('tech_domain')
         min_stars = request.args.get('min_stars', type=int)
         max_stars = request.args.get('max_stars', type=int)
-        min_score = request.args.get('min_score', type=int)
-        max_score = request.args.get('max_score', type=int)
         date_from = request.args.get('date_from')
         date_to = request.args.get('date_to')
         search = request.args.get('search')
+
+        if date_from or date_to:
+            from router import validate_date_string
+            for value in (date_from, date_to):
+                if not value:
+                    continue
+                is_valid, error_msg = validate_date_string(value)
+                if not is_valid:
+                    return error_response(ErrorCode.VALIDATION_ERROR, error_msg, 400)
 
         with db._get_connection() as conn:
             cursor = conn.cursor()
@@ -236,8 +243,7 @@ def get_projects():
                 'forks': 'forks',
                 'contributor_count': 'contributor_count',
                 'name': 'name',
-                'summary_date': 'summary_date',
-                'score': 'score'
+                'summary_date': 'summary_date'
             }
             safe_sort = ORDER_MAPPING.get(sort_by, 'stars')
             safe_order = 'DESC' if order == 'desc' else 'ASC'

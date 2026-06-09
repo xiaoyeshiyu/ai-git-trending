@@ -5,7 +5,6 @@ from config.logging_config import get_logger
 import os
 from datetime import datetime, timedelta
 from app.database import ProjectDatabase
-import urllib.parse
 import threading
 
 # 创建日志记录器
@@ -66,6 +65,10 @@ def get_reports():
 
 @app.route('/api/report/<date_str>')
 def get_report_content(date_str):
+    is_valid, error_msg = validate_date_string(date_str)
+    if not is_valid:
+        return jsonify({"error": error_msg}), 400
+
     filename = f"github_trending_{date_str}.md"
     filepath = os.path.join(MD_DIR, filename)
 
@@ -92,6 +95,10 @@ def get_report_content(date_str):
 
 @app.route('/api/download/<date_str>/<format>')
 def download_report(date_str, format):
+    is_valid, error_msg = validate_date_string(date_str)
+    if not is_valid:
+        return jsonify({"error": error_msg}), 400
+
     if format not in ['html', 'md']:
         return jsonify({"error": "Invalid format specified"}), 400
 
@@ -169,123 +176,6 @@ def get_trends_data():
         logger.error(f"Error in /api/trends: {e}")
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/stats')
-def get_stats():
-    try:
-        with db._get_connection() as conn:
-            cursor = conn.cursor()
-
-            cursor.execute("SELECT COUNT(*) FROM summarized_projects")
-            total_projects = cursor.fetchone()[0]
-
-            cursor.execute("SELECT language, COUNT(*) as count FROM summarized_projects WHERE language != 'N/A' AND language IS NOT NULL GROUP BY language ORDER BY count DESC LIMIT 1")
-            top_lang_row = cursor.fetchone()
-            top_language = top_lang_row[0] if top_lang_row else "N/A"
-
-            one_week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
-            cursor.execute("SELECT COUNT(*) FROM summarized_projects WHERE summary_date >= ?", (one_week_ago,))
-            weekly_new = cursor.fetchone()[0]
-            
-            total_reports = len([f for f in os.listdir(MD_DIR) if f.endswith('.md')])
-
-            # New Stats
-            cursor.execute("SELECT SUM(forks) FROM summarized_projects")
-            total_forks = cursor.fetchone()[0] or 0
-
-            cursor.execute("SELECT AVG(contributor_count) FROM summarized_projects WHERE contributor_count != 'N/A'")
-            avg_contributors = cursor.fetchone()[0] or 0
-            
-            # 计算活跃度分数 - 基于贡献者数量、stars和forks等指标
-            cursor.execute("SELECT AVG(contributor_count) FROM summarized_projects WHERE contributor_count != 'N/A'")
-            avg_contributors = cursor.fetchone()[0] or 0
-            
-            cursor.execute("SELECT AVG(stars) FROM summarized_projects")
-            avg_stars = cursor.fetchone()[0] or 0
-            
-            cursor.execute("SELECT AVG(forks) FROM summarized_projects")
-            avg_forks = cursor.fetchone()[0] or 0
-            
-            # 改进的活跃度计算公式
-            # 设置基准值和最低分数，确保即使数据不足也能有合理的活跃度显示
-            base_contributors = 10
-            base_stars = 100
-            base_forks = 50
-            
-            # 为每个指标设置最低分数，确保活跃度不会显示为0%
-            min_contributors_score = 5
-            min_stars_score = 10
-            min_forks_score = 5
-            
-            # 计算各项指标的归一化值，并应用最低分数
-            contributors_score = max(min_contributors_score, min(100, (avg_contributors / base_contributors) * 25))
-            stars_score = max(min_stars_score, min(100, (avg_stars / base_stars) * 40))
-            forks_score = max(min_forks_score, min(100, (avg_forks / base_forks) * 35))
-            
-            # 综合计算活跃度分数
-            activity_score = round(contributors_score + stars_score + forks_score)
-            
-            # 确保活跃度分数在合理范围内
-            activity_score = max(20, min(100, activity_score))  # 设置最低20%的活跃度分数
-            
-            stats = {
-                "totalReports": total_reports,
-                "totalProjects": total_projects,
-                "topLanguage": top_language,
-                "weeklyNew": weekly_new,
-                "totalForks": f"{total_forks:,}", # Formatted with commas
-                "avgContributors": round(avg_contributors, 1),
-                "activityScore": activity_score
-            }
-            return jsonify(stats)
-    except Exception as e:
-        logger.error(f"Error in /api/stats: {e}")
-        return jsonify({"error": str(e)}), 500
-
-@app.route('/api/language-distribution')
-def get_language_distribution():
-    try:
-        with db._get_connection() as conn:
-            cursor = conn.cursor()
-            
-            # 获取语言分布数据
-            cursor.execute("SELECT language, COUNT(*) as count FROM summarized_projects WHERE language != 'N/A' AND language IS NOT NULL GROUP BY language ORDER BY count DESC LIMIT 10")
-            language_rows = cursor.fetchall()
-            
-            # 计算总项目数（排除N/A语言）
-            cursor.execute("SELECT COUNT(*) FROM summarized_projects WHERE language != 'N/A' AND language IS NOT NULL")
-            total_valid_projects = cursor.fetchone()[0] or 1  # 避免除以零
-            
-            # 格式化语言分布数据
-            language_distribution = []
-            for language, count in language_rows:
-                percentage = round((count / total_valid_projects) * 100)
-                # 为每种语言分配一个颜色类
-                color_classes = {
-                    'JavaScript': 'bg-gradient-to-r from-yellow-500 to-yellow-600',
-                    'Python': 'bg-gradient-to-r from-green-500 to-green-600',
-                    'TypeScript': 'bg-gradient-to-r from-blue-500 to-blue-600',
-                    'Go': 'bg-gradient-to-r from-cyan-500 to-cyan-600',
-                    'Rust': 'bg-gradient-to-r from-orange-500 to-orange-600',
-                    'Java': 'bg-gradient-to-r from-red-500 to-red-600',
-                    'C++': 'bg-gradient-to-r from-blue-500 to-blue-600',
-                    'C#': 'bg-gradient-to-r from-purple-500 to-purple-600',
-                    'PHP': 'bg-gradient-to-r from-blue-500 to-blue-600',
-                    'Ruby': 'bg-gradient-to-r from-red-500 to-red-600'
-                }
-                color_class = color_classes.get(language, 'bg-gradient-to-r from-gray-500 to-gray-600')
-                
-                language_distribution.append({
-                    "name": language,
-                    "count": count,
-                    "percentage": percentage,
-                    "colorClass": color_class
-                })
-            
-            return jsonify(language_distribution)
-    except Exception as e:
-        logger.error(f"Error in /api/language-distribution: {e}")
-        return jsonify({"error": str(e)}), 500
-
 @app.route('/api/trend-data')
 def get_trend_data():
     try:
@@ -327,156 +217,6 @@ def get_trend_data():
         logger.error(f"Error in /api/trend-data: {e}")
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/project/<project_name>')
-def get_project_details(project_name):
-    """获取单个项目的详细信息"""
-    try:
-        # 解码URL编码的项目名称
-        decoded_project_name = decodeURIComponent(project_name)
-        logger.info(f"获取项目详情: {decoded_project_name}")
-        
-        with db._get_connection() as conn:
-            cursor = conn.cursor()
-            
-            # 首先在summarized_projects表中查询
-            cursor.execute(
-                "SELECT name, url, description, language, stars, forks, contributor_count, created_at, updated_at, open_issues, watchers, summary_date FROM summarized_projects WHERE name = ?",
-                (decoded_project_name,)
-            )
-            row = cursor.fetchone()
-            
-            if row:
-                # 找到项目，返回详细信息
-                project = {
-                    "name": row[0],
-                    "url": row[1],
-                    "description": row[2],
-                    "language": row[3],
-                    "stars": row[4],
-                    "forks": row[5],
-                    "contributor_count": row[6],
-                    "created_at": row[7],
-                    "updated_at": row[8],
-                    "open_issues": row[9],
-                    "watchers": row[10],
-                    "summary_date": row[11]
-                }
-                return jsonify(project)
-            
-            # 如果在summarized_projects表中未找到，尝试在dim_projects表中查询基本信息
-            cursor.execute(
-                "SELECT p.name, p.url, p.description, l.name as language FROM dim_projects p LEFT JOIN dim_languages l ON p.language_id = l.language_id WHERE p.name = ?",
-                (decoded_project_name,)
-            )
-            row = cursor.fetchone()
-            
-            if row:
-                # 找到基本项目信息，返回基本信息
-                project = {
-                    "name": row[0],
-                    "url": row[1],
-                    "description": row[2],
-                    "language": row[3] or "Unknown",
-                    "stars": 0,
-                    "forks": 0,
-                    "contributor_count": 0,
-                    "created_at": "N/A",
-                    "updated_at": "N/A",
-                    "open_issues": 0,
-                    "watchers": 0,
-                    "summary_date": "N/A",
-                    "message": "此项目尚未被总结，只返回基本信息"
-                }
-                return jsonify(project)
-            
-            # 两个表都未找到，返回404错误
-            logger.warning(f"项目未找到: {decoded_project_name}")
-            return jsonify({"error": "Project not found", "project_name": decoded_project_name}), 404
-    except Exception as e:
-        logger.error(f"获取项目详情错误: {e}")
-        return jsonify({"error": str(e), "project_name": project_name}), 500
-
-@app.route('/api/project', methods=['GET', 'POST'])
-def get_project_details_api():
-    """通过GET或POST请求获取单个项目的详细信息，GET请求从查询参数获取，POST请求从请求体获取"""
-    try:
-        if request.method == 'GET':
-            # 从查询参数中获取项目名称
-            project_name = request.args.get('name')
-            if not project_name:
-                logger.warning("GET请求缺少name查询参数")
-                return jsonify({"error": "Missing name parameter in query string"}), 400
-        else:  # POST请求
-            # 从请求体中获取项目名称
-            data = request.get_json()
-            if not data or 'project_name' not in data:
-                logger.warning("POST请求缺少project_name参数")
-                return jsonify({"error": "Missing project_name parameter in request body"}), 400
-            
-            project_name = data['project_name']
-        logger.info(f"通过{request.method}请求获取项目详情: {project_name}")
-        
-        with db._get_connection() as conn:
-            cursor = conn.cursor()
-            
-            # 首先在summarized_projects表中查询
-            cursor.execute(
-                "SELECT name, url, description, language, stars, forks, contributor_count, created_at, updated_at, open_issues, watchers, summary_date FROM summarized_projects WHERE name = ?",
-                (project_name,)
-            )
-            row = cursor.fetchone()
-            
-            if row:
-                # 找到项目，返回详细信息
-                project = {
-                    "name": row[0],
-                    "url": row[1],
-                    "description": row[2],
-                    "language": row[3],
-                    "stars": row[4],
-                    "forks": row[5],
-                    "contributor_count": row[6],
-                    "created_at": row[7],
-                    "updated_at": row[8],
-                    "open_issues": row[9],
-                    "watchers": row[10],
-                    "summary_date": row[11]
-                }
-                return jsonify(project)
-            
-            # 如果在summarized_projects表中未找到，尝试在dim_projects表中查询基本信息
-            cursor.execute(
-                "SELECT p.name, p.url, p.description, l.name as language FROM dim_projects p LEFT JOIN dim_languages l ON p.language_id = l.language_id WHERE p.name = ?",
-                (project_name,)
-            )
-            row = cursor.fetchone()
-            
-            if row:
-                # 找到基本项目信息，返回基本信息
-                project = {
-                    "name": row[0],
-                    "url": row[1],
-                    "description": row[2],
-                    "language": row[3] or "Unknown",
-                    "stars": 0,
-                    "forks": 0,
-                    "contributor_count": 0,
-                    "created_at": "N/A",
-                    "updated_at": "N/A",
-                    "open_issues": 0,
-                    "watchers": 0,
-                    "summary_date": "N/A",
-                    "message": "此项目尚未被总结，只返回基本信息"
-                }
-                return jsonify(project)
-            
-            # 两个表都未找到，返回404错误
-            logger.warning(f"项目未找到: {project_name}")
-            return jsonify({"error": "Project not found", "project_name": project_name}), 404
-    except Exception as e:
-        logger.error(f"通过POST请求获取项目详情错误: {e}")
-        return jsonify({"error": str(e), "project_name": project_name if 'project_name' in locals() else "N/A"}), 500
-
 # Frontend static file serving (for Docker / production)
 FRONTEND_DIST = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'dist')
 
@@ -503,12 +243,6 @@ def serve_frontend(path):
         return send_from_directory(FRONTEND_DIST, 'index.html')
 
     return jsonify({"error": "Not found"}), 404
-
-
-# 辅助函数：解码URI组件
-def decodeURIComponent(encoded_str):
-    """解码URI编码的字符串，适配前端encodeURIComponent的编码"""
-    return urllib.parse.unquote(encoded_str)
 
 
 def validate_project_name(name: str) -> tuple:

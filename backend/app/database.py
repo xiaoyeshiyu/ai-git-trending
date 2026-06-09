@@ -11,6 +11,15 @@ logger = get_logger('database', 'INFO')
 ALLOWED_TABLES = {'dim_languages', 'dim_tags'}
 ALLOWED_COLUMNS = {'language', 'tag'}
 
+
+class ManagedConnection(sqlite3.Connection):
+    def __exit__(self, exc_type, exc_value, traceback):
+        try:
+            return super().__exit__(exc_type, exc_value, traceback)
+        finally:
+            self.close()
+
+
 class ProjectDatabase:
     def __init__(self, db_path=DB_PATH):
         self.db_path = db_path
@@ -18,7 +27,7 @@ class ProjectDatabase:
         self._create_schema()
 
     def _get_connection(self):
-        conn = sqlite3.connect(self.db_path, timeout=10) # Add timeout to reduce locking issues
+        conn = sqlite3.connect(self.db_path, timeout=10, factory=ManagedConnection)
         conn.execute("PRAGMA foreign_keys = ON")
         return conn
 
@@ -149,6 +158,16 @@ class ProjectDatabase:
     def get_or_create_tag_id(self, cursor, tag_name):
         return self._get_or_create_dimension_id(cursor, 'dim_tags', 'tag', tag_name)
 
+    def _sync_project_tags(self, cursor, project_id, tag_names):
+        for tag_name in tag_names or []:
+            if not tag_name:
+                continue
+            tag_id = self.get_or_create_tag_id(cursor, tag_name)
+            cursor.execute(
+                "INSERT OR IGNORE INTO assoc_project_tags (project_id, tag_id) VALUES (?, ?)",
+                (project_id, tag_id)
+            )
+
     def get_or_create_date_id(self, cursor, date_obj):
         date_id = int(date_obj.strftime('%Y%m%d'))
         cursor.execute("SELECT date_id FROM dim_dates WHERE date_id = ?", (date_id,))
@@ -156,24 +175,39 @@ class ProjectDatabase:
             return date_id
         else:
             cursor.execute("INSERT INTO dim_dates (date_id, full_date, year, month, day, weekday, week_of_year) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                           (date_id, date_obj, date_obj.year, date_obj.month, date_obj.day, date_obj.weekday(), date_obj.isocalendar()[1]))
+                           (date_id, date_obj.isoformat(), date_obj.year, date_obj.month, date_obj.day, date_obj.weekday(), date_obj.isocalendar()[1]))
             return date_id
 
     def get_or_create_project_id(self, cursor, project_data):
         cursor.execute("SELECT project_id FROM dim_projects WHERE name = ?", (project_data['name'],))
         result = cursor.fetchone()
         if result:
-            return result[0]
+            project_id = result[0]
+            lang_id = self.get_or_create_language_id(cursor, project_data.get('language'))
+            cursor.execute(
+                """
+                UPDATE dim_projects
+                SET
+                    url = COALESCE(?, url),
+                    description = COALESCE(?, description),
+                    language_id = COALESCE(?, language_id)
+                WHERE project_id = ?
+                """,
+                (
+                    project_data.get('url'),
+                    project_data.get('description'),
+                    lang_id,
+                    project_id
+                )
+            )
+            self._sync_project_tags(cursor, project_id, project_data.get('tags', []))
+            return project_id
         else:
             lang_id = self.get_or_create_language_id(cursor, project_data.get('language'))
             cursor.execute("INSERT INTO dim_projects (name, url, description, language_id) VALUES (?, ?, ?, ?)",
                            (project_data['name'], project_data.get('url'), project_data.get('description'), lang_id))
             project_id = cursor.lastrowid
-            
-            tag_names = project_data.get('tags', [])
-            for tag_name in tag_names:
-                tag_id = self.get_or_create_tag_id(cursor, tag_name)
-                cursor.execute("INSERT OR IGNORE INTO assoc_project_tags (project_id, tag_id) VALUES (?, ?)", (project_id, tag_id))
+            self._sync_project_tags(cursor, project_id, project_data.get('tags', []))
             return project_id
 
     # --- Main method now manages the connection for the whole transaction ---
@@ -190,9 +224,13 @@ class ProjectDatabase:
                 for project_data in projects_data:
                     project_id = self.get_or_create_project_id(cursor, project_data)
                     cursor.execute(
-                        """INSERT OR IGNORE INTO fact_trending_snapshots 
+                        """INSERT INTO fact_trending_snapshots 
                            (project_id, date_id, rank, stars, forks) 
-                           VALUES (?, ?, ?, ?, ?)""",
+                           VALUES (?, ?, ?, ?, ?)
+                           ON CONFLICT(project_id, date_id) DO UPDATE SET
+                               rank = excluded.rank,
+                               stars = excluded.stars,
+                               forks = excluded.forks""",
                         (
                             project_id, date_id, project_data['rank'],
                             project_data.get('stars', 0), project_data.get('forks', 0)

@@ -33,6 +33,8 @@ function isApiUnreachable(err: unknown): boolean {
       || msg.includes('ECONNREFUSED')
       || msg.includes('ERR_CONNECTION_REFUSED')
       || msg.includes('timeout')
+      || msg.includes('请求超时')
+      || msg.includes('Network Error')
   }
   return false
 }
@@ -99,6 +101,7 @@ export interface Project {
   open_issues: number
   watchers: number
   summary_date?: string
+  tech_domain?: string
   analysis?: string
 }
 
@@ -204,6 +207,9 @@ async function staticGetProjects(params: {
   date_from?: string
   date_to?: string
   language?: string
+  tech_domain?: string
+  min_stars?: number
+  max_stars?: number
   sort_by?: string
   order?: string
   page?: number
@@ -214,6 +220,21 @@ async function staticGetProjects(params: {
 
   if (params.language) {
     all = all.filter(p => p.language?.toLowerCase() === params.language!.toLowerCase())
+  }
+  if (params.tech_domain) {
+    all = all.filter(p => p.tech_domain === params.tech_domain)
+  }
+  if (params.min_stars !== undefined) {
+    all = all.filter(p => (p.stars || 0) >= params.min_stars!)
+  }
+  if (params.max_stars !== undefined) {
+    all = all.filter(p => (p.stars || 0) <= params.max_stars!)
+  }
+  if (params.date_from) {
+    all = all.filter(p => !p.summary_date || p.summary_date >= params.date_from!)
+  }
+  if (params.date_to) {
+    all = all.filter(p => !p.summary_date || p.summary_date <= params.date_to!)
   }
   if (params.search) {
     const q = params.search.toLowerCase()
@@ -325,6 +346,9 @@ export const reportApi = {
     date_from?: string
     date_to?: string
     language?: string
+    tech_domain?: string
+    min_stars?: number
+    max_stars?: number
     sort_by?: string
     order?: string
     page?: number

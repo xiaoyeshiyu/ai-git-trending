@@ -80,7 +80,7 @@ def export():
             c.execute("""
                 SELECT name, url, description, language, stars, forks,
                        contributor_count, created_at, updated_at, open_issues,
-                       watchers, summary_date, analysis
+                       watchers, summary_date, tech_domain, analysis
                 FROM summarized_projects ORDER BY stars DESC
             """)
             rows = c.fetchall()
@@ -92,7 +92,8 @@ def export():
                     "contributor_count": r[6], "created_at": r[7],
                     "updated_at": r[8], "open_issues": r[9],
                     "watchers": r[10], "summary_date": r[11],
-                    "analysis": r[12] or ""
+                    "tech_domain": r[12] or "Other",
+                    "analysis": r[13] or ""
                 })
         with open(os.path.join(OUTPUT_DIR, 'projects.json'), 'w') as f:
             json.dump(projects, f, ensure_ascii=False)
