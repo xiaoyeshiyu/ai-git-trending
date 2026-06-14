@@ -1,5 +1,5 @@
-## 今日热点：AI 代理工程化与本地基础设施升温
-今天的热门项目显示，开发者关注点正集中在 AI 编码代理的能力体系、安全治理、会话分析与多模型接入上，同时也延伸到 LLM KV 缓存加速、系统提示词研究等底层与生态议题；此外，容器运行、Web 编译工具、Windows 效率增强、开源客服、家庭影音与 IPTV 聚合等项目继续体现出本地优先、开源替代和生产力工具链的活跃需求，覆盖 AI 工程、开发基础设施、桌面效率、媒体服务与网络访问等多个方向。具体项目摘要如下：
+## 今日热点：开源测试、AI安全与开发者基础设施
+今天的热门项目集中体现了开源生态在“工程效率+智能化+内容分发”三条主线上的持续升温：一边是 `pytest`、`cypress`、`puppeteer` 这类测试与自动化工具继续夯实前端后端的质量保障，`swc` 则代表了高性能 Web 工具链的持续演进；另一边，`NVIDIA/SkillSpector`、`andrewyng/aisuite` 和 `shiyu-coder/Kronos` 显示出 AI 应用正在从模型能力竞争走向安全治理、统一接入与垂直场景落地；同时，`freeCodeCamp`、`meshery`、`chatwoot`、`music-assistant/server` 等项目覆盖了教育、云原生、客服和家庭媒体管理，`iptv-org/iptv`、`Free-TV/IPTV`、`Clone-Wars` 以及机器人课程仓库则反映出内容聚合、学习资源和可复现案例依然受到广泛关注，整体呈现出“更好地构建、测试、守护和分发软件”的今日技术热度，具体项目摘要如下：
 
 ### ✨ iptv-org/iptv (117905★)
 
@@ -25,38 +25,75 @@
 
 ---
 
-### ✨ addyosmani/agent-skills (49465★)
+### ✨ freeCodeCamp/freeCodeCamp (446863★)
 
-> **一句话**：把资深工程师的需求澄清、拆任务、写代码、测试、评审、安全加固和发布流程整理成一套可直接喂给 AI 编码代理执行的 Markdown 技能包。
+> **一句话**：freeCodeCamp 是一个开源在线学习平台，把全栈开发、机器学习、数据库、语言学习等课程做成可在线完成的交互式挑战、项目和认证。
 
-- **它是什么**：这是一个面向 AI coding agent 的工程工作流集合，核心内容是 7 个覆盖研发生命周期的 slash commands，例如 `/spec`、`/plan`、`/build`、`/test`、`/review`、`/ship`。项目内置 23 个技能，涵盖规格设计、任务拆解、增量实现、TDD、前端工程、API 设计、安全、性能、CI/CD、文档和发布等环节，并提供 code-reviewer、test-engineer、security-auditor 等代理角色。
+- **它是什么**：这是 freeCodeCamp.org 的主代码库，包含学习平台本身和课程内容，线上运行在 freeCodeCamp.org。课程以自学节奏组织，覆盖响应式 Web、JavaScript、前端库、Python、关系型数据库、后端 API、机器学习等方向，并通过练习、工作坊、实验、复习、测验和项目组成认证路径。
+- **能解决什么痛点**：它解决了初学者找不到系统、免费、可验证学习路径的问题，不只是看教程，而是需要完成交互式挑战和项目才能推进。对想转行或补齐基础的人来说，它把课程、练习、社区答疑、证书验证放在同一个平台里，减少四处拼资料的成本。
+- **适合谁用**：适合想从零开始学习 Web 开发、Python、数据库或后端 API 的编程学习者；也适合教育内容贡献者、开源志愿者和希望参与大型 TypeScript 教育平台维护的开发者。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：可用于个人系统学习全栈开发并获取可验证证书；可作为教师或学习小组组织编程训练营的免费课程资源；也可作为研究大型开源教育平台、课程内容工程化和多语言社区协作的参考项目。
+- **技术看点**：项目主语言为 TypeScript，仓库同时承载平台代码与大规模课程内容，说明它不是单纯前端应用，而是课程、验证、用户进度、国际化和社区贡献流程结合的长期工程。README 明确区分软件 BSD-3-Clause 许可和 `/curriculum` 学习资源版权，对二次使用课程内容时需要特别留意。
+- **近期动向与发展方向**：最近 20 条提交主要集中在 curriculum 修复、可编辑区域审计、课程文案修正、格式修复和少量客户端问题修复，也新增了 daily challenges 312-326。提交作者分散，包含多位社区贡献者和机器人翻译处理，说明项目仍在高频维护，近期重点是打磨课程质量、修正学习步骤细节、完善挑战判定和进度展示，而不是大规模架构重写。
+- **同类对比**：README 提到平台内包含 The Odin Project（freeCodeCamp Remix）、Coding Interview Prep、Project Euler 和 Rosetta Code 等学习资源，但没有把它们作为直接竞品对比。它的差异更偏向“免费认证 + 交互式课程 + 大型社区 + 开源平台代码库”的组合。
+- **注意事项**：项目创建于 2014 年、Star 和贡献者规模都很大，成熟度高，但仓库体量和课程结构复杂，新贡献者需要先阅读贡献文档。当前仍有 189 个开放 issue，且近期提交多为课程细节修复，说明内容规模大、持续校对成本高；课程资源许可也不同于软件代码，复用前应确认授权边界。
 
-- **能解决什么痛点**：当团队把代码任务交给 AI agent 时，常见问题是 agent 容易跳过需求澄清、测试验证、代码评审和发布检查，产出看似完整但缺少工程约束。这个项目把这些流程写成可复用的规则文件，让不同 IDE 或代理在处理复杂任务时更稳定地遵循同一套质量门槛。
-
-- **适合谁用**：适合正在使用 Claude Code、Cursor、Gemini CLI、GitHub Copilot、Windsurf、OpenCode 等 AI 编码工具的开发者和团队。也适合需要为内部 AI agent 制定工程规范、评审标准和交付流程的技术负责人或平台工程团队。
-
-- **怎么上手**：Claude Code 推荐方式：`/plugin marketplace add addyosmani/agent-skills`，然后执行 `/plugin install agent-skills@addy-agent-skills`。
-
-- **可以用在哪些场景**：
-  1. 给 AI agent 分配一个新功能时，先用 `/spec` 和 `/plan` 生成规格与可验证任务，再进入实现。
-  2. 在已有项目中让 AI 修改前端、API 或测试时，自动触发对应技能，约束它按组件架构、接口契约和测试证明来工作。
-  3. 合并前使用 `/review`、`security-auditor` 或 `test-engineer` 做专项检查，减少遗漏安全、测试和可维护性问题。
-
-- **技术看点**：项目主要由 Markdown 技能文件、agent persona 和参考 checklist 组成，设计重点不是运行时框架，而是把工程判断结构化为 agent 可执行的流程。它支持多种代理环境：Claude Code 插件、Cursor rules、Gemini skills、Copilot instructions、AGENTS.md 等，说明其内容组织偏平台无关。
-
-- **近期动向与发展方向**：最近提交集中在安全能力增强上，包括补全 OWASP LLM Top 10 快速参考表、扩展 threat modeling、SSRF、供应链和 LLM security 内容，并强化 security-auditor 的 AI/LLM 审查范围。5 月以来也有 marketplace schema、Copilot agent 文件命名、meta-skill 路由和 CI skill validator 等修复，说明项目仍在快速打磨跨工具安装、发现和校验体验；社区 PR 有一定参与度，但主要维护和合并仍由 Addy Osmani 主导。
-
-- **同类对比**：暂无明显同类对标。README 没有直接比较其他 agent workflow 或 prompt pack，项目更像是一套跨 IDE 的工程技能规范库，而不是单一工具插件。
-
-- **注意事项**：项目创建时间较新，但 Star 和 Fork 增长很快，说明关注度高于成熟度；当前仍有 99 个 open issues，使用时应预期规则、文件结构或 marketplace 配置还可能继续调整。文档覆盖面很广，适合直接引用，但团队若有自己的代码规范、安全基线或发布流程，最好先挑选技能并做本地化，而不是整包无差别套用。
-
-- **GitHub**：[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
+- **GitHub**：[freeCodeCamp/freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Addy Osmani 是 Google 资深技术领导者与高影响力开源作者，在前端工程、性能优化和开发者教育领域拥有显著社区号召力。
-**技术栈偏好**：其技术栈以 JavaScript、Shell 和 Web 相关内容为主，偏向前端工具链、工程实践、自动化脚本与知识型开源项目。
-**核心领域**：主要聚焦于 Web 前端工程、性能优化、JavaScript 架构模式，以及面向 AI/云方向的开发者工具与实践。
+**技术影响力**：freeCodeCamp.org 是全球知名的开源学习社区组织，凭借超高星标项目和广泛关注度，在开发者教育与开源协作领域具有极强影响力。
+**技术栈偏好**：其技术栈以 TypeScript、Ruby 和 JavaScript 为主，偏向前后端全栈开发、内容平台与开源工具建设。
+**核心领域**：主要聚焦编程教育、开源学习资源和开发者社区运营。
+
+---
+
+### ✨ pytest-dev/pytest (13927★)
+
+> **一句话**：它把“写测试”这件事压缩成几行 `assert`，同时又能覆盖从单元测试到复杂功能测试的完整流程。
+
+- **它是什么**：`pytest` 是 Python 生态里最常用的测试框架之一，核心特征是直接用普通 `assert` 写断言，而不是强迫你继承测试类或记一堆断言方法。它自带测试发现、fixture 管理、`unittest` 兼容和插件体系，既能跑很小的函数测试，也能支撑大型项目的集成测试与回归测试。
+- **能解决什么痛点**：一是失败信息不够直观时，`pytest` 会把断言两边的差异展开，减少“为什么没过”的排查时间；二是测试夹具、参数化、模块发现这些重复工作不用手写框架逻辑，避免测试代码越写越乱。
+- **适合谁用**：写 Python 应用、库、服务端项目的开发者；以及需要在 CI 里长期维护大量自动化测试的团队，尤其是已经有 `unittest` 旧测试、又想逐步迁移到更轻量写法的项目。
+- **怎么上手**：README 里给出的最小用法就是写一个普通测试函数，然后直接运行 `pytest`。例如：`def test_answer(): assert inc(3) == 5`，随后在项目目录执行 `pytest`。
+- **可以用在哪些场景**：为 Python Web 服务做接口与回归测试；给公共库补单元测试并在发布前做兼容性检查；在 CI 中跑跨模块、跨插件的功能测试，验证真实业务流程是否被改动影响。
+- **技术看点**：它的价值不只在“能跑测试”，更在于断言重写、自动发现、fixture 组合和插件机制这四件事配合得很紧。README 还明确提到已有 1300+ 外部插件，说明它更像一个可扩展的测试运行底座，而不是单一工具。
+- **近期动向与发展方向**：最近提交集中在 9.1.0 版本准备、断言/比较逻辑重构、fixture 可见性与注册机制调整，以及个别回归测试修复，说明项目当前重点是稳定性、内部接口整理和行为边界收紧，而不是大规模新增表层功能。与此同时还有依赖更新、插件列表维护和 pre-commit/CI 相关改动，活跃度较高，维护节奏稳定。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：这是一个成熟度很高、历史很长的核心项目，贡献者和问题数量都不少，说明生态活跃但维护复杂度也高；近期又有 `register_fixture`、fixture 可见性等调整，升级时需要留意兼容性和弃用提示。README 给了功能示例，但没有把安装、版本约束和迁移细节讲得很细，实际接入时还是要结合官方文档和变更日志。
+
+- **GitHub**：[pytest-dev/pytest](https://github.com/pytest-dev/pytest)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：pytest-dev 是 Python 测试生态的核心组织之一，凭借 `pytest` 及其周边插件在开发者社区中具有很强的基础设施影响力。
+**技术栈偏好**：以 `Python` 为主，明显偏向测试框架、测试插件、并行测试与测试覆盖率等工程化工具方向。
+**核心领域**：主要聚焦于 Python 软件测试与质量保障工具链的构建和维护。
+
+---
+
+### ✨ swc-project/swc (33590★)
+
+> **一句话**：SWC 用 Rust 把 TypeScript / JavaScript 解析、转换、压缩和代码生成做成高速编译链路，常被用来替代 Babel 处理前端构建中的编译环节。
+
+- **它是什么**：SWC 全称是 Speedy Web Compiler，是用 Rust 编写的 TypeScript / JavaScript 编译平台。它既能作为 JavaScript 生态里的 `@swc/core` 使用，也能作为 Rust crate 集成到自定义编译、解析或代码转换流程中。README 明确强调它面向 Web 开发提速，并提供 parser、codegen、minifier、Node bindings 等能力。
+- **能解决什么痛点**：在大型前端项目中，Babel 转译、压缩和构建耗时可能成为本地开发与 CI 的瓶颈，SWC 通过 Rust 实现提供更快的编译路径。对工具链作者来说，它也减少了从零实现 JS/TS parser、AST transform、sourcemap 和 codegen 的成本。
+- **适合谁用**：适合需要加速 React、Next.js、TypeScript 等前端构建链路的前端工程师和基础设施团队。也适合用 Rust 编写 Web 工具链、代码分析器、转译器或自定义 AST 处理逻辑的工程师。
+- **怎么上手**：README 未给出一行安装命令，只指向官网安装文档；JavaScript 用户可从官方文档开始：`https://swc.rs/docs/installation/`。
+- **可以用在哪些场景**：用于把 TypeScript / JSX 转换成浏览器或 Node.js 可运行的 JavaScript；用于替代 Babel 作为构建系统中的转译器和压缩器；用于在 Rust 服务或 CLI 中解析 JavaScript/TypeScript 并做代码改写、静态分析或格式修复。
+- **技术看点**：核心实现采用 Rust，同时面向 Rust crate 和 JavaScript npm 包两类用户发布，适合被前端构建工具和底层基础设施复用。README 提到 Rust crate 侧强调“选择各 crate 最新版本即可协同工作”，并标注当前 MSRV 为 `1.73`。
+- **近期动向与发展方向**：最近 20 条提交集中在 parser、minifier、codegen、sourcemap、decorators、Node bindings 等细节修复，同时有多次 `swc_core v68.0.x` 和 `1.15.41` 发布，说明项目维护频率很高且偏向稳定性迭代。近期还补充了“不可信输入安全范围”文档，显示维护者开始更明确地界定安全边界和使用责任。
+- **同类对比**：README 明确提供了与 Babel 的迁移/对比入口，SWC 的核心差异是用 Rust 实现编译链路，主打更快的 JS/TS 转译与压缩性能。
+- **注意事项**：项目创建于 2017 年、Star 超过 3.3 万、贡献者 364 人，成熟度和社区基础较强；但当前仍有 405 个 open issues，说明在复杂 JS/TS 语法兼容、边界 case 和工具链接入上仍会持续遇到问题。README 的快速上手信息较少，实际接入通常需要阅读官网文档；此外项目发布频繁，深度依赖内部 crate 或 AST 结构的用户需要关注版本兼容和变更记录。
+
+- **GitHub**：[swc-project/swc](https://github.com/swc-project/swc)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：swc 是前端构建与编译工具链领域的高影响力开源组织，核心项目在社区中具备广泛采用度与生态号召力。
+**技术栈偏好**：技术栈以 Rust 为核心，辅以 TypeScript 和 JavaScript，偏向高性能编译器、Node.js 集成与前端工程化工具。
+**核心领域**：主要聚焦于 Web 开发加速、JavaScript/TypeScript 编译转译、打包构建与测试工具链生态。
 
 ---
 
@@ -95,70 +132,147 @@
 
 ---
 
-### ✨ obra/superpowers (223047★)
+### ✨ NVIDIA/SkillSpector (2280★)
 
-> **一句话**：把“先澄清需求、写设计、拆计划、测试先行、分支收尾”这套开发流程装进 Claude Code、Codex、Gemini CLI、Cursor 等编码代理里，让代理按固定工程方法工作，而不是一上来就改代码。
+> **一句话**：SkillSpector 会在安装 AI Agent Skill 前扫描仓库、压缩包或本地目录，找出提示词注入、数据外泄、危险代码和 MCP 权限滥用等安全风险。
 
-- **它是什么**：Superpowers 是一套面向编码代理的“技能 + 工作流”框架，核心不是生成代码本身，而是约束代理在开发前先做需求澄清、设计确认、计划拆分和测试驱动实现。它通过一组可组合的 skills，让代理在不同任务阶段自动触发对应流程，例如 brainstorming、writing-plans、test-driven-development、requesting-code-review 和 finishing-a-development-branch。README 明确支持 Claude Code、Codex CLI/App、Factory Droid、Gemini CLI、OpenCode、Cursor、GitHub Copilot CLI 等多个使用入口。
+- **它是什么**：这是 NVIDIA 开源的 Python 安全扫描器，面向 Claude Code、Codex CLI、Gemini CLI 等 AI Agent 使用的 skills。它支持扫描 Git 仓库、URL、zip、目录或单个 `SKILL.md` 文件，并输出终端、JSON、Markdown、SARIF 等格式的报告。核心能力包括 64 类漏洞模式检测、静态分析、可选 LLM 语义评估和 OSV.dev 实时 CVE 查询。
+- **能解决什么痛点**：开发者安装第三方 agent skill 时，很难判断其中是否藏有读取密钥、外传上下文、调用危险命令或诱导模型越权执行的内容。团队把 skill 接入 CI/CD 或内部工具链前，也需要可机器读取的安全报告，而不是靠人工逐行审查。
+- **适合谁用**：适合在团队内引入 AI Agent skills 的平台工程师、安全工程师和 DevSecOps；也适合维护 Claude Code、Codex CLI、Gemini CLI 扩展生态的开发者，用来审查外部贡献或内部发布的 skill。
+- **怎么上手**：`git clone https://github.com/NVIDIA/skillspector.git && cd skillspector && uv venv .venv && source .venv/bin/activate && make install && skillspector scan ./my-skill/`
+- **可以用在哪些场景**：在安装第三方 agent skill 前做本地安全体检；在企业内部 skill 仓库的 PR 流程中输出 SARIF 报告接入代码扫描；在安全团队巡检 MCP tool 或 agent skill 时批量发现隐藏指令、过宽权限和危险执行链。
+- **技术看点**：它采用“快速静态分析 + 可选 LLM 语义评估”的两阶段设计，既能覆盖 AST、污点追踪、YARA、依赖漏洞等确定性规则，也能通过 OpenAI 兼容接口接入 OpenAI、Anthropic、NVIDIA build.nvidia.com 或本地 Ollama/vLLM 做语义判断。SARIF 输出对接 CI/CD 和 IDE 安全工作流比较直接。
+- **近期动向与发展方向**：项目在 2026-05-12 首次发布后，6 月初连续同步 OSS release，并在 6 月 10 日密集合并 PR、约束 Python 版本、修复 MCP TP3 及参数级 TP1/TP2 在真实扫描中的可达性问题，同时 bump 到 2.1.3。近期重点更像是发布稳定化、兼容性约束和真实扫描场景下的规则修正；已有外部贡献者提交修复，但贡献者总数 4 人，核心维护仍较集中。
+- **同类对比**：README 未明确提到直接竞品；从定位看，它不是通用 SAST，而是专门面向 AI agent skills / MCP tool 的安装前安全扫描。
+- **注意事项**：项目创建时间较短，Stars 增长很快但成熟度仍需观察；当前有 18 个 open issues，说明真实使用反馈正在积累。README 给出了较完整的安装、扫描、输出和 LLM 配置示例，但使用 LLM 语义分析需要额外配置 API key 或本地 OpenAI 兼容服务；近期版本迭代频繁，接入生产 CI 前建议锁定版本并关注规则变更。
 
-- **能解决什么痛点**：很多编码代理会在需求还没讲清楚时直接改文件，导致实现方向偏、测试缺失、后续返工；Superpowers 强制先把目标、设计和计划说清楚。另一个痛点是长任务中代理容易跑偏，它通过小任务拆分、子代理执行、代码审查和 TDD 节奏，把“连续几小时自主开发”变成更可控的流程。
-
-- **适合谁用**：适合已经深度使用 Claude Code、Codex CLI/App、Cursor、Gemini CLI 等编码代理的个人开发者和工程团队。也适合希望把 TDD、代码评审、Git worktree 分支开发流程固化到 AI 编程日常里的后端、全栈和工具链开发者。
-
-- **怎么上手**：以 Claude Code 官方插件市场为例：`/plugin install superpowers@claude-plugins-official`
-
-- **可以用在哪些场景**：
-  1. 让编码代理接手一个中等规模功能开发时，先产出设计文档和可审阅的实施计划，再逐步执行。
-  2. 在遗留项目里修复杂 bug 时，要求代理按 systematic-debugging 和 verification-before-completion 流程定位根因并验证修复。
-  3. 多代理或子代理并行开发时，用固定的任务拆分、评审和收尾流程降低分支混乱与实现偏差。
-
-- **技术看点**：项目本身以 Shell 和插件/配置分发为主，重点在“跨编码代理的工作流抽象”，而不是绑定某一个模型或 IDE。它把工程方法论拆成独立 skills，并通过不同 harness 的安装方式接入 Claude、Codex、Gemini、Cursor 等环境，这对需要统一 AI 开发流程的团队有参考价值。
-
-- **近期动向与发展方向**：最近提交集中在插件分发和多平台适配，尤其是 Codex plugin 的同步脚本、元数据、overlay 生成和 marketplace 对接；4 月份有一批围绕 Codex 插件镜像与安装流程的工具改造，5 月发布了 v5.1.0。近期还新增了对贡献者披露 authoring environment、new-harness PR 需要 session transcript 等要求，说明项目正在强化贡献流程、跨 harness 兼容性和可审计性，而不是单纯堆新 skill。
-
-- **同类对比**：暂无明显同类对标。README 没有直接拿某个框架做竞品比较，它更像是给现有编码代理加一套工程纪律和流程层。
-
-- **注意事项**：项目创建时间较新，但 star 和 fork 数很高，关注度异常强；同时 open issues 有 275 个，说明使用面扩大后仍有不少兼容性、文档或流程细节需要消化。它的价值依赖使用者是否愿意接受较重的工程流程，习惯“直接让 AI 改代码”的人可能会觉得前期澄清、设计和 TDD 步骤偏慢。贡献规则也比较严格，README 明确说通常不接受新 skills，修改 skills 还要兼容所有支持的编码代理。
-
-- **GitHub**：[obra/superpowers](https://github.com/obra/superpowers)
+- **GitHub**：[NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：在开发者社区具备较强的长期影响力，拥有较高关注度和多个高星项目，属于有代表性的资深开源作者。
-**技术栈偏好**：以 TypeScript、Shell 和 JavaScript 为主，偏向脚本自动化、前端/工具链与可扩展应用开发。
-**核心领域**：主要聚焦开发者工具、浏览器/工作流增强以及面向内容与交互的实用型开源项目。
+**技术影响力**：NVIDIA 是 GitHub 上影响力极高的企业级开源组织，凭借 GPU、AI 与基础设施项目在开发者社区具备强技术号召力。
+**技术栈偏好**：技术栈以 Python、C 和 TypeScript 为主，偏向 AI 模型训练推理、底层 GPU 驱动与开发工具生态。
+**核心领域**：主要聚焦人工智能、高性能计算、GPU 系统软件、容器化部署与大模型训练推理基础设施。
 
 ---
 
-### ✨ apple/container (28358★)
+### ✨ meshery/meshery (10280★)
 
-> **一句话**：在 Apple Silicon Mac 上直接拉取、构建、运行 OCI 镜像，并把每个 Linux 容器放进轻量虚拟机里执行。
+> **一句话**：Meshery 把多集群 Kubernetes、云原生组件、GitOps 设计稿和部署预览集中到一个可视化平台里管理。
 
-- **它是什么**：`container` 是 Apple 用 Swift 编写的容器运行工具，面向 Apple Silicon Mac 优化。它可以消费和产出 OCI 兼容镜像，因此能从标准容器镜像仓库拉取镜像，也能把本地构建的镜像推送回仓库，并在其他 OCI 兼容环境中运行。底层依赖 Apple 的 `Containerization` Swift 包来处理容器、镜像和进程管理。
+- **它是什么**：Meshery 是 CNCF 项目，定位为 cloud native manager，用来设计、配置、部署和管理 Kubernetes 及多云基础设施。它提供可视化、协作式的 GitOps 工作流，支持 380+ 云原生集成，并通过 Catalog 提供可复用的基础设施设计模板。README 中还强调了多集群管理、dry-run 部署预检、资源关系建模、工作区和环境管理等能力。
+- **能解决什么痛点**：团队在多个 Kubernetes 集群和云厂商之间切换时，常会遇到配置分散、凭据和连接难共享、部署前难判断变更影响的问题；Meshery 通过单一界面、工作区、环境和 PR 快照来集中管理这些内容。对不想长期手写和维护大量 YAML 的团队，它提供了可视化设计和配置关系推断，降低复杂基础设施编排的操作成本。
+- **适合谁用**：适合管理多 Kubernetes 集群的 DevOps、平台工程团队和 SRE；也适合正在落地 GitOps、需要把基础设施设计模板化并在团队内协作复用的云原生团队。
+- **怎么上手**：文档未提供快速上手示例；README 提到可通过 `https://play.meshery.io` 在浏览器中试用 Cloud Native Playground。
+- **可以用在哪些场景**：统一管理多个云厂商上的 Kubernetes 集群；在合并 PR 前预览基础设施变更和部署快照；把常用 Kubernetes/云原生配置沉淀为 Catalog 模板供团队复用。
+- **技术看点**：项目以 TypeScript 为主要语言，但 README 同时展示了 Go Report Card、Helm Chart、Docker 镜像等生态入口，说明它不是单纯前端项目，而是包含 CLI、服务端、部署包和 UI 的完整平台。核心设计看点在于把 Kubernetes 资源关系、GitOps 设计、策略和多集群环境抽象到统一模型中。
+- **近期动向与发展方向**：最近 20 条提交非常活跃，集中在文档生成、模型更新、Release Notes、依赖升级、UI/Registry 修复、会话存储修复和工作流修复上。近期更像是围绕 v1.0.43 版本做持续维护、文档完善和体验修补，同时仍有社区成员提交会议记录、介绍文件和功能修复，社区参与度较高。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：项目创建于 2018 年，Stars、Forks 和贡献者数量都较高，成熟度和社区规模可观；但 Open Issues 达到 1502，说明功能面很广、维护负担也不小。README 信息丰富但内容较长，新用户如果只想快速本地安装，可能需要继续查阅官方文档；近期提交中有较多自动生成文档和模型更新，使用时要留意版本变动带来的行为差异。
 
-- **能解决什么痛点**：在 macOS 上跑 Linux 容器时，开发者通常要依赖较重的虚拟化封装；这个项目把容器直接映射到轻量 Linux VM，适合需要更贴近系统虚拟化能力的本地容器运行场景。它也解决了 Mac 本地开发与 OCI 镜像生态衔接的问题：镜像可以从标准 registry 拉取、构建、推送，不需要脱离现有容器分发流程。
-
-- **适合谁用**：适合使用 Apple Silicon Mac 做后端、本地基础设施或容器镜像开发的工程师。也适合关注 macOS 虚拟化、容器运行时、Swift 系统软件方向的开发者和平台工程团队评估。
-
-- **怎么上手**：安装 GitHub Release 中的签名安装包后，启动系统服务：`container system start`
-
-- **可以用在哪些场景**：本地运行 Linux 服务镜像，例如数据库、API 服务或 CLI 工具镜像；在 Mac 上构建并推送 OCI 镜像到标准容器仓库；评估 Apple Silicon/macOS 26 上基于轻量虚拟机的容器运行方案。
-
-- **技术看点**：项目使用 Swift 编写，并针对 Apple Silicon 与 macOS 26 的虚拟化、网络能力做了优化。它采用 OCI 镜像标准，避免锁定在自定义镜像格式里，便于和现有容器 registry、构建发布流程衔接。
-
-- **近期动向与发展方向**：最近提交非常密集，6 月 4 日到 9 日连续合入功能、文档、CI 和兼容性修复。重点方向包括新增 `container machine` 用于管理持久化 Linux VM、补充独立文档和示例、调整 image JSON/YAML/TOML 输出、修复 Swift 6.2 下测试崩溃，并升级底层 `containerization` 到 `0.33.4`。从 91 位贡献者和近期提交看，项目仍处在快速演进阶段，不只是维护修 bug。
-
-- **同类对比**：README 没有明确点名 Docker Desktop、Podman Desktop 等竞品；明显差异在于它是 Apple 官方开源、Swift 实现，并把 Linux 容器运行在 Apple Silicon Mac 的轻量虚拟机之上。除此之外暂无明确同类对标。
-
-- **注意事项**：项目创建于 2025-05-30，当前明确标注仍在 active development，1.0.0 前小版本可能包含破坏性变更，稳定性只保证在 patch 版本内。运行要求较高：需要 Apple Silicon Mac，并且只支持 macOS 26；旧版 macOS 上的问题维护者通常不会处理。当前 open issues 为 294，说明关注度高但也有不少待解决问题，适合尝鲜和评估，生产依赖前需要谨慎验证。
-
-- **GitHub**：[apple/container](https://github.com/apple/container)
+- **GitHub**：[meshery/meshery](https://github.com/meshery/meshery)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Apple 在 GitHub 上具备极高技术影响力，凭借系统级、AI 与基础设施项目持续吸引开发者关注。
-**技术栈偏好**：技术栈以 C++、Swift、Python 为主，偏向高性能底层工程、苹果生态开发与机器学习工具链。
-**核心领域**：主要聚焦操作系统与开发者工具、机器学习、数据库基础设施及现代应用运行环境。
+**技术影响力**：Meshery 是云原生管理领域的高可见度开源组织，凭借高星标主仓库在社区中具备较强影响力。
+**技术栈偏好**：其技术栈以 TypeScript、JavaScript 和 Go 为主，偏向构建云原生平台、控制面与开发者工具。
+**核心领域**：主要聚焦云原生应用管理、运维编排与基础设施可视化治理。
+
+---
+
+### ✨ cypress-io/cypress (49742★)
+
+> **一句话**：它把浏览器里的测试过程直接做成可视化操作和自动化脚本，让你能像真实用户一样点页面、填表单、断言结果，并把前端回归测试稳定地跑起来。
+
+- **它是什么**：Cypress 是面向浏览器应用的端到端测试框架，核心目标是让前端测试写起来更直观、跑起来更稳定。README 里明确提到它支持 Mac、Linux、Windows 安装，并提供 npm、yarn、pnpm 的安装方式，同时配套 Cypress Cloud、文档、Changelog 和 Roadmap。它不仅是测试库，也是一套围绕浏览器测试、CI 运行和结果追踪的完整工具链。
+- **能解决什么痛点**：一是解决传统端到端测试里“脚本写得多、偶发失败也难定位”的问题，尤其适合浏览器交互和异步请求很多的页面。二是减少前端回归测试在不同环境里不一致、截图抖动、浏览器版本变化导致的测试不稳定。
+- **适合谁用**：做前端 Web 应用的工程师，尤其是 React、Vue、Angular 这类浏览器应用团队。也适合需要在 CI 里持续跑 UI 回归测试的 QA 或测试开发。
+- **怎么上手**：`npm install cypress --save-dev`
+- **可以用在哪些场景**：做电商、后台管理系统、SaaS 控制台的登录、下单、支付、表单提交流程回归测试；在 CI 中对核心页面的关键路径做每日冒烟测试；为发布前的浏览器兼容性和交互逻辑做自动化验证。
+- **技术看点**：项目主体使用 TypeScript，说明其内部类型约束和工程化程度较高。README 同时指向 Cypress Cloud、Changelog 和 Roadmap，能看出它不是单纯的测试运行器，而是围绕测试执行、结果展示和持续交付设计的成熟产品。
+- **近期动向与发展方向**：最近 20 条提交里，重心集中在代理层重构、浏览器版本同步、配置校验、截图动画暂停、网络请求稳定性和性能修复上，说明团队在持续打磨底层稳定性而不是追求表层新功能。提交中既有 `refactor(proxy)`、`fix(server)`、`perf(server)`，也有大量 `chore` 和 `test`，反映出项目维护活跃、工程体量大，并且正在为更复杂的浏览器/代理/云端场景做兼容和清理。
+- **同类对比**：README 未明确对标竞品，未提供直接比较信息。
+- **注意事项**：项目很成熟，但也意味着学习成本不低，尤其是需要理解其命令行、浏览器运行模型和测试隔离机制。当前 open issues 仍有 1178 个，说明生态活跃但问题面也广，适合接受持续演进和偶发兼容调整的团队；最近频繁涉及浏览器版本更新和底层重构，升级时要留意破坏性变化和测试用例稳定性。
+
+- **GitHub**：[cypress-io/cypress](https://github.com/cypress-io/cypress)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Cypress.io 是现代前端测试生态中的头部组织，凭借 Cypress 主仓库近 5 万 Stars 和大量示例项目具备强社区影响力。
+**技术栈偏好**：技术栈明显偏向 TypeScript、JavaScript 与 HTML，聚焦现代 Web 应用、测试框架、CI 集成和开发者工具链。
+**核心领域**：核心聚焦于端到端测试、前端自动化测试、可视化调试与持续集成中的测试运行体验。
+
+---
+
+### ✨ GorvGoyl/Clone-Wars (35042★)
+
+> **一句话**：这是一个持续整理“热门网站复刻版”和“开源替代品”的目录，打开后你能直接看到每个项目的源码、演示、技术栈和星标数量。
+
+- **它是什么**：这个仓库本质上是一个大型索引清单，不是单体应用。README 里把项目分成“带教程的克隆项目”和“克隆/替代项目”两张表，覆盖 Airbnb、Instagram、Netflix、WhatsApp、YouTube 等常见站点。每一项通常会附上演示链接、源码链接、技术栈和 GitHub stars，适合按目标产品倒查实现方式。
+- **能解决什么痛点**：一是想学某个热门产品的页面结构、交互和技术选型时，不用自己到处搜散落的 Demo 和仓库；二是做方案调研时，可以快速找到“这个产品有没有成熟的开源替代品”，减少从零试错。
+- **适合谁用**：前端/全栈开发者，尤其是想拆解成熟产品 UI 和业务流的人；也适合做技术选型、课程内容整理、开源项目推荐的博主或教育者。
+- **怎么上手**：文档未提供快速上手示例；直接打开 README 的表格或访问 `https://gourav.io/clone-wars` 浏览完整列表。
+- **可以用在哪些场景**：想做一个社交产品、视频站或电商站的教学 Demo 时，用它找现成参考；评估某个 SaaS 是否有可替代的开源项目时，用它快速定位候选仓库；给团队新人做“读代码学产品”的素材库时，也很合适。
+- **技术看点**：项目本身不是技术框架仓库，而是一个高密度、持续更新的开源目录。它的价值在于把“产品名、演示、源码、技术栈、热度”放进同一张表里，便于横向比较不同实现路线。
+- **近期动向与发展方向**：最近的提交主要集中在补充新 clone、替换失效链接、删除坏 Demo 和修正 README 内容，说明维护重点是目录质量而不是功能开发。2024 年以来新增了 Mastodon、Clonedbook、IMDB 替代项、ActivityPub 相关项目等，方向上明显在跟进新平台和去中心化社交替代品；同时提交者分布较分散，社区协作仍然活跃。
+- **同类对比**：README 明确提到它分为“带教程的克隆项目”和“克隆/替代项目”，更像按产品类型组织的学习索引，而不是单个模板站点；没有看到明确的直接竞品仓库。
+- **注意事项**：它的核心是清单而不是成品，很多条目只是“能参考”的开源仓库，成熟度差异很大，不能默认都可直接商用。仓库星标和维护活跃度都不错，但 open issues 仍有 34 个，且 README 里也提到在寻找维护者，说明长期维护压力不小；另外部分链接可能失效，需要以 README 现状为准。
+
+- **GitHub**：[GorvGoyl/Clone-Wars](https://github.com/GorvGoyl/Clone-Wars)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有 3.5 万星级代表项目和超千名关注者，是在开源工具与效率产品方向具备较高社区影响力的独立开发者。
+**技术栈偏好**：主要使用 TypeScript 与 AutoHotkey，偏好浏览器扩展、VSCode 扩展和桌面自动化等轻量工具型技术栈。
+**核心领域**：主要聚焦开发者效率、写作辅助、浏览器增强与 Windows 自动化工具。
+
+---
+
+### ✨ Introduction-to-Autonomous-Robots/Introduction-to-Autonomous-Robots (2430★)
+
+> **一句话**：这是一套用 LaTeX 开源维护的自主机器人教材源码，覆盖机器人机构、传感器、执行器和算法等计算原理内容。
+
+- **它是什么**：这是《Introduction to Autonomous Robots: Mechanisms, Sensors, Actuators, and Algorithms》的教材源代码仓库，主体内容用 TeX 编写。项目开放教材中的文字与图片源码，允许在非商业场景下用于教学和引用，但由于版权限制，仓库不提供可直接下载的编译版 PDF。
+- **能解决什么痛点**：做机器人课程教学时，可以直接引用教材源码、图片和章节内容，而不必从 PDF 中手工截取或重排。想本地生成可阅读版本的读者，也可以按 README 的 LaTeX 流程自行编译 `book.pdf`。
+- **适合谁用**：适合讲授自主机器人、移动机器人或机器人算法课程的高校教师和助教；也适合希望系统学习机器人基础原理、并愿意自己编译教材的学生和研究者。
+- **怎么上手**：`pdflatex -interaction=nonstopmode book.tex && bibtex book && pdflatex -interaction=nonstopmode book.tex && pdflatex -interaction=nonstopmode book.tex`
+- **可以用在哪些场景**：用于机器人课程备课时引用教材图表和章节内容；用于学生本地编译生成个人学习用 PDF；用于围绕教材内容提交拼写、公式、图片质量等修订。
+- **技术看点**：项目采用 LaTeX 维护完整教材内容，适合长期版本化管理公式、参考文献、图表和交叉引用。README 明确给出 `pdflatex`、`bibtex` 的编译流程，并提示部分缺失图片可借助 ImageMagick 转换处理。
+- **近期动向与发展方向**：最近提交主要集中在教材内容修正和编译可用性维护，包括修复公式 3.34、调整移动机器人插图朝向、修正文稿 typo、补充缺失 PDF 文件、完善 macOS 下 `pdflatex` 编译说明。整体看不是高频功能型开发，而是成熟教材项目的持续校订；2025 年仍有多位社区贡献者通过 PR 参与维护。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：源码采用 CC-BY-NC-ND 4.0，允许非商业教学使用并需署名，但不能在线发布自行编译出的完整 PDF。项目创建于 2013 年、当前 issue 仅 7 个，成熟度较高；不过上手需要本地 LaTeX、BibTeX 环境，且 README 明确说明编译时出现部分 overfull box 警告属于正常情况。
+
+- **GitHub**：[Introduction-to-Autonomous-Robots/Introduction-to-Autonomous-Robots](https://github.com/Introduction-to-Autonomous-Robots/Introduction-to-Autonomous-Robots)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：这是一个围绕自主机器人入门教育内容形成的中等影响力组织，核心 TeX 教材仓库具备较高社区关注度。
+**技术栈偏好**：技术栈以 TeX 文档编写为主，辅以 HTML 网站展示和 Jupyter Notebook 实验教学内容。
+**核心领域**：主要聚焦自主机器人、机器人学基础教学、课程资料与实践实验体系建设。
+
+---
+
+### ✨ shiyu-coder/Kronos (29699★)
+
+> **一句话**：Kronos 把股票、加密货币等市场的 K 线序列转成类似“语言 token”的表示，再用自回归 Transformer 预测未来 OHLCV 走势。
+
+- **它是什么**：Kronos 是面向金融 K 线数据的开源基础模型家族，主要处理 open、high、low、close、volume、amount 等多维市场序列。它提供预训练模型、Tokenizer、预测接口、批量预测能力，以及基于 Qlib 的微调和回测示例，模型权重可从 Hugging Face 获取。
+- **能解决什么痛点**：传统时间序列模型很难直接适配高噪声、跨市场、跨品种的金融 K 线数据；Kronos 通过专门的 K 线 tokenizer 和预训练模型，减少从零训练金融预测模型的成本。对需要同时预测多只资产的场景，它还提供 `predict_batch`，避免逐条序列手写推理流程。
+- **适合谁用**：适合做量化研究、行情预测、因子实验的 Python 工程师和研究员；也适合想在自有金融数据上微调预训练模型的团队，尤其是使用 Qlib 处理 A 股数据的用户。
+- **怎么上手**：先安装依赖：`pip install -r requirements.txt`；最小使用方式是加载 Hugging Face 模型：`tokenizer = KronosTokenizer.from_pretrained("NeoQuasar/Kronos-Tokenizer-base"); model = Kronos.from_pretrained("NeoQuasar/Kronos-small")`。
+- **可以用在哪些场景**：预测 BTC/USDT 等交易对未来数小时或一天的 K 线走势；对多只股票批量生成 OHLCV 预测结果，用于研究候选信号；基于 Qlib 数据微调模型，并做简化版 A 股回测实验。
+- **技术看点**：项目采用两阶段设计：先把连续 OHLCV K 线量化成分层离散 token，再用 decoder-only 自回归 Transformer 建模。模型 zoo 覆盖 mini、small、base 等规格，small/base 的上下文长度为 512，mini 支持 2048 上下文。
+- **近期动向与发展方向**：最近 20 条提交以修复和工程稳定性为主，包括训练时 batch 维度保持、归一化窗口数据泄漏修复、采样 top-k bug、Python 3.12/WebUI 依赖兼容、自动检测设备等。2025 年下半年还加入了 A 股市场支持、推理内存优化和微调脚本，说明项目正在从论文原型走向更可复现实验和更易上手的工程形态；社区 PR 较活跃，但核心合并主要由维护者 ShiYu 完成。
+- **同类对比**：README 明确强调 Kronos 不同于通用时间序列基础模型，它专门面向金融市场 K 线的高噪声序列，并使用 OHLCV 分层离散 token 作为核心表示；暂无 README 中点名的具体竞品对比。
+- **注意事项**：项目创建于 2025-07，时间不长但 Star 和 Fork 增长很快，当前 open issues 有 219 个，说明关注度高但问题积压也不少。README 给出了预测、批量预测、微调和演示链接，文档信息较丰富；不过金融预测天然存在过拟合和数据泄漏风险，近期提交也修过归一化窗口泄漏，生产使用前需要严格做样本外验证和风控评估。
+
+- **GitHub**：[shiyu-coder/Kronos](https://github.com/shiyu-coder/Kronos)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：在 Python 技术社区具备较高可见度，凭借高星项目 `Kronos` 显示出较强的开源影响力与传播力。
+**技术栈偏好**：以 Python 为主，辅以少量 C++，技术方向偏向算法实现、模型工具与应用型项目开发。
+**核心领域**：主要聚焦于机器学习/数据智能相关工具与项目，兼顾部分通用软件与学生管理类系统。
 
 ---
 
@@ -186,75 +300,54 @@
 
 ---
 
-### ✨ kenn-io/agentsview (1436★)
+### ✨ Free-TV/IPTV (16759★)
 
-> **一句话**：agentsview 会在本机扫描 Claude Code、Codex、Zed、OpenCode 等编码 Agent 的会话记录，把聊天、工具调用、Token 用量和成本统一汇总到一个本地 Web 控制台和 CLI 里。
+> **一句话**：把全球各地能公开免费观看的电视台整理成一份可直接订阅的 M3U 播放列表，打开播放器就能按国家和频道分组浏览。
 
-- **它是什么**：agentsview 是一个本地优先的编码 Agent 会话分析项目，核心是把不同 Agent 分散在本机目录里的会话数据同步到本地 SQLite，并提供 Web UI、搜索、统计和成本追踪。它支持 Claude Code、Codex、Copilot CLI、Gemini CLI、Zed、Cursor、OpenCode 等 20 多种 Agent，也可以通过 CLI 直接查看每日用量、单会话 Token 和费用估算。
-- **能解决什么痛点**：如果同时使用多个编码 Agent，历史会话通常散落在不同目录，很难统一搜索某次对话、工具调用或项目上下文；agentsview 提供跨 Agent 的全文搜索和会话浏览。另一个痛点是 AI 编码成本不透明，它可以按天、模型、Agent、会话统计 Token 和费用，避免每次都重新解析原始文件。
-- **适合谁用**：适合重度使用 Claude Code、Codex、Gemini CLI、OpenCode、Zed AI 等工具的开发者和团队；也适合需要做 AI 编码成本审计、使用量报表或内部 Agent 使用分析的工程团队。
-- **怎么上手**：macOS / Linux 可运行 `curl -fsSL https://agentsview.io/install.sh | bash`，随后用 `agentsview serve` 启动本地 Web UI，或用 `agentsview usage daily` 查看每日成本汇总。
-- **可以用在哪些场景**：统一检索多个编码 Agent 的历史会话，快速找回某次排障、重构或代码生成过程；把 `agentsview usage daily --json` 接到 shell prompt、状态栏或内部报表里追踪 AI 编码成本；在远程开发环境、Docker 或 PostgreSQL / DuckDB 后端中集中查看团队或多机器上的 Agent 会话数据。
-- **技术看点**：项目采用 Go 编写，默认本地 SQLite 存储并利用 FTS5 做全文搜索，README 中强调查询已索引数据，比每次重新解析原始会话文件的 ccusage 类工具快 100 倍以上。它还提供 PostgreSQL、DuckDB mirror、Quack 远程访问等后端形态，说明项目不只面向单机桌面使用，也在扩展到共享和远程分析场景。
-- **近期动向与发展方向**：最近提交非常密集，6 月 5 日到 11 日连续合入功能、性能和平台支持改动，且贡献者来自多人。近期重点包括新增 Command Code、Zed AI、Antigravity CLI 等会话支持，改进 PostgreSQL / CockroachDB 查询性能，引入 DuckDB mirror 与 Quack，迁移到 typed Huma API，并补齐 Windows arm64、PyPI wheel、远程 sync 配置等发布能力，整体方向是扩大 Agent 覆盖面、增强后端可扩展性和改善跨平台安装体验。
-- **同类对比**：README 明确把 `agentsview usage` 定位为 ccusage 的更快替代品，差异在于 agentsview 不只统计 Claude Code，而是跨 20 多种编码 Agent，并把会话浏览、全文搜索、成本看板和本地 Web UI 放在一起。
-- **注意事项**：项目创建于 2026-02-19，迭代很快但仍偏早期，当前有 96 个 open issues，可能存在接口、存储后端或 Agent 解析逻辑继续变化的风险。Docker 使用时只能发现显式挂载进容器的 Agent 会话目录；远程访问需要正确配置 `--public-url` / `--public-origin`，如果暴露到非本机网络还应启用 `--require-auth`。文档覆盖安装、Docker、远程访问、费用统计和支持 Agent 列表，信息量较足，但功能面较宽，上手前最好先确认自己使用的 Agent 目录是否被支持。
+- **它是什么**：这是一个面向“免费电视源”的全球 IPTV 播放清单仓库，核心产物是 `playlist.m3u8`。仓库用各国家/地区的 `.md` 列表维护频道，再由 `make_playlist.py` 生成最终播放列表，README 里还明确了只收录免费、主流、可正常播放的频道。
+- **能解决什么痛点**：一是不用自己四处搜集失效的直播地址，直接拿到按国家分类的订阅源；二是不用手工拼装 M3U 文件，频道更新、失效剔除和分组生成都有统一流程。
+- **适合谁用**：做家庭媒体中心、NAS 影音库、TVBox/播放器订阅源整理的人；以及需要给客户或团队提供“可直接打开”的免费直播频道清单的内容运营、自动化脚本维护者。
+- **怎么上手**：把 IPTV 播放器的订阅地址设置为 `https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8`。
+- **可以用在哪些场景**：
+  - 在客厅电视盒子里接入一份按国家分类的免费频道源。
+  - 给 Kodi、VLC、IPTV Smarters 这类播放器提供统一订阅地址。
+  - 做地区性频道收集或频道可用性巡检时，直接复用仓库的频道分组和更新流程。
+- **技术看点**：项目不是单纯堆链接，而是用 Python 脚本从 Markdown 频道清单生成 M3U，便于审核和批量维护。它还明确区分 `[>]`、`[x]`、HD、GeoIP、YouTube 直播等标记，说明生成逻辑是围绕频道状态管理设计的。
+- **近期动向与发展方向**：最近提交几乎都围绕“播放列表持续更新”展开，包含 `GitHub Actions` 自动更新、国家列表补充、频道新增/移除、以及 `make_playlist.py` 的代码质量和 bug 修复；说明项目仍在高频维护，重点是保持源可用性和数据清洁，而不是扩展复杂功能。贡献者来源也比较分散，社区协作活跃，但很多变更由自动化机器人触发，属于“持续维护型”项目。
+- **同类对比**：README 提到了 `iptv-org/iptv` 作为流媒体源参考，但没有做明确功能对标；本项目更强调“免费、主流、质量优先”的筛选原则和国家分类整理。
+- **注意事项**：项目维护活跃，但 `Open Issues` 仍有 215 个，说明频道失效、格式问题和需求积压都不少；另外它本质上是频道索引，不保证每条流长期可用，且部分内容可能受地区限制，实际使用时要接受订阅源会频繁变动。文档对播放效果好的播放器、部署方式和兼容性没有展开，入门门槛不高，但稳定性依赖具体频道源质量。
 
-- **GitHub**：[kenn-io/agentsview](https://github.com/kenn-io/agentsview)
+- **GitHub**：[Free-TV/IPTV](https://github.com/Free-TV/IPTV)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Kenn Software 是一个新兴但增长迅速的技术组织，凭借多个高星 Go 项目在开发者工具与智能体相关社区中具备一定影响力。
-**技术栈偏好**：其技术栈明显偏向 Go 语言，侧重构建高性能、后端型、系统化的开发工具与基础设施组件。
-**核心领域**：主要聚焦于 agentic era 下的知识系统、智能体协作、消息管理与开发自动化工具。
+**技术影响力**：Free TV 凭借单一高星项目在 IPTV/流媒体资源聚合社区具备较强可见度和用户影响力。
+**技术栈偏好**：主要使用 Python，偏向自动化处理、数据整理与网络媒体资源维护相关技术。
+**核心领域**：主要聚焦免费电视直播、IPTV 播放源聚合与开放流媒体资源分发。
 
 ---
 
-### ✨ LMCache/LMCache (8576★)
+### ✨ puppeteer/puppeteer (94551★)
 
-> **一句话**：LMCache 把大模型推理过程中的 KV Cache 从临时显存状态抽出来，存到 CPU、磁盘或远端存储里复用，从而减少长上下文和多轮对话的重复预填计算。
+> **一句话**：用 TypeScript/JavaScript 直接操控 Chrome 或 Firefox，自动打开网页、点击元素、填写表单、执行脚本并读取页面结果。
 
-- **它是什么**：LMCache 是面向 LLM 推理的 KV Cache 管理层，定位在推理引擎和底层存储之间。它可以把 KV Cache 持久化、分层卸载、跨请求和跨引擎实例复用，并提供命中率、请求级性能、缓存生命周期等可观测指标。项目强调与具体推理引擎和硬件厂商解耦，可接入 vLLM 等服务框架以及 Redis、S3、NIXL、GDS、本地 SSD 等后端。
-- **能解决什么痛点**：长上下文、多轮 Agent、RAG 场景里，相同或相近上下文反复 prefill 会浪费 GPU 算力并拉高 TTFT；LMCache 通过复用已有 KV Cache 降低重复计算。生产环境中推理进程重启或多实例切换时，KV Cache 通常会随进程丢失，LMCache 以独立 daemon 管理缓存，减少“引擎崩了缓存也没了”的问题。
-- **适合谁用**：适合维护大模型在线推理服务的平台工程师、推理框架开发者，以及正在用 vLLM 等开源推理栈做长上下文、RAG、多轮 Agent 服务的团队。
-- **怎么上手**：`pip install lmcache`
-- **可以用在哪些场景**：为企业知识库 RAG 服务缓存常用文档片段的 KV Cache，减少用户重复查询时的 prefill 开销；在多轮 Agent 应用中复用历史上下文缓存，降低长会话首 token 延迟；在多实例 LLM Serving 集群中，把 KV Cache 卸载到 CPU、SSD 或远端存储，支持跨请求、跨 worker 复用。
-- **技术看点**：LMCache 采用独立于推理引擎的 KV Cache 管理层设计，支持 CPU RAM、本地磁盘、Redis/Valkey、S3 兼容对象存储、NIXL、GDS 等可插拔后端。它还支持非前缀 KV 复用、CacheBlend 质量恢复、PD 分离下的 KV 传输，以及 KV 压缩和自定义序列化接口。
-- **近期动向与发展方向**：最近提交非常密集，6 月 11–12 日连续合入 bugfix、CI、文档、CLI、存储连接器和核心性能优化，说明项目仍处于高频迭代期。近期重点集中在 NIXL 后端、多路径 KV offloading、Cloud Bigtable 远端存储、MP 架构、CacheBlend Operator、OpenTelemetry 可观测性、CPU e2e 测试和 quota 管理，方向明显偏向生产化、多后端接入和 Kubernetes/云原生部署。
-- **同类对比**：README 没有直接点名对标竞品。它的差异点主要是“不绑定单一推理引擎或存储系统”，而是作为 vendor-neutral 的 KV Cache 层接入不同 serving engine、硬件和存储后端。
-- **注意事项**：项目创建于 2024 年 5 月，但已有 218 位贡献者、8576 stars，社区增长快且开发活跃；同时 open issues 达 309，说明功能面广、生产场景复杂，接入前需要认真验证目标后端和推理框架组合。近期提交涉及 MP 架构、NIXL、Operator、CacheBlend 等底层能力，版本升级时要关注配置变更、CRD/CLI 行为变化和性能回归测试。文档入口、Recipes、CLI Reference、Benchmarking Guide 和 Production Deployment 都已提供，文档基础较完整，但首次上手仍需要理解 KV Cache、推理引擎和存储后端之间的关系。
+- **它是什么**：Puppeteer 是一个浏览器自动化库，提供高层 API 来控制 Chrome 和 Firefox。它通过 Chrome DevTools Protocol 或 WebDriver BiDi 与浏览器通信，默认以无界面的 headless 模式运行，也可以用于可视化调试。README 示例展示了从启动浏览器、打开页面、设置视口、键盘输入、定位元素到读取文本的完整流程。
+- **能解决什么痛点**：它适合处理“必须真实跑在浏览器里”的任务，比如页面依赖复杂 JavaScript 渲染、需要模拟用户点击和输入、或需要验证浏览器实际行为。相比手写 HTTP 请求，它能直接面对真实 DOM、网络请求、字体渲染和浏览器 API。
+- **适合谁用**：适合做端到端测试、爬取动态页面、生成页面截图/PDF 的前端和 Node.js 工程师；也适合需要自动化浏览器调试流程、采集 Web 页面状态的测试工程师和自动化平台开发者。
+- **怎么上手**：安装命令：`npm i puppeteer`；如果只想作为库使用且不自动下载 Chrome，可用 `npm i puppeteer-core`。
+- **可以用在哪些场景**：自动化测试登录、搜索、下单等真实浏览器流程；抓取需要 JavaScript 渲染后才出现内容的页面；批量生成网页截图、PDF 或检查页面可访问性与渲染结果。
+- **技术看点**：项目同时支持 DevTools Protocol 和 WebDriver BiDi，覆盖 Chrome 与 Firefox 两类浏览器控制路径。安装上区分 `puppeteer` 和 `puppeteer-core`，前者可下载兼容 Chrome，后者更适合集成到已有浏览器环境或平台服务中。
+- **近期动向与发展方向**：最近提交非常活跃，6 月上旬连续合入文档、性能、安全和功能更新。重点包括为下载的浏览器归档增加 SHA-256 完整性校验、增加页面 locale 模拟、为 WebWorker 增加 `waitForFunction`、优化 JSHandle 属性遍历和 CDP 扩展 worker 获取，并持续修复浏览器 CLI、配置读取和 Worker 脚本执行问题，说明项目仍在围绕稳定性、浏览器兼容和自动化能力细节演进。
+- **同类对比**：README 未明确列出竞品对比；从定位看，它更强调以 JavaScript API 直接控制 Chrome/Firefox，并与 Chrome DevTools Protocol、WebDriver BiDi 结合。
+- **注意事项**：项目创建于 2017 年，Stars 和贡献者数量都很高，成熟度较强；同时仍有 264 个 open issues，浏览器版本、安装脚本和系统环境差异可能带来排查成本。README 特别提醒现代包管理器可能默认阻止安装脚本，导致浏览器未自动下载，此时需要手动执行 `npx puppeteer browsers install`。近期提交包含弃用信息更新和 Node 24 开发容器切换，升级时应关注版本说明和运行环境要求。
 
-- **GitHub**：[LMCache/LMCache](https://github.com/LMCache/LMCache)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：LMCache 是一个新兴但增长迅速的开源组织，凭借高星核心项目在大模型推理加速社区已形成一定影响力。
-**技术栈偏好**：其项目几乎全部基于 Python，技术方向明显偏向 LLM 推理框架、缓存机制与性能优化工具链。
-**核心领域**：主要聚焦于大语言模型推理缓存、vLLM 生态集成以及面向高性能 AI 推理的基础设施优化。
-
----
-
-### ✨ microsoft/PowerToys (134239★)
-
-> **一句话**：PowerToys 把窗口布局、快捷键、文件批处理、颜色拾取、命令面板、屏幕工具等 30 多个 Windows 日常操作增强功能集中到一个应用里。
-
-- **它是什么**：这是微软维护的 Windows 增强工具集合，面向桌面使用和系统定制场景。README 中列出的功能覆盖 FancyZones 窗口分区、PowerToys Run / Command Palette 快速启动、Keyboard Manager 键位映射、PowerRename 批量重命名、Color Picker 取色、Text Extractor 文本提取、ZoomIt 演示缩放等 30 多个模块。
-- **能解决什么痛点**：适合解决 Windows 原生能力分散的问题，比如需要同时管理多窗口布局、批量改文件名、快速启动命令、临时取色或提取屏幕文字时，不必分别安装一堆小工具。对经常演示、调试 UI、整理文件和切换工作区的人来说，可以减少大量重复鼠标操作。
-- **适合谁用**：适合重度 Windows 用户、开发者、设计/产品人员，以及需要频繁演示、截图、管理窗口和文件的办公用户。也适合希望统一管理快捷键、窗口布局和启动入口的技术团队成员。
-- **怎么上手**：README 提供的最快命令是 `winget install Microsoft.PowerToys -s winget`；也可以从 GitHub Releases 下载 `.exe`，或通过 Microsoft Store 安装。
-- **可以用在哪些场景**：用于多显示器或大屏办公时用 FancyZones 固定窗口布局；用 PowerRename 批量整理日志、截图、素材文件名；用 Command Palette / PowerToys Run 快速打开应用、执行命令或访问远程桌面列表；演示或线上会议时用 ZoomIt 放大屏幕并处理摄像头背景、麦克风降噪。
-- **技术看点**：项目是长期维护的大型 Windows 桌面工具集合，模块化覆盖系统快捷键、窗口管理、Shell 集成、辅助功能和设备显示控制等场景。近期提交显示其不只是维护旧工具，还在持续扩展 PowerDisplay、Command Palette、ZoomIt 等新模块能力。
-- **近期动向与发展方向**：最近 20 条提交非常活跃，既有 ZoomIt 摄像头背景模糊和麦克风降噪、PowerDisplay 联动亮度控制这类新功能，也有 Shortcut Guide、Command Palette、Performance Monitor 的细节修复。多位贡献者持续参与，开发重点集中在新模块完善、可访问性修复、默认体验调整和遥测/工作流稳定性上。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：项目成熟度很高，已有 13 万多 Star、600 多名贡献者，并由微软维护；但 open issues 超过 7000，说明功能面广、历史问题和边缘场景也多。README 安装路径清晰，适合普通用户上手；如果要参与开发，则需要阅读贡献指南和开发文档，Windows 桌面项目的本地编译环境会比普通脚本项目更重。
-
-- **GitHub**：[microsoft/PowerToys](https://github.com/microsoft/PowerToys)
+- **GitHub**：[puppeteer/puppeteer](https://github.com/puppeteer/puppeteer)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Microsoft 是全球顶级开源组织之一，凭借 VS Code、TypeScript 等标志性项目在开发者生态中具有极强影响力。
-**技术栈偏好**：技术栈以 TypeScript、Python 和 C 为核心，覆盖开发工具、AI 教程、系统工具与语言基础设施。
-**核心领域**：主要聚焦开发者工具、编程语言、人工智能应用与生产力工具生态。
+**技术影响力**：Puppeteer 是浏览器自动化与端到端测试生态中的高影响力组织，核心项目拥有极高社区采用度与行业认知度。
+**技术栈偏好**：主要偏好 TypeScript 与 JavaScript，技术方向集中在 Node.js 生态下的 Chrome/Chromium 自动化工具链。
+**核心领域**：主要聚焦无头浏览器控制、网页自动化、测试录制回放与开发者调试工具。
 
 ---
 
@@ -279,114 +372,3 @@
 **技术影响力**：Andrew Ng 在 GitHub 上具备很高社区关注度，少量仓库即获得大量 Star，体现出强影响力与广泛传播能力。
 **技术栈偏好**：主要偏好 Python 与 JavaScript，技术方向集中在 AI 应用开发、智能体工具链与上下文管理。
 **核心领域**：核心聚焦于人工智能应用、生成式 AI 工作流、多模型集成与智能体生态建设。
-
----
-
-### ✨ NVIDIA/SkillSpector (2280★)
-
-> **一句话**：SkillSpector 会在安装 AI Agent Skill 前扫描仓库、压缩包或本地目录，找出提示词注入、数据外泄、危险代码和 MCP 权限滥用等安全风险。
-
-- **它是什么**：这是 NVIDIA 开源的 Python 安全扫描器，面向 Claude Code、Codex CLI、Gemini CLI 等 AI Agent 使用的 skills。它支持扫描 Git 仓库、URL、zip、目录或单个 `SKILL.md` 文件，并输出终端、JSON、Markdown、SARIF 等格式的报告。核心能力包括 64 类漏洞模式检测、静态分析、可选 LLM 语义评估和 OSV.dev 实时 CVE 查询。
-- **能解决什么痛点**：开发者安装第三方 agent skill 时，很难判断其中是否藏有读取密钥、外传上下文、调用危险命令或诱导模型越权执行的内容。团队把 skill 接入 CI/CD 或内部工具链前，也需要可机器读取的安全报告，而不是靠人工逐行审查。
-- **适合谁用**：适合在团队内引入 AI Agent skills 的平台工程师、安全工程师和 DevSecOps；也适合维护 Claude Code、Codex CLI、Gemini CLI 扩展生态的开发者，用来审查外部贡献或内部发布的 skill。
-- **怎么上手**：`git clone https://github.com/NVIDIA/skillspector.git && cd skillspector && uv venv .venv && source .venv/bin/activate && make install && skillspector scan ./my-skill/`
-- **可以用在哪些场景**：在安装第三方 agent skill 前做本地安全体检；在企业内部 skill 仓库的 PR 流程中输出 SARIF 报告接入代码扫描；在安全团队巡检 MCP tool 或 agent skill 时批量发现隐藏指令、过宽权限和危险执行链。
-- **技术看点**：它采用“快速静态分析 + 可选 LLM 语义评估”的两阶段设计，既能覆盖 AST、污点追踪、YARA、依赖漏洞等确定性规则，也能通过 OpenAI 兼容接口接入 OpenAI、Anthropic、NVIDIA build.nvidia.com 或本地 Ollama/vLLM 做语义判断。SARIF 输出对接 CI/CD 和 IDE 安全工作流比较直接。
-- **近期动向与发展方向**：项目在 2026-05-12 首次发布后，6 月初连续同步 OSS release，并在 6 月 10 日密集合并 PR、约束 Python 版本、修复 MCP TP3 及参数级 TP1/TP2 在真实扫描中的可达性问题，同时 bump 到 2.1.3。近期重点更像是发布稳定化、兼容性约束和真实扫描场景下的规则修正；已有外部贡献者提交修复，但贡献者总数 4 人，核心维护仍较集中。
-- **同类对比**：README 未明确提到直接竞品；从定位看，它不是通用 SAST，而是专门面向 AI agent skills / MCP tool 的安装前安全扫描。
-- **注意事项**：项目创建时间较短，Stars 增长很快但成熟度仍需观察；当前有 18 个 open issues，说明真实使用反馈正在积累。README 给出了较完整的安装、扫描、输出和 LLM 配置示例，但使用 LLM 语义分析需要额外配置 API key 或本地 OpenAI 兼容服务；近期版本迭代频繁，接入生产 CI 前建议锁定版本并关注规则变更。
-
-- **GitHub**：[NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：NVIDIA 是 GitHub 上影响力极高的企业级开源组织，凭借 GPU、AI 与基础设施项目在开发者社区具备强技术号召力。
-**技术栈偏好**：技术栈以 Python、C 和 TypeScript 为主，偏向 AI 模型训练推理、底层 GPU 驱动与开发工具生态。
-**核心领域**：主要聚焦人工智能、高性能计算、GPU 系统软件、容器化部署与大模型训练推理基础设施。
-
----
-
-### ✨ bannedbook/fanqiang (46538★)
-
-> **一句话**：这个仓库汇总了 Windows、macOS、Android、iOS、路由器、浏览器等平台的科学上网教程、客户端配置说明和一键翻墙包下载入口。
-
-- **它是什么**：这是一个以教程和资源索引为主的科学上网项目库，覆盖 V2Ray、Shadowsocks、SSR、Clash、TorBrowser、ChromeGo、EdgeGo、Firefox 一键包等方案。README 按平台拆分了 Windows、iOS、Android、macOS、Linux、路由器、游戏机等使用场景，并提供部分自建 V2Ray / Shadowsocks 服务器教程。
-- **能解决什么痛点**：适合在不同设备上寻找可用翻墙方案时快速定位教程，不必分别搜索各类客户端的安装和配置方式。对不熟悉代理协议、客户端差异的人，也能按系统类型直接找到对应文档。
-- **适合谁用**：需要在个人电脑、手机、路由器或游戏机上配置科学上网的普通用户；需要对比 V2Ray、SS、SSR、Clash 等客户端使用方式的技术用户。
-- **怎么上手**：文档未提供快速上手命令；README 建议先安装 Google Chrome，下载 Chrome 一键翻墙包，解压到不含中文和空格的目录后按包内帮助依次尝试 `0.xx-10.xx` 翻墙入口。
-- **可以用在哪些场景**：在 Windows 上配置 V2RayN、Clash 或 SSR 客户端；在 iPhone / iPad 上配置 Shadowrocket、Quantumult X、Surge 等代理 App；在 OpenWRT、梅林路由器或 Mac 旁路由环境中为多设备共享代理网络。
-- **技术看点**：仓库语言标记为 Kotlin，但 README 展示的核心价值主要是跨平台教程和资源组织，而不是单一代码库。内容覆盖客户端、浏览器便携包、自建服务器和局域网共享等多种接入路径。
-- **近期动向与发展方向**：最近 20 条提交几乎都由 `bannedbook` 以 `update` 形式完成，说明维护较集中，外部贡献参与度有限。2025 年末到 2026 年上半年仍有持续更新，但提交信息过于简略，无法判断具体是节点更新、文档修订还是功能调整。
-- **同类对比**：README 中提到 Goflyway、v2ray、Daze、SSR、Brook、Lightsocks、trojan、蓝灯、psiphon 等工具，项目本身更像聚合教程和入口，不是直接替代某一个代理客户端。
-- **注意事项**：项目创建于 2015 年，Star 和 Fork 数很高，说明长期被使用和传播；但 Open Issues 有 327 个，且贡献者仅 3 人，问题响应和维护节奏可能依赖少数维护者。README 内容较全但偏资源导航，具体可用性会受地区、运营商和网络封锁变化影响，使用前需要自行验证最新状态。
-
-- **GitHub**：[bannedbook/fanqiang](https://github.com/bannedbook/fanqiang)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有高星代表项目和数千关注者，在翻墙与网络代理工具社区具备较强影响力。
-**技术栈偏好**：主要使用 Kotlin、Swift、C++，偏向移动端、桌面端与底层网络工具开发。
-**核心领域**：长期聚焦 VPN、代理客户端、科学上网与网络访问辅助工具生态。
-
----
-
-### ✨ swc-project/swc (33590★)
-
-> **一句话**：SWC 用 Rust 把 TypeScript / JavaScript 解析、转换、压缩和代码生成做成高速编译链路，常被用来替代 Babel 处理前端构建中的编译环节。
-
-- **它是什么**：SWC 全称是 Speedy Web Compiler，是用 Rust 编写的 TypeScript / JavaScript 编译平台。它既能作为 JavaScript 生态里的 `@swc/core` 使用，也能作为 Rust crate 集成到自定义编译、解析或代码转换流程中。README 明确强调它面向 Web 开发提速，并提供 parser、codegen、minifier、Node bindings 等能力。
-- **能解决什么痛点**：在大型前端项目中，Babel 转译、压缩和构建耗时可能成为本地开发与 CI 的瓶颈，SWC 通过 Rust 实现提供更快的编译路径。对工具链作者来说，它也减少了从零实现 JS/TS parser、AST transform、sourcemap 和 codegen 的成本。
-- **适合谁用**：适合需要加速 React、Next.js、TypeScript 等前端构建链路的前端工程师和基础设施团队。也适合用 Rust 编写 Web 工具链、代码分析器、转译器或自定义 AST 处理逻辑的工程师。
-- **怎么上手**：README 未给出一行安装命令，只指向官网安装文档；JavaScript 用户可从官方文档开始：`https://swc.rs/docs/installation/`。
-- **可以用在哪些场景**：用于把 TypeScript / JSX 转换成浏览器或 Node.js 可运行的 JavaScript；用于替代 Babel 作为构建系统中的转译器和压缩器；用于在 Rust 服务或 CLI 中解析 JavaScript/TypeScript 并做代码改写、静态分析或格式修复。
-- **技术看点**：核心实现采用 Rust，同时面向 Rust crate 和 JavaScript npm 包两类用户发布，适合被前端构建工具和底层基础设施复用。README 提到 Rust crate 侧强调“选择各 crate 最新版本即可协同工作”，并标注当前 MSRV 为 `1.73`。
-- **近期动向与发展方向**：最近 20 条提交集中在 parser、minifier、codegen、sourcemap、decorators、Node bindings 等细节修复，同时有多次 `swc_core v68.0.x` 和 `1.15.41` 发布，说明项目维护频率很高且偏向稳定性迭代。近期还补充了“不可信输入安全范围”文档，显示维护者开始更明确地界定安全边界和使用责任。
-- **同类对比**：README 明确提供了与 Babel 的迁移/对比入口，SWC 的核心差异是用 Rust 实现编译链路，主打更快的 JS/TS 转译与压缩性能。
-- **注意事项**：项目创建于 2017 年、Star 超过 3.3 万、贡献者 364 人，成熟度和社区基础较强；但当前仍有 405 个 open issues，说明在复杂 JS/TS 语法兼容、边界 case 和工具链接入上仍会持续遇到问题。README 的快速上手信息较少，实际接入通常需要阅读官网文档；此外项目发布频繁，深度依赖内部 crate 或 AST 结构的用户需要关注版本兼容和变更记录。
-
-- **GitHub**：[swc-project/swc](https://github.com/swc-project/swc)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：swc 是前端构建与编译工具链领域的高影响力开源组织，核心项目在社区中具备广泛采用度与生态号召力。
-**技术栈偏好**：技术栈以 Rust 为核心，辅以 TypeScript 和 JavaScript，偏向高性能编译器、Node.js 集成与前端工程化工具。
-**核心领域**：主要聚焦于 Web 开发加速、JavaScript/TypeScript 编译转译、打包构建与测试工具链生态。
-
----
-
-### ✨ x1xhlol/system-prompts-and-models-of-ai-tools (138991★)
-
-> **一句话**：集中收录 Cursor、Claude Code、Devin、Windsurf、v0、Replit 等 AI 编程/生产力工具的系统提示词、内部工具说明和模型相关资料。
-
-- **它是什么**：这是一个以资料汇总为主的公开仓库，内容围绕主流 AI 工具的 system prompts、内部工具配置和模型信息展开。README 明确列出了 Augment Code、Claude Code、Cursor、Devin AI、Lovable、Manus、Perplexity、Replit、Warp、Windsurf、Xcode、v0 等多个产品，定位更像“AI 工具提示词与内部机制资料库”，而不是可运行的软件项目。
-
-- **能解决什么痛点**：
-  1. 开发者想研究 AI 编程助手如何组织系统提示词、工具调用规则和行为边界时，不用分别去零散搜索不同产品的泄露或公开资料。
-  2. 做 Agent、安全测试或提示词工程的人，可以用这些样本对比不同产品在约束、权限、工具说明和防护策略上的写法。
-
-- **适合谁用**：
-  - 研究 AI Agent、提示词工程、系统提示词设计的开发者或研究人员。
-  - 做 AI 安全、prompt injection、防提示词提取评估的安全工程师和 AI 初创团队。
-
-- **怎么上手**：文档未提供快速上手示例。
-
-- **可以用在哪些场景**：
-  - 设计内部 AI 编程助手时，参考不同产品如何描述工具权限、任务流程和用户交互边界。
-  - 做 prompt injection / system prompt extraction 风险评估时，用作对照样本库。
-  - 分析 Cursor、Claude Code、Devin、Windsurf 等工具的 Agent 行为差异，辅助写技术调研报告或竞品分析。
-
-- **技术看点**：项目本身没有体现具体编程语言或工程框架，核心价值在于资料覆盖面和更新频率。它把多个 AI 工具的系统提示词与模型相关信息集中到一个仓库，对做提示词结构分析和安全研究有参考价值。
-
-- **近期动向与发展方向**：最近 20 条提交主要集中在 README 更新、Prompt.txt 更新、链接调整、赞助区和联系方式维护，没有看到明显的大规模重构或新功能开发。2026 年 4 月到 6 月出现了来自 Paula Cavero 的 PR，说明除维护者外仍有少量社区贡献；整体更偏资料维护型项目，近期重点是内容更新、外链修正和商业/赞助信息整理。
-
-- **同类对比**：暂无明显同类对标。README 中提到 Latitude、ZeroLeaks 等更多是赞助、监控或安全相关链接，并不是直接竞品。
-
-- **注意事项**：该仓库创建于 2025-03-05，但 Star 已接近 14 万、Fork 超过 3.4 万，传播速度很快；同时 Open Issues 有 150 个，说明内容准确性、更新请求或争议可能较多。项目不是可安装工具，使用时要把它当作资料库而非权威文档；其中涉及“泄露提示词”或内部资料的内容，应用到商业、安全或合规场景前需要自行判断来源可靠性和法律风险。
-
-- **GitHub**：[x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以超高星标 AI 工具提示词仓库形成显著社区影响力，是新兴 AI 开发资源分享型创作者。
-**技术栈偏好**：主要偏好 TypeScript，技术方向集中在 AI 工具增强、Web 应用与轻量产品开发。
-**核心领域**：主要聚焦 AI 工具生态、系统提示词整理与面向开发者的效率型应用。
