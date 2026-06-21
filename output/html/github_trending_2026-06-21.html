@@ -101,8 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-06-21)</h1>
-<h2>今日热点：AI Agent 正在重塑创作、开发与情报工作流</h2>
-<p>今日热门项目集中体现了 AI Agent 从单点工具走向完整生产系统的趋势：视频领域出现面向 macOS 的 AI 视频编辑器与开源智能视频生产流水线，开发侧则围绕长程任务执行、代码库记忆、MCP 知识图谱、提示词与工程技能沉淀持续升温；同时，数据库、设计协作、LLM 输出压缩、股票分析、全球情报监控、网络安全技能库与 OSINT 自动化等方向也在强化“可持续运行、可检索记忆、低成本高效率”的智能基础设施，甚至延伸到购票辅助与英语学习等实用场景。具体项目摘要如下：</p>
+<h2>今日热点：AI 代理基础设施与视频生产工具升温</h2>
+<p>今天的热门项目集中体现了 AI 工程化从“单点能力”走向“完整工作流”的趋势：一方面，AI 视频编辑、开源智能视频生产系统、网页转桌面应用、设计协作工具等项目显示创作与产品化工具正在被代理能力重塑；另一方面，LLM 输出压缩、代码知识图谱 MCP、长期记忆平台、长任务 SuperAgent 框架、网络安全技能库与系统提示词研究，构成了更底层的智能体基础设施；同时，SQLite 兼容数据库、股票分析看板、全球情报监控、OSINT 自动化、购票辅助和英语学习指南等项目也覆盖了数据、情报、安全、生活自动化与学习场景。具体项目摘要如下：</p>
 <h3>✨ palmier-io/palmier-pro (1409★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：在 macOS 时间线上直接让 Claude、Codex、Cursor 等 AI Agent 参与剪辑、生成素材和修改视频项目。</p>
@@ -395,6 +395,31 @@
 <p><strong>技术影响力</strong>：在安全与 AI 交叉领域具有较强社区影响力，凭借多个高星 Python 项目形成了明显的技术传播力与话题度。
 <strong>技术栈偏好</strong>：以 Python 为主、辅以 JavaScript，偏向开发安全工具、MCP 服务与面向 AI 安全的应用型项目。
 <strong>核心领域</strong>：主要聚焦网络安全、隐私保护与 AI 安全研究。</p>
+<hr />
+<h3>✨ tw93/Pake (54066★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把 GitHub、ChatGPT、YouTube、微信读书这类网页，用一条命令打包成 macOS、Windows、Linux 上可安装的桌面应用。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Pake 基于 Rust 和 Tauri，把任意网页封装成轻量桌面应用，支持 macOS、Windows 和 Linux。它提供 CLI、GitHub Actions 在线构建和现成热门应用包，用户可以配置图标、窗口尺寸、标题栏、快捷键、沉浸式窗口、样式注入、广告移除等能力。</li>
+<li><strong>能解决什么痛点</strong>：很多 Web 应用没有官方桌面客户端，或者 Electron 客户端体积大、内存占用高；Pake 可以把常用网页快速变成独立桌面入口。对内部系统、工具站点或个人常用网页，也能避免从浏览器标签页里反复查找和切换。</li>
+<li><strong>适合谁用</strong>：适合想把 Web 服务快速分发成桌面端的前端开发者、独立开发者和内部工具维护者；也适合不想配置本地环境、只想下载现成应用包或用 GitHub Actions 在线构建的普通用户。</li>
+<li><strong>怎么上手</strong>：<code>pnpm install -g pake-cli &amp;&amp; pake https://github.com --name GitHub</code></li>
+<li><strong>可以用在哪些场景</strong>：把 ChatGPT、Gemini、DeepSeek 等 AI 网页封装成独立桌面应用；把公司后台、监控面板、文档站做成内部桌面入口；为 YouTube Music、微信读书、Excalidraw 等高频网页创建更轻量的本地应用。</li>
+<li><strong>技术看点</strong>：项目使用 Rust Tauri 替代传统 Electron 封装路线，README 中强调包体通常约 5M、比 Electron 应用小很多，并且内存占用更低。它同时提供 CLI 和 GitHub Actions 构建路径，降低了跨平台打包的环境门槛。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，6 月中旬连续发布 V3.11.9、V3.11.10，重点在修复跨平台打包和运行问题，例如 Wayland AppImage 输入、macOS 授权弹窗崩溃、AppImage 指引、zst/release 打包加固等。同时也在增强 CLI 工作流参数，如 <code>min-width</code>、<code>min-height</code>、<code>app-version</code>，说明项目近期方向偏向稳定性、发布链路可靠性和命令行可配置性。</li>
+<li><strong>同类对比</strong>：README 明确对比 Electron 路线，Pake 的差异是基于 Tauri/Rust，目标是更小包体、更低内存占用和更快启动；暂无 README 中明确提到的其他同类项目对标。</li>
+<li>
+<p><strong>注意事项</strong>：首次本地打包需要配置 Rust、Node 和 Tauri 相关环境，README 要求 Rust <code>&gt;=1.85</code>、Node <code>&gt;=22</code> 推荐，入门用户更适合先用现成包或 GitHub Actions 在线构建。项目创建于 2022 年、Star 和 Fork 数很高，Open Issues 仅 9 个且近期持续更新，成熟度和维护活跃度较好；但跨平台桌面打包本身容易受系统权限、Linux 桌面环境、安装包格式影响，升级时仍需关注 release 说明。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/tw93/Pake">tw93/Pake</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Tw93 是 GitHub 上具有较高影响力的独立开发者，多个高星项目体现出其在开源工具与效率产品领域的强社区号召力。
+<strong>技术栈偏好</strong>：技术栈以 Shell、Rust、HTML 为主，同时覆盖 Swift、Python，偏好轻量工具、跨平台应用与前端/客户端产品实现。
+<strong>核心领域</strong>：主要聚焦开发者效率工具、桌面/跨平台应用、知识管理与简洁实用型开源产品。</p>
 <hr />
 <h3>✨ mikumifa/biliTickerBuy (3675★)</h3>
 <blockquote>
