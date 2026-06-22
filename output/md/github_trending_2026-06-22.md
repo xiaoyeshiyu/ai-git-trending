@@ -1,5 +1,5 @@
-## 今日热点：GitHub 热门趋势
-今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
+## 今日热点：AI 原生创作工具与代理开发栈
+今日热点集中在“AI 直接进入生产流”的新一轮工具化升级：从 OpenMontage、hyperframes、voicebox、palmier-pro 这类面向视频、语音与剪辑的 AI 创作套件，到 gstack、Anthropic-Cybersecurity-Skills、deer-flow、codebase-memory-mcp、skills 这类围绕 Claude Code、Codex CLI 等代理编程环境打造的技能包、工作流与记忆层，再到 penpot、Stirling-PDF、firecrawl、turso 这些成熟基础工具持续强化协作、文档、采集与数据库能力，整体呈现出“模型 + 工具 + 记忆 + 流程”一体化的趋势；同时，daily_stock_analysis、airllm、ai-website-cloner-template 等项目也说明 AI 正快速渗透到数据分析、低资源推理和网页复刻等更广泛场景，具体项目摘要如下：
 
 ### ✨ calesthio/OpenMontage (4928★)
 
@@ -132,76 +132,75 @@
 
 ---
 
-### ✨ Stirling-Tools/Stirling-PDF (82467★)
+### ✨ Stirling-Tools/Stirling-PDF (82736★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：把 PDF 编辑、转换、签名、遮盖、OCR、压缩和批处理放进一个可自托管的网页/桌面平台，文件可以留在自己的设备或服务器里处理。
 
-- **它是什么**：#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：Stirling PDF 是一个开源 PDF 处理平台，可以作为桌面客户端、浏览器界面或自托管服务运行。它提供 50+ 个 PDF 工具，覆盖合并、拆分、编辑、签名、打码/遮盖、格式转换、OCR、压缩等常见操作，并提供私有 API 方便集成到内部系统。README 还提到它支持工作流自动化、SSO、审计、企业部署以及 40+ 语言界面。
+- **能解决什么痛点**：很多团队处理合同、发票、报告等 PDF 时不希望把文件上传到第三方网站，Stirling PDF 可以部署在内网或本机处理。另一个痛点是 PDF 操作分散在多个工具里，它把常用编辑、转换、OCR 和批处理集中到一个 Web UI/API 中，减少脚本和手工工具来回切换。
+- **适合谁用**：适合需要在内网处理 PDF 的企业 IT、运维 SRE 或平台工程团队；也适合需要批量转换、压缩、OCR 或自动化处理 PDF 的后端开发者和办公自动化团队。
+- **怎么上手**：`docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf`，然后打开 `http://localhost:8080`。
+- **可以用在哪些场景**：搭建公司内部 PDF 处理门户，让员工在浏览器里合并、拆分、签署和压缩文档；把 PDF 转换/OCR/压缩能力接入业务系统，通过 REST API 自动处理上传的合同或发票；在私有服务器上运行批处理工作流，避免敏感文档流向外部 SaaS。
+- **技术看点**：项目同时覆盖桌面端、浏览器 UI、自托管服务和私有 API，定位不是单点 PDF 小工具，而是 PDF 处理平台。近期提交中多次出现前端架构、TypeScript `any` 清理、Tauri/Rust 构建缓存，说明桌面端和前端工程质量是当前技术投入重点。
+- **近期动向与发展方向**：最近 20 条提交集中在统一认证、Portal 国际化、编辑器翻译同步、用户角色显示、AI chat 创建工具修复、移动上传页、LAN QR URL 修复、指标统计和多工具页面保存问题修复。可以看出项目仍在高频迭代，方向包括权限/认证整合、国际化完善、桌面端体验、前端架构治理和构建效率优化；Dependabot 也持续更新依赖，维护活跃度较高。
+- **同类对比**：暂无明显同类对标。README 强调的差异点是自托管、本地/私有服务器处理、桌面与 Web/API 同时覆盖，以及面向企业的 SSO、审计和 on-prem 部署。
+- **注意事项**：项目 Star 很高、贡献者 296 人、近期提交密集，成熟度和社区活跃度都不错；同时 Open Issues 有 456 个，说明需求和问题量也不小，生产部署前需要评估关键功能稳定性。项目采用 open-core 许可证模式，企业能力和付费方案需要单独查看文档；近期有认证、前端架构和桌面端相关改动，升级时应关注兼容性和配置变化。
 
 - **GitHub**：[Stirling-Tools/Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：Stirling Tools 凭借高星项目 Stirling-PDF 在开源 PDF 工具领域具备显著社区影响力和用户基础。
+**技术栈偏好**：技术栈以 TypeScript、Java、JavaScript 为主，兼顾前端交互、后端服务与 PDF 底层处理能力。
+**核心领域**：主要聚焦于 PDF 文档处理、在线工具平台及相关企业化功能扩展。
 
 ---
 
-### ✨ garrytan/gstack (108450★)
+### ✨ garrytan/gstack (112978★)
 
-> **一句话**：把 Claude Code 配成一支带分工的虚拟产品工程团队，用 `/office-hours`、`/review`、`/qa`、`/ship` 等命令串起从想法审视到发布的完整流程。
+> **一句话**：把 Claude Code 配成一支按“产品讨论 → 架构评审 → 代码审查 → 浏览器 QA → 发布复盘”流程工作的虚拟软件团队。
 
-- **它是什么**：gstack 是 Garry Tan 公开的 Claude Code 工作流配置，核心是 23 个带明确职责的“专家技能”和若干自动化工具。它把产品判断、工程评审、设计审查、浏览器 QA、安全审计、发布检查等步骤做成 slash command，让一次 AI 编程任务不只是写代码，而是按“思考 → 计划 → 构建 → 评审 → 测试 → 发布 → 复盘”的流程推进。README 还强调它不只支持 Claude Code，也可以安装到 Codex CLI、Cursor、OpenCode、Kiro 等多个 AI 编程环境中。
-
-- **能解决什么痛点**：很多开发者用 AI 写代码时，最容易卡在需求没想清、评审不系统、QA 漏掉真实浏览器路径这些环节；gstack 用固定角色和命令把这些步骤前置并串联起来。另一个痛点是团队内 AI 使用方式不一致，gstack 提供 team mode，让仓库可以要求或提示成员使用同一套 AI 辅助流程。
-
-- **适合谁用**：适合已经在用 Claude Code 或其他 AI Coding Agent、但希望把 AI 编程流程做得更像正规工程团队的独立开发者、技术创始人和 Tech Lead。也适合需要在 PR 前做设计审查、代码评审、安全检查和浏览器 QA 的小型产品团队。
-
-- **怎么上手**：最简安装方式是：`git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`，安装后可先运行 `/office-hours` 描述要做的产品，再用 `/review`、`/qa`、`/ship` 等命令推进后续流程。
-
-- **可以用在哪些场景**：
-  搭建新功能前，用 `/office-hours` 和 `/plan-ceo-review` 先逼问真实用户痛点、压缩范围，避免直接让 AI 写一个过大的方案。
-  PR 合并前，用 `/review` 查生产级 bug，用 `/qa https://...` 打开真实浏览器走关键路径，再用 `/ship` 做发布检查。
-  在团队仓库中启用 team mode，让新成员或外部贡献者启动 Claude Code 时自动加载同一套 gstack 规则，减少“每个人提示词都不一样”的混乱。
-
-- **技术看点**：项目本质上把工程流程编码为 Markdown 技能和 slash command，而不是只提供一组提示词模板；这些技能之间会传递上下文，例如 `/office-hours` 产出的设计文档会被后续评审和 QA 使用。安装层面支持多宿主 AI Agent，并通过 TypeScript 配置扩展新的 host，降低迁移到不同 AI 编程工具的成本。
-
-- **近期动向与发展方向**：最近提交非常活跃，6 月 7 日到 6 月 9 日连续发布多个版本，重点包括 cross-session decision memory、gbrain 调用图、carve-guard、AskUserQuestion 失败兜底、PR 标题版本规则和多项安全 guard 修复。整体方向不是单纯增加命令数量，而是在强化长期记忆、决策追踪、上下文瘦身、安全防护和发布流程可靠性；同时最近有多次 bug fix wave，说明项目还在快速迭代期，稳定性也在持续补课。
-
-- **同类对比**：README 明确提到 OpenClaw，gstack 的定位不是替代 OpenClaw，而是可被 OpenClaw 调度的 Claude Code 技能体系；OpenClaw 更像多 Agent 执行平台，gstack 更像一套产品工程方法论和工作流插件。README 未提供与 Cursor Rules、Claude Code 自定义命令等更细粒度方案的直接对比。
-
-- **注意事项**：项目创建于 2026 年 3 月，更新频率很高但仍很年轻，610 个 open issues 说明社区使用量大，也意味着边界问题和兼容性问题不少。近期版本号推进很快，并且涉及记忆、guard、安全规则、发布规则等核心流程，团队落地时要注意升级带来的行为变化。README 信息量很大，上手命令清楚，但完整理解 20 多个技能的协作方式需要一定学习成本。
+- **它是什么**：gstack 是 Garry Tan 公开的 Claude Code 工作流配置和技能集合，核心是 23 个带角色分工的 slash commands，例如 `/office-hours`、`/plan-eng-review`、`/review`、`/qa`、`/ship`。它不是单纯的提示词库，而是把 CEO、设计师、工程经理、QA、安全负责人、发布工程师等角色串成一套可重复的软件交付流程。README 里强调它会让上游产物继续喂给下游技能，例如产品设计文档进入工程评审，测试计划进入 QA。
+- **能解决什么痛点**：适合解决“AI 写代码很快，但需求、架构、测试、发布环节容易断档”的问题，尤其是一个人或小团队用 Claude Code 做完整功能时，缺少系统化评审和交付检查。它也针对“空白提示框不知道怎么开始”的场景，把产品追问、范围收敛、安全审计、浏览器验收等步骤做成固定命令。
+- **适合谁用**：适合已经在用 Claude Code、OpenAI Codex CLI、Cursor、OpenCode 等 AI 编程代理的独立开发者、技术型创始人和小团队技术负责人。也适合需要把 AI 代码审查、QA、发布流程标准化到团队仓库里的工程团队。
+- **怎么上手**：最小安装方式：`git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`，安装后可从 `/office-hours`、`/review`、`/qa` 等命令开始。
+- **可以用在哪些场景**：可以用于新功能立项前用 `/office-hours` 和 `/plan-ceo-review` 逼问真实需求、收敛范围；用于 PR 合并前跑 `/review`、`/cso` 检查代码缺陷和安全风险；用于上线前通过 `/qa https://...` 打开真实浏览器点击 staging 页面并反馈问题。
+- **技术看点**：项目把 AI 编程流程拆成可组合的 Markdown 技能和 slash commands，并支持安装到多种 AI coding agent，不只绑定 Claude Code。近期还加入了浏览器渲染、文档生成、跨会话决策记忆、hermetic 本地 E2E 等能力，说明它更像“AI 软件工厂流程层”，而不是单点工具。
+- **近期动向与发展方向**：最近 20 条提交几乎都由 Garry Tan 推进，版本从 v1.54 到 v1.58.4，节奏非常快。近期重点包括社区 bug 修复、安全 guard、浏览器反检测与离线渲染、多格式文档引擎、Codex review 默认启用、E2E smoke gate、决策记忆和 token reduction，方向是让 AI 代理在真实开发、审查、测试和发布环节更稳定、更可验证。
+- **同类对比**：README 明确提到 OpenClaw，并说明 gstack 可作为 OpenClaw 调用 Claude Code 时的技能层；差异在于 OpenClaw 更像多代理调度入口，而 gstack 更聚焦于具体的软件交付方法论、角色化技能和 Claude Code/多宿主安装。
+- **注意事项**：项目创建时间较新但 star 和 issue 数量都很高，720 个 open issues 说明社区关注度高，也意味着需求和问题积压明显。近期版本迭代密集，且命令、安装方式、技能行为都在持续变化，团队引入时应先在单项目试用，再决定是否启用 team mode；另外它依赖 Claude Code、Git、Bun 等环境，上手前需要接受这套较强主观色彩的工作流。
 
 - **GitHub**：[garrytan/gstack](https://github.com/garrytan/gstack)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有超高星标项目和万级关注者，是 GitHub 上具备显著社区影响力的个人开发者。
-**技术栈偏好**：以 TypeScript 为核心，辅以 HTML、JavaScript，偏向现代 Web 与工具型软件开发。
-**核心领域**：主要聚焦 AI/智能体相关工具、开发者基础设施与 Web 应用实验。
+**技术影响力**：Garry Tan 是具有高社区关注度的个人开发者，凭借超高星标项目在开源社区具备显著影响力。
+**技术栈偏好**：主要偏好 TypeScript，并辅以 HTML、JavaScript，技术方向偏向现代 Web 与工具型应用开发。
+**核心领域**：主要聚焦于 AI/智能体相关工具、认知增强与实验性软件产品。
 
 ---
 
-### ✨ heygen-com/hyperframes (29686★)
+### ✨ heygen-com/hyperframes (29866★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：它把一段 HTML 页面直接变成可渲染、可预览、可导出的 MP4 视频，适合让人或 AI 代理用网页式方式做视频。
 
-- **它是什么**：Write HTML. Render video. Built for agents.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：HyperFrames 是一套面向 HTML 原生视频创作的开源框架，核心思路是用 HTML、CSS、媒体资源和可寻址动画来描述视频画面，再由 CLI 或渲染引擎输出确定性的 MP4。README 里明确提到它既可以本地用命令行跑，也可以交给支持 skills 的 AI coding agent 按“计划、写 HTML、接动画、加素材、预览、渲染”的流程工作。
+- **能解决什么痛点**：一是把“做视频”从传统剪辑软件里那种手工时间轴操作，变成可复现的代码和文件，方便批量生成、版本管理和回归检查；二是解决自动化视频生产里常见的“渲染结果不稳定、不同环境帧不一致”的问题，适合 CI、自动化内容流水线和代理式创作。
+- **适合谁用**：前端工程师、技术营销/增长团队、以及要让 AI 代理自动产出视频内容的开发者；也适合做产品介绍、数据可视化、PR 演示、教程视频的人。
+- **怎么上手**：README 给出的最小用法是先初始化再预览和渲染：`npx hyperframes init my-video && cd my-video && npx hyperframes preview && npx hyperframes render`。如果是给 AI 代理用，先装 skills：`npx skills add heygen-com/hyperframes`。
+- **可以用在哪些场景**：产品发布视频、带代码差异和讲解的 PR 演示、图表/地图/数据动画、Docs-to-video 或网页转视频的教程内容生产。
+- **技术看点**：它采用“HTML 作为画布”的作者模型，动画可以接 GSAP、CSS、Lottie、Three.js、Anime.js、WAAPI 等；渲染链路是 headless Chrome 按帧寻址再交给 FFmpeg 编码，目标是同输入得到同输出。
+- **近期动向与发展方向**：最近提交非常密集，主要集中在 `v0.6.119` 到 `v0.7.1` 的连续发布、CLI/producer/core/studio 的修复和增强，以及 skills 架构重构，说明项目仍处于高频迭代期。近期重点很清晰：一边补齐 Windows、Node 入口、缺失依赖提示、空场景校验等工程可用性问题，一边推进“脚本驱动”的 skills 架构、frame-preset 库、共享音频引擎和更流畅的手动编辑能力。
+- **同类对比**：README 明确对比了 Remotion；两者都用 headless Chrome + FFmpeg 渲染视频，但 HyperFrames 更偏向“纯 HTML/网页式创作”，而不是 React 组件作为主作者模型。
+- **注意事项**：项目星标高、提交活跃，说明热度和投入都很强，但开放 issue 也有 54 个，且更新很快，意味着短期内接口、工作流和插件能力仍可能有变化；上手要求 Node.js 22+ 和 FFmpeg，且涉及 CLI、skills、studio、catalog 等多个组件，首次理解成本不算低。
 
 - **GitHub**：[heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：HeyGen 作为 2020 年成立的组织，凭借 hyperframes 近 3 万星项目在开源社区具备较高可见度与传播影响力。
+**技术栈偏好**：其技术栈以 TypeScript、HTML 和 Shell 为主，并辅以 Go 构建 CLI 工具，偏向前端交互、自动化与开发者工具链。
+**核心领域**：主要聚焦 AI 视频生成、数字人内容生产及相关创作工具生态。
 
 ---
 
@@ -313,72 +312,83 @@
 
 ---
 
-### ✨ firecrawl/firecrawl (136723★)
+### ✨ firecrawl/firecrawl (137041★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：Firecrawl 把网页搜索、页面抓取、站点爬取和页面交互封装成 API，直接输出适合 LLM 使用的 Markdown、JSON、截图等结构化结果。
 
-- **它是什么**：The API to search, scrape, and interact with the web at scale. 🔥
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：Firecrawl 是一个面向 AI 应用的 Web Context API，核心能力包括搜索网页、抓取单页内容、批量抓取、整站爬取、URL 发现，以及在页面上执行点击、滚动、输入等交互动作。它强调把复杂网页，包括 JS 渲染页面、PDF、DOCX 等内容，转换成干净的 Markdown、结构化 JSON 或截图，供 Agent、RAG、数据抽取流程直接使用。项目开源，同时提供托管服务 firecrawl.dev。
+
+- **能解决什么痛点**：开发者自己做网页抓取时，常会遇到 JS-heavy 页面加载、反爬、代理、限流、内容清洗和格式转换等问题，Firecrawl 把这些复杂环节收敛到统一 API。做 AI Agent 或 RAG 时，网页原始 HTML 噪声很大，Firecrawl 可以直接返回更适合模型消费的 Markdown 或 schema 化数据，减少后处理成本。
+
+- **适合谁用**：适合正在构建 AI Agent、RAG 搜索、研究助手、网页数据抽取产品的 TypeScript / Python 开发者。也适合需要稳定抓取公开网页、文档站、竞品页面、价格页或搜索结果的后端工程师和数据工程师。
+
+- **怎么上手**：`pip install firecrawl-py` 后可用最小示例：`Firecrawl(api_key="fc-YOUR_API_KEY").scrape("firecrawl.dev")`。
+
+- **可以用在哪些场景**：可用于给 AI Agent 接入实时网页搜索和页面内容读取；把文档站、博客、价格页批量转成 Markdown 后进入 RAG 知识库；抓取电商、招聘、竞品官网等页面，并通过结构化 JSON 输出字段数据。
+
+- **技术看点**：项目主语言是 TypeScript，API 设计覆盖 Search、Scrape、Interact、Crawl、Map、Batch Scrape 等完整网页数据链路。README 中还提供 CLI、Node.js、Python、cURL、MCP 接入方式，说明它不只是抓取服务，也在面向 Agent 工作流做生态集成。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 API 稳定性、FoundationDB 相关路由与等待逻辑、搜索计费、Redis 测试隔离、CI 镜像构建缓存、安全审计修复等，说明当前重点是后端可靠性、计费准确性和基础设施稳定。也有新功能提交，例如搜索 highlight 新合约、`menu` scrape format、NuQ FDB metrics，表明项目仍在持续扩展抓取格式、搜索体验和观测能力；一天内多位维护者与 bot 连续提交，活跃度很高。
+
+- **同类对比**：README 中没有直接列出竞品对比，但在 Agent 模型示例中提到可用于比较 Firecrawl、Apify、ScrapingBee 等服务。Firecrawl 的差异点更偏向“面向 LLM/Agent 的网页上下文 API”，强调 Markdown、结构化输出、交互动作和 MCP/CLI 接入，而不只是传统爬虫或代理抓取。
+
+- **注意事项**：项目创建于 2024-04-15，但已有 137k+ stars、157 位贡献者，增长和社区关注度很高；同时 open issues 为 400，说明功能面广、用户反馈多，生产接入前要关注 API 版本、计费、限流和托管服务依赖。近期提交里有较多 `fix(api)`、计费和基础设施修复，代表项目迭代很快，也意味着自托管或深度集成时需要跟进变更。
 
 - **GitHub**：[firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：Firecrawl 是一个在 AI Web 数据采集与应用开发社区中极具影响力的组织，凭借高星标项目在开发者生态中具备很强的标杆性。
+**技术栈偏好**：其技术栈明显偏向 TypeScript 与 JavaScript，强调面向 API、工具链和 AI 集成的现代 Web 工程化方向。
+**核心领域**：主要聚焦 Web 数据抓取、结构化采集与面向 AI 的数据接口能力建设。
 
 ---
 
-### ✨ JCodesMore/ai-website-cloner-template (17454★)
+### ✨ JCodesMore/ai-website-cloner-template (17613★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：把你给定的网址丢给 AI 编码代理，它会按页面结构、设计令牌和素材把网站“拆解并重建”成一个新的 Next.js 项目。
 
-- **它是什么**：Clone any website with one command using AI coding agents
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是一个可复用的模板仓库，目标不是单纯抓页面，而是借助 AI coding agent 把目标网站逆向成一套现代化的 Next.js 代码库。README 里明确写了它会先做站点侦察、提取设计 token 和资源，再生成组件规格，最后并行驱动多个 builder 去复刻页面各部分。
+- **能解决什么痛点**：一类是网站原始代码丢失、但线上站还在跑的情况，可以把现有页面结构重新落到可维护的前端代码里；另一类是需要从 WordPress、Webflow、Squarespace 之类迁移到 Next.js 的项目，减少人工逐块重写页面的成本。
+- **适合谁用**：做 Next.js / React 站点迁移的前端工程师；需要借助 AI coding agent 批量复刻营销页、落地页的独立开发者或小团队。
+- **怎么上手**：`git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git && cd YOUR-NEW-REPOSITORY && npm install && claude --chrome`，然后执行 `/clone-website  [ ...]`。
+- **可以用在哪些场景**：把已上线的营销官网迁移到可维护的 Next.js 工程；从旧站点或无源码网站恢复前端实现；把多个页面作为素材，快速搭建风格一致的新站点原型。
+- **技术看点**：技术栈是 Next.js 16、React 19、TypeScript strict、Tailwind CSS v4 和 shadcn/ui，偏向现代前端工程化。设计上把“侦察—基础搭建—组件规格—并行构建—组装验收”拆成流水线，并且支持多个 AI agent 平台，Claude Code 被标为推荐方案。
+- **近期动向与发展方向**：最近提交集中在文档澄清、使用流程调整、Gemini CLI 校验修复、Node 24 基线对齐、Docker 支持和多 URL 克隆能力增强，说明项目当前重心是提升可用性、兼容性和多场景适配，而不是大改核心架构。提交节奏在 3 月到 6 月仍有持续更新，且有外部贡献者参与，活跃度不错。
+- **同类对比**：README 没有直接点名竞品，暂未提供明确同类对标。
+- **注意事项**：项目创建时间较新，但 stars 和 forks 增长很快，说明关注度高，成熟度更像“热门模板/工具链”而不是稳定平台；README 信息比较完整，但真正落地时仍要面对目标站点版权、条款和反爬限制。它对 AI agent 的依赖较强，实际效果会受模型、站点复杂度和页面交互难度影响。
 
 - **GitHub**：[JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：凭借高星 TypeScript 模板项目获得较强社区关注，是 AI 辅助 Web 开发方向的新兴个人开发者。
+**技术栈偏好**：主要偏好 TypeScript，辅以 Python，技术方向集中在前端模板、AI 工具链与自动化内容/网站生成。
+**核心领域**：主要聚焦 AI 驱动的网站生成、前端体验复刻与面向 AI Agent 的开发资源。
 
 ---
 
-### ✨ lyogavin/airllm (18956★)
+### ✨ lyogavin/airllm (20981★)
 
-> **一句话**：它把超大语言模型的权重按层拆开、边加载边计算，让原本要几十 GB 显存才能跑的 70B/405B 模型，能在 4GB/8GB 显存设备上完成推理。
+> **一句话**：AirLLM 通过分层加载和内存优化，让 70B 级大模型可以在单张 4GB 显存 GPU 上完成推理，README 还宣称可在 8GB VRAM 上运行 Llama 3.1 405B。
 
-- **它是什么**：AirLLM 是一个面向大模型推理的内存优化方案，重点不是训练，而是把超大模型“塞进”低显存设备里跑起来。README 给出的核心能力很明确：无需蒸馏、剪枝，70B 模型可在单张 4GB GPU 上推理，甚至支持在 8GB 显存上运行 Llama 3.1 405B。它还提供 `AutoModel.from_pretrained(...)` 这样的接口，尽量让使用方式接近 Hugging Face/Transformers 的 привыч惯写法。
-- **能解决什么痛点**：
-  - 手上只有消费级小显存显卡，想本地验证 70B 级模型效果时，传统加载方式根本放不进显存。
-  - 下载了超大模型后，常常卡在“显存不够”或“加载太慢”，AirLLM 通过分层加载、预取和可选压缩，缓解这类推理落地问题。
-- **适合谁用**：
-  - 想在本地低配 GPU 或 Apple Silicon 设备上试跑开源大模型的 LLM 开发者、研究者。
-  - 做私有化验证、离线推理 PoC、模型兼容性测试的算法工程师或平台工程师。
-- **怎么上手**：最简安装是 `pip install airllm`；最小用法是通过 `from airllm import AutoModel` 后执行 `AutoModel.from_pretrained("garage-bAInd/Platypus2-70B-instruct")` 加载模型并调用 `generate(...)` 推理。
-- **可以用在哪些场景**：
-  - 在只有 4GB/8GB 显存的测试机上，先验证 70B/405B 模型的回答质量，再决定是否投入更高算力部署。
-  - 企业内部做敏感数据问答 PoC，希望先本地离线跑大模型，而不是直接上云推理服务。
-  - 教学或研究场景里演示超大模型推理机制，尤其适合讲解“分层加载 + 磁盘换显存”的工程取舍。
-- **技术看点**：项目核心思路是把原始模型先按层拆分保存，推理时按需加载，从“显存瓶颈”转成“磁盘 I/O + 调度”问题。README 还提到预取（prefetching）和基于 block-wise quantization 的压缩，可在几乎不明显损失精度的前提下把推理速度再提到最高约 3 倍。
-- **近期动向与发展方向**：从最近提交看，2024 年下半年有实质功能更新，包括支持 Qwen2.5、修复 MLX 模型加载、加入 CPU inference 与非分片模型支持；而 2025 之后提交明显变少，主要是 README 和项目信息维护，2026 年新增 `funding.json`。这说明项目近阶段更偏向维护和兼容性修补，而不是高频新增核心能力；社区有少量外部贡献者参与修文档和修兼容问题，但整体开发活跃度较 2024 年有所下降。
-- **同类对比**：README 没有直接点名竞品，但它的差异点很明确：不是主打传统量化部署框架，而是优先解决“超大模型在极低显存设备上的可运行性”，并强调在不依赖蒸馏、剪枝的情况下完成推理。与常见只强调量化降显存的方案相比，它更强调分层加载和磁盘换内存的工程路径。
-- **注意事项**：项目热度很高，但当前有 159 个 open issues，说明真实使用中兼容性和环境问题并不少，尤其涉及 Hugging Face 模型、磁盘缓存、MacOS/MLX、Jupyter 环境时要有排障准备。README 文档算比较完整，给了 Quickstart、FAQ、Colab 和多模型示例，但也明确提示分层拆模非常占磁盘空间；此外最近功能开发节奏放缓，如果你依赖新模型第一时间支持或稳定企业级维护，需要额外评估风险。
+- **它是什么**：AirLLM 是面向大语言模型推理的 Python 包，核心目标是降低推理时的显存占用，而不是通过裁剪模型来换取可运行性。它支持通过 `AutoModel.from_pretrained(...)` 加载 Hugging Face 模型，并提供分层模型切分、预取、压缩、MacOS/Apple Silicon、CPU 推理等能力。
+- **能解决什么痛点**：第一，个人开发者或小团队没有 A100/H100 这类大显存 GPU，却想本地试跑 70B 甚至更大模型。第二，直接加载完整模型时容易显存不足，AirLLM 通过按层拆分与加载，把压力转移到磁盘和加载流程上。
+- **适合谁用**：适合做大模型本地推理实验的 Python/Notebook 用户，以及需要在低显存 GPU、Apple Silicon 或 CPU 环境中验证大模型效果的 AI 工程师。
+- **怎么上手**：安装命令是 `pip install airllm`；最小用法是 `from airllm import AutoModel; model = AutoModel.from_pretrained("garage-bAInd/Platypus2-70B-instruct")`。
+- **可以用在哪些场景**：本地低成本验证 70B 模型回答质量；在 Colab、消费级显卡或小显存云主机上跑大模型 Demo；为 ChatGLM、Qwen、Baichuan、Mistral、InternLM、Llama 系列模型做推理兼容性测试。
+- **技术看点**：项目强调“不量化、不蒸馏、不剪枝”也能运行 70B 模型，同时也提供 4bit/8bit block-wise compression 来减少模型加载体积并提升推理速度。设计重点不只在显存，还包括模型按层切分、磁盘缓存、预取加载与计算重叠。
+- **近期动向与发展方向**：最近 20 条提交里，2026 年主要是 README/页面布局和推荐链接调整，2025 年也以文档更新为主；最近一次明确功能提交是 2024-09 支持 Qwen2.5，2024-08 修复 MLX 模型加载并增强 MacOS/CPU 相关体验。整体看项目仍有维护动作，但近期代码层面的功能演进不算密集，更多是文档和生态入口维护。
+- **同类对比**：README 没有明确列出竞品对标；它与常见量化推理方案的差异在于，AirLLM 的主路径是通过内存/加载策略降低运行门槛，而不是一开始就依赖权重量化、蒸馏或剪枝。
+- **注意事项**：首次推理会将原模型按层拆分并保存，磁盘空间不足时容易触发 safetensors 相关错误；166 个 Open Issues 说明使用场景和兼容性问题不少，上生产前需要按目标模型和硬件环境实测。项目创建于 2023 年、Stars 很高，但近期代码更新偏少，依赖模型格式、Hugging Face 权限和本地缓存管理时要预留排障时间。
 
 - **GitHub**：[lyogavin/airllm](https://github.com/lyogavin/airllm)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：作为 Anima AI 创始人，凭借 airllm 等高关注项目在开源 AI 开发者社区具备较强影响力，属于有代表性的实战型 AI 创业开发者。
-**技术栈偏好**：以 Python 和 Jupyter Notebook 为核心，辅以 Java，明显偏向大模型应用、AI 实验原型与工程化实现。
-**核心领域**：主要聚焦生成式 AI、LLM 推理优化及 AI 内容生成相关方向。
+**技术影响力**：Gavin Li 是具有较高开源可见度的 AI 创业者型开发者，凭借 airllm 等项目在大模型社区形成较强影响力。
+**技术栈偏好**：技术栈以 Python 和 Jupyter Notebook 为主，辅以 Java，偏向 AI 实验、模型工程与应用原型开发。
+**核心领域**：主要聚焦大模型推理优化、生成式 AI、动画/视频生成与 AI 产品化方向。
 
 ---
 
