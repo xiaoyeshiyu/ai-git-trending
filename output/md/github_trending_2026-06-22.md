@@ -1,0 +1,410 @@
+## 今日热点：AI Agent 与工程化工具全面渗透
+今天的热点集中在AI正在从“会话体验”走向“可持续生产系统”，`palmier-io/palmier-pro`、`calesthio/OpenMontage`与`bytedance/deer-flow`展示了从视频内容生成到长时任务编排的agent化工作流，`chopratejas/headroom`、`DeusData/codebase-memory-mcp`和`topoteretes/cognee`把上下文压缩与知识图谱记忆做成基础能力，`tursodatabase/turso`、`penpot/penpot`与`world`级监测工具`koala73/worldmonitor`和`smicallef/spiderfoot`补足了轻量数据、协同设计和情报视图，`ZhuLinsen/daily_stock_analysis`、`mikul975/Anthropic-Cybersecurity-Skills`、`mukumifa/biliTickerBuy`、`byoungd/English-level-up-tips`、`asgeirtj/system_prompts_leaks`及`mattpocock/skills`则分别覆盖金融分析、网络安全标准化、购票工具化、学习内容、提示词治理与工程技能沉淀，具体项目摘要如下：
+
+### ✨ palmier-io/palmier-pro (1409★)
+
+> **一句话**：在 macOS 时间线上直接让 Claude、Codex、Cursor 等 AI Agent 参与剪辑、生成素材和修改视频项目。
+
+- **它是什么**：Palmier Pro 是一款面向 Mac 的开源视频编辑器，界面和工作流对标 Premiere Pro，但把 AI 生成与 Agent 协作放进了时间线编辑流程里。它用 Swift 从零构建，支持在编辑器内生成视频和图片，也能通过内置 MCP Server 让外部 Agent 读取、修改同一个视频项目。
+- **能解决什么痛点**：传统视频编辑里，批量改片段、删除口播填充词、调整素材属性等操作需要手动在时间线上反复处理；Palmier Pro 通过 MCP 暴露项目操作能力，让 Agent 可以直接参与这些剪辑动作。对想把生成式视频、图片素材放进剪辑流程的人来说，它减少了在生成工具和剪辑软件之间来回导入导出的步骤。
+- **适合谁用**：适合使用 macOS Apple Silicon、想尝试 AI 辅助剪辑的内容创作者和独立开发者；也适合正在研究 MCP / Agent 工作流、希望让 Claude Code、Codex 或 Cursor 操作本地应用的开发者。
+- **怎么上手**：从 GitHub Release 下载 macOS 安装包：`https://github.com/palmier-io/palmier-pro/releases/latest/download/PalmierPro.dmg`
+- **可以用在哪些场景**：用 Claude Code 或 Codex 连接本地 MCP Server 后，让 Agent 根据转录文本删除口播中的停顿和填充词；在时间线里生成视频或图片素材，并直接参与后续剪辑；处理素材离线、重新链接媒体、WebP 图片导入等本地视频编辑流程。
+- **技术看点**：项目采用 Swift 原生实现 macOS 视频编辑器，并通过 `http://127.0.0.1:19789/mcp` 暴露本地 MCP Server，方便 Claude、Codex、Cursor 等 Agent 接入。README 明确说明编辑器、MCP Server 和 Agent Chat 开源，生成式 AI 处理部分闭源。
+- **近期动向与发展方向**：最近提交非常密集，6 月 18-19 日连续发布 `v0.3.3` 和 `v0.3.4`，说明项目仍处在快速迭代期。近期重点集中在 MCP 工具扩展、剪辑操作能力增强、媒体离线与错误反馈、WebP 支持、安全限制 localhost 与 origin 校验，以及旋转素材渲染问题修复，方向是把“AI Agent 可控的视频编辑器”做得更可用、更稳定。
+- **同类对比**：README 明确提到 north star 是 Premiere Pro，差异在于 Palmier Pro 把 AI 生成和 Agent 协作直接集成到时间线工作流，而不是只做传统非线性剪辑。
+- **注意事项**：项目创建于 2026 年 4 月，当前 Stars 增长快但贡献者只有 2 人，仍偏早期；Open Issues 为 13 个，近期提交里也有不少媒体处理和渲染修复，生产项目使用前建议先验证稳定性。平台限制较强，只支持 macOS 26 Tahoe on Apple Silicon；生成式 AI 功能需要登录和订阅，且相关处理部分不是开源代码。
+
+- **GitHub**：[palmier-io/palmier-pro](https://github.com/palmier-io/palmier-pro)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Palmier 是一个新兴 AI 视频平台组织，凭借 Swift 项目 palmier-pro 获得一定社区关注，但整体生态规模仍处早期。
+**技术栈偏好**：技术栈以 Swift、Python、TypeScript 为主，偏向客户端产品、AI 后端能力与 Web 工具链结合。
+**核心领域**：主要聚焦 AI 视频生成/编辑平台，并延伸到轻量级 RAG、智能创作与自动化开发辅助方向。
+
+---
+
+### ✨ calesthio/OpenMontage (4928★)
+
+> **一句话**：把“写一句视频需求”变成一条可执行的生产流水线：它会自己找素材、写脚本、生成旁白、拼镜头、加字幕并渲染成完整视频。
+
+- **它是什么**：OpenMontage 是一套面向 AI 编程助手的代理式视频制作系统，目标不是简单做“图文转视频”，而是让 agent 真的参与视频生产全流程。它支持从文本需求或参考视频出发，自动完成调研、分镜、素材检索、图像/视频生成、配音、音乐、字幕和最终合成。README 里强调它能走“真实视频素材 + 剪辑合成”的路径，也能走 AI 图片/动画路径，输出的是可交付的视频成片。
+- **能解决什么痛点**：一是把“视频创意”落成“可执行方案”的过程标准化，避免人工来回改 prompt、补素材、补分镜。二是减少视频制作里最耗时的脏活：找素材、配旁白、加字幕、调节奏、做最终渲染，尤其适合需要反复试错的短视频和演示片。
+- **适合谁用**：做 AI 视频产品原型的 Python 开发者；需要批量产出宣传片、教程片、产品演示视频的内容团队；以及已经在用 Claude Code、Cursor、Copilot、Windsurf、Codex 这类 AI 编程助手的人。
+- **怎么上手**：`git clone https://github.com/calesthio/OpenMontage.git && cd OpenMontage && make setup`
+- **可以用在哪些场景**：做产品发布会预热视频或功能宣传片；把一段 YouTube/Short/TikTok 参考视频改造成同结构的新视频；生成带旁白、字幕和音乐的教程短片或故事短片。
+- **技术看点**：项目把视频制作拆成 12 条 pipeline、52 个工具和大量 agent skills，核心思路是“先选流程，再干活”，而不是让模型自由发挥。它同时支持 Remotion 和 HyperFrames 两套合成/runtime，并通过工具注册表、能力评估和多点自检来控制最终产物质量。
+- **近期动向与发展方向**：最近提交集中在两条线：一条是能力扩展，比如新增 Doubao TTS provider、局部角色动画 pipeline、Remotion 片头组件升级、Seedance 2.0 作为优先视频生成方案；另一条是修正和规范化，比如工具调用修复、包名修正、提示词规范统一。整体看，项目还在快速迭代，重点明显偏向“补齐制作能力 + 提升产线稳定性”，且主要由少数核心贡献者主导。
+- **同类对比**：README 没有明确对标某个单一竞品；它更像是把视频脚本生成、素材检索、剪辑合成和 agent 工作流打包成一套端到端系统，而不是只做某一个环节的工具。
+- **注意事项**：项目功能很全，但也意味着上手门槛不低，依赖 Python、Node.js、FFmpeg，部分能力还要额外 API Key。仓库当前 open issues 为 62，贡献者只有 3 人，说明项目活跃但核心维护面较窄；再加上近期仍有大量功能迭代，接口和工作流存在继续变化的可能，适合能接受折腾的技术用户，不太适合追求即装即用的团队。
+
+- **GitHub**：[calesthio/OpenMontage](https://github.com/calesthio/OpenMontage)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：在开源情报与数据分析社区具有较强影响力，凭借爆款项目带动了明显的技术关注度与传播力。
+**技术栈偏好**：以 `Python` 和 `JavaScript` 为主，偏向构建面向数据采集、分析与交互展示的开源工具。
+**核心领域**：主要聚焦开源情报（OSINT）、信息检索与分析类工具开发。
+
+---
+
+### ✨ chopratejas/headroom (36569★)
+
+> **一句话**：Headroom 会在 Claude Code、Codex、Cursor、RAG 检索结果和日志进入 LLM 之前先本地压缩，把几万 token 的上下文缩到原来的 5%–40%，同时保留可按需取回的原文。
+
+- **它是什么**：Headroom 是一个面向 AI Agent 和 LLM 应用的上下文压缩层，主要压缩工具输出、日志、文件内容、RAG chunks 和对话历史。它可以作为 Python / TypeScript 库直接调用，也可以作为本地代理、MCP Server 或 `headroom wrap` 包装层接入 Claude Code、Codex、Cursor、Aider、Copilot CLI 等工具。README 强调其本地优先、可逆压缩，并提供 CCR 原文缓存与 `headroom_retrieve` 按需取回能力。
+- **能解决什么痛点**：当 Agent 读代码仓库、扫描日志或处理 RAG 检索结果时，原始上下文很容易堆到数万 token，导致成本高、响应慢、上下文窗口被浪费。对于长日志排障、代码搜索结果和 GitHub issue 批量分析这类场景，它能先压缩重复和低价值内容，再把更紧凑的上下文交给模型。
+- **适合谁用**：适合频繁使用 Claude Code、Codex、Cursor、Aider 等 AI 编程 Agent 的开发者或团队；也适合做 RAG 应用、日志分析、SRE 排障和内部 LLM 网关的 Python / TypeScript 工程师。
+- **怎么上手**：`pip install "headroom-ai[all]" && headroom wrap claude`
+- **可以用在哪些场景**：接入 Claude Code 或 Codex 做大型代码库探索时压缩文件读取和搜索结果；在 SRE 事故排查中把大段日志、trace、错误堆栈压缩后再交给模型分析；作为 OpenAI-compatible 本地代理放在现有 LLM 应用前面，对 RAG chunks 和工具返回结果做统一压缩。
+- **技术看点**：它不是单一文本摘要器，而是通过 ContentRouter 按内容类型路由到 SmartCrusher、CodeCompressor、Kompress-base 等不同压缩器，分别处理 JSON、代码 AST 和普通文本。CCR 设计把压缩后的上下文和本地原文缓存结合起来，让模型在需要细节时可以通过 MCP 工具取回原文，降低“一压缩就丢信息”的风险。
+- **近期动向与发展方向**：最近提交非常密集，6 月 17–19 日连续合入代理热更新、输出 token reduction、Vertex / Claude Code 支持、Copilot / cc-switch 兼容、诊断命令和多项 bug 修复，说明项目仍在快速迭代。开发重点明显集中在“让代理长期稳定接入真实工作流”：修复 wrap / proxy 环境继承、证书处理、CCR 注入、provider 上下文限制，并开始把节省范围从输入 token 扩展到模型输出 token。
+- **同类对比**：暂无明显同类对标。README 没有直接列出竞品，但它的定位更接近“LLM 上下文压缩代理 + Agent 适配层”，而不是普通 prompt 压缩库或单纯 RAG reranker。
+- **注意事项**：项目创建时间为 2026-01-07，但已积累大量 stars、forks 和 105 位贡献者，增长很快也意味着接口和行为仍可能频繁变化。当前 open issues 为 321，近期提交里修复类变更多，说明真实接入场景较复杂；生产环境使用前建议先在本地代理或单个 Agent 上灰度验证压缩效果、可逆取回和输出质量。
+
+- **GitHub**：[chopratejas/headroom](https://github.com/chopratejas/headroom)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Tejas Chopra 是一位具备一定社区影响力的独立开发者，凭借高星项目 `headroom` 在开源工具领域获得显著关注。
+**技术栈偏好**：技术栈以 Python 为主、Rust 为辅，偏向构建轻量级开发者工具、AI 辅助工具和编辑器生态扩展。
+**核心领域**：主要聚焦于开发效率、AI 工具链与本地化软件辅助工具。
+
+---
+
+### ✨ tursodatabase/turso (20192★)
+
+> **一句话**：Turso 用 Rust 重写了一套可嵌入进应用进程的 SQLite 兼容数据库，让应用可以直接读写本地 SQL 数据库，同时获得 MVCC、CDC、多语言绑定等现代能力。
+
+- **它是什么**：Turso Database 是一个用 Rust 编写的进程内 SQL 数据库，目标是兼容 SQLite 的 SQL 方言、文件格式和 C API。它可以像 SQLite 一样嵌入到应用里使用，同时提供 `BEGIN CONCURRENT`、变更数据捕获、异步 I/O、向量支持、跨语言绑定和 MCP Server 模式等能力。README 明确标注当前仍处于 BETA 阶段。
+- **能解决什么痛点**：它适合解决“想用 SQLite 的轻量嵌入式体验，但又需要更高写入并发或变更订阅能力”的问题；也适合需要在 Rust、JavaScript、Python、Go、Java、.NET、WASM 等多语言环境中复用同一类本地数据库能力的团队。
+- **适合谁用**：适合正在构建本地优先应用、边缘计算服务、桌面应用或嵌入式服务的后端 / 全栈开发者；也适合已经使用 SQLite，但想评估 MVCC 并发写、CDC、向量能力和 MCP 数据库访问的工程团队。
+- **怎么上手**：命令行最快安装方式：`curl --proto '=https' --tlsv1.2 -LsSf https://github.com/tursodatabase/turso/releases/latest/download/turso_cli-installer.sh | sh`
+- **可以用在哪些场景**：可用于桌面或 CLI 应用中直接嵌入本地 SQL 数据库；可用于边缘节点上存储配置、会话、缓存或轻量业务数据；也可通过 MCP Server 让 AI 助手查询和修改本地数据库表结构与数据。
+- **技术看点**：核心看点是 Rust 实现的 SQLite 兼容数据库，并在 SQLite 模型上加入 MVCC、`BEGIN CONCURRENT`、CDC、Linux `io_uring` 异步 I/O、多语言绑定和 WASM 支持。README 还提到实验性能力包括静态加密、DBSP 增量计算、Tantivy 全文搜索、多进程 WAL 协调。
+- **近期动向与发展方向**：最近 20 条提交集中在 MVCC 垃圾回收、快照隔离问题修复、内存分配失败注入、CodSpeed 基准测试拆分和 schema/trigger 修复，说明项目近期重点偏向稳定性、并发正确性、内存可靠性和性能基准体系建设。提交来自多位贡献者，且更新频率很高，社区和核心团队仍在密集迭代。
+- **同类对比**：README 明确以 SQLite 兼容为核心定位，并提到路线图中的向量索引会类似 libSQL vector search；相比传统 SQLite，它更强调 Rust 实现、MVCC 并发写、CDC、多语言绑定和现代运行环境支持。
+- **注意事项**：项目 Stars 超过 2 万、贡献者 270 人，活跃度很高，但 README 明确标注 BETA，且当前 open issues 达 745，说明仍可能遇到兼容性、稳定性或行为变化问题。若用于生产数据，需要按 README 建议做好备份，并重点验证 SQLite 兼容性、并发写场景和跨语言绑定的成熟度。
+
+- **GitHub**：[tursodatabase/turso](https://github.com/tursodatabase/turso)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Turso Database 是 SQLite 生态中高关注度的新兴基础设施组织，凭借 `turso` 与 `libsql` 在数据库社区具备较强影响力。
+**技术栈偏好**：其技术栈以 Rust、C 和 TypeScript 为主，偏向高性能数据库内核、系统级组件与多语言客户端工具链。
+**核心领域**：主要聚焦于 SQLite 演进、边缘数据库、嵌入式数据库与开发者友好的数据访问基础设施。
+
+---
+
+### ✨ penpot/penpot (49896★)
+
+> **一句话**：Penpot 让团队在浏览器或自托管环境里完成界面设计、原型协作、设计系统管理，并把 SVG、CSS、HTML、JSON 等开放格式直接交给开发流程使用。
+
+- **它是什么**：Penpot 是一个开源设计与原型协作平台，面向数字产品团队，支持实时协作、设计系统、组件、变体、Design Tokens、Inspect 模式和插件扩展。它既可以使用官方 SaaS，也可以部署到自己的服务器，适合对数据归属、合规和内部工具链集成有要求的团队。README 特别强调它使用 SVG、CSS、HTML、JSON 等开放标准，让设计结果更容易被开发者理解和接入。
+
+- **能解决什么痛点**：设计稿被锁在闭源平台里、企业无法掌控设计数据和部署环境时，Penpot 提供自托管方案，便于满足内网、合规和治理要求。设计与开发交接时，开发者可以通过 Inspect 模式获取 SVG、CSS、HTML，并结合 Design Tokens 管理统一的颜色、间距、字体等设计变量，减少“设计系统在设计端和代码端各维护一套”的问题。
+
+- **适合谁用**：适合需要自托管设计平台的产品研发团队、企业内部设计系统团队，以及希望把设计稿、设计令牌、插件、API 接入工程流程的前端团队。也适合偏好开源基础设施、需要避免设计平台厂商锁定的组织。
+
+- **怎么上手**：README 未给出一行命令式安装示例，最简方式是使用官方 SaaS：访问 [design.penpot.app](https://design.penpot.app)；自托管安装入口见 [penpot.app/self-host](https://penpot.app/self-host)。
+
+- **可以用在哪些场景**：
+  - 在企业内网部署设计协作平台，让设计稿、组件库和原型数据留在自有服务器。
+  - 建设跨产品线设计系统，用 Design Tokens、组件和变体维护统一 UI 规范。
+  - 前端开发交接时，通过 Inspect 模式提取 SVG、CSS、HTML，并结合 API、Webhooks 或插件接入现有研发工具链。
+
+- **技术看点**：项目主语言为 Clojure，采用开源和可自托管路线，许可证为 MPL-2.0。产品设计上强调开放标准和“设计即代码”的表达方式，并提供 MCP Server、开放 API、插件系统、Webhooks 等扩展能力，方便接入自动化和 AI 工作流。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-06-15 至 2026-06-17，活跃度很高，既有功能演进也有大量缺陷修复。新增和改进方向包括 background blur、WASM 渲染 guides、MCP 集成状态管理重构；同时修复了字体下拉位置、数值输入拖拽撤销、透明 tile 渲染空洞、匿名邀请成员查询等问题。还可以看到 CI/workflow 清理、pnpm lock 去重、Playwright 版本统一等工程化维护，说明项目仍在持续迭代底层质量和协作能力。
+
+- **同类对比**：README 没有直接点名竞品，但定位上明显区别于闭源设计平台：Penpot 的核心差异是开源、自托管、开放标准、可编程 API 和插件体系，适合需要掌控设计基础设施的团队。
+
+- **注意事项**：项目创建于 2015 年，已有 319 位贡献者、近 5 万 Star，成熟度和社区基础较强；但当前仍有 690 个 Open Issues，说明功能面广、问题队列也不小。自托管和深度集成会涉及部署、升级、权限和数据治理成本；近期提交中包含 MCP 重构、WASM 渲染和前端依赖整理，生产环境升级前应关注 release notes、迁移说明和回归测试。
+
+- **GitHub**：[penpot/penpot](https://github.com/penpot/penpot)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Penpot 是开源设计工具领域的高影响力组织，凭借近 5 万星的核心仓库在开发者社区中具备显著号召力。
+**技术栈偏好**：其技术栈以 Clojure 为核心，辅以 TypeScript 和 Nunjucks，整体偏向全栈产品工程、插件集成与文档驱动开发。
+**核心领域**：主要聚焦于“Design as code”理念下的开源协作设计平台及其生态工具。
+
+---
+
+### ✨ ZhuLinsen/daily_stock_analysis (43833★)
+
+> **一句话**：它把多市场行情、新闻舆情和大模型分析串成一条自动化流水线，每天定时生成自选股决策仪表盘，并推送到企业微信、飞书、Telegram 等渠道。
+
+- **它是什么**：这是一个用 Python 写的股票智能分析系统，覆盖 A 股、港股、美股、日股和韩股，核心是把行情、技术指标、新闻、公告、资金流等信息喂给 LLM，再输出带评分、买卖点、风险提示和催化因素的分析报告。README 里还提供了 Web 工作台、历史报告、回测、持仓管理、策略问股和自动通知，说明它不只是“跑一份日报”，而是一套可长期运行的股票分析工作台。
+- **能解决什么痛点**：一是把分散在行情源、新闻搜索、公告和社交舆情里的信息集中起来，避免人工每天来回切换网站做盘前/盘后检查；二是把“看完新闻后怎么形成结论”这一步标准化成可复用的决策报告，减少靠经验手工写分析的时间成本。
+- **适合谁用**：适合需要每天盯自选股的个人投资者，也适合做量化研究、投研辅助或财经内容自动化输出的 Python 用户；如果你在做企业内部的行情看板、投资组合监控或消息推送系统，这个项目也有直接参考价值。
+- **怎么上手**：README 给出的最小本地运行方式是 `git clone https://github.com/ZhuLinsen/daily_stock_analysis.git && cd daily_stock_analysis && pip install -r requirements.txt && cp .env.example .env && python main.py`。
+- **可以用在哪些场景**：每天收盘后自动生成自选股复盘并推送到飞书/企业微信；给投研团队做多市场股票的统一监控面板；把新闻、公告和技术指标合并成标准化日报，供群聊或邮件分发。
+- **技术看点**：项目同时支持 GitHub Actions、Docker、本地定时任务和 FastAPI 服务，说明它把“零成本定时运行”和“可部署性”作为核心设计目标。数据源和模型适配面也比较广，既支持云端大模型，也支持 OpenAI 兼容、DeepSeek、通义千问、Claude 和 Ollama 本地模型。
+- **近期动向与发展方向**：最近 20 条提交几乎都集中在 2026-06-17 到 2026-06-21，活跃度很高，且以功能增强和修复并进为主。开发重点明显在“DecisionSignal 决策信号”链路上：包括信号展示、回填、后验验证、风险关联、AI 页面限制展示，以及把情报源注入分析上下文；同时还在补日股/韩股支持、自动补全和历史摘要兼容性，说明项目正从单纯报告生成，向更完整的多市场智能分析平台演进。
+- **同类对比**：README 明确提到了同系列项目 `AlphaSift` 和 `AlphaEvo`，其中前者偏多因子选股和全市场扫描，后者偏策略回测与自我进化，而 `daily_stock_analysis` 更聚焦日常分析报告、仪表盘和通知联动。和这两者相比，它更像“输出层”和“日常运营层”。
+- **注意事项**：项目功能面很广，涉及多市场数据、多个模型供应商和多种通知渠道，上手时需要配置不少环境变量和 Secret，初次部署的复杂度不低。仓库目前已有 4 万+ stars、4 万+ forks、86 位贡献者和 29 个 open issues，说明热度高、迭代活跃，但也意味着接口和配置规则可能会持续变化，适合关注文档和版本更新后再做稳定集成。
+
+- **GitHub**：[ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有近千关注者与高星项目，属于在开源社区具备较强可见度和实用项目影响力的个人开发者。
+**技术栈偏好**：以 Python 为核心语言，偏好围绕 LLM、AIGC、数据分析与智能体方向构建工具型项目。
+**核心领域**：主要聚焦人工智能应用、金融数据分析、智能体系统与机器人相关技术探索。
+
+---
+
+### ✨ koala73/worldmonitor (56869★)
+
+> **一句话**：World Monitor 把全球新闻、地缘冲突、金融市场、能源、航空和基础设施信号汇聚到同一个实时态势大屏里，并用 AI 生成可读的情报简报。
+
+- **它是什么**：这是一个基于 TypeScript 的实时全球情报仪表盘，聚合 500+ 精选新闻源和 65+ 外部数据提供方，覆盖地缘政治、金融、能源、灾害、航空、网络安全等领域。它提供 3D 地球和 WebGL 平面地图两套地图引擎，支持 56 类地图图层、国家不稳定指数、跨信号关联分析，以及 world、tech、finance、commodity、happy、energy 等多个站点变体。项目还提供 Tauri 2 桌面端，可在 macOS、Windows 和 Linux 上运行。
+- **能解决什么痛点**：对需要持续关注全球风险的人来说，新闻、市场、航班、能源和冲突数据通常分散在多个网站和 API 中，World Monitor 把这些信号统一到一个可视化界面里。对自建情报看板的开发者来说，它已经处理了多数据源聚合、地图渲染、缓存、AI 摘要、本地模型和多端发布等复杂环节。
+- **适合谁用**：适合做 OSINT、地缘风险监控、金融与大宗商品观察的研究人员或团队；也适合想自建实时数据大屏、地图态势系统、新闻聚合产品的 TypeScript / 前端工程师。
+- **怎么上手**：`git clone https://github.com/koala73/worldmonitor.git && cd worldmonitor && npm install && npm run dev`
+- **可以用在哪些场景**：搭建内部全球风险监控大屏，集中查看冲突、灾害、能源和市场信号；做金融或商品情报站点，把交易所、加密资产、商品价格和新闻流合并展示；自托管一个本地 AI 驱动的新闻摘要与态势分析系统，使用 Ollama 在无外部 AI API Key 的情况下运行。
+- **技术看点**：前端采用 Vanilla TypeScript、Vite、globe.gl、Three.js、deck.gl 和 MapLibre GL，地图和可视化能力较重；后端与接口层使用 Vercel Edge Functions、Redis 多层缓存、Protocol Buffers 和 sebuf HTTP 注解，说明项目更接近完整产品工程，而不是单页 Demo。
+- **近期动向与发展方向**：最近提交非常活跃，6 月 16 日到 19 日连续有功能、修复、文档和安全更新。重点包括修复依赖安全告警、补齐 Docker 与自托管环境变量、完善 ACLED OAuth 和 Travelpayouts 配置、恢复 welcome/dashboard 路由、增加保存面板工作区的 dashboard tabs，以及修复地图嵌入渲染一致性；整体看，近期更偏向稳定性、安全合规、自托管可用性和仪表盘体验打磨。
+- **同类对比**：暂无明显同类对标。README 没有直接对比其他项目，但它的差异点在于把新闻聚合、AI 摘要、地图态势、金融雷达、桌面端和多站点变体放在同一套代码库中。
+- **注意事项**：项目创建时间为 2026-01-08，时间较新但已有 183 个 open issues，说明功能面广、迭代快，也可能存在不少待处理边界问题。自托管基础运行不需要环境变量，但使用航班报价、ACLED、OpenRouter、Travelpayouts 等特定数据源时需要额外凭证；许可证为 AGPL-3.0-only，商业或闭源集成前需要仔细确认合规要求。
+
+- **GitHub**：[koala73/worldmonitor](https://github.com/koala73/worldmonitor)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Elie Habib 是一位具备较高社区关注度的个人开发者，凭借 worldmonitor 等高星项目在开源社区形成显著影响力。
+**技术栈偏好**：其项目主要使用 TypeScript，偏向构建数据监测、研究辅助与信息聚合类应用。
+**核心领域**：主要聚焦 OSINT、地理空间情报、全球事件监测与开放信息分析方向。
+
+---
+
+### ✨ bytedance/deer-flow (72210★)
+
+> **一句话**：把“研究、写代码、找资料、调工具、跑沙箱”串成一条长流程的超级 Agent 框架，适合做分钟到小时级的复杂任务自动化。
+
+- **它是什么**：DeerFlow 是 ByteDance 开源的长链路 SuperAgent harness，核心不是单一聊天机器人，而是一套编排系统：它会调度子代理、记忆、沙箱、技能和消息网关，把检索、分析、编码、执行这些步骤串起来。README 明确提到 2.0 是全新重写版本，和 1.x 没有代码继承，当前主线已经转向 2.0。
+- **能解决什么痛点**：一是把“要查资料、要写代码、要跑脚本、要保存上下文”的任务从人工切换里解放出来，减少多工具来回切换；二是针对长任务里常见的上下文丢失、执行环境隔离、工具调用不稳定等问题，提供统一编排与沙箱执行能力。
+- **适合谁用**：做 AI 应用编排的 Python 工程师、需要搭建内部研究/代码生成工作流的团队；以及想把 LLM 接入沙箱、记忆和子代理体系的产品或平台工程师。
+- **怎么上手**：README 给出的最简方式是先克隆仓库，再运行 `make setup`，它会启动交互式向导生成 `config.yaml` 和 `.env`；如果只看最小入口，可以直接执行 `make setup`。
+- **可以用在哪些场景**：自动生成带引用来源的调研报告；让 Agent 在沙箱里完成代码修改、测试和结果回传；把企业内部搜索、网页抓取和多轮分析串成一条自动化工作流。
+- **技术看点**：项目基于 Python 3.12+，同时支持 Docker 和本地开发，并显式兼容多种模型接入方式，包括 OpenAI 兼容接口、Responses API、vLLM、Codex CLI 和 Claude Code OAuth。README 里还把安全注意事项单独拎出来，说明它不是纯演示项目，而是面向真实部署场景设计的。
+- **近期动向与发展方向**：最近 20 条提交里，功能和基础设施都在高频推进：一边补齐 OIDC SSO、消息网关、Web search/fetch 引擎、结果重生、思考时长展示等产品能力，一边修复 SQLite、客户端导航、Docker 本地开发、依赖锁文件和 CI 问题。还能看到 prompt-injection 防护、中间件鉴权上下文这类安全相关改动，说明项目正在从“能跑”转向“可部署、可治理、可维护”。
+- **同类对比**：README 提到它是 “super agent harness”，并且明确支持与 Claude Code、Codex CLI 等编码代理联动；但没有直接给出明确竞品对标名称，暂未提供更具体的官方对比。
+- **注意事项**：项目更新非常活跃，但 open issues 也有 934 个，说明迭代快、待办也多；且 2.0 是重写版本，和 1.x 不兼容，迁移或复用旧方案要特别留意。README 提供了较完整的配置入口，但实际可用性仍强依赖模型、沙箱、搜索和鉴权等外部服务，部署门槛不算低。
+
+- **GitHub**：[bytedance/deer-flow](https://github.com/bytedance/deer-flow)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：字节跳动是 GitHub 上影响力很强的企业级开源组织，拥有高关注度和多个万星级项目，技术外溢能力突出。
+**技术栈偏好**：主要偏好 Python、TypeScript 和 Go，体现出在 AI Agent、前端交互、桌面应用与高性能后端工具上的投入。
+**核心领域**：核心聚焦 AI 智能体、多模态交互、开发者工具和工程基础设施等前沿技术方向。
+
+---
+
+### ✨ DeusData/codebase-memory-mcp (4198★)
+
+> **一句话**：把本地代码仓库快速索引成可持久化知识图谱，让 Claude Code、Codex CLI、Gemini CLI 等 AI 编程代理直接查询函数、调用链、路由、架构和影响范围。
+
+- **它是什么**：codebase-memory-mcp 是一个面向 AI 编程代理的本地 MCP Server，用 C 编写，发布为 macOS、Linux、Windows 可用的单个静态二进制文件。它会用 tree-sitter 解析 158 种语言，把函数、类、调用关系、HTTP 路由、跨服务链接等信息写入本地 SQLite 知识图谱，并提供 14 个 MCP 工具用于搜索、架构分析、影响分析、死代码检测和类 Cypher 查询。README 宣称普通仓库可在毫秒级完成索引，结构化查询低于 1ms，Linux kernel 级别代码库可在约 3 分钟完成索引。
+
+- **能解决什么痛点**：AI 编程代理在大仓库里经常需要反复 grep、读文件、追调用链，既消耗大量 token，也容易遗漏跨文件、跨服务关系；这个项目把这些关系预先索引成图，让代理用少量结构化查询拿到答案。对于单体仓库或多服务仓库，它还能把 HTTP 路由、调用点、Kubernetes / Docker / Kustomize 等基础设施文件纳入同一张图，减少人工梳理架构和影响范围的成本。
+
+- **适合谁用**：适合重度使用 Claude Code、Codex CLI、Gemini CLI、Aider、Zed、VS Code 等 AI 编程代理的开发者，尤其是需要让代理理解大型遗留代码库的人。也适合维护多语言后端、微服务或基础设施代码的团队，用来做本地代码检索、调用链追踪和架构巡检。
+
+- **怎么上手**：macOS / Linux 最简安装：`curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh | bash`；安装后重启你的 coding agent，然后让代理执行“Index this project”。Windows 可按 README 下载并运行 `install.ps1`。
+
+- **可以用在哪些场景**：
+  - 接手大型老项目时，让 AI 先索引仓库，再查询入口点、核心模块、热点文件、调用链和架构边界。
+  - 修改某个函数、接口或路由前，用 `detect_changes`、调用图和影响分析判断可能波及哪些模块或服务。
+  - 在多服务仓库中追踪 HTTP / gRPC / GraphQL / tRPC 的路由与调用点，辅助定位跨服务依赖。
+  - 清理代码时查找零调用函数、近似重复代码和长期未使用的模块。
+
+- **技术看点**：核心设计是“本地静态二进制 + tree-sitter 多语言 AST + SQLite 持久图谱”，避免依赖 Docker、外部 API 或运行时服务。它还加入了 Hybrid LSP 语义类型解析，覆盖 Python、TypeScript / JavaScript、Go、C/C++、Java、Rust、C#、PHP、Kotlin 等语言，用来补强单纯 AST 在类型和调用解析上的不足。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-06-12，重点不是新增业务功能，而是完善发布、合规和安全链路：包括 PR 校验、CI 取消策略、DCO 提交要求、license gate、provenance audit、ScanCode、SLSA/发布元数据、Windows npm 兼容性等。可以看出项目近期在补齐开源治理、供应链安全和跨平台打包稳定性，版本也同步到了 v0.8.1；40 位贡献者、83 个 open issues 表明社区已有一定参与度，但问题队列也不小。
+
+- **同类对比**：README 明确对比的是传统“逐文件搜索 / 逐文件读取”的 AI 代码探索方式，论文中称相较 file-by-file exploration 可减少 token 和工具调用次数。它的差异点在于先把仓库结构索引成持久知识图谱，再让 MCP 客户端查询，而不是让模型临时 grep 和读取文件；README 未直接点名具体同类开源项目。
+
+- **注意事项**：项目创建时间为 2026-02-24，更新很活跃，但仍属于较新的项目，接口、打包和工作流可能继续快速变化。它会读取本地代码库并写入 agent 配置文件，虽然 README 强调本地处理、发布产物签名和杀毒扫描，但在生产机器上安装前仍建议先审计安装脚本和权限范围。当前 open issues 为 83，说明功能覆盖面广的同时也可能存在兼容性、语言解析或平台边角问题。
+
+- **GitHub**：[DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Martin Vogel 以高星项目 codebase-memory-mcp 为核心形成一定社区影响力，整体属于在 AI 开发工具方向快速获得关注的个人开发者。
+**技术栈偏好**：技术栈以 C 和 Python 为主，偏向构建高性能底层组件与 AI/Claude/MCP 相关工具生态。
+**核心领域**：主要聚焦于 MCP、Claude Code、代码库记忆与 AI 辅助开发基础设施。
+
+---
+
+### ✨ mukul975/Anthropic-Cybersecurity-Skills (17214★)
+
+> **一句话**：把 754 个网络安全实战流程整理成 AI Agent 可读取、可检索、可执行的结构化技能库，让 Claude Code、Codex CLI、Cursor 等代理在安全分析时能按专业分析师的步骤行动。
+
+- **它是什么**：这是一个面向 AI Agent 的网络安全技能库，不是漏洞脚本集合，而是把威胁狩猎、云安全、恶意软件分析、取证、SOC、红队、Web 安全等 26 个安全领域拆成结构化 Markdown 技能。每个技能遵循 `agentskills.io` 标准，并用 YAML frontmatter 做索引和框架映射，方便 Agent 快速发现、选择和执行对应流程。README 中强调所有技能已映射到 MITRE ATT&CK、NIST CSF 2.0、MITRE ATLAS、D3FEND、NIST AI RMF、MITRE F3 等框架。
+- **能解决什么痛点**：通用 LLM 在安全任务中常知道概念但缺少“该先查什么、用什么工具、如何验证”的操作路径，这个库把资深分析师的工作流显式写成可调用技能。另一个痛点是安全团队要同时对齐 ATT&CK、NIST、ATLAS、D3FEND 等框架时映射成本高，该项目把技能和多个框架统一关联，便于检索、审计和合规说明。
+- **适合谁用**：适合正在把 Claude Code、GitHub Copilot、OpenAI Codex CLI、Cursor、Gemini CLI 接入安全工作流的安全工程师和平台团队。也适合做 SOC 自动化、威胁狩猎、云安全响应、GRC 映射的团队，把它作为 AI Agent 的安全知识底座。
+- **怎么上手**：`npx skills add mukul975/Anthropic-Cybersecurity-Skills`
+- **可以用在哪些场景**：可用于 SOC 告警分诊时让 Agent 按技能步骤分析 Kerberoasting、BEC、恶意流量等问题；可用于云安全排查，让 Agent 按 AWS、Azure、GCP 相关技能检查配置、日志和取证线索；也可用于内部安全知识库建设，把 ATT&CK、NIST CSF、D3FEND 等框架映射到团队可执行的分析流程。
+- **技术看点**：项目采用 `agentskills.io` 标准组织技能，核心是“YAML 元数据 + Markdown 执行步骤 + 框架映射”的 AI-native 知识库设计。它的价值不在 Python 代码本身，而在技能索引、跨框架映射和 26+ Agent 平台兼容性。
+- **近期动向与发展方向**：最近提交非常活跃，6 月 20 日集中合并了智能合约安全、GRC、欺骗防御等新技能，并多次自动更新 `index.json`，说明项目正在扩充技能覆盖面和索引数据。6 月初完成全部 754 个技能到 MITRE ATT&CK v19.1 的映射，随后又加入 MITRE Fight Fraud Framework F3，近期重点明显是扩展框架映射、补齐细分安全领域，并吸收社区 PR。
+- **同类对比**：README 明确把自己和传统安全工具仓库区分开：常见仓库提供 wordlist、payload、利用脚本或检测规则，而它提供的是给 AI Agent 使用的结构化分析流程和跨框架映射。暂无 README 中点名的具体竞品项目。
+- **注意事项**：项目创建时间为 2026-02-25，时间较新但增长和提交频率很高，适合关注但仍需在生产环境中验证技能质量和流程适配性。当前有 21 个 open issues、8 位贡献者，社区已有参与但核心维护仍较集中；README 信息量很大，文档质量较好，不过“5 个框架”和“6 个框架”的表述在元数据与 README 之间存在不一致，使用时应以仓库当前 README 和索引文件为准。
+
+- **GitHub**：[mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：在安全与 AI 交叉领域具有较强社区影响力，凭借多个高星 Python 项目形成了明显的技术传播力与话题度。
+**技术栈偏好**：以 Python 为主、辅以 JavaScript，偏向开发安全工具、MCP 服务与面向 AI 安全的应用型项目。
+**核心领域**：主要聚焦网络安全、隐私保护与 AI 安全研究。
+
+---
+
+### ✨ mikumifa/biliTickerBuy (3675★)
+
+> **一句话**：把 B 站会员购票流程中的登录、选票、下单、失败重试等步骤集中到 Python 程序里辅助完成。
+
+- **它是什么**：biliTickerBuy 是面向 B 站会员购的开源免费购票辅助项目，README 明确定位为“简单易用”的个人学习研究项目。它提供安装指南、使用说明书，并围绕会员购下单过程持续维护登录状态、票档选择、项目详情刷新、错误处理等能力。
+- **能解决什么痛点**：适合处理会员购热门票开售时手动刷新、选择票档、提交订单容易错过窗口的问题；也能减少 Cookie、代理、配置文件损坏、旧配置兼容等运行细节导致程序直接崩溃的情况。
+- **适合谁用**：熟悉 Python 环境、愿意按文档配置本地程序的 B 站会员购用户；也适合研究自动化购票流程、请求重试与风控错误处理的 Python 开发者。
+- **怎么上手**：文档未提供快速上手示例；README 指向 `docs/installation.md` 安装指南和飞书使用说明书。
+- **可以用在哪些场景**：个人在本地配置 B 站会员购开票提醒与下单辅助；热门演出或展会开售时提前配置票档、账号与重试策略；研究 B 站会员购流程中的订单创建、项目详情刷新、异常码处理逻辑。
+- **技术看点**：项目使用 Python 实现，并带有 Gradio 相关界面配置；近期提交集中在请求失败快速重试、随机间隔刷新项目详情、429 sleep、412 报错收敛、TinyDB 配置兼容等运行稳定性问题。
+- **近期动向与发展方向**：最近 20 条提交几乎都发生在 2026-06-19 至 2026-06-21，维护非常活跃。开发重点明显放在抢票循环的稳定性、错误提示可读性、异常配置兼容、代理与 Cookie 泄漏修复上，同时有多位贡献者参与，说明社区反馈驱动较强。
+- **同类对比**：README 提到了同作者的 Skill 版本 `mikumifa/biliTickerSkill` 和分布式版本 `mikumifa/biliTickerStorm`；当前项目更像本地单体版本，分布式需求可关注 `biliTickerStorm`。
+- **注意事项**：项目 Stars 较高、Fork 和贡献者数量不少，且 Open Issues 仅 7 个，活跃度和维护状态较好；但它涉及第三方平台购票流程，README 明确声明仅供个人学习与研究使用，禁止商业牟利、代抢、违法行为或违反平台规则。快速上手命令未直接写在 README 首页，需要跳转安装文档和飞书说明，且频繁提交表明接口、风控错误和配置兼容仍在持续调整。
+
+- **GitHub**：[mikumifa/biliTickerBuy](https://github.com/mikumifa/biliTickerBuy)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Qizhuo Xie 是一位具有较高社区关注度的个人开发者，凭借多个高星自动化工具项目在特定垂直场景中形成明显影响力。
+**技术栈偏好**：技术栈以 Python 为核心，同时使用 TypeScript、Go 与 Docker，偏向脚本自动化、Web 工具与部署封装。
+**核心领域**：主要聚焦于 B 站相关业务自动化、抢票/商城工具、聊天机器人部署与实用型效率工具。
+
+---
+
+### ✨ smicallef/spiderfoot (18553★)
+
+> **一句话**：输入域名、IP、邮箱、用户名等目标后，SpiderFoot 会自动串联 200+ OSINT 数据源，生成攻击面、威胁情报和关联关系结果。
+
+- **它是什么**：SpiderFoot 是一个用 Python 3 编写的开源 OSINT 自动化项目，内置 Web UI，也支持完全通过命令行运行。它可以扫描 IP、域名、子域名、ASN、邮箱、手机号、用户名、比特币地址等目标，并通过 200 多个模块从公开数据源、威胁情报源和第三方服务中收集信息。项目还提供 CSV、JSON、GEXF 导出、SQLite 后端、可视化、TOR 集成和 YAML 配置的关联规则引擎。
+- **能解决什么痛点**：安全团队做资产暴露面排查时，不需要手动在 Shodan、HaveIBeenPwned、GreyNoise、证书透明日志、DNS、社交网站等多个来源反复查询。红队或渗透测试前期侦察时，可以把子域名枚举、邮箱提取、泄露数据查询、云存储桶发现、端口与 banner 信息收集放到同一条扫描流程里。
+- **适合谁用**：适合做攻击面管理、威胁情报、渗透测试和红队侦察的安全工程师；也适合需要定期检查组织互联网暴露资产的蓝队、SOC 或安全运营人员。
+- **怎么上手**：`git clone https://github.com/smicallef/spiderfoot.git && cd spiderfoot && pip3 install -r requirements.txt && python3 ./sf.py -l 127.0.0.1:5001`
+- **可以用在哪些场景**：用于公司域名的子域名和证书透明日志发现；用于检查目标邮箱、用户名是否出现在公开泄露或社交平台关联信息中；用于渗透测试前期把 DNS、端口、云存储桶、威胁情报黑名单结果汇总到同一次扫描里。
+- **技术看点**：项目采用模块化的发布/订阅模型，200+ 模块可以相互喂数据，适合把零散 OSINT 查询串成自动化流程。SpiderFoot 4.0 引入 YAML 可配置关联引擎，并提供 37 条预置规则，便于从原始发现结果中提炼关系和风险线索。
+- **近期动向与发展方向**：最近 20 条提交主要集中在 2023 年，内容包括 Web UI 依赖升级、静态资源路径修正、CLI export 命令增强、Google Tag Manager 识别模块、新增和修复 OSINT 模块、类型标注补充、flake8/pytest 流程整理等。近期看不到大规模架构重构，更多是在维护模块兼容性、修复误报、改善导出和测试质量；主要提交者集中在少数维护者，社区贡献有但不算分散。
+- **同类对比**：README 没有明确对标其他开源 OSINT 项目；但官方明确区分了开源版和 SpiderFoot HX，HX 提供云托管、攻击面变更通知、多目标扫描、多用户协作、完整 REST API、第三方工具预装和企业级支持。
+- **注意事项**：项目从 2012 年持续至今，成熟度较高，Star 和 Fork 数说明使用面较广；但当前仍有 266 个 open issues，实际使用前需要评估模块可用性和维护响应。README 建议优先使用稳定发布版，因为 master 分支可能包含尚未充分测试的新模块或前沿功能；另外许多外部数据源需要 API key，部分服务只有免费额度或商业接口。
+
+- **GitHub**：[smicallef/spiderfoot](https://github.com/smicallef/spiderfoot)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Steve Micallef 凭借高星 Python 项目 spiderfoot 在安全与情报收集社区具备较强影响力。
+**技术栈偏好**：技术栈明显偏向 Python，主要用于自动化、数据采集与安全分析工具开发。
+**核心领域**：主要聚焦 OSINT、网络安全侦察与开源情报自动化分析。
+
+---
+
+### ✨ topoteretes/cognee (18390★)
+
+> **一句话**：Cognee 把文档、会话偏好和业务数据持续写入自托管知识图谱，让 AI Agent 在多次会话之间记住上下文并按关系检索。
+
+- **它是什么**：Cognee 是面向 AI Agent 的开源长期记忆平台，核心能力是摄取多格式数据，生成可自托管的知识图谱，并结合向量检索与图推理提供记忆召回。它提供 Python API 和 CLI，围绕 `remember`、`recall`、`forget`、`improve` 四个操作组织使用流程，也支持本地 UI、Cognee Cloud 和 Claude Code 插件集成。
+- **能解决什么痛点**：一是 Agent 每次会话都从零开始，无法记住用户偏好、历史操作和业务上下文；二是企业知识分散在文档、客服记录、SQL 查询、产品历史等来源中，单纯向量库难以表达实体关系、时间线和可追溯的决策依据。
+- **适合谁用**：适合正在构建客服 Agent、企业知识库 Agent、SQL Copilot 等应用的 Python / AI 工程师；也适合希望给 Claude Code 或自研 Agent 加长期记忆的团队。
+- **怎么上手**：安装可用 `uv pip install cognee`；最小使用方式是先设置 `LLM_API_KEY`，再调用 `await cognee.remember("Cognee turns documents into AI memory.")` 和 `await cognee.recall("What does Cognee do?")`。
+- **可以用在哪些场景**：可用于客服 Agent 读取用户账单、工单和产品历史后给出连续性答复；可用于 SQL Copilot 复用资深分析师的查询模式和 schema 经验；可用于 Claude Code 会话，把工具调用、用户偏好和上下文压缩前的信息保存到长期记忆。
+- **技术看点**：项目将向量 embeddings、知识图谱关系建模、图推理和 ontology generation 组合在一起，不只是做语义相似度搜索。README 还提到支持本地运行、多租户隔离、OTEL collector、审计特征和多种部署方式，对企业自托管有一定参考价值。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-06-21，包含 `Release V1.2.0`、Swagger 修复、版本更新、LLM embedding 输入过长处理、重试次数限制、测试数据集和访问控制相关调整，说明项目近期处于高频发布和稳定性修复阶段。提交中也出现社区贡献者 CI 相关内容，结合 185 位贡献者和 103 个 open issues，看起来社区活跃，但维护压力也不低。
+- **同类对比**：README 未明确列出竞品；从定位看，它更强调“Agent 长期记忆 + 自托管知识图谱”，而不是单纯替代向量数据库或 RAG 框架。
+- **注意事项**：项目创建于 2023 年，Star 和贡献者数量较高，更新频繁，但近期提交集中在修 Swagger、测试和 LLM 边界问题，说明 API 与工程稳定性仍在快速打磨。上手需要配置 LLM Provider，本地 UI 的 MCP server 依赖 Docker；如果用于生产环境，建议重点评估版本升级兼容性、多用户隔离、数据删除语义和图谱存储成本。
+
+- **GitHub**：[topoteretes/cognee](https://github.com/topoteretes/cognee)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Topoteretes 以 `cognee` 等高星项目在 AI 记忆与知识工程社区具备较强可见度，属于该细分方向的活跃组织型贡献者。
+**技术栈偏好**：以 `Python` 为绝对主语言，辅以少量 `HTML`，技术方向明显偏向 AI 应用、知识管理与后端工程。
+**核心领域**：主要聚焦于可学习的知识引擎、AI 记忆系统以及相关生态工具与集成。
+
+---
+
+### ✨ byoungd/English-level-up-tips (53866★)
+
+> **一句话**：这是一份从学习观念、词汇、听说读写到 AI 辅助训练都覆盖到的英语进阶长文档，像一本持续更新的在线英语学习手册。
+
+- **它是什么**：这是一个以 Markdown 文档为主体的英语学习指南，内容按“理解、词汇、听力、阅读、口语、写作、AI、单词表、杂项”等章节组织。README 中还提供了中文、英文两个入口，并支持通过 GitHub Pages、GitBook、知乎专栏等方式在线阅读。
+- **能解决什么痛点**：它主要解决英语学习者“不知道按什么顺序练听说读写”“只会背单词但缺少完整训练回路”的问题。新版 AI 章节还专门讨论如何把 Gemini、ChatGPT、Claude、Perplexity、DeepL Write 等工具分工用于英语训练，而不是只把 AI 当翻译器。
+- **适合谁用**：适合准备系统补英语基础、提升听说读写能力的中文学习者；也适合想把 AI 工具纳入日常英语训练流程的学生、职场人士和自学者。
+- **怎么上手**：文档未提供快速上手示例；最直接的方式是打开 GitHub Pages 在线阅读：`https://byoungd.github.io/English-level-up-tips/#/`。
+- **可以用在哪些场景**：可用于自学英语时制定阶段性学习路线；可用于备考托福、雅思或日常英语能力提升前梳理训练方法；也可作为 AI 辅助英语学习的参考清单，设计听说读写的长期练习流程。
+- **技术看点**：项目本质是文档型知识库，没有应用代码或明确技术栈；有参考价值的是它用 Markdown 章节化组织内容，并同时维护中文与英文阅读入口，适合长期沉淀学习方法论。
+- **近期动向与发展方向**：最近 20 条提交集中在 README 文案、导航补全、错别字修正、AI 章节更新和外部资源推荐，说明项目仍在维护，但近期重点更偏内容更新和主页运营信息，而不是结构性重写。社区贡献仍有参与，近期多个 docs 修正来自不同贡献者。
+- **同类对比**：README 没有明确列出同类项目或竞品；与一般英语资料集合相比，它更强调作者个人学习经验、完整训练路线和 AI 工具在英语学习中的具体分工。
+- **注意事项**：项目创建于 2017 年，Star 和 Fork 数都很高，成熟度和传播度较强；但它不是可安装的软件库，无法通过测试覆盖率或版本发布来判断质量。近期 README 中加入了较多个人动态、社交账号和资源推荐内容，读者需要自行区分英语学习正文与作者近况、推广信息。
+
+- **GitHub**：[byoungd/English-level-up-tips](https://github.com/byoungd/English-level-up-tips)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Leap 离谱在中文开发者社区具备较强内容传播力，代表仓库以高星学习与职业成长资源为主，影响力偏向知识分享型开发者。
+**技术栈偏好**：主要语言为 TypeScript，技术方向偏前端工程化、Vue 模板与轻量级 Web/小程序实践。
+**核心领域**：主要聚焦开发者成长、编程学习资源、前端项目模板与 AI 资源聚合。
+
+---
+
+### ✨ asgeirtj/system_prompts_leaks (43995★)
+
+> **一句话**：集中整理 Claude、ChatGPT、Gemini、Grok、Copilot、Cursor 等 AI 产品被提取出的系统提示词，并按厂商、模型、版本持续更新。
+
+- **它是什么**：这是一个面向 AI 系统提示词的公开资料库，README 按 Anthropic、OpenAI、Google、Microsoft、xAI、Perplexity 等厂商分类索引具体 Markdown 文件。内容覆盖 Claude Fable 5、Claude Code、GPT-5.5 Codex、Gemini 3.5 Flash、VS Code Copilot Agent 等模型和产品形态，并包含部分版本差异、官方发布版本、工具提示词和集成场景提示词。
+- **能解决什么痛点**：开发者和研究者想比较不同 AI 产品的系统层行为规则时，不必到处翻截图、帖子和零散泄露文本；做提示词工程、安全评估或产品竞品分析时，可以直接查看不同模型在工具调用、语气、策略和边界条件上的具体写法。
+- **适合谁用**：适合做 LLM 应用、Agent、Copilot 类产品的工程师和产品研发；也适合研究模型行为、提示词注入、防越狱和 AI 安全策略的研究者。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：用于对比 Claude Code、Codex、Gemini CLI 等编程 Agent 的系统指令设计；用于分析 ChatGPT、Claude、Gemini 在工具使用、记忆、搜索、图像安全等功能上的约束差异；用于做 AI 产品竞品调研，跟踪新模型发布后系统提示词的变化。
+- **技术看点**：项目本体更像结构化知识库而不是传统 JavaScript 工具库，核心价值在于按厂商、模型、版本和产品集成形态组织大量 Markdown/JSON 提示词材料。近期还加入了流量看板、GitHub Stars 追踪和页面趋势统计，说明维护者在强化资料库的传播和访问数据分析能力。
+- **近期动向与发展方向**：最近 20 条提交高度活跃，集中在新增 Codex、Copilot macOS、Claude Design、Claude Code、Opus 4.8 等提示词提取，以及完善 stars/traffic dashboard。提交主要来自项目维护者 Ásgeir Thor Johnson，说明当前演进重点是快速跟进主流 AI 产品新版本，同时补齐访问趋势和星标增长监控。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：这是 2025 年创建、更新频繁的资料型项目，Star 和 Fork 很高，但内容来源多为“提取”材料，使用时需要自行判断真实性、时效性和合规边界。项目已有 27 个 open issues、21 位贡献者，社区关注度高，但不同文件的准确度、完整性和是否仍适用于当前线上模型都需要逐条核验。
+
+- **GitHub**：[asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有高关注度爆款仓库，主要影响力集中在 AI 安全、提示词泄露与大模型应用社区。
+**技术栈偏好**：以 JavaScript 和 TypeScript 为主，偏向 Web 生态、AI 工具链与大模型相关项目整合。
+**核心领域**：主要聚焦生成式 AI、系统提示词研究、LLM 应用开发与模型交互工具。
+
+---
+
+### ✨ mattpocock/skills (132748★)
+
+> **一句话**：把 Matt Pocock 日常用于 Claude Code、Codex 等编码 Agent 的工程工作流，整理成可安装、可组合、可改造的一组“技能指令”。
+
+- **它是什么**：这是一个面向 AI 编码 Agent 的技能集合，核心内容不是传统 Shell 程序，而是一套围绕真实软件工程流程编写的指令、文档和工作流模板。它覆盖需求澄清、PRD 生成、Issue 拆分、TDD、调试、架构改进、上下文交接、教学等场景，目标是让开发者在使用 Agent 写代码时仍然保留工程控制权。
+- **能解决什么痛点**：一是 Agent 经常没真正理解需求，直接开写后产出和预期偏差很大，项目通过 `/grill-me`、`/grill-with-docs` 让 Agent 先追问和澄清。二是 Agent 容易写出能跑但难维护的代码，项目用 `/tdd`、`/diagnose`、`/improve-codebase-architecture` 等技能把测试反馈、调试流程和架构复盘固定下来。
+- **适合谁用**：适合已经在日常开发中使用 Claude Code、Codex 或类似编码 Agent 的全栈、前端、后端工程师。也适合想把团队工程习惯沉淀成可复用 Agent 指令的技术负责人或独立开发者。
+- **怎么上手**：`npx skills@latest add mattpocock/skills`
+- **可以用在哪些场景**：
+  - 在实现新功能前运行 `/grill-with-docs`，让 Agent 先围绕现有领域模型、术语和 ADR 追问清楚，再开始写 PRD 或代码。
+  - 修复复杂 Bug 时使用 `/diagnose`，按复现、最小化、假设、加日志或探针、修复、回归测试的顺序推进。
+  - 接手一段陌生代码或准备重构时使用 `/zoom-out` 和 `/improve-codebase-architecture`，让 Agent 从系统层面解释代码并寻找模块边界问题。
+- **技术看点**：项目强调“小而可组合”的技能设计，不试图接管完整开发流程，而是把工程实践拆成可插拔的 Agent 指令。它还把共享语言、`CONTEXT.md`、ADR、Issue 状态机等软件工程文档纳入 Agent 工作流，减少 Agent 在项目语境中的误读。
+- **近期动向与发展方向**：近期提交主要集中在教学类技能 `/teach` 的新增和打磨，包括课程指南、测验答案长度、长期记忆策略、引用来源、交互式教学体验等内容，说明项目正在从编码辅助扩展到“多轮技能教学”场景。提交频率在 5 月下旬到 6 月上旬较高，但主要由 Matt Pocock 一人维护，社区协作规模目前较小。
+- **同类对比**：README 明确提到 GSD、BMAD、Spec-Kit 等方案，差异在于这些方案更倾向于接管流程，而 mattpocock/skills 更强调开发者保留控制权，通过小型、可修改、可组合的技能改造自己的 Agent 工作方式。
+- **注意事项**：项目 Star 数很高，但创建时间较新，Contributor Count 只有 2，长期维护稳定性还需要继续观察。Open Issues 为 79，说明使用者反馈不少；同时这些技能偏工作流和提示工程，效果会受具体 Agent、项目上下文和使用者执行习惯影响，不应当期待安装后自动解决所有工程质量问题。
+
+- **GitHub**：[mattpocock/skills](https://github.com/mattpocock/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Matt Pocock 是 TypeScript 社区的高影响力开发者与教育者，凭借 Total TypeScript 及多个高星项目在前端工程领域具备显著号召力。
+**技术栈偏好**：其技术栈明显偏向 TypeScript 与 Shell，重点围绕类型系统增强、开发者工具、代码学习与工程效率建设。
+**核心领域**：主要聚焦 TypeScript 教育、类型安全实践、前端开发者工具链以及 AI 编码辅助知识体系。
