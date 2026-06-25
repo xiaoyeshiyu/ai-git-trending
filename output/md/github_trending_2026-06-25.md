@@ -1,5 +1,29 @@
-## 今日热点：AI Agent 加速渗透开发、设计、运维与行业工作流
-今天的热门项目集中体现了 AI Agent 从单点辅助走向系统化生产力平台的趋势：既有 OpenMontage 将视频生产拆解为多流水线、多工具、多技能的智能工作室，也有 hiring-agent、daily_stock_analysis、hermes-agent 面向招聘评估、股票分析与个人成长型智能体等垂直场景；开发侧则出现了网站克隆、并行编码 Agent 编排、领域 Agent 团队生成、设计系统描述规范等工具，配合 Apple 面向 Mac 轻量虚拟机容器、Flutter 跨端框架、Android Auto 车机应用、Git 推送防错与网络访问相关工具，显示出 AI 正在与基础设施、前端体验、自动化流程和日常工程实践深度融合。具体项目摘要如下：
+## 今日热点：AI Agent 工程化加速落地
+今天的 GitHub 热门项目集中展现了 AI Agent 从“会写代码”走向“可组织生产”的趋势：既有面向编码代理的设计系统规范、Claude Code 最佳实践、CEO/设计/工程/发布/文档/QA 等角色化工具栈，也有视频生产、网站克隆、网页 GUI 操控、AWS 构建、网络安全技能库、投资研究等垂直场景的 Agent 化方案；同时，文档解析、容器运行、个人云、旅行协作规划、媒体数据采集与 IPTV 资源等基础设施和应用项目也在补齐 Agent 工作流所需的数据、运行环境与生活化入口，整体热点指向更结构化、更专业化、更贴近真实任务闭环的 AI 原生工具生态，具体项目摘要如下：
+
+### ✨ google-labs-code/design.md (16610★)
+
+> **一句话**：DESIGN.md 用一份带 YAML 设计令牌和 Markdown 设计说明的文件，让编码 Agent 稳定理解品牌颜色、字体、间距、组件样式和使用原则。
+
+- **它是什么**：这是 Google Labs Code 推出的视觉身份描述规范，核心是把机器可读的设计 tokens 放在 YAML front matter，把人类可读的设计理念写在 Markdown 正文里。它还提供 TypeScript CLI，可对 `DESIGN.md` 做 lint、diff、export 和 spec 输出，检查 token 引用、WCAG 对比度、章节顺序，并导出 Tailwind 或 DTCG 格式。
+- **能解决什么痛点**：很多编码 Agent 只能从截图、零散 CSS 或口头描述里猜设计系统，容易生成颜色、字号、按钮样式不一致的 UI；DESIGN.md 把精确值和设计理由放在同一个文件里，减少 Agent “自作主张”。另一个痛点是设计系统变更难以审查，它的 `diff` 可以比较两个版本的 token 和文案变化，帮助发现设计回退。
+- **适合谁用**：适合正在把 AI 编码 Agent 接入前端开发流程的团队，尤其是需要让 Agent 生成统一品牌 UI 的产品工程团队。也适合维护设计系统、Tailwind 主题或设计 tokens 的前端基础设施工程师。
+- **怎么上手**：`npx @google/design.md lint DESIGN.md`
+- **可以用在哪些场景**：为内部产品准备一份 `DESIGN.md`，让 Cursor、Codex 类编码 Agent 生成符合品牌规范的页面；在 PR 中用 `diff` 检查设计 token 是否被误删或改坏；把 `DESIGN.md` 导出为 Tailwind v3/v4 或 DTCG tokens，接入现有前端主题体系。
+- **技术看点**：它采用“YAML tokens + Markdown rationale”的双层结构，既能给程序稳定解析，也能保留设计意图。CLI 侧支持 lint 规则、结构化 JSON 输出、Tailwind v4 CSS 变量导出和 W3C DTCG 格式，说明它不只是文档规范，也在考虑与现有设计 token 生态互通。
+- **近期动向与发展方向**：近期提交非常集中，6 月发布了 `0.3.0`，重点在 lint 规则、YAML/frontmatter 兼容性、Windows 使用体验和文档完善。最近新增了未知顶层 key 检查、疑似被忽略 token 的规则，并修复了布尔值、数字值、嵌套 token、非字符串 YAML 属性等解析问题，说明项目正在从概念规范快速补齐真实文件解析中的边界情况。贡献者数量 17、近期多人提交，社区参与度不错，但仍处于 alpha 阶段。
+- **同类对比**：README 明确提到 DESIGN.md tokens 受 W3C Design Token Format 启发，并支持导出 DTCG；差异在于它不只描述 token 值，还把给编码 Agent 使用的设计说明和章节结构纳入规范。暂无看到与某个具体竞品项目的直接对标。
+- **注意事项**：项目创建时间较新，README 也标明格式仍是 `alpha`，后续 schema、规则和导出格式存在变动风险。文档覆盖较完整，包含规范、CLI、Windows 注意事项和 lint 规则，但生产环境接入前仍建议锁定版本，并在 CI 中固定 lint/export 行为。当前 open issues 为 18，结合高更新频率看，项目活跃但还在快速打磨期。
+
+- **GitHub**：[google-labs-code/design.md](https://github.com/google-labs-code/design.md)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Google Labs Code 作为新兴官方实验型组织，凭借多个高星项目在开发者工具与 AI 编程生态中具备较强关注度和扩散力。
+**技术栈偏好**：主要以 TypeScript 为核心技术栈，偏向构建前端交互、SDK、自动化集成与开发者工具类项目。
+**核心领域**：主要聚焦 AI 辅助开发、设计到代码、智能编程工作流与开发者生产力工具。
+
+---
 
 ### ✨ calesthio/OpenMontage (4928★)
 
@@ -25,83 +49,86 @@
 
 ---
 
-### ✨ ZhuLinsen/daily_stock_analysis (43833★)
+### ✨ xbtlin/ai-berkshire (1464★)
 
-> **一句话**：它把多市场行情、新闻舆情和大模型分析串成一条自动化流水线，每天定时生成自选股决策仪表盘，并推送到企业微信、飞书、Telegram 等渠道。
+> **一句话**：把巴菲特、芒格、段永平、李录的投资方法拆成 Claude Code 可调用的研究流程，让一个人用多 Agent 跑出结构化投研报告。
 
-- **它是什么**：这是一个用 Python 写的股票智能分析系统，覆盖 A 股、港股、美股、日股和韩股，核心是把行情、技术指标、新闻、公告、资金流等信息喂给 LLM，再输出带评分、买卖点、风险提示和催化因素的分析报告。README 里还提供了 Web 工作台、历史报告、回测、持仓管理、策略问股和自动通知，说明它不只是“跑一份日报”，而是一套可长期运行的股票分析工作台。
-- **能解决什么痛点**：一是把分散在行情源、新闻搜索、公告和社交舆情里的信息集中起来，避免人工每天来回切换网站做盘前/盘后检查；二是把“看完新闻后怎么形成结论”这一步标准化成可复用的决策报告，减少靠经验手工写分析的时间成本。
-- **适合谁用**：适合需要每天盯自选股的个人投资者，也适合做量化研究、投研辅助或财经内容自动化输出的 Python 用户；如果你在做企业内部的行情看板、投资组合监控或消息推送系统，这个项目也有直接参考价值。
-- **怎么上手**：README 给出的最小本地运行方式是 `git clone https://github.com/ZhuLinsen/daily_stock_analysis.git && cd daily_stock_analysis && pip install -r requirements.txt && cp .env.example .env && python main.py`。
-- **可以用在哪些场景**：每天收盘后自动生成自选股复盘并推送到飞书/企业微信；给投研团队做多市场股票的统一监控面板；把新闻、公告和技术指标合并成标准化日报，供群聊或邮件分发。
-- **技术看点**：项目同时支持 GitHub Actions、Docker、本地定时任务和 FastAPI 服务，说明它把“零成本定时运行”和“可部署性”作为核心设计目标。数据源和模型适配面也比较广，既支持云端大模型，也支持 OpenAI 兼容、DeepSeek、通义千问、Claude 和 Ollama 本地模型。
-- **近期动向与发展方向**：最近 20 条提交几乎都集中在 2026-06-17 到 2026-06-21，活跃度很高，且以功能增强和修复并进为主。开发重点明显在“DecisionSignal 决策信号”链路上：包括信号展示、回填、后验验证、风险关联、AI 页面限制展示，以及把情报源注入分析上下文；同时还在补日股/韩股支持、自动补全和历史摘要兼容性，说明项目正从单纯报告生成，向更完整的多市场智能分析平台演进。
-- **同类对比**：README 明确提到了同系列项目 `AlphaSift` 和 `AlphaEvo`，其中前者偏多因子选股和全市场扫描，后者偏策略回测与自我进化，而 `daily_stock_analysis` 更聚焦日常分析报告、仪表盘和通知联动。和这两者相比，它更像“输出层”和“日常运营层”。
-- **注意事项**：项目功能面很广，涉及多市场数据、多个模型供应商和多种通知渠道，上手时需要配置不少环境变量和 Secret，初次部署的复杂度不低。仓库目前已有 4 万+ stars、4 万+ forks、86 位贡献者和 29 个 open issues，说明热度高、迭代活跃，但也意味着接口和配置规则可能会持续变化，适合关注文档和版本更新后再做稳定集成。
+- **它是什么**：AI Berkshire 是一套面向 Claude Code 的投资研究 Skill 集合，核心是把价值投资研究拆成固定流程和命令入口，比如 `/investment-research`、`/investment-team`、`/industry-funnel`、`/portfolio-review` 等。它不是简单让 AI 写一篇股票分析，而是要求多视角并行研究、交叉验证财务数据、输出明确结论、价格区间和风险判断。README 中还展示了实盘收益记录、四大师视角对抗、信息置信度评级、快速否决清单等机制。
 
-- **GitHub**：[ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)
+- **能解决什么痛点**：直接问 LLM 分析股票时，常见问题是结论含糊、格式不稳定、数据计算容易出错，最后很难用于真实决策。这个项目把投研流程固定成可复用 Skill，并通过多 Agent、反向检验、财务数据校验等方式，减少“看起来很完整但无法落地”的 AI 分析。
+
+- **适合谁用**：适合已经在使用 Claude Code、希望把 AI 纳入投资研究流程的个人投资者或研究员。也适合想搭建内部投研模板库、需要批量分析公司、行业、财报和持仓组合的金融内容创作者或投研团队。
+
+- **怎么上手**：`git clone https://github.com/xbtlin/ai-berkshire.git && cp ai-berkshire/skills/*.md ~/.claude/commands/`，然后在 Claude Code 中调用 `/investment-team 美团` 或 `/investment-research 腾讯`。
+
+- **可以用在哪些场景**：
+  1. 对单家公司做深度研究，例如从商业模式、护城河、管理层、估值和风险角度分析腾讯、美团、拼多多。
+  2. 做行业漏斗筛选，例如从 AI 算力、核电、白酒、半导体产业链中筛出少数值得继续研究的标的。
+  3. 管理已有投资组合，例如用 `/portfolio-review` 检查仓位集中度、再平衡逻辑和投资论文是否被证伪。
+
+- **技术看点**：项目的核心设计不是模型微调，而是基于 Claude Code commands 的流程工程：用 16 个 Skill 固化投研入口，再用多 Agent 并行模拟不同研究角色。财务严谨性方面，README 明确提到使用 Python `decimal.Decimal` 做精确十进制计算，并要求关键数据至少两个独立来源交叉验证。
+
+- **近期动向与发展方向**：最近提交非常活跃，6 月 25 日一天内有大量报告新增、目录整理和“瓶颈猎手”扫描日报更新，说明项目当前重点在持续产出投资研究报告和行业/个股跟踪内容。提交中多次出现 Claude 生成的扫描记录，也能看出作者正在把该框架用于高频市场观察；同时有 PR 合并和报告迁移，社区已有少量外部贡献，但核心维护仍明显集中在主作者及 Claude 辅助流程上。
+
+- **同类对比**：README 明确对比的是“直接问 Claude 分析股票”的方式。AI Berkshire 的差异在于强制输出明确投资结论、固定研究结构、引入四大师视角对抗、多 Agent 并行和财务校验，而不是每次生成一篇风格不稳定的通用分析。
+
+- **注意事项**：项目创建时间较新，但更新频率很高，Stars 增长较快；目前有 11 个 open issues、5 位贡献者，仍处于快速演进阶段。它依赖 Claude Code 的使用环境，且研究框架本身不等于投资建议，README 虽展示实盘收益，但历史收益不能代表未来表现。由于近期提交中包含大量报告和扫描内容，仓库可能兼具“工具框架”和“投研内容库”两种属性，使用前最好先区分自己需要的是 Skill 模板还是具体研究报告。
+
+- **GitHub**：[xbtlin/ai-berkshire](https://github.com/xbtlin/ai-berkshire)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有近千关注者与高星项目，属于在开源社区具备较强可见度和实用项目影响力的个人开发者。
-**技术栈偏好**：以 Python 为核心语言，偏好围绕 LLM、AIGC、数据分析与智能体方向构建工具型项目。
-**核心领域**：主要聚焦人工智能应用、金融数据分析、智能体系统与机器人相关技术探索。
+**技术影响力**：拥有一个高关注度 AI 投资项目，整体影响力集中在 LLM 与投资交叉方向的小众但明确社区中。
+**技术栈偏好**：主要使用 Python 和 Java，偏好 AI 应用、工程学习资料与经典编程体系沉淀。
+**核心领域**：主要聚焦于大语言模型、价值投资以及工程师成长学习资源。
 
 ---
 
-### ✨ apple/container (28358★)
+### ✨ mauriceboe/TREK (6100★)
 
-> **一句话**：在 Apple Silicon Mac 上直接拉取、构建、运行 OCI 镜像，并把每个 Linux 容器放进轻量虚拟机里执行。
+> **一句话**：把多人旅行计划、地图路线、预算分摊、行李清单、票据文档和旅行日志都放到自己服务器上的协作式行程系统。
 
-- **它是什么**：`container` 是 Apple 用 Swift 编写的容器运行工具，面向 Apple Silicon Mac 优化。它可以消费和产出 OCI 兼容镜像，因此能从标准容器镜像仓库拉取镜像，也能把本地构建的镜像推送回仓库，并在其他 OCI 兼容环境中运行。底层依赖 Apple 的 `Containerization` Swift 包来处理容器、镜像和进程管理。
+- **它是什么**：TREK 是一个自托管旅行 / 行程规划应用，支持多人实时协作编辑行程、在交互式地图上组织地点、按天规划路线，并管理住宿、航班、餐厅等预订信息。它还内置预算分摊、打包清单、文档附件、旅行日志、PWA 离线使用、OIDC 单点登录、2FA、Passkeys，以及面向 AI 助手的 MCP 服务。
+- **能解决什么痛点**：多人出行时，Google Maps 收藏、Excel 预算、聊天记录、PDF 机票和行李清单经常散落在不同地方，TREK 把这些内容集中到一个可协作的旅行工作台里。对重视数据归属的用户来说，它支持 Docker / Helm 自托管，不必把完整行程、证件文档和消费记录交给第三方 SaaS。
+- **适合谁用**：适合经常组织家庭旅行、朋友团建或小团队出差的人，尤其是希望多人一起维护行程和费用的人。也适合有自托管习惯的开发者、Homelab 用户和需要 OIDC / 反向代理 / Kubernetes 部署的运维用户。
+- **怎么上手**：最快方式是 Docker 运行：`ENCRYPTION_KEY=$(openssl rand -hex 32) docker run -d -p 3000:3000 -e ENCRYPTION_KEY=$ENCRYPTION_KEY -v ./data:/app/data -v ./uploads:/app/uploads mauriceboe/trek`
+- **可以用在哪些场景**：搭建家庭或朋友旅行的共享行程面板，集中维护每天路线、地点、住宿和费用；为公司小团队出差部署内部旅行计划系统，接入 OIDC 后用统一账号登录；给 Homelab 用户部署一个替代零散表格、地图收藏和聊天记录的自托管旅行档案库。
+- **技术看点**：技术栈以 TypeScript 为主，后端使用 NestJS 11，前端使用 React 19、Vite、Zustand 和 Tailwind，实时同步通过 WebSocket 实现。地图层同时覆盖 Leaflet / Mapbox GL，认证体系包含 JWT、OAuth 2.1、OIDC、WebAuthn Passkeys 和 TOTP MFA，部署侧提供 Docker 与 Helm 支持。
+- **近期动向与发展方向**：最近提交非常活跃，6 月 20 日到 25 日连续有修复、CI 调整、文档补充和版本发布。开发重点集中在稳定性和运维可用性上，例如修复测试内存泄漏、CI OOM、地图路线绘制、费用记录、打包分类、OIDC 管理员权限保护，以及完善环境变量和 kitinerary 安装文档；同时也在继续补功能，如恢复 Google Maps 路线导出、Helm PVC annotations 支持。
+- **同类对比**：README 没有明确点名竞品。它更像把旅行规划、Splitwise 式费用分摊、地图收藏、旅行日志和自托管账号体系整合到一个系统里，而不是单独替代某一个地图或记账应用。
+- **注意事项**：项目创建时间较新，但已经有 6100 stars、45 位贡献者和近期密集提交，热度和维护活跃度都比较高；同时功能面很宽，首次部署时需要认真配置 `ENCRYPTION_KEY`、数据卷、反向代理、OIDC、邮件等环境变量。当前 Open Issues 为 17，问题数量不高，但最近多次修复 CI 内存和测试问题，说明项目仍在快速迭代，生产使用前建议固定版本并关注 release notes。
 
-- **能解决什么痛点**：在 macOS 上跑 Linux 容器时，开发者通常要依赖较重的虚拟化封装；这个项目把容器直接映射到轻量 Linux VM，适合需要更贴近系统虚拟化能力的本地容器运行场景。它也解决了 Mac 本地开发与 OCI 镜像生态衔接的问题：镜像可以从标准 registry 拉取、构建、推送，不需要脱离现有容器分发流程。
+- **GitHub**：[mauriceboe/TREK](https://github.com/mauriceboe/TREK)
 
-- **适合谁用**：适合使用 Apple Silicon Mac 做后端、本地基础设施或容器镜像开发的工程师。也适合关注 macOS 虚拟化、容器运行时、Swift 系统软件方向的开发者和平台工程团队评估。
+#### 开发者 / 组织速览
 
-- **怎么上手**：安装 GitHub Release 中的签名安装包后，启动系统服务：`container system start`
+**技术影响力**：Maurice 以高星 TypeScript 项目 TREK 获得显著关注，属于小规模仓库但单项目影响力突出的独立开发者。
+**技术栈偏好**：主要使用 TypeScript，辅以 Python，偏向前端/应用型工程与轻量工具开发。
+**核心领域**：核心聚焦在 TypeScript 应用项目开发，可能围绕交互式工具、媒体或产品化应用展开。
 
-- **可以用在哪些场景**：本地运行 Linux 服务镜像，例如数据库、API 服务或 CLI 工具镜像；在 Mac 上构建并推送 OCI 镜像到标准容器仓库；评估 Apple Silicon/macOS 26 上基于轻量虚拟机的容器运行方案。
+---
 
-- **技术看点**：项目使用 Swift 编写，并针对 Apple Silicon 与 macOS 26 的虚拟化、网络能力做了优化。它采用 OCI 镜像标准，避免锁定在自定义镜像格式里，便于和现有容器 registry、构建发布流程衔接。
+### ✨ apple/container (42770★)
 
-- **近期动向与发展方向**：最近提交非常密集，6 月 4 日到 9 日连续合入功能、文档、CI 和兼容性修复。重点方向包括新增 `container machine` 用于管理持久化 Linux VM、补充独立文档和示例、调整 image JSON/YAML/TOML 输出、修复 Swift 6.2 下测试崩溃，并升级底层 `containerization` 到 `0.33.4`。从 91 位贡献者和近期提交看，项目仍处在快速演进阶段，不只是维护修 bug。
+> **一句话**：在 Apple Silicon Mac 上用轻量级虚拟机直接拉取、构建、运行 Linux 容器，并保持 OCI 镜像兼容。
 
-- **同类对比**：README 没有明确点名 Docker Desktop、Podman Desktop 等竞品；明显差异在于它是 Apple 官方开源、Swift 实现，并把 Linux 容器运行在 Apple Silicon Mac 的轻量虚拟机之上。除此之外暂无明确同类对标。
-
-- **注意事项**：项目创建于 2025-05-30，当前明确标注仍在 active development，1.0.0 前小版本可能包含破坏性变更，稳定性只保证在 patch 版本内。运行要求较高：需要 Apple Silicon Mac，并且只支持 macOS 26；旧版 macOS 上的问题维护者通常不会处理。当前 open issues 为 294，说明关注度高但也有不少待解决问题，适合尝鲜和评估，生产依赖前需要谨慎验证。
+- **它是什么**：`apple/container` 是 Apple 开源的容器运行项目，用 Swift 编写，面向 Apple Silicon Mac 优化。它可以在 macOS 上通过轻量级 Linux 虚拟机运行容器，同时支持拉取、构建、推送 OCI 兼容镜像，镜像可与标准容器仓库和其他 OCI 应用互通。
+- **能解决什么痛点**：解决 macOS 本机无法直接运行 Linux 容器、必须依赖较重虚拟化方案的问题；也适合需要在 Mac 上构建并验证标准 OCI 镜像，但又希望更贴近 Apple 平台虚拟化能力的开发场景。
+- **适合谁用**：使用 Apple Silicon Mac 做后端、基础设施或容器镜像开发的工程师；关注 macOS 原生虚拟化、容器运行时和 OCI 镜像生态的系统开发者。
+- **怎么上手**：从 GitHub Releases 下载签名安装包后安装，并运行 `container system start` 启动系统服务。
+- **可以用在哪些场景**：在 Mac 本地拉取并运行 Linux 服务镜像做开发调试；构建 Web 服务镜像后推送到标准容器仓库；在 Apple Silicon 开发机上管理持久 Linux VM，用于更稳定的容器实验环境。
+- **技术看点**：项目基于 Swift 实现，并依赖 Apple 的 `Containerization` Swift 包处理底层容器、镜像和进程管理。它选择用轻量级虚拟机承载 Linux 容器，而不是尝试在 macOS 上直接模拟 Linux 容器语义。
+- **近期动向与发展方向**：最近提交非常活跃，重点集中在稳定性修复、网络服务健壮性、路径处理、权限传播、CI 适配和 `container machine` 能力建设。6 月新增了持久 Linux VM 管理、嵌套虚拟化和相关文档，说明项目正在从基础容器运行扩展到更完整的本地虚拟化容器环境。
+- **同类对比**：README 未明确点名竞品；从定位看，它更强调 Apple Silicon、macOS 26 新虚拟化/网络能力和 OCI 兼容，而不是通用跨平台容器桌面方案。
+- **注意事项**：目前项目创建时间较短，README 明确说明仍处于活跃开发阶段，1.0.0 前小版本可能包含破坏性变更。运行要求较高：需要 Apple Silicon Mac，并且仅支持 macOS 26；当前 open issues 达 393 个，说明社区反馈多、演进快，但生产稳定性需要谨慎评估。
 
 - **GitHub**：[apple/container](https://github.com/apple/container)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Apple 在 GitHub 上具备极高技术影响力，凭借系统级、AI 与基础设施项目持续吸引开发者关注。
-**技术栈偏好**：技术栈以 C++、Swift、Python 为主，偏向高性能底层工程、苹果生态开发与机器学习工具链。
-**核心领域**：主要聚焦操作系统与开发者工具、机器学习、数据库基础设施及现代应用运行环境。
-
----
-
-### ✨ interviewstreet/hiring-agent (1802★)
-
-> **一句话**：把候选人的 PDF 简历解析成结构化数据，再结合 GitHub 贡献信号，用 LLM 生成带证据和扣分项的评分报告。
-
-- **它是什么**：Hiring Agent 是一个 Python 简历评估流水线，先用 PyMuPDF 将 PDF 简历转成 Markdown-like 文本，再通过 Ollama 或 Google Gemini 按简历章节抽取结构化 JSON。它还会读取候选人简历中的 GitHub 信息，抓取个人资料和仓库贡献数据，最后按预设评分规则输出分类分数、证据、加分项和扣分项。
-- **能解决什么痛点**：适合处理“简历内容不统一、PDF 难解析、人工筛选标准不一致”的问题，尤其是需要把候选人的项目经历、开源贡献和技术栈转成可比较评分时。它也解决了纯看简历容易忽略 GitHub 实际贡献的问题，会额外抓取仓库和贡献信号辅助判断。
-- **适合谁用**：适合招聘平台、技术面试系统、HR Tech 团队中负责候选人初筛的 Python 工程师；也适合想搭建内部简历评分 PoC 的技术招聘团队。
-- **怎么上手**：`git clone https://github.com/interviewstreet/hiring-agent && cd hiring-agent && pip install -r requirements.txt && python score.py /path/to/resume.pdf`
-- **可以用在哪些场景**：批量初筛实习生或工程师简历并生成可解释评分；在内部 ATS 系统中增加 GitHub 项目贡献分析；对技术候选人的开源经历、个人项目、生产经验和技术技能做统一口径评估。
-- **技术看点**：项目将 PDF 解析、LLM 分章节抽取、JSON Resume 风格归一化、GitHub API enrichment 和模板化评分拆成独立模块，便于替换模型或调整评分规则。LLM 后端支持本地 Ollama 和 Google Gemini，既能离线运行，也能接入托管模型。
-- **近期动向与发展方向**：最近提交主要集中在稳定性修复：Gemini 限流增加指数退避和 jitter、修复 LLM 抽取失败后的无效缓存持久化、补充新版 Gemini 模型映射。2025 年 10 月以来还修过 GitHub API 限流、贡献者抓取、PDF 资源泄漏、Windows UTF-8 缓存写入等问题，说明项目仍在围绕真实使用中的边界问题打磨，近期没有看到大规模功能重构。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：项目创建时间较新，但已有 201 个 open issues，说明关注度和问题反馈都不少，生产使用前需要重点验证评分稳定性、模型输出一致性和缓存行为。README 文档相对完整，包含安装、环境变量、模块结构和 CLI 用法；但运行依赖 LLM 后端、GitHub API 和 PDF 解析质量，上手时需要先配置 Ollama 或 Gemini。
-
-- **GitHub**：[interviewstreet/hiring-agent](https://github.com/interviewstreet/hiring-agent)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：HackerRank 是具有较高社区关注度的技术招聘与编程评测组织，在开发者技能评估领域具备明显影响力。
-**技术栈偏好**：其技术栈以 Python 为主、TypeScript 为辅，偏向后端服务、评测系统与 Web 协作工具开发。
-**核心领域**：主要聚焦在线编程评测、技术面试、招聘自动化与以技能为核心的人才筛选平台。
+**技术影响力**：Apple 在 GitHub 上具有极强的行业号召力与生态辐射力，开源项目覆盖面广且持续吸引大量关注，属于高影响力平台型组织。
+**技术栈偏好**：以 `Swift`、`Python`、`C++` 为主，兼顾系统级开发、机器学习与基础设施工具，技术路线偏工程化与平台化。
+**核心领域**：主要聚焦操作系统与系统底层、机器学习工具链、数据基础设施及开发者工具等方向。
 
 ---
 
@@ -129,204 +156,219 @@
 
 ---
 
-### ✨ revfactory/harness (7303★)
+### ✨ garrytan/gstack (112978★)
 
-> **一句话**：把一句项目领域描述转换成 Claude Code 里的专用 Agent 团队，并自动生成这些 Agent 需要使用的技能文件。
+> **一句话**：把 Claude Code 配成一支按“产品讨论 → 架构评审 → 代码审查 → 浏览器 QA → 发布复盘”流程工作的虚拟软件团队。
 
-- **它是什么**：Harness 是面向 Claude Code 的“团队架构工厂”，用于根据项目或任务领域自动设计一组专门分工的 Agent。它会生成 `.claude/agents/` 下的 Agent 定义，以及 `.claude/skills/` 下的技能文件，并从 Pipeline、Fan-out/Fan-in、Expert Pool、Producer-Reviewer、Supervisor、Hierarchical Delegation 这 6 种团队模式中选择合适结构。
-- **能解决什么痛点**：当任务复杂到需要研究、实现、评审、测试等多个角色协作时，开发者不用手动拆 Agent、写技能说明和设计协作流程。它也适合解决 Claude Code 项目中“每次都要重新描述团队分工和执行规则”的重复配置问题。
-- **适合谁用**：适合已经在用 Claude Code、并希望为代码审查、文档生成、全栈开发等复杂任务配置多 Agent 工作流的开发者。也适合团队内部维护 Claude Code 插件、技能库或 Agent 模板的工程效率团队。
-- **怎么上手**：`/plugin marketplace add revfactory/harness`，然后执行 `/plugin install harness@harness-marketplace`；安装后在 Claude Code 中输入 `Build a harness for this project` 触发生成。
-- **可以用在哪些场景**：可用于为全栈网站开发生成设计、前端、后端、QA 的流水线团队；为代码审查配置架构、安全、性能、风格并行检查团队；为技术文档生成配置端点分析、说明编写、示例生成和完整性评审流程。
-- **技术看点**：项目核心不是运行时框架，而是 Claude Code 原生 Agent Team 与 Skill 的生成层，重点在团队拓扑设计、Agent 间数据传递、错误处理和验证流程。README 明确把它定位在 L3 Meta-Factory / Team-Architecture Factory，而不是通用编排引擎。
-- **近期动向与发展方向**：最近 20 条提交集中在 README、多语言文档、Marketplace 元数据和小型兼容性修复上，例如修复剪贴板在非安全上下文失效、校验已存语言配置、补充 owner.email 字段。5 月中旬新增了 Agent/Skill 重复检查指南，说明项目仍在完善生成质量控制；6 月主要是修 bug 和合并社区 PR，活跃度不错但暂无大规模重构迹象。
-- **同类对比**：README 明确对比了 Archon、meta-harness、ECC、wshobson/agents 和 LangGraph。Harness 侧重为 Claude Code 生成 Agent 团队架构；Archon 更偏确定性的运行时配置；LangGraph 则是 LLM 无关、长流程状态图编排，定位不同。
-- **注意事项**：项目创建于 2026-03-26，时间较新，虽然 Star 增长很快且文档较完整，但贡献者仅 6 人、Open Issues 为 22，成熟度仍需观察。项目强依赖 Claude Code 插件和 Agent Team/Skill 生态，如果团队不使用 Claude Code，上手价值会明显降低。
+- **它是什么**：gstack 是 Garry Tan 公开的 Claude Code 工作流配置和技能集合，核心是 23 个带角色分工的 slash commands，例如 `/office-hours`、`/plan-eng-review`、`/review`、`/qa`、`/ship`。它不是单纯的提示词库，而是把 CEO、设计师、工程经理、QA、安全负责人、发布工程师等角色串成一套可重复的软件交付流程。README 里强调它会让上游产物继续喂给下游技能，例如产品设计文档进入工程评审，测试计划进入 QA。
+- **能解决什么痛点**：适合解决“AI 写代码很快，但需求、架构、测试、发布环节容易断档”的问题，尤其是一个人或小团队用 Claude Code 做完整功能时，缺少系统化评审和交付检查。它也针对“空白提示框不知道怎么开始”的场景，把产品追问、范围收敛、安全审计、浏览器验收等步骤做成固定命令。
+- **适合谁用**：适合已经在用 Claude Code、OpenAI Codex CLI、Cursor、OpenCode 等 AI 编程代理的独立开发者、技术型创始人和小团队技术负责人。也适合需要把 AI 代码审查、QA、发布流程标准化到团队仓库里的工程团队。
+- **怎么上手**：最小安装方式：`git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`，安装后可从 `/office-hours`、`/review`、`/qa` 等命令开始。
+- **可以用在哪些场景**：可以用于新功能立项前用 `/office-hours` 和 `/plan-ceo-review` 逼问真实需求、收敛范围；用于 PR 合并前跑 `/review`、`/cso` 检查代码缺陷和安全风险；用于上线前通过 `/qa https://...` 打开真实浏览器点击 staging 页面并反馈问题。
+- **技术看点**：项目把 AI 编程流程拆成可组合的 Markdown 技能和 slash commands，并支持安装到多种 AI coding agent，不只绑定 Claude Code。近期还加入了浏览器渲染、文档生成、跨会话决策记忆、hermetic 本地 E2E 等能力，说明它更像“AI 软件工厂流程层”，而不是单点工具。
+- **近期动向与发展方向**：最近 20 条提交几乎都由 Garry Tan 推进，版本从 v1.54 到 v1.58.4，节奏非常快。近期重点包括社区 bug 修复、安全 guard、浏览器反检测与离线渲染、多格式文档引擎、Codex review 默认启用、E2E smoke gate、决策记忆和 token reduction，方向是让 AI 代理在真实开发、审查、测试和发布环节更稳定、更可验证。
+- **同类对比**：README 明确提到 OpenClaw，并说明 gstack 可作为 OpenClaw 调用 Claude Code 时的技能层；差异在于 OpenClaw 更像多代理调度入口，而 gstack 更聚焦于具体的软件交付方法论、角色化技能和 Claude Code/多宿主安装。
+- **注意事项**：项目创建时间较新但 star 和 issue 数量都很高，720 个 open issues 说明社区关注度高，也意味着需求和问题积压明显。近期版本迭代密集，且命令、安装方式、技能行为都在持续变化，团队引入时应先在单项目试用，再决定是否启用 team mode；另外它依赖 Claude Code、Git、Bun 等环境，上手前需要接受这套较强主观色彩的工作流。
 
-- **GitHub**：[revfactory/harness](https://github.com/revfactory/harness)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Minho Hwang 是一位活跃时间长、仓库数量多且拥有多个高星项目的开发者，在 AI 编程工具与开发者效率社区具备较强影响力。
-**技术栈偏好**：其技术栈偏向 HTML、JavaScript 与 MDX，主要用于构建文档型、前端型和交互式开发者工具项目。
-**核心领域**：主要聚焦 Claude Code、AI 编程工作流、代码实践教程与开发者自动化工具生态。
-
----
-
-### ✨ flutter/flutter (177090★)
-
-> **一句话**：它把同一套 Dart 代码变成手机、网页、桌面上的界面，让你用一套工具直接搭出可运行在多端的应用外观和交互。
-
-- **它是什么**：Flutter 是 Google 维护的跨平台 UI SDK，核心目标是用单一代码库构建 mobile、web、Windows、macOS、Linux 以及嵌入式场景的应用。README 里明确提到它依赖 Dart、Skia 和 Impeller，支持热重载、平台通道、FFI，以及 Material/Cupertino 等完整组件体系。
-- **能解决什么痛点**：一是避免同一款产品为 iOS、Android、桌面端分别维护多套界面代码；二是减少原生开发里常见的界面一致性问题，让设计稿到多端落地更可控。
-- **适合谁用**：做跨平台客户端的移动开发团队；需要同时覆盖 Web 和桌面的产品研发团队；以及希望快速迭代 UI、频繁调试交互的应用开发者。
-- **怎么上手**：README 提供的最直接入口是先安装 Flutter：`flutter` 安装后可按官方文档开始创建项目，最小入口见 `https://docs.flutter.dev/get-started`。
-- **可以用在哪些场景**：独立产品团队用一套代码同时发布 iOS/Android；内部工具需要再补一个桌面端客户端；做需要频繁改版的消费级 App 时，用热重载快速验证界面和交互。
-- **技术看点**：它不是简单的“壳”方案，而是自带渲染体系和完整 widget 体系，强调从绘制到交互的一致性。Dart 负责跨端编译，配合 Skia/Impeller 解决图形渲染，适合对 UI 控制力要求高的项目。
-- **近期动向与发展方向**：最近提交集中在 `navigator` 行为修复、Linux 渲染重构、Web 图片实现整合、Android 平台视图测试补充，以及多次 Dart/Skia/Packages 的滚动更新，说明项目仍处于高频演进状态，重点同时覆盖稳定性修复、平台适配和底层依赖同步。提交者里既有核心维护者也有自动滚动机器人，活跃度很高，且维护面覆盖工具链、引擎联动和平台层。
-- **同类对比**：README 没有直接点名竞品，暂未提供明确同类对标。
-- **注意事项**：项目非常成熟，但体量大、开放 issue 数也高，说明生态活跃的同时，边角问题和平台兼容成本并不低；首次上手需要接受 Dart、Flutter 工具链和平台构建流程的学习成本。README 也明确提到工具可能会从 Google 服务器下载 Dart SDK，企业网络或离线环境要提前评估。
-
-- **GitHub**：[flutter/flutter](https://github.com/flutter/flutter)
+- **GitHub**：[garrytan/gstack](https://github.com/garrytan/gstack)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Flutter 是 Google 主导的跨平台 UI 框架组织，在移动、Web、桌面与嵌入式应用开发社区具有全球级影响力。
-**技术栈偏好**：技术栈高度聚焦 Dart 语言与 Flutter 框架，强调单代码库、多端原生编译和高性能 UI 构建。
-**核心领域**：核心聚焦跨平台应用开发、声明式 UI 框架、开发者工具链与生态示例建设。
+**技术影响力**：Garry Tan 是具有高社区关注度的个人开发者，凭借超高星标项目在开源社区具备显著影响力。
+**技术栈偏好**：主要偏好 TypeScript，并辅以 HTML、JavaScript，技术方向偏向现代 Web 与工具型应用开发。
+**核心领域**：主要聚焦于 AI/智能体相关工具、认知增强与实验性软件产品。
 
 ---
 
-### ✨ andreknieriem/headunit-revived (1346★)
+### ✨ aws/agent-toolkit-for-aws (1000★)
 
-> **一句话**：把 Android 平板或手机直接变成一块能跑 Android Auto 的“车机屏”，支持 USB、Wi‑Fi Direct、辅助连接等多种方式把手机投到这块屏上。
+> **一句话**：把 AWS MCP Server、Agent Skills 和 Claude Code / Codex / Cursor 插件打包到一起，让 AI 编程代理可以查 AWS 文档、调用 AWS API、执行沙箱脚本并按预设技能完成云上开发任务。
 
-- **它是什么**：这是一个用 Kotlin 写的 Android 应用，核心作用是充当 Android Auto 的接收端，让一台平板或手机像车载主机一样显示并操控手机上的 Android Auto 界面。README 里明确提到它是对早期 `headunit` 项目的复活版，重点围绕无线连接、USB 连接、辅助配对和投屏稳定性做增强。
-- **能解决什么痛点**：一是手头没有原生支持 Android Auto 的车机时，可以直接用旧平板/备用手机搭出可用的“临时车机”；二是在无线连接不稳定、USB 兼容性差、Android Auto 版本升级后自启动失效这些常见问题上，提供了多种替代连接路径和修复方案。
-- **适合谁用**：经常折腾车载互联的 Android 用户、想把旧 Android 设备改造成车机屏的人；也适合在做车机、投屏、无线连接兼容性测试的开发者和集成调试人员。
-- **怎么上手**：README 给出的最小路径是先安装应用，然后按连接方式使用；例如无线辅助模式需要在 Headunit Revived 里把 `Wireless Mode` 设为 `Helper Mode`，再在手机上打开 companion app `Wireless Helper`。如果走命令触发，可用：`adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.168.1.25"`
-- **可以用在哪些场景**：在老旧安卓平板上搭一个替代车机屏，给没有原厂 Android Auto 的车型补功能；在车内用手机热点/同网段实现无线 Android Auto 投屏；在调试 Android Auto 连接问题时，验证 USB、Wi‑Fi Direct、Self-mode 等不同链路的兼容性。
-- **技术看点**：项目同时覆盖 USB、Wi‑Fi Direct、Nearby、Intent 启动等多条连接链路，说明它不是单一投屏壳，而是围绕 Android Auto 接收、网络发现和设备兼容性做了较深的适配。近期 changelog 里还能看到对 USB 流程、Wi‑Fi 修复、第二屏幕选项和加载界面的持续调整，属于偏工程化、长期维护型项目。
-- **近期动向与发展方向**：最近 20 条提交几乎都集中在 2026-06-16 到 2026-06-24，活跃度很高，且内容以 bug 修复和兼容性修补为主，比如 Wi‑Fi fixes、USB 关闭问题、AP 修复、SoftApConfigCompat 和 LoadingScreenFragment 调整、去掉多屏相关逻辑等。整体看，项目当前重点是稳定性回收、无线连接链路修补，以及围绕 3.0.1-alpha 的版本收尾，而不是大规模新增功能。
-- **同类对比**：README 明确提到了原始项目 `mikereidis/headunit`，以及无线连接上的配套应用 `Wireless Helper`、旧的 `Wireless Launcher`，因此它更像是对经典 headunit 方案的持续维护版，而不是全新路线的替代品。
-- **注意事项**：项目已有 1346★、35 位贡献者和 32 个开放 issue，说明有一定用户基础，但也意味着兼容性边角问题仍在持续处理。README 对一些场景给了明确限制，比如 Android 10 及以下在新版 Android Auto 下的 Self-mode 启动受限、Portrait 模式下 Google Maps 触控可能异常、无线连接还会受手机 Wi‑Fi 省电/网络切换策略影响；另外项目创建时间标注为 2025-10-28、更新时间为 2026-06-24，时间信息本身略显异常，建议以仓库实际状态为准再判断成熟度。
+- **它是什么**：这是 AWS 官方支持的 Agent Toolkit，面向 AI coding agents 提供 AWS MCP Server 配置、插件、技能包和规则文件。它支持 Claude Code、Codex、Cursor、Kiro 等代理环境，覆盖服务选型、CDK / CloudFormation、Serverless、容器、存储、观测、计费、SDK 使用、部署、Bedrock、AgentCore、数据分析等 AWS 工作流。
+- **能解决什么痛点**：开发者让 AI 代理操作 AWS 时，常遇到“文档过期、API 范围不全、权限和审计不好管”的问题；该项目通过托管 MCP Server 提供实时 AWS 文档、300+ 服务 API 覆盖、CloudTrail 审计和 IAM 条件键。另一个痛点是不同代理的配置方式不统一，它把常用 AWS 能力封装成插件和技能，减少每个项目手写 MCP 配置和提示规则的成本。
+- **适合谁用**：适合已经在用 Claude Code、Codex、Cursor 或 Kiro 的 AWS 开发者、云平台工程师和 DevOps / SRE。也适合需要让 AI 代理参与 Bedrock Agent、Serverless 应用、数据湖、Glue / Athena、DevSecOps 检查等云上任务的团队。
+- **怎么上手**：Codex 用户可先添加插件市场：`codex plugin marketplace add aws/agent-toolkit-for-aws`
+- **可以用在哪些场景**：在现有项目里让 Codex 或 Claude Code 辅助选择 AWS 服务、生成 CDK / CloudFormation 并部署；为数据团队处理 S3 Tables、AWS Glue、Athena 等数据湖和 ETL 工作流；在发布前用 DevSecOps 插件做代码安全检查、UAT 就绪检查和渗透测试辅助分析。
+- **技术看点**：核心设计是“托管 AWS MCP Server + 按需加载 Skills + 多代理插件分发”，既保留完整 AWS API 覆盖，又通过技能包把复杂任务拆成可被代理发现和执行的工作流。AWS MCP Server 支持沙箱 Python 脚本执行、实时文档检索、CloudWatch 指标和 CloudTrail 审计，对企业落地 AI 代理比较关键。
+- **近期动向与发展方向**：最近 20 条提交集中在新增技能和扩展插件能力，包括 RDS Db2、Amazon MSK、Lambda microVMs、DocumentDB、OpenSearch、DevSecOps、Secrets Manager guardrail、数据分析 system-table skills 等，说明项目正在快速补齐 AWS 服务场景。提交日期集中在 6 月 17 日到 24 日，贡献者也不止一两人，活跃度较高；同时有 YAML 修复、目录重命名、依赖更新和 Codex 兼容性修复，仍处在快速迭代期。
+- **同类对比**：README 明确提到它是 AWS Labs MCP servers、skills、plugins 的后继方案；差异在于官方支持、IAM agent 条件键、CloudWatch / CloudTrail 审计，以及经过端到端评估的 agent skills。AWS Labs 版本仍会继续可用并接受贡献，但长期会把较好的能力迁移到该项目。
+- **注意事项**：项目创建时间较新，但已标注 GA，当前 1000 stars、30 位贡献者、11 个 open issues，说明关注度和维护活跃度不错。由于近期频繁新增和移动 skills，目录名、插件能力和安装方式可能继续变化；生产环境建议按 README 提示固定 `mcp-proxy-for-aws` 版本，并提前配置好本地 AWS 凭证、`uv`、以及对应代理的插件环境。
 
-- **GitHub**：[andreknieriem/headunit-revived](https://github.com/andreknieriem/headunit-revived)
+- **GitHub**：[aws/agent-toolkit-for-aws](https://github.com/aws/agent-toolkit-for-aws)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有多个千星开源项目，属于在特定应用工具和前端组件领域具备较强社区影响力的独立开发者。
-**技术栈偏好**：主要使用 Kotlin、JavaScript 和 PHP，偏向 Android/车载应用、Web 交互组件与轻量级实用工具开发。
-**核心领域**：主要聚焦于移动与车载体验、图片展示交互以及面向实际场景的开源工具。
+**技术影响力**：AWS 在云计算与开发者生态中属于顶级基础设施与工具平台组织，拥有极强的行业影响力和广泛的开源辐射力。
+**技术栈偏好**：以 Python 和 TypeScript 为主，兼顾 Jupyter Notebook，明显偏向云开发工具、基础设施即代码与开发者生产力方向。
+**核心领域**：主要聚焦云服务开发、Serverless、CLI/SDK、IaC 以及机器学习示例与平台工具生态。
 
 ---
 
-### ✨ stablyai/orca (6454★)
+### ✨ mukul975/Anthropic-Cybersecurity-Skills (17214★)
 
-> **一句话**：Orca 把 Codex、Claude Code、OpenCode、MiMo Code 等多个 CLI 编程代理并排跑在独立 Git worktree 里，让你在桌面端或手机上统一调度、查看 diff、挑选结果并合并。
+> **一句话**：把 754 个网络安全实战流程整理成 AI Agent 可读取、可检索、可执行的结构化技能库，让 Claude Code、Codex CLI、Cursor 等代理在安全分析时能按专业分析师的步骤行动。
 
-- **它是什么**：Orca 是面向多代理并行开发的 ADE（Agent Development Environment），核心是把不同编码代理放进各自隔离的 Git worktree 中运行，并在同一个界面里跟踪任务、终端、文件改动和评审流程。它支持桌面端 macOS、Windows、Linux，也提供移动伴侣应用，用来远程查看代理状态、收到完成通知并继续追问。
-- **能解决什么痛点**：当你想让多个 AI 编程代理同时尝试同一个需求时，手动创建分支、切 worktree、比较 diff、复制提示词很容易混乱；Orca 把这些流程集中到一个工作台里。另一个痛点是代理跑长任务时人不在电脑前，移动端可以继续查看进度和发送 follow-up。
-- **适合谁用**：适合已经在用 Codex、Claude Code、OpenCode、Cursor CLI、Grok、Copilot CLI 等终端代理的工程师；也适合需要频繁评审 AI 生成代码、对比多个实现方案的前端、全栈和平台工程团队。
-- **怎么上手**：README 未提供命令行快速上手示例；桌面端入口是 [Download Orca](https://onorca.dev/download)，移动端提供 iOS App Store 和 Android APK。
-- **可以用在哪些场景**：同一个功能需求同时交给 3-5 个代理实现，再通过 diff 评审选择最稳的方案；在 GitHub 或 Linear 任务里直接打开独立 worktree，让代理围绕 issue/PR 工作；通过 SSH worktree 把代理跑在远程高性能机器上，本地只负责编辑、终端和审查。
-- **技术看点**：项目用 TypeScript 开发，重点设计在“多代理 + 多 worktree + 集成终端 + Git/Linear/GitHub 工作流”的统一编排，而不是绑定某一家模型服务。README 明确强调“任何能在终端运行的 CLI agent 都能接入”，对已有 AI 编程工具链的兼容性是核心卖点。
-- **近期动向与发展方向**：最近 20 条提交几乎都集中在 6 月 23-24 日，活跃度很高；开发重点包括移动端 iOS 版本发布、移动 workspace parity、Linear issue 链接、MiMo Code 原生支持，以及 Windows 崩溃、renderer crash、终端粘贴、diff 滚动、staging 冻结等稳定性修复。整体看项目正在从功能扩张转向跨平台稳定性、移动端补齐和更多代理接入。
-- **同类对比**：README 明确对标的不是传统 IDE，而是把 Codex、Claude Code、OpenCode、Cursor CLI、Copilot CLI 等代理统一编排；差异在于 Orca 不替代这些代理，而是给它们提供并行 worktree、终端、评审、移动控制和项目管理集成。
-- **注意事项**：项目创建时间较新但 Star 增长快，Open Issues 达 637，说明使用面扩大同时也存在较多待处理问题；近期提交里有不少崩溃、冻结、滚动和平台兼容修复，生产团队采用前应先验证本地系统、远程 SSH、Git 工作流和常用代理是否稳定。文档素材较丰富，但 README 没有给出最小命令行安装示例，上手主要依赖官网下载安装和在线文档。
+- **它是什么**：这是一个面向 AI Agent 的网络安全技能库，不是漏洞脚本集合，而是把威胁狩猎、云安全、恶意软件分析、取证、SOC、红队、Web 安全等 26 个安全领域拆成结构化 Markdown 技能。每个技能遵循 `agentskills.io` 标准，并用 YAML frontmatter 做索引和框架映射，方便 Agent 快速发现、选择和执行对应流程。README 中强调所有技能已映射到 MITRE ATT&CK、NIST CSF 2.0、MITRE ATLAS、D3FEND、NIST AI RMF、MITRE F3 等框架。
+- **能解决什么痛点**：通用 LLM 在安全任务中常知道概念但缺少“该先查什么、用什么工具、如何验证”的操作路径，这个库把资深分析师的工作流显式写成可调用技能。另一个痛点是安全团队要同时对齐 ATT&CK、NIST、ATLAS、D3FEND 等框架时映射成本高，该项目把技能和多个框架统一关联，便于检索、审计和合规说明。
+- **适合谁用**：适合正在把 Claude Code、GitHub Copilot、OpenAI Codex CLI、Cursor、Gemini CLI 接入安全工作流的安全工程师和平台团队。也适合做 SOC 自动化、威胁狩猎、云安全响应、GRC 映射的团队，把它作为 AI Agent 的安全知识底座。
+- **怎么上手**：`npx skills add mukul975/Anthropic-Cybersecurity-Skills`
+- **可以用在哪些场景**：可用于 SOC 告警分诊时让 Agent 按技能步骤分析 Kerberoasting、BEC、恶意流量等问题；可用于云安全排查，让 Agent 按 AWS、Azure、GCP 相关技能检查配置、日志和取证线索；也可用于内部安全知识库建设，把 ATT&CK、NIST CSF、D3FEND 等框架映射到团队可执行的分析流程。
+- **技术看点**：项目采用 `agentskills.io` 标准组织技能，核心是“YAML 元数据 + Markdown 执行步骤 + 框架映射”的 AI-native 知识库设计。它的价值不在 Python 代码本身，而在技能索引、跨框架映射和 26+ Agent 平台兼容性。
+- **近期动向与发展方向**：最近提交非常活跃，6 月 20 日集中合并了智能合约安全、GRC、欺骗防御等新技能，并多次自动更新 `index.json`，说明项目正在扩充技能覆盖面和索引数据。6 月初完成全部 754 个技能到 MITRE ATT&CK v19.1 的映射，随后又加入 MITRE Fight Fraud Framework F3，近期重点明显是扩展框架映射、补齐细分安全领域，并吸收社区 PR。
+- **同类对比**：README 明确把自己和传统安全工具仓库区分开：常见仓库提供 wordlist、payload、利用脚本或检测规则，而它提供的是给 AI Agent 使用的结构化分析流程和跨框架映射。暂无 README 中点名的具体竞品项目。
+- **注意事项**：项目创建时间为 2026-02-25，时间较新但增长和提交频率很高，适合关注但仍需在生产环境中验证技能质量和流程适配性。当前有 21 个 open issues、8 位贡献者，社区已有参与但核心维护仍较集中；README 信息量很大，文档质量较好，不过“5 个框架”和“6 个框架”的表述在元数据与 README 之间存在不一致，使用时应以仓库当前 README 和索引文件为准。
 
-- **GitHub**：[stablyai/orca](https://github.com/stablyai/orca)
+- **GitHub**：[mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Stably 是一个较新的开发组织，但凭借 stablyai/orca 获得较高关注，在 AI Agent 相关开源社区具备一定影响力。
-**技术栈偏好**：技术栈明显偏向 TypeScript 与 JavaScript，主要围绕 Web、自动化工具和 Agent 集成生态构建项目。
-**核心领域**：核心聚焦于 AI Agent、开发者自动化工具以及面向协作平台的智能应用集成。
+**技术影响力**：在安全与 AI 交叉领域具有较强社区影响力，凭借多个高星 Python 项目形成了明显的技术传播力与话题度。
+**技术栈偏好**：以 Python 为主、辅以 JavaScript，偏向开发安全工具、MCP 服务与面向 AI 安全的应用型项目。
+**核心领域**：主要聚焦网络安全、隐私保护与 AI 安全研究。
 
 ---
 
-### ✨ google-labs-code/design.md (16610★)
+### ✨ alibaba/page-agent (19572★)
 
-> **一句话**：DESIGN.md 用一份带 YAML 设计令牌和 Markdown 设计说明的文件，让编码 Agent 稳定理解品牌颜色、字体、间距、组件样式和使用原则。
+> **一句话**：把一段 JavaScript 放进网页后，用户就能用自然语言让页面自己点击按钮、填写表单、滚动和完成界面操作。
 
-- **它是什么**：这是 Google Labs Code 推出的视觉身份描述规范，核心是把机器可读的设计 tokens 放在 YAML front matter，把人类可读的设计理念写在 Markdown 正文里。它还提供 TypeScript CLI，可对 `DESIGN.md` 做 lint、diff、export 和 spec 输出，检查 token 引用、WCAG 对比度、章节顺序，并导出 Tailwind 或 DTCG 格式。
-- **能解决什么痛点**：很多编码 Agent 只能从截图、零散 CSS 或口头描述里猜设计系统，容易生成颜色、字号、按钮样式不一致的 UI；DESIGN.md 把精确值和设计理由放在同一个文件里，减少 Agent “自作主张”。另一个痛点是设计系统变更难以审查，它的 `diff` 可以比较两个版本的 token 和文案变化，帮助发现设计回退。
-- **适合谁用**：适合正在把 AI 编码 Agent 接入前端开发流程的团队，尤其是需要让 Agent 生成统一品牌 UI 的产品工程团队。也适合维护设计系统、Tailwind 主题或设计 tokens 的前端基础设施工程师。
-- **怎么上手**：`npx @google/design.md lint DESIGN.md`
-- **可以用在哪些场景**：为内部产品准备一份 `DESIGN.md`，让 Cursor、Codex 类编码 Agent 生成符合品牌规范的页面；在 PR 中用 `diff` 检查设计 token 是否被误删或改坏；把 `DESIGN.md` 导出为 Tailwind v3/v4 或 DTCG tokens，接入现有前端主题体系。
-- **技术看点**：它采用“YAML tokens + Markdown rationale”的双层结构，既能给程序稳定解析，也能保留设计意图。CLI 侧支持 lint 规则、结构化 JSON 输出、Tailwind v4 CSS 变量导出和 W3C DTCG 格式，说明它不只是文档规范，也在考虑与现有设计 token 生态互通。
-- **近期动向与发展方向**：近期提交非常集中，6 月发布了 `0.3.0`，重点在 lint 规则、YAML/frontmatter 兼容性、Windows 使用体验和文档完善。最近新增了未知顶层 key 检查、疑似被忽略 token 的规则，并修复了布尔值、数字值、嵌套 token、非字符串 YAML 属性等解析问题，说明项目正在从概念规范快速补齐真实文件解析中的边界情况。贡献者数量 17、近期多人提交，社区参与度不错，但仍处于 alpha 阶段。
-- **同类对比**：README 明确提到 DESIGN.md tokens 受 W3C Design Token Format 启发，并支持导出 DTCG；差异在于它不只描述 token 值，还把给编码 Agent 使用的设计说明和章节结构纳入规范。暂无看到与某个具体竞品项目的直接对标。
-- **注意事项**：项目创建时间较新，README 也标明格式仍是 `alpha`，后续 schema、规则和导出格式存在变动风险。文档覆盖较完整，包含规范、CLI、Windows 注意事项和 lint 规则，但生产环境接入前仍建议锁定版本，并在 CI 中固定 lint/export 行为。当前 open issues 为 18，结合高更新频率看，项目活跃但还在快速打磨期。
+- **它是什么**：Page Agent 是运行在网页内部的 GUI Agent，核心目标是让 Web 界面可以被自然语言控制。它不依赖浏览器扩展、Python 脚本或无头浏览器，而是通过页面内 JavaScript 读取和操作 DOM，让 LLM 根据文本化的页面结构执行点击、输入、等待等动作。项目也提供可选 Chrome 扩展和 MCP Server，用于跨页面或从外部 Agent 客户端控制浏览器。
+- **能解决什么痛点**：很多 SaaS、ERP、CRM 和后台系统都有大量重复点击、查找字段、填写表单的流程，传统做法要么写固定脚本、要么改后端流程，维护成本高。Page Agent 适合把“打开某个页面并完成一串 UI 操作”变成一句自然语言指令，尤其适合已有前端系统不想大改架构的场景。
+- **适合谁用**：适合想在现有 Web 产品里嵌入 AI Copilot 的前端团队、SaaS 产品工程师，以及需要让浏览器页面被 MCP/Agent 客户端控制的 AI 应用开发者。对只做服务端自动化、爬虫或无头浏览器任务的团队，它不是首选方向。
+- **怎么上手**：最简单可以直接通过 CDN 引入 Demo 版本：``；正式集成可用 `npm install page-agent`，然后创建 `new PageAgent({ model, baseURL, apiKey })` 并调用 `agent.execute('Click the login button')`。
+- **可以用在哪些场景**：可用于给企业后台增加“帮我创建一条客户记录”这类自然语言操作入口；在复杂表单页面中自动定位字段并填写内容；通过 Chrome 扩展或 MCP Server 让外部 Agent 跨标签页操作浏览器，完成多页面任务。
+- **技术看点**：项目强调基于文本化 DOM 做页面理解和操作，不依赖截图或多模态模型，因此更适合嵌入普通 Web 应用，也减少了对特殊浏览器权限的依赖。它采用 TypeScript 开发，并支持自带 LLM 接入，README 示例中使用了 OpenAI 兼容接口风格的模型配置。
+- **近期动向与发展方向**：最近提交主要集中在依赖升级、CI 修复、版本发布和少量交互逻辑调整，例如 1.9.1 到 1.10.0 的版本 bump、移除 nav back 相关指令、简化等待响应以降低 LLM 认知负担。近两周仍有维护者合并 PR 和处理 dependabot 更新，说明项目维护活跃；当前演进重点更像是在稳定运行时行为、降低提示复杂度和保持依赖健康，而不是大规模重构。
+- **同类对比**：README 明确提到项目借鉴了 `browser-use` 的 DOM 处理组件和 prompt 思路；差异在于 Page Agent 面向客户端网页增强，强调“in-page JavaScript”，不是以服务端浏览器自动化为主。
+- **注意事项**：项目创建时间较新，但 Star 增长很快，仍有 50 个 open issues，实际落地前需要评估稳定性和边界行为。README 中的一行 CDN Demo 使用免费测试 LLM API，仅适合技术评估；生产环境应自行配置模型、密钥和权限策略。项目声明不接受完全由 bot 或 AI 生成且缺少人工参与的贡献，社区协作规则相对明确。
 
-- **GitHub**：[google-labs-code/design.md](https://github.com/google-labs-code/design.md)
+- **GitHub**：[alibaba/page-agent](https://github.com/alibaba/page-agent)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Google Labs Code 作为新兴官方实验型组织，凭借多个高星项目在开发者工具与 AI 编程生态中具备较强关注度和扩散力。
-**技术栈偏好**：主要以 TypeScript 为核心技术栈，偏向构建前端交互、SDK、自动化集成与开发者工具类项目。
-**核心领域**：主要聚焦 AI 辅助开发、设计到代码、智能编程工作流与开发者生产力工具。
+**技术影响力**：Alibaba 是全球影响力极强的企业级开源组织，在 Java 生态和云原生基础设施领域拥有大量高星项目与广泛开发者认可。
+**技术栈偏好**：技术栈明显偏向 Java，辅以 Kotlin，重点投入服务治理、数据处理、开发规范与生产诊断等企业后端技术方向。
+**核心领域**：主要聚焦企业级中间件、微服务基础设施、数据同步与开发效能工具建设。
 
 ---
 
-### ✨ Flowseal/zapret-discord-youtube (29960★)
+### ✨ IceWhaleTech/CasaOS (34446★)
 
-> **一句话**：在 Windows 上通过 zapret / WinDivert 流量处理策略，帮助用户恢复 Discord、YouTube、Telegram Web 等服务的访问与连接稳定性。
+> **一句话**：CasaOS 把一台家用服务器、旧电脑或树莓派变成带网页界面和应用商店的个人云系统，用来管理文件、硬盘、Docker 应用和家庭服务。
 
-- **它是什么**：这是一个面向 Windows 用户的 zapret 打包与脚本集合，主要通过 `.bat` 脚本启动不同绕过策略，并配合 WinDivert 拦截、过滤和改写网络流量。README 提供了 `general.bat` 手动测试策略、`service.bat` 安装为系统服务、更新 hosts、更新 IPSet、诊断和策略测试等入口，核心目标是让非专业用户也能尝试不同网络绕过方案。
-- **能解决什么痛点**：一是 Discord 语音连接卡住、Telegram Web 无法连接、YouTube 打不开或策略失效后需要频繁切换参数的问题；二是普通用户手动配置 zapret、WinDivert、hosts、IP 列表和 Windows 服务门槛较高，这个项目把常见操作封装成菜单脚本。
-- **适合谁用**：适合在 Windows 上遇到 Discord、YouTube、Telegram Web 访问问题的普通用户和技术爱好者；也适合需要快速测试多种 zapret 策略、维护域名/IP 列表的网络排障人员。
-- **怎么上手**：从 [Releases](https://github.com/Flowseal/zapret-discord-youtube/releases/latest) 下载最新压缩包，解锁并解压到不含中文和特殊字符的路径，然后运行需要的 `general*.bat` 策略脚本或通过 `service.bat` 安装为服务。
-- **可以用在哪些场景**：用于修复 Discord 客户端或网页版语音连接长期停留在“连接中”；用于在 YouTube 访问异常时快速切换 ALT、FAKE 等不同策略；用于通过 `service.bat` 更新 hosts / IPSet，排查 Telegram Web、游戏或其他指定服务的连接问题。
-- **技术看点**：项目主要由 Batchfile 驱动，把 zapret-winws、WinDivert、hosts 更新、IPSet 列表和 Windows 服务管理串成可操作流程。它不是重新实现底层网络绕过，而是把上游 zapret / zapret-win-bundle 能力面向 Windows 场景做了集成和策略分发。
-- **近期动向与发展方向**：最近 20 条提交集中在 hosts 更新、Kick/Twitch 修复、IPSet 状态检测、列表维护、版本发布流程和窗口标题等细节，说明项目处于高频维护状态，重点是跟随目标服务和网络环境变化持续调整策略。提交中既有作者 Flowseal 的密集维护，也有外部 PR，社区参与较活跃，但 1556 个 Open Issues 也意味着用户问题量很大、环境差异明显。
-- **同类对比**：README 明确提到替代项目 `bol-van/zapret-win-bundle`，本项目更偏向 Discord、YouTube 等具体使用场景的开箱脚本和策略集合；底层二进制文件来源仍依赖 zapret / zapret-win-bundle，适合想少手动配置的 Windows 用户。
-- **注意事项**：WinDivert 可能被杀毒软件识别为风险工具或 PUA，README 明确建议用户核对来源和哈希，不理解风险时不要随意放行。项目创建于 2024-10-08，但 Stars 已接近 3 万且更新频繁，热度和维护强度都高；同时策略可能随网络环境失效，需要不断尝试不同脚本，且大量 issue 表明它不是“一次配置永久可用”的方案。
+- **它是什么**：CasaOS 是一个面向家庭和个人服务器场景的开源个人云系统，核心目标是让普通用户也能在本地设备上管理存储、文件和自托管应用。它提供友好的 Web UI、应用商店、一键安装 Docker 应用、磁盘与文件管理、系统和应用状态小组件，支持 ZimaBoard、Intel NUC、Raspberry Pi、旧电脑等硬件。
+- **能解决什么痛点**：它解决的是“家里有一台闲置设备，但部署 Nextcloud、HomeAssistant、Jellyfin、AdGuard 等服务太折腾”的问题；也适合不想把个人文件、媒体库和家庭自动化数据全部交给商业 SaaS 的用户。
+- **适合谁用**：适合想搭建家庭 NAS / 个人云的开发者、极客和自托管用户；也适合用 Raspberry Pi、NUC、ZimaBoard 或旧电脑跑家庭服务的轻量运维用户。
+- **怎么上手**：`curl -fsSL https://get.casaos.io | sudo bash`
+- **可以用在哪些场景**：搭建家庭媒体中心并运行 Jellyfin、*arr 等 Docker 应用；在家用服务器上部署 Nextcloud 管理个人文件和照片；用 HomeAssistant、AdGuard 等应用集中管理智能家居和家庭网络服务。
+- **技术看点**：项目主体使用 Go 开发，面向 Linux 设备提供系统级管理能力，并把 Docker 生态封装成更易用的应用安装体验。README 明确支持 amd64、arm64、armv7，并已在 Debian、Ubuntu Server、Raspberry Pi OS 等系统上测试。
+- **近期动向与发展方向**：最近 20 条提交里，2025 年主要集中在 README、社交链接和文档更新，功能层面有 RISC-V 初始支持；2024 年底提交更偏向修复用户信息、存储类型、云存储和日志问题。整体看项目仍在维护，但近期核心功能开发频率不高，更像是在做平台兼容、问题修复和文档维护。
+- **同类对比**：README 没有明确对标竞品。按定位看，它更偏“家庭场景的一站式个人云入口”，而不是只做 NAS、只做容器面板或只做文件同步的单点工具。
+- **注意事项**：项目创建于 2021 年，Star 数较高，说明社区关注度强；但当前 Open Issues 达 807，使用前需要接受一定的问题排队和维护压力。官方推荐 Debian 12，部分系统如 Alpine、OpenWrt、ArchLinux 标注为未完全测试，不建议在生产或重要数据环境里贸然使用非推荐系统。近期提交中 README 更新占比较高，若关注新功能迭代速度，需要进一步查看 release 节奏。
 
-- **GitHub**：[Flowseal/zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube)
+- **GitHub**：[IceWhaleTech/CasaOS](https://github.com/IceWhaleTech/CasaOS)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Flowseal 凭借高星项目在网络访问、代理与平台可用性工具领域具备较强社区影响力。
-**技术栈偏好**：主要使用 Python、Batchfile 和 C#，偏向脚本化工具、网络代理与轻量级自动化实现。
-**核心领域**：主要聚焦于网络绕过、代理通信、平台集成与互联网服务可访问性相关工具。
+**技术影响力**：IceWhale 是开源家庭服务器与个人云生态中具有较高影响力的组织，核心项目 CasaOS 拥有显著社区关注度。
+**技术栈偏好**：技术栈以 Go 为核心，辅以 Shell、Python 和 Vue，偏向系统服务、自动化脚本、应用商店与 Web 管理界面建设。
+**核心领域**：主要聚焦个人云、家庭服务器操作系统、自托管应用生态与轻量化 NAS/边缘设备管理。
 
 ---
 
-### ✨ kunchenguid/no-mistakes (1729★)
+### ✨ opendatalab/MinerU (69057★)
 
-> **一句话**：把 `git push` 先送进一个本地隔离闸门，等 AI 检查、测试、修复和 CI 都通过后，再自动推送分支并创建干净 PR。
+> **一句话**：MinerU 把 PDF、Office 文档、图片和网页解析成适合 LLM、RAG、Agent 工作流直接消费的 Markdown / JSON 结构化内容。
 
-- **它是什么**：`no-mistakes` 会在真实 Git remote 前面放一个本地 git proxy，开发者不再直接 `git push origin`，而是推到 `no-mistakes`。它会创建一次性 worktree，跑 AI 驱动的验证流水线，包括 review、test、docs、lint、push、PR 和 CI 监控；只有全部通过后，才把分支转发到配置好的目标 remote 并自动开 PR。
-- **能解决什么痛点**：适合解决“本地分支还没充分检查就推上远端，PR 里堆满低级问题”的场景；也能减少 AI 编码后人工反复检查 lint、测试、文档和 CI 失败的负担，把安全的机械修复交给流水线处理，把涉及意图判断的问题交回开发者。
-- **适合谁用**：经常使用 Claude Code、Codex、opencode 等编码代理的开发者；需要把每次分支提交都经过本地验证、自动开 PR 和 CI 追踪的团队或开源维护者。
-- **怎么上手**：安装：`curl -fsSL https://raw.githubusercontent.com/kunchenguid/no-mistakes/main/docs/install.sh | sh`；初始化后使用：`no-mistakes init`，然后执行 `git push no-mistakes `。
-- **可以用在哪些场景**：AI 生成代码后，在合并前自动跑 review、测试和 lint，避免把明显问题推到 PR；多人协作项目中统一要求分支先过本地 gate，再进入 GitHub PR；给 fork 贡献代码时，通过 `no-mistakes init --fork-url ` 处理 parent repo 与个人 fork 的推送路径。
-- **技术看点**：设计上不是简单的 pre-push hook，而是通过本地 git proxy 和 disposable worktree 做非阻塞校验，避免污染当前工作区。它还支持多种 agent 接入，包括 `claude`、`codex`、`rovodev`、`opencode`、`pi` 和 `acp:`，并提供 TUI 与 `/no-mistakes` agent skill 两种交互方式。
-- **近期动向与发展方向**：最近提交非常活跃，6 月中下旬连续发布 1.27 到 1.30 系列版本。开发重点集中在 GitHub fork routing、agent skill 用户级安装、AXI 分支感知、CI 监控可取消，以及取消任务时清理子进程；同时修复了“从 pushed SHA 加载 repo config 导致的供应链 RCE”安全问题，说明项目正在快速补齐真实协作场景和安全边界。
-- **同类对比**：暂无明显同类对标。README 没有直接列出竞品，它更像把 git remote、AI agent、PR 创建和 CI 追踪串成一个完整 gate，而不是单点替代某个 lint、CI 或代码审查工具。
-- **注意事项**：项目创建于 2026 年 4 月，迭代速度很快但仍偏早期，当前有 38 个 open issues，可能会遇到接口和行为变化。它会接入本地 Git、远端推送、agent 和 CI 流程，首次落地前建议先在非关键仓库试用；近期刚修过供应链 RCE 相关问题，也说明这类工具需要持续关注版本更新和配置来源安全。
+- **它是什么**：MinerU 是一个面向复杂文档解析的 Python 项目，重点处理 PDF、DOCX、PPTX、XLSX、图片和网页等输入。它能识别版面、表格、公式、扫描件、多栏排版和跨页表格，并输出 Markdown / JSON，其中公式可转 LaTeX、表格可转 HTML。README 中还提到它支持 VLM + OCR 双引擎、109 种语言 OCR、MCP Server，以及 LangChain、Dify、FastGPT 等生态集成。
+- **能解决什么痛点**：做 RAG 或 Agent 时，原始 PDF / Office 文档经常存在阅读顺序错乱、表格丢结构、公式不可用、页眉页脚混入正文等问题，MinerU 试图把这些内容整理成模型更容易处理的结构化文本。对于扫描件、手写内容、多栏论文和批量 OCR 文档，它也提供了专门的解析与识别能力。
+- **适合谁用**：适合在企业知识库、论文解析、合同/报表处理里做 RAG 的 Python 工程师；也适合需要把文档接入 Cursor、Claude Desktop、Dify、LangChain、LlamaIndex 等工作流的 AI 应用开发者。
+- **怎么上手**：文档未提供快速上手示例；README 提供了免部署入口：https://mineru.net/?source=github
+- **可以用在哪些场景**：搭建企业内部知识库时，将 PDF、Word、PPT 批量转成可索引的 Markdown / JSON；处理科研论文时提取正文、公式、表格和多栏阅读顺序；在 Agent 工作流中通过 MCP Server 或 API 把本地文档解析结果交给大模型继续总结、问答或抽取字段。
+- **技术看点**：项目同时提供 pipeline、vlm-engine、hybrid-engine 三类推理后端，分别面向稳定解析、高精度视觉语言模型解析、低幻觉的混合解析需求。README 还明确支持 CPU/GPU、本地离线部署、Docker、REST API，以及多种国产 AI 芯片，说明它不是只面向在线 Demo 的轻量项目。
+- **近期动向与发展方向**：最近提交集中在 2026-06-17 到 2026-06-18，并发布了 3.4.0，开发重点是 OCR 能力升级、模型下载体验和批量处理性能。具体包括 pipeline 后端升级到 PP-OCRv6、OCR 速度提升、空白单元格过滤、方向识别评分与批量检测优化、DataLoader 内存管理重构，以及模型源自动检测、缓存复用和下载路径规范化；这说明项目近期主要在补强生产环境里的准确率、速度和部署可用性。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：项目创建于 2024-02-29，但已有 69057 stars、98 位贡献者、近期仍有密集发版，活跃度较高；当前 open issues 为 26，维护状态看起来较健康。需要注意的是，3.4.0 涉及 OCR 模型、语言选择和模型下载逻辑变化，升级时应重点验证旧配置、离线模型路径和批量 OCR 结果是否受影响；另外 README 展示能力范围较广，真实效果仍建议用自己的文档样本做回归测试。
 
-- **GitHub**：[kunchenguid/no-mistakes](https://github.com/kunchenguid/no-mistakes)
+- **GitHub**：[opendatalab/MinerU](https://github.com/opendatalab/MinerU)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Kun Chen 是具有大厂高级工程背景的技术社区活跃开发者，多个开源项目获得千级 Star，具备较强的工程影响力与社区认可度。
-**技术栈偏好**：主要偏好 TypeScript、Go 与 JavaScript，体现出前端/全栈工程、系统工具与高效开发工具链方向的技术取向。
-**核心领域**：主要聚焦开发者工具、命令行/自动化工具以及提升工程效率的实用型开源项目。
+**技术影响力**：在开源数据与文档智能领域具备较强社区号召力，依托高星项目形成了较高的技术可见度与行业影响。
+**技术栈偏好**：明显以 Python 为主，技术方向集中在数据处理、文档解析、布局分析与相关智能工具链。
+**核心领域**：主要聚焦开放数据集、PDF/文档抽取、版面理解与文档智能应用。
 
 ---
 
-### ✨ NousResearch/hermes-agent (200398★)
+### ✨ Free-TV/IPTV (16759★)
 
-> **一句话**：Hermes Agent 让你把一个会记忆、会学技能、能在终端和聊天软件里持续工作的 AI 助手部署到本地、VPS 或云端环境中。
+> **一句话**：把全球各地能公开免费观看的电视台整理成一份可直接订阅的 M3U 播放列表，打开播放器就能按国家和频道分组浏览。
 
-- **它是什么**：Hermes Agent 是 Nous Research 开源的自改进 AI Agent，核心特点是内置学习闭环：会从任务经验中沉淀技能、在使用中改进技能，并跨会话检索历史对话和用户偏好。它既可以作为终端 TUI 使用，也可以通过 gateway 接入 Telegram、Discord、Slack、WhatsApp、Signal 等消息平台，让同一个 Agent 在不同入口保持连续对话和任务状态。
-
-- **能解决什么痛点**：
-  开发者常见的问题是 AI 助手只能停留在当前窗口或当前会话里，换设备、换平台、换任务后上下文就断了；Hermes 通过会话搜索、记忆和跨平台 gateway 尝试解决这个连续性问题。另一个痛点是长任务需要反复手动盯进度、复制命令、切换环境，Hermes 支持定时任务、子 Agent 并行、远程终端后端，可以让它在云 VM 或 serverless 环境里持续执行。
-
-- **适合谁用**：适合想把 AI Agent 长期部署在 VPS、云主机或本地开发环境中的 Python/后端开发者；也适合需要通过 Slack、Telegram、Discord 等入口调度自动化任务的个人开发者、运维 SRE 或小团队。
-
-- **怎么上手**：Linux、macOS、WSL2、Termux 可直接运行：`curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`；安装后执行 `hermes` 进入交互式 CLI，执行 `hermes model` 选择模型提供商。
-
+- **它是什么**：这是一个面向“免费电视源”的全球 IPTV 播放清单仓库，核心产物是 `playlist.m3u8`。仓库用各国家/地区的 `.md` 列表维护频道，再由 `make_playlist.py` 生成最终播放列表，README 里还明确了只收录免费、主流、可正常播放的频道。
+- **能解决什么痛点**：一是不用自己四处搜集失效的直播地址，直接拿到按国家分类的订阅源；二是不用手工拼装 M3U 文件，频道更新、失效剔除和分组生成都有统一流程。
+- **适合谁用**：做家庭媒体中心、NAS 影音库、TVBox/播放器订阅源整理的人；以及需要给客户或团队提供“可直接打开”的免费直播频道清单的内容运营、自动化脚本维护者。
+- **怎么上手**：把 IPTV 播放器的订阅地址设置为 `https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8`。
 - **可以用在哪些场景**：
-  1. 在云端 VPS 上长期运行个人 AI 助手，通过 Telegram 或 Slack 发送需求，让它执行代码修改、排查日志或整理报告。
-  2. 配置自然语言 cron，例如每天生成日报、夜间备份检查、每周审计项目依赖，并把结果推送到指定聊天平台。
-  3. 在多模型环境中做开发辅助，根据任务切换 Nous Portal、OpenRouter、OpenAI、Hugging Face 或自建模型端点，而不需要改业务代码。
+  - 在客厅电视盒子里接入一份按国家分类的免费频道源。
+  - 给 Kodi、VLC、IPTV Smarters 这类播放器提供统一订阅地址。
+  - 做地区性频道收集或频道可用性巡检时，直接复用仓库的频道分组和更新流程。
+- **技术看点**：项目不是单纯堆链接，而是用 Python 脚本从 Markdown 频道清单生成 M3U，便于审核和批量维护。它还明确区分 `[>]`、`[x]`、HD、GeoIP、YouTube 直播等标记，说明生成逻辑是围绕频道状态管理设计的。
+- **近期动向与发展方向**：最近提交几乎都围绕“播放列表持续更新”展开，包含 `GitHub Actions` 自动更新、国家列表补充、频道新增/移除、以及 `make_playlist.py` 的代码质量和 bug 修复；说明项目仍在高频维护，重点是保持源可用性和数据清洁，而不是扩展复杂功能。贡献者来源也比较分散，社区协作活跃，但很多变更由自动化机器人触发，属于“持续维护型”项目。
+- **同类对比**：README 提到了 `iptv-org/iptv` 作为流媒体源参考，但没有做明确功能对标；本项目更强调“免费、主流、质量优先”的筛选原则和国家分类整理。
+- **注意事项**：项目维护活跃，但 `Open Issues` 仍有 215 个，说明频道失效、格式问题和需求积压都不少；另外它本质上是频道索引，不保证每条流长期可用，且部分内容可能受地区限制，实际使用时要接受订阅源会频繁变动。文档对播放效果好的播放器、部署方式和兼容性没有展开，入门门槛不高，但稳定性依赖具体频道源质量。
 
-- **技术看点**：项目用 Python 实现，设计上把 CLI/TUI、消息网关、模型提供商、工具调用、终端后端和记忆系统拆成可组合能力。它支持本地、Docker、SSH、Singularity、Modal、Daytona 等多种终端后端，并提供技能自改进、FTS5 会话搜索、Honcho 用户建模、RPC 工具调用等机制，对 Agent 长期运行架构有参考价值。
-
-- **近期动向与发展方向**：最近提交非常活跃，6 月 22-23 日集中在 Slack 语音消息转写、桌面端工具预览、长线程 timeline、视觉捕获、计算机使用能力、LLM one-shot RPC、项目 facts 结构化暴露、Honcho OAuth 记忆接入等方向。整体看，项目近期不只是修 bug，也在快速扩展桌面端体验、消息平台能力、记忆系统和 Agent 内部 RPC 接口，仍处在高频演进阶段。
-
-- **同类对比**：README 没有直接拿某个竞品做对比，但明确强调它区别于普通本地 AI 助手的点：不绑定单一模型提供商、不只运行在笔记本上，并且内置跨会话记忆、技能学习和多消息平台 gateway。
-
-- **注意事项**：项目创建时间显示为 2025-07-22，但 Star、Fork、贡献者和 Issue 数量都非常高，且近期提交密集，说明关注度和开发活跃度很强；同时 22962 个 open issues 也意味着问题积压和变更频率都不低。它覆盖模型、消息平台、桌面端、远程执行、语音转写、记忆等很多模块，上手前最好先按官方文档完成配置；快速迭代阶段也要预期接口、配置或行为可能发生变化。
-
-- **GitHub**：[NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+- **GitHub**：[Free-TV/IPTV](https://github.com/Free-TV/IPTV)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Nous Research 是高关注度 AI 研究型组织，凭借 Hermes 系列项目在开源智能体与大模型社区具备显著影响力。
-**技术栈偏好**：技术栈以 Python 为核心，辅以 TypeScript 和 Jupyter Notebook，偏向模型实验、智能体框架与函数调用工程化。
-**核心领域**：主要聚焦大语言模型、AI Agent、自进化智能体、函数调用与开源 AI 研究基础设施。
+**技术影响力**：Free TV 凭借单一高星项目在 IPTV/流媒体资源聚合社区具备较强可见度和用户影响力。
+**技术栈偏好**：主要使用 Python，偏向自动化处理、数据整理与网络媒体资源维护相关技术。
+**核心领域**：主要聚焦免费电视直播、IPTV 播放源聚合与开放流媒体资源分发。
+
+---
+
+### ✨ shanraisshan/claude-code-best-practice (59019★)
+
+> **一句话**：把 Claude Code 的 Subagents、Commands、Skills、Hooks、MCP、Settings 等能力整理成可查、可落地的实践手册，并附带对应实现位置。
+
+- **它是什么**：这是一个围绕 Claude Code 使用方式的最佳实践资料库，核心内容是把官方能力拆成概念说明、实现示例和相关链接。README 中按 Subagents、Commands、Skills、Workflows、Hooks、MCP Servers、Settings、Memory 等模块组织，并标注对应文件位置，例如 `.claude/agents/.md`、`.claude/commands/.md`、`.claude/skills//SKILL.md`。它更像一份持续更新的 Claude Code 工程化索引，而不是传统意义上的软件库。
+- **能解决什么痛点**：Claude Code 功能更新快，开发者很容易不知道 Subagents、Skills、Hooks、MCP、Auto Mode、Agent Teams 等能力分别该放在哪里、怎么组合使用；这个仓库把入口、文档和实现样例集中在一起。另一个痛点是团队想从“随手让 AI 写代码”过渡到可维护的 agentic engineering，但缺少一套可参考的目录结构和配置实践。
+- **适合谁用**：适合正在深度使用 Claude Code 的全栈开发者、AI 编程工作流维护者，以及想在团队内规范 Subagents、Slash Commands、Skills、MCP 配置的工程负责人。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：搭建团队 Claude Code 项目模板时，参考 `.claude/agents`、`.claude/commands`、`.claude/settings.json` 的组织方式；为现有代码库补充 Slash Commands、Skills、Memory 规则时，用它核对官方能力和落地文件位置；跟踪 Claude Code 新功能时，通过 README 的 Hot 区域快速了解 Ultrareview、Auto Mode、Agent SDK、Scheduled Tasks 等入口。
+- **技术看点**：项目的价值不在复杂代码实现，而在信息架构：把 Claude Code 的概念、官方文档、最佳实践和本仓库实现路径放在同一张表里，降低查找成本。近期还有自动化“Last Updated badge”、changelog 和 drift check，说明作者在维护内容同步状态。
+- **近期动向与发展方向**：最近 20 条提交集中在 README 赞助区改版、合作方 SVG 资产、更新时间徽章、changelog 追加和 subagents/commands/skills 的 no-drift 检查，说明项目当前重点是文档维护、展示优化和内容同步校验。也有一次 `settings` 修复，移除了不支持的 `mcp__*` wildcard，表明作者会跟进 Claude Code 配置兼容性变化。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：这是 2025-10-31 创建、更新非常频繁的资料型仓库，Stars 很高但贡献者只有 5 人，维护主要依赖少数作者和自动化提交。Open Issues 为 12，问题积压不算高；但 Claude Code 本身变化快，README 中不少 Hot 功能带有 beta 标记，实际落地前仍需要核对官方文档和当前 CLI 版本。
+
+- **GitHub**：[shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Shayan Rais 是具备较高社区影响力的开发者，其 AI 编程实践类仓库获得大量关注，尤其在 Claude Code 最佳实践方向形成显著传播力。
+**技术栈偏好**：其技术栈以 HTML、Java、Python 为主，兼具前端内容呈现、Android/Java 工程经验与 AI/CLI 工具实践能力。
+**核心领域**：主要聚焦于 AI 编程工作流、开发者效率工具、代码重构与软件架构实践。
+
+---
+
+### ✨ NanmiCoder/MediaCrawler (52513★)
+
+> **一句话**：用 Playwright 复用浏览器登录态，批量抓取小红书、抖音、快手、B 站、微博、贴吧、知乎的公开帖子、视频和评论数据。
+
+- **它是什么**：MediaCrawler 是一个 Python 编写的多平台自媒体数据采集项目，覆盖关键词搜索、指定帖子/视频 ID、创作者主页、一级和二级评论等常见采集路径。它通过浏览器自动化保留登录态，并在页面上下文中获取签名参数，尽量避免直接逆向各平台复杂加密逻辑。
+- **能解决什么痛点**：做内容分析、舆情样本收集或评论研究时，开发者常需要分别适配多个平台的登录、翻页、评论结构和风控逻辑；这个项目把主流中文内容平台的采集流程统一到一套命令行和配置体系里。对于不想深入 JS 逆向签名算法的人，它提供了基于真实浏览器上下文的替代路径。
+- **适合谁用**：适合做公开内容数据采集、评论分析、舆情研究的 Python 工程师或数据分析师；也适合学习浏览器自动化、登录态复用、多平台爬虫架构的开发者。
+- **怎么上手**：推荐先安装依赖并运行示例：`uv sync && uv run main.py --platform xhs --lt qrcode --type search`
+- **可以用在哪些场景**：采集小红书或抖音关键词搜索结果用于内容选题分析；抓取 B 站、微博、知乎评论做情感分析或词云统计；按指定帖子/视频 ID 批量归档公开互动数据到 CSV、JSONL、Excel、SQLite 或 MySQL。
+- **技术看点**：核心依赖 Playwright，并支持默认 CDP 模式连接已有 Chrome 浏览器，复用用户 Cookie、扩展和登录状态，降低反复扫码登录和平台风控触发概率。项目同时提供命令行和 WebUI，数据存储格式也比较完整。
+- **近期动向与发展方向**：最近 20 条提交以修复为主，集中在 Chrome CDP 连接、知乎指定 ID、快手翻页、贴吧页面改版、抖音创作者采集等适配问题，说明项目仍在跟进平台页面和接口变化。也有少量功能增强，例如静态代理方式、任务接口支持覆盖帖子/评论数量，社区 PR 仍有合入，维护活跃度较高。
+- **同类对比**：README 中主要对比的是作者的 MediaCrawlerPro：开源版依赖 Playwright，Pro 版强调断点续爬、多账号 + IP 代理池、去除 Playwright 依赖、Linux 环境支持和更重的架构重构。除此之外暂无明显同类对标。
+- **注意事项**：项目明确声明仅供学习研究，禁止商业和非法用途，爬虫合规风险需要使用者自行评估。由于覆盖平台多且平台页面经常变化，173 个 open issues 和近期频繁修复都说明维护压力不小，实际使用时要预期某些平台逻辑可能阶段性失效。上手需要 Python、Node.js、Chrome/CDP 或 Playwright 环境，对完全没有爬虫经验的用户不算零门槛。
+
+- **GitHub**：[NanmiCoder/MediaCrawler](https://github.com/NanmiCoder/MediaCrawler)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有多个高星开源项目，尤其以 MediaCrawler 获得广泛关注，在中文开发者社区具备较强影响力。
+**技术栈偏好**：主要使用 Python 和 TypeScript，偏向爬虫、自动化工具与数据采集相关工程实践。
+**核心领域**：主要聚焦内容平台数据采集、爬虫系统、教程型开源项目及轻量级智能体原型。
