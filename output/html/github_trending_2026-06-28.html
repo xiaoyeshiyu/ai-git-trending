@@ -101,8 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-06-28)</h1>
-<h2>今日热点：AI 代理工作流加速落地，隐私、自托管与生产力工具同步升温</h2>
-<p>今天的 GitHub 热点呈现出鲜明的 AI 工程化与个人基础设施并进趋势：从面向编码代理的规范化设计、开源 coding agent、Claude/Codex 工作流模板、多 Agent 投研框架，到 AI 生成 PPT、网站克隆、长期记忆平台、规格驱动开发和个人交易代理，AI 正在从单点能力走向可复用的方法论与工具链；与此同时，SimpleX 的无标识隐私通信、CasaOS 个人云、Open Generative AI 自托管生成工作室、MediaCrawler 内容采集、openpilot 机器人操作系统、PowerToys Windows 效率增强、dbt 数据工程、Keycloak 身份管理、open-seo 营销分析替代品以及 free-for-dev 资源清单，共同覆盖了开发者生产力、数据与身份基础设施、个人云与开源替代方案等关键方向。具体项目摘要如下：</p>
+<h2>今日热点：AI Agent 工程化与个人基础设施升温</h2>
+<p>今天的 GitHub 热点集中在 AI 编程代理、智能体记忆、规格驱动开发和自动化研究工作流上，同时延伸到价值投资、交易代理、网站克隆、设计系统描述等 AI 原生应用；基础设施侧则覆盖开源身份认证、数据工程、个人云、Windows 效率工具、开发者免费资源与开源 SEO；应用与内容生态还包括隐私通信、辅助驾驶、社媒爬虫以及自托管生成式 AI 图像视频平台，整体呈现出 AI Agent 从工具走向方法论、平台和垂直场景落地的趋势。具体项目摘要如下：</p>
 <h3>✨ simplex-chat/simplex-chat (12251★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：这是一个不依赖用户标识符的私密聊天网络，提供 iOS、Android、桌面端和命令行客户端，让你在尽量少暴露元数据的前提下建立对话和群组连接。</p>
@@ -320,60 +320,6 @@
 <p><strong>技术影响力</strong>：Microsoft 是全球顶级开源组织之一，凭借 VS Code、TypeScript 等标志性项目在开发者生态中拥有极强影响力。
 <strong>技术栈偏好</strong>：其技术栈以 TypeScript、Python、C 为主，覆盖开发工具、AI 教程与系统级工具等方向。
 <strong>核心领域</strong>：主要聚焦开发者工具、编程语言、人工智能教育与 Windows 生态效率工具。</p>
-<hr />
-<h3>✨ hugohe3/ppt-master (32905★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 PDF、论文、文档等资料交给 AI，在本地生成可直接打开、逐个元素可编辑、带动画和演讲者备注的 PowerPoint 文件。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：PPT Master 是一个用 Python 实现的 AI PPTX 生成工作流，目标不是导出一组幻灯片截图，而是生成真正的 <code>.pptx</code> 文件。它支持原生形状、文本框、动画、演讲者备注，并可将备注转成音频旁白；也可以按用户自己的 <code>.pptx</code> 模板来生成版式。README 明确强调它更像“harness + model”的工作流，需要在 Claude Code、Cursor、VS Code + Copilot 等 AI IDE 中配合模型使用。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：</p>
-</li>
-<li>用 AI 做 PPT 时，很多工具输出的是图片化幻灯片，后续无法在 PowerPoint 里精修文字、图形和版式；PPT Master 的重点是保留原生可编辑结构。</li>
-<li>
-<p>从长文档、论文、报告整理成演示稿时，人工拆页、排版、补备注和调整动画很耗时间，它把这部分重复工作前置自动化，用户再做最后润色。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：</p>
-</li>
-<li>经常把 PDF、研究报告、产品文档转成汇报材料的产品经理、研究员、咨询顾问和技术布道者。</li>
-<li>
-<p>熟悉 Python 和 AI IDE，希望把 Claude、Copilot 等模型接入本地办公自动化流程的开发者或技术型内容创作者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：文档未提供快速上手示例；README 建议先安装 Python 和 AI IDE，然后查看 <a href="https://github.com/hugohe3/ppt-master/blob/main/docs/getting-started.md">Getting Started</a>，通过对 AI 说“make a deck from this PDF”一类指令来运行工作流。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>将论文或技术白皮书生成可演示的课程讲义，并保留演讲者备注和旁白。</li>
-<li>把公司内部报告、调研材料转换成遵循企业模板的周会或路演 PPT。</li>
-<li>
-<p>为数据新闻、产品介绍、建筑作品集等内容生成带图表、版式风格和动画的初稿，再在 PowerPoint 中继续编辑。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目重点在于生成 PowerPoint 原生结构，而不是渲染图片，因此需要处理 PPTX 包结构、文本框尺寸、段落、列表、备注母版、主题和 PowerPoint 兼容性等细节。README 也明确建议使用大上下文模型和图像生成能力，例如 Claude 大上下文配合 <code>gpt-image-2</code>，说明生成质量高度依赖模型能力。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近提交非常活跃，6 月 24 日到 27 日连续围绕 PPTX 兼容性、文本导出、备注母版、文件权限、UTF-8 stdio、模板填充验证等问题修复，说明项目仍在快速打磨生成文件的稳定性。新增“中国电建 / 中汽研”品牌预设、原生增强 workflow 和模板填充确认流程，显示方向正在从“能生成”走向“更稳定地按品牌模板生成可交付 PPT”。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 没有明确列出竞品，但它反复强调与常见“AI 生成幻灯片图片”的方案不同：PPT Master 输出的是 PowerPoint 可编辑原生元素，用户可以继续修改形状、文本、动画和备注。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新，但 Stars 增长很快，当前 issue 数量较少且近期维护频繁，活跃度高；同时这也意味着接口和工作流仍可能变化。README 明确提醒不要期待一次生成完美成稿，最终质量取决于模型、素材和用户对 PowerPoint 的二次编辑能力。上手门槛也不算低：需要 Python、AI IDE，以及对 AI agent 工作流有基本理解。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/hugohe3/ppt-master">hugohe3/ppt-master</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在 GitHub 上具备明显的开源曝光度，凭借少量仓库中出现的高星项目展现出较强的社区关注度。
-<strong>技术栈偏好</strong>：以 Python 为主，偏向脚本开发、数据处理与自动化类技术方向。
-<strong>核心领域</strong>：主要聚焦于实用工具与应用型项目，兼顾爬虫、数据相关与效率提升场景。</p>
 <hr />
 <h3>✨ JCodesMore/ai-website-cloner-template (17613★)</h3>
 <blockquote>
