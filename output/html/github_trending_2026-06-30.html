@@ -101,48 +101,53 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-06-30)</h1>
-<h2>今日热点：AI 代理、隐私安全与开发者基础设施并进</h2>
-<p>今日热门项目集中呈现出三条主线：一是 AI 代理与自动化应用继续升温，从多智能体协作、投研框架、视频编辑到交易助手，显示出“用模型直接驱动工作流”的趋势；二是隐私、安全与身份基础设施依然活跃，涵盖无标识通信、认证授权、磁盘加密以及漏洞分析与渗透自动化；三是开发者与性能工具持续受到关注，包括 GPU 计算、免费云资源聚合、知识库管理和离线语音转写等，反映出效率工具与工程底座仍是热点核心。具体项目摘要如下：</p>
-<h3>✨ simplex-chat/simplex-chat (12251★)</h3>
+<h2>今日热点：AI 代理工具链加速渗透开发、安全与生产力场景</h2>
+<p>今天的热门项目明显围绕 AI 代理化与开发者效率展开：从开源 AI 渗透测试、终端代理复用、Google Cloud 代理构建 CLI，到可连接多模型提供商的 AI 网关、面向视频编辑的 coding agents、价值投资与交易研究代理，AI 正在进入安全、编码、内容生产和金融分析等更具体的工作流；同时，本地离线语音转文字、计算机视觉工具、3D 场景重建、隐私通信、设计系统、AI 入门课程、免费云服务清单和密码画像工具也显示出基础设施、隐私、安全与教育资源仍是开发者关注重点。具体项目摘要如下：</p>
+<h3>✨ usestrix/strix (26531★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：这是一个不依赖用户标识符的私密聊天网络，提供 iOS、Android、桌面端和命令行客户端，让你在尽量少暴露元数据的前提下建立对话和群组连接。</p>
+<p><strong>一句话</strong>：Strix 会像自动化黑客团队一样运行你的应用、尝试攻击路径、生成 PoC，并把确认过的漏洞整理成可修复报告。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：SimpleX Chat 的核心不是“加密聊天”这么简单，而是尽量不让系统层面知道“你是谁”。README 明确强调它没有任何用户标识符，消息和连接都围绕私有链接、二维码和会话建立展开，同时支持移动端、桌面端和终端客户端。它还提供连接安全码验证、群组、机器人和目录等功能，已经不是单一聊天 App，而是一套完整的私密通信网络。</p>
+<p><strong>它是什么</strong>：Strix 是一个开源的 AI 安全测试项目，核心形态是面向开发者和安全团队的命令行扫描器。它不只做静态代码检查，而是通过 Docker 沙箱、浏览器自动化、HTTP 代理、终端和 Python 运行环境，让多个 AI Agent 动态探索应用、验证漏洞并生成可复现的结果。README 中还强调了自动修复、报告生成、GitHub Actions / CI/CD 集成等能力。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：一类典型问题是传统 IM 必须绑定手机号、用户名或联系人列表，导致身份、社交关系和活跃时间容易被平台侧关联；SimpleX 试图把这类元数据暴露降到更低。另一类问题是团队或社区需要一个能跨设备使用、同时支持私密连接和群组交流的通信方案，而不是只依赖单个平台的封闭账号体系。</p>
+<p><strong>能解决什么痛点</strong>：传统 SAST 容易给出大量误报，而人工渗透测试周期长、成本高；Strix 的重点是用实际 PoC 验证漏洞，减少“看起来有问题但无法复现”的安全告警。对于 PR 合并前的安全检查，它可以在 CI 中对变更代码做快速扫描，避免明显漏洞进入生产环境。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：重视隐私和元数据保护的个人用户，尤其是希望减少手机号、账号体系暴露的人。也适合做隐私通信、去中心化社交、聊天机器人和集成应用的开发者，README 里还专门提到了开发 bot、自动化和基于 SimpleX 平台的社交应用。</p>
+<p><strong>适合谁用</strong>：适合需要在日常开发流程中加入安全检查的后端、全栈和 DevSecOps 团队；也适合做应用安全测试、漏洞研究、Bug Bounty 自动化探索的安全工程师。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：README 给出的最直接方式是安装官方客户端，例如 iOS、Android、F-Droid、TestFlight 或 APK。最小可用流程是先装 App，再通过分享链接或扫码建立私密连接；项目页也提供了终端客户端入口，但 README 没有给出单行命令式的快速启动示例。</p>
+<p><strong>怎么上手</strong>：<code>curl -sSL https://strix.ai/install | bash &amp;&amp; export STRIX_LLM="openai/gpt-5.4" &amp;&amp; export LLM_API_KEY="your-api-key" &amp;&amp; strix --target ./app-directory</code></p>
 </li>
 <li>
-<p><strong>可以用在哪些场景</strong>：适合做高隐私要求的个人或小团队通信，比如不想把手机号和社交关系绑定到聊天工具里。也适合建立面向特定社群的私有群组，例如安全研究、隐私社区或跨平台协作群。对于开发者，还可以拿它做聊天机器人、通知自动化或与其他应用联动的入口。</p>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在本地代码仓库中扫描 Web 应用，找出访问控制、注入、认证、业务逻辑等漏洞，并输出复现步骤。</li>
+<li>在 GitHub Actions 的 pull request 流程中运行 <code>strix -n -t ./ --scan-mode quick</code>，阻止带有高风险漏洞的代码合并。</li>
+<li>
+<p>对已部署的 Web 站点或 API 做黑盒 / 灰盒测试，例如结合测试账号验证 IDOR、XSS、CSRF、鉴权绕过等问题。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目用 Haskell 开发，说明核心协议和服务端逻辑偏重类型安全与可维护性。README 里写得很明确，它采用双重 ratchet 端到端加密，并在此基础上再加一层加密，同时围绕“无用户标识符”的连接模型设计，这是它和常规 IM 最大的技术差异。</p>
+<p><strong>技术看点</strong>：项目采用 Python 实现，运行时依赖 Docker 沙箱来隔离测试环境，并通过 LiteLLM 接入 OpenAI、Anthropic、Google、Azure、Bedrock、本地 Ollama 等模型。它的设计重点不是单一扫描规则，而是多 Agent 编排加动态验证，配合浏览器、代理、终端和代码分析能力完成更接近人工渗透的流程。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近提交很集中，基本围绕 6.5.4 到 6.5.6 的版本迭代在推进，说明项目仍处于持续发布节奏。近期工作重点主要是核心逻辑修复、链接处理、群组权限、跨平台构建和桌面/移动端体验修正，例如修复管理员降权后的群链接问题、阻止不合规的 obfuscated simplex links、iOS 里直接打开聊天消息中的连接链接、桌面端下载器行为修正。整体看，项目在稳定打磨现有能力，同时继续补齐隐私连接和群组机制的边角行为。</p>
+<p><strong>近期动向与发展方向</strong>：最近提交非常集中，6 月上旬到下旬持续在推进可用性和稳定性：包括支持大型目标仓库的 bind-mount、增加 token / 成本用量限制、改进 Ollama 模型工具调用、强化 LiteLLM 流式调用、清理终端输出中的控制字符、处理沙箱容器竞态，以及优化 TUI 退出体验。整体看，项目已进入 1.0.x 后的打磨阶段，重点在模型兼容、成本控制、沙箱稳定性和 CI/大型仓库适配，而不是单纯堆新功能。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 没有直接点名竞品，但它明显是在和传统“手机号即身份”的聊天软件做区分，强调自己的无标识符设计和元数据保护。文中引用了 Privacy Guides、Whonix 等外部推荐，也是在强化它在隐私通信领域的定位。</p>
+<p><strong>同类对比</strong>：README 没有直接列出竞品对标，但提到 Strix 构建在 LiteLLM、Caido、Nuclei、Playwright、Textual 等开源项目之上。与传统 Nuclei 这类模板化扫描器相比，Strix 更强调 AI Agent 动态探索和 PoC 验证；与人工代理工具相比，它更偏自动化和 CI/CD 集成。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目成熟度不低，创建于 2019 年，星标已经过万，更新也很频繁，但 open issues 有 1139 个，说明活跃度高的同时，待处理问题也不少。对新用户来说，上手门槛会高于普通 IM，因为它的连接方式、身份模型和安全验证方式都不属于日常聊天软件的默认思路；另外 README 很长，功能和安装入口很多，但“快速上手”路径并不算简洁。版本迭代频繁，跨端功能又多，升级时要留意兼容性和行为变化。</p>
+<p><strong>注意事项</strong>：项目创建时间较新，但 Star 数、Fork 数和近期提交活跃度都很高，说明关注度和迭代速度都很强；同时 126 个 open issues 也意味着实际使用中仍可能遇到兼容性、沙箱、模型调用或成本控制问题。上手需要 Docker 和可用的 LLM API Key，扫描成本、模型质量和网络环境都会影响结果。该项目用于安全测试，必须只扫描自己拥有或已获授权的应用。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/simplex-chat/simplex-chat">simplex-chat/simplex-chat</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/usestrix/strix">usestrix/strix</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在隐私通信与安全架构社区具有较高辨识度，凭借高星核心项目在开源聊天基础设施方向形成了明显影响力。
-<strong>技术栈偏好</strong>：以 Haskell 为核心，辅以 Swift、JavaScript 和 TypeScript，整体偏向高可靠后端、消息协议与跨端客户端实现。
-<strong>核心领域</strong>：主要聚焦端到端隐私聊天、去中心化通信与安全消息系统。</p>
+<p><strong>技术影响力</strong>：Strix 是一个新兴但增长迅速的开源组织，凭借高星标核心项目在 AI 安全与漏洞修复社区已具备较强关注度。
+<strong>技术栈偏好</strong>：其技术栈明显以 Python 为主，偏向 AI Agent、自动化安全分析与漏洞检测修复工具链。
+<strong>核心领域</strong>：主要聚焦于利用开源 AI 黑客能力发现、验证并修复应用程序安全漏洞。</p>
 <hr />
 <h3>✨ msitarzewski/agency-agents (118284★)</h3>
 <blockquote>
@@ -168,47 +173,6 @@
 <p><strong>技术影响力</strong>：在开发者社区中具备很高的可见度与传播力，依托爆款仓库和持续产出形成了明显的技术影响扩散效应。
 <strong>技术栈偏好</strong>：偏好以 Shell、Rust 和 JavaScript 为主的实用型技术栈，强调自动化、系统工具与可落地的产品实现。
 <strong>核心领域</strong>：主要聚焦开发者工具、工作流自动化与 AI/代理式应用原型，兼顾产品化与创业实践。</p>
-<hr />
-<h3>✨ cupy/cupy (11422★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：CuPy 让 Python 里的 NumPy/SciPy 数组计算直接跑到 NVIDIA CUDA 或 AMD ROCm GPU 上，尽量保持原有 API 写法不变。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：CuPy 是一个面向 GPU 加速计算的 Python 数组库，API 设计兼容 NumPy 和 SciPy。开发者可以把很多 <code>numpy</code> 风格的数组操作改成 <code>cupy</code> 后在 GPU 上执行，也可以进一步调用 CUDA Runtime API、Streams、RawKernels 等底层能力。项目同时覆盖 PyPI、Conda 和 Docker 等安装方式，定位是 Python 科学计算栈里的 GPU 后端。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：当现有 NumPy/SciPy 代码在 CPU 上处理大规模矩阵、信号、稀疏数据或批量数值计算变慢时，CuPy 提供了相对低迁移成本的 GPU 加速路径。它也减少了 Python 工程师直接编写 CUDA C/C++ 的门槛，同时保留在需要时接入自定义 CUDA Kernel 的能力。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合已经在用 NumPy/SciPy 做数值计算、机器学习预处理、科学计算或信号处理的 Python 工程师。也适合需要在 CUDA/ROCm 环境中把 Python 数组与底层 GPU 程序衔接起来的高性能计算开发者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：CUDA 12 环境可使用 <code>pip install cupy-cuda12x</code>，CUDA 13 环境可使用 <code>pip install cupy-cuda13x</code>；最小使用方式是 <code>import cupy as cp</code> 后用 <code>cp.arange(6).reshape(2, 3).astype('f').sum(axis=1)</code> 执行 GPU 数组计算。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：把已有 NumPy 数据处理脚本迁移到 GPU 上运行，减少大矩阵运算的 CPU 等待时间。为机器学习训练前的数据变换、批量特征计算或模拟计算提供 GPU 数组后端。在需要自定义 CUDA Kernel 的项目中，用 CuPy 管理数组、Streams 和 Runtime API，而不是从零搭建 Python 与 CUDA 的胶水层。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：CuPy 的关键价值在于 NumPy/SciPy 兼容 API 与底层 CUDA/ROCm 能力的结合，既能做高层数组计算，也能通过 RawKernels、Streams 和 CUDA Runtime API 进入更底层的性能调优。README 明确提供 CUDA 12、CUDA 13 和实验性 ROCm 7.0 的二进制包，说明它在 GPU 平台适配上投入较重。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交显示项目仍然非常活跃，6 月下旬持续合并 PR。近期重点包括清理 cuSPARSE 旧接口和过期 header shim、规避 Cython 3.2.6 问题、更新 xsf 子模块、推进 SciPy 兼容的 sparse array classes（sparray）支持，以及迁移部分测试工具到 pytest 风格。整体看，当前开发方向偏向兼容性维护、依赖升级、CUDA/cuSPARSE 现代化和 SciPy API 覆盖扩展。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确对标的是 NumPy 和 SciPy，但 CuPy 的差异在于把相近的数组与科学计算 API 放到 GPU 上执行，并支持 CUDA/ROCm 平台。它不是替代完整 Python 科学计算生态，而是为已有 NumPy/SciPy 工作流提供 GPU 加速实现。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2016 年，已有 457 位贡献者和 1.1 万 Star，成熟度较高，但 681 个 open issues 也说明 GPU 平台、依赖版本和 API 兼容问题会比较复杂。安装时必须匹配 CUDA/ROCm 版本，包名也随平台不同而变化；ROCm 7.0 在 README 中标注为 experimental。近期提交涉及 Cython 版本规避、cuSPARSE 旧 API 移除和 sparse array 演进，升级时建议关注 release notes 和依赖兼容性。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/cupy/cupy">cupy/cupy</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：CuPy 是 GPU 加速科学计算领域具有较高社区影响力的开源组织，核心仓库已获得万级 Star 关注。
-<strong>技术栈偏好</strong>：主要使用 Python，技术方向集中在 NumPy/SciPy 兼容接口、GPU 计算加速与性能工具链。
-<strong>核心领域</strong>：主要聚焦于面向 GPU 的高性能数值计算、科学计算生态和 Python 加速计算基础设施。</p>
 <hr />
 <h3>✨ altic-dev/FluidVoice (3469★)</h3>
 <blockquote>
@@ -251,132 +215,87 @@
 <strong>技术栈偏好</strong>：技术栈以 Swift 为核心，辅以 TypeScript 和 Python，偏向原生 Apple 平台应用、AI 工具链与轻量服务集成。
 <strong>核心领域</strong>：主要聚焦 AI 辅助生产力工具、语音交互、桌面应用体验以及 MCP 生态相关开发。</p>
 <hr />
-<h3>✨ soxoj/maigret (34118★)</h3>
+<h3>✨ diegosouzapw/OmniRoute (8051★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：输入一个用户名，Maigret 会到 3000+ 个网站查找对应账号，并把公开资料、关联链接和报告整理成一份 OSINT 档案。</p>
+<p><strong>一句话</strong>：OmniRoute 把 Claude Code、Codex、Cursor、Cline、Copilot 等 AI 编程工具统一接到本地一个 <code>/v1</code> 入口，再自动在数百个模型提供商之间路由、降级和压缩 token。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Maigret 是一个 Python 编写的用户名 OSINT 项目，核心能力是根据用户名在大量网站上检测账号是否存在，并抓取公开页面中的可用信息。它不要求 API Key，默认会检查流量排名较高的 500 个站点，也可以用 <code>-a</code> 扫描全部站点，或按国家、类别等标签筛选。结果可以导出为 HTML、PDF、JSON、CSV、TXT、XMind、交互式图谱等格式，并提供 Web UI 浏览搜索结果。</p>
+<p><strong>它是什么</strong>：OmniRoute 是一个面向 AI 编程工作流的本地 AI Gateway，用 TypeScript 实现，主打“一个 endpoint 接所有工具和模型提供商”。README 中强调它可连接 236 个 AI providers、50+ 免费层，并支持 OpenAI、Claude、Gemini、Responses API 之间的接口转换。它还内置自动 fallback、路由策略、RTK + Caveman 压缩、MCP/A2A、多模态 API、Dashboard、Desktop/PWA 等能力。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：做公开信息调查时，手动在各个平台逐个搜索用户名非常耗时，而且结果容易遗漏；Maigret 把站点检测、资料抓取、报告生成串成了自动流程。对于需要批量判断某个用户名在不同社区、社交平台、论坛是否存在的场景，它能减少大量重复查询和整理工作。</p>
+<p><strong>能解决什么痛点</strong>：开发者同时使用 Claude Code、Cursor、Cline、Copilot 等工具时，经常要维护多套 API Key、额度、代理和模型配置，OmniRoute 试图把这些都收敛到 <code>http://localhost:20128/v1</code>。另一个具体痛点是模型额度或速率限制耗尽后会中断编码会话，它通过多 provider fallback 和免费额度聚合，让请求在不同订阅、API、低价和免费 provider 之间切换。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合做 OSINT、威胁情报、反欺诈、社交媒体分析的安全研究人员和调查分析师。也适合需要把用户名检索能力嵌入自己系统的 Python 开发者。</p>
+<p><strong>适合谁用</strong>：适合重度使用 AI 编程代理的开发者，尤其是同时使用 Claude Code、Codex、Cursor、Cline 或 Copilot 的人。也适合需要在团队内部统一管理多家 LLM provider、成本、额度和代理策略的工程团队。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：<code>pip install maigret &amp;&amp; maigret YOUR_USERNAME</code></p>
+<p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
 </li>
 <li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>在安全调查中根据用户名快速梳理目标在社交平台、代码托管、论坛、图片站点等处的公开足迹。</li>
-<li>在反欺诈或账号风控流程中，检查可疑用户名是否在多个站点存在，并导出结构化结果供后续分析。</li>
-<li>
-<p>在内部 OSINT 平台中调用 Maigret Python 库或 CLI，把查询结果转成 JSON、CSV 或图谱页面进行展示。</p>
+<p><strong>可以用在哪些场景</strong>：可以作为本地 AI 编程代理的统一 OpenAI-compatible 网关，把不同 IDE/CLI 都指向同一个 <code>/v1</code> 地址。也可以用来聚合免费模型额度，在个人开发、原型验证或低成本自动化任务中减少手动切换 provider。对于需要跨地区访问 AI 服务的场景，README 提到它提供 3 级代理和 TLS fingerprint stealth，可用于统一处理网络访问和 provider fallback。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目维护了一个可自动更新的站点数据库，支持 3000+ 站点，并能按标签筛选、递归搜索发现的新用户名或 ID。它还支持 Tor / I2P、部分反封锁与 CAPTCHA 场景、Web UI 图谱展示，以及可选的 OpenAI 兼容接口 AI 分析模式。</p>
+<p><strong>技术看点</strong>：项目的核心设计是“协议适配 + 智能路由 + 自动降级”，把 OpenAI、Claude、Gemini、Responses API 等接口差异隐藏在网关后面。README 中提到 17 种 routing strategies、circuit breakers、MCP 87 tools、A2A、guardrails 和 14,965 tests，说明它不是单纯的转发代理，而是在尝试做可观测、可降级、可策略化的 AI 请求层。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近提交非常活跃，6 月下旬连续合入了错误率阈值判断修复、报告路径清理、ASCII 树输出修复、ORCID 支持、站点列表更新等改动。依赖更新主要由 Dependabot 推进，说明项目仍在持续维护基础依赖；同时有多位社区贡献者参与 bug 修复和测试补充，近期重点更偏向稳定性、报告输出细节、站点覆盖和代码清理，而不是大规模架构重写。</p>
+<p><strong>近期动向与发展方向</strong>：最近提交非常密集，6 月 22 日到 30 日连续发布 v3.8.33 到 v3.8.42，说明项目迭代节奏很快。近期重点主要集中在发布稳定性、Docker 镜像构建、安全扫描、CodeQL URL 校验、公共 origin 检查、CI 修复和文档补充上，新增功能不是主线，更像是在把快速增长后的工程基础设施补齐。提交者中既有项目作者，也有 dependabot 和外部贡献者，224 contributors 说明社区参与度不低。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：暂无明显同类对标。</p>
+<p><strong>同类对比</strong>：README 中没有明确点名具体竞品，但多次对标“多 provider 聚合”和“免费额度聚合”类方案。它强调的差异点是不会简单把 rate limit 理论上限堆成夸张数字，而是对共享免费池做去重统计，并把免费 token、永久免费 provider 和 OpenRouter top-up 分开展示。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2020 年，当前 Stars 超过 3.4 万、贡献者 73 人、近期仍有密集提交，成熟度和活跃度都不错；Open Issues 为 51 个，属于可控范围。使用时要注意合法合规和隐私边界，Maigret 面向公开信息检索，不应被用于骚扰、越权调查或违反平台条款的行为。另一个现实限制是：不同网站的反爬、封锁、页面结构变化会影响检测准确性，报告结果需要人工复核。</p>
+<p><strong>注意事项</strong>：项目创建于 2026-02-13，到 2026-06-30 已有 8051 stars、1362 forks 和 108 个 open issues，增长很快但时间还短，接口和配置存在快速变化风险。近期几乎每天发版，适合愿意跟进版本变化的用户；如果要在生产环境长期依赖，需要重点验证 fallback 行为、provider 条款、密钥管理、代理链路和成本统计是否符合自己的合规要求。README 信息量很大，但营销口径较强，像 provider 数量、免费 token 统计和压缩收益这类指标，落地前应按自己的账号和请求类型实测。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/soxoj/maigret">soxoj/maigret</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Soxoj 是 OSINT 社区中具有较高影响力的个人开发者，凭借 Maigret 等高星项目形成了显著的工具传播力。
-<strong>技术栈偏好</strong>：其技术栈以 Python 为主，偏向自动化信息收集、账号识别、数据提取与安全情报工具开发。
-<strong>核心领域</strong>：主要聚焦开源情报、社交账号溯源、反 OSINT 指南与数字身份调查相关方向。</p>
+<p><strong>技术影响力</strong>：拥有 8k+ stars 的代表项目和一定关注者基础，是在特定工具与开源项目方向具备较强社区影响力的个人开发者。
+<strong>技术栈偏好</strong>：主要使用 TypeScript、HTML 和 Python，偏向前端/全栈工具开发与脚本化生态项目。
+<strong>核心领域</strong>：主要聚焦 Omni 相关工具生态、远程交互能力与开发者效率类开源项目。</p>
 <hr />
-<h3>✨ commaai/openpilot (61717★)</h3>
+<h3>✨ browser-use/video-use (10818★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把支持车型的原车辅助驾驶系统，升级成一套可持续迭代的软件驾驶辅助平台，让车主用开源软件直接获得更强的车道居中、跟车和驾驶控制能力。</p>
+<p><strong>一句话</strong>：把原始视频素材丢进文件夹后，让 Claude Code、Codex 这类 coding agent 按转写文本、时间线和渲染规则自动剪出 <code>final.mp4</code>。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：<code>openpilot</code> 是 comma.ai 做的车载操作系统，核心目标不是做通用应用，而是接管并增强车辆的驾驶辅助链路。它已支持 300+ 车型，围绕传感器数据、车辆控制、路线回放和安全测试构建整套软件栈，README 里还明确强调它在研究用途下运行，并且有严格的安全与测试机制。</li>
-<li><strong>能解决什么痛点</strong>：一是原厂辅助驾驶功能往往车型受限、迭代慢，用户很难持续获得更好的车道保持和跟车体验；二是做车辆辅助驾驶相关开发时，常常缺少一套可复现、可回放、可测试的完整平台，openpilot 提供了从开发、测试到部署的闭环。</li>
-<li><strong>适合谁用</strong>：适合做智能汽车、机器人控制、ADAS 相关开发的工程师；也适合已经拥有支持车型和 comma four 硬件、希望体验更强辅助驾驶能力的车主。</li>
-<li><strong>怎么上手</strong>：README 给出的快速安装命令是 <code>bash &lt;(curl -fsSL openpilot.comma.ai)</code>。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>在支持车型上替换或增强原车辅助驾驶功能，获得更稳定的车道居中和跟车体验。</li>
-<li>作为研究平台，进行驾驶行为、传感器融合、控制策略和回放测试。</li>
-<li>作为车载软件工程样板，学习如何组织一套带有安全约束、持续测试和硬件在环验证的系统。</li>
-<li><strong>技术看点</strong>：项目强调安全模型和测试体系，README 中提到有软件在环测试、panda 侧的安全测试，以及硬件在环 Jenkins 流水线。近期提交里还能看到从依赖、目录结构到 WebRTC、网络和参数模型的连续重构，说明它不仅在加功能，也在持续整理工程结构。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交里，明显有一轮较大的仓库结构调整，比如把根目录内容迁移到嵌套的 <code>openpilot/</code>、调整路径前缀、移动 <code>cereal/</code>、统一 <code>car.capnp</code> 等，说明项目在做代码组织和构建体系重整。同时也在处理具体功能和稳定性问题，比如简化变道逻辑、替换 WebRTC 的 HTTP 服务器、补充传感器测试上限、修复蜂窝 DNS 兜底和移除部分旧依赖，整体呈现出“重构 + 稳定性修补 + 持续演进”的活跃状态。</li>
-<li><strong>同类对比</strong>：README 没有明确对标某个竞品，暂未提供。</li>
 <li>
-<p><strong>注意事项</strong>：项目成熟度很高，2016 年创建、近 6.2 万星、贡献者超过 700，但它不是普通 Python 库，而是强硬件绑定的车载系统，实际使用需要支持车型、comma four 和车载线束。README 明确写了这是研究用途软件，且涉及数据上传、隐私协议和安全责任，升级前要特别注意车辆兼容性、地区法规和测试风险。</p>
+<p><strong>它是什么</strong>：video-use 是一个面向 AI coding agent 的视频剪辑技能库，核心思路是让 LLM 通过转写文本、词级时间戳、波形和按需生成的时间线截图来“读懂”视频，而不是直接分析海量帧画面。它可以完成删 filler words、去空白、自动调色、添加字幕、生成动画叠层、渲染成片，并在输出前对剪辑点做自检。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/commaai/openpilot">commaai/openpilot</a></p>
+<p><strong>能解决什么痛点</strong>：做口播、教程、采访或发布视频时，人工清理 <code>umm</code>、<code>uh</code>、停顿、重录片段和字幕样式非常耗时，video-use 把这些工作拆成可由 agent 执行的脚本流程。另一个痛点是让 LLM 处理视频成本很高，它用“12KB 左右的转写文本 + 少量时间线 PNG”替代逐帧喂图，降低上下文噪声和 token 消耗。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合已经在用 Claude Code、Codex、Hermes、Openclaw 等带 shell 权限 agent 的内容创作者、开发者布道师和技术视频作者。也适合想把内部视频剪辑流程脚本化的 Python 工程师或自动化工作流开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：最简单方式是在支持 shell 的 agent 里粘贴：<code>Set up https://github.com/browser-use/video-use for me.</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：整理多段口播素材，自动删掉停顿、口误和重复开头，输出一版 launch video。给教程、访谈、产品演示视频自动加大写分段字幕、音频淡入淡出和基础调色。为 VPS 或 Telegram 上的常驻 agent 接入视频剪辑能力，让远程投递素材后自动生成 <code>edit/final.mp4</code>。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目没有走“把视频帧全部喂给多模态模型”的路线，而是用 ElevenLabs Scribe 获取词级时间戳、说话人分离和音频事件，再用 <code>timeline_view</code> 在关键决策点生成视觉复合图。渲染链路包含 EDL、ffmpeg、字幕烧录、30ms 切点音频 fade，以及最多 3 轮的自评估重渲染流程。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交集中在可用性和视频兼容性修补，包括竖屏视频方向保持、HLG/PQ 到 Rec.709 SDR 的 tone-map、字幕安全区、UTF-8 输出编码、MIT License 和安装文档补齐。提交时间主要集中在 2026 年 4 月到 5 月，6 月仍有仓库更新；社区贡献者数量为 6，说明项目早期已有外部修补参与，但还不是长期稳定维护节奏非常明确的成熟项目。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确对比的是“逐帧输入多模态模型”的朴素方案，video-use 的差异是把视频抽象成结构化转写文本和按需视觉时间线，类似 browser-use 用 DOM 替代截图来让 LLM 操作网页。README 还提到可接入 HyperFrames、Remotion、Manim 或 PIL 生成动画叠层，但没有把它们作为直接竞品。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间很新，虽然 star 增长很快，但仍有 43 个 open issues，成熟度需要谨慎评估。上手依赖较多，包括 agent 环境、ffmpeg、uv 或 pip、ElevenLabs API key，手动安装门槛不低。README 解释了整体流程和设计原则，文档方向清晰，但实际效果会受素材质量、转写准确率、agent 执行能力和本地渲染环境影响。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/browser-use/video-use">browser-use/video-use</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：comma.ai 是自动驾驶开源生态中的高影响力组织，凭借 <code>openpilot</code> 等项目在技术社区具备很强的可见度和影响力。
-<strong>技术栈偏好</strong>：其技术栈以 <code>Python</code> 为主、<code>C</code> 为辅，偏向算法、系统控制与车载底层接口协同开发。
-<strong>核心领域</strong>：主要聚焦自动驾驶与智能驾驶系统，尤其是量产车辅助驾驶和相关硬件/软件整合。</p>
-<hr />
-<h3>✨ ripienaar/free-for-dev (123627★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它把各大云厂商和开发者服务里“真的能长期白嫖”的免费额度整理成一份可检索清单，方便你在选型前快速看清哪些服务能直接拿来做原型、测试环境或低成本生产组件。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个面向 DevOps 和基础设施开发者的免费服务目录，内容覆盖 SaaS、PaaS、IaaS 以及监控、日志、CI/CD、DNS、存储、AI 等常见基础服务。它不是一个可运行的软件，而是一份持续维护的 README 清单，按分类列出服务名称、免费额度、限制条件和官方链接，重点筛选“免费层”而不是短期试用。</li>
-<li><strong>能解决什么痛点</strong>：一是避免在做架构选型时反复翻各家官网，省去逐个核对免费额度、期限和限制的时间；二是减少把“免费试用”误当“长期免费”的踩坑，尤其对预算敏感的测试环境、个人项目和小团队很实际。</li>
-<li><strong>适合谁用</strong>：做云上基础设施选型的 SRE、DevOps、平台工程师；以及需要搭建低成本原型、CI 流水线、监控告警或静态站点的独立开发者和开源作者。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例；最直接的用法就是打开 README 按分类查找目标服务并跳转官方链接。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>给个人项目挑选免费数据库、对象存储和函数计算，尽量把基础成本压到 0。</li>
-<li>搭建内部测试环境时，优先选择带永久免费额度的 DNS、监控、CI/CD 和日志服务。</li>
-<li>做云厂商对比评估时，快速整理 Google Cloud、AWS、Azure、Oracle Cloud 的 always-free 条款。</li>
-<li><strong>技术看点</strong>：它的价值不在代码实现，而在“人工筛选 + 持续维护”的信息组织方式：按使用场景分门别类，并明确写出额度、周期和限制条件。README 里对准入标准也比较严格，强调必须是 as-a-Service、必须有免费层、且会从安全角度筛掉只把 TLS 等关键能力放在付费档的服务。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，几乎集中在持续增补条目、移除失效服务和同步厂商额度变化，比如新增 Generative AI、Web Hosting、Monitoring、Testing 条目，同时清理已失效服务，并更新 OCI A1 的 Always Free 限制。说明项目当前重点仍是“保持目录时效性”和“跟进新免费层服务”，而不是结构重构或功能扩展；社区贡献者也保持高频参与。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：这是高星、长周期维护的资料型项目，但本质上依赖人工更新，某些条目的免费额度可能随厂商政策变化而失效；README 也明确带有主观筛选标准，所以并非“全量收录”。虽然 open issues 只有 12 个，但条目很多，实际使用时仍建议点进官方链接复核最新限制。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/ripienaar/free-for-dev">ripienaar/free-for-dev</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：R.I.Pienaar 是资深系统架构与自动化开发者，凭借 <code>free-for-dev</code> 等高影响力项目在开发者工具与资源整理领域具备显著社区影响力。
-<strong>技术栈偏好</strong>：技术栈以 Ruby、HTML、CSS 为主，并涉及 Go，偏向自动化工具、运维支撑、监控与开发者资源类项目。
-<strong>核心领域</strong>：主要聚焦系统架构、基础设施自动化、运维工具链、监控可视化与开发者生产力生态。</p>
-<hr />
-<h3>✨ logto-io/logto (12350★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Logto 把 SaaS 和 AI 应用里常见的登录、单点登录、多租户隔离和权限控制，收拢成一套基于 OIDC / OAuth 2.1 的现成身份基础设施。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：它是一个面向现代应用的开源认证与授权系统，核心围绕 OIDC、OAuth 2.1 和 SAML 展开。README 里直接强调了多租户、企业 SSO、RBAC、预置登录流程，以及面向 30+ 框架的 SDK，说明它不是只管“登录页”，而是覆盖身份接入、组织管理、权限分配和第三方身份源对接的一整层。</li>
-<li><strong>能解决什么痛点</strong>：一是团队自己搭认证时，往往会在租户隔离、组织成员邀请、SSO 接入、MFA、回调处理这些细节上耗很多时间，且容易踩协议和安全坑。二是 SaaS 或 AI 平台常常需要同时支持 Web、移动端、CLI、API 和外部 IdP，Logto 试图把这些分散的身份接入方式统一到一套标准协议和 SDK 体系里。</li>
-<li><strong>适合谁用</strong>：做 SaaS、AI Agent 平台、B2B 控制台的后端和全栈工程师；需要给 React、Next.js、Vue、Flutter、Go、Python 等多端应用接统一身份体系的开发团队。也适合想自建身份服务、但不想从零实现 OIDC / OAuth / SAML 的工程团队。</li>
-<li><strong>怎么上手</strong>：README 提供了最小启动方式，Docker Compose 一行即可跑起来：</li>
-<li><strong>可以用在哪些场景</strong>：给 B2B SaaS 搭建带组织、成员邀请和角色权限的登录体系；为企业内部管理后台接入 Azure AD、Okta 之类的企业 SSO；为面向 AI Agent 或 MCP 的服务提供统一身份、访问控制和多租户隔离。</li>
-<li><strong>技术看点</strong>：项目以 TypeScript 为主，面向协议标准做产品化封装，支持 OIDC、OAuth 2.1、SAML 和多种框架 SDK。近期 README 还明确提到面向 Model Context Protocol 和 agent-based architecture，说明它在跟进 AI 应用的身份接入趋势，不只是传统 CIAM。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交里，新增和完善了 inline hook 的 CRUD、配置查询、执行错误处理、本地 VM runner、quota 支持和 schema guard，说明核心方向在加强可扩展的身份流程编排能力。同时还有消息发送限流与投递抑制、账户中心和控制台路线修正、发票和邀请链接等修复，整体看是“持续加功能 + 高频修细节”的活跃状态，不是停留在维护期。</li>
-<li><strong>同类对比</strong>：README 里明确把自己对标成 Auth0 / Cognito / Firebase 一类方案的开源替代，同时强调支持 OIDC、OAuth 2.0/2.1、SAML，以及更适合 SaaS 和 AI 场景。</li>
-<li>
-<p><strong>注意事项</strong>：项目规模不小，Stars 12350、Contributors 105、Open Issues 182，说明成熟度和活跃度都不错，但也意味着功能面较广、配置项和概念较多，上手不会像“单文件 SDK”那么轻。README 有较完整的入口，但身份系统本身天然涉及协议、回调、租户模型和迁移成本，真正落地前需要认真评估现有用户体系、域名、会话策略和第三方 IdP 集成方案。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/logto-io/logto">logto-io/logto</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为面向开发者的现代认证基础设施组织，Logto 以 <code>logto-io/logto</code> 的高星项目在开发者身份认证与权限管理社区中具备较强影响力。
-<strong>技术栈偏好</strong>：以 <code>TypeScript</code> 为核心，辅以 <code>MDX</code> 做文档与知识沉淀，并延伸到 <code>Dart</code>、<code>Go</code> 等多语言 SDK 生态。
-<strong>核心领域</strong>：主要聚焦身份认证、授权管理与开发者认证基础设施。</p>
+<p><strong>技术影响力</strong>：Browser Use 以高星开源项目快速建立起较强社区影响力，属于浏览器自动化与 Agent 工具链方向的活跃组织。
+<strong>技术栈偏好</strong>：其仓库几乎清一色以 Python 为主，明显偏向围绕浏览器控制、自动化编排与 AI 工作流集成的工程实现。
+<strong>核心领域</strong>：主要聚焦于基于浏览器的自动化代理、Web 交互编排以及相关开发工具与运行框架。</p>
 <hr />
 <h3>✨ xbtlin/ai-berkshire (1464★)</h3>
 <blockquote>
@@ -424,117 +343,289 @@
 <strong>技术栈偏好</strong>：主要使用 Python 和 Java，偏好 AI 应用、工程学习资料与经典编程体系沉淀。
 <strong>核心领域</strong>：主要聚焦于大语言模型、价值投资以及工程师成长学习资源。</p>
 <hr />
-<h3>✨ browser-use/video-use (10818★)</h3>
+<h3>✨ Mebus/cupp (6001★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把原始视频素材丢进文件夹后，让 Claude Code、Codex 这类 coding agent 按转写文本、时间线和渲染规则自动剪出 <code>final.mp4</code>。</p>
+<p><strong>一句话</strong>：CUPP 通过询问姓名、生日、昵称、宠物等个人信息，生成更贴近真实用户习惯的密码字典，用于授权渗透测试和取证分析。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：video-use 是一个面向 AI coding agent 的视频剪辑技能库，核心思路是让 LLM 通过转写文本、词级时间戳、波形和按需生成的时间线截图来“读懂”视频，而不是直接分析海量帧画面。它可以完成删 filler words、去空白、自动调色、添加字幕、生成动画叠层、渲染成片，并在输出前对剪辑点做自检。</p>
+<p><strong>它是什么</strong>：CUPP 是 Common User Passwords Profiler 的缩写，核心用途是根据目标用户画像生成定制化密码字典。它支持交互式问答生成字典，也可以基于已有字典或 WyD.pl 输出继续加工，还能下载大型 wordlist、解析 Alecto DB 中的默认用户名和密码数据。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：做口播、教程、采访或发布视频时，人工清理 <code>umm</code>、<code>uh</code>、停顿、重录片段和字幕样式非常耗时，video-use 把这些工作拆成可由 agent 执行的脚本流程。另一个痛点是让 LLM 处理视频成本很高，它用“12KB 左右的转写文本 + 少量时间线 PNG”替代逐帧喂图，降低上下文噪声和 token 消耗。</p>
+<p><strong>能解决什么痛点</strong>：在合法渗透测试中，通用弱口令字典往往命中率有限，CUPP 可以把生日、昵称、地址、亲友姓名等信息组合成更有针对性的候选密码。做取证或密码强度评估时，它也能帮助安全人员模拟“熟人式猜测”带来的真实风险。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合已经在用 Claude Code、Codex、Hermes、Openclaw 等带 shell 权限 agent 的内容创作者、开发者布道师和技术视频作者。也适合想把内部视频剪辑流程脚本化的 Python 工程师或自动化工作流开发者。</p>
+<p><strong>适合谁用</strong>：适合做授权渗透测试、红队演练的安全工程师；也适合需要评估用户密码策略强度的企业安全团队和数字取证人员。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：最简单方式是在支持 shell 的 agent 里粘贴：<code>Set up https://github.com/browser-use/video-use for me.</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：整理多段口播素材，自动删掉停顿、口误和重复开头，输出一版 launch video。给教程、访谈、产品演示视频自动加大写分段字幕、音频淡入淡出和基础调色。为 VPS 或 Telegram 上的常驻 agent 接入视频剪辑能力，让远程投递素材后自动生成 <code>edit/final.mp4</code>。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目没有走“把视频帧全部喂给多模态模型”的路线，而是用 ElevenLabs Scribe 获取词级时间戳、说话人分离和音频事件，再用 <code>timeline_view</code> 在关键决策点生成视觉复合图。渲染链路包含 EDL、ffmpeg、字幕烧录、30ms 切点音频 fade，以及最多 3 轮的自评估重渲染流程。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近提交集中在可用性和视频兼容性修补，包括竖屏视频方向保持、HLG/PQ 到 Rec.709 SDR 的 tone-map、字幕安全区、UTF-8 输出编码、MIT License 和安装文档补齐。提交时间主要集中在 2026 年 4 月到 5 月，6 月仍有仓库更新；社区贡献者数量为 6，说明项目早期已有外部修补参与，但还不是长期稳定维护节奏非常明确的成熟项目。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确对比的是“逐帧输入多模态模型”的朴素方案，video-use 的差异是把视频抽象成结构化转写文本和按需视觉时间线，类似 browser-use 用 DOM 替代截图来让 LLM 操作网页。README 还提到可接入 HyperFrames、Remotion、Manim 或 PIL 生成动画叠层，但没有把它们作为直接竞品。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间很新，虽然 star 增长很快，但仍有 43 个 open issues，成熟度需要谨慎评估。上手依赖较多，包括 agent 环境、ffmpeg、uv 或 pip、ElevenLabs API key，手动安装门槛不低。README 解释了整体流程和设计原则，文档方向清晰，但实际效果会受素材质量、转写准确率、agent 执行能力和本地渲染环境影响。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/browser-use/video-use">browser-use/video-use</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Browser Use 以高星开源项目快速建立起较强社区影响力，属于浏览器自动化与 Agent 工具链方向的活跃组织。
-<strong>技术栈偏好</strong>：其仓库几乎清一色以 Python 为主，明显偏向围绕浏览器控制、自动化编排与 AI 工作流集成的工程实现。
-<strong>核心领域</strong>：主要聚焦于基于浏览器的自动化代理、Web 交互编排以及相关开发工具与运行框架。</p>
-<hr />
-<h3>✨ Unclecheng-li/VulnClaw (997★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：输入一句“对这个授权目标做渗透测试”，它会调度 LLM、MCP 工具和内置渗透技能，自动跑完信息收集、漏洞发现、验证利用和报告生成。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：VulnClaw 是一个 Python 编写的 AI 渗透测试 Agent，支持 CLI、REPL、TUI 和本地 Web UI 多种入口。它把 OpenAI 兼容大模型、MCP 工具链、浏览器自动化、Burp/Fetch/Memory 等能力编排到一条渗透流程里，并能生成结构化 Markdown 报告和 Python PoC。项目强调“已授权目标”使用，README 中也明确将适用范围限定在授权渗透、CTF、安全教学和红队演练等场景。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：传统渗透测试流程里，信息收集、目录枚举、指纹识别、漏洞验证、结果整理往往分散在多个工具和手工笔记中，VulnClaw 尝试把这些步骤串成一个可对话、可持续运行的 Agent 流程。另一个痛点是 LLM 在安全任务中容易“嘴上完成、实际没打请求”，项目通过真实工具输出校验 flag/结论，减少凭空编造结果的问题。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合有明确授权范围的安全研究员、渗透测试工程师、红队成员和 CTF 选手。也适合安全教学场景中，用来演示从自然语言目标到自动化信息收集、漏洞验证和报告输出的完整链路。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：README 推荐直接从 PyPI 安装：<code>pip install vulnclaw</code>，然后配置模型与 Key：<code>vulnclaw config provider openai &amp;&amp; vulnclaw config set llm.api_key sk-your-key-here</code>，最后运行 <code>vulnclaw</code> 或 <code>vulnclaw run</code>。</p>
+<p><strong>怎么上手</strong>：<code>python3 cupp.py -h</code></p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>在内部靶场或 CTF Web 题中，让 Agent 持续探索页面、参数、编码和响应，直到找到可验证的 flag 或漏洞证据。</li>
-<li>对已授权的 Web 资产做初步安全摸底，例如指纹识别、端口/目录枚举、响应头/JWT/JS 端点分析，并生成报告。</li>
+<li>在授权内网渗透测试中，为特定员工或账号生成定制密码字典。</li>
+<li>在企业密码策略审计中，验证员工是否使用生日、姓名、宠物名等易猜密码。</li>
 <li>
-<p>红队演练或安全教学中，用 TUI/Web UI 限定主机、端口、路径、允许动作和禁止动作，再展示自动化渗透流程。</p>
+<p>在取证调查中，基于已知个人信息构造候选密码，用于合法恢复或验证访问凭据。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目不是简单的固定轮数“让模型循环调用工具”，而是引入了目标驱动求解引擎、黑板图状态空间搜索、Fact/Intent 建模和证据级反幻觉闸门。它还支持 13 类 OpenAI 兼容 LLM Provider、4 个 MCP 服务、21 个渗透 Skill、插件化漏洞检测和内置 Python 执行能力，整体更像一个安全任务编排框架。</p>
+<p><strong>技术看点</strong>：项目用 Python 3 编写，运行门槛低，主要通过配置文件和命令行选项驱动，不依赖复杂服务端环境。功能设计偏传统安全工具风格，围绕字典生成、字典扩展和默认凭据数据源整合展开。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近提交非常活跃，6 月 28-29 日连续合并了 Docker 支持、ChatGPT 订阅登录与内置代理、Chrome DevTools MCP 工具名自动发现、SSE URL 校验、CI 修复等改动。也能看到多个安全修复，例如修补 Web 静态资源和报告输出路径穿越问题、调整 <code>python_execute</code> 作用域检查逻辑，说明项目正在从功能扩展阶段进入可部署性和安全边界加固阶段。近期 PR 来自多位贡献者，社区参与度不低。</p>
+<p><strong>近期动向与发展方向</strong>：提交历史显示项目长期维护节奏较慢，2020 年后更新明显减少，但 2025 年底集中合并了多个 PR，并发布了 3.3.1 版本。近期重点更偏维护性工作，包括 Python 3.13 支持、徽章修复、输入处理细节修正和社区补丁合并，暂未看到大规模重构或新功能扩展迹象。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 没有明确列出直接竞品。它的差异点主要在于把 LLM Agent、MCP 工具链、渗透 Skill、报告生成和目标驱动求解整合在一个独立 CLI/Web 工具里，而不是只做单点扫描或单个插件调用。</p>
+<p><strong>同类对比</strong>：README 未明确提到同类竞品。它的定位不是通用爆破框架，而是专注于“用户画像驱动的密码字典生成”，通常会和其他密码审计或爆破工具配合使用。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间较新，但 Star 增长快、提交频繁，仍应按快速演进项目看待，接口和行为可能变化。内置 <code>python_execute</code> 被 README 明确标注为高风险实验能力，不应视为强隔离沙箱；涉及漏洞利用、持续性渗透和 ChatGPT 订阅登录时，也需要严格确认授权范围、合规要求和服务条款风险。当前 Open Issues 为 8 个，问题数量不高，但近期刚修过路径穿越和作用域检查问题，部署到真实环境前建议先在隔离靶场验证。</p>
+<p><strong>注意事项</strong>：项目创建于 2012 年，历史较长，Stars 和 Forks 都较高，说明在安全社区有一定认知度；但近期活跃度不算高，当前仍有 48 个 open issues，需要留意维护响应速度。README 提供了基本用法和参数说明，但没有详细安装流程或复杂案例文档；另外，该工具只能用于授权测试、取证和防御性评估，滥用会带来法律风险。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Unclecheng-li/VulnClaw">Unclecheng-li/VulnClaw</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/Mebus/cupp">Mebus/cupp</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有多个高星项目和近四百关注者，在 GitHub 上具备一定影响力的个人开发者。
-<strong>技术栈偏好</strong>：主要使用 HTML、Python 与 C，偏向 Web 内容呈现、自动化脚本及底层安全验证工具开发。
-<strong>核心领域</strong>：主要聚焦网络安全漏洞研究、PoC 实验与 AI 动画相关工具/教程沉淀。</p>
+<p><strong>技术影响力</strong>：Mebus 是一位长期活跃的个人开发者，凭借 Python 项目 <code>cupp</code> 获得较高社区关注，整体影响力集中在安全工具与实用脚本圈层。
+<strong>技术栈偏好</strong>：技术栈明显偏向 Python，同时少量使用 C++，更倾向于开发命令行工具、自动化脚本和底层硬件相关实验项目。
+<strong>核心领域</strong>：主要聚焦网络安全、渗透测试辅助工具、备份/恢复工具以及嵌入式或 CAN 总线相关技术探索。</p>
 <hr />
-<h3>✨ 0xNyk/council-of-high-intelligence (1738★)</h3>
+<h3>✨ ripienaar/free-for-dev (123627★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把 18 个带有人物风格的 AI 角色拉进同一轮“议会辩论”，让它们用不同模型、不同立场围着一个难题分轮讨论，最后给出带分歧和下一步建议的结论。</p>
+<p><strong>一句话</strong>：它把各大云厂商和开发者服务里“真的能长期白嫖”的免费额度整理成一份可检索清单，方便你在选型前快速看清哪些服务能直接拿来做原型、测试环境或低成本生产组件。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是一个面向 Claude Code 和 Codex 的 Shell 版技能项目，核心是通过 <code>/council</code> 这一条命令触发多角色、多轮次的结构化 deliberation。它不是单轮问答，而是把问题先重述、再交叉质询、再汇总裁决，尽量让不同模型和不同“思维人格”产生真实冲突，而不是同一种推理换皮。</li>
-<li><strong>能解决什么痛点</strong>：一是单个大模型在复杂决策里很容易给出流畅但偏颇的答案，这个项目试图用多视角把明显漏洞提前暴露出来；二是面对架构取舍、发布决策、风险判断这类问题时，团队常常缺少一个能逼迫大家把分歧说清楚的固定流程。</li>
-<li><strong>适合谁用</strong>：做 AI 工程、代理框架、产品决策的人；以及日常就已经在 Claude Code、Codex、Gemini CLI、Ollama 这些环境里干活，希望把“拍脑袋问模型”改成“有流程的多人评审”的开发者。</li>
-<li><strong>怎么上手</strong>：最小方式是克隆后安装，然后在对应终端里直接调用 <code>/council</code>。例如：<code>git clone https://github.com/0xNyk/council-of-high-intelligence.git &amp;&amp; cd council-of-high-intelligence &amp;&amp; ./install.sh --codex</code></li>
-<li><strong>可以用在哪些场景</strong>：评审是否开源一个内部代理框架；在“微服务还是单体”“缓存要不要加”“这个抽象值不值得保留”这类工程决策里做交叉审查；在 AI 产品里比较不同模型/提供商路线时，把能力、成本、风险、可维护性放到同一张桌子上讨论。</li>
-<li><strong>技术看点</strong>：项目的重点不是“接一个大模型”，而是把决策流程产品化了：有固定的三轮 deliberation、问题重述门槛、反对意见配额、加权投票式 tie-breaking，以及多 provider 自动路由。它还把成员分散到 Claude、OpenAI、Gemini、Ollama、NVIDIA NIM、Cursor 等来源上，目标是获得真正的模型多样性。</li>
-<li><strong>近期动向与发展方向</strong>：最近的提交明显还在快速演进，重点集中在决策质量和模型接入两条线。6 月下旬新增了 Gemini CLI 支持，并把 tie-breaking 从“文字印象”改成了可计数的加权统计，说明项目在补强结果稳定性；5 月份则集中做了发布流程、lint/CI、会话元数据、反对立场提示、匿名交叉质询等改进，整体方向是把“好玩”的多模型协作逐步收敛成可重复、可维护的工作流。5 位贡献者、5 个开放 issue，活跃度不低，但仍属于小团队持续打磨阶段。</li>
-<li><strong>同类对比</strong>：README 没有直接对标某个具体竞品；它更像是把“多模型评审”做成了一个可在命令行里直接调用的固定仪式，而不是通用聊天框架。</li>
+<li><strong>它是什么</strong>：这是一个面向 DevOps 和基础设施开发者的免费服务目录，内容覆盖 SaaS、PaaS、IaaS 以及监控、日志、CI/CD、DNS、存储、AI 等常见基础服务。它不是一个可运行的软件，而是一份持续维护的 README 清单，按分类列出服务名称、免费额度、限制条件和官方链接，重点筛选“免费层”而不是短期试用。</li>
+<li><strong>能解决什么痛点</strong>：一是避免在做架构选型时反复翻各家官网，省去逐个核对免费额度、期限和限制的时间；二是减少把“免费试用”误当“长期免费”的踩坑，尤其对预算敏感的测试环境、个人项目和小团队很实际。</li>
+<li><strong>适合谁用</strong>：做云上基础设施选型的 SRE、DevOps、平台工程师；以及需要搭建低成本原型、CI 流水线、监控告警或静态站点的独立开发者和开源作者。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例；最直接的用法就是打开 README 按分类查找目标服务并跳转官方链接。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>给个人项目挑选免费数据库、对象存储和函数计算，尽量把基础成本压到 0。</li>
+<li>搭建内部测试环境时，优先选择带永久免费额度的 DNS、监控、CI/CD 和日志服务。</li>
+<li>做云厂商对比评估时，快速整理 Google Cloud、AWS、Azure、Oracle Cloud 的 always-free 条款。</li>
+<li><strong>技术看点</strong>：它的价值不在代码实现，而在“人工筛选 + 持续维护”的信息组织方式：按使用场景分门别类，并明确写出额度、周期和限制条件。README 里对准入标准也比较严格，强调必须是 as-a-Service、必须有免费层、且会从安全角度筛掉只把 TLS 等关键能力放在付费档的服务。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，几乎集中在持续增补条目、移除失效服务和同步厂商额度变化，比如新增 Generative AI、Web Hosting、Monitoring、Testing 条目，同时清理已失效服务，并更新 OCI A1 的 Always Free 限制。说明项目当前重点仍是“保持目录时效性”和“跟进新免费层服务”，而不是结构重构或功能扩展；社区贡献者也保持高频参与。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：上手不算轻量，前提是你本地已经有对应的模型 CLI 或可用账号，而且不同 provider 的路由配置会影响实际效果。项目创建时间较新，功能迭代密集，说明它还在快速变化中；如果你打算把它用于生产决策流程，需要接受提示词、成员编排和 provider 适配仍可能继续调整的现实。</p>
+<p><strong>注意事项</strong>：这是高星、长周期维护的资料型项目，但本质上依赖人工更新，某些条目的免费额度可能随厂商政策变化而失效；README 也明确带有主观筛选标准，所以并非“全量收录”。虽然 open issues 只有 12 个，但条目很多，实际使用时仍建议点进官方链接复核最新限制。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/0xNyk/council-of-high-intelligence">0xNyk/council-of-high-intelligence</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/ripienaar/free-for-dev">ripienaar/free-for-dev</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：nyk 是具备较强社区影响力的个人开发者，凭借多个 AI Agent 相关高星项目在开源生态中形成了明显可见度。
-<strong>技术栈偏好</strong>：技术栈以 Shell、TypeScript、JavaScript 为主，偏向快速构建自动化工具、Agent 框架与链上基础设施原型。
-<strong>核心领域</strong>：主要聚焦 Solana 基础设施、AI Agents、交易系统以及面向开发者的智能工具生态。</p>
+<p><strong>技术影响力</strong>：R.I.Pienaar 是资深系统架构与自动化开发者，凭借 <code>free-for-dev</code> 等高影响力项目在开发者工具与资源整理领域具备显著社区影响力。
+<strong>技术栈偏好</strong>：技术栈以 Ruby、HTML、CSS 为主，并涉及 Go，偏向自动化工具、运维支撑、监控与开发者资源类项目。
+<strong>核心领域</strong>：主要聚焦系统架构、基础设施自动化、运维工具链、监控可视化与开发者生产力生态。</p>
+<hr />
+<h3>✨ google/agents-cli (3767★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：The CLI and skills that turn any coding assistant into an expert at creating, evaluating, and deploying AI agents on Google Cloud.</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/google/agents-cli">google/agents-cli</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ roboflow/supervision (45705★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把模型输出变成可处理的检测结果、标注图像、数据集格式和视频分析流程，让计算机视觉应用少写大量重复胶水代码。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：<code>supervision</code> 是 Roboflow 维护的 Python 计算机视觉基础库，覆盖模型结果接入、检测/分割/分类结果表示、图像标注、数据集加载与格式转换等常见环节。它本身不绑定某一个模型框架，可以接入 Ultralytics、Transformers、MMDetection、Roboflow Inference、RF-DETR 等模型输出，并统一成 <code>sv.Detections</code> 这类可复用数据结构。README 里重点展示了检测结果可视化、数据集按 COCO/YOLO/Pascal VOC 等格式读写、拆分和合并。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：做目标检测或视频分析时，开发者经常要反复写框坐标解析、类别映射、置信度过滤、画框、写标签、跟踪结果展示等样板代码，<code>supervision</code> 把这些步骤封装成统一 API。另一个典型痛点是数据集格式不一致，比如训练用 YOLO、标注导出是 COCO、交付需要 Pascal VOC，它提供了加载、转换、合并和拆分能力，减少手写转换脚本的风险。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合做目标检测、实例分割、视频分析、工业视觉落地的 Python 工程师和算法工程师。也适合使用 Roboflow、Ultralytics、Transformers、MMDetection 或 RF-DETR 生态的开发者，用它来快速搭建推理后处理、可视化和数据集处理流程。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装方式很直接：<code>pip install supervision</code>。最小使用示例：<code>import supervision as sv; box_annotator = sv.BoxAnnotator(); annotated_frame = box_annotator.annotate(scene=image.copy(), detections=detections)</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于给目标检测结果批量画框、标签和分割区域，生成可用于验收或演示的标注图片/视频。可以用于把 Roboflow、YOLO、COCO、Pascal VOC 等数据集格式互相转换，并按训练/验证/测试集拆分。也可以用于实时视频分析，例如车辆速度估计、区域计数、停留时间分析、排队等待时间统计等需要检测、跟踪和可视化组合的场景。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目的关键设计是模型无关的中间表示，把不同推理框架的输出转换为统一的 <code>Detections</code>，后续标注、过滤、跟踪、数据集处理都围绕这套结构展开。它还提供大量可组合的 annotator 和 dataset utility，更像是计算机视觉应用层的标准库，而不是单一模型实现。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在类型标注强化、Python 最低版本提升到 3.10、依赖更新、pre-commit/mypy 配置修复，以及数据集格式能力扩展。功能层面新增了 <code>DetectionDataset</code> 对 LabelMe 和 CreateML 的支持，加入了 inference slicer batching，并修复了 <code>from_inference</code> 在部分 <code>tracker_id</code> 缺失时崩溃的问题。整体看项目仍然活跃，既有维护性改进，也在持续补齐数据集和推理后处理能力。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有直接把它和某个竞品对标。它更像是连接 Ultralytics、Transformers、MMDetection、Roboflow Inference 等模型生态的应用层工具库，而不是替代这些训练/推理框架。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2022 年底，已有 4.5 万 Star、168 位贡献者，成熟度和社区关注度较高；同时仍有 101 个 open issues，说明使用面广，边界问题也不少。近期提交显示最低 Python 版本已提升到 3.10，老环境需要注意兼容性。文档、教程、Colab、Hugging Face Space 和示例资源较完整，但功能覆盖面较大，新用户最好从 <code>Detections</code>、Annotators、Dataset 三块核心 API 入手。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/roboflow/supervision">roboflow/supervision</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Roboflow 是计算机视觉开源生态中影响力很强的组织，凭借高星项目和活跃仓库在开发者社区具备显著号召力。
+<strong>技术栈偏好</strong>：其技术栈明显以 Python 为核心，辅以 Jupyter Notebook，偏向视觉模型开发、实验复现与工程化工具链。
+<strong>核心领域</strong>：主要聚焦于计算机视觉与视觉 AI 应用，覆盖目标检测、跟踪、数据集与模型落地等方向。</p>
+<hr />
+<h3>✨ ogulcancelik/herdr (8687★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：herdr 把 Claude Code、Codex、Devin 等多个编码 Agent 放进同一个真实终端里运行，用分屏、标签页和侧边栏直接看谁在工作、谁被卡住、谁已经完成。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：herdr 是一个面向 AI 编码 Agent 的终端复用器，可以理解为“为 Agent 场景重新设计的 tmux”。每个 Agent 都运行在真实终端会话中，支持工作区、标签页、分屏、鼠标拖拽、断开重连和远程 SSH 使用。它还能自动识别多个 Agent 的状态，把 blocked、working、done、idle 汇总到侧边栏里。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：同时跑多个 Agent 时，开发者通常要在多个终端窗口、tmux pane 或 GUI 管理器之间来回切换，很难一眼看出哪个 Agent 需要人工介入。另一个痛点是远程或长任务场景下，终端断开、合上电脑、SSH 重连后，Agent 会话容易丢失或难以恢复。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合频繁使用 Claude Code、Codex、Devin、opencode、Cursor Agent 等 CLI 编码 Agent 的开发者。也适合在服务器、VPS、远程开发机上同时管理多个长期终端任务的后端工程师、全栈工程师和工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装：<code>curl -fsSL https://herdr.dev/install.sh | sh</code>；启动：<code>herdr</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：同时让多个 Agent 分别处理不同仓库、不同 issue 或不同 feature，并在一个终端里观察状态。通过 SSH 连接远程开发机，在 VPS 上保持 Agent 长时间运行，断开本地终端后再重新接入。为 Agent 编写自动化编排脚本，通过本地 socket API 创建工作区、拆分 pane、读取终端输出和订阅状态变化。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目用 Rust 实现为单个约 10MB 的本地二进制，不依赖 Electron 或桌面 GUI，适合在 Linux、macOS 和 Windows beta 环境中运行。设计上保留真实终端渲染和服务端持久会话，同时提供 socket API、CLI 和插件能力，方便 Agent 反过来控制终端环境。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026-06-29 到 2026-06-30，开发非常活跃，且主要由作者 Ogulcan Celik 推进。近期重点包括终端会话控制流、观察流、session snapshot API、socket protocol schema、API schema 暴露，以及把 TUI 状态变更收敛到 runtime/API authority，说明项目正在强化可编程接口和内部状态一致性。同时也在持续修复 Windows、PowerShell、远程安装发现、copy mode、agent 恢复状态等实际使用问题，方向上更偏向稳定的 Agent 运行时和可脚本化终端编排层。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确对比了 tmux、zellij、cmux、Warp、Conductor 等。tmux 有持久会话和分屏，但不了解 Agent 状态；GUI Agent 管理器能显示 Agent 状态，但通常是桌面应用、平台受限，且会在包装层里重绘终端。herdr 的差异点是运行在真实终端里、支持 SSH 和断开重连，同时内建 Agent 状态感知和可编程 API。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026-03-27，时间较新，虽然 star 增长很快、提交频繁，但仍可能存在接口变化和行为调整风险。当前 open issues 为 33 个，Windows 仍标注为 preview beta，跨平台稳定性需要按自己的环境验证。许可证为 AGPL-3.0-or-later，同时提供商业授权，企业内部集成前需要确认合规要求。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/ogulcancelik/herdr">ogulcancelik/herdr</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Can Celik 是一位以 Rust 项目获得显著社区关注的个人开发者，整体影响力集中在少数高热度开源项目上。
+<strong>技术栈偏好</strong>：技术栈以 Rust、TypeScript 和 C# 为主，偏向系统工具、前端/扩展开发与 Unity 相关工程实践。
+<strong>核心领域</strong>：主要聚焦开发者工具、浏览器/平台扩展、游戏开发桥接以及自动化辅助类应用。</p>
+<hr />
+<h3>✨ simplex-chat/simplex-chat (12251★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：这是一个不依赖用户标识符的私密聊天网络，提供 iOS、Android、桌面端和命令行客户端，让你在尽量少暴露元数据的前提下建立对话和群组连接。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：SimpleX Chat 的核心不是“加密聊天”这么简单，而是尽量不让系统层面知道“你是谁”。README 明确强调它没有任何用户标识符，消息和连接都围绕私有链接、二维码和会话建立展开，同时支持移动端、桌面端和终端客户端。它还提供连接安全码验证、群组、机器人和目录等功能，已经不是单一聊天 App，而是一套完整的私密通信网络。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：一类典型问题是传统 IM 必须绑定手机号、用户名或联系人列表，导致身份、社交关系和活跃时间容易被平台侧关联；SimpleX 试图把这类元数据暴露降到更低。另一类问题是团队或社区需要一个能跨设备使用、同时支持私密连接和群组交流的通信方案，而不是只依赖单个平台的封闭账号体系。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：重视隐私和元数据保护的个人用户，尤其是希望减少手机号、账号体系暴露的人。也适合做隐私通信、去中心化社交、聊天机器人和集成应用的开发者，README 里还专门提到了开发 bot、自动化和基于 SimpleX 平台的社交应用。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 给出的最直接方式是安装官方客户端，例如 iOS、Android、F-Droid、TestFlight 或 APK。最小可用流程是先装 App，再通过分享链接或扫码建立私密连接；项目页也提供了终端客户端入口，但 README 没有给出单行命令式的快速启动示例。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：适合做高隐私要求的个人或小团队通信，比如不想把手机号和社交关系绑定到聊天工具里。也适合建立面向特定社群的私有群组，例如安全研究、隐私社区或跨平台协作群。对于开发者，还可以拿它做聊天机器人、通知自动化或与其他应用联动的入口。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目用 Haskell 开发，说明核心协议和服务端逻辑偏重类型安全与可维护性。README 里写得很明确，它采用双重 ratchet 端到端加密，并在此基础上再加一层加密，同时围绕“无用户标识符”的连接模型设计，这是它和常规 IM 最大的技术差异。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交很集中，基本围绕 6.5.4 到 6.5.6 的版本迭代在推进，说明项目仍处于持续发布节奏。近期工作重点主要是核心逻辑修复、链接处理、群组权限、跨平台构建和桌面/移动端体验修正，例如修复管理员降权后的群链接问题、阻止不合规的 obfuscated simplex links、iOS 里直接打开聊天消息中的连接链接、桌面端下载器行为修正。整体看，项目在稳定打磨现有能力，同时继续补齐隐私连接和群组机制的边角行为。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有直接点名竞品，但它明显是在和传统“手机号即身份”的聊天软件做区分，强调自己的无标识符设计和元数据保护。文中引用了 Privacy Guides、Whonix 等外部推荐，也是在强化它在隐私通信领域的定位。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目成熟度不低，创建于 2019 年，星标已经过万，更新也很频繁，但 open issues 有 1139 个，说明活跃度高的同时，待处理问题也不少。对新用户来说，上手门槛会高于普通 IM，因为它的连接方式、身份模型和安全验证方式都不属于日常聊天软件的默认思路；另外 README 很长，功能和安装入口很多，但“快速上手”路径并不算简洁。版本迭代频繁，跨端功能又多，升级时要留意兼容性和行为变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/simplex-chat/simplex-chat">simplex-chat/simplex-chat</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在隐私通信与安全架构社区具有较高辨识度，凭借高星核心项目在开源聊天基础设施方向形成了明显影响力。
+<strong>技术栈偏好</strong>：以 Haskell 为核心，辅以 Swift、JavaScript 和 TypeScript，整体偏向高可靠后端、消息协议与跨端客户端实现。
+<strong>核心领域</strong>：主要聚焦端到端隐私聊天、去中心化通信与安全消息系统。</p>
+<hr />
+<h3>✨ microsoft/AI-For-Beginners (48841★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：微软开源的一套 AI 入门课程，用 12 周、24 节课带学习者从符号 AI、神经网络一路学到 PyTorch、TensorFlow 实验和 AI 伦理。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个面向初学者的人工智能课程仓库，内容包括课程讲义、测验、实验和 Jupyter Notebook。课程覆盖传统符号 AI、知识表示、神经网络、深度学习、图像与文本模型、遗传算法、多智能体系统等主题，并通过 TensorFlow、PyTorch 等框架做代码演示。仓库还提供 50 多种语言翻译，适合非英语学习者直接阅读。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：很多 AI 入门资料要么偏理论、要么直接跳到框架 API，这个项目把概念、代码和实验按周组织起来，适合系统补齐基础。对于想自学 AI 但不知道学习顺序的人，它提供了现成的课程路径和配套 Notebook，减少到处拼资料的成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合刚开始学习人工智能、希望按课程节奏系统入门的学生和开发者。也适合需要准备内部 AI 培训、工作坊或教学材料的讲师、技术布道者和教育团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：<code>git clone --filter=blob:none --sparse https://github.com/microsoft/AI-For-Beginners.git</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以作为高校或培训班的 AI 入门课程大纲，直接按 12 周节奏安排讲义和实验。也可以用于开发者自学 PyTorch、TensorFlow 中的基础神经网络示例。团队内部做 AI 基础扫盲时，可以选取“神经网络”“符号 AI”“AI 伦理”等章节做分主题学习。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：课程主体使用 Jupyter Notebook 承载实验，便于学习者边读边运行代码。内容不是只讲现代深度学习，也包含知识表示、专家系统、遗传算法、多智能体系统等较完整的 AI 基础脉络，对建立全局认知有帮助。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在多语言翻译同步和依赖更新，包括 localizeflow 自动同步翻译、dependabot 更新 pip 依赖，以及相关 PR 合并。近期没有看到大规模新功能或课程结构重构，项目更像是成熟课程资料的持续维护阶段，重点放在国际化内容保持同步和依赖安全维护上。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确提到它不覆盖经典机器学习，并建议使用 Microsoft 的 Machine Learning for Beginners Curriculum；也不深入讲 Azure Machine Learning、Azure OpenAI、Cognitive Services 等云端应用课程。相比这些专项学习路径，本项目定位更偏“AI 基础概念与实验入门”，不是云服务实战或商业应用课程。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：仓库 Stars 接近 4.9 万、Forks 超过 1 万，创建于 2021 年且仍有维护，成熟度较高；Open Issues 只有 11 个，说明公开待处理问题不多。由于包含 50 多种语言翻译，完整克隆体积可能较大，README 建议通过 sparse checkout 排除 translations 和 translated_images。课程也明确说明对最新前沿模型覆盖可能不足，想追踪生成式 AI 最新工程实践的读者需要搭配其他资料。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/microsoft/AI-For-Beginners">microsoft/AI-For-Beginners</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Microsoft 是全球开源生态中的头部组织，凭借 VS Code、TypeScript、PowerToys 等项目在开发工具、语言生态和 AI 教育方向具备极强影响力。
+<strong>技术栈偏好</strong>：技术栈以 TypeScript、Python、C 为主，覆盖前端工程化、AI/数据处理、系统级工具与跨平台开发。
+<strong>核心领域</strong>：主要聚焦开发者工具、编程语言、生产力工具、人工智能教育与开源样例生态。</p>
+<hr />
+<h3>✨ facebook/astryx (1369★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Astryx 把 Meta 内部沉淀多年的 React 设计系统开源出来，提供 150+ 可访问组件、主题、页面模板和 CLI，让团队可以直接搭建一致且可深度定制的产品界面。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Astryx 是一个基于 React 和 StyleX 的开源设计系统，包含组件库、主题系统、CLI、模板和文档站。它主打“开箱可用但不锁死”：开发者可以直接引入预构建 CSS 和类型化 React 组件，也可以通过 CSS 变量、<code>className</code> 或 swizzle 机制深入改造组件源码。</li>
+<li><strong>能解决什么痛点</strong>：适合解决团队从零维护组件库成本高、设计规范难以落地的问题，尤其是需要同时支持深色模式、多品牌主题和可访问性的前端项目。它也缓解了 AI 助手或新成员接手 UI 开发时“不知道该用哪个组件、怎么组合”的问题，因为组件 API、文档和 CLI 被设计成同一套入口。</li>
+<li><strong>适合谁用</strong>：适合使用 React 构建中后台、SaaS、内部工具或复杂业务系统的前端团队。也适合希望让设计系统同时服务人工开发者和 AI 编程助手的工程团队。</li>
+<li><strong>怎么上手</strong>：<code>pnpm add @astryxdesign/core @astryxdesign/theme-neutral &amp;&amp; pnpm add -D @astryxdesign/cli</code></li>
+<li><strong>可以用在哪些场景</strong>：搭建带表格、筛选器、详情页和表单流程的企业后台；为多品牌产品线统一组件和主题变量；通过 CLI 快速查看组件文档、拉取模板并生成页面骨架。</li>
+<li><strong>技术看点</strong>：Astryx 使用 StyleX 编写内部样式，但消费侧不要求接入 StyleX 构建链，依靠预构建 CSS、CSS custom properties 和 React 组件暴露能力。它强调开放内部结构，既能按普通组件库使用，也能把组件源码 eject 到项目中自行维护。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，6 月 29-30 日连续合入了组件能力增强、文档改进、模板扩展和部署修复。重点方向包括 Shell 导航类页面模板、docsite 首页与博客内容、组件可访问性修复，以及从旧命名 <code>xds</code> 向 <code>astryx</code> 的收尾迁移，说明项目仍处在 Beta 后快速打磨阶段。</li>
+<li><strong>同类对比</strong>：README 没有直接点名竞品。它与常见 React 组件库的明显差异在于强调“可 swizzle 的开放组件内部结构”和“面向 AI 助手的 CLI + 文档一致工作流”，而不是只提供封装好的黑盒组件。</li>
+<li>
+<p><strong>注意事项</strong>：项目标注为 Beta，创建时间较新但提交密集，短期内 API、包命名或模板结构仍可能变化。当前 Stars 为 1369、Open Issues 为 122，说明关注度不错但问题积压也不低；生产环境采用前应重点评估核心组件稳定性、主题定制成本和后续破坏性变更风险。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/facebook/astryx">facebook/astryx</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Meta 是全球顶级开源技术组织之一，凭借 Docusaurus、RocksDB、Folly、Zstd 等高影响力项目在基础设施与开发者工具社区具备广泛影响力。
+<strong>技术栈偏好</strong>：技术栈以 TypeScript、C++、C 为主，兼顾前端工程化、系统级性能优化与底层基础库建设。
+<strong>核心领域</strong>：主要聚焦开源基础设施、系统性能、数据存储压缩、前端开发工具与富文本编辑等工程效率和底层能力方向。</p>
 <hr />
 <h3>✨ HKUDS/Vibe-Trading (13590★)</h3>
 <blockquote>
@@ -561,71 +652,55 @@
 <strong>技术栈偏好</strong>：技术栈明显以 Python 为核心，偏向 AI Agent、RAG、智能工具链与数据智能应用开发。
 <strong>核心领域</strong>：主要聚焦大语言模型应用、检索增强生成、多智能体/自动化工具与教育智能等数据智能方向。</p>
 <hr />
-<h3>✨ refactoringhq/tolaria (17323★)</h3>
+<h3>✨ obra/superpowers (242005★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：Tolaria 把一整个 Markdown 知识库变成可离线使用、可 Git 版本管理、可连接 AI Agent 的桌面工作台。</p>
+<p><strong>一句话</strong>：Superpowers 把需求澄清、设计评审、TDD、子代理执行和代码审查固化成一套可自动触发的编码代理工作流。</p>
 </blockquote>
 <ul>
+<li><strong>它是什么</strong>：Superpowers 是面向 Claude Code、Codex、Cursor、Gemini CLI、GitHub Copilot CLI、OpenCode 等编码代理的技能框架和软件开发方法论。它不是单个代码生成命令，而是一组可组合的 skills：从 brainstorming 拆需求，到 writing-plans 写实施计划，再到 test-driven-development、subagent-driven-development、requesting-code-review 和 finishing-a-development-branch 串起完整开发流程。</li>
+<li><strong>能解决什么痛点</strong>：它主要解决编码代理一上来就写代码、需求没澄清、计划不可执行、测试被事后补的问题。对于长任务，它还通过 worktree、子代理分工和两阶段 review，降低代理跑偏、改错文件、漏测或把半成品当完成的风险。</li>
+<li><strong>适合谁用</strong>：适合已经在日常开发中使用 Claude Code、Codex CLI/App、Cursor、Gemini CLI、Copilot CLI 等代理工具的软件工程师。也适合团队想把“先设计、再计划、测试先行、最后审查”变成代理默认行为的技术负责人或平台工程团队。</li>
+<li><strong>怎么上手</strong>：Claude Code 可通过官方插件市场安装：<code>/plugin install superpowers@claude-plugins-official</code></li>
+<li><strong>可以用在哪些场景</strong>：适合让编码代理接手中等规模功能开发，例如先和你澄清需求，再生成可审查的设计与实施计划。也适合在多人并行或多分支开发时，用 git worktree 隔离代理工作区。还可用于强制代理按 RED-GREEN-REFACTOR 节奏修 bug 或补功能，避免直接堆实现代码。</li>
+<li><strong>技术看点</strong>：项目核心是“技能触发 + 工作流约束”，把软件工程实践写成代理可执行的操作规程，而不是只提供提示词片段。它同时适配多个 agent harness，说明重点放在跨工具一致行为和插件分发，而非绑定单一 IDE。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交集中在 v6.0.x 发布、Codex 插件修复、SDD 工作区隔离以及发布包内容调整。6 月 17-18 日连续修复 SDD artifacts 从 <code>.git/</code> 迁移到工作树 <code>.superpowers/sdd</code>，并补充 per-worktree isolation 测试，说明项目近期重点是降低工作区污染和提升多 worktree 场景可靠性。提交者以 Jesse Vincent 和 Drew Ritter 为主，节奏密集，项目仍处在快速迭代期。</li>
+<li><strong>同类对比</strong>：README 没有明确对标竞品。它与普通 prompt collection 的差异在于强调“强制工作流”和跨代理插件安装，而不是让用户手动复制提示词。</li>
 <li>
-<p><strong>它是什么</strong>：Tolaria 是面向 macOS、Windows 和 Linux 的桌面应用，用来管理由 Markdown 文件组成的知识库。它采用 files-first 和 Git-first 设计，笔记仍然是普通 Markdown 文件加 YAML frontmatter，每个 vault 都可以作为 Git 仓库保存完整历史。README 中还强调它支持 Claude Code、Codex CLI、Gemini CLI 等 AI 工具接入路径，适合把公司文档、个人笔记或 Agent 记忆放在同一个可检索的本地库里。</p>
+<p><strong>注意事项</strong>：项目创建时间为 2025-10-09，但 Stars 和 Forks 极高，热度明显高于年龄所暗示的成熟度，需要关注实际生产稳定性。当前有 293 个 open issues，说明使用面广但也存在未收敛问题。近期已发布到 v6.0.x，且涉及 SDD artifact 路径、Codex 同步、submodule 打包等行为修正，升级时应阅读 release notes，避免工作区路径或插件同步行为变化影响现有流程。README 安装说明很完整，但不同代理的安装方式差异较大，团队推广前需要先统一目标工具链。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：一类痛点是知识库被专有格式或云服务锁住，迁移时需要导出，离线或停服后可用性不可控；Tolaria 直接使用本地 Markdown 文件，退出应用也不影响数据。另一类痛点是大规模笔记库难以和 Git、AI Agent、键盘工作流同时配合，Tolaria 把版本历史、编辑器、命令面板和 AI 工具入口放在同一个桌面环境里。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合长期维护个人 second brain、技术笔记、日志和研究资料的开发者或知识工作者。也适合希望把内部文档、流程、Agent memory/procedures 以 Markdown + Git 方式管理的技术团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：macOS 可通过 Homebrew 安装：<code>brew install --cask tolaria</code>。本地开发可运行：<code>pnpm install &amp;&amp; pnpm dev</code>，原生桌面模式使用：<code>pnpm tauri dev</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：个人维护 10000+ Markdown 笔记、日报、项目资料和长期日志的本地知识库。团队把公司文档、操作流程、AI Agent 上下文放进 Git 仓库，获得版本历史和可审计修改记录。开发者用它整理 Claude Code、Codex CLI、Gemini CLI 等工具需要读取的 procedures、memory 和项目背景资料。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目基于 Tauri、React 和 TypeScript 构建，兼顾跨平台桌面能力和前端工程生态。设计上重点不是自建云同步，而是把本地文件、Git 仓库、Markdown 标准格式和 AI 工具链组合起来，降低数据锁定风险。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在 2026-06-28 到 2026-06-29，开发非常活跃，但贡献者主要显示为 lucaronin。近期重点明显偏向稳定性和编辑体验，包括大笔记编辑性能、BlockNote 表格处理、图片资源转换、文件预览、Git 仓库刷新、快捷键布局、WebKit 高亮兼容，以及 AI chat 链接和 Claude redirect 错误恢复提示；这说明项目当前更像是在快速打磨桌面知识库的可靠性，而不是大规模扩展新功能。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 没有明确点名竞品。能看出的差异是它强调 Markdown 原文件、Git-first、离线优先和 AI Agent 友好，而不是账号体系、订阅云同步或专有数据库格式。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026-02-14，时间很新，但已有 17k+ stars、69 个 open issues 和非常密集的近期提交，热度高但仍可能处在快速迭代期。开发环境需要 Node.js 20+、pnpm 8+、Rust stable，Linux 还需要 WebKit2GTK/GTK 等 Tauri 依赖，上手开发门槛比普通 Web 项目高。许可证为 AGPL-3.0-or-later，商业集成或二次分发前需要认真评估合规要求。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/refactoringhq/tolaria">refactoringhq/tolaria</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在技术社区中更像是以内容与社区驱动的影响力组织，真实外部声量主要来自高热度项目与工程方法论传播，而非庞大的仓库规模。
-<strong>技术栈偏好</strong>：明显偏向 TypeScript 为主的现代前端/全栈工程栈，辅以 CSS，整体指向面向产品交付的工程实践。
-<strong>核心领域</strong>：核心聚焦于软件交付效率、工程实践分享与开发者社区运营，兼顾工具化项目与技术内容生态。</p>
+<p><strong>技术影响力</strong>：Jesse Vincent 是 GitHub 上具有较高可见度的个人开发者，凭借高星项目和长期活跃积累了显著社区影响力。
+<strong>技术栈偏好</strong>：技术栈以 TypeScript、Shell 和 JavaScript 为主，偏向脚本自动化、Web 工具与 AI/智能体相关应用开发。
+<strong>核心领域</strong>：主要聚焦开发者工具、自动化能力扩展、AI 技能市场与个人知识/记忆系统等方向。</p>
 <hr />
-<h3>✨ veracrypt/VeraCrypt (10335★)</h3>
+<h3>✨ Robbyant/lingbot-map (8102★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：VeraCrypt 用强加密把磁盘、分区或加密容器变成需要密码或密钥文件才能挂载访问的安全存储空间。</p>
+<p><strong>一句话</strong>：LingBot-Map 可以把连续输入的图片或视频流实时重建成三维场景，并在浏览器里查看相机轨迹、点云和长序列重建结果。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：VeraCrypt 是基于 TrueCrypt 7.1a 延续开发的磁盘加密软件，核心目标是在原有 TrueCrypt 基础上加入安全增强和维护更新。它支持 Windows、Linux、macOS，以及 FreeBSD、OpenBSD 等平台，既可以构建图形界面版本，也支持 Linux 下的纯命令行版本。README 重点覆盖了各平台源码构建、签名打包、FUSE/macFUSE、wxWidgets 等依赖要求。</li>
-<li><strong>能解决什么痛点</strong>：适合解决笔记本、移动硬盘、敏感资料分区在设备丢失后被直接读取的问题。对需要跨平台保存加密数据的人来说，它可以用统一的加密卷方式在不同系统间管理敏感文件，而不是分别依赖各系统的本地加密方案。</li>
-<li><strong>适合谁用</strong>：适合安全要求较高的个人用户、开发者、研究人员，以及需要在 Windows/Linux/macOS 间携带加密数据的技术团队。也适合需要审计、编译或二次集成磁盘加密能力的系统安全工程师。</li>
-<li><strong>怎么上手</strong>：<code>make</code></li>
-<li><strong>可以用在哪些场景</strong>：用于给移动硬盘或 U 盘创建加密卷，存放合同、密钥、备份等敏感文件；用于在 Linux 服务器或工作站上挂载加密数据卷，减少裸盘数据泄露风险；用于安全团队审计开源磁盘加密实现，或基于源码构建符合内部签名要求的发行包。</li>
-<li><strong>技术看点</strong>：项目延续 TrueCrypt 代码基础，并在其上做安全增强、跨平台适配和构建可复现性处理。构建体系覆盖 Windows 驱动签名、Linux/macOS 的 wxWidgets 与 FUSE/macFUSE 依赖，以及 <code>.deb</code>、<code>.rpm</code> 等包的可复现构建细节，对安全软件交付有参考价值。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在多语言翻译更新、Linux/Unix 挂载与权限提升细节、macOS 文件系统修复行为，以及 Windows 侧 LZMA SDK 升级。整体看项目仍在持续维护，近期不是大规模重构，而是围绕跨平台兼容性、构建依赖、安全相关组件版本和本地化体验做稳定迭代；同时有多位社区贡献者参与翻译和小修复。</li>
-<li><strong>同类对比</strong>：README 明确说明它基于 TrueCrypt 7.1a，并要求派生作品不能继续使用 “TrueCrypt” 或 “VeraCrypt” 名称。相较于原 TrueCrypt，VeraCrypt 的定位是继续维护并加入安全增强的后继实现。</li>
+<li><strong>它是什么</strong>：这是一个面向流式 3D 重建的前馈式基础模型，核心目标是在图片帧不断到来的情况下持续恢复场景几何结构。项目提供了预训练模型、交互式 <code>demo.py</code>、长视频离线渲染流程，以及 KITTI、Oxford Spires、TUM-D、ETH3D、Tanks and Temples 等多数据集评测脚本。</li>
+<li><strong>能解决什么痛点</strong>：传统 3D 重建常依赖迭代优化，长视频或大场景处理慢、显存压力大；LingBot-Map 用流式前馈推理减少等待时间。对超过数千帧的视频，项目提供 keyframe interval、windowed inference 和离线渲染流程，缓解长序列 KV cache 与可视化承载压力。</li>
+<li><strong>适合谁用</strong>：适合做机器人建图、视觉 SLAM、三维重建、自动驾驶/室外场景感知的研究者和工程团队。也适合需要基于视频快速生成点云或相机轨迹可视化的 Python/CUDA 开发者。</li>
+<li><strong>怎么上手</strong>：最小运行方式：<code>python demo.py --model_path /path/to/lingbot-map-long.pt --image_folder example/courthouse --mask_sky</code></li>
+<li><strong>可以用在哪些场景</strong>：可用于机器人或移动设备采集视频后的快速场景重建；可用于室外街景、校园、牛津街区等长距离视频的点云可视化；可用于在 KITTI、Oxford Spires、TUM-D、ETH3D 等数据集上评测流式 3D 重建算法。</li>
+<li><strong>技术看点</strong>：项目的 Geometric Context Transformer 将坐标 grounding、密集几何线索、长程漂移修正放进同一个流式框架，并使用 anchor context、pose-reference window 和 trajectory memory。推理侧支持 FlashInfer paged KV cache attention，README 标称在 518×378 分辨率下可对超过 10,000 帧的长序列稳定运行约 20 FPS。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 次提交主要集中在补齐评测数据集与 README 文档，包括 TAT、ETH3D、Neural RGB-D、TUM、7-Scenes、VBR、DROID-W、Oxford 等 benchmark，以及 demo 脚本状态更新。项目创建时间较新但更新密集，当前重点看起来是完善评测覆盖、示例数据和复现实验流程，而不是大规模重构。</li>
+<li><strong>同类对比</strong>：README 明确声称其在多类 benchmark 上优于现有 streaming 方法和 iterative optimization-based 方法，但未列出具体竞品名称；可理解为主要对标传统优化式 3D 重建和已有流式重建方案。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2014 年，Star 超过 1 万，更新到 2026 年仍有连续提交，成熟度较高；但当前 Open Issues 有 431 个，说明历史包袱和跨平台兼容问题都不少。源码构建门槛不低，Windows 涉及驱动签名和打包工具，macOS 涉及 SDK、macFUSE、证书和 notarization，普通用户更适合使用官方发行包。README 构建文档较详细，但许可证和商标限制需要认真阅读，派生项目命名不能直接沿用 TrueCrypt 或 VeraCrypt。</p>
+<p><strong>注意事项</strong>：项目依赖 PyTorch、CUDA、FlashInfer，可视化和批量渲染还涉及 viser、ONNX Runtime、Kaolin 等组件，上手门槛偏研究工程向。仓库创建于 2026-04，虽然 Star 增长快、更新频繁，但贡献者仅 3 人、Open Issues 57 个，仍处于快速迭代期；长序列推理还需要根据场景调 <code>keyframe_interval</code> 或切换 windowed 模式，否则可能出现 pose collapse。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/veracrypt/VeraCrypt">veracrypt/VeraCrypt</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/Robbyant/lingbot-map">Robbyant/lingbot-map</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：VeraCrypt 是加密与安全领域里知名度很高的开源组织，凭借高星标核心仓库在磁盘加密社区具有稳定而明确的影响力。
-<strong>技术栈偏好</strong>：其技术栈以 C 为主、辅以 C++，整体偏底层系统开发，重点围绕跨平台加密实现与存储安全能力构建。
-<strong>核心领域</strong>：主要聚焦于磁盘加密、隐私保护和安全存储工具。</p>
+<p><strong>技术影响力</strong>：Robbyant 是一个新兴但增长迅速的组织，凭借多个高星 Python 项目在开源社区已形成较强关注度。
+<strong>技术栈偏好</strong>：其技术栈明显偏向 Python，项目命名显示重点围绕 LingBot 系列智能系统与感知能力构建。
+<strong>核心领域</strong>：主要聚焦具身智能、机器人感知与视觉语言行动模型等 AI 应用方向。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
