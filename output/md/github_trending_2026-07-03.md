@@ -1,5 +1,5 @@
-## 今日热点：GitHub 热门趋势
-今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
+## 今日热点：Agent 技能栈加速走向工程化
+今天的热门项目集中体现了 AI Agent 从概念验证进入可复用、可协作、可落地的工程阶段：既有面向代码代理的 Chrome DevTools MCP、Codex 与 Claude Code 协作插件、Agent Skills 规范和软件开发方法论，也有渗透测试、视频编辑、求职自动化、交易代理、AI 工作流搭建等具体应用场景；同时，PyTorch、机器学习系统教材、JavaScript clean code、GitHub Actions checkout 等基础设施与工程实践项目继续提供底层支撑，健身动作数据集等垂直数据资源也显示出 AI 应用对高质量结构化数据的需求。具体项目摘要如下：
 
 ### ✨ usestrix/strix (26531★)
 
