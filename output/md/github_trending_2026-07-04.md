@@ -1,5 +1,5 @@
-## 今日热点：AI 编程代理与开发基础设施加速融合
-今日热门项目显示，开源生态的关注点正集中在 AI 代理进入真实研发流程后的工具链补齐：从 Strix 的 AI 渗透测试、Codex 与 Claude Code 的协作插件、Chrome DevTools MCP、终端多代理调度与 Agent Skills 规范，到面向代理运行的安全沙箱、可定制设计系统和软件开发方法论，AI 编程代理正在从单点助手走向可编排、可审计、可落地的工程体系；与此同时，Elasticsearch、Ansible、PyTorch、Maven、Supabase、actions/checkout 等成熟基础设施继续提供搜索、自动化、机器学习、构建、数据库和 CI/CD 支撑，romm、机器学习系统教材和各类专用代理项目则扩展了应用与学习场景。具体项目摘要如下：
+## 今日热点：AI 编码代理与开发基础设施加速融合
+今天的热门项目明显围绕 AI 代理、开发工具链和基础设施自动化展开：从 Strix 的 AI 渗透测试、Codex 与 Claude Code 的跨代理协作、Chrome DevTools MCP、终端多代理调度与 Agent Skills 方法论，到面向代理运行的轻量沙箱和可定制设计系统，AI 正在更深地进入代码审查、漏洞修复、浏览器调试、任务委派和软件工程流程；同时，Elasticsearch、Ansible、Maven、PyTorch、Supabase、actions/checkout 等成熟基础组件继续保持热度，覆盖搜索、自动化部署、构建、机器学习、数据库与 CI/CD；此外，自托管游戏库管理、机器学习系统教材和“AI agency”式多角色代理也显示出开发者对可组合工具、知识体系和个性化自动化的持续兴趣。具体项目摘要如下：
 
 ### ✨ usestrix/strix (26531★)
 
