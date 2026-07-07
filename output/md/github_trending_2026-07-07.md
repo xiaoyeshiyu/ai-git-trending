@@ -1,35 +1,35 @@
-## 今日热点：AI 代理工程化与本地智能应用加速落地
-今天的 GitHub 热点集中在 AI 代理能力扩展、编码工作流协同、本地优先智能应用与新型感知基础设施上：从系统提示词研究、Claude/Codex/Gemini/Cursor 等多平台 Agent 技能库，到终端多代理调度、代码审查委派、视频理解、跨平台信息调研与使用统计工具，开发者正围绕“让 AI 更会做事、更懂上下文、更适合生产环境”快速构建生态；同时，自托管会议助手、AI 书签管理、网页抓取 API、轻量向量数据库、多智能体工作区，以及利用 WiFi 信号实现空间感知和生命体征监测的项目，也显示出 AI 正从云端模型能力延伸到隐私、本地化、自动化和环境智能等更广泛场景。具体项目摘要如下：
+## 今日热点：AI 代理工程化与本地智能工具加速落地
+今天的 GitHub 热点集中在 AI 代理从“能用”走向“可生产、可控、可本地化”的工程化阶段：既有面向编码代理的技能库、.NET/C# 专项能力与 Claude Code 生态资源，也有本地会议转录总结、Office 文档自动化、视频理解、轻量 TTS、Codex/Claude 用量统计等面向真实工作流的工具；同时，安全沙箱、系统提示词研究、网站资源抓取，以及用 WiFi 信号实现空间感知和生命体征监测的项目，也显示出 AI 基础设施、隐私计算、多模态感知和自动化能力正在快速融合。具体项目摘要如下：
 
-### ✨ asgeirtj/system_prompts_leaks (50202★)
+### ✨ Zackriya-Solutions/meetily (14836★)
 
-> **一句话**：这个仓库持续收集 Claude、ChatGPT、Gemini、Grok、Copilot、Cursor 等 AI 产品中被提取出的系统提示词，并按厂商、模型和工具形态整理成可浏览的 Markdown 档案。
+> **一句话**：Meetily 在本地录制会议音频，实时转写成文字，并用本地或自定义 AI 模型生成会议纪要，会议数据不需要上传到云端。
 
-- **它是什么**：这是一个 AI 系统提示词资料库，核心内容是各类聊天机器人、编程助手、浏览器代理、设计工具和 API 变体的 system prompt。README 按 Anthropic、OpenAI、Google、xAI、Microsoft 等厂商分类，提供 Claude Sonnet 5、Claude Design、GPT-5.5 Codex、Gemini 3.5 Flash、VS Code Copilot Agent 等提示词入口，并包含部分版本差异链接和官方 prompt 对照资料。仓库本身更像可追踪的公开档案，而不是传统意义上的软件库。
+- **它是什么**：Meetily 是一款隐私优先的 AI 会议助手，支持在 macOS、Windows 和 Linux 上捕获会议音频、实时转写、生成摘要。它主打本地处理，转写可使用 Whisper 或 Parakeet，摘要可接入 Ollama、本地 OpenAI 兼容端点，也支持 Claude、Groq、OpenRouter 等提供方。应用形态上采用 Tauri 桌面端，Rust 负责核心逻辑，Next.js 负责界面。
 
-- **能解决什么痛点**：研究或调试 AI 产品行为时，开发者常常只能从输出倒推模型约束，这个仓库直接提供大量真实系统提示词，方便对比不同产品如何定义工具调用、安全边界、语气风格和任务流程。做 AI Agent、代码助手或企业内部助手时，也可以参考这些 prompt 的结构设计，避免从零摸索长上下文指令、工具说明和角色边界。
+- **能解决什么痛点**：很多会议转写产品会把录音、转写文本和会议摘要上传到第三方云端，对法务、医疗、企业内部会议等敏感内容不友好。Meetily 适合需要把录音、模型、转写结果都留在本机或自有基础设施里的团队，同时也能减少对商业转写 API 的持续费用依赖。
 
-- **适合谁用**：适合做 LLM 应用、Agent 框架、AI 编程助手的工程师和产品团队，也适合研究模型行为、安全策略、提示词工程的研究者。对关注 Claude Code、Codex、Gemini CLI、Copilot Agent 等工具型 AI 的开发者尤其有参考价值。
+- **适合谁用**：适合对数据主权有要求的企业用户、律师、咨询顾问、医疗或合规团队。也适合想自建会议纪要系统、愿意在本地部署模型和调试桌面应用环境的开发者。
 
-- **怎么上手**：文档未提供快速上手示例。
+- **怎么上手**：Windows 和 macOS 用户可从 Releases 下载安装包；Linux 需要从源码构建，README 给出的最小流程是：`git clone https://github.com/Zackriya-Solutions/meeting-minutes && cd meeting-minutes/frontend && pnpm install && ./build-gpu.sh`
 
-- **可以用在哪些场景**：可以用于对比 Claude、ChatGPT、Gemini 在系统提示词中的工具描述、拒答策略和任务拆解方式；可以作为内部 AI 助手 prompt 设计的参考素材，学习如何组织工具清单、能力边界和交互规范；也可以用于跟踪同一产品不同版本的 prompt 变化，例如查看 Claude Opus 4.8 到 Claude Fable 5 的差异。
+- **可以用在哪些场景**：用于内部周会、客户访谈或项目复盘，把录音实时转成可搜索的文字记录；用于法律、医疗、咨询等敏感会议，在本地生成摘要而不把数据交给外部 SaaS；用于企业自建会议知识库，配合自有 OpenAI 兼容端点或 Ollama 统一管理摘要生成流程。
 
-- **技术看点**：项目主体是 Markdown/JSON 资料整理，README 通过厂商、模型、工具、旧版本和官方版本分层索引，便于快速定位。近期还加入了 GitHub traffic、stars 今日/7 日/30 日读数和页面趋势看板，说明仓库不只是堆文件，也在维护访问数据和更新可视化。
+- **技术看点**：核心是 Tauri + Rust + Next.js 的桌面应用架构，Rust 侧承担音频处理、模型调用和本地逻辑，前端提供会议记录、摘要编辑和设置界面。项目强调跨平台 GPU 加速，README 中提到 macOS 支持 Metal/CoreML，Windows/Linux 支持 CUDA、Vulkan，适合关注本地 AI 桌面应用工程化的人参考。
 
-- **近期动向与发展方向**：最近 20 条提交集中在新增和更新 AI 产品提示词，尤其是 Claude Sonnet 5、Claude Design、Claude Code bundled skills、Codex system instructions，以及 Stack Overflow AI Assist、computer-use、control-chrome 等工具型 prompt。6 月下旬还移除了重复 Codex 文件、调整 GitHub Linguist 语言识别，并增强了流量与页面趋势统计，说明维护者在同时做内容扩充、目录清理和项目展示优化。提交主要来自仓库作者，贡献者总数 21，更新频率较高，但社区协作深度从给定数据看暂未展开。
+- **近期动向与发展方向**：最近 20 条提交集中在 v0.4.0 发布、模型管理 UI、摘要语言输出、提示词格式、llama-cpp token 解码、Qwen3.5 模型支持和 onboarding 回归修复上，说明当前重点是提升本地模型摘要链路的稳定性和可用性，而不是单纯堆新功能。提交时间集中在 2026 年 5 月底到 6 月初，维护频率较高，但主要提交者较集中，社区协作规模还不算大。
 
-- **同类对比**：暂无明显同类对标。README 没有明确列出竞品或替代项目，项目的差异点主要体现在覆盖面广、更新频繁，并按主流 AI 厂商和产品形态系统归档。
+- **同类对比**：README 没有点名具体竞品，但明确对比的是常见云端会议转写工具。Meetily 的差异在于本地转写、本地存储、可用 Ollama 或自定义 OpenAI 兼容端点生成摘要，更适合不能把会议内容交给第三方云服务的场景。
 
-- **注意事项**：仓库创建于 2025-05-03，但已经有 50202 stars、8203 forks 和 21 位贡献者，热度很高且更新活跃；同时 open issues 为 33，说明仍有待整理、核验或补充的问题。由于内容来自“extracted system prompts”，使用时需要注意来源可靠性、时效性和合规边界，不应默认所有文件都代表官方最新版本。项目不是可安装库，主要价值在阅读、比对和研究，期望一条命令集成到工程里的用户可能会失望。
+- **注意事项**：项目创建于 2024 年底，增长很快，但仍相对年轻；当前有 236 个 open issues，说明使用场景已经铺开，也意味着安装、模型兼容、跨平台音频捕获等问题可能不少。README 中仓库名和部分 Release 链接仍指向 `meeting-minutes`，新用户上手时需要留意命名迁移带来的混淆；另外 README 明确区分 Community Edition 和 Meetily PRO，部分高级能力如更高精度、团队功能、自动入会、部分说话人识别能力可能属于 PRO 或仍在规划中。
 
-- **GitHub**：[asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
+- **GitHub**：[Zackriya-Solutions/meetily](https://github.com/Zackriya-Solutions/meetily)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有 1552 Followers 且代表仓库 `system_prompts_leaks` 获得 5 万+ stars，显示其在 AI 提示词与开源情报传播领域具备较高社区影响力。
-**技术栈偏好**：主要语言为 JavaScript，仓库主题偏向 AI 工具、提示词资源、模型接口与开发者资料整理。
-**核心领域**：主要聚焦生成式 AI、系统提示词研究、AI 开发资源收集与开放知识传播。
+**技术影响力**：以 Rust 项目 meetily 获得较高社区关注，是一个在开源 AI 工具方向具备明显影响力的中小型技术组织。
+**技术栈偏好**：偏好 Rust 构建高性能核心工具，同时使用 Python 和 Notebook 进行 AI、RAG 与实验型数据处理开发。
+**核心领域**：主要聚焦本地化、数据主权友好的 AI 工具、会议智能、知识检索与结构化信息提取。
 
 ---
 
@@ -65,38 +65,6 @@
 
 ---
 
-### ✨ Zackriya-Solutions/meetily (14836★)
-
-> **一句话**：Meetily 在本地录制会议音频，实时转写成文字，并用本地或自定义 AI 模型生成会议纪要，会议数据不需要上传到云端。
-
-- **它是什么**：Meetily 是一款隐私优先的 AI 会议助手，支持在 macOS、Windows 和 Linux 上捕获会议音频、实时转写、生成摘要。它主打本地处理，转写可使用 Whisper 或 Parakeet，摘要可接入 Ollama、本地 OpenAI 兼容端点，也支持 Claude、Groq、OpenRouter 等提供方。应用形态上采用 Tauri 桌面端，Rust 负责核心逻辑，Next.js 负责界面。
-
-- **能解决什么痛点**：很多会议转写产品会把录音、转写文本和会议摘要上传到第三方云端，对法务、医疗、企业内部会议等敏感内容不友好。Meetily 适合需要把录音、模型、转写结果都留在本机或自有基础设施里的团队，同时也能减少对商业转写 API 的持续费用依赖。
-
-- **适合谁用**：适合对数据主权有要求的企业用户、律师、咨询顾问、医疗或合规团队。也适合想自建会议纪要系统、愿意在本地部署模型和调试桌面应用环境的开发者。
-
-- **怎么上手**：Windows 和 macOS 用户可从 Releases 下载安装包；Linux 需要从源码构建，README 给出的最小流程是：`git clone https://github.com/Zackriya-Solutions/meeting-minutes && cd meeting-minutes/frontend && pnpm install && ./build-gpu.sh`
-
-- **可以用在哪些场景**：用于内部周会、客户访谈或项目复盘，把录音实时转成可搜索的文字记录；用于法律、医疗、咨询等敏感会议，在本地生成摘要而不把数据交给外部 SaaS；用于企业自建会议知识库，配合自有 OpenAI 兼容端点或 Ollama 统一管理摘要生成流程。
-
-- **技术看点**：核心是 Tauri + Rust + Next.js 的桌面应用架构，Rust 侧承担音频处理、模型调用和本地逻辑，前端提供会议记录、摘要编辑和设置界面。项目强调跨平台 GPU 加速，README 中提到 macOS 支持 Metal/CoreML，Windows/Linux 支持 CUDA、Vulkan，适合关注本地 AI 桌面应用工程化的人参考。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 v0.4.0 发布、模型管理 UI、摘要语言输出、提示词格式、llama-cpp token 解码、Qwen3.5 模型支持和 onboarding 回归修复上，说明当前重点是提升本地模型摘要链路的稳定性和可用性，而不是单纯堆新功能。提交时间集中在 2026 年 5 月底到 6 月初，维护频率较高，但主要提交者较集中，社区协作规模还不算大。
-
-- **同类对比**：README 没有点名具体竞品，但明确对比的是常见云端会议转写工具。Meetily 的差异在于本地转写、本地存储、可用 Ollama 或自定义 OpenAI 兼容端点生成摘要，更适合不能把会议内容交给第三方云服务的场景。
-
-- **注意事项**：项目创建于 2024 年底，增长很快，但仍相对年轻；当前有 236 个 open issues，说明使用场景已经铺开，也意味着安装、模型兼容、跨平台音频捕获等问题可能不少。README 中仓库名和部分 Release 链接仍指向 `meeting-minutes`，新用户上手时需要留意命名迁移带来的混淆；另外 README 明确区分 Community Edition 和 Meetily PRO，部分高级能力如更高精度、团队功能、自动入会、部分说话人识别能力可能属于 PRO 或仍在规划中。
-
-- **GitHub**：[Zackriya-Solutions/meetily](https://github.com/Zackriya-Solutions/meetily)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以 Rust 项目 meetily 获得较高社区关注，是一个在开源 AI 工具方向具备明显影响力的中小型技术组织。
-**技术栈偏好**：偏好 Rust 构建高性能核心工具，同时使用 Python 和 Notebook 进行 AI、RAG 与实验型数据处理开发。
-**核心领域**：主要聚焦本地化、数据主权友好的 AI 工具、会议智能、知识检索与结构化信息提取。
-
----
-
 ### ✨ ruvnet/RuView (76611★)
 
 > **一句话**：RuView 用 ESP32 采集 WiFi 信道状态信息，把墙后、暗处或无摄像头房间里的存在、移动、呼吸和心率变化实时转成可用的空间感知数据。
@@ -129,249 +97,91 @@
 
 ---
 
-### ✨ Leonxlnx/taste-skill (57196★)
+### ✨ asgeirtj/system_prompts_leaks (50202★)
 
-> **一句话**：把一组可安装的 AI Agent Skills 加到 Codex、Cursor 或 Claude Code 里，让 AI 生成前端时更重视版式、字体、动效、间距和视觉方向，而不是产出千篇一律的模板页面。
+> **一句话**：这个仓库持续收集 Claude、ChatGPT、Gemini、Grok、Copilot、Cursor 等 AI 产品中被提取出的系统提示词，并按厂商、模型和工具形态整理成可浏览的 Markdown 档案。
 
-- **它是什么**：Taste Skill 是一组面向 AI 编码代理的前端设计 Skill，核心目标是约束和引导 AI 生成更有设计判断的界面。README 中提供了多个可独立安装的 Skill，包括默认的 `design-taste-frontend`、更激进的 `gpt-taste`、图片到代码流程 `image-to-code`、旧项目重设计 `redesign-existing-projects`，以及移动端、Web、品牌板等图像生成 Skill。默认 Skill 已进入 v2 experimental，加入了设计语言推断、布局变化度、动效强度、视觉密度等可调规则。
+- **它是什么**：这是一个 AI 系统提示词资料库，核心内容是各类聊天机器人、编程助手、浏览器代理、设计工具和 API 变体的 system prompt。README 按 Anthropic、OpenAI、Google、xAI、Microsoft 等厂商分类，提供 Claude Sonnet 5、Claude Design、GPT-5.5 Codex、Gemini 3.5 Flash、VS Code Copilot Agent 等提示词入口，并包含部分版本差异链接和官方 prompt 对照资料。仓库本身更像可追踪的公开档案，而不是传统意义上的软件库。
 
-- **能解决什么痛点**：AI 生成前端时经常会堆出居中大标题、圆角卡片、渐变背景、空泛文案这类“AI 味”很重的页面，Taste Skill 用明确规则去压住这些默认倾向。另一个痛点是从参考图到代码实现之间容易丢失视觉细节，项目提供了 image-first 和 redesign 相关 Skill，把“先生成参考、再分析、再实现”的流程写成可复用规范。
+- **能解决什么痛点**：研究或调试 AI 产品行为时，开发者常常只能从输出倒推模型约束，这个仓库直接提供大量真实系统提示词，方便对比不同产品如何定义工具调用、安全边界、语气风格和任务流程。做 AI Agent、代码助手或企业内部助手时，也可以参考这些 prompt 的结构设计，避免从零摸索长上下文指令、工具说明和角色边界。
 
-- **适合谁用**：适合经常用 Codex、Cursor、Claude Code、ChatGPT Images 做前端原型和界面实现的前端开发者、独立开发者和设计工程师。也适合已有产品界面但想让 AI 参与 UI 重设计、视觉打磨的团队。
+- **适合谁用**：适合做 LLM 应用、Agent 框架、AI 编程助手的工程师和产品团队，也适合研究模型行为、安全策略、提示词工程的研究者。对关注 Claude Code、Codex、Gemini CLI、Copilot Agent 等工具型 AI 的开发者尤其有参考价值。
 
-- **怎么上手**：`npx skills add https://github.com/Leonxlnx/taste-skill`
+- **怎么上手**：文档未提供快速上手示例。
 
-- **可以用在哪些场景**：
-  1. 用 Codex 或 Cursor 快速生成 SaaS 控制台、官网、作品集等前端页面时，给模型增加明确的排版、动效和视觉密度规则。
-  2. 已有 React / Next.js 项目界面比较模板化时，使用 `redesign-existing-projects` 先审计 UI，再按层级、间距、字体和组件状态逐步改。
-  3. 做品牌页、移动端 App 流程或 Web 首页前，先用 `imagegen-frontend-web`、`imagegen-frontend-mobile`、`brandkit` 生成参考图，再交给编码 Agent 实现。
+- **可以用在哪些场景**：可以用于对比 Claude、ChatGPT、Gemini 在系统提示词中的工具描述、拒答策略和任务拆解方式；可以作为内部 AI 助手 prompt 设计的参考素材，学习如何组织工具清单、能力边界和交互规范；也可以用于跟踪同一产品不同版本的 prompt 变化，例如查看 Claude Opus 4.8 到 Claude Fable 5 的差异。
 
-- **技术看点**：项目本质上不是传统运行时框架，而是基于 Vercel `agent-skills` 生态的可移植 Prompt/Skill 规范，安装后由 AI 编码代理读取 `skills/` 目录中的 `SKILL.md` 执行。默认 v2 Skill 使用 DESIGN_VARIANCE、MOTION_INTENSITY、VISUAL_DENSITY 三个“旋钮”控制输出倾向，这对团队统一 AI 生成界面的设计口径有参考价值。
+- **技术看点**：项目主体是 Markdown/JSON 资料整理，README 通过厂商、模型、工具、旧版本和官方版本分层索引，便于快速定位。近期还加入了 GitHub traffic、stars 今日/7 日/30 日读数和页面趋势看板，说明仓库不只是堆文件，也在维护访问数据和更新可视化。
 
-- **近期动向与发展方向**：最近 20 条提交几乎都集中在 README、赞助商区域、徽章和图片资源展示上，说明近期维护重点偏项目包装、文档呈现和赞助可见性，而不是核心 Skill 逻辑开发。README 里明确提到默认 `taste-skill` 已升级为 v2 experimental，并保留 v1 以兼容旧工作流，后续方向大概率是继续打磨 v2 的规则体系并稳定成 v2.0.0。项目更新很近，但贡献者数量只有 7，近期提交主要来自 Leonxlnx，社区协作还不算分散。
+- **近期动向与发展方向**：最近 20 条提交集中在新增和更新 AI 产品提示词，尤其是 Claude Sonnet 5、Claude Design、Claude Code bundled skills、Codex system instructions，以及 Stack Overflow AI Assist、computer-use、control-chrome 等工具型 prompt。6 月下旬还移除了重复 Codex 文件、调整 GitHub Linguist 语言识别，并增强了流量与页面趋势统计，说明维护者在同时做内容扩充、目录清理和项目展示优化。提交主要来自仓库作者，贡献者总数 21，更新频率较高，但社区协作深度从给定数据看暂未展开。
 
-- **同类对比**：README 明确对接的是 Vercel Labs 的 `agent-skills` 机制，Taste Skill 更像是该生态里的前端设计规则包，而不是和 React UI 库、Tailwind 组件库直接竞争。暂无明确列出与其他同类 Skill 包的系统对比。
+- **同类对比**：暂无明显同类对标。README 没有明确列出竞品或替代项目，项目的差异点主要体现在覆盖面广、更新频繁，并按主流 AI 厂商和产品形态系统归档。
 
-- **注意事项**：默认 Skill 当前标注为 v2 experimental，说明行为仍可能调整；如果项目依赖 v1 的具体输出风格，README 建议显式安装 `design-taste-frontend-v1`。项目创建于 2026-02-19，增长很快且 Star 数很高，但仍是较新的仓库；42 个 Open Issues 表明已有一定使用反馈，也意味着稳定性和边界场景还在沉淀。近期提交偏文档和赞助展示，评估时应重点查看 `skills/` 内容和 CHANGELOG，而不只看 README 视觉包装。
+- **注意事项**：仓库创建于 2025-05-03，但已经有 50202 stars、8203 forks 和 21 位贡献者，热度很高且更新活跃；同时 open issues 为 33，说明仍有待整理、核验或补充的问题。由于内容来自“extracted system prompts”，使用时需要注意来源可靠性、时效性和合规边界，不应默认所有文件都代表官方最新版本。项目不是可安装库，主要价值在阅读、比对和研究，期望一条命令集成到工程里的用户可能会失望。
 
-- **GitHub**：[Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)
+- **GitHub**：[asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Leon Lin 是增长极快的个人开发者，凭借 `taste-skill` 等高星项目在 GitHub 前端与 AI 工具社区获得较高关注度。
-**技术栈偏好**：主要使用 JavaScript 与 CSS，偏向构建轻量级 Web 产品、浏览器扩展和面向用户体验的交互工具。
-**核心领域**：主要聚焦 AI 提示词、Agentic AI 研究、创意 Web 工具与前端视觉体验。
+**技术影响力**：拥有 1552 Followers 且代表仓库 `system_prompts_leaks` 获得 5 万+ stars，显示其在 AI 提示词与开源情报传播领域具备较高社区影响力。
+**技术栈偏好**：主要语言为 JavaScript，仓库主题偏向 AI 工具、提示词资源、模型接口与开发者资料整理。
+**核心领域**：主要聚焦生成式 AI、系统提示词研究、AI 开发资源收集与开放知识传播。
 
 ---
 
-### ✨ alirezarezvani/claude-skills (20034★)
+### ✨ TencentCloud/CubeSandbox (6654★)
 
-> **一句话**：把 Claude Code、Codex、Gemini CLI、Cursor 等 AI 编程工具常用的领域经验，整理成可安装、可同步、可转换的技能包和 Agent 插件库。
+> **一句话**：CubeSandbox 用 RustVMM 和 KVM 在几十毫秒内拉起硬件隔离的 AI Agent 运行沙箱，让大批量 LLM 生成代码可以安全、并发地执行。
 
-- **它是什么**：这是一个面向 AI 编程代理的技能库，README 中标称包含 354 个 production-ready skills、96 个 agents、102 个 commands，覆盖工程、DevOps、安全、产品、营销、合规、C-Level 咨询、研究、商业运营等领域。每个 skill 通常由 `SKILL.md` 指令、Python CLI 脚本和参考文档组成，用来给 Claude Code、OpenAI Codex、Gemini CLI、Cursor、Aider、Windsurf 等工具注入更具体的工作流程和判断框架。
+- **它是什么**：CubeSandbox 是面向 AI Agent 的高性能沙箱服务，核心目标是在接近容器的启动速度下提供接近虚拟机的隔离强度。它支持单机部署和多节点集群扩展，兼容 E2B SDK，可以在不大改业务代码的情况下替换后端沙箱服务。README 标称单个沙箱可在 60ms 内创建，额外内存开销低于 5MB，并提供 Web 控制台、模板系统、快照/克隆/回滚、出站访问控制和凭据保险箱等能力。
+- **能解决什么痛点**：AI Agent 执行 LLM 生成代码时，Docker 共享内核隔离不够让人放心，而传统 VM 启动慢、资源占用高，不适合高并发短任务。另一个痛点是外部 API Key、网络出站访问和执行日志难以统一管控，CubeSandbox 提供凭据不进沙箱、域名白名单和审计日志来降低泄露风险。
+- **适合谁用**：适合正在自建代码执行环境的 AI Agent / SWE-Bench / 自动化编程平台团队，也适合需要在高并发下安全运行不可信代码的后端工程师和平台 SRE。已经使用 E2B SDK 的团队也可以重点关注，因为它主打通过替换 URL 环境变量完成迁移。
+- **怎么上手**：文档未提供快速上手示例；README 明确要求 `x86_64 Linux` 环境并启用 `KVM`，推荐按 `docs/guide/quickstart.md` 走服务器准备、安装、创建模板、运行 Agent 代码四步流程。
+- **可以用在哪些场景**：可用于给 AI 编程助手提供隔离的代码运行环境；用于 SWE-Bench、强化学习或自动修复任务中批量运行测试用例；用于企业内部 Agent 平台，在沙箱内运行用户脚本，同时通过凭据保险箱和出站白名单控制访问外部服务。
+- **技术看点**：项目基于 RustVMM 和 KVM，走“专用 Guest OS 内核 + 低资源开销”的路线，而不是传统容器共享内核。它还把快照、克隆、回滚做成运行时能力，v0.3 引入 CubeCoW Copy-on-Write 快照引擎，适合需要频繁保存和恢复 Agent 执行状态的场景。
+- **近期动向与发展方向**：最近 20 条提交显示项目仍在高频迭代，重点集中在稳定性、网络安全和运维体验：修复挂起的 hostdir mount、envd 环境变量传递、流式端点缓冲、镜像层 uid/gid 处理等问题；同时新增 kill / timeout / refresh 生命周期 API、CubeEgress 多架构支持、出站策略 fail-closed、Web 模板创建、多节点调度评分文档和日志指南。整体看不是单纯补文档，而是在把沙箱运行、集群调度、安全出站和日常排障补齐到可生产使用的状态。
+- **同类对比**：README 明确对比 Docker Container 和传统 VM：相对 Docker，它强调独立内核和 eBPF 带来的更强隔离；相对传统 VM，它强调 60ms 级启动、低于 5MB 的内存开销和单节点高密度运行；同时提供 E2B SDK 兼容，明显对标 AI Agent 沙箱服务迁移场景。
+- **注意事项**：项目创建于 2026-04-10，开源时间还很短，但已有 6654 stars、48 位贡献者和持续提交，热度和开发活跃度都很高；同时 93 个 open issues 说明仍处在快速打磨期，升级时需要关注 changelog 和模板兼容性。部署环境要求较硬，需要 x86_64 Linux 与 KVM 支持，不是所有云主机或本地开发机都能直接跑；README 文档覆盖面较广，但真正落地前仍建议先验证内核、虚拟化、网络策略和多节点调度行为。
 
-- **能解决什么痛点**：第一个痛点是多种 AI 编程工具之间技能格式不统一，团队想复用同一套工程、安全、产品或营销工作流时，需要反复改写提示词和规则文件。第二个痛点是开发者在做代码审查、安全审计、Playwright 测试、SEO/AEO、合规检查、研究综述等任务时，往往缺少结构化流程，这个仓库把这些流程打包成可安装的技能和命令。
-
-- **适合谁用**：适合重度使用 Claude Code、Codex、Gemini CLI、Cursor、Aider、Windsurf 等 AI 编程工具的开发者和技术团队。也适合需要把 AI Agent 引入工程评审、安全审计、产品研究、合规文档、市场分析等工作流的技术负责人或平台工程团队。
-
-- **怎么上手**：Claude Code 可直接添加 marketplace：`/plugin marketplace add alirezarezvani/claude-skills`。Codex 用户可用：`npx agent-skills-cli add alirezarezvani/claude-skills --agent codex`。
-
-- **可以用在哪些场景**：用于给 Claude Code 安装 `security-auditor`、`playwright-pro`、`senior-architect` 等技能，辅助做代码审查、安全扫描、测试生成和架构评估。用于把同一批 skills 转换到 Cursor、Aider、Windsurf、OpenCode 等工具，统一团队内不同 AI 编程工具的规则和知识库。也可以用于非纯编码任务，比如生成产品 PRD、做 AEO/SEO 审计、整理研究综述、准备合规审计材料或 C-Level 经营分析。
-
-- **技术看点**：项目的核心设计是“技能内容标准化 + 多工具转换”，用同一套 `SKILL.md`、Python stdlib-only 脚本和参考资料，分发到 13 个 AI 编程工具生态。README 提到提供 593 个零 pip 依赖的 Python CLI 脚本，并通过 `scripts/convert.sh`、`scripts/install.sh`、各工具安装脚本处理转换和同步，降低跨工具迁移成本。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-01，活跃度很高，主要内容包括新增 `deep-research` skill、同步 Codex skills symlink、补充 CHANGELOG、修复 `local-seo-manager` 自动评审问题，以及新增 `llms.txt` / `llms-full.txt` 方便 AI Agent 发现和索引文档。近期方向明显偏向扩展研究类能力、完善营销/本地 SEO 技能、加强文档可发现性和自动化校验，而不是底层架构大重构。
-
-- **同类对比**：README 明确对标的不是某一个单独竞品，而是 Claude Code、Codex、Gemini CLI、Cursor、Aider、Windsurf、OpenCode 等多个 AI 编程工具的技能与规则生态。它的差异点在于把 skills、agents、personas、commands、脚本和参考资料集中维护，并提供多工具转换，而不是只服务某一个 IDE 或 Agent 平台。
-
-- **注意事项**：项目创建时间为 2025-10-19，按元数据看仍是较新的仓库，但 Stars 已达 20034、Forks 2745、贡献者 37、Open Issues 9，社区关注度和维护活跃度都较高。README 中不同位置对 skills 数量有 337、345、354 等表述，Stars 文案也出现 5,200+ 与元数据 20034 不一致，说明文档规模大但存在计数同步问题。功能覆盖面很广，上手时建议先按工具和领域安装少量技能验证效果，避免一次性引入过多规则导致 Agent 行为难以预测。
-
-- **GitHub**：[alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills)
+- **GitHub**：[TencentCloud/CubeSandbox](https://github.com/TencentCloud/CubeSandbox)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有 2k+ followers 且多个 Claude/Agentic Coding 相关高星项目，属于 AI 编程工具生态中具备较强社区影响力的独立开发者。
-**技术栈偏好**：以 Python 和 Shell 为主，偏向构建 Claude Code 技能、自动化工具链与面向开发者的 AI 辅助工程系统。
-**核心领域**：主要聚焦 HealthTech 背景下的增强 AI、Agentic Coding，以及将复杂工程问题产品化为简洁可用的开发者工具。
+**技术影响力**：在云计算与开发者工具生态中具有较强的开源影响力，尤其是少数高星项目带动了其在技术社区的可见度。
+**技术栈偏好**：以 Rust、TypeScript 和 Objective-C 为主，体现出面向底层性能工具、前后端开发工具链和移动端 SDK 的多线并进。
+**核心领域**：主要聚焦云服务 SDK、开发者工具与客户端/移动端通信能力建设。
 
 ---
 
-### ✨ openai/codex-plugin-cc (22473★)
+### ✨ AhmadIbrahiim/Website-downloader (3820★)
 
-> **一句话**：在 Claude Code 里直接调用 Codex 做代码审查、后台任务处理和会话交接，让两个编码助手可以在同一个本地仓库里协同工作。
+> **一句话**：输入一个网站地址后，它会调用 `wget` 把页面、CSS、JavaScript、图片等资源递归下载下来，并打包成可离线查看的完整站点文件。
 
-- **它是什么**：这是 OpenAI 提供的 Claude Code 插件，用来把本机已安装并登录的 Codex CLI 接入 Claude Code 工作流。它提供 `/codex:review`、`/codex:adversarial-review`、`/codex:rescue`、`/codex:transfer`、`/codex:status`、`/codex:result`、`/codex:cancel` 等斜杠命令，可以在 Claude Code 内发起只读审查、委派修复任务、查看后台任务状态，或把当前 Claude 会话转成可在 Codex 中继续的线程。
-- **能解决什么痛点**：适合解决“正在 Claude Code 里改代码，但想让 Codex 再独立审一遍当前 diff”的问题，尤其是多文件改动、上线前风险检查、架构取舍复核这类场景。它也解决了长任务不方便卡在当前对话里的问题，可以把调查失败测试、修复 CI、继续上一次 Codex 任务等工作放到后台跑，再用 `/codex:status` 和 `/codex:result` 查看结果。
-- **适合谁用**：已经在日常开发中使用 Claude Code，同时也有 Codex CLI 或 ChatGPT / OpenAI API 账号的工程师。也适合需要在代码审查、故障调查、长耗时修复任务中引入第二个 AI 编码代理的团队开发者。
-- **怎么上手**：`/plugin marketplace add openai/codex-plugin-cc`，然后执行 `/plugin install codex@openai-codex`、`/reload-plugins` 和 `/codex:setup`。
-- **可以用在哪些场景**：上线前在 Claude Code 中对当前未提交改动执行 `/codex:review --background`，让 Codex 做只读审查；对缓存、重试、鉴权、数据丢失等高风险设计执行 `/codex:adversarial-review --base main challenge whether this was the right caching and retry design`；把“调查 CI 为什么失败”这类耗时任务交给 `/codex:rescue --background investigate why the build is failing in CI`，当前 Claude 会话可以继续处理别的事。
-- **技术看点**：插件不是自建一套独立运行时，而是包装本机 Codex CLI 和 Codex app server，复用本地认证状态、仓库 checkout、环境变量和 Codex 配置。它还支持 Claude 会话转移到 Codex 线程，说明项目重点放在跨代理上下文衔接，而不只是简单命令转发。
-- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 3 月底到 6 月底，项目创建时间较新，但星标增长很快。近期开发重点包括插件版本发布、Claude session transfer 命令、新增或修复后台任务管理、Windows Git Bash 兼容、旧版 Codex CLI 降级处理、review diff 安全处理和 CI 测试稳定性，整体看是在从首版功能快速补齐边界条件，并加强跨会话、跨工具链的可靠性。
-- **同类对比**：README 没有明确列出竞品或对标项目。可见差异点是它直接面向 Claude Code 用户，把 Codex 嵌入现有 Claude Code 工作流，而不是要求开发者切换到单独的 Codex 界面。
-- **注意事项**：项目创建于 2026-03-30，仍然很新，当前 open issues 有 263 个，说明使用场景和边界问题还在快速暴露。它依赖 Node.js 18.18+、本机 Codex CLI、Codex 登录状态以及 Claude Code 插件系统；部分能力还要求较新的 Codex 版本。`review gate` 可能造成长时间 Claude/Codex 循环并消耗用量，适合明确需要时再启用。
+- **它是什么**：这是一个基于 Node.js 的网站下载应用，前端提供网页入口，后端通过 `wget` 执行镜像下载，再用 `archiver` 压缩结果并通过 socket 通道返回给用户。它的目标不是抓取单个 HTML，而是尽量把页面依赖的样式表、脚本、图片等资源一起保存，方便离线浏览。
 
-- **GitHub**：[openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)
+- **能解决什么痛点**：开发者临时需要备份某个公开页面或复现线上页面结构时，不必手动逐个保存资源文件。做离线展示、页面取证或迁移前调研时，也能快速拿到相对完整的静态资源包。
 
-#### 开发者 / 组织速览
+- **适合谁用**：适合需要临时保存网页快照的前端开发者、设计还原人员，以及需要批量检查公开页面资源结构的技术支持或运维人员。也适合想快速部署一个网页下载服务的 Node.js 使用者。
 
-**技术影响力**：OpenAI 是 GitHub 上极具影响力的 AI 组织，拥有大量关注者和多个十万级热门项目，深刻影响开源 AI 生态与开发者实践。
-**技术栈偏好**：技术栈以 Python、Jupyter Notebook 为主，结合 Rust，偏向模型研究、实验复现、开发者工具与高性能系统实现。
-**核心领域**：主要聚焦人工智能、机器学习、多模态模型、语音识别、强化学习与 AI 编程工具。
+- **怎么上手**：`git clone https://github.com/AhmadIbrahiim/Website-downloader.git && cd Website-downloader && npm install && npm start`，然后访问 `http://localhost:3000/`。
 
----
+- **可以用在哪些场景**：保存客户网站当前版本，作为改版前的静态备份；下载公开页面资源，用于本地离线调试样式和脚本引用问题；搭建一个内部网页归档入口，让非技术同事输入 URL 后拿到压缩包。
 
-### ✨ mvanhorn/last30days-skill (49484★)
+- **技术看点**：核心下载能力直接复用 `wget --mirror --convert-links --adjust-extension --page-requisites --no-parent`，把递归下载、链接转换、扩展名修正和页面依赖资源收集交给成熟命令行工具处理。Node.js 侧主要负责 Web 服务、任务调度、压缩归档和 socket 返回结果。
 
-> **一句话**：在 AI Agent 里输入 `/last30days 某个话题`，它会同时搜索 Reddit、X、YouTube、HN、Polymarket、GitHub 和网页，把最近 30 天真实讨论、互动数据和引用证据整理成一份简报。
+- **近期动向与发展方向**：最近一次集中更新在 2026 年 5 月，重点是修复 `wget` 下载目录识别和主机名解析正则的问题，说明维护方向偏向稳定性和边界情况处理，而不是新增大功能。2024 到 2026 年仍有合并 PR 和依赖更新，但节奏不算高频，社区贡献以 bug fix、启动修复、依赖安全升级和文档修正为主。
 
-- **它是什么**：这是一个面向 Claude Code、Codex、Cursor、Copilot、Gemini CLI 等 Agent Skill 宿主的研究型技能。它会围绕一个人物、公司、产品或事件，并行抓取多个社交平台、开发者社区、预测市场和网页来源，再按点赞、评论、转发、播放量、市场赔率等信号排序，最后生成带引用的摘要。README 里强调它不是传统搜索引擎，而是把分散在平台里的近期社区信号交给 Agent 汇总判断。
+- **同类对比**：暂无明显同类对标。项目本身更像是把 `wget` 的网站镜像能力封装成 Web 应用，而不是重新实现爬虫或离线归档引擎。
 
-- **能解决什么痛点**：开发者或产品团队想了解一个技术、公司或人物的“最近动态”时，通常要分别查 Google、Reddit、X、YouTube、GitHub 和 HN，还要自己判断哪些讨论有价值；这个项目把这些来源放到一次查询里，并尽量保留互动量和出处。另一个痛点是传统搜索结果偏网页和 SEO 内容，容易漏掉 Reddit 评论、X 线程、YouTube 字幕、GitHub PR 和 Polymarket 赔率这类更实时的信号。
+- **注意事项**：项目创建于 2019 年，Star 数较高但贡献者只有 9 人，当前仍有 19 个 open issues，成熟度更偏实用型小工具。它依赖本机或部署环境中的 `wget` 行为，遇到需要登录、强反爬、动态渲染严重或资源跨域复杂的网站时，下载结果可能不完整。README 给出了基本运行方式和部署入口，但对失败处理、权限边界、并发控制和生产部署安全策略说明较少，公开部署时需要自行限制滥用风险。
 
-- **适合谁用**：适合经常使用 Claude Code、Codex、Cursor、Gemini CLI 等 Agent 工作流的开发者、研究员和技术创业者。也适合需要在会议、销售沟通、竞品分析、产品调研前快速掌握某个对象最近 30 天公开动态的人。
-
-- **怎么上手**：Claude Code 推荐安装方式：`/plugin marketplace add mvanhorn/last30days-skill`，然后执行 `/plugin install last30days`；其他 Agent Skills 宿主可用：`npx skills add mvanhorn/last30days-skill -g`。
-
-- **可以用在哪些场景**：
-  会议前查询某位创始人、候选人或客户最近一个月在 X、GitHub、YouTube、Reddit 上的真实动态。
-  做技术选型时对比多个工具，比如某个 CLI、Agent 框架或开发者产品的社区反馈、GitHub 活跃度和争议点。
-  跟踪突发事件或热门产品发布，把 Reddit 高赞评论、YouTube 深度视频、HN 讨论和 Polymarket 赔率合成一份可转发的简报。
-
-- **技术看点**：v3 引入了预研究阶段，会先解析话题相关的人物、公司、GitHub 账号、subreddit、YouTube 频道和标签，再启动搜索，而不是只做关键词匹配。它还支持跨来源聚类合并、单次运行完成对比查询、HTML 简报导出，以及按幽默性和传播性挑选 “Best Takes”。
-
-- **近期动向与发展方向**：最近提交非常密集，7 月 3 日到 7 月 5 日连续发布 3.9.0 到 3.11.0，说明项目仍处于快速迭代期。近期重点包括统一 doctor 健康检查命令、修复 Techmeme 日期窗口、改进 LinkedIn 渲染、加入 Instagram 评论、优化首次运行 NUX 和 GitHub 设备码登录流程，并新增可选的远程研究 API 后端。整体看，作者正在同时补齐安装体验、数据源覆盖、结果渲染和远程执行能力，属于功能扩张和稳定性修复并行推进。
-
-- **同类对比**：README 明确拿 Google、ChatGPT、Gemini 和 Claude 作对比：Google 更偏网页和编辑型内容，ChatGPT 虽有 Reddit 合作但不能完整搜索 X 或 TikTok，Gemini 强在 YouTube，Claude 默认没有这些平台的原生搜索能力。last30days-skill 的差异在于让用户自带 key 或浏览器会话，把多个封闭平台接到同一个 Agent 查询流程中。
-
-- **注意事项**：项目创建时间是 2026-01-23，但星标和迭代速度都很高，说明关注度大、变化也快，版本升级时需要留意命令行为和配置变化。Open Issues 为 85，最近提交里也有多条 first-run、setup wizard、Trustpilot、Techmeme、渲染相关修复，说明边界场景和平台适配仍在持续打磨。部分数据源需要用户提供 API key、浏览器会话或额外工具，真正完整使用不一定是“零配置”。
-
-- **GitHub**：[mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
+- **GitHub**：[AhmadIbrahiim/Website-downloader](https://github.com/AhmadIbrahiim/Website-downloader)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：长期活跃的高影响力开发者与创业者，拥有近 5 万星级开源项目和较强社区关注度。
-**技术栈偏好**：以 Python、Go、TypeScript 为主，偏向 AI 工具、自动化系统和后端/开发者工具建设。
-**核心领域**：主要聚焦智能代理、开发者生产力工具、自动化工作流与新型软件基础设施。
-
----
-
-### ✨ ogulcancelik/herdr (8687★)
-
-> **一句话**：herdr 把 Claude Code、Codex、Devin 等多个编码 Agent 放进同一个真实终端里运行，用分屏、标签页和侧边栏直接看谁在工作、谁被卡住、谁已经完成。
-
-- **它是什么**：herdr 是一个面向 AI 编码 Agent 的终端复用器，可以理解为“为 Agent 场景重新设计的 tmux”。每个 Agent 都运行在真实终端会话中，支持工作区、标签页、分屏、鼠标拖拽、断开重连和远程 SSH 使用。它还能自动识别多个 Agent 的状态，把 blocked、working、done、idle 汇总到侧边栏里。
-
-- **能解决什么痛点**：同时跑多个 Agent 时，开发者通常要在多个终端窗口、tmux pane 或 GUI 管理器之间来回切换，很难一眼看出哪个 Agent 需要人工介入。另一个痛点是远程或长任务场景下，终端断开、合上电脑、SSH 重连后，Agent 会话容易丢失或难以恢复。
-
-- **适合谁用**：适合频繁使用 Claude Code、Codex、Devin、opencode、Cursor Agent 等 CLI 编码 Agent 的开发者。也适合在服务器、VPS、远程开发机上同时管理多个长期终端任务的后端工程师、全栈工程师和工程团队。
-
-- **怎么上手**：安装：`curl -fsSL https://herdr.dev/install.sh | sh`；启动：`herdr`。
-
-- **可以用在哪些场景**：同时让多个 Agent 分别处理不同仓库、不同 issue 或不同 feature，并在一个终端里观察状态。通过 SSH 连接远程开发机，在 VPS 上保持 Agent 长时间运行，断开本地终端后再重新接入。为 Agent 编写自动化编排脚本，通过本地 socket API 创建工作区、拆分 pane、读取终端输出和订阅状态变化。
-
-- **技术看点**：项目用 Rust 实现为单个约 10MB 的本地二进制，不依赖 Electron 或桌面 GUI，适合在 Linux、macOS 和 Windows beta 环境中运行。设计上保留真实终端渲染和服务端持久会话，同时提供 socket API、CLI 和插件能力，方便 Agent 反过来控制终端环境。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-06-29 到 2026-06-30，开发非常活跃，且主要由作者 Ogulcan Celik 推进。近期重点包括终端会话控制流、观察流、session snapshot API、socket protocol schema、API schema 暴露，以及把 TUI 状态变更收敛到 runtime/API authority，说明项目正在强化可编程接口和内部状态一致性。同时也在持续修复 Windows、PowerShell、远程安装发现、copy mode、agent 恢复状态等实际使用问题，方向上更偏向稳定的 Agent 运行时和可脚本化终端编排层。
-
-- **同类对比**：README 明确对比了 tmux、zellij、cmux、Warp、Conductor 等。tmux 有持久会话和分屏，但不了解 Agent 状态；GUI Agent 管理器能显示 Agent 状态，但通常是桌面应用、平台受限，且会在包装层里重绘终端。herdr 的差异点是运行在真实终端里、支持 SSH 和断开重连，同时内建 Agent 状态感知和可编程 API。
-
-- **注意事项**：项目创建于 2026-03-27，时间较新，虽然 star 增长很快、提交频繁，但仍可能存在接口变化和行为调整风险。当前 open issues 为 33 个，Windows 仍标注为 preview beta，跨平台稳定性需要按自己的环境验证。许可证为 AGPL-3.0-or-later，同时提供商业授权，企业内部集成前需要确认合规要求。
-
-- **GitHub**：[ogulcancelik/herdr](https://github.com/ogulcancelik/herdr)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Can Celik 是一位以 Rust 项目获得显著社区关注的个人开发者，整体影响力集中在少数高热度开源项目上。
-**技术栈偏好**：技术栈以 Rust、TypeScript 和 C# 为主，偏向系统工具、前端/扩展开发与 Unity 相关工程实践。
-**核心领域**：主要聚焦开发者工具、浏览器/平台扩展、游戏开发桥接以及自动化辅助类应用。
-
----
-
-### ✨ bradautomates/claude-video (3792★)
-
-> **一句话**：把 YouTube、Loom、本地录屏等视频拆成字幕、音频转写和关键画面，让 Claude 能基于画面和声音回答问题。
-
-- **它是什么**：`claude-video` 提供一个 `/watch` 技能，用户给 Claude 粘贴视频 URL 或本地视频路径后，它会用 `yt-dlp` 拉取字幕或下载必要内容，用 `ffmpeg` 抽取关键帧，再把带时间戳的 transcript 和帧图片交给 Claude 读取。它支持 YouTube、Loom、TikTok、X、Instagram 等 `yt-dlp` 可处理的来源，也支持 `.mp4`、`.mov`、`.mkv`、`.webm` 等本地文件。
-
-- **能解决什么痛点**：Claude 默认只能读网页、代码和文本，面对产品演示、Bug 录屏、课程视频时很容易只能依赖标题或残缺字幕猜测内容。这个项目把“视频里实际出现了什么”和“音频里说了什么”同时交给模型，适合分析那些光看文字稿不够的内容，比如界面变化、广告开头、错误复现过程。
-
-- **适合谁用**：适合经常用 Claude Code、Codex、Cursor、Copilot 或 Gemini CLI 的开发者，尤其是需要分析屏幕录制、产品演示、教学视频的人。也适合内容运营、增长团队或产品经理用来拆解竞品视频、广告素材和发布会更新。
-
-- **怎么上手**：Claude Code 推荐安装方式：`/plugin marketplace add bradautomates/claude-video`，然后执行 `/plugin install watch@claude-video`；其他 Agent Skills 宿主可用：`npx skills add bradautomates/claude-video -g`。最小使用示例：`/watch https://youtu.be/dQw4w9WgXcQ what happens at the 30 second mark?`
-
-- **可以用在哪些场景**：分析竞品或爆款视频的开场钩子、结构和画面节奏；把用户发来的 Bug 复现录屏交给 Claude 定位异常出现在哪一帧；快速总结长视频、课程或发布会，并把关键片段整理成可搜索的笔记。
-
-- **技术看点**：它优先用 `yt-dlp` 获取原生字幕，只有没有字幕时才走 Whisper 转写，降低成本和等待时间。帧抽取提供 `transcript`、`efficient`、`balanced`、`token-burner` 等模式，并内置近重复帧去重和帧预算控制，避免长视频把上下文窗口和图片 token 消耗打爆。
-
-- **近期动向与发展方向**：最近提交集中在 0.2.0 版本：项目被重构成自包含的 Agent Skills 包，增强了 Codex 等宿主的安装兼容性；新增了帧去重和 Whisper 自动分块，说明作者正在优化长视频处理成本和稳定性。6 月底还修复了 `WATCH_DETAIL` 配置静默回退问题，并收紧 README，整体看是单人维护但近期仍有明确迭代。
-
-- **同类对比**：README 没有明确点名同类竞品。它的差异更像是把 `yt-dlp`、`ffmpeg`、字幕提取、Whisper fallback 和 Claude 的图片读取能力封装成一个 Agent Skill，而不是做成独立视频分析 SaaS。
-
-- **注意事项**：项目创建时间较新，贡献者数量为 1，当前有 30 个 open issues，生产依赖前需要接受单人维护项目的稳定性风险。运行时依赖 `ffmpeg`、`yt-dlp`，macOS 可首跑自动安装，Linux/Windows 需要按提示处理；没有字幕的视频还需要 Groq 或 OpenAI 的 Whisper API Key。视频帧会带来明显 token 成本，长视频建议用时间范围聚焦分析。
-
-- **GitHub**：[bradautomates/claude-video](https://github.com/bradautomates/claude-video)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：新近活跃但已凭借高星项目 claude-video 获得显著关注，在 AI 自动化与内容工具社区具备快速上升的影响力。
-**技术栈偏好**：主要使用 Python，偏向构建 AI 驱动的自动化、内容生成与知识管理类工具。
-**核心领域**：主要聚焦于生成式 AI 应用、视频/内容自动化和个人知识生产力工具。
-
----
-
-### ✨ karakeep-app/karakeep (26678★)
-
-> **一句话**：Karakeep 把网页链接、笔记、图片、PDF 和视频等内容统一收进自托管资料库，并自动抓取正文、归档页面、生成标签和支持全文搜索。
-
-- **它是什么**：Karakeep 是一个 self-hosting first 的收藏与稍后读应用，原名 Hoarder，面向“什么都想先存下来”的个人知识和资料管理场景。它可以保存链接、简单笔记、图片、PDF，自动抓取标题、描述、封面和全文内容，并支持列表协作、全文搜索、OCR、网页归档、视频归档、浏览器扩展和移动端 App。项目还集成了 LLM 自动打标签和摘要能力，并支持通过 Ollama 使用本地模型。
-- **能解决什么痛点**：很多人把文章、工具、推文、图片和视频分散存在浏览器书签、Pocket、聊天收藏和笔记软件里，时间一长很难搜索、分类和回溯；Karakeep 把这些内容统一存储，并尽量把原网页内容抓取和归档下来，降低链接失效带来的损失。对自托管用户来说，它也解决了 Pocket、Raindrop 这类服务无法完全掌控数据和部署环境的问题。
-- **适合谁用**：适合有 NAS、Homelab 或 VPS 的自托管用户，用来替代 Pocket、Linkwarden、Wallabag 等稍后读或书签管理方案。也适合经常从 Reddit、Hacker News、Twitter/X、技术博客收集资料的开发者、研究人员和内容整理重度用户。
-- **怎么上手**：文档未提供快速上手示例；README 指向 Docker 安装文档：https://docs.karakeep.app/Installation/docker
-- **可以用在哪些场景**：搭建个人稍后读和资料归档库，把网页、PDF、图片和视频集中保存并全文检索。为团队维护共享资料列表，例如项目调研链接、竞品资料、内部学习材料，并通过列表协作管理。作为浏览器书签的增强层，配合 Chrome、Firefox、Safari 扩展和 floccus 同步，实现跨设备收藏和自动归档。
-- **技术看点**：前端和服务端采用 TypeScript/Next.js App Router，数据层使用 Drizzle，认证用 NextAuth，客户端到服务端通信使用 tRPC，整体是现代全栈 Web 应用架构。内容抓取依赖 Puppeteer，全文搜索使用 Meilisearch，AI 标签和摘要可接 OpenAI，也支持 Ollama 本地模型，对自托管和隐私敏感场景更友好。
-- **近期动向与发展方向**：最近提交非常活跃，7 月 4-5 日连续合入了 MCP server 版本升级、列表和标签 CRUD、删除书签、书签内容读取修复等功能，说明项目正在加强 Agent/CLI/MCP 等自动化集成能力。同期还做了 crawler 拆分重构、额外 metadata 解析、GIF data image 保留、SingleFile 归档 banner 修复，显示内容抓取和归档质量是近期重点。安全和稳定性方面也有登录限流、URL 和列表名输入清理、忘记密码流程修复、推理接口 response_format 修复等改动；185 位贡献者和频繁 PR 合入表明社区参与度较高。
-- **同类对比**：README 明确对比了 Pocket、Linkwarden、Wallabag、Shiori、memos、mymind、raindrop。Karakeep 相比 Linkwarden、Wallabag 更强调“收藏一切”而不只是网页链接，并内置 AI 自动标签、摘要、OCR、全文搜索和归档；相比 Raindrop、mymind，它的核心差异是自托管优先；相比 memos，它补足了链接预览、内容抓取和自动分类能力。
-- **注意事项**：README 明确标注项目仍处于 heavy development，虽然 Star 数和更新频率很高，但 658 个 Open Issues 也意味着问题积压、功能变动和升级兼容风险需要关注。功能面较宽，涉及爬虫、搜索、AI、OCR、移动端、浏览器扩展、SSO、归档和计费相关能力，自托管部署和维护复杂度会高于轻量书签工具。项目采用 AGPL-3.0 许可证，企业或二次分发场景需要提前评估合规要求。
-
-- **GitHub**：[karakeep-app/karakeep](https://github.com/karakeep-app/karakeep)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Karakeep App 依托 2.6 万星级核心项目，在自托管书签与个人知识管理开源社区中具备较高关注度和实际影响力。
-**技术栈偏好**：技术栈明显偏向 TypeScript，围绕 Web 应用、移动发布、轻量队列与 Helm 部署构建完整产品生态。
-**核心领域**：主要聚焦自托管的链接、笔记、图片收藏管理，并结合 AI 自动标签与全文搜索提升个人信息管理效率。
-
----
-
-### ✨ firecrawl/firecrawl (146450★)
-
-> **一句话**：Firecrawl 把网页搜索、抓取、交互和站点爬取封装成 API，直接返回适合 LLM 使用的 Markdown、JSON、截图等结构化结果。
-
-- **它是什么**：Firecrawl 是一个面向大规模网页数据获取的 TypeScript 开源项目，同时提供托管服务。它支持 Search、Scrape、Interact、Crawl、Map、Batch Scrape 和 Agent 等接口，可以从网页、搜索结果、整站 URL 中提取干净内容，并输出 Markdown、HTML、结构化 JSON、截图等格式。README 明确强调它能处理 JS-heavy 页面、代理、限流、动态内容和网页交互动作。
-
-- **能解决什么痛点**：做 AI Agent 或 RAG 应用时，开发者常常需要自己处理网页渲染、反爬、代理池、正文抽取、格式清洗和 token 浪费问题，Firecrawl 将这些复杂环节包装成统一 API。另一个典型痛点是需要从动态网页中点击、滚动、输入后再抓取内容，普通 HTTP 抓取很难覆盖这类流程。
-
-- **适合谁用**：适合构建 AI Agent、搜索增强、RAG 数据管道的应用开发者，尤其是需要实时网页上下文的团队。也适合做网页数据采集、竞品信息整理、文档抓取和结构化抽取的 Python / Node.js 工程师。
-
-- **怎么上手**：README 中最直接的方式是先获取 API Key，然后调用 SDK，例如：`from firecrawl import Firecrawl; app = Firecrawl(api_key="fc-YOUR_API_KEY"); result = app.scrape("firecrawl.dev")`
-
-- **可以用在哪些场景**：可以为 AI Agent 接入实时网页搜索，让模型基于最新网页内容回答问题。可以把产品文档、博客、帮助中心整站爬取成 Markdown，用于 RAG 知识库构建。也可以对电商、招聘、SaaS 定价页等动态页面执行点击、搜索、滚动后再抽取结构化信息。
-
-- **技术看点**：项目以 API 为核心抽象，覆盖搜索、抓取、交互、整站爬取和批量任务，输出面向 LLM 消费的 Markdown / JSON，而不是只返回原始 HTML。README 还展示了 MCP、CLI、Python、Node.js、cURL 等多种入口，说明它在生态接入上投入较多。
-
-- **近期动向与发展方向**：最近 20 条提交显示项目仍在高频迭代，重点集中在 API 安全与团队级治理能力，例如 per-key scope / format lockdown、API key IP allowlist、清理 IP restriction allowlist cache 等。近期也在修复 SDK origin 标识、安全审计问题、Slack App 和监控相关功能，说明项目正在从单纯抓取能力扩展到企业使用场景下的权限、审计、运维和团队管理。
-
-- **同类对比**：README 在 Agent 的 Pro 模型示例中提到了 Apify 和 ScrapingBee 作为比较对象。Firecrawl 的差异点在于更强调 LLM-ready 输出、网页交互动作、Agent / MCP 接入，以及把搜索、抓取、整站爬取和结构化抽取放在同一套 API 里。
-
-- **注意事项**：项目创建于 2024 年 4 月，但已有 14 万以上 Star、162 位贡献者和非常频繁的近期提交，热度和活跃度都很高；同时还有 388 个 open issues，说明用户规模大、问题反馈也不少。它既是开源项目也是托管 API 服务，实际落地时需要关注 API Key、计费、限流、数据合规和自托管成本。近期提交涉及权限限制、IP allowlist、SDK、安全审计等基础能力，说明接口和企业特性仍在持续演进，生产环境接入前应固定 SDK 版本并关注变更日志。
-
-- **GitHub**：[firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Firecrawl 是增长迅速且影响力突出的 AI Web 数据基础设施组织，核心项目在 GitHub 获得极高关注度。
-**技术栈偏好**：主要偏好 TypeScript 与 JavaScript，技术方向集中在 Web API、开发者工具、MCP 与 AI 应用基础设施。
-**核心领域**：主要聚焦于为 AI Agent 和大模型应用提供网页抓取、结构化数据获取与自动化数据接入能力。
+**技术影响力**：拥有近十年 GitHub 活跃历史和单个高星项目，具备一定开源可见度与工具型项目影响力。
+**技术栈偏好**：主要使用 HTML、Python 和 JavaScript，偏向 Web 工具、自动化脚本与实用型开源项目开发。
+**核心领域**：当前聚焦 Voice AI Agents，同时过往项目显示其关注 Web 开发、内容抓取与开发者工具。
 
 ---
 
@@ -407,91 +217,155 @@
 
 ---
 
-### ✨ alibaba/zvec (13166★)
+### ✨ dotnet/skills (3737★)
 
-> **一句话**：Zvec 把向量检索、全文搜索和结构化过滤直接嵌进应用进程里，不需要单独部署向量数据库服务就能做本地相似度搜索。
+> **一句话**：微软 .NET 团队把 C#、MSBuild、NuGet、测试、诊断、升级、Blazor、MAUI 等常见开发任务整理成可安装的 AI Agent 技能包，让 Copilot CLI、Claude Code、Codex CLI、Cursor 这类编码代理能更懂 .NET 项目。
 
-- **它是什么**：Zvec 是 Alibaba 开源的轻量级进程内向量数据库，核心用 C++ 实现，面向低延迟相似度检索场景。它支持 dense vector、sparse vector、多向量查询、标量过滤、WAL 持久化，以及原生全文搜索 FTS。README 中强调它可以直接嵌入 notebook、服务端程序、CLI 工具或边缘设备，不需要额外启动数据库服务。
+- **它是什么**：这是 .NET 团队维护的一组 Agent Skills 和自定义代理集合，面向 AI 编码工具提供 .NET / C# 开发能力扩展。仓库按插件拆分，覆盖 C# LSP 集成、MSBuild 构建诊断、NuGet 包管理、测试生成与分析、ASP.NET Core、Blazor、MAUI、EF 数据访问、项目升级、性能诊断以及 .NET AI 开发等方向，并提供 Dashboard 跟踪各插件的准确率和效率评分趋势。
+- **能解决什么痛点**：一是让 AI 编码代理在处理 .NET 项目时不只会“猜代码”，而是能调用针对构建失败、测试筛选、包依赖、框架迁移等场景沉淀过的技能。二是减少 .NET 开发中大量上下文相关问题的人工排查成本，比如 MSBuild binlog 分析、VSTest 到 Microsoft.Testing.Platform 迁移、MSTest / xUnit 升级、Blazor 组件模式判断等。
+- **适合谁用**：适合在日常开发中使用 Copilot CLI、Claude Code、Codex CLI、Cursor 的 .NET / C# 工程师；也适合维护大型 .NET 代码库、经常处理构建、测试、升级、诊断问题的平台工程团队。
+- **怎么上手**：Codex CLI 可先添加 marketplace：`codex plugin marketplace add dotnet/skills`，然后在 Codex 内打开 `/plugins` 安装需要的插件。
+- **可以用在哪些场景**：用于排查 CI 中 .NET 测试超时、过滤表达式错误或覆盖率缺口；用于分析 MSBuild 构建失败、binlog、包引用和 buildTransitive 转发问题；用于把旧 .NET 项目迁移到新框架版本，或将测试框架从 xUnit / VSTest 迁移到 MSTest / Microsoft.Testing.Platform。
+- **技术看点**：项目采用 agentskills.io 标准组织技能，并同时面向 Copilot CLI、Claude Code、VS Code、Cursor、Codex CLI 发布，说明它不是单一 IDE 插件，而是一套跨 Agent 运行环境的 .NET 技能市场。README 中还包含 Codex-native marketplace manifest，便于直接作为插件市场注册和分发。
+- **近期动向与发展方向**：最近提交集中在 `dotnet-test` 相关能力：提高慢超时评测场景的 timeout、合并测试框架技能、升级 `dotnet-test` 到 0.2.0，并为运行测试、测试缺口分析、测试异味检测、MSTest 编写、测试可测试性包装等技能补充 eval 覆盖。与此同时，项目也在整理技能边界，比如把小众技能迁到 `dotnet-advanced`，并补强 MSBuild、P/Invoke、Blazor、VS Code subagent fan-out、Claude 插件 manifest 等集成，近期重点明显偏向测试能力稳定化、评测体系完善和多客户端适配。
+- **同类对比**：暂无明显同类对标。它更像是 .NET 官方团队维护的 Agent 技能库，而不是传统意义上的代码生成工具、IDE 扩展或测试框架。
+- **注意事项**：项目创建时间较新但更新频率很高，已有 55 位贡献者和 77 个 open issues，说明社区和官方维护都比较活跃，但也意味着接口和插件形态仍可能快速演进。VS Code 插件支持在 README 中明确标注为 Preview，Codex CLI marketplace 也要求 v0.121.0 及以上；如果用于团队标准流程，需要关注插件版本、客户端兼容性和后续可能的破坏性调整。
 
-- **能解决什么痛点**：第一类痛点是小型或嵌入式 AI 应用不想单独维护 Milvus、Elasticsearch 这类外部服务，只需要在本地进程里完成向量召回和混合检索。第二类痛点是检索逻辑同时需要向量相似度、关键词匹配和结构化条件过滤，Zvec 的 `MultiQuery` 可以把 dense、sparse、FTS 和 filter 组合在一次查询里。
-
-- **适合谁用**：适合做 RAG、语义搜索、推荐召回的 Python / Node.js / Go / Rust 工程师，尤其是希望把向量库作为本地依赖嵌入应用的人。也适合需要在边缘设备、桌面工具、CLI 或内部小服务中做低延迟本地检索的后端开发者。
-
-- **怎么上手**：Python 用户可以直接安装：`pip install zvec`。README 给出的最小流程是定义 `CollectionSchema`，用 `zvec.create_and_open(path="./zvec_example", schema=schema)` 创建集合，插入带向量的 `Doc`，再用 `collection.query(zvec.VectorQuery(...), topk=10)` 查询相似结果。
-
-- **可以用在哪些场景**：可以用于给本地知识库或 RAG 应用做向量召回，避免额外部署独立向量数据库。可以用于电商、内容平台或内部系统里的混合检索，把文本关键词、向量语义和结构化字段一起参与排序。也可以用于桌面端、边缘设备或离线工具中的相似图片、相似文档、相似日志检索。
-
-- **技术看点**：Zvec 的关键设计是进程内数据库形态，减少网络调用和服务运维成本，同时通过 WAL 保证持久化。索引能力上覆盖内存和磁盘两类场景，v0.5.0 引入 DiskANN 以降低大规模数据集的内存占用，并新增原生 FTS 与混合检索能力。
-
-- **近期动向与发展方向**：最近 20 条提交非常活跃，时间集中在 2026 年 6 月下旬到 7 月初，既有新功能也有大量稳定性修复。开发重点包括 Python 绑定零拷贝查询、FTS UTF-8 tokenizer 支持、C API 的 FTS 子查询、INT8/INT4 量化随机旋转、IVF 索引修复、DiskANN / HNSW sparse builder 并发 race 修复，以及构建系统对 lz4、Arrow 编译器设置的修正。整体看，项目正在从功能扩展进入性能、绑定生态和索引稳定性打磨阶段，贡献者也不只集中在单人维护。
-
-- **同类对比**：README 没有直接点名竞品。它的差异点主要在“进程内嵌入式”定位：相比需要独立部署的向量数据库，Zvec 更适合本地应用、轻量服务和边缘场景；相比单纯 ANN 库，它又提供集合、持久化、全文搜索和多语言 SDK。
-
-- **注意事项**：项目创建时间为 2025-12-05，虽然 Stars 增长很快、更新频繁，但仍属于较新的基础设施项目，生产使用前需要重点验证索引正确性、崩溃恢复、并发访问和目标平台兼容性。近期 commit 中修复了 IVF、Python 查询校验、构建链路、并发 race 等问题，说明项目仍在快速迭代，版本升级可能带来行为变化。当前有 56 个 open issues，文档、Benchmark、PyPI/npm 包和多语言 SDK 都已提供，但复杂检索场景仍建议先做压测和回归测试。
-
-- **GitHub**：[alibaba/zvec](https://github.com/alibaba/zvec)
+- **GitHub**：[dotnet/skills](https://github.com/dotnet/skills)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Alibaba 是国内外开源社区中影响力很强的企业级技术组织，拥有大量高星项目和广泛开发者关注。
-**技术栈偏好**：技术栈明显偏向 Java/JVM 生态，并结合 Kotlin 推动企业级中间件、开发工具与工程规范建设。
-**核心领域**：主要聚焦微服务治理、Java 诊断与性能工具、数据同步、办公数据处理和企业级研发效能。
+**技术影响力**：.NET Platform 是开源 .NET 生态的核心组织，拥有高关注度和多个万星级基础仓库，对企业级开发与跨平台应用社区影响显著。
+**技术栈偏好**：技术栈以 C# 为主、PowerShell 为辅，围绕 .NET 运行时、编译器、Web 框架和跨平台应用框架持续建设。
+**核心领域**：主要聚焦开源 .NET 平台、ASP.NET Core、运行时、编译器工具链以及跨平台应用开发生态。
 
 ---
 
-### ✨ sindresorhus/awesome (481985★)
+### ✨ iOfficeAI/OfficeCLI (9661★)
 
-> **一句话**：这是 GitHub 上最具代表性的 Awesome 清单索引，把编程语言、平台、开发工具、安全、数据库、硬件、学习资料等主题下的高质量资源列表集中到一个入口。
+> **一句话**：让 AI 代理直接读取、渲染、创建和修改 Word、Excel、PowerPoint 文件，无需安装 Microsoft Office。
 
-- **它是什么**：`sindresorhus/awesome` 不是一个代码库或 SDK，而是一个经过社区维护的 Awesome Lists 总目录。README 按 Platforms、Programming Languages、Front-End Development、Back-End Development、Security、Databases 等分类，链接到各领域的精选资源清单，例如 Node.js、iOS、Android、AWS、Flutter、Nix、Cloudflare 等。
-- **能解决什么痛点**：开发者在进入一个新技术领域时，常常需要在搜索引擎、博客和零散仓库之间反复筛选资料；这个项目把各主题下相对成熟的资源清单集中起来，适合作为第一站。另一个痛点是资源列表容易失效或质量参差不齐，项目通过贡献指南、列表规范和清理归档项目来维持入口质量。
-- **适合谁用**：适合需要快速调研技术栈的开发者、架构师、技术负责人，也适合维护技术学习路线、内部知识库或开发者导航页的团队。对想创建自己 Awesome List 的开源维护者也有参考价值，因为仓库提供了贡献指南和创建清单的说明。
-- **怎么上手**：文档未提供快速上手示例；最直接的使用方式是打开 [awesome.re](https://awesome.re) 或 GitHub README，按目录分类进入对应主题清单。
+- **它是什么**：OfficeCLI 是面向 AI 代理设计的 Office 文档命令行套件，支持 `.docx`、`.xlsx`、`.pptx` 的创建、读取、编辑和结构化查询。它以单二进制形式分发，不依赖本机 Office 安装，并内置 HTML / PNG 渲染能力，让 AI 可以“看见”文档效果后继续修正内容和排版。
+
+- **能解决什么痛点**：传统自动化 Office 文档通常要分别使用 python-docx、openpyxl、python-pptx 等库，代码量大且格式能力割裂；OfficeCLI 把常见操作统一成命令行接口，更适合被 Claude Code、Cursor、Copilot 等 AI 编程代理调用。另一个痛点是 AI 修改文档后难以判断视觉效果，它提供实时预览和渲染输出，可以形成“修改 → 查看 → 再修改”的闭环。
+
+- **适合谁用**：适合正在做 AI Agent、办公自动化、文档生成系统的开发者；也适合需要批量生成报告、PPT、表格并希望通过命令行集成到工作流里的后端工程师或自动化工程师。
+
+- **怎么上手**：AI 代理可直接读取技能文件并按说明安装：
+
 - **可以用在哪些场景**：
-  - 新项目技术选型前，快速查找某个平台或语言生态中的库、工具和学习资料，例如调研 Flutter、Nix、Cloudflare 或 Firebase 生态。
-  - 搭建团队内部开发者门户时，把它作为外部资源索引来源，补充各技术方向的精选链接。
-  - 学习新领域时，从对应 Awesome List 进入系统化资料，而不是从搜索结果里逐条判断质量。
-- **技术看点**：项目核心价值不在技术实现，而在长期维护的分类体系、贡献规范和质量控制流程。近期提交中多次出现 repo linter、贡献说明、模板和指南更新，说明维护者在用自动化检查和规则约束来管理大规模 Markdown 链接目录。
-- **近期动向与发展方向**：最近提交以维护和治理为主，包括移除 17 个已归档的 awesome lists、删除过时建议、修复 repo linter 在删除型 PR 上崩溃的问题、改进错误处理、更新贡献指南和 PR 模板。项目仍保持活跃，但近期没有体现大功能扩展，更像是在持续清理失效内容、修正文档细节、增强自动化校验，方向是让这个超大规模资源索引保持可用和可信。
-- **同类对比**：暂无明显同类对标。它本身更像 Awesome List 生态的总入口，而不是某个单一领域资源清单的竞品。
-- **注意事项**：这是一个资源索引仓库，不提供可安装的软件包、API 或运行时能力；使用者需要继续进入各子清单自行判断资料是否适合当前项目。项目创建于 2014 年，Star 数接近 48.2 万、贡献者 676 人，成熟度和影响力很高；但由于覆盖面极广，部分外链和子项目状态仍可能变化，需要关注清单更新时间和目标仓库是否仍活跃。当前 Open Issues 为 91，结合近期仍有清理和 linter 修复，说明维护压力存在但治理仍在持续。
+  1. 让 AI 根据需求自动生成演示文稿，例如创建销售汇报、产品方案、培训课件，并通过浏览器实时预览。
+  2. 在数据处理流水线中生成 Excel 报表，包括公式、图表、透视表、条件格式等结构化内容。
+  3. 在企业内部系统中批量生成 Word 文档，如项目提案、合同草稿、研究报告，并支持页眉页脚、目录、批注、脚注等复杂元素。
 
-- **GitHub**：[sindresorhus/awesome](https://github.com/sindresorhus/awesome)
+- **技术看点**：项目使用 C# 实现，并选择单二进制、无 Office 依赖的分发方式，降低了在 CI、服务器和 AI Agent 沙箱环境中的部署成本。内置 HTML / PNG 渲染引擎是关键设计点，它不是只操作文件结构，而是把视觉反馈纳入自动化流程。
+
+- **近期动向与发展方向**：最近提交非常密集，7 月 6 日到 7 日连续更新了 PowerPoint 相关能力，包括分组解除、连接线跟随形状移动或缩放、图形对齐分布、原生 diagram 居中等；同时修复了 xlsx 文本视图、pptx 表格选择器、字体覆盖等细节问题。文档也在同步收敛，多个提交修正了 README 和 skill 文件中过度或不准确的能力描述，并新增 Homebrew、npm 安装说明，说明项目近期重点是完善 PPT 编辑能力、提高命令行为 AI 调用时的稳定性，并让文档与实际 CLI 行为保持一致。
+
+- **同类对比**：README 明确对比了传统 Python 方案，例如用 python-pptx 创建幻灯片往往需要几十行代码，而 OfficeCLI 将其压缩为一条命令。它的差异点不只是“封装库”，而是把 Word、Excel、PowerPoint 三类文件统一为适合 AI Agent 调用的 CLI 和选择器模型。
+
+- **注意事项**：项目创建时间较新，但 Star 增长很快，当前有 18 个 Open Issues、11 位贡献者，近期主要提交集中在 `goworm`，社区贡献结构还需要继续观察。功能范围覆盖很广，文档也较丰富，但最近仍在频繁修正文档声明和行为细节，说明部分能力可能还在快速打磨阶段；如果用于生产环境，建议锁定版本并用真实 Office 文件做回归测试。
+
+- **GitHub**：[iOfficeAI/OfficeCLI](https://github.com/iOfficeAI/OfficeCLI)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Sindre Sorhus 是 GitHub 开源生态中的顶级个人开发者，凭借大量高星项目和长期维护能力在 JavaScript、Node.js 与开发者工具社区具有标杆级影响力。
-**技术栈偏好**：技术栈以 TypeScript/JavaScript 为核心，同时明显投入 Swift 与 macOS 应用开发，偏好构建 npm 包、CLI 工具和高质量开发基础库。
-**核心领域**：主要聚焦开源工具链、Node.js/前端生态精选资源、类型工具库、CLI 效率工具以及 macOS 开发者/生产力应用。
+**技术影响力**：AionUi 是一个年轻但增长显著的 AI UI 方向组织，凭借高星 TypeScript 项目在开发者社区具备较强可见度。
+**技术栈偏好**：技术栈以 TypeScript 为前端与产品主线，同时结合 Rust 构建核心能力、C# 支撑 Office/CLI 生态。
+**核心领域**：主要聚焦 AI 驱动的 UI、办公自动化与跨语言智能工具链。
 
 ---
 
-### ✨ gastownhall/gastown (16306★)
+### ✨ bradautomates/claude-video (3792★)
 
-> **一句话**：Gas Town 把 Claude Code、Codex、GitHub Copilot 等多个 AI 编程代理组织成一个带任务账本、身份、交接和恢复能力的协作工作区。
+> **一句话**：把 YouTube、Loom、本地录屏等视频拆成字幕、音频转写和关键画面，让 Claude 能基于画面和声音回答问题。
 
-- **它是什么**：Gas Town 是用 Go 编写的多代理工作区管理系统，围绕 `Town`、`Rig`、`Mayor`、`Polecat`、`Convoy` 等概念，把项目仓库、AI 代理、任务分派和执行状态统一管理起来。它通过 git worktree、hooks 和 Beads 账本持久化代理的工作状态，让代理重启、崩溃或切换会话后仍能找回上下文。README 中还提供了调度器、合并队列、看门狗监控、会话续接、跨 Town 协作网络等较完整的工程化能力。
+- **它是什么**：`claude-video` 提供一个 `/watch` 技能，用户给 Claude 粘贴视频 URL 或本地视频路径后，它会用 `yt-dlp` 拉取字幕或下载必要内容，用 `ffmpeg` 抽取关键帧，再把带时间戳的 transcript 和帧图片交给 Claude 读取。它支持 YouTube、Loom、TikTok、X、Instagram 等 `yt-dlp` 可处理的来源，也支持 `.mp4`、`.mov`、`.mkv`、`.webm` 等本地文件。
 
-- **能解决什么痛点**：适合解决多个 AI 编程代理同时处理不同 issue 时的混乱问题，例如任务分派靠人工记录、代理重启后丢上下文、多个 worktree 状态难以追踪。它也针对长周期任务提供 convoy、bead、checkpoint 和 escalation 机制，避免 4-10 个代理并行后无法判断谁在做什么、哪里卡住了。
+- **能解决什么痛点**：Claude 默认只能读网页、代码和文本，面对产品演示、Bug 录屏、课程视频时很容易只能依赖标题或残缺字幕猜测内容。这个项目把“视频里实际出现了什么”和“音频里说了什么”同时交给模型，适合分析那些光看文字稿不够的内容，比如界面变化、广告开头、错误复现过程。
 
-- **适合谁用**：适合已经在重度使用 Claude Code、Codex、GitHub Copilot CLI 等 AI 编程代理的工程团队或个人开发者。也适合维护大型仓库、需要把 bug 修复、代码审查、批量迁移、发布流程拆给多个代理并行处理的开源维护者和平台工程团队。
+- **适合谁用**：适合经常用 Claude Code、Codex、Cursor、Copilot 或 Gemini CLI 的开发者，尤其是需要分析屏幕录制、产品演示、教学视频的人。也适合内容运营、增长团队或产品经理用来拆解竞品视频、广告素材和发布会更新。
 
-- **怎么上手**：最小启动路径是：`brew install gastown && gt install ~/gt --git && cd ~/gt && gt mayor attach`
+- **怎么上手**：Claude Code 推荐安装方式：`/plugin marketplace add bradautomates/claude-video`，然后执行 `/plugin install watch@claude-video`；其他 Agent Skills 宿主可用：`npx skills add bradautomates/claude-video -g`。最小使用示例：`/watch https://youtu.be/dQw4w9WgXcQ what happens at the 30 second mark?`
 
-- **可以用在哪些场景**：可用于把一个大型重构拆成多个 bead，由不同 AI 代理在各自 worktree 中并行处理；可用于开源项目维护中自动分派 issue、收集完成证据并进入类似 Bors 的合并队列；也可用于团队内部把代码审查、回归修复、发布流程定义成可追踪的 molecule/formula 工作流。
+- **可以用在哪些场景**：分析竞品或爆款视频的开场钩子、结构和画面节奏；把用户发来的 Bug 复现录屏交给 Claude 定位异常出现在哪一帧；快速总结长视频、课程或发布会，并把关键片段整理成可搜索的笔记。
 
-- **技术看点**：核心设计不是单纯调用某个模型 API，而是把代理运行状态落到 git-backed hooks 和 Beads 结构化账本中，强调可恢复、可审计和可交接。项目还内置 Deacon/Witness/Dogs 三层监控、Refinery 合并队列、Scheduler 并发控制和 DoltHub 联邦协作能力，技术路线更接近“AI 代理操作系统”而不是普通 CLI 包装器。
+- **技术看点**：它优先用 `yt-dlp` 获取原生字幕，只有没有字幕时才走 Whisper 转写，降低成本和等待时间。帧抽取提供 `transcript`、`efficient`、`balanced`、`token-burner` 等模式，并内置近重复帧去重和帧预算控制，避免长视频把上下文窗口和图片 token 消耗打爆。
 
-- **近期动向与发展方向**：最近 20 条提交集中在 bug fix、运行时产物排除、Dolt 环境与 endpoint 解析、review-only 证据新鲜度、rollback metadata 等细节修正，说明近期重点是稳定性、恢复一致性和工作流边界条件。提交中有多个 PR merge 和多位贡献者参与，项目仍处于高频迭代状态；同时大量 `WIP: checkpoint (auto)` 也显示其自身正在吃自己的多代理工作流，代码库可能仍有较强实验性。
+- **近期动向与发展方向**：最近提交集中在 0.2.0 版本：项目被重构成自包含的 Agent Skills 包，增强了 Codex 等宿主的安装兼容性；新增了帧去重和 Whisper 自动分块，说明作者正在优化长视频处理成本和稳定性。6 月底还修复了 `WATCH_DETAIL` 配置静默回退问题，并收紧 README，整体看是单人维护但近期仍有明确迭代。
 
-- **同类对比**：README 没有直接列出明确竞品。它与单一 AI 编程助手的差异在于，Gas Town 关注多代理编排、任务持久化、工作交接和合并管线，而不是只提供一次性的代码生成或聊天式编程体验。
+- **同类对比**：README 没有明确点名同类竞品。它的差异更像是把 `yt-dlp`、`ffmpeg`、字幕提取、Whisper fallback 和 Claude 的图片读取能力封装成一个 Agent Skill，而不是做成独立视频分析 SaaS。
 
-- **注意事项**：上手门槛偏高，依赖 Go 1.25+、Git worktree、Dolt、beads、tmux，以及至少一种 AI 编程运行时；README 中概念很多，新用户需要先理解 Mayor、Rig、Polecat、Convoy、Beads 等术语。项目创建时间较新但已有 277 个 open issues，且提交仍在频繁修复运行时和证据链细节，适合愿意跟随快速演进的早期用户，生产环境大规模采用前需要充分验证工作流稳定性。
+- **注意事项**：项目创建时间较新，贡献者数量为 1，当前有 30 个 open issues，生产依赖前需要接受单人维护项目的稳定性风险。运行时依赖 `ffmpeg`、`yt-dlp`，macOS 可首跑自动安装，Linux/Windows 需要按提示处理；没有字幕的视频还需要 Groq 或 OpenAI 的 Whisper API Key。视频帧会带来明显 token 成本，长视频建议用时间范围聚焦分析。
 
-- **GitHub**：[gastownhall/gastown](https://github.com/gastownhall/gastown)
+- **GitHub**：[bradautomates/claude-video](https://github.com/bradautomates/claude-video)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Gas Town Hall 是围绕 AI agent 编排生态快速聚集关注度的新兴组织，凭借多个高星 Go 项目在开发者社区具备较强可见度。
-**技术栈偏好**：技术栈明显偏向 Go，辅以 Python 做扩展包或配套工具，强调高性能后端、命令行工具与基础设施型组件。
-**核心领域**：主要聚焦 AI agent orchestrator、开发者工具链与社区化智能体协作基础设施。
+**技术影响力**：新近活跃但已凭借高星项目 claude-video 获得显著关注，在 AI 自动化与内容工具社区具备快速上升的影响力。
+**技术栈偏好**：主要使用 Python，偏向构建 AI 驱动的自动化、内容生成与知识管理类工具。
+**核心领域**：主要聚焦于生成式 AI 应用、视频/内容自动化和个人知识生产力工具。
+
+---
+
+### ✨ kyutai-labs/pocket-tts (5968★)
+
+> **一句话**：Pocket TTS 可以在普通 CPU 上本地生成语音，安装后用 CLI 或 Python 函数就能把文本转成 wav 音频，还支持流式输出和声音克隆。
+
+- **它是什么**：Pocket TTS 是 Kyutai 开源的轻量级文本转语音项目，目标是在不依赖 GPU 和云端 TTS API 的情况下完成本地语音生成。它提供 Python API、命令行工具和本地 Web 服务，支持英语、法语、德语、葡萄牙语、意大利语、西班牙语等多语言，并内置一批可直接调用的声音。模型约 100M 参数，支持音频流式生成、长文本输入和通过 wav/mp3 音频进行声音克隆。
+
+- **能解决什么痛点**：一类痛点是本地应用、桌面工具或内网系统想接入 TTS，但不希望把文本发到外部 API，也不想准备 GPU 环境。另一类痛点是语音生成服务冷启动和部署成本较高，Pocket TTS 可以直接在 CPU 上运行，并通过 `serve` 命令把模型常驻内存，减少重复加载带来的等待。
+
+- **适合谁用**：适合需要在 Python 项目里集成本地语音合成的开发者，例如做桌面应用、内容生成工具、教育产品、朗读服务的工程师。也适合想在低资源设备、Apple Silicon、浏览器端或嵌入式环境探索 TTS 落地的开发者，README 中已有多个 WebAssembly、ONNX、C++、Rust、C# 等社区实现可参考。
+
+- **怎么上手**：最快可以用命令行直接生成音频：`uvx pocket-tts generate`。如果作为 Python 库使用，最小流程是 `pip install pocket-tts`，然后通过 `TTSModel.load_model()` 加载模型、`get_state_for_audio_prompt("alba")` 选择声音、`generate_audio(...)` 生成音频张量并写成 wav 文件。
+
+- **可以用在哪些场景**：可以用于给本地笔记、电子书或长文档生成离线朗读音频；可以在桌面应用或内部工具中加入不依赖云服务的语音播报；也可以作为本地 HTTP TTS 服务，为聊天机器人、辅助阅读工具、语言学习产品提供低延迟语音输出。
+
+- **技术看点**：项目的核心卖点是面向 CPU 的小模型设计，约 100M 参数，README 标称在 MacBook Air M4 上约 6 倍实时速度，首个音频块延迟约 200ms，并且只使用 2 个 CPU 核心。它还支持 int8 动态量化、流式输出、长文本分段处理和声音状态导出到 safetensors，以降低后续加载声音克隆状态的成本。
+
+- **近期动向与发展方向**：最近几个月的提交显示，项目在 2026 年 4 月发布了 2.0.0，加入法语、意大利语、葡萄牙语、西班牙语、德语等多语言支持；随后 2.1.0 修复了量化下的声音克隆问题，并为每种语言增加默认声音。近期提交更多集中在文档、Demo、README 生态项目收录和兼容性修复上，说明核心功能已进入相对稳定维护阶段，同时社区围绕 macOS 应用、浏览器端、C#、Rust、ONNX 等方向在扩展生态。
+
+- **同类对比**：README 没有直接拿它与其他 TTS 模型做质量或速度对标，但列出了多个替代实现和移植版本，例如 MLX 版、Rust/Candle 版、ONNX Runtime Web、单文件 C++ 运行时、sherpa-onnx 等。Pocket TTS 本体的差异点在于官方 Python/CLI 入口清晰、CPU 运行优先、模型较小，并且已有社区把它移植到浏览器、嵌入式和多语言绑定环境。
+
+- **注意事项**：项目创建时间较新，但已有 5968 stars、34 位贡献者和持续提交，热度和社区关注度较高；同时还有 53 个 open issues，说明实际使用中仍可能遇到兼容性、音质、语言覆盖或部署细节问题。README 明确提到暂不支持在文本中插入静音来生成停顿；GPU 上不一定更快，因为模型小、batch size 为 1。文档和示例比较完整，支持 CLI、Python API、本地服务和网页 Demo，但声音克隆效果会明显受输入音频质量影响，生产使用前需要用目标语种、目标设备和真实文本做验证。
+
+- **GitHub**：[kyutai-labs/pocket-tts](https://github.com/kyutai-labs/pocket-tts)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：kyutai 是快速崛起的开放科学 AI 实验室型组织，凭借 moshi、pocket-tts 等高星项目在开源语音 AI 社区具备较强影响力。
+**技术栈偏好**：技术栈以 Python 为主、Rust 为辅，偏向深度学习研究实现、实时推理与高性能音频系统工程。
+**核心领域**：主要聚焦开放语音 AI、文本转语音、实时对话模型与流式音频建模。
+
+---
+
+### ✨ hesreallyhim/awesome-claude-code (48225★)
+
+> **一句话**：这是一个围绕 Claude Code 生态整理的精选索引，把官方资料、学习教程、Hooks、MCP、子代理、插件、状态栏、监控、安全审查等资源按主题集中到一份 README 里。
+
+- **它是什么**：awesome-claude-code 不是传统意义上的代码库，而是一份 Claude Code 资源导航清单。README 按「Start Here」「From Anthropic」「Documentation」「Security」「Multi-Agent Orchestration」「Memory & Context Persistence」「Usage & Cost Monitoring」等分类收录项目、文章和官方工具，并为部分 GitHub 项目展示创建时间、最近提交、许可证和 Stars 徽章。它还维护了一个 Claude Code 项目 ticker，用 SVG 形式展示 GitHub 上的相关项目样本。
+
+- **能解决什么痛点**：Claude Code 生态扩展很快，新手很难判断该先看官方最佳实践、Hooks 教程、CLAUDE.md 写法，还是 MCP、Skills、Subagents 这些进阶主题；这个仓库把入口按学习路径和功能场景拆开，减少到处翻链接的成本。对已经在用 Claude Code 的团队来说，它也方便快速发现可复用的插件、CI Action、安全审查、成本监控和上下文管理方案。
+
+- **适合谁用**：适合正在学习或评估 Claude Code 的开发者、技术负责人和 AI 编程工具重度用户。也适合已经在团队内落地 Claude Code，希望补齐 Hooks、MCP、子代理、CLAUDE.md 规范、安全审查和成本监控实践的工程团队。
+
+- **怎么上手**：文档未提供快速上手示例。
+
+- **可以用在哪些场景**：用于给团队制定 Claude Code 使用规范时，挑选 CLAUDE.md 写法、官方最佳实践和上下文工程资料。用于搭建 Claude Code 自动化工作流时，查找 GitHub Action、Hooks、MCP、Subagents、Skills 等相关资源。用于做工具选型时，对比安全审查、使用量与成本监控、状态栏、替代客户端等生态项目。
+
+- **技术看点**：项目本身以 Awesome List 的方式组织内容，技术重点不在运行时代码，而在分类体系和资源筛选质量。README 中的 repo ticker 和徽章信息说明它有自动化更新机制，会持续抓取或生成相关项目数据与 SVG 展示内容。
+
+- **近期动向与发展方向**：最近 20 条提交全部来自 github-actions[bot]，内容都是 `chore: update repo ticker data and SVGs [skip ci]`，说明近期主要在自动更新项目 ticker 数据和 SVG，而不是新增核心功能或大规模重构。从 2026-07-03 到 2026-07-05 连续多次更新看，仓库维护频率很高，但近期提交更偏数据刷新，人工内容编辑和社区贡献活跃度无法仅凭这批提交判断。
+
+- **同类对比**：暂无明显同类对标。README 中提到旧版资源会暂存在 `README_ALTERNATIVES` 目录，当前版本更强调收录此前未出现在旧列表中的新资源，并逐步迁移仍在维护的 legacy 资源。
+
+- **注意事项**：这是 2025-04-19 创建的新仓库，但 Stars 已达到 48225，说明关注度很高；同时 Open Issues 有 584 个，可能包含大量推荐、收录请求或维护讨论，使用时需要自行判断资源是否仍然适合当前 Claude Code 版本。近期提交高度自动化，不能直接等同于内容质量持续人工审校；具体资源是否可靠、是否维护活跃，仍应点进对应项目查看许可证、最近提交和实际文档。
+
+- **GitHub**：[hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Really Him 凭借 `awesome-claude-code` 等高星项目在 Claude Code 生态中具备较强的内容聚合与社区引导影响力。
+**技术栈偏好**：技术栈以 Python 和 TypeScript 为主，偏向 AI 编程工具、MCP 工具链与开发者自动化方向。
+**核心领域**：主要聚焦 Claude Code 相关资源整理、智能体工作流、输出风格与 AI 辅助开发生态建设。
