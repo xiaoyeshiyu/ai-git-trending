@@ -1,5 +1,5 @@
-## 今日热点：AI Agent 工程化与本地能力扩展升温
-今天的 GitHub 热点明显围绕 AI Agent 的实用化落地展开，从求职自动化、编码技能框架、长期记忆、办公文档操作、视频理解、终端与文件系统控制，到安全沙箱和本地向量数据库，形成了一条更完整的 Agent 工具链；同时，Kubernetes 持续交付、Prisma ORM、WiFi 空间感知、自动重拓扑、GIMP 体验增强以及系统提示词研究等项目，也体现出开发基础设施、创意工具与 AI 安全透明度的持续活跃。具体项目摘要如下：
+## 今日热点：AI 代理从编码走向办公、求职与安全实战
+今天的 GitHub 热点集中在 AI 代理能力的工程化落地：从基于 Claude 的求职自动化、代码代理技能库、设计系统适配与 Office 文档自动化，到赋予 Claude 终端控制、视频理解和实用配方的 MCP/工具链生态；同时，AI 正在深入网络爬虫、自动化渗透测试与系统提示词研究等安全与数据获取场景，传统开发基础设施如 Prisma ORM、Linux 服务器加固指南、游戏源码、自动重网格工具以及轻量级 CPU 端 TTS 也保持活跃，显示出“AI 原生工具链”与通用开发生态并行升温的趋势，具体项目摘要如下：
 
 ### ✨ MadsLorentzen/ai-job-search (11412★)
 
@@ -40,6 +40,38 @@
 
 ---
 
+### ✨ SmartlyDressedGames/U3-SDK (1716★)
+
+> **一句话**：这是《Unturned》的 Unity 源码工程，开发者可以直接打开游戏项目，查看、修改并运行这款开放世界僵尸生存沙盒游戏。
+
+- **它是什么**：U3-SDK 提供了《Unturned》的源代码和 Unity 工程入口，面向想研究或修改游戏逻辑的开发者。README 明确要求使用 Unity 2022.3.62f3，并通过 `Assets/GameStartup.unity` 场景启动项目。部分大型二进制文件和模组资源仍依赖本机已安装的 Steam 版《Unturned》。
+
+- **能解决什么痛点**：它让开发者不用只靠反编译或零散文档猜测游戏机制，可以直接阅读官方源码并在 Unity 编辑器里运行验证。对于模组作者来说，也能更准确地理解游戏 API、资源加载和运行流程，减少与实际游戏行为不一致的问题。
+
+- **适合谁用**：《Unturned》模组开发者、想为游戏做代码级修改或兼容性研究的 Unity/C# 开发者。也适合学习商业 Unity 项目结构、游戏启动流程和沙盒生存游戏实现方式的人。
+
+- **怎么上手**：安装 Unity 2022.3.62f3，确保 Steam 正在运行且已安装《Unturned》，用 Unity 打开仓库并运行 `Assets/GameStartup.unity` 场景。
+
+- **可以用在哪些场景**：研究《Unturned》的武器、载具、僵尸 AI、物品系统等源码实现；开发和调试与原版行为高度一致的模组；在教学或代码阅读场景中分析一款长期运营 Unity 游戏的工程组织方式。
+
+- **技术看点**：项目基于 C# 和 Unity，README 指定了非常具体的 Unity LTS 版本，这对复现工程环境很关键。它不是独立 SDK 包，而是接近完整游戏源码工程，资源依赖 Steam 安装目录中的游戏文件。
+
+- **近期动向与发展方向**：近期提交集中在 2026 年 7 月，包括添加游戏文件、移除 macOS 构建目标依赖、补充视频演示链接和更新 issue 模板，说明仓库在经历一次较明显的可用性和工程整理更新。此前 2023 到 2025 年主要是 README 和文档说明调整，整体看核心代码提交频率不高，但最近有恢复维护和完善上手流程的迹象。
+
+- **同类对比**：暂无明显同类对标。
+
+- **注意事项**：项目已有多年历史，Stars 1716、Forks 224，说明有一定社区关注，但 Contributor Count 只有 2，维护主体较集中。Open Issues 为 178，需要预期存在积压问题；同时项目依赖指定 Unity 版本、Steam 客户端和本地《Unturned》安装，上手门槛高于普通 NuGet/Unity 插件。README 给出了基本启动步骤和文档链接，但复杂修改仍需要阅读源码和官方模组文档。
+
+- **GitHub**：[SmartlyDressedGames/U3-SDK](https://github.com/SmartlyDressedGames/U3-SDK)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：以 Unturned 生态为核心的小型独立游戏开发组织，社区影响力主要集中在游戏 SDK、文档与工具链支持上。
+**技术栈偏好**：主要偏好 C# 与 Python，技术方向围绕 Unity/游戏开发工具、SDK、自动化文档与辅助脚本展开。
+**核心领域**：聚焦开放世界生存沙盒游戏及其开发者生态建设。
+
+---
+
 ### ✨ addyosmani/agent-skills (70273★)
 
 > **一句话**：把资深工程师的需求澄清、任务拆解、编码、测试、评审、发布流程写成一套可复用的 AI Agent 技能包，让编码 Agent 按工程化流程做事。
@@ -72,142 +104,35 @@
 
 ---
 
-### ✨ ruvnet/RuView (76611★)
+### ✨ VoltAgent/awesome-design-md (98937★)
 
-> **一句话**：RuView 用 ESP32 采集 WiFi 信道状态信息，把墙后、暗处或无摄像头房间里的存在、移动、呼吸和心率变化实时转成可用的空间感知数据。
+> **一句话**：收集 73 份来自知名品牌网站的 DESIGN.md，让 AI 编码 Agent 按 Claude、Vercel、Stripe、Nike 等真实设计语言生成界面。
 
-- **它是什么**：RuView 是一个基于 Rust 和 ESP32 CSI 的 WiFi 感知平台，核心思路是利用人体对室内无线电波的扰动来判断 presence、占用、动作、睡眠状态和生命体征。它强调无摄像头、无穿戴设备、边缘侧运行，并提供 Home Assistant、Apple Home、Google Home、Alexa、Matter 等智能家居集成路径。
+- **它是什么**：这是一个 DESIGN.md 文件集合，每份文件都分析了某个真实品牌或产品网站的视觉规则、设计 token、布局模式和交互风格。开发者可以把对应的 DESIGN.md 放进项目根目录，让 AI 编码 Agent 或 Google Stitch 读取后，生成更接近目标品牌风格的 UI。README 中覆盖了 AI 平台、开发者工具、SaaS、设计工具、金融、电商、媒体、汽车等多个类别。
 
-- **能解决什么痛点**：在养老看护、睡眠监测、安防和房间占用判断中，摄像头会带来隐私和光照限制，穿戴设备又依赖用户主动佩戴；RuView 试图用低成本 WiFi 节点在本地完成感知。对智能家居开发者来说，它也减少了把毫米波、摄像头、人体传感器分别接入和融合的复杂度。
+- **能解决什么痛点**：用 AI 生成页面时，经常会出现“看起来能用但没有品牌感”的问题，这类 DESIGN.md 可以给 Agent 明确的视觉约束，而不是只靠一句“做得像 Vercel/Stripe”。另一个痛点是团队没有现成设计系统时，开发者可以先借用成熟网站的设计分析文件，快速得到一致的颜色、排版、按钮和布局风格。
 
-- **适合谁用**：适合做智能家居、边缘 AI、室内感知、养老看护原型的开发者和研究人员。也适合熟悉 ESP32、Rust、Home Assistant / MQTT / Matter 集成的硬件和 IoT 工程师。
+- **适合谁用**：适合正在用 Cursor、Claude Code、Google Stitch 等 AI 编码工具做前端页面的开发者。也适合需要快速搭建原型、落地页、SaaS 控制台或品牌风格页面的独立开发者和产品团队。
 
-- **怎么上手**：README 给出的最简单方式是先用 Docker 跑模拟数据：`docker run -p 3000:3000 ruvnet/wifi-densepose:latest`
+- **怎么上手**：把目标品牌的 `DESIGN.md` 复制到项目根目录，然后对 AI Agent 说明：`build me a page that looks like this`。
 
-- **可以用在哪些场景**：可用于 Home Assistant 中按房间判断是否有人、是否在睡觉或是否长时间无活动；可用于无摄像头的睡眠呼吸和心率趋势监测；可用于穿墙存在检测、跌倒风险提示、会议室占用和多房间移动轨迹判断。
+- **可以用在哪些场景**：用于让 AI 生成一个接近 Vercel、Linear、Stripe 等风格的产品首页原型。用于给内部管理后台补一套明确的视觉规则，减少不同页面之间的按钮、间距、字体风格不一致。用于设计灵感探索，比如比较 Claude、OpenAI 周边工具、Notion、Shopify 等产品的界面语言后，快速生成多个方向的 UI 草案。
 
-- **技术看点**：项目用 ESP32 采集 Channel State Information，通过相位、频段功率、时序 CSI embedding 和轻量模型做 presence、vital signs、pose / activity 推断，并宣称模型可量化到 8 KB 级别在边缘设备快速运行。README 还提到 Hugging Face 预训练权重、Candle/PyO3、RuVector、Cognitum Seed、Ed25519 witness chain，以及 Home Assistant / Matter 等集成，整体是硬件、信号处理、边缘推理和智能家居协议的组合项目。
+- **技术看点**：项目本身不是框架或运行时，而是面向 LLM 的 Markdown 设计系统资料库；它利用 Markdown 对 AI Agent 友好的特点，把视觉规范写成可直接读取的文本。README 明确区分了 `AGENTS.md` 面向构建规则，`DESIGN.md` 面向视觉与体验规则，这个分工对 AI 原生项目结构有参考价值。
 
-- **近期动向与发展方向**：最近 20 条提交集中在固件稳定性、硬件误检修复、构建目标清理、ESP32 传感器自动检测、through-wall 示例工具、NPM operator harness 和 ADR 文档完善。6 月中下旬连续修复了 CSI FPS 膨胀、控制包饥饿、毫米波空 UART 误检、裸 DevKit 显示误检、paired-data 训练数据损坏等问题，说明项目近期重点是把实验性能力往可部署硬件链路上收敛。提交主要由 rUv 推动，社区规模看起来不小，但近期核心开发仍较集中。
+- **近期动向与发展方向**：最近 20 次提交主要集中在 README 更新、工具区调整、图片素材更新，以及新增或修正 DESIGN.md 条目，例如 6 月新增 Nintendo 设计、5 月多次更新 DESIGN.md v2。整体看近期重点是扩充设计库内容、优化展示页和商业入口，而不是底层架构重构。贡献者数量为 4，提交主要来自 Necati Özmen / necatiozmen，社区热度很高但维护者集中度也较高。
 
-- **同类对比**：README 明确给出了 WiFi pose 方向的基准对比，声称在 MM-Fi matched `random_split` 协议上达到 82.69% torso-PCK@20，高于 MultiFormer 和 CSI2Pose。与传统摄像头、毫米波雷达或 PIR 传感器相比，它的差异点是尽量复用普通 WiFi / ESP32 CSI，在隐私和低成本上做取舍。
+- **同类对比**：README 没有明确列出直接竞品。它对标的更像是传统设计系统文档、Figma 规范或设计 token 文件，但差异在于它不要求专门工具链，核心交付物就是 AI Agent 可读的 Markdown。
 
-- **注意事项**：项目创建时间是 2025-06-07，但已有 325 个 open issues，说明热度高、功能面广，同时也可能存在较多待修问题。README 信息量很大，覆盖固件、Docker、Python、Node、智能家居、模型权重和 ADR，对新手不算轻量；近期提交也显示仍在频繁修复硬件检测、构建和数据管线问题，生产落地前需要重点验证具体硬件、环境校准、误报率和隐私合规。
+- **注意事项**：项目创建于 2026-03-31，时间较新，但 Star 和 Fork 数异常高，热度需要结合实际内容质量自行判断。Open Issues 有 298 个，说明需求和反馈不少，也可能存在条目维护、请求积压或内容准确性问题。语言标记为 None，说明它主要是文档型仓库；如果期待 npm 包、CLI 或可运行组件，这个项目并不提供。部分条目来自对真实品牌网站的设计分析，使用时应注意不要把品牌视觉直接用于可能造成混淆的商业产品。
 
-- **GitHub**：[ruvnet/RuView](https://github.com/ruvnet/RuView)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：rUv 是拥有近万关注者和多个高星项目的高影响力个人开发者，在开源社区具备显著传播力与项目号召力。
-**技术栈偏好**：技术栈以 Rust、TypeScript 和 Nix 为主，偏好高性能系统实现、现代前端/工具链与可复现工程环境。
-**核心领域**：主要聚焦 AI Agent、自动化流程、开发者工具与高性能 Rust 基础设施。
-
----
-
-### ✨ TencentCloud/TencentDB-Agent-Memory (7502★)
-
-> **一句话**：把 Agent 的长任务日志、对话历史和用户偏好分层存到本地，让 Agent 能在后续任务中找回上下文，而不是每次都从零开始。
-
-- **它是什么**：TencentDB Agent Memory 是一个面向 AI Agent 的本地记忆系统，主打“短期符号记忆 + 长期分层记忆”。它会把冗长工具日志离线保存成 `refs/*.md`，在上下文里只保留 Mermaid 任务图；长期记忆则按 L0 对话、L1 原子事实、L2 场景、L3 Persona 逐层沉淀。项目可作为 OpenClaw 插件使用，也支持接入 Hermes，默认使用本地 `SQLite + sqlite-vec`，不依赖外部 API。
-- **能解决什么痛点**：长任务里搜索结果、代码片段、报错堆栈会快速挤爆上下文窗口，导致 Agent 反复丢状态；多人或长期项目中，用户还需要反复解释 SOP、项目背景、输出格式和个人偏好。
-- **适合谁用**：适合使用 OpenClaw 或 Hermes 搭建长期运行 Agent 的开发者；也适合在内部研发、代码修复、资料检索等场景中需要跨会话保留上下文的 Agent 工程团队。
-- **怎么上手**：`openclaw plugins install @tencentdb-agent-memory/memory-tencentdb`
-- **可以用在哪些场景**：在 OpenClaw 连续跑 SWE-bench、代码修复或长链路研发任务时压缩工具日志；在个人或团队 Agent 中沉淀固定工作流、输出规范和项目背景；在 Hermes 网关中部署一个带本地记忆能力的 Agent 服务。
-- **技术看点**：它没有把记忆简单塞进扁平向量库，而是采用“底层保留证据、上层保留结构”的分层设计，并通过 `node_id` 从 Mermaid 符号图回溯到原始日志。README 给出的基准数据显示，接入 OpenClaw 后在 WideSearch 中 token 使用量下降 61.38%，PersonaMem 准确率从 48% 提升到 76%。
-- **近期动向与发展方向**：最近提交集中在稳定性、安全和接入体验：新增 `disableThinking` 控制抽取模型推理输出，修复 embedding 重试退避、召回截断、L2 增量处理游标等问题，并加入 L1 prompt injection 过滤。6 月有多位贡献者提交文档、测试和功能 PR，说明项目仍在快速打磨 OpenClaw/Hermes 集成、离线记忆管线和多模型兼容性。
-- **同类对比**：README 明确反对“把历史切碎后丢进扁平向量库”的传统记忆做法，差异点在于分层抽象、可回溯证据链和 Mermaid 符号化短期记忆；未提供具体同名竞品对比。
-- **注意事项**：项目创建时间较新，但已有 263 个 open issues，说明关注度高同时也可能存在较多待修问题。运行环境要求 Node `>=22.16`，OpenClaw 短期压缩还需要额外配置 slot 并执行补丁脚本；如果用于生产环境，应重点验证版本兼容、记忆数据落盘路径、prompt injection 过滤效果和升级后的破坏性变更风险。
-
-- **GitHub**：[TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)
+- **GitHub**：[VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：腾讯云是具备较高社区关注度的云服务组织，凭借沙箱、安全、数据库与云 SDK 等项目在开发者生态中保持稳定影响力。
-**技术栈偏好**：技术栈以 Rust、TypeScript、Objective-C 为主，同时覆盖 Go、Python 等云服务 SDK 语言，偏向系统安全、前端/Agent 与移动端能力建设。
-**核心领域**：主要聚焦云计算基础设施、安全沙箱、数据库智能化、即时通信 SDK 与多语言云服务接入生态。
-
----
-
-### ✨ prisma/prisma (46470★)
-
-> **一句话**：Prisma 把数据库表结构写成 Prisma schema，并生成带类型提示的 TypeScript 查询客户端，让 Node.js 后端可以用模型化 API 读写 PostgreSQL、MySQL、SQLite、MongoDB 等数据库。
-
-- **它是什么**：Prisma 是面向 Node.js 和 TypeScript 的 ORM 工具链，核心包括 Prisma Client、Prisma Migrate 和 Prisma Studio。开发者先用 Prisma schema 定义数据模型、数据源和生成器，再生成类型安全的查询客户端，用代码完成 CRUD、关系查询、过滤、创建关联记录等数据库操作。它同时覆盖迁移管理和可视化数据查看编辑，不只是单个查询库。
-- **能解决什么痛点**：它解决了 TypeScript 项目里手写 SQL 或传统 ORM 类型不稳定的问题，查询返回值会随模型和字段选择静态推导，减少字段名写错、关系字段误用这类运行时错误。它也把“已有数据库反向生成模型”和“手写模型再生成迁移”两条流程放进同一套 schema 中，适合需要长期维护数据库结构的后端项目。
-- **适合谁用**：适合使用 Node.js、TypeScript 构建 REST API、GraphQL API、gRPC 服务、Serverless 函数或微服务的后端开发者。也适合希望在 PostgreSQL、MySQL、SQLite、SQL Server、MongoDB、CockroachDB 等数据库之间保持统一数据访问方式的团队。
-- **怎么上手**：`npm install prisma --save-dev && npm install @prisma/client`，然后配置 `prisma/schema.prisma` 与 `prisma.config.ts`，执行 `npx prisma generate` 生成 Prisma Client。
-- **可以用在哪些场景**：搭建 TypeScript 后端 API 时，用 Prisma Client 替代手写 SQL 处理用户、订单、文章等业务模型的增删改查；在已有 PostgreSQL 或 MySQL 数据库上做新服务时，通过 introspection 生成 Prisma 数据模型再逐步接入类型安全查询；开发内部管理后台时，配合 Prisma Studio 查看和编辑数据库记录，减少临时脚本和手工 SQL 操作。
-- **技术看点**：Prisma 的关键设计是以 Prisma schema 作为数据库模型的单一描述，再生成类型安全客户端，把数据模型、查询 API 和迁移系统连接起来。README 中也能看到新版配置倾向于使用 `prisma.config.ts` 和 driver adapter，例如 PostgreSQL 通过 `@prisma/adapter-pg` 注入连接能力。
-- **近期动向与发展方向**：最近提交以修复和工程化维护为主，包括 Prisma 7 相关错误提示、Client 类型检查性能、适配器错误暴露、D1 adapter、MongoDB Docker 初始化、依赖安全漏洞和 CI 超时治理。也出现了 agent-native initiative、AI agent detection、MCP server 相关调整，说明项目正在把 AI/Agent 工作流纳入工具链边界，同时继续为 Prisma 7 和多数据库适配做稳定性收尾。
-- **同类对比**：README 未明确列出竞品或对标项目。结合项目定位看，它与传统 ORM 或 SQL 查询构建器的主要差异在于 schema-first、自动生成类型安全客户端，并把迁移和数据浏览工具纳入同一套开发流程；但这里不展开具体竞品对比。
-- **注意事项**：项目创建于 2019 年，Stars 超过 4.6 万、贡献者 370 人，生态和文档都比较成熟；但 Open Issues 达到 2648，说明使用面广、边界场景多，升级和数据库适配问题需要认真看 release note。近期提交频繁涉及 Prisma 7、driver adapter、配置方式和安全修复，老项目升级时要特别关注 `prisma.config.ts`、`.env` 不自动加载、生成器 `output`、适配器初始化等变化，避免按旧教程配置后运行失败。
-
-- **GitHub**：[prisma/prisma](https://github.com/prisma/prisma)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Prisma 是数据库开发工具生态中具有高影响力的开源组织，其核心仓库拥有数万 Star，开发者社区认知度很高。
-**技术栈偏好**：技术栈以 TypeScript 为主，早期包含 Scala，整体偏向面向 JavaScript/TypeScript 开发者的数据库 ORM、客户端与开发工具。
-**核心领域**：主要聚焦于数据库访问层、ORM、数据库客户端生成、数据建模与可视化管理工具。
-
----
-
-### ✨ mvanhorn/last30days-skill (49484★)
-
-> **一句话**：在 AI Agent 里输入 `/last30days 某个话题`，它会同时搜索 Reddit、X、YouTube、HN、Polymarket、GitHub 和网页，把最近 30 天真实讨论、互动数据和引用证据整理成一份简报。
-
-- **它是什么**：这是一个面向 Claude Code、Codex、Cursor、Copilot、Gemini CLI 等 Agent Skill 宿主的研究型技能。它会围绕一个人物、公司、产品或事件，并行抓取多个社交平台、开发者社区、预测市场和网页来源，再按点赞、评论、转发、播放量、市场赔率等信号排序，最后生成带引用的摘要。README 里强调它不是传统搜索引擎，而是把分散在平台里的近期社区信号交给 Agent 汇总判断。
-
-- **能解决什么痛点**：开发者或产品团队想了解一个技术、公司或人物的“最近动态”时，通常要分别查 Google、Reddit、X、YouTube、GitHub 和 HN，还要自己判断哪些讨论有价值；这个项目把这些来源放到一次查询里，并尽量保留互动量和出处。另一个痛点是传统搜索结果偏网页和 SEO 内容，容易漏掉 Reddit 评论、X 线程、YouTube 字幕、GitHub PR 和 Polymarket 赔率这类更实时的信号。
-
-- **适合谁用**：适合经常使用 Claude Code、Codex、Cursor、Gemini CLI 等 Agent 工作流的开发者、研究员和技术创业者。也适合需要在会议、销售沟通、竞品分析、产品调研前快速掌握某个对象最近 30 天公开动态的人。
-
-- **怎么上手**：Claude Code 推荐安装方式：`/plugin marketplace add mvanhorn/last30days-skill`，然后执行 `/plugin install last30days`；其他 Agent Skills 宿主可用：`npx skills add mvanhorn/last30days-skill -g`。
-
-- **可以用在哪些场景**：
-  会议前查询某位创始人、候选人或客户最近一个月在 X、GitHub、YouTube、Reddit 上的真实动态。
-  做技术选型时对比多个工具，比如某个 CLI、Agent 框架或开发者产品的社区反馈、GitHub 活跃度和争议点。
-  跟踪突发事件或热门产品发布，把 Reddit 高赞评论、YouTube 深度视频、HN 讨论和 Polymarket 赔率合成一份可转发的简报。
-
-- **技术看点**：v3 引入了预研究阶段，会先解析话题相关的人物、公司、GitHub 账号、subreddit、YouTube 频道和标签，再启动搜索，而不是只做关键词匹配。它还支持跨来源聚类合并、单次运行完成对比查询、HTML 简报导出，以及按幽默性和传播性挑选 “Best Takes”。
-
-- **近期动向与发展方向**：最近提交非常密集，7 月 3 日到 7 月 5 日连续发布 3.9.0 到 3.11.0，说明项目仍处于快速迭代期。近期重点包括统一 doctor 健康检查命令、修复 Techmeme 日期窗口、改进 LinkedIn 渲染、加入 Instagram 评论、优化首次运行 NUX 和 GitHub 设备码登录流程，并新增可选的远程研究 API 后端。整体看，作者正在同时补齐安装体验、数据源覆盖、结果渲染和远程执行能力，属于功能扩张和稳定性修复并行推进。
-
-- **同类对比**：README 明确拿 Google、ChatGPT、Gemini 和 Claude 作对比：Google 更偏网页和编辑型内容，ChatGPT 虽有 Reddit 合作但不能完整搜索 X 或 TikTok，Gemini 强在 YouTube，Claude 默认没有这些平台的原生搜索能力。last30days-skill 的差异在于让用户自带 key 或浏览器会话，把多个封闭平台接到同一个 Agent 查询流程中。
-
-- **注意事项**：项目创建时间是 2026-01-23，但星标和迭代速度都很高，说明关注度大、变化也快，版本升级时需要留意命令行为和配置变化。Open Issues 为 85，最近提交里也有多条 first-run、setup wizard、Trustpilot、Techmeme、渲染相关修复，说明边界场景和平台适配仍在持续打磨。部分数据源需要用户提供 API key、浏览器会话或额外工具，真正完整使用不一定是“零配置”。
-
-- **GitHub**：[mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：长期活跃的高影响力开发者与创业者，拥有近 5 万星级开源项目和较强社区关注度。
-**技术栈偏好**：以 Python、Go、TypeScript 为主，偏向 AI 工具、自动化系统和后端/开发者工具建设。
-**核心领域**：主要聚焦智能代理、开发者生产力工具、自动化工作流与新型软件基础设施。
-
----
-
-### ✨ argoproj/argo-cd (23399★)
-
-> **一句话**：Argo CD 会持续对比 Git 仓库里的 Kubernetes 声明式配置和集群实际状态，并把应用自动同步到期望版本。
-
-- **它是什么**：Argo CD 是面向 Kubernetes 的 GitOps 持续交付系统，应用定义、环境配置和部署状态都以 Git 中的声明式文件为准。它提供可视化 UI、同步机制和审计能力，让团队能看到集群中应用是否偏离 Git 中的期望状态，并执行自动化生命周期管理。
-- **能解决什么痛点**：解决手工 `kubectl apply`、脚本发布或多人改集群导致的配置漂移问题；也适合处理多环境发布时“线上到底跑的是哪个 Git 版本、谁改过配置、是否已同步”的追踪难题。
-- **适合谁用**：适合使用 Kubernetes 做应用交付的平台工程团队、运维 SRE、DevOps 团队；也适合需要把多集群、多环境部署流程标准化的云原生研发组织。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：把 Git 仓库中的 Helm/Kubernetes 配置自动同步到测试、预发、生产集群；为每个 Pull Request 创建临时预览环境并在合并后清理；在多集群环境中统一管理应用版本，减少人工登录集群改配置。
-- **技术看点**：核心设计是 GitOps：Git 是期望状态来源，Kubernetes 集群是执行目标，Argo CD 负责持续对比和同步。项目提供 Artifact Hub Helm 包、集成测试、CodeCov、OpenSSF Scorecard、CII Best Practices 和 SLSA 3 标识，说明它比较重视供应链安全和工程质量。
-- **近期动向与发展方向**：最近 20 条提交集中在依赖升级、CI 自动化、测试稳定性和小型 bug 修复，例如更新 Go 依赖、Redis、AWS SDK、Dex bump 自动化，以及修复 flaky tests 和非法 repo URL 的错误返回。整体看项目维护非常活跃，近期更偏向稳定性、供应链维护和发布流程打磨，而不是大规模功能重写。
-- **同类对比**：README 的资料列表提到 Argo CD、Spinnaker、Jenkins X、Tekton 的对比。Argo CD 更明确聚焦 Kubernetes GitOps 持续交付，强调声明式配置、版本控制和集群状态同步，而不是通用 CI 流水线编排。
-- **注意事项**：项目创建于 2018 年，Star、Fork 和贡献者数量都很高，成熟度和社区活跃度较强；但 Open Issues 达 4236 个，说明功能面广、维护压力也大。对初学者来说，需要先理解 Kubernetes、GitOps、Helm 或声明式配置管理，直接上手生产环境会有一定门槛。
-
-- **GitHub**：[argoproj/argo-cd](https://github.com/argoproj/argo-cd)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Argo Project 是 Kubernetes 云原生生态中的头部开源组织，凭借 Argo CD、Workflows 等高星项目在 GitOps 与工作流编排领域具有显著影响力。
-**技术栈偏好**：技术栈以 Go 为核心，围绕 Kubernetes 控制器、云原生平台组件与 Helm 生态构建工程体系。
-**核心领域**：主要聚焦 Kubernetes 原生的持续交付、工作流编排、渐进式发布与事件驱动自动化。
+**技术影响力**：VoltAgent 是一个新兴但关注度很高的 AI Agent 开源组织，凭借多个高星 awesome 资源库和近万星核心框架在开发者社区形成了较强影响力。
+**技术栈偏好**：其技术栈以 TypeScript 和 Shell 为主，偏向构建 AI Agent 框架、工程化工具链与开发者资源生态。
+**核心领域**：主要聚焦于 AI Agent 工程平台、智能体框架、Agent 技能生态与 Claude Code 等 AI 编程工作流。
 
 ---
 
@@ -246,126 +171,6 @@
 
 ---
 
-### ✨ asgeirtj/system_prompts_leaks (50202★)
-
-> **一句话**：这个仓库持续收集 Claude、ChatGPT、Gemini、Grok、Copilot、Cursor 等 AI 产品中被提取出的系统提示词，并按厂商、模型和工具形态整理成可浏览的 Markdown 档案。
-
-- **它是什么**：这是一个 AI 系统提示词资料库，核心内容是各类聊天机器人、编程助手、浏览器代理、设计工具和 API 变体的 system prompt。README 按 Anthropic、OpenAI、Google、xAI、Microsoft 等厂商分类，提供 Claude Sonnet 5、Claude Design、GPT-5.5 Codex、Gemini 3.5 Flash、VS Code Copilot Agent 等提示词入口，并包含部分版本差异链接和官方 prompt 对照资料。仓库本身更像可追踪的公开档案，而不是传统意义上的软件库。
-
-- **能解决什么痛点**：研究或调试 AI 产品行为时，开发者常常只能从输出倒推模型约束，这个仓库直接提供大量真实系统提示词，方便对比不同产品如何定义工具调用、安全边界、语气风格和任务流程。做 AI Agent、代码助手或企业内部助手时，也可以参考这些 prompt 的结构设计，避免从零摸索长上下文指令、工具说明和角色边界。
-
-- **适合谁用**：适合做 LLM 应用、Agent 框架、AI 编程助手的工程师和产品团队，也适合研究模型行为、安全策略、提示词工程的研究者。对关注 Claude Code、Codex、Gemini CLI、Copilot Agent 等工具型 AI 的开发者尤其有参考价值。
-
-- **怎么上手**：文档未提供快速上手示例。
-
-- **可以用在哪些场景**：可以用于对比 Claude、ChatGPT、Gemini 在系统提示词中的工具描述、拒答策略和任务拆解方式；可以作为内部 AI 助手 prompt 设计的参考素材，学习如何组织工具清单、能力边界和交互规范；也可以用于跟踪同一产品不同版本的 prompt 变化，例如查看 Claude Opus 4.8 到 Claude Fable 5 的差异。
-
-- **技术看点**：项目主体是 Markdown/JSON 资料整理，README 通过厂商、模型、工具、旧版本和官方版本分层索引，便于快速定位。近期还加入了 GitHub traffic、stars 今日/7 日/30 日读数和页面趋势看板，说明仓库不只是堆文件，也在维护访问数据和更新可视化。
-
-- **近期动向与发展方向**：最近 20 条提交集中在新增和更新 AI 产品提示词，尤其是 Claude Sonnet 5、Claude Design、Claude Code bundled skills、Codex system instructions，以及 Stack Overflow AI Assist、computer-use、control-chrome 等工具型 prompt。6 月下旬还移除了重复 Codex 文件、调整 GitHub Linguist 语言识别，并增强了流量与页面趋势统计，说明维护者在同时做内容扩充、目录清理和项目展示优化。提交主要来自仓库作者，贡献者总数 21，更新频率较高，但社区协作深度从给定数据看暂未展开。
-
-- **同类对比**：暂无明显同类对标。README 没有明确列出竞品或替代项目，项目的差异点主要体现在覆盖面广、更新频繁，并按主流 AI 厂商和产品形态系统归档。
-
-- **注意事项**：仓库创建于 2025-05-03，但已经有 50202 stars、8203 forks 和 21 位贡献者，热度很高且更新活跃；同时 open issues 为 33，说明仍有待整理、核验或补充的问题。由于内容来自“extracted system prompts”，使用时需要注意来源可靠性、时效性和合规边界，不应默认所有文件都代表官方最新版本。项目不是可安装库，主要价值在阅读、比对和研究，期望一条命令集成到工程里的用户可能会失望。
-
-- **GitHub**：[asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有 1552 Followers 且代表仓库 `system_prompts_leaks` 获得 5 万+ stars，显示其在 AI 提示词与开源情报传播领域具备较高社区影响力。
-**技术栈偏好**：主要语言为 JavaScript，仓库主题偏向 AI 工具、提示词资源、模型接口与开发者资料整理。
-**核心领域**：主要聚焦生成式 AI、系统提示词研究、AI 开发资源收集与开放知识传播。
-
----
-
-### ✨ obra/superpowers (242005★)
-
-> **一句话**：Superpowers 把需求澄清、设计评审、TDD、子代理执行和代码审查固化成一套可自动触发的编码代理工作流。
-
-- **它是什么**：Superpowers 是面向 Claude Code、Codex、Cursor、Gemini CLI、GitHub Copilot CLI、OpenCode 等编码代理的技能框架和软件开发方法论。它不是单个代码生成命令，而是一组可组合的 skills：从 brainstorming 拆需求，到 writing-plans 写实施计划，再到 test-driven-development、subagent-driven-development、requesting-code-review 和 finishing-a-development-branch 串起完整开发流程。
-- **能解决什么痛点**：它主要解决编码代理一上来就写代码、需求没澄清、计划不可执行、测试被事后补的问题。对于长任务，它还通过 worktree、子代理分工和两阶段 review，降低代理跑偏、改错文件、漏测或把半成品当完成的风险。
-- **适合谁用**：适合已经在日常开发中使用 Claude Code、Codex CLI/App、Cursor、Gemini CLI、Copilot CLI 等代理工具的软件工程师。也适合团队想把“先设计、再计划、测试先行、最后审查”变成代理默认行为的技术负责人或平台工程团队。
-- **怎么上手**：Claude Code 可通过官方插件市场安装：`/plugin install superpowers@claude-plugins-official`
-- **可以用在哪些场景**：适合让编码代理接手中等规模功能开发，例如先和你澄清需求，再生成可审查的设计与实施计划。也适合在多人并行或多分支开发时，用 git worktree 隔离代理工作区。还可用于强制代理按 RED-GREEN-REFACTOR 节奏修 bug 或补功能，避免直接堆实现代码。
-- **技术看点**：项目核心是“技能触发 + 工作流约束”，把软件工程实践写成代理可执行的操作规程，而不是只提供提示词片段。它同时适配多个 agent harness，说明重点放在跨工具一致行为和插件分发，而非绑定单一 IDE。
-- **近期动向与发展方向**：最近提交集中在 v6.0.x 发布、Codex 插件修复、SDD 工作区隔离以及发布包内容调整。6 月 17-18 日连续修复 SDD artifacts 从 `.git/` 迁移到工作树 `.superpowers/sdd`，并补充 per-worktree isolation 测试，说明项目近期重点是降低工作区污染和提升多 worktree 场景可靠性。提交者以 Jesse Vincent 和 Drew Ritter 为主，节奏密集，项目仍处在快速迭代期。
-- **同类对比**：README 没有明确对标竞品。它与普通 prompt collection 的差异在于强调“强制工作流”和跨代理插件安装，而不是让用户手动复制提示词。
-- **注意事项**：项目创建时间为 2025-10-09，但 Stars 和 Forks 极高，热度明显高于年龄所暗示的成熟度，需要关注实际生产稳定性。当前有 293 个 open issues，说明使用面广但也存在未收敛问题。近期已发布到 v6.0.x，且涉及 SDD artifact 路径、Codex 同步、submodule 打包等行为修正，升级时应阅读 release notes，避免工作区路径或插件同步行为变化影响现有流程。README 安装说明很完整，但不同代理的安装方式差异较大，团队推广前需要先统一目标工具链。
-
-- **GitHub**：[obra/superpowers](https://github.com/obra/superpowers)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Jesse Vincent 是 GitHub 上具有较高可见度的个人开发者，凭借高星项目和长期活跃积累了显著社区影响力。
-**技术栈偏好**：技术栈以 TypeScript、Shell 和 JavaScript 为主，偏向脚本自动化、Web 工具与 AI/智能体相关应用开发。
-**核心领域**：主要聚焦开发者工具、自动化能力扩展、AI 技能市场与个人知识/记忆系统等方向。
-
----
-
-### ✨ alibaba/zvec (13166★)
-
-> **一句话**：Zvec 把向量检索、全文搜索和结构化过滤直接嵌进应用进程里，不需要单独部署向量数据库服务就能做本地相似度搜索。
-
-- **它是什么**：Zvec 是 Alibaba 开源的轻量级进程内向量数据库，核心用 C++ 实现，面向低延迟相似度检索场景。它支持 dense vector、sparse vector、多向量查询、标量过滤、WAL 持久化，以及原生全文搜索 FTS。README 中强调它可以直接嵌入 notebook、服务端程序、CLI 工具或边缘设备，不需要额外启动数据库服务。
-
-- **能解决什么痛点**：第一类痛点是小型或嵌入式 AI 应用不想单独维护 Milvus、Elasticsearch 这类外部服务，只需要在本地进程里完成向量召回和混合检索。第二类痛点是检索逻辑同时需要向量相似度、关键词匹配和结构化条件过滤，Zvec 的 `MultiQuery` 可以把 dense、sparse、FTS 和 filter 组合在一次查询里。
-
-- **适合谁用**：适合做 RAG、语义搜索、推荐召回的 Python / Node.js / Go / Rust 工程师，尤其是希望把向量库作为本地依赖嵌入应用的人。也适合需要在边缘设备、桌面工具、CLI 或内部小服务中做低延迟本地检索的后端开发者。
-
-- **怎么上手**：Python 用户可以直接安装：`pip install zvec`。README 给出的最小流程是定义 `CollectionSchema`，用 `zvec.create_and_open(path="./zvec_example", schema=schema)` 创建集合，插入带向量的 `Doc`，再用 `collection.query(zvec.VectorQuery(...), topk=10)` 查询相似结果。
-
-- **可以用在哪些场景**：可以用于给本地知识库或 RAG 应用做向量召回，避免额外部署独立向量数据库。可以用于电商、内容平台或内部系统里的混合检索，把文本关键词、向量语义和结构化字段一起参与排序。也可以用于桌面端、边缘设备或离线工具中的相似图片、相似文档、相似日志检索。
-
-- **技术看点**：Zvec 的关键设计是进程内数据库形态，减少网络调用和服务运维成本，同时通过 WAL 保证持久化。索引能力上覆盖内存和磁盘两类场景，v0.5.0 引入 DiskANN 以降低大规模数据集的内存占用，并新增原生 FTS 与混合检索能力。
-
-- **近期动向与发展方向**：最近 20 条提交非常活跃，时间集中在 2026 年 6 月下旬到 7 月初，既有新功能也有大量稳定性修复。开发重点包括 Python 绑定零拷贝查询、FTS UTF-8 tokenizer 支持、C API 的 FTS 子查询、INT8/INT4 量化随机旋转、IVF 索引修复、DiskANN / HNSW sparse builder 并发 race 修复，以及构建系统对 lz4、Arrow 编译器设置的修正。整体看，项目正在从功能扩展进入性能、绑定生态和索引稳定性打磨阶段，贡献者也不只集中在单人维护。
-
-- **同类对比**：README 没有直接点名竞品。它的差异点主要在“进程内嵌入式”定位：相比需要独立部署的向量数据库，Zvec 更适合本地应用、轻量服务和边缘场景；相比单纯 ANN 库，它又提供集合、持久化、全文搜索和多语言 SDK。
-
-- **注意事项**：项目创建时间为 2025-12-05，虽然 Stars 增长很快、更新频繁，但仍属于较新的基础设施项目，生产使用前需要重点验证索引正确性、崩溃恢复、并发访问和目标平台兼容性。近期 commit 中修复了 IVF、Python 查询校验、构建链路、并发 race 等问题，说明项目仍在快速迭代，版本升级可能带来行为变化。当前有 56 个 open issues，文档、Benchmark、PyPI/npm 包和多语言 SDK 都已提供，但复杂检索场景仍建议先做压测和回归测试。
-
-- **GitHub**：[alibaba/zvec](https://github.com/alibaba/zvec)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Alibaba 是国内外开源社区中影响力很强的企业级技术组织，拥有大量高星项目和广泛开发者关注。
-**技术栈偏好**：技术栈明显偏向 Java/JVM 生态，并结合 Kotlin 推动企业级中间件、开发工具与工程规范建设。
-**核心领域**：主要聚焦微服务治理、Java 诊断与性能工具、数据同步、办公数据处理和企业级研发效能。
-
----
-
-### ✨ Diolinux/PhotoGIMP (14890★)
-
-> **一句话**：PhotoGIMP 把 GIMP 3.0+ 的界面布局、快捷键、启动图和应用入口改成更接近 Photoshop 的工作环境，方便 Photoshop 用户直接上手 GIMP。
-
-- **它是什么**：PhotoGIMP 不是独立图像编辑器，而是一组覆盖 GIMP 配置文件的补丁。它会调整工具栏布局、面板位置、默认画布空间、键盘快捷键、启动画面，并在 Linux 上添加独立的 PhotoGIMP 桌面入口和图标。核心目标是让 GIMP 在视觉和操作习惯上更接近 Adobe Photoshop。
-
-- **能解决什么痛点**：Photoshop 用户切换到 GIMP 时，最容易卡在工具位置、快捷键和面板布局不一致，PhotoGIMP 直接提供一套接近 Photoshop 的默认配置。对团队或教学场景来说，它也能减少“每台机器手动调 GIMP 设置”的重复成本。
-
-- **适合谁用**：适合想从 Photoshop 迁移到 GIMP 的设计师、摄影修图用户和内容创作者。也适合在 Linux、Windows、macOS 上需要免费图像编辑方案，但又希望保留 Photoshop 操作习惯的用户。
-
-- **怎么上手**：先安装并打开一次 GIMP 3.0+，然后下载对应系统的 release 压缩包，将其中的配置文件覆盖到 GIMP 配置目录；Linux Flatpak 用户可将压缩包解压到 home 目录 `~`。
-
-- **可以用在哪些场景**：用于个人电脑上把 GIMP 调整成接近 Photoshop 的修图工作台；用于 Linux 桌面环境中替代 Photoshop 做基础图片编辑、海报制作和素材处理；用于培训或迁移场景，让原 Photoshop 用户用更低学习成本适应 GIMP。
-
-- **技术看点**：项目主要通过 GIMP 的配置文件完成改造，包括 `shortcutsrc`、`toolrc`、`sessionrc`、`dockrc`、`gimprc`、`theme.css` 等，不需要修改 GIMP 源码。设计上更像“可分发的用户配置快照”，安装简单，但也意味着会覆盖现有 GIMP 设置。
-
-- **近期动向与发展方向**：最近提交集中在 GIMP 3.0 适配、快捷键修复、Flatpak 启动命令修正、README 多语言翻译和安装说明优化，没有看到大型重构或全新功能模块。2026 年仍有多位社区贡献者提交 PR，维护方向偏向兼容性、文档准确性和跨平台安装体验。
-
-- **同类对比**：README 明确对标的是 Adobe Photoshop 的界面与快捷键习惯，但 PhotoGIMP 本身不是 Photoshop 替代品，而是让 GIMP 更像 Photoshop 的配置补丁。暂无明显同类对标。
-
-- **注意事项**：安装会覆盖 GIMP 配置文件，README 明确建议先备份当前设置；项目仅支持 GIMP 3.0+，不兼容 GIMP 2.10。项目创建于 2020 年，已有 14k+ stars、32 位贡献者，成熟度不错，但仍有 47 个 open issues，且主要依赖手动覆盖配置，上手前需要确认系统路径和 GIMP 版本。
-
-- **GitHub**：[Diolinux/PhotoGIMP](https://github.com/Diolinux/PhotoGIMP)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Diolinux 是围绕 Linux 桌面生态与开源工具推广的内容型开发者/组织，凭借 PhotoGIMP 等高星项目在开源社区具备较高可见度。
-**技术栈偏好**：主要偏好 Shell、CSS 与 Python，技术方向集中在 Linux 桌面配置、应用封装、主题定制与用户体验优化。
-**核心领域**：核心聚焦 Linux 桌面发行版使用、开源软件普及、系统后安装配置与创作者工具生态。
-
----
-
 ### ✨ wonderwhy-er/DesktopCommanderMCP (6332★)
 
 > **一句话**：把 Claude 等 MCP 客户端接到你的本机终端和文件系统，让 AI 能搜索文件、编辑代码、运行命令并管理长时间运行的进程。
@@ -398,6 +203,129 @@
 **技术影响力**：Eduard Ruzga 是一位具备一定社区影响力的独立开发者，凭借高星 TypeScript 项目 DesktopCommanderMCP 在 AI 工具生态中获得较高关注。
 **技术栈偏好**：主要使用 JavaScript 与 TypeScript，偏好围绕桌面工具、自动化服务和 AI 辅助开发构建应用。
 **核心领域**：主要聚焦于 AI Agent/MCP、桌面自动化、ChatGPT 工具集成与离线优先应用开发。
+
+---
+
+### ✨ anthropics/claude-cookbooks (46812★)
+
+> **一句话**：Anthropic 官方维护的一组 Claude API Notebook 菜谱，直接展示分类、RAG、工具调用、多模态、Agent 编排等常见能力该怎么写代码落地。
+
+- **它是什么**：这是 Claude API 的示例库，主要用 Jupyter Notebook 和少量 Markdown 把常见开发场景拆成可复制的代码片段和操作指南。README 中覆盖了文本分类、检索增强生成、摘要、工具调用、第三方集成、多模态、JSON 输出、评测、Prompt caching 等主题，适合边运行边改成自己的业务原型。
+
+- **能解决什么痛点**：开发者接入 Claude 时，经常卡在“API 能调通，但不知道分类、RAG、工具调用、评测这些工程流程该怎么组织代码”。这个库把常见模式做成 Notebook，能减少从文档概念到可运行样例之间的摸索成本。
+
+- **适合谁用**：适合正在用 Claude API 做应用原型的 Python 工程师、AI 应用开发者，以及需要把 Claude 接入内部知识库、客服、数据分析、内容审核、多模态处理流程的团队。也适合想学习 Anthropic 官方推荐用法的开发者。
+
+- **怎么上手**：文档未提供快速上手命令；README 只明确要求先准备 Claude API key，并建议新手先看 Claude API Fundamentals 课程。
+
+- **可以用在哪些场景**：可以用于搭建企业知识库问答中的 RAG 流程，例如结合 Pinecone、Wikipedia 或网页内容做检索增强生成；可以用于开发客服 Agent，通过工具调用接入计算器、SQL 查询或业务系统；也可以用于处理图片、图表、表单、PDF 等多模态和文档理解任务。
+
+- **技术看点**：项目用 Notebook 承载可运行示例，降低了 API 教程和工程原型之间的距离；内容不只覆盖单轮对话，还包括工具调用、自动评测、Prompt caching、子 Agent、异步多 Agent 编排、托管 Agent 等更接近真实应用架构的模式。
+
+- **近期动向与发展方向**：最近提交非常活跃，2026 年 6-7 月持续合并新菜谱和维护修复。新增方向集中在 Agent 和编排能力，例如 roadtrip planner 托管 Agent、Sentry triage scheduled agent、async multi-agent orchestration，以及“big models plan, small models execute”的协调模式；同时也在修复链接校验、更新 rate-limit/usage-tier 术语，说明项目仍在跟随 Claude API 与文档体系演进。
+
+- **同类对比**：暂无明显同类对标。README 额外推荐了 Anthropic 官方文档、支持文档、Discord 社区，以及 AWS 上的 Claude 示例资源，但没有直接与其他 cookbook 或 SDK 示例库做对比。
+
+- **注意事项**：这是示例和教程型仓库，不是可直接部署的完整应用框架，生产落地仍需要自行处理鉴权、成本控制、监控、错误重试和数据安全。项目创建于 2023 年，Star 和 Fork 数都很高，近期更新频繁，成熟度和关注度较高；但 open issues 有 279 个，说明示例覆盖面大、维护压力也不小，使用时最好确认 Notebook 依赖、API 参数和模型名称是否仍与当前 Claude API 一致。
+
+- **GitHub**：[anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Anthropic 是全球顶级 AI 组织之一，凭借 Claude 相关开源项目和教程在开发者社区具备极高影响力。
+**技术栈偏好**：其技术栈明显偏向 Python 与 Jupyter Notebook，重点服务于 AI 应用开发、提示工程和模型能力集成。
+**核心领域**：主要聚焦大语言模型、AI Agent、提示工程、企业级 AI 应用与安全可控的人工智能生态。
+
+---
+
+### ✨ vxcontrol/pentagi (19024★)
+
+> **一句话**：PentAGI 把大模型、安全工具、浏览器搜索、知识库和报告生成串成一套自动化渗透测试流程，让 AI Agent 在隔离 Docker 环境里规划、执行并记录测试任务。
+
+- **它是什么**：PentAGI 是一个面向自动化安全测试的 AI Agent 系统，核心后端使用 Go，前端是 React + TypeScript。它内置 nmap、metasploit、sqlmap 等 20 多种安全工具，并通过 Docker 沙箱执行命令，支持让多个专门 Agent 分工完成信息收集、漏洞分析、利用尝试和报告整理。项目还集成 PostgreSQL + pgvector、Graphiti/Neo4j 知识图谱、Grafana/Prometheus 监控以及 Langfuse 这类 LLM 观测能力。
+
+- **能解决什么痛点**：一是渗透测试中大量重复的信息收集、工具调用、结果归档需要人工串联，PentAGI 试图把这些步骤放进可追踪的自动化 flow/task/subtask 体系里。二是使用 LLM 做安全测试时，常见问题是上下文丢失、执行过程不可审计、输出难复用，它通过持久化命令输出、长期记忆、知识图谱和报告系统来降低这类成本。
+
+- **适合谁用**：适合做授权安全测试、红队验证和安全研究的信息安全工程师。也适合想把 LLM Agent 接入内部安全测试流程的安全平台开发者或 DevSecOps 团队。
+
+- **怎么上手**：文档未提供快速上手示例。
+
+- **可以用在哪些场景**：可以用于对内部测试环境做授权漏洞扫描和利用链验证，并自动沉淀执行记录。可以用于安全团队搭建自托管 AI 渗透测试平台，统一接入 OpenAI、Anthropic、Gemini、Bedrock、Ollama、DeepSeek、Qwen 等模型。也可以用于生成带命令过程、发现结果和修复建议的漏洞报告，减少手工整理测试材料的时间。
+
+- **技术看点**：架构上不是单个聊天机器人，而是把 Agent 调度、任务队列、沙箱工具执行、向量存储、知识图谱、监控链路和 Web UI 组合成微服务系统。LLM Provider 支持面较广，既支持主流云模型，也支持 Ollama、自定义 OpenAI-compatible endpoint 和本地 vLLM 部署路线，对企业自托管更友好。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 installer 稳定性、LLM Provider 配置、Qwen/Kimi/GLM/DeepSeek/Gemini 模型支持、Flow 并发与上下文取消、前端类型修复和测试增强上。整体看项目还在快速打磨工程可用性，不只是堆功能，也在修安装器误操作、错误提示吞掉异常、前端类型迁移等实际使用问题。贡献记录中除了核心维护者 Dmitry Ng，也有 Mriganka、Sergey Kozyrenko、mason5052 等参与，社区贡献开始进入文档、修复和 RFC 层面。
+
+- **同类对比**：README 明确说明 PentAGI 当前不是 CALDERA 这类 BAS 或对手仿真平台，不提供预定义攻击活动或攻击计划；它更偏向“AI Agent 自动/半自动执行渗透测试任务”，而不是传统 adversary emulation 产品。
+
+- **注意事项**：项目创建于 2025-01-06，Star 增长很快，但仍属于较新的复杂安全平台，64 个 open issues 说明仍有不少边界问题需要打磨。它依赖 Docker、数据库、向量存储、知识图谱、监控组件和多个外部 LLM/Search Provider，上手成本明显高于单一 CLI 工具。README 对能力边界写得比较克制，例如 BAS 能力、JSON 报告导出等并未作为当前已实现功能承诺，生产使用前需要先在隔离、授权的环境中验证稳定性和行为边界。
+
+- **GitHub**：[vxcontrol/pentagi](https://github.com/vxcontrol/pentagi)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：VXControl 是一个以高星项目 pentagi 获得显著关注的中小型 GitHub 组织，在安全自动化相关开源社区具备较强可见度。
+**技术栈偏好**：技术栈以 Go 为核心，辅以 Shell 和 Python，偏向后端服务、自动化工具与安全工程实践。
+**核心领域**：主要聚焦网络安全、渗透测试自动化、攻防工具链与安全基础设施建设。
+
+---
+
+### ✨ unclecode/crawl4ai (71587★)
+
+> **一句话**：把网页抓取、动态渲染和内容清洗串起来，直接输出适合 RAG、Agent 和数据管道使用的干净 Markdown 或结构化数据。
+
+- **它是什么**：Crawl4AI 是一个 Python 开源网页爬取与抓取框架，重点不是简单下载 HTML，而是把网页内容转换成 LLM 更容易消费的 Markdown、JSON 或结构化结果。它支持异步浏览器池、Playwright 浏览器渲染、CSS/XPath 提取、LLM 驱动抽取、深度爬取、缓存、代理、会话、截图和 Docker API 服务等能力。
+
+- **能解决什么痛点**：做 RAG 或 Agent 时，网页常常包含导航栏、广告、脚本生成内容和格式混乱的正文，直接喂给模型会噪声很大；Crawl4AI 提供 Markdown 生成、过滤和引用处理，减少手写清洗逻辑。另一个痛点是动态网页、登录态、多步骤页面和反爬环境难抓，它通过浏览器控制、会话、Cookie、代理、Hook 和远程浏览器连接提供更细粒度控制。
+
+- **适合谁用**：适合做 RAG 数据采集、知识库构建、网页结构化抽取的 Python 工程师和 AI 应用开发者。也适合需要把爬虫封装成服务的后端开发者，尤其是想用 Docker/FastAPI API Server 部署抓取能力的团队。
+
+- **怎么上手**：最简安装与初始化：`pip install -U crawl4ai && crawl4ai-setup && crawl4ai-doctor`；命令行抓取示例：`crwl https://www.nbcnews.com/business -o markdown`。
+
+- **可以用在哪些场景**：搭建 RAG 知识库时，批量抓取文档站、新闻站或产品页并转换为 Markdown。做价格、商品、招聘信息等网页结构化抽取时，用 CSS/XPath schema 或 LLM extraction 输出 JSON。构建内部抓取服务时，用 Docker API Server 对外提供带鉴权的网页抓取接口。
+
+- **技术看点**：项目围绕 Playwright 浏览器自动化和异步爬取构建，支持 Chromium、Firefox、WebKit、多会话、代理和远程 CDP，适合处理动态网页。内容处理侧提供 BM25、Cosine Similarity、chunking、PruningContentFilter、CSS/XPath schema 和 LLM 抽取，覆盖从正文清洗到结构化提取的链路。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 v0.9.1 发布、Docker/API Server 安全和稳定性修复、Windows 浏览器崩溃、HTTP timeout 单位不一致、Redis/Docker 目录权限、lxml 依赖范围、UI 鉴权门禁等问题，说明近期重点是补齐生产部署和跨平台稳定性。v0.9.0、v0.8.7 连续强调 Docker API 的 secure-by-default、RCE/SSRF/auth bypass 等安全修复，项目正在从“好用的本地爬虫库”向“可部署的抓取基础设施”演进；同时 PR 合并来自多位贡献者，社区参与度较高。
+
+- **同类对比**：README 没有明确列出具体竞品名称，只提到作者曾因现有“开源”方案需要账号、API token 和付费而自建该项目。它的差异点主要是开源可自托管、零 API key、本地/CLI/Docker 都可用，并强调面向 LLM 的 Markdown 与结构化抽取。
+
+- **注意事项**：项目创建于 2024 年 5 月，但 Star 已超过 7 万，增长很快，功能面也扩得很宽；这意味着生态活跃，但接口和部署安全策略仍可能随版本调整。当前仍有 102 个 open issues，近期提交以 bugfix 和安全加固为主，生产使用 Docker API Server 时应重点关注版本、鉴权默认值、网络绑定和 release notes。文档素材较丰富，README 给了安装、CLI、Python 示例和功能说明，但高级能力如 Hook、会话、代理、LLM 抽取和 Docker 安全部署仍需要仔细阅读细分文档。
+
+- **GitHub**：[unclecode/crawl4ai](https://github.com/unclecode/crawl4ai)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有 1.7k+ followers 和 7万+ star 代表项目 Crawl4AI，是 AI 与开源爬虫工具领域具有显著影响力的开发者。
+**技术栈偏好**：以 Python 为核心技术栈，辅以 HTML，偏向 AI 工具、LLM 应用、数据抓取与自动化方向。
+**核心领域**：主要聚焦于 AI 爬虫、LLM 工具链、合成数据与面向开发者的智能化基础设施。
+
+---
+
+### ✨ imthenachoman/How-To-Secure-A-Linux-Server (28790★)
+
+> **一句话**：这是一份按步骤带你加固 Linux 服务器的长期维护指南，从 SSH、sudo、系统更新、防火墙到入侵检测和审计工具都有可直接照做的配置说明。
+
+- **它是什么**：How-To-Secure-A-Linux-Server 是一份面向 Linux 服务器安全加固的开源文档，重点不是介绍单个软件，而是把常见加固动作整理成一套可按顺序执行的操作清单。README 覆盖 SSH 密钥与 sshd_config、sudo/su 权限限制、NTP、自动安全更新、UFW、防火墙日志、Fail2Ban、CrowdSec、Lynis、OSSEC、logwatch 等内容，并尽量解释为什么要这么配置。
+- **能解决什么痛点**：它解决的是“新装一台公网 Linux 服务器后不知道先加固哪里”的问题，尤其适合避免只改 SSH 端口、装个防火墙就以为安全的情况。另一个痛点是安全资料分散在不同博客、发行版文档和工具文档里，这个项目把基础服务器加固步骤集中到一份可检索、可复制命令的指南中。
+- **适合谁用**：适合自己维护 VPS、家庭服务器、个人云服务或小型网站的开发者和技术爱好者。也适合运维、SRE、安全入门学习者用来梳理 Linux 主机加固的基础检查项，但大型生产环境仍应结合 CIS Benchmark、公司安全基线和发行版官方文档。
+- **怎么上手**：文档未提供快速上手示例；推荐直接从 README 的 “Before You Start” 和 “The SSH Server” 章节按顺序阅读并逐项执行。
+- **可以用在哪些场景**：
+  - 新买 VPS 后，按指南先配置 SSH 密钥登录、限制 sudo/su、开启自动安全更新，再对外开放业务端口。
+  - 给家用 NAS、Homelab 或自托管服务主机补齐基础安全配置，例如 UFW、防暴力破解、日志审计和端口检查。
+  - 团队整理 Linux 主机初始化 checklist 时，把其中的 SSH、Fail2Ban、CrowdSec、Lynis 等章节作为参考，再改写成内部 Ansible Playbook 或运维手册。
+- **技术看点**：项目的价值在于“安全基线文档化”：它不绑定某个发行版，按 SSH、基础系统、网络、审计等层次组织加固步骤，并且偏向可复制执行的命令和配置片段。README 还指向了社区维护的 Ansible 版本，说明这份指南可以进一步转成自动化服务器初始化流程。
+- **近期动向与发展方向**：最近提交以维护和兼容性修正为主，包括修复 Fail2Ban、PSAD 相关失效链接，更新 Debian 13 的 NTP/systemd-timesyncd 说明，调整 SSH client alive、RSA key size、Protocol 2 等配置建议，并补充 UFW limit 解释。2024 年还加入了 CrowdSec 相关内容，说明项目仍在跟进主流主机防护工具；近期没有看到大规模重构，更像是社区持续修订安全建议和文档可用性。
+- **同类对比**：README 明确提到 CIS Benchmark、发行版官方加固文档、Arch Wiki Security 等参考资料。相比 CIS Benchmark 这类更完整、更严格的合规基线，本项目更偏实践导向和入门友好，适合先建立加固思路；严肃生产环境应以 CIS 或组织内部安全标准为准。
+- **注意事项**：这是文档型项目，不是自动化加固工具，执行命令前需要理解配置含义，否则可能把自己锁在 SSH 外或影响业务服务。项目创建于 2019 年，Star 数和贡献者数量都较高，近期仍有提交，成熟度不错；但 README 中仍有 WIP 章节，且不同发行版、版本和云厂商镜像的默认配置差异较大，不能无脑复制。当前 Open Issues 为 32，说明仍有待讨论和修订的内容，建议配合官方文档、CIS Benchmark 和测试环境验证后再用于生产服务器。
+
+- **GitHub**：[imthenachoman/How-To-Secure-A-Linux-Server](https://github.com/imthenachoman/How-To-Secure-A-Linux-Server)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有近 3 万星的 Linux 安全加固指南项目，在系统安全与运维实践社区具备较高影响力。
+**技术栈偏好**：主要使用 HTML、Shell 与 AutoHotkey，偏向文档型工具、自动化脚本和系统管理辅助工具。
+**核心领域**：主要聚焦 Linux 服务器安全、备份运维、防火墙规则管理与桌面自动化。
 
 ---
 
@@ -465,24 +393,88 @@
 
 ---
 
-### ✨ TencentCloud/CubeSandbox (6654★)
+### ✨ prisma/prisma (46470★)
 
-> **一句话**：CubeSandbox 用 RustVMM 和 KVM 在几十毫秒内拉起硬件隔离的 AI Agent 运行沙箱，让大批量 LLM 生成代码可以安全、并发地执行。
+> **一句话**：Prisma 把数据库表结构写成 Prisma schema，并生成带类型提示的 TypeScript 查询客户端，让 Node.js 后端可以用模型化 API 读写 PostgreSQL、MySQL、SQLite、MongoDB 等数据库。
 
-- **它是什么**：CubeSandbox 是面向 AI Agent 的高性能沙箱服务，核心目标是在接近容器的启动速度下提供接近虚拟机的隔离强度。它支持单机部署和多节点集群扩展，兼容 E2B SDK，可以在不大改业务代码的情况下替换后端沙箱服务。README 标称单个沙箱可在 60ms 内创建，额外内存开销低于 5MB，并提供 Web 控制台、模板系统、快照/克隆/回滚、出站访问控制和凭据保险箱等能力。
-- **能解决什么痛点**：AI Agent 执行 LLM 生成代码时，Docker 共享内核隔离不够让人放心，而传统 VM 启动慢、资源占用高，不适合高并发短任务。另一个痛点是外部 API Key、网络出站访问和执行日志难以统一管控，CubeSandbox 提供凭据不进沙箱、域名白名单和审计日志来降低泄露风险。
-- **适合谁用**：适合正在自建代码执行环境的 AI Agent / SWE-Bench / 自动化编程平台团队，也适合需要在高并发下安全运行不可信代码的后端工程师和平台 SRE。已经使用 E2B SDK 的团队也可以重点关注，因为它主打通过替换 URL 环境变量完成迁移。
-- **怎么上手**：文档未提供快速上手示例；README 明确要求 `x86_64 Linux` 环境并启用 `KVM`，推荐按 `docs/guide/quickstart.md` 走服务器准备、安装、创建模板、运行 Agent 代码四步流程。
-- **可以用在哪些场景**：可用于给 AI 编程助手提供隔离的代码运行环境；用于 SWE-Bench、强化学习或自动修复任务中批量运行测试用例；用于企业内部 Agent 平台，在沙箱内运行用户脚本，同时通过凭据保险箱和出站白名单控制访问外部服务。
-- **技术看点**：项目基于 RustVMM 和 KVM，走“专用 Guest OS 内核 + 低资源开销”的路线，而不是传统容器共享内核。它还把快照、克隆、回滚做成运行时能力，v0.3 引入 CubeCoW Copy-on-Write 快照引擎，适合需要频繁保存和恢复 Agent 执行状态的场景。
-- **近期动向与发展方向**：最近 20 条提交显示项目仍在高频迭代，重点集中在稳定性、网络安全和运维体验：修复挂起的 hostdir mount、envd 环境变量传递、流式端点缓冲、镜像层 uid/gid 处理等问题；同时新增 kill / timeout / refresh 生命周期 API、CubeEgress 多架构支持、出站策略 fail-closed、Web 模板创建、多节点调度评分文档和日志指南。整体看不是单纯补文档，而是在把沙箱运行、集群调度、安全出站和日常排障补齐到可生产使用的状态。
-- **同类对比**：README 明确对比 Docker Container 和传统 VM：相对 Docker，它强调独立内核和 eBPF 带来的更强隔离；相对传统 VM，它强调 60ms 级启动、低于 5MB 的内存开销和单节点高密度运行；同时提供 E2B SDK 兼容，明显对标 AI Agent 沙箱服务迁移场景。
-- **注意事项**：项目创建于 2026-04-10，开源时间还很短，但已有 6654 stars、48 位贡献者和持续提交，热度和开发活跃度都很高；同时 93 个 open issues 说明仍处在快速打磨期，升级时需要关注 changelog 和模板兼容性。部署环境要求较硬，需要 x86_64 Linux 与 KVM 支持，不是所有云主机或本地开发机都能直接跑；README 文档覆盖面较广，但真正落地前仍建议先验证内核、虚拟化、网络策略和多节点调度行为。
+- **它是什么**：Prisma 是面向 Node.js 和 TypeScript 的 ORM 工具链，核心包括 Prisma Client、Prisma Migrate 和 Prisma Studio。开发者先用 Prisma schema 定义数据模型、数据源和生成器，再生成类型安全的查询客户端，用代码完成 CRUD、关系查询、过滤、创建关联记录等数据库操作。它同时覆盖迁移管理和可视化数据查看编辑，不只是单个查询库。
+- **能解决什么痛点**：它解决了 TypeScript 项目里手写 SQL 或传统 ORM 类型不稳定的问题，查询返回值会随模型和字段选择静态推导，减少字段名写错、关系字段误用这类运行时错误。它也把“已有数据库反向生成模型”和“手写模型再生成迁移”两条流程放进同一套 schema 中，适合需要长期维护数据库结构的后端项目。
+- **适合谁用**：适合使用 Node.js、TypeScript 构建 REST API、GraphQL API、gRPC 服务、Serverless 函数或微服务的后端开发者。也适合希望在 PostgreSQL、MySQL、SQLite、SQL Server、MongoDB、CockroachDB 等数据库之间保持统一数据访问方式的团队。
+- **怎么上手**：`npm install prisma --save-dev && npm install @prisma/client`，然后配置 `prisma/schema.prisma` 与 `prisma.config.ts`，执行 `npx prisma generate` 生成 Prisma Client。
+- **可以用在哪些场景**：搭建 TypeScript 后端 API 时，用 Prisma Client 替代手写 SQL 处理用户、订单、文章等业务模型的增删改查；在已有 PostgreSQL 或 MySQL 数据库上做新服务时，通过 introspection 生成 Prisma 数据模型再逐步接入类型安全查询；开发内部管理后台时，配合 Prisma Studio 查看和编辑数据库记录，减少临时脚本和手工 SQL 操作。
+- **技术看点**：Prisma 的关键设计是以 Prisma schema 作为数据库模型的单一描述，再生成类型安全客户端，把数据模型、查询 API 和迁移系统连接起来。README 中也能看到新版配置倾向于使用 `prisma.config.ts` 和 driver adapter，例如 PostgreSQL 通过 `@prisma/adapter-pg` 注入连接能力。
+- **近期动向与发展方向**：最近提交以修复和工程化维护为主，包括 Prisma 7 相关错误提示、Client 类型检查性能、适配器错误暴露、D1 adapter、MongoDB Docker 初始化、依赖安全漏洞和 CI 超时治理。也出现了 agent-native initiative、AI agent detection、MCP server 相关调整，说明项目正在把 AI/Agent 工作流纳入工具链边界，同时继续为 Prisma 7 和多数据库适配做稳定性收尾。
+- **同类对比**：README 未明确列出竞品或对标项目。结合项目定位看，它与传统 ORM 或 SQL 查询构建器的主要差异在于 schema-first、自动生成类型安全客户端，并把迁移和数据浏览工具纳入同一套开发流程；但这里不展开具体竞品对比。
+- **注意事项**：项目创建于 2019 年，Stars 超过 4.6 万、贡献者 370 人，生态和文档都比较成熟；但 Open Issues 达到 2648，说明使用面广、边界场景多，升级和数据库适配问题需要认真看 release note。近期提交频繁涉及 Prisma 7、driver adapter、配置方式和安全修复，老项目升级时要特别关注 `prisma.config.ts`、`.env` 不自动加载、生成器 `output`、适配器初始化等变化，避免按旧教程配置后运行失败。
 
-- **GitHub**：[TencentCloud/CubeSandbox](https://github.com/TencentCloud/CubeSandbox)
+- **GitHub**：[prisma/prisma](https://github.com/prisma/prisma)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：在云计算与开发者工具生态中具有较强的开源影响力，尤其是少数高星项目带动了其在技术社区的可见度。
-**技术栈偏好**：以 Rust、TypeScript 和 Objective-C 为主，体现出面向底层性能工具、前后端开发工具链和移动端 SDK 的多线并进。
-**核心领域**：主要聚焦云服务 SDK、开发者工具与客户端/移动端通信能力建设。
+**技术影响力**：Prisma 是数据库开发工具生态中具有高影响力的开源组织，其核心仓库拥有数万 Star，开发者社区认知度很高。
+**技术栈偏好**：技术栈以 TypeScript 为主，早期包含 Scala，整体偏向面向 JavaScript/TypeScript 开发者的数据库 ORM、客户端与开发工具。
+**核心领域**：主要聚焦于数据库访问层、ORM、数据库客户端生成、数据建模与可视化管理工具。
+
+---
+
+### ✨ kyutai-labs/pocket-tts (5968★)
+
+> **一句话**：Pocket TTS 可以在普通 CPU 上本地生成语音，安装后用 CLI 或 Python 函数就能把文本转成 wav 音频，还支持流式输出和声音克隆。
+
+- **它是什么**：Pocket TTS 是 Kyutai 开源的轻量级文本转语音项目，目标是在不依赖 GPU 和云端 TTS API 的情况下完成本地语音生成。它提供 Python API、命令行工具和本地 Web 服务，支持英语、法语、德语、葡萄牙语、意大利语、西班牙语等多语言，并内置一批可直接调用的声音。模型约 100M 参数，支持音频流式生成、长文本输入和通过 wav/mp3 音频进行声音克隆。
+
+- **能解决什么痛点**：一类痛点是本地应用、桌面工具或内网系统想接入 TTS，但不希望把文本发到外部 API，也不想准备 GPU 环境。另一类痛点是语音生成服务冷启动和部署成本较高，Pocket TTS 可以直接在 CPU 上运行，并通过 `serve` 命令把模型常驻内存，减少重复加载带来的等待。
+
+- **适合谁用**：适合需要在 Python 项目里集成本地语音合成的开发者，例如做桌面应用、内容生成工具、教育产品、朗读服务的工程师。也适合想在低资源设备、Apple Silicon、浏览器端或嵌入式环境探索 TTS 落地的开发者，README 中已有多个 WebAssembly、ONNX、C++、Rust、C# 等社区实现可参考。
+
+- **怎么上手**：最快可以用命令行直接生成音频：`uvx pocket-tts generate`。如果作为 Python 库使用，最小流程是 `pip install pocket-tts`，然后通过 `TTSModel.load_model()` 加载模型、`get_state_for_audio_prompt("alba")` 选择声音、`generate_audio(...)` 生成音频张量并写成 wav 文件。
+
+- **可以用在哪些场景**：可以用于给本地笔记、电子书或长文档生成离线朗读音频；可以在桌面应用或内部工具中加入不依赖云服务的语音播报；也可以作为本地 HTTP TTS 服务，为聊天机器人、辅助阅读工具、语言学习产品提供低延迟语音输出。
+
+- **技术看点**：项目的核心卖点是面向 CPU 的小模型设计，约 100M 参数，README 标称在 MacBook Air M4 上约 6 倍实时速度，首个音频块延迟约 200ms，并且只使用 2 个 CPU 核心。它还支持 int8 动态量化、流式输出、长文本分段处理和声音状态导出到 safetensors，以降低后续加载声音克隆状态的成本。
+
+- **近期动向与发展方向**：最近几个月的提交显示，项目在 2026 年 4 月发布了 2.0.0，加入法语、意大利语、葡萄牙语、西班牙语、德语等多语言支持；随后 2.1.0 修复了量化下的声音克隆问题，并为每种语言增加默认声音。近期提交更多集中在文档、Demo、README 生态项目收录和兼容性修复上，说明核心功能已进入相对稳定维护阶段，同时社区围绕 macOS 应用、浏览器端、C#、Rust、ONNX 等方向在扩展生态。
+
+- **同类对比**：README 没有直接拿它与其他 TTS 模型做质量或速度对标，但列出了多个替代实现和移植版本，例如 MLX 版、Rust/Candle 版、ONNX Runtime Web、单文件 C++ 运行时、sherpa-onnx 等。Pocket TTS 本体的差异点在于官方 Python/CLI 入口清晰、CPU 运行优先、模型较小，并且已有社区把它移植到浏览器、嵌入式和多语言绑定环境。
+
+- **注意事项**：项目创建时间较新，但已有 5968 stars、34 位贡献者和持续提交，热度和社区关注度较高；同时还有 53 个 open issues，说明实际使用中仍可能遇到兼容性、音质、语言覆盖或部署细节问题。README 明确提到暂不支持在文本中插入静音来生成停顿；GPU 上不一定更快，因为模型小、batch size 为 1。文档和示例比较完整，支持 CLI、Python API、本地服务和网页 Demo，但声音克隆效果会明显受输入音频质量影响，生产使用前需要用目标语种、目标设备和真实文本做验证。
+
+- **GitHub**：[kyutai-labs/pocket-tts](https://github.com/kyutai-labs/pocket-tts)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：kyutai 是快速崛起的开放科学 AI 实验室型组织，凭借 moshi、pocket-tts 等高星项目在开源语音 AI 社区具备较强影响力。
+**技术栈偏好**：技术栈以 Python 为主、Rust 为辅，偏向深度学习研究实现、实时推理与高性能音频系统工程。
+**核心领域**：主要聚焦开放语音 AI、文本转语音、实时对话模型与流式音频建模。
+
+---
+
+### ✨ asgeirtj/system_prompts_leaks (50202★)
+
+> **一句话**：这个仓库持续收集 Claude、ChatGPT、Gemini、Grok、Copilot、Cursor 等 AI 产品中被提取出的系统提示词，并按厂商、模型和工具形态整理成可浏览的 Markdown 档案。
+
+- **它是什么**：这是一个 AI 系统提示词资料库，核心内容是各类聊天机器人、编程助手、浏览器代理、设计工具和 API 变体的 system prompt。README 按 Anthropic、OpenAI、Google、xAI、Microsoft 等厂商分类，提供 Claude Sonnet 5、Claude Design、GPT-5.5 Codex、Gemini 3.5 Flash、VS Code Copilot Agent 等提示词入口，并包含部分版本差异链接和官方 prompt 对照资料。仓库本身更像可追踪的公开档案，而不是传统意义上的软件库。
+
+- **能解决什么痛点**：研究或调试 AI 产品行为时，开发者常常只能从输出倒推模型约束，这个仓库直接提供大量真实系统提示词，方便对比不同产品如何定义工具调用、安全边界、语气风格和任务流程。做 AI Agent、代码助手或企业内部助手时，也可以参考这些 prompt 的结构设计，避免从零摸索长上下文指令、工具说明和角色边界。
+
+- **适合谁用**：适合做 LLM 应用、Agent 框架、AI 编程助手的工程师和产品团队，也适合研究模型行为、安全策略、提示词工程的研究者。对关注 Claude Code、Codex、Gemini CLI、Copilot Agent 等工具型 AI 的开发者尤其有参考价值。
+
+- **怎么上手**：文档未提供快速上手示例。
+
+- **可以用在哪些场景**：可以用于对比 Claude、ChatGPT、Gemini 在系统提示词中的工具描述、拒答策略和任务拆解方式；可以作为内部 AI 助手 prompt 设计的参考素材，学习如何组织工具清单、能力边界和交互规范；也可以用于跟踪同一产品不同版本的 prompt 变化，例如查看 Claude Opus 4.8 到 Claude Fable 5 的差异。
+
+- **技术看点**：项目主体是 Markdown/JSON 资料整理，README 通过厂商、模型、工具、旧版本和官方版本分层索引，便于快速定位。近期还加入了 GitHub traffic、stars 今日/7 日/30 日读数和页面趋势看板，说明仓库不只是堆文件，也在维护访问数据和更新可视化。
+
+- **近期动向与发展方向**：最近 20 条提交集中在新增和更新 AI 产品提示词，尤其是 Claude Sonnet 5、Claude Design、Claude Code bundled skills、Codex system instructions，以及 Stack Overflow AI Assist、computer-use、control-chrome 等工具型 prompt。6 月下旬还移除了重复 Codex 文件、调整 GitHub Linguist 语言识别，并增强了流量与页面趋势统计，说明维护者在同时做内容扩充、目录清理和项目展示优化。提交主要来自仓库作者，贡献者总数 21，更新频率较高，但社区协作深度从给定数据看暂未展开。
+
+- **同类对比**：暂无明显同类对标。README 没有明确列出竞品或替代项目，项目的差异点主要体现在覆盖面广、更新频繁，并按主流 AI 厂商和产品形态系统归档。
+
+- **注意事项**：仓库创建于 2025-05-03，但已经有 50202 stars、8203 forks 和 21 位贡献者，热度很高且更新活跃；同时 open issues 为 33，说明仍有待整理、核验或补充的问题。由于内容来自“extracted system prompts”，使用时需要注意来源可靠性、时效性和合规边界，不应默认所有文件都代表官方最新版本。项目不是可安装库，主要价值在阅读、比对和研究，期望一条命令集成到工程里的用户可能会失望。
+
+- **GitHub**：[asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有 1552 Followers 且代表仓库 `system_prompts_leaks` 获得 5 万+ stars，显示其在 AI 提示词与开源情报传播领域具备较高社区影响力。
+**技术栈偏好**：主要语言为 JavaScript，仓库主题偏向 AI 工具、提示词资源、模型接口与开发者资料整理。
+**核心领域**：主要聚焦生成式 AI、系统提示词研究、AI 开发资源收集与开放知识传播。
