@@ -1,5 +1,5 @@
 ## 今日热点：AI Agent 工程化与基础设施工具链升温
-今天的热门项目集中体现了 AI Agent 从概念走向生产实践的趋势，围绕 Claude、MCP、Agent Skills、长期记忆、Office 自动化与代码代理配置等方向形成密集关注，同时 Bun、TypeScript、Next.js 延续 JavaScript/前端生态热度，Abseil、yaml-cpp、Catch2、Asio、gRPC、meshoptimizer 等 C++ 基础库与性能工具依然稳固，Terraform、Tailscale 则代表云原生基础设施与安全联网需求持续活跃，整体呈现出 AI 编程代理、开发者效率、系统底层能力和基础设施自动化并行推进的格局，具体项目摘要如下：
+今天的热门项目集中体现了 AI Agent 从能力封装走向生产落地的趋势，围绕 Claude、MCP、Agent Skills、长期记忆与办公自动化的工具持续活跃，同时底层开发生态也由 Bun、TypeScript、Next.js 等前端与运行时项目，以及 Abseil、yaml-cpp、Catch2、Asio、gRPC、meshoptimizer 等 C++ 基础库共同支撑；在工程交付与运维侧，Terraform、Tailscale 等基础设施与安全连接工具依旧保持关注度，整体呈现出“智能体能力扩展、开发效率提升、基础设施自动化”并行推进的技术主线，具体项目摘要如下：
 
 ### ✨ wonderwhy-er/DesktopCommanderMCP (6332★)
 
