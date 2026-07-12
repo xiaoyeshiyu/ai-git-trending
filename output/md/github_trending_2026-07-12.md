@@ -1,5 +1,5 @@
-## 今日热点：AI 工具链与现代开发基础设施并进
-今日热门项目呈现出开发者效率、AI 编程生态和基础设施工程同步升温的趋势：从 Claude Code、Stitch Skills、OpenAI Plugins、Claude Cookbooks 到 MCP 终端与文件系统能力，智能代理正在加速进入日常研发流程；同时 Terraform、Ansible、GitHub Actions、Home Assistant、PowerToys 等项目继续支撑自动化运维、桌面效率与本地控制；前端与全栈方向由 Bun、Next.js、Nuxt、Cypress、Prisma、ASP.NET Core 等覆盖运行时、框架、测试和数据访问；底层与系统软件方面，Catch2、Abseil、Asio、meshoptimizer、pgrust、F Prime 则显示 C++、Rust、嵌入式与数据库内核仍是高关注领域。具体项目摘要如下：
+## 今日热点：AI Agent 工具链与基础设施工程并进
+今天的热门项目集中呈现出两条主线：一方面，Claude Code、Stitch MCP、OpenAI Plugins、Claude Cookbooks、Agent Skills 等项目推动 AI Agent 从能力展示走向可配置、可集成、可操作的工程化工具链；另一方面，Terraform、Ansible、GitHub Actions、Home Assistant、PowerToys 等基础设施与效率工具继续强化自动化、可维护性和本地控制。同时，C++ 生态中的 Catch2、Abseil、Asio、meshoptimizer 仍在夯实高性能底层能力，Bun、Next.js、Nuxt、ASP.NET Core、Prisma、Cypress 等 Web 与应用开发栈保持活跃，Postgres Rust 重写、NASA F´ 等项目也显示出系统软件与嵌入式框架的持续创新。具体项目摘要如下：
 
 ### ✨ catchorg/Catch2 (20564★)
 
