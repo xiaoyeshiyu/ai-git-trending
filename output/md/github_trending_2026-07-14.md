@@ -1,5 +1,5 @@
-## 今日热点：AI Agent 从编码走向内容、交易与个人生产力
-今天的 GitHub 热门项目呈现出鲜明的“可落地 AI 工具链”趋势：从开源视频剪辑替代品 OpenCut，到个人交易代理 Vibe-Trading、自托管虚拟陪伴体 airi，再到可直接运行的 LLM Agent 与 RAG 应用合集，开发者正在把 AI 从演示概念推进到真实工作流；同时，hallmark、graphify、spec-kit、marketingskills 等项目聚焦 AI 编码、知识图谱、规格驱动开发和增长营销能力，Win11Debloat 与 exercises-dataset 则体现了系统优化和结构化行业数据的持续需求。具体项目摘要如下：
+## 今日热点：AI Agent 工程化加速，工具链从开发扩展到创作、交易与系统治理
+今天的热门项目集中体现了 AI Agent 生态的实用化趋势：一方面，Spec-Driven Development、代码知识图谱、可运行的 LLM/RAG 应用合集、面向 Claude Code/Cursor/Codex 的设计与营销技能包，正在把智能编码从“生成代码”推进到需求规范、上下文理解、产品增长与交付流程；另一方面，开源剪辑工具、个人交易 Agent、自托管语音陪伴体、健身动作数据集等项目显示 AI 正在进入更具体的消费级和垂直场景；同时，危险命令防护与 Windows 精简脚本也说明开发者对自动化安全、系统可控性和本地环境治理的关注持续升温。具体项目摘要如下：
 
 ### ✨ OpenCut-app/OpenCut (64111★)
 
@@ -22,6 +22,38 @@
 **技术影响力**：OpenCut.app 凭借核心仓库 OpenCut 的高星标数，在开源视频编辑工具社区中已形成显著关注度和较强传播影响力。
 **技术栈偏好**：其主要以 TypeScript 为核心开发语言，技术方向偏向现代 Web 应用、前端工程化与视频编辑相关工具链。
 **核心领域**：主要聚焦开源视频编辑器及相关多媒体处理基础设施。
+
+---
+
+### ✨ Dicklesworthstone/destructive_command_guard (2590★)
+
+> **一句话**：dcg 会在 AI 编程代理真正执行命令前拦截 `git reset --hard`、`rm -rf`、`DROP TABLE` 这类高风险操作，避免未提交代码或环境被误删。
+
+- **它是什么**：这是一个用 Rust 写的命令执行保护层，主要通过 hook 接入 Claude Code、Codex CLI、Gemini CLI、GitHub Copilot CLI、VS Code Copilot Chat、Cursor、Grok 等 AI 编程工具。它会分析代理准备执行的 shell、git、数据库、Kubernetes、Docker、云服务等命令，命中危险规则时阻止执行，并给出原因和更安全的替代建议。项目还支持配置化安全包、agent-specific profiles、CI 扫描模式和 `dcg explain` 解释模式。
+
+- **能解决什么痛点**：AI 编程代理有时会在上下文判断错误时执行破坏性命令，比如重置 Git 历史、删除源码目录、清空数据库表或删除 Kubernetes namespace，造成难以恢复的损失。dcg 针对这类“命令执行前的最后一道防线”做拦截，比事后依赖 Git、备份或人工复盘更直接。
+
+- **适合谁用**：适合频繁使用 Claude Code、Codex CLI、Gemini CLI、Copilot CLI、Cursor 等 AI 编程代理的开发者。也适合维护多仓库、多环境的工程团队，尤其是本地环境、CI、基础设施脚本里存在 destructive command 风险的团队。
+
+- **怎么上手**：Linux、macOS 和 WSL 可用：
+
+- **可以用在哪些场景**：在 AI 代理接管本地仓库时，阻止它执行 `git reset --hard`、删除源码目录或清空 stash。给 DevOps / SRE 的终端环境加保护，拦截 `kubectl delete namespace`、`docker system prune`、云资源删除等命令。在 CI 或 pre-commit 流程中扫描脚本和配置，提前发现会删除数据库、磁盘、容器或基础设施资源的危险命令。
+
+- **技术看点**：项目采用 Rust 实现，强调低延迟拦截，README 中提到使用 SIMD 加速过滤和懒加载正则来降低 hook 带来的体感开销。它不是只做字符串黑名单，而是支持 heredoc、inline script 扫描、上下文识别、机器可读 hook 输出和 50+ 模块化安全包，便于按团队风险模型启用不同规则。
+
+- **近期动向与发展方向**：最近提交非常活跃，7 月 11 日集中修复了 Codex、Copilot CLI、VS Code Copilot Chat 的 deny 输出格式，补强了 JS `fs.rmSync()` 在 AST worker 超时时的兜底拦截，并调整 Copilot hook 到用户级别以保护所有 workspace。近期还在持续扩展 agent 支持和安全包，例如新增 Pi 支持、Atmos pack、Windows pack 文档，并为 `config.toml` 生成 JSON Schema 和漂移检查。整体看，项目正从“危险命令拦截器”快速演进为多代理、多平台、可配置的安全 hook 基础设施。
+
+- **同类对比**：README 没有明确列出直接竞品。它主要对标的是各类 AI 编程代理自身的 hook / guardrail 能力，差异在于 dcg 独立于单一代理，覆盖 Claude、Codex、Gemini、Copilot、Cursor 等多个入口，并提供统一规则包和安装配置。
+
+- **注意事项**：项目创建时间较新，但 stars 增长快、最近提交密集，说明需求明确且维护活跃；同时也意味着 hook 协议、agent 适配和规则包仍可能频繁变化。当前 contributor count 为 3，核心开发主要集中在项目作者，长期维护稳定性还需要观察。安全策略采用 fail-open 设计，超时或解析失败时不会阻塞工作流，这能减少误伤，但也意味着它不是强制沙箱，不能替代权限隔离、备份和最小权限配置。
+
+- **GitHub**：[Dicklesworthstone/destructive_command_guard](https://github.com/Dicklesworthstone/destructive_command_guard)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Jeff Emanuel 是一位高活跃度独立开发者，凭借多个千星级开源项目在 AI 工具链与开发者效率领域具备较强社区影响力。
+**技术栈偏好**：技术栈以 Python 为核心，结合 Rust、Go 与 Shell，偏向构建实用型 AI 应用、系统工具和开发自动化组件。
+**核心领域**：主要聚焦 LLM 辅助工作流、Agent 工程、OCR/文档处理、命令安全与开发者工具生态。
 
 ---
 
