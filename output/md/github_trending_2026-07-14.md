@@ -1,117 +1,5 @@
-## 今日热点：AI Agent 工程化加速，工具链从开发扩展到创作、交易与系统治理
-今天的热门项目集中体现了 AI Agent 生态的实用化趋势：一方面，Spec-Driven Development、代码知识图谱、可运行的 LLM/RAG 应用合集、面向 Claude Code/Cursor/Codex 的设计与营销技能包，正在把智能编码从“生成代码”推进到需求规范、上下文理解、产品增长与交付流程；另一方面，开源剪辑工具、个人交易 Agent、自托管语音陪伴体、健身动作数据集等项目显示 AI 正在进入更具体的消费级和垂直场景；同时，危险命令防护与 Windows 精简脚本也说明开发者对自动化安全、系统可控性和本地环境治理的关注持续升温。具体项目摘要如下：
-
-### ✨ OpenCut-app/OpenCut (64111★)
-
-> **一句话**：OpenCut 正在重写为一套覆盖 Web、桌面和移动端的开源视频剪辑系统，目标是提供类似 CapCut 的免费替代方案。
-
-- **它是什么**：OpenCut 是一个 MIT 协议的开源视频编辑器项目，定位为 CapCut 的开源替代品。README 明确说明当前项目正在从头重写，计划提供 Editor API、插件架构、Rust 核心、多端同源、MCP Server、无头模式和编辑器内脚本能力。当前线上 `opencut.app` 仍运行 classic 版本，新架构会先放在 `new.opencut.app`。
-- **能解决什么痛点**：对创作者和开发者来说，闭源剪辑工具难以扩展、自动化和二次集成，OpenCut 计划通过插件、脚本和 Headless 模式把剪辑流程开放出来。对团队来说，跨 Web、桌面、移动端维护多套编辑器成本高，它的目标是用一套 Rust 核心支撑多端。
-- **适合谁用**：适合关注开源视频编辑器、想参与或跟踪创作者工具基础设施的前端 / 全栈开发者。当前更适合技术观察和早期试验；如果要立即稳定剪视频，README 建议使用 `opencut-classic`。
-- **怎么上手**：`proto use && moon run web:dev`
-- **可以用在哪些场景**：搭建可自托管的 Web 视频剪辑入口；为内部内容生产流水线探索批量渲染和自动化剪辑能力；围绕视频编辑器开发第三方插件或脚本扩展。
-- **技术看点**：项目正在转向插件优先架构，并计划用 Rust core 支撑浏览器、桌面和移动端同一套代码路径。工具链上近期从 Turbo 迁移到 Moon，并使用 proto 固定开发环境，说明团队在重建 monorepo 和多应用工程体系。
-- **近期动向与发展方向**：最近 20 条提交高度集中在 rewrite 分支：替换旧代码库、搭建 monorepo 和 Web 基础、加入 Cloudflare Workers 上的 Elysia API、迁移到 Moon/proto，并在 2026-07-10 scaffold 了桌面应用。提交主要来自 Maze Winther，说明当前处于核心作者主导的架构重写期，而不是稳定功能迭代期。
-- **同类对比**：README 和描述明确对标 CapCut，差异在于 OpenCut 走免费开源路线，并强调插件、脚本、Headless、MCP Server 等更适合开发者扩展和自动化的能力。
-- **注意事项**：项目创建时间较新，但 Star 很高，关注度明显高于当前成熟度；README 明确写着“正在从头重写”，且暂不准备接收外部贡献，破坏性变更风险较高。当前 open issues 为 333，文档主要覆盖状态说明和开发命令，面向最终用户的完整使用文档暂未提供。
-
-- **GitHub**：[OpenCut-app/OpenCut](https://github.com/OpenCut-app/OpenCut)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：OpenCut.app 凭借核心仓库 OpenCut 的高星标数，在开源视频编辑工具社区中已形成显著关注度和较强传播影响力。
-**技术栈偏好**：其主要以 TypeScript 为核心开发语言，技术方向偏向现代 Web 应用、前端工程化与视频编辑相关工具链。
-**核心领域**：主要聚焦开源视频编辑器及相关多媒体处理基础设施。
-
----
-
-### ✨ Dicklesworthstone/destructive_command_guard (2590★)
-
-> **一句话**：dcg 会在 AI 编程代理真正执行命令前拦截 `git reset --hard`、`rm -rf`、`DROP TABLE` 这类高风险操作，避免未提交代码或环境被误删。
-
-- **它是什么**：这是一个用 Rust 写的命令执行保护层，主要通过 hook 接入 Claude Code、Codex CLI、Gemini CLI、GitHub Copilot CLI、VS Code Copilot Chat、Cursor、Grok 等 AI 编程工具。它会分析代理准备执行的 shell、git、数据库、Kubernetes、Docker、云服务等命令，命中危险规则时阻止执行，并给出原因和更安全的替代建议。项目还支持配置化安全包、agent-specific profiles、CI 扫描模式和 `dcg explain` 解释模式。
-
-- **能解决什么痛点**：AI 编程代理有时会在上下文判断错误时执行破坏性命令，比如重置 Git 历史、删除源码目录、清空数据库表或删除 Kubernetes namespace，造成难以恢复的损失。dcg 针对这类“命令执行前的最后一道防线”做拦截，比事后依赖 Git、备份或人工复盘更直接。
-
-- **适合谁用**：适合频繁使用 Claude Code、Codex CLI、Gemini CLI、Copilot CLI、Cursor 等 AI 编程代理的开发者。也适合维护多仓库、多环境的工程团队，尤其是本地环境、CI、基础设施脚本里存在 destructive command 风险的团队。
-
-- **怎么上手**：Linux、macOS 和 WSL 可用：
-
-- **可以用在哪些场景**：在 AI 代理接管本地仓库时，阻止它执行 `git reset --hard`、删除源码目录或清空 stash。给 DevOps / SRE 的终端环境加保护，拦截 `kubectl delete namespace`、`docker system prune`、云资源删除等命令。在 CI 或 pre-commit 流程中扫描脚本和配置，提前发现会删除数据库、磁盘、容器或基础设施资源的危险命令。
-
-- **技术看点**：项目采用 Rust 实现，强调低延迟拦截，README 中提到使用 SIMD 加速过滤和懒加载正则来降低 hook 带来的体感开销。它不是只做字符串黑名单，而是支持 heredoc、inline script 扫描、上下文识别、机器可读 hook 输出和 50+ 模块化安全包，便于按团队风险模型启用不同规则。
-
-- **近期动向与发展方向**：最近提交非常活跃，7 月 11 日集中修复了 Codex、Copilot CLI、VS Code Copilot Chat 的 deny 输出格式，补强了 JS `fs.rmSync()` 在 AST worker 超时时的兜底拦截，并调整 Copilot hook 到用户级别以保护所有 workspace。近期还在持续扩展 agent 支持和安全包，例如新增 Pi 支持、Atmos pack、Windows pack 文档，并为 `config.toml` 生成 JSON Schema 和漂移检查。整体看，项目正从“危险命令拦截器”快速演进为多代理、多平台、可配置的安全 hook 基础设施。
-
-- **同类对比**：README 没有明确列出直接竞品。它主要对标的是各类 AI 编程代理自身的 hook / guardrail 能力，差异在于 dcg 独立于单一代理，覆盖 Claude、Codex、Gemini、Copilot、Cursor 等多个入口，并提供统一规则包和安装配置。
-
-- **注意事项**：项目创建时间较新，但 stars 增长快、最近提交密集，说明需求明确且维护活跃；同时也意味着 hook 协议、agent 适配和规则包仍可能频繁变化。当前 contributor count 为 3，核心开发主要集中在项目作者，长期维护稳定性还需要观察。安全策略采用 fail-open 设计，超时或解析失败时不会阻塞工作流，这能减少误伤，但也意味着它不是强制沙箱，不能替代权限隔离、备份和最小权限配置。
-
-- **GitHub**：[Dicklesworthstone/destructive_command_guard](https://github.com/Dicklesworthstone/destructive_command_guard)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Jeff Emanuel 是一位高活跃度独立开发者，凭借多个千星级开源项目在 AI 工具链与开发者效率领域具备较强社区影响力。
-**技术栈偏好**：技术栈以 Python 为核心，结合 Rust、Go 与 Shell，偏向构建实用型 AI 应用、系统工具和开发自动化组件。
-**核心领域**：主要聚焦 LLM 辅助工作流、Agent 工程、OCR/文档处理、命令安全与开发者工具生态。
-
----
-
-### ✨ HKUDS/Vibe-Trading (20292★)
-
-> **一句话**：把行情数据、因子研究、回测、交易执行和 LLM Agent 串成一套可通过命令行、API/MCP 和 Web 界面调用的个人交易研究系统。
-
-- **它是什么**：Vibe-Trading 是一个面向交易研究和自动化交易的 Python 项目，核心目标是让 Agent 具备数据获取、因子分析、策略开发、回测、下单和监控能力。README 显示它同时提供 FastAPI 后端、React 19 前端、PyPI 包、API/MCP 接入，并覆盖多语言文档与示例。近期版本还加入了策略开发管理器、影子账户、图像分析、IM 通道、印度股票、Binance USD-M 永续合约等模块。
-
-- **能解决什么痛点**：交易研究经常需要在行情源、因子库、回测框架、券商接口和 LLM 工具之间反复粘合，Vibe-Trading 试图把这些能力整合到同一个 Agent 工作流里。对需要做量化实验的人来说，它也处理了一些容易踩坑的细节，例如 PIT-safe 基本面因子、不同市场交易成本、Binance 执行价与标记价拆分、不同数据源 fallback。
-
-- **适合谁用**：适合熟悉 Python、希望用 LLM Agent 辅助投研和策略开发的量化研究员、个人交易者和金融数据工程师。也适合正在搭建内部投研自动化平台、需要 FastAPI/MCP 接口把交易能力接入其他 Agent 或工作流的团队。
-
-- **怎么上手**：`pip install vibe-trading-ai`
-
-- **可以用在哪些场景**：可用于把论文或券商研报转成因子/策略并进入持续监控流程；可用于搭建支持 A 股、印度股票、Binance USD-M 等市场的数据研究和回测环境；也可用于通过 API/MCP 把行情查询、相关性分析、策略状态检查等能力接入自有 Agent、聊天机器人或内部投研系统。
-
-- **技术看点**：项目技术栈是 Python 3.11+、FastAPI 后端和 React 19 前端，并以 PyPI 包形式分发。近期设计重点包括多数据源路由、OpenAI-compatible LLM provider 扩展、Pydantic 环境配置集中化、MCP/API 模块化，以及策略生命周期管理中的 artifact store 和 IC/Sharpe 衰减监控。
-
-- **近期动向与发展方向**：最近 20 条提交几乎都集中在 2026-07-10 到 2026-07-12，开发非常活跃，且不只是文档更新。近期重点是新增 Strategy Development Manager、扩展 Requesty/Kimi/opencode 等 LLM provider、完善 Binance USD-M 数据、修复 correlation/local loader/FastMCP 兼容问题，并强化 OCR、CI 环境变量检查和安全公告。提交中多次出现不同贡献者的 PR 合并，说明社区贡献正在进入维护者批量审核和集成阶段。
-
-- **同类对比**：暂无明显同类对标。README 没有直接声明对标某个量化框架或交易 Agent 项目；从功能边界看，它更像把量化研究框架、交易执行接口和 LLM Agent 编排合在一起，而不是单纯替代 backtrader、Zipline 或某个券商 SDK。
-
-- **注意事项**：项目创建于 2026-04-01，增长和迭代速度很快，但仍属于较新的项目，功能面很宽，破坏性变更和边界问题的概率需要预期管理。当前 open issues 为 9，说明公开问题数量不高，但近期提交里有不少兼容性修复和数据路由修复，生产环境使用前应先做沙盒验证。README 明确提示存在非官方 X 账号、Virtuals 项目和代币合约冒充风险，项目方声明未发行或背书任何 token，涉及钱包签名或交易授权时需要格外谨慎。
-
-- **GitHub**：[HKUDS/Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：该组织拥有多个数万星 Python 项目，已在开源 AI 工具与 RAG 相关社区形成显著影响力。
-**技术栈偏好**：技术栈明显偏向 Python，重点围绕大模型应用、检索增强生成、智能体与自动化工具构建。
-**核心领域**：主要聚焦数据智能、生成式 AI、RAG 系统、AI 教育与通用智能应用基础设施。
-
----
-
-### ✨ moeru-ai/airi (41642★)
-
-> **一句话**：把一个可自托管的 AI 虚拟角色带到网页、桌面和游戏里，让它能实时语音聊天、扮演数字宠物，并尝试参与 Minecraft、Factorio 等游戏互动。
-
-- **它是什么**：AIRI 是一个受 Neuro-sama 启发的开源 AI 虚拟角色项目，目标是让用户拥有自己的“数字生命”或 AI waifu，而不是只能在直播或封闭平台里观看。它支持 Web、macOS、Windows 等形态，README 中明确提到实时语音聊天、Live2D/角色舞台、数字宠物以及游戏交互能力。项目还围绕记忆系统、RAG、嵌入式数据库、Live2D 工具等拆出了相关子项目生态。
-- **能解决什么痛点**：传统 Character.ai、JanitorAI、SillyTavern 更偏文本聊天或视觉小说式体验，难以让角色持续陪伴、看见上下文并参与游戏互动；AIRI 试图把语音、角色形象、桌面/网页端和游戏行为整合到一个可自托管系统里。对于不想依赖闭源虚拟主播或云端角色平台的用户，它提供了一个可以自己部署、自己改造的替代方案。
-- **适合谁用**：适合想搭建自托管 AI 伴侣、AI VTuber 或数字宠物的前端/全栈开发者；也适合对 Live2D、实时语音交互、游戏 AI Agent 感兴趣的 TypeScript 开发者和虚拟角色创作者。
-- **怎么上手**：Windows 可直接使用 `winget install MoeruAI.AIRI`；macOS 可使用 `brew install --cask airi`。
-- **可以用在哪些场景**：搭建一个本地运行的 AI 桌面伴侣，用语音和角色形象进行日常对话；制作可直播的 AI 虚拟主播原型，结合 Live2D 舞台和语音输入输出；研究让 AI 角色在 Minecraft、Factorio 等游戏中观察、决策和互动的实验环境。
-- **技术看点**：项目主体使用 TypeScript，并覆盖 Web 与桌面端分发，近期提交中能看到 stage-ui、Live2D、tamagotchi、pipelines-audio、analytics、server auth 等模块化结构。它不是单纯聊天 UI，而是在语音管线、角色舞台、游戏交互和观测分析之间做集成。
-- **近期动向与发展方向**：最近提交非常活跃，7 月 7 日刚发布 v0.11.0，随后仍在连续合并功能和修复。近期重点包括音频 pipeline 的事件类型与错误处理、tamagotchi 阶段的语音输入集成、Live2D 模型引用修复、角色卡导入导出、PostHog 分析覆盖、服务端认证和 Grafana 仪表盘调整；同时还有忽略 `.env` 防止凭据泄漏、国际化更新等工程治理工作。整体看，项目正从“可玩原型”向更稳定的多端 AI 角色平台演进。
-- **同类对比**：README 明确对标 Neuro-sama，但 Neuro-sama 本身不开源且用户无法在直播之外拥有它；AIRI 的差异是开源、自托管、可改造。相比 Character.ai、JanitorAI、SillyTavern 这类偏聊天或角色扮演的平台，AIRI 更强调实时语音、虚拟形象、游戏参与和“数字生命”容器。
-- **注意事项**：项目创建于 2024-12-01，发展速度很快但仍较年轻，179 个 open issues 说明功能面广、问题也不少；近期提交同时包含大量修复、权限和认证相关调整，生产化使用前需要评估稳定性。README 还特别提醒项目没有官方加密货币或代币，遇到相关宣传应谨慎甄别。版本迭代频繁，接入自定义角色、语音或游戏模块时要留意接口变化和破坏性更新风险。
-
-- **GitHub**：[moeru-ai/airi](https://github.com/moeru-ai/airi)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以 4.1 万 Star 的旗舰项目 airi 形成显著开源影响力，是快速崛起的 AI 原生交互社区。
-**技术栈偏好**：以 TypeScript 为主、Go 为辅，偏好 Web 全栈、实时交互与高性能 AI 基础服务。
-**核心领域**：聚焦 AI 虚拟角色、智能对话、语音能力及游戏场景中的智能体集成。
-
----
+## 今日热点：AI Agent 工程化与创作工具开源化加速
+今天的热门项目显示，开发者关注点正从单点模型能力转向可落地的 AI Agent 工作流、安全护栏与垂直场景应用：既有可直接运行的 LLM/RAG 应用合集、面向 Claude Code/Cursor/Codex 的工程技能与反“AI 味”设计能力，也有阻止危险命令执行的 agent 安全工具、代码知识图谱助手和多账号 API 网关；同时，AI 正快速渗透金融交易与量化研究，个人交易 Agent、AI 对冲基金团队等项目升温；在生产力与创作侧，开源视频剪辑、设计协作平台、Windows 精简脚本、健身数据集、PS5 模拟器以及 AI/ML 学习资料库共同体现出开源生态对专业软件、数据资产和学习路径的持续重构。具体项目摘要如下：
 
 ### ✨ Shubhamsaboo/awesome-llm-apps (118365★)
 
@@ -148,6 +36,118 @@
 
 ---
 
+### ✨ mattpocock/skills (156348★)
+
+> **一句话**：把 Matt Pocock 日常放在 `.claude` 目录里的 AI 编程工作流沉淀成可安装的“技能包”，让 Claude Code、Codex 等代码代理按真实工程流程做需求澄清、TDD、调试、评审和架构改进。
+
+- **它是什么**：这是一个面向 AI 编程代理的技能集合，不是传统代码库或框架。它把真实软件开发中的流程拆成一组可组合的命令式技能，例如 `/grill-with-docs` 用来在开工前追问需求并沉淀领域语言，`/tdd` 引导代理按红绿重构推进，`/diagnosing-bugs` 约束调试流程，`/code-review` 从规范和需求两条线审查改动。README 强调这些技能“小、可改、可组合”，目标是让开发者保留工程判断，而不是把整个开发过程交给一套封闭流程。
+- **能解决什么痛点**：它针对的是 AI 代理常见的工程失败：需求没问清就开写、输出啰嗦且不懂项目术语、没有测试反馈导致代码跑不通、长期使用代理后代码结构变成“泥球”。例如在做新功能前，可以先用 grilling 类技能逼代理把分支场景问透，再用 TDD 技能限制它按小步反馈交付。
+- **适合谁用**：适合已经在日常开发中使用 Claude Code、Codex 或类似代码代理的工程师，尤其是需要把 AI 纳入团队开发流程的全栈、前端、后端开发者。也适合维护中大型代码库、需要让代理理解领域术语、ADR、issue 流转和代码评审标准的技术负责人。
+- **怎么上手**：运行 `npx skills@latest add mattpocock/skills`，安装时选择需要的技能和目标 coding agent，并确保选择 `/setup-matt-pocock-skills`。
+- **可以用在哪些场景**：新功能开工前，用 `/grill-with-docs` 让代理追问需求、整理项目领域词汇并更新 `CONTEXT.md` 和 ADR；修复杂 bug 时，用 `/diagnosing-bugs` 约束代理按复现、最小化、假设、插桩、修复、回归测试的顺序推进；代码库开始变乱时，用 `/improve-codebase-architecture` 扫描深模块机会并生成可讨论的 HTML 报告。
+- **技术看点**：项目的核心设计不是依赖某个模型能力，而是把工程纪律写成可调用、可组合的技能，并区分“用户主动调用”和“模型可自动调用”两类技能。它还把 issue tracker、领域文档、ADR、TDD、代码评审这些真实团队资产纳入代理工作流，而不是只提供 prompt 片段。
+- **近期动向与发展方向**：最近提交非常活跃，7 月 2 日到 7 月 3 日连续合入多个 PR，重点集中在 `wayfinder`、`grilling`、`research`、`claude-handoff` 等技能的语义和流程调整。近期变化更多是打磨现有工作流：例如改进阻塞规则、调整 ticket 认领方式、为 grilling 增加确认门槛、修正文档引用，说明项目正在快速迭代技能细节，而不是做底层重构。提交者主要是 Matt Pocock，贡献者数量仅 3，社区影响力很高但维护节奏明显由作者主导。
+- **同类对比**：README 明确提到 GSD、BMAD、Spec-Kit 这类试图“接管流程”的方案，并强调本项目的差异是小型、可适配、可组合，让开发者保留控制权。它更像一套可拆装的 AI 工程习惯库，而不是一套完整方法论框架。
+- **注意事项**：项目创建时间为 2026-02-03，时间较新但更新很频繁，119 个 open issues 说明使用面广、反馈多，也意味着技能语义和安装流程仍可能持续变化。README 文档信息量很足，适合愿意调整工作流的人；如果只想即装即用、完全不改自己的开发习惯，可能需要先花时间理解各技能的调用边界和配套文档要求。
+
+- **GitHub**：[mattpocock/skills](https://github.com/mattpocock/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Matt Pocock 是 TypeScript 生态中高影响力的开发者与教育者，凭借 Total TypeScript、ts-reset 等项目在前端工程社区具备显著话语权。
+**技术栈偏好**：技术栈明显偏向 TypeScript，并辅以 Shell 工具链，重点服务于类型系统增强、开发者工具和工程化实践。
+**核心领域**：主要聚焦 TypeScript 教育、类型安全、前端工程化与 AI 编程辅助工具。
+
+---
+
+### ✨ Dicklesworthstone/destructive_command_guard (2590★)
+
+> **一句话**：dcg 会在 AI 编程代理真正执行命令前拦截 `git reset --hard`、`rm -rf`、`DROP TABLE` 这类高风险操作，避免未提交代码或环境被误删。
+
+- **它是什么**：这是一个用 Rust 写的命令执行保护层，主要通过 hook 接入 Claude Code、Codex CLI、Gemini CLI、GitHub Copilot CLI、VS Code Copilot Chat、Cursor、Grok 等 AI 编程工具。它会分析代理准备执行的 shell、git、数据库、Kubernetes、Docker、云服务等命令，命中危险规则时阻止执行，并给出原因和更安全的替代建议。项目还支持配置化安全包、agent-specific profiles、CI 扫描模式和 `dcg explain` 解释模式。
+
+- **能解决什么痛点**：AI 编程代理有时会在上下文判断错误时执行破坏性命令，比如重置 Git 历史、删除源码目录、清空数据库表或删除 Kubernetes namespace，造成难以恢复的损失。dcg 针对这类“命令执行前的最后一道防线”做拦截，比事后依赖 Git、备份或人工复盘更直接。
+
+- **适合谁用**：适合频繁使用 Claude Code、Codex CLI、Gemini CLI、Copilot CLI、Cursor 等 AI 编程代理的开发者。也适合维护多仓库、多环境的工程团队，尤其是本地环境、CI、基础设施脚本里存在 destructive command 风险的团队。
+
+- **怎么上手**：Linux、macOS 和 WSL 可用：
+
+- **可以用在哪些场景**：在 AI 代理接管本地仓库时，阻止它执行 `git reset --hard`、删除源码目录或清空 stash。给 DevOps / SRE 的终端环境加保护，拦截 `kubectl delete namespace`、`docker system prune`、云资源删除等命令。在 CI 或 pre-commit 流程中扫描脚本和配置，提前发现会删除数据库、磁盘、容器或基础设施资源的危险命令。
+
+- **技术看点**：项目采用 Rust 实现，强调低延迟拦截，README 中提到使用 SIMD 加速过滤和懒加载正则来降低 hook 带来的体感开销。它不是只做字符串黑名单，而是支持 heredoc、inline script 扫描、上下文识别、机器可读 hook 输出和 50+ 模块化安全包，便于按团队风险模型启用不同规则。
+
+- **近期动向与发展方向**：最近提交非常活跃，7 月 11 日集中修复了 Codex、Copilot CLI、VS Code Copilot Chat 的 deny 输出格式，补强了 JS `fs.rmSync()` 在 AST worker 超时时的兜底拦截，并调整 Copilot hook 到用户级别以保护所有 workspace。近期还在持续扩展 agent 支持和安全包，例如新增 Pi 支持、Atmos pack、Windows pack 文档，并为 `config.toml` 生成 JSON Schema 和漂移检查。整体看，项目正从“危险命令拦截器”快速演进为多代理、多平台、可配置的安全 hook 基础设施。
+
+- **同类对比**：README 没有明确列出直接竞品。它主要对标的是各类 AI 编程代理自身的 hook / guardrail 能力，差异在于 dcg 独立于单一代理，覆盖 Claude、Codex、Gemini、Copilot、Cursor 等多个入口，并提供统一规则包和安装配置。
+
+- **注意事项**：项目创建时间较新，但 stars 增长快、最近提交密集，说明需求明确且维护活跃；同时也意味着 hook 协议、agent 适配和规则包仍可能频繁变化。当前 contributor count 为 3，核心开发主要集中在项目作者，长期维护稳定性还需要观察。安全策略采用 fail-open 设计，超时或解析失败时不会阻塞工作流，这能减少误伤，但也意味着它不是强制沙箱，不能替代权限隔离、备份和最小权限配置。
+
+- **GitHub**：[Dicklesworthstone/destructive_command_guard](https://github.com/Dicklesworthstone/destructive_command_guard)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Jeff Emanuel 是一位高活跃度独立开发者，凭借多个千星级开源项目在 AI 工具链与开发者效率领域具备较强社区影响力。
+**技术栈偏好**：技术栈以 Python 为核心，结合 Rust、Go 与 Shell，偏向构建实用型 AI 应用、系统工具和开发自动化组件。
+**核心领域**：主要聚焦 LLM 辅助工作流、Agent 工程、OCR/文档处理、命令安全与开发者工具生态。
+
+---
+
+### ✨ OpenCut-app/OpenCut (64111★)
+
+> **一句话**：OpenCut 正在重写为一套覆盖 Web、桌面和移动端的开源视频剪辑系统，目标是提供类似 CapCut 的免费替代方案。
+
+- **它是什么**：OpenCut 是一个 MIT 协议的开源视频编辑器项目，定位为 CapCut 的开源替代品。README 明确说明当前项目正在从头重写，计划提供 Editor API、插件架构、Rust 核心、多端同源、MCP Server、无头模式和编辑器内脚本能力。当前线上 `opencut.app` 仍运行 classic 版本，新架构会先放在 `new.opencut.app`。
+- **能解决什么痛点**：对创作者和开发者来说，闭源剪辑工具难以扩展、自动化和二次集成，OpenCut 计划通过插件、脚本和 Headless 模式把剪辑流程开放出来。对团队来说，跨 Web、桌面、移动端维护多套编辑器成本高，它的目标是用一套 Rust 核心支撑多端。
+- **适合谁用**：适合关注开源视频编辑器、想参与或跟踪创作者工具基础设施的前端 / 全栈开发者。当前更适合技术观察和早期试验；如果要立即稳定剪视频，README 建议使用 `opencut-classic`。
+- **怎么上手**：`proto use && moon run web:dev`
+- **可以用在哪些场景**：搭建可自托管的 Web 视频剪辑入口；为内部内容生产流水线探索批量渲染和自动化剪辑能力；围绕视频编辑器开发第三方插件或脚本扩展。
+- **技术看点**：项目正在转向插件优先架构，并计划用 Rust core 支撑浏览器、桌面和移动端同一套代码路径。工具链上近期从 Turbo 迁移到 Moon，并使用 proto 固定开发环境，说明团队在重建 monorepo 和多应用工程体系。
+- **近期动向与发展方向**：最近 20 条提交高度集中在 rewrite 分支：替换旧代码库、搭建 monorepo 和 Web 基础、加入 Cloudflare Workers 上的 Elysia API、迁移到 Moon/proto，并在 2026-07-10 scaffold 了桌面应用。提交主要来自 Maze Winther，说明当前处于核心作者主导的架构重写期，而不是稳定功能迭代期。
+- **同类对比**：README 和描述明确对标 CapCut，差异在于 OpenCut 走免费开源路线，并强调插件、脚本、Headless、MCP Server 等更适合开发者扩展和自动化的能力。
+- **注意事项**：项目创建时间较新，但 Star 很高，关注度明显高于当前成熟度；README 明确写着“正在从头重写”，且暂不准备接收外部贡献，破坏性变更风险较高。当前 open issues 为 333，文档主要覆盖状态说明和开发命令，面向最终用户的完整使用文档暂未提供。
+
+- **GitHub**：[OpenCut-app/OpenCut](https://github.com/OpenCut-app/OpenCut)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：OpenCut.app 凭借核心仓库 OpenCut 的高星标数，在开源视频编辑工具社区中已形成显著关注度和较强传播影响力。
+**技术栈偏好**：其主要以 TypeScript 为核心开发语言，技术方向偏向现代 Web 应用、前端工程化与视频编辑相关工具链。
+**核心领域**：主要聚焦开源视频编辑器及相关多媒体处理基础设施。
+
+---
+
+### ✨ virattt/ai-hedge-fund (61309★)
+
+> **一句话**：把巴菲特、格雷厄姆、达摩达兰等投资风格做成一组 AI 分析代理，让它们围绕股票数据生成信号，再由风险经理和组合经理汇总成交易决策建议。
+
+- **它是什么**：这是一个用 Python 编写的 AI 投资研究原型，核心是多代理协作：不同“投资人 Agent”负责价值、成长、宏观、情绪、技术面、基本面等不同视角的分析。系统会读取股票与财务数据，调用 LLM 生成分析判断，并通过 Risk Manager 和 Portfolio Manager 汇总成仓位或订单建议。README 明确说明它是教育和研究用途，不会真正执行交易。
+
+- **能解决什么痛点**：适合用来拆解“多投资风格如何共同评估一只股票”这个复杂流程，不需要从零写一套 Agent 编排、提示词、回测入口和组合决策逻辑。对想做 AI 金融研究原型的人来说，它也提供了现成的 CLI、回测器和 Web 应用入口，减少搭建实验框架的时间。
+
+- **适合谁用**：适合研究 LLM Agent、量化投资原型、多因子分析流程的 Python 开发者和金融科技研究者。也适合想学习如何把财务数据、LLM、回测和投资角色建模结合起来的工程师。
+
+- **怎么上手**：最小运行方式是先安装依赖并配置 API Key，然后执行：`poetry run python src/main.py --ticker AAPL,MSFT,NVDA`
+
+- **可以用在哪些场景**：可以用于搭建股票研究 Demo，让多个投资风格 Agent 对同一组股票给出可解释分析。可以用于回测不同 Agent 或组合决策逻辑在历史区间内的表现，例如对 AAPL、MSFT、NVDA 做指定日期范围测试。也可以作为内部教学项目，演示 LLM 在基本面分析、情绪分析、风险控制和组合决策中的边界。
+
+- **技术看点**：项目采用多 Agent 结构，把投资大师风格、基本面、技术面、情绪、估值、风险控制和组合管理拆成独立模块，便于替换和扩展。近期提交显示 v2 正在把“基金”作为一等实体重构，Alpha Model、CachedDataClient、LLMAgent、PromptCache 等模块化设计正在加强。
+
+- **近期动向与发展方向**：最近 20 条提交几乎都来自维护者 virattt，时间集中在 2026-07-10 和 2026-07-03，说明项目近期仍在高频推进。开发重点明显偏向 v2 重构：新增 demo backtester、CachedDataClient、analyst CLI、AnthropicLLM、PromptCache、FundamentalsSnapshot，并开始实现 Buffett LLMAgent 和新的 LLMAgent alpha model。另一个值得注意的提交是修复 lookahead leak，说明维护者已经在处理回测中常见的未来函数问题，项目正在从演示原型向更严肃的可回测架构演进。
+
+- **同类对比**：暂无明显同类对标。README 没有直接比较 QuantConnect、Backtrader、Zipline 或其他量化平台；它更像是 LLM 多代理投资研究原型，而不是传统量化回测框架。
+
+- **注意事项**：项目明确声明仅用于教育和研究，不提供投资建议，也不适合直接用于真实交易。运行需要至少一个 LLM API Key，并且还需要 Financial Datasets API Key 获取金融数据，上手前要准备外部服务配置。项目创建于 2024-11-29，虽然已有 6 万多 Star 和 47 位贡献者，但仍处在快速演进期，149 个 Open Issues 加上近期 v2 重构意味着接口和用法可能继续变化。README 文档给出了 CLI、回测和 Web App 入口，足够启动实验，但生产级风控、实盘执行、数据质量和合规责任都需要使用者自行评估。
+
+- **GitHub**：[virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：在 AI 金融与自动化投资工具方向具有很强的社区可见度，代表项目获得高星，说明其作品具备显著传播力和实用影响。
+**技术栈偏好**：主要偏好 TypeScript 与 Python，体现出前端/应用层工程能力与数据、算法、代理系统实现能力并重。
+**核心领域**：主要聚焦 AI 驱动的金融分析、量化交易与金融代理工具链。
+
+---
+
 ### ✨ Nutlope/hallmark (4080★)
 
 > **一句话**：Hallmark 给 Claude Code、Cursor 和 Codex 加上一套“反 AI 味”设计规则，让生成的网页不再像换色模板，而是按不同 brief 产出不同结构、字体、配色和视觉节奏。
@@ -180,6 +180,38 @@
 
 ---
 
+### ✨ HKUDS/Vibe-Trading (20292★)
+
+> **一句话**：把行情数据、因子研究、回测、交易执行和 LLM Agent 串成一套可通过命令行、API/MCP 和 Web 界面调用的个人交易研究系统。
+
+- **它是什么**：Vibe-Trading 是一个面向交易研究和自动化交易的 Python 项目，核心目标是让 Agent 具备数据获取、因子分析、策略开发、回测、下单和监控能力。README 显示它同时提供 FastAPI 后端、React 19 前端、PyPI 包、API/MCP 接入，并覆盖多语言文档与示例。近期版本还加入了策略开发管理器、影子账户、图像分析、IM 通道、印度股票、Binance USD-M 永续合约等模块。
+
+- **能解决什么痛点**：交易研究经常需要在行情源、因子库、回测框架、券商接口和 LLM 工具之间反复粘合，Vibe-Trading 试图把这些能力整合到同一个 Agent 工作流里。对需要做量化实验的人来说，它也处理了一些容易踩坑的细节，例如 PIT-safe 基本面因子、不同市场交易成本、Binance 执行价与标记价拆分、不同数据源 fallback。
+
+- **适合谁用**：适合熟悉 Python、希望用 LLM Agent 辅助投研和策略开发的量化研究员、个人交易者和金融数据工程师。也适合正在搭建内部投研自动化平台、需要 FastAPI/MCP 接口把交易能力接入其他 Agent 或工作流的团队。
+
+- **怎么上手**：`pip install vibe-trading-ai`
+
+- **可以用在哪些场景**：可用于把论文或券商研报转成因子/策略并进入持续监控流程；可用于搭建支持 A 股、印度股票、Binance USD-M 等市场的数据研究和回测环境；也可用于通过 API/MCP 把行情查询、相关性分析、策略状态检查等能力接入自有 Agent、聊天机器人或内部投研系统。
+
+- **技术看点**：项目技术栈是 Python 3.11+、FastAPI 后端和 React 19 前端，并以 PyPI 包形式分发。近期设计重点包括多数据源路由、OpenAI-compatible LLM provider 扩展、Pydantic 环境配置集中化、MCP/API 模块化，以及策略生命周期管理中的 artifact store 和 IC/Sharpe 衰减监控。
+
+- **近期动向与发展方向**：最近 20 条提交几乎都集中在 2026-07-10 到 2026-07-12，开发非常活跃，且不只是文档更新。近期重点是新增 Strategy Development Manager、扩展 Requesty/Kimi/opencode 等 LLM provider、完善 Binance USD-M 数据、修复 correlation/local loader/FastMCP 兼容问题，并强化 OCR、CI 环境变量检查和安全公告。提交中多次出现不同贡献者的 PR 合并，说明社区贡献正在进入维护者批量审核和集成阶段。
+
+- **同类对比**：暂无明显同类对标。README 没有直接声明对标某个量化框架或交易 Agent 项目；从功能边界看，它更像把量化研究框架、交易执行接口和 LLM Agent 编排合在一起，而不是单纯替代 backtrader、Zipline 或某个券商 SDK。
+
+- **注意事项**：项目创建于 2026-04-01，增长和迭代速度很快，但仍属于较新的项目，功能面很宽，破坏性变更和边界问题的概率需要预期管理。当前 open issues 为 9，说明公开问题数量不高，但近期提交里有不少兼容性修复和数据路由修复，生产环境使用前应先做沙盒验证。README 明确提示存在非官方 X 账号、Virtuals 项目和代币合约冒充风险，项目方声明未发行或背书任何 token，涉及钱包签名或交易授权时需要格外谨慎。
+
+- **GitHub**：[HKUDS/Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：该组织拥有多个数万星 Python 项目，已在开源 AI 工具与 RAG 相关社区形成显著影响力。
+**技术栈偏好**：技术栈明显偏向 Python，重点围绕大模型应用、检索增强生成、智能体与自动化工具构建。
+**核心领域**：主要聚焦数据智能、生成式 AI、RAG 系统、AI 教育与通用智能应用基础设施。
+
+---
+
 ### ✨ Raphire/Win11Debloat (50486★)
 
 > **一句话**：用一条 PowerShell 命令打开菜单，批量清理 Windows 10/11 预装应用、遥测、广告推荐和一批系统界面默认设置。
@@ -201,30 +233,6 @@
 **技术影响力**：凭借 Win11Debloat 的高星标表现，Jeffrey 在 Windows 优化与实用工具社区具备显著影响力。
 **技术栈偏好**：主要使用 PowerShell、JavaScript 和 C#，偏向脚本自动化、桌面工具与轻量级 Web/辅助应用开发。
 **核心领域**：核心聚焦于 Windows 系统精简优化、用户环境配置自动化及实用型工具开发。
-
----
-
-### ✨ Graphify-Labs/graphify (83730★)
-
-> **一句话**：在 AI 编程助手里输入 `/graphify`，它会把代码、数据库 schema、脚本、文档、图片和视频映射成可点击、可查询的知识图谱，让你按关系追踪项目而不是逐文件 grep。
-
-- **它是什么**：Graphify 是一个面向 Claude Code、Codex、Cursor、Gemini CLI 等 AI 编程助手的技能和 Python CLI。它会扫描项目目录，把源码 AST、跨文件调用、导入、继承关系、文档引用、注释 rationale 以及多媒体语义信息汇总到同一张图里，并输出 `graph.html`、`GRAPH_REPORT.md` 和 `graph.json`。生成后的图可以搜索节点、解释概念、查询问题，也可以追踪两个概念之间的最短路径。
-- **能解决什么痛点**：大型代码库里，开发者常常不知道某个类、接口、SQL 表或脚本到底和哪些模块相互依赖，纯文本搜索只能找到关键词，难以看清调用链和跨文件关系。对包含代码、数据库 schema、Shell/R 脚本、设计文档甚至图片视频资料的项目，它把分散信息统一成图，适合做接手项目、排查影响范围和梳理系统边界。
-- **适合谁用**：适合经常接手陌生或大型仓库的后端、全栈、平台工程师，也适合维护多语言项目、数据管道、内部工具链的团队。已经在使用 Claude Code、Cursor、Codex、Gemini CLI 或 GitHub Copilot 的开发者，上手路径会更短。
-- **怎么上手**：`uv tool install graphifyy && graphify install`，然后在 AI 编程助手里运行 `/graphify .`。
-- **可以用在哪些场景**：接手 FastAPI、Rails、Node 等大型服务时，先生成交互式 `graph.html` 查看核心节点和子系统社区；重构某个类、API 或数据库表前，用 `graphify path A B` 和 `graphify explain "概念名"` 查影响链路；给内部项目补文档时，用 `GRAPH_REPORT.md` 快速整理关键概念、异常连接和后续可追问的问题。
-- **技术看点**：代码解析主要基于 tree-sitter AST，本地完成、无需 LLM，关系边会标注 `EXTRACTED` 或 `INFERRED`，便于区分源码显式关系和解析推断关系。它明确不是向量索引，不依赖 embedding 或 vector store，而是输出可遍历的图结构，并支持 Leiden 社区发现、路径查询和节点解释。
-- **近期动向与发展方向**：最近 20 条提交几乎都集中在稳定性和边界条件修复，包括缓存写入作用域、AST cache 路径、GraphML 导出、worktree 与 `.git/info/exclude` 处理、管道提前关闭、查询日志默认关闭、跨文件脚本链接和 Ruby `.rake` 提取等。项目更新非常密集，且提交作者不止一人，说明社区维护活跃；当前阶段更像是在快速扩大适配面后，对路径解析、缓存一致性、导出兼容性和 CLI 可靠性做集中打磨。
-- **同类对比**：README 明确强调它不是 mem0、supermemory 或 dense RAG 这类记忆/检索系统：Graphify 不走向量库路线，而是构建可解释、可遍历的知识图谱。README 中的基准显示它在 LOCOMO recall@10、LongMemEval-S QA accuracy 等指标上与这些系统做了对比，但具体效果仍应以自己的代码库复测为准。
-- **注意事项**：项目创建于 2026-04-03，但已经有 83730 stars、146 位贡献者和 488 个 open issues，热度很高、迭代很快，也意味着接口和行为仍可能频繁调整。PyPI 包名是 `graphifyy` 而不是 `graphify`，安装时容易踩坑；代码解析本地完成，但文档、PDF、图片和视频的语义处理会使用助手模型或配置的 API key，需要注意隐私和成本边界。近期提交大量修复缓存、路径和导出问题，生产环境接入前建议锁定版本并先在代表性仓库上验证输出质量。
-
-- **GitHub**：[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Graphify Labs 虽成立时间很短、仓库数量有限，但凭借 graphify 项目的高星标已在开源社区获得显著关注。
-**技术栈偏好**：其技术栈明显偏向 Python，可能聚焦于数据处理、图谱建模或开发者工具类方向。
-**核心领域**：主要聚焦于以 Graphify 为核心的图数据、知识图谱或可视化相关技术领域。
 
 ---
 
@@ -260,64 +268,158 @@
 
 ---
 
-### ✨ github/spec-kit (120210★)
+### ✨ penpot/penpot (56029★)
 
-> **一句话**：Spec Kit 把“先写需求、再生成计划、拆任务、交给 AI 编码代理实现”这套流程做成了可安装的 CLI 和模板体系，让规格说明成为开发过程的主线。
+> **一句话**：Penpot 把设计稿、组件、设计 Tokens、SVG/CSS/HTML 输出和团队实时协作放在同一个可自托管的开源设计平台里。
 
-- **它是什么**：Spec Kit 是 GitHub 开源的 Spec-Driven Development 工具链，核心是 `specify` CLI 和一组面向 AI 编码代理的命令模板。它让开发者先用 `/speckit.constitution` 定义项目原则，再用 `/speckit.specify` 写需求，用 `/speckit.plan` 生成技术方案，用 `/speckit.tasks` 拆任务，最后通过 `/speckit.implement` 执行实现。README 里也强调它不是让 AI “随手写代码”，而是把产品场景、约束、计划和任务串成可追踪的开发流程。
+- **它是什么**：Penpot 是面向产品团队的开源设计与原型平台，支持浏览器使用，也支持部署到自己的服务器。它围绕 SVG、CSS、HTML、JSON 等开放标准构建设计数据，并提供实时协作、设计 Tokens、组件、Variants、Inspect 模式、插件系统、API 和 MCP server，让设计资产更容易进入开发流程。
+- **能解决什么痛点**：一是企业不想把核心设计资产锁在闭源 SaaS 里时，可以自托管 Penpot 来满足合规、治理和数据控制要求。二是设计稿到代码之间经常出现样式解释偏差，Penpot 通过 Inspect 模式、CSS Grid/Flex Layout、设计 Tokens 和开放 API，把设计表达尽量贴近前端实现。
+- **适合谁用**：适合需要自托管设计协作平台的中大型产品团队、设计系统团队，以及希望把设计稿、Tokens、插件自动化和代码工作流打通的前端 / 平台工程团队。
+- **怎么上手**：README 未提供一行命令式快速启动示例；官方建议使用 SaaS 版 `https://design.penpot.app`，或参考自托管文档通过 Docker、Kubernetes、Elestio 等方式部署。
+- **可以用在哪些场景**：搭建企业内部可控的设计协作平台，避免设计文件外流到第三方闭源服务；维护跨产品线设计系统，用 Design Tokens、组件和 Variants 管理统一规范；在开发交付前用 Inspect 模式直接查看 SVG、CSS、HTML，减少设计标注和手写样式转换成本。
+- **技术看点**：项目主体语言为 Clojure，核心定位不是单纯画布编辑器，而是围绕开放标准和可编程接口建设完整设计基础设施。MCP server、开放 API、插件系统和 Webhooks 说明它在向“设计平台可自动化、可被 AI/工程工具读取和操作”的方向演进。
+- **近期动向与发展方向**：最近 20 条提交集中在 bug 修复、插件 API、编辑器细节、UI 交互、测试模型和文档流程上，例如修复 stroke caps 渲染、文本编辑器选中行为、评论模式递归问题，并新增系统化组件测试模型和 `PENPOT_INTERNAL_URI` 配置。提交日期集中在 2026-07-09 到 2026-07-14，作者分布较广，说明项目维护活跃，近期重点偏向稳定性、插件能力和工程测试体系完善，而不是大规模重构。
+- **同类对比**：README 没有直接点名竞品，但它的差异点很明确：强调开源、自托管、开放标准、设计即代码、设计 Tokens 和 MCP/API/插件扩展能力，适合不希望被闭源设计 SaaS 锁定的团队。
+- **注意事项**：项目创建于 2015 年，Star 数和贡献者数量都很高，成熟度较好；但目前仍有 720 个 Open Issues，说明功能面广、问题队列不小，企业落地前需要评估部署、升级和插件兼容成本。README 提供了官网、用户指南、技术文档、社区和贡献指南，文档入口较完整；近期提交频繁，也意味着持续演进中的平台可能会带来配置或 API 行为变化，需要关注发布说明。
 
-- **能解决什么痛点**：它针对的是 AI 辅助开发中常见的“需求说不清、上下文断裂、实现跑偏”问题，把需求、计划、任务和实现步骤固化为连续产物。对于多人项目或长期项目，它还能减少每次让 AI 重新理解项目规则、编码规范、测试要求和技术边界的重复沟通。
-
-- **适合谁用**：适合已经在使用 GitHub Copilot、Codex、Claude 等 AI 编码代理的开发者或团队，尤其是希望把 AI 生成代码纳入规范流程的人。也适合需要把需求、技术方案和任务拆解沉淀下来的产品型工程团队，而不是只做一次性脚本生成的个人用户。
-
-- **怎么上手**：README 推荐先安装 `uv`，然后安装 CLI：
-
-- **可以用在哪些场景**：可以用于从零启动一个新应用时，先生成项目原则、需求规格、技术方案和任务列表，再让 AI 代理分阶段实现。也适合在已有项目中新增复杂功能，例如相册管理、内部业务系统模块、带数据存储和交互规则的前端应用。对于团队协作，还可以把 `/speckit.taskstoissues` 生成的任务转为 GitHub Issues，用来跟踪规格驱动开发的执行过程。
-
-- **技术看点**：项目主体语言是 Python，围绕 `specify` CLI 提供安装、初始化、升级、集成管理等能力。设计上比较有参考价值的是它的模板优先级机制：项目本地覆盖、preset、extension、核心模板按优先级解析，方便团队在默认流程上叠加自己的工程规范。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-09 到 2026-07-10，活跃度很高，且同一天连续发布了 `0.12.10` 和 `0.12.11`，说明项目处于快速迭代期。近期重点主要是稳定性修复和生态扩展：修复 malformed URL、workflow.yml 非字符串标量、嵌套 plan.md / spec 目录查找、PowerShell 分支创建等边界问题；同时继续往 community catalog 增加 EARS Requirements Syntax、Figma extension 等扩展。整体方向是在补齐真实使用场景中的兼容性问题，并扩大 AI 代理、模板和社区扩展生态。
-
-- **同类对比**：暂无明显同类对标。README 没有直接拿它和某个具体工具比较，更多是在对比传统“代码优先”的开发方式和 Spec-Driven Development 的流程差异。
-
-- **注意事项**：项目创建于 2025-08-21，但 Star 已超过 12 万，增长和关注度很高，不过也意味着 API、模板和工作流仍可能频繁变化。当前 open issues 有 384 个，近期提交里也有不少 bug fix，说明真实使用中的边界情况还在快速暴露和修补。它依赖 `uv` 安装，并且要结合 AI 编码代理、slash commands 或 skills 模式使用；如果团队还没有稳定的 AI 编码工作流，上手成本会比普通 Python CLI 工具更高。
-
-- **GitHub**：[github/spec-kit](https://github.com/github/spec-kit)
+- **GitHub**：[penpot/penpot](https://github.com/penpot/penpot)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：GitHub 是全球软件协作基础设施级组织，凭借超高关注度和多个标杆仓库深度影响开源开发流程与工程文化。
-**技术栈偏好**：技术栈以 Python 和 Go 为主，偏向开发者工具、AI 编程辅助、服务端基础设施与生态文档建设。
-**核心领域**：主要聚焦代码托管协作、开源生态标准化、Copilot/AI 开发工具以及面向开发者的平台能力建设。
+**技术影响力**：Penpot 是开源设计工具生态中的高影响力组织，核心仓库拥有 5.6 万以上 Stars，具备显著的社区关注度和行业可见度。
+**技术栈偏好**：其技术栈以 Clojure 构建核心系统、TypeScript 扩展插件与集成能力，并通过 Nunjucks 支撑文档与内容体系。
+**核心领域**：主要聚焦于全栈开源设计工具、设计协作、设计文件生态以及与 Figma 等设计平台的互操作能力。
 
 ---
 
-### ✨ coreyhaines31/marketingskills (36293★)
+### ✨ AIEraDev/Clypra (2531★)
 
-> **一句话**：把 CRO、文案、SEO、广告、分析、增长实验等营销方法论整理成可被 Claude Code、Codex、Cursor 等 AI 编程代理调用的技能库。
+> **一句话**：Clypra 把多轨时间线、素材预览、音频波形、字幕文字和 FFmpeg 导出做成一个跨桌面与移动端的视频剪辑应用，目标是免费复刻部分 CapCut Pro 级能力。
 
-- **它是什么**：这是一个面向 AI Agent 的营销技能集合，每个 skill 以 Markdown 形式描述具体任务的判断条件、工作流和最佳实践。README 中列出了 40 多个技能，覆盖 `product-marketing`、`copywriting`、`cro`、`seo-audit`、`analytics`、`ads`、`pricing`、`launch`、`revops` 等方向，并通过交叉引用让代理在执行任务前先读取产品、受众和定位上下文。
+- **它是什么**：Clypra 是一个基于 Tauri v2、React 19、TypeScript 和 Rust/FFmpeg 的开源视频编辑器，核心编辑器、特效引擎和 UI 组件采用 MIT License 开放。它支持多格式媒体导入、多轨时间线、帧级裁剪、实时预览、文字叠加、音频波形、项目持久化和 H.264/H.265/ProRes 导出，并计划通过可选 Pro 层提供自然语言剪辑、自动字幕、智能重构图等 AI 功能。
+- **能解决什么痛点**：一类痛点是创作者想要无水印、无订阅限制的视频剪辑能力，但又不想被纯云端或封闭商业编辑器绑定。另一类是开发者或团队想研究桌面级视频编辑器的实现方式，包括时间线状态管理、FFmpeg 硬件解码、缩略图生成、导出流水线和跨平台打包。
+- **适合谁用**：适合需要免费桌面剪辑工具的内容创作者、独立开发者和小团队；也适合想基于 Tauri + React + Rust/FFmpeg 学习或二次开发视频编辑器的前端、Rust 和多媒体工程师。
+- **怎么上手**：macOS 推荐通过 Homebrew 安装：`brew install AIEraDev/tap/clypra`。
+- **可以用在哪些场景**：可用于剪辑短视频素材并导出无水印成片；用于搭建内部视频处理或内容生产工作流的原型；用于研究多轨时间线、音视频同步、缩略图缓存和硬件加速解码在桌面应用里的工程实现。
+- **技术看点**：项目采用 React/Zustand 负责编辑器前端状态和时间线 UI，Rust/Tauri + FFmpeg 负责原生视频处理，架构上把浏览器 UI 和本地高性能媒体管线分开。README 中提到的解码器预热、LRU 解码器池、Web Worker 缩略图生成、批量缩略图 atlas 和平台硬件解码，对做视频类桌面应用有较强参考价值。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-13，开发非常密集，重点明显转向移动端导出能力：包括 WebCodecs 移动编码器、移动端本机导出、云渲染 fallback、能力检测、三级移动导出 UI，以及移动分享接口。同时也在修复 API 错误处理、缓存策略、缺失依赖和 mobile safe area，说明项目正从桌面编辑能力向移动端可用性和发布稳定性推进。
+- **同类对比**：README 明确提到目标是提供免费能力来覆盖部分 premium CapCut 功能，差异在于 Clypra 强调开源、MIT License、无水印、无订阅限制，并把核心编辑能力开放给用户和开发者自行运行或二次开发。
+- **注意事项**：项目创建于 2026-04-26，时间较新，虽然 Stars 增长快且近期更新频繁，但贡献者数量目前只有 2 人，维护集中度较高。README 文档较完整，覆盖安装、架构、开发、测试和质量检查；不过移动端导出相关功能近期提交密集，版本从 v1.1.0 到 v1.1.1 连续修复，实际稳定性需要结合 release 和本机测试判断。Open Issues 为 15 个，数量不高，但作为视频编辑器这类复杂应用，跨平台编解码、硬件加速和移动端兼容仍可能有较多边界问题。
 
-- **能解决什么痛点**：开发者或创始人让 AI 写落地页、做 SEO 审计、设计 A/B 测试时，常见问题是提示词零散、上下文缺失、每次都要重新解释产品定位。这个项目把营销任务拆成可复用的技能，让代理在不同营销场景中能按固定框架工作，而不是只生成一段泛泛的营销文案。
-
-- **适合谁用**：适合正在用 Claude Code、OpenAI Codex、Cursor、Windsurf 等 Agent 工具的技术营销人员、独立开发者和 SaaS 创始人。也适合需要把营销流程标准化到仓库里的增长工程师或小团队。
-
-- **怎么上手**：`npx skills add coreyhaines31/marketingskills`
-
-- **可以用在哪些场景**：为 SaaS 官网生成或重写首页、定价页、竞品对比页文案；让 AI Agent 检查站点 SEO、结构化数据和内容策略；围绕注册、付费墙、 onboarding、流失挽回等流程设计转化优化实验。
-
-- **技术看点**：项目遵循 Agent Skills spec，用 Markdown 技能文件表达代理可读取的领域知识和执行流程，核心价值不在 JavaScript 代码本身，而在技能之间的依赖关系和任务触发边界设计。`product-marketing` 被设定为基础上下文，其他技能先读取它再执行，适合需要长期维护品牌、定位和受众信息的 Agent 工作流。
-
-- **近期动向与发展方向**：最近提交集中在新增和扩展营销技能，而不是底层重构。6 月新增了 `offers`、AI SEO 的 Open Knowledge Format 覆盖，7 月发布 v2.6.0 并加入 `marketing-loops`，同时持续更新广告技能以适配 Meta Andromeda 时代的投放方式。提交频率较高，主要由 Corey Haines 合并和维护，说明项目仍处于快速扩展技能覆盖面的阶段。
-
-- **同类对比**：README 没有明确列出同类竞品或对标项目。它更像是面向 AI Agent 的营销知识包，而不是传统的营销自动化 SaaS、SEO 工具或广告投放平台。
-
-- **注意事项**：项目创建于 2026 年 1 月，半年内 Star 和 Fork 增长很快，更新也活跃，但仍属于相对年轻的知识库型项目。当前有 45 个 Open Issues，说明社区使用中仍会遇到安装、技能质量或适配问题。技能数量多、交叉引用复杂，真正落地时仍需要团队维护自己的产品定位文档，不能直接替代人工的市场判断和数据验证。
-
-- **GitHub**：[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
+- **GitHub**：[AIEraDev/Clypra](https://github.com/AIEraDev/Clypra)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Corey Haines 是一位具备较高社区可见度的个人开发者，主要影响力来自高星资源型仓库 `marketingskills`。
-**技术栈偏好**：技术栈以 JavaScript 和 Ruby 为主，但公开项目更偏向清单、知识库和技能资源整理而非重工程实现。
-**核心领域**：主要聚焦营销技能、网络安全技能、创作者技能与开发者成长相关的知识资源沉淀。
+**技术影响力**：作为拥有 91 个公开仓库且凭借 Clypra 获得较高关注的开发者，在 AI 产品与开发工具方向具备一定社区影响力。
+**技术栈偏好**：明显偏好 TypeScript 技术栈，主要围绕 Web 应用、AI 平台与产品化工具构建项目。
+**核心领域**：核心聚焦于 AI 平台工程、上下文优先的产品体验以及智能化开发/创作工具。
+
+---
+
+### ✨ par274/sharpemu (1103★)
+
+> **一句话**：SharpEmu 正在用 C# 从零实现 PlayStation 5 模拟器，目标是在 PC 上加载真实 PS5 游戏的 `eboot.bin`、执行原生指令并逐步跑通图形与系统调用链路。
+
+- **它是什么**：SharpEmu 是一个实验阶段的 PlayStation 5 模拟器项目，当前主要面向 Windows，Linux 和 macOS 支持仍在规划中。它已经能加载 `eboot.bin` 和 `.elf` 文件、执行原生 CPU 指令、读取基础游戏元数据、加载 `prx` / `sys_module`，并部分实现 kernel、Fiber、AMPR、PlayGo、AGC 和视频输出相关能力。README 明确说明项目重点不是游戏兼容性，而是模拟准确性和底层基础设施。
+
+- **能解决什么痛点**：对研究 PS5 系统架构、用户态程序加载、系统模块和图形提交流程的开发者来说，它提供了一个可读、可改的 C# 实验平台。对于模拟器开发者，它也能作为观察 PS5 游戏启动链路、kernel HLE、AGC 渲染路径和系统调用行为的参考实现。
+
+- **适合谁用**：适合研究主机模拟器、逆向工程、操作系统接口模拟和图形管线的开发者。也适合熟悉 C# / .NET、想参与早期模拟器基础设施建设的人，但不适合只想稳定运行 PS5 游戏的普通玩家。
+
+- **怎么上手**：`git clone https://github.com/par274/sharpemu.git && cd sharpemu && dotnet build`
+
+- **可以用在哪些场景**：研究 PS5 游戏 `eboot.bin` 加载、原生 CPU 指令执行和系统模块加载流程。验证特定游戏在 `sceVideoOut`、AGC、shader/resource submit 阶段的推进情况。参与补全 kernel 函数、HLE exports、日志系统、GUI 调试工具和游戏兼容性报告。
+
+- **技术看点**：项目选择 C# / .NET 实现底层模拟器，重点模块包括 CPU 执行、kernel HLE、系统模块加载、AGC 图形相关路径和 GUI。近期提交中出现了 SysV ABI、coalesced time writes、POSIX 错误语义、semaphore waiter 唤醒等底层细节，说明实现重心已经进入系统接口语义和兼容性细节阶段。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-11 到 2026-07-12，活跃度很高，且贡献者分布较广。开发重点包括 HLE exports、kernel 函数补全、CPU ABI 修复、AGC / VideoOut 渲染推进、日志系统、GUI 热键、全屏、搜索、音频预览和 Discord Rich Presence。整体方向是同时补底层兼容性和调试体验，其中 Quake 渲染、Demon's Souls 视频输出、Dreaming Sarah 纹理渲染等内容显示项目正在围绕真实游戏启动和画面输出逐步推进。
+
+- **同类对比**：README 明确提到 SharpEmu 不以 PS4 兼容为目标，PS4 方向已有 ShadPS4；SharpEmu 专注 PS5。它也参考了 Kyty 这类少数 PS5 模拟器项目，近期还从 Kyty 移植了 `libSceDiscMap` HLE exports，说明两者在研究方向上有交集，但 SharpEmu强调从零实现并以 C# 为主。
+
+- **注意事项**：项目创建于 2026-03-11，仍处于非常早期阶段，README 也明确说当前关注准确性和基础设施，不是游戏级稳定兼容。当前主要开发目标是 Windows，跨平台支持还未成熟；已有 20 个 open issues，说明兼容性、功能缺口和使用问题仍不少。模拟器涉及真实游戏测试与版权边界，项目要求用户使用合法获得的游戏副本，且不包含系统固件、游戏数据或专有 PlayStation 资产。
+
+- **GitHub**：[par274/sharpemu](https://github.com/par274/sharpemu)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Berk 是一位小众但有代表作的独立开发者，凭借 C# 项目 sharpemu 获得一定开源关注度。
+**技术栈偏好**：技术栈以 PHP、C#、C++ 为主，兼顾应用开发、系统调试与底层/模拟相关项目。
+**核心领域**：主要聚焦开源工具、应用开发以及游戏/系统模拟与调试方向。
+
+---
+
+### ✨ chenyme/grok2api (5810★)
+
+> **一句话**：把 Grok Build、Grok Web 和 Grok Console 的多个账号统一接入一个 Go 网关，对外提供 OpenAI / Anthropic 风格 API、模型路由和管理后台。
+
+- **它是什么**：grok2api 是一个纯 Go 实现的 Grok API 网关，后端负责账号池、模型路由、鉴权、额度与故障切换，前端提供 React 管理后台。它支持 Grok Build OAuth、Grok Web SSO、Grok Console SSO 三类 Provider，并对外暴露 Responses、Chat Completions、Images、Videos、Anthropic Messages 等兼容接口。
+- **能解决什么痛点**：一是把不同来源的 Grok 账号、模型能力和额度统一管理，避免开发者在多个入口之间手动切换 Token、账号和模型名称。二是为团队或内部系统提供统一的 `/v1/*` API、客户端密钥、用量审计和账号故障切换，减少直接对接非统一上游接口时的维护成本。
+- **适合谁用**：适合需要把 Grok 接入现有 OpenAI API 调用链路的后端开发者、AI 应用开发团队，也适合需要集中管理多账号、多模型、额度和代理池的运维或平台工程师。
+- **怎么上手**：最简方式是使用 Docker Compose：`git clone https://github.com/chenyme/grok2api.git && cd grok2api && cp config.example.yaml config.yaml && docker compose up -d`；启动前需要按 README 生成并填写 `jwtSecret`、`credentialEncryptionKey` 和管理员密码。
+- **可以用在哪些场景**：
+  - 给内部 Chat、Agent 或自动化系统提供 OpenAI 风格的 Grok 访问入口，减少业务代码改造。
+  - 统一管理多个 Grok Build / Web / Console 账号的额度、并发、优先级和故障状态。
+  - 搭建带后台审计、客户端 API Key、模型权限和媒体归档能力的团队级 AI 网关。
+- **技术看点**：后端采用 Go，官方镜像内置前端构建产物，单服务同时提供管理端和 API；存储层支持 SQLite/PostgreSQL，运行态支持 Memory/Redis，适合从本地单实例扩展到多实例部署。路由设计上区分 Build/Web/Console Provider，支持会话粘滞、额度门控、冷却、故障切换和代理池。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-07-14，说明项目近期维护非常活跃。开发重点主要在稳定性和兼容性：修复聊天流错误后的终止逻辑、图片保存数据丢失、HTTP 响应头 mutation aliasing、`json_schema` 字段覆盖等问题，同时增强 Build API 的 prompt caching，并合入管理端审计诊断相关能力；近期方向更偏向完善生产可用性、边界场景修复和管理能力补强。
+- **同类对比**：README 没有明确列出竞品或同类对标；从功能定位看，它更像面向 Grok 多入口的专用 API 网关，而不是通用模型代理项目。暂无明显同类对标。
+- **注意事项**：项目创建时间为 2025-10-10，虽然 Star 和 Fork 增长很快、Issue 数量较少，但整体仍属于较新的项目，接口行为和内部路由规则可能继续调整。README 文档较完整，覆盖部署、Provider、模型、API、配置和生产建议；但上手前必须理解 OAuth/SSO 凭据、安全密钥、数据库和媒体存储的持久化要求，并严格遵守 Grok 使用条款及当地法律法规。
+
+- **GitHub**：[chenyme/grok2api](https://github.com/chenyme/grok2api)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Chenyme 是具备较强开源传播力的个人开发者，凭借 `grok2api` 和 `Chenyme-AAVT` 等高星项目在 AI 工具与接口生态中形成了明显影响力。
+**技术栈偏好**：技术栈以 Python、Go 和 TypeScript 为主，偏向后端服务、AI 应用封装、自动化工具与 Web 辅助项目开发。
+**核心领域**：主要聚焦于 AI 接口转换、音视频/字幕处理、开源工具链与社区知识服务等实用型 AI 应用方向。
+
+---
+
+### ✨ Graphify-Labs/graphify (83730★)
+
+> **一句话**：在 AI 编程助手里输入 `/graphify`，它会把代码、数据库 schema、脚本、文档、图片和视频映射成可点击、可查询的知识图谱，让你按关系追踪项目而不是逐文件 grep。
+
+- **它是什么**：Graphify 是一个面向 Claude Code、Codex、Cursor、Gemini CLI 等 AI 编程助手的技能和 Python CLI。它会扫描项目目录，把源码 AST、跨文件调用、导入、继承关系、文档引用、注释 rationale 以及多媒体语义信息汇总到同一张图里，并输出 `graph.html`、`GRAPH_REPORT.md` 和 `graph.json`。生成后的图可以搜索节点、解释概念、查询问题，也可以追踪两个概念之间的最短路径。
+- **能解决什么痛点**：大型代码库里，开发者常常不知道某个类、接口、SQL 表或脚本到底和哪些模块相互依赖，纯文本搜索只能找到关键词，难以看清调用链和跨文件关系。对包含代码、数据库 schema、Shell/R 脚本、设计文档甚至图片视频资料的项目，它把分散信息统一成图，适合做接手项目、排查影响范围和梳理系统边界。
+- **适合谁用**：适合经常接手陌生或大型仓库的后端、全栈、平台工程师，也适合维护多语言项目、数据管道、内部工具链的团队。已经在使用 Claude Code、Cursor、Codex、Gemini CLI 或 GitHub Copilot 的开发者，上手路径会更短。
+- **怎么上手**：`uv tool install graphifyy && graphify install`，然后在 AI 编程助手里运行 `/graphify .`。
+- **可以用在哪些场景**：接手 FastAPI、Rails、Node 等大型服务时，先生成交互式 `graph.html` 查看核心节点和子系统社区；重构某个类、API 或数据库表前，用 `graphify path A B` 和 `graphify explain "概念名"` 查影响链路；给内部项目补文档时，用 `GRAPH_REPORT.md` 快速整理关键概念、异常连接和后续可追问的问题。
+- **技术看点**：代码解析主要基于 tree-sitter AST，本地完成、无需 LLM，关系边会标注 `EXTRACTED` 或 `INFERRED`，便于区分源码显式关系和解析推断关系。它明确不是向量索引，不依赖 embedding 或 vector store，而是输出可遍历的图结构，并支持 Leiden 社区发现、路径查询和节点解释。
+- **近期动向与发展方向**：最近 20 条提交几乎都集中在稳定性和边界条件修复，包括缓存写入作用域、AST cache 路径、GraphML 导出、worktree 与 `.git/info/exclude` 处理、管道提前关闭、查询日志默认关闭、跨文件脚本链接和 Ruby `.rake` 提取等。项目更新非常密集，且提交作者不止一人，说明社区维护活跃；当前阶段更像是在快速扩大适配面后，对路径解析、缓存一致性、导出兼容性和 CLI 可靠性做集中打磨。
+- **同类对比**：README 明确强调它不是 mem0、supermemory 或 dense RAG 这类记忆/检索系统：Graphify 不走向量库路线，而是构建可解释、可遍历的知识图谱。README 中的基准显示它在 LOCOMO recall@10、LongMemEval-S QA accuracy 等指标上与这些系统做了对比，但具体效果仍应以自己的代码库复测为准。
+- **注意事项**：项目创建于 2026-04-03，但已经有 83730 stars、146 位贡献者和 488 个 open issues，热度很高、迭代很快，也意味着接口和行为仍可能频繁调整。PyPI 包名是 `graphifyy` 而不是 `graphify`，安装时容易踩坑；代码解析本地完成，但文档、PDF、图片和视频的语义处理会使用助手模型或配置的 API key，需要注意隐私和成本边界。近期提交大量修复缓存、路径和导出问题，生产环境接入前建议锁定版本并先在代表性仓库上验证输出质量。
+
+- **GitHub**：[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Graphify Labs 虽成立时间很短、仓库数量有限，但凭借 graphify 项目的高星标已在开源社区获得显著关注。
+**技术栈偏好**：其技术栈明显偏向 Python，可能聚焦于数据处理、图谱建模或开发者工具类方向。
+**核心领域**：主要聚焦于以 Graphify 为核心的图数据、知识图谱或可视化相关技术领域。
+
+---
+
+### ✨ HenryNdubuaku/maths-cs-ai-compendium (5061★)
+
+> **一句话**：这是一套从向量、矩阵、概率统计一路讲到大模型、GPU 编程、AI 推理和 ML 系统设计的开放式 AI/ML 研究工程师学习手册。
+
+- **它是什么**：maths-cs-ai-compendium 是一本在线开放教材，覆盖数学、计算机科学和人工智能工程体系，内容按 18 个章节组织，从基础线性代数、微积分、概率统计讲到机器学习、NLP、计算机视觉、多模态、自动驾驶、GNN、操作系统、算法、MLOps、GPU 编程、推理优化和 ML 系统设计。项目还提供在线阅读页面，并包含一个 MCP Server，可让 Claude Code、Cursor、VS Code 等 AI 助手把本仓库作为本地知识库使用。
+- **能解决什么痛点**：很多 AI/ML 学习资料要么偏考试、要么默认读者已经掌握大量数学和系统背景，这个项目试图用“先讲直觉、再补概念”的方式把知识串起来。对准备 AI/ML 面试或从工程转研究的开发者来说，它把数学、模型、系统、部署和硬件相关知识放在同一条学习路径里，减少到处拼资料的成本。
+- **适合谁用**：适合想系统补齐 AI/ML 基础的 Python/机器学习工程师、准备进入大模型或 AI Research Engineer 岗位的开发者；也适合已经会写模型代码但缺少线性代数、概率统计、操作系统、GPU/推理优化背景的工程人员。
+- **怎么上手**：README 提供的最直接方式是在线阅读：https://henryndubuaku.github.io/maths-cs-ai-compendium/ 。如需使用 MCP Server，README 只说明需要本地 clone 仓库，未提供完整快速启动命令。
+- **可以用在哪些场景**：
+  - 按章节补齐 AI/ML 面试知识，例如从向量、矩阵、概率统计一路复习到深度学习、NLP、CV 和系统设计。
+  - 给团队新人制定 AI 工程学习路线，把数学基础、模型架构、MLOps、推理服务和 GPU 编程放进同一个训练计划。
+  - 在 Cursor、Claude Code、VS Code 等工具中接入本地 MCP Server，把教材内容作为开发和学习时可查询的知识库。
+- **技术看点**：项目虽然主要是教材内容，但仓库语言标记为 TypeScript，README 明确提到内置 MCP Server，这意味着它不只是静态文档，还尝试把知识库接入 AI 编程助手工作流。章节设计也比较工程化，除了模型原理，还覆盖 SIMD/GPU、AI Inference、ML Systems Design 等对生产落地很关键的部分。
+- **近期动向与发展方向**：最近提交主要集中在 README 和文档质量改进，包括矩阵、向量空间相关表述优化、示例补充、MkDocs 配置修复，以及 MCP 相关内容加入。3 月底集中补齐了第 16 到 18 章，随后转向可读性、措辞和站点配置维护；贡献者数量为 3，近期有外部 PR 合并，说明项目仍在维护，但社区协作规模还不大。
+- **同类对比**：暂无明显同类对标。README 没有直接比较 Fast.ai、Dive into Deep Learning、CS229/CS231n 等课程或教材，项目差异主要体现在覆盖范围更宽，并把 AI 工程、推理优化、GPU 编程和系统设计放进同一份学习资料。
+- **注意事项**：项目创建于 2026 年 2 月，时间较新，Stars 增长很快但成熟度仍需观察；当前贡献者只有 3 人、Open Issues 为 7，内容质量和更新节奏较依赖作者本人。README 叙事性较强，学习路径清晰，但 MCP Server 的安装和使用细节在提供材料中不完整，想把它接入本地 AI 助手可能需要自行查看仓库文件。由于覆盖主题很广，读者应把它当作系统学习索引和教材，而不是某个细分方向的权威参考手册。
+
+- **GitHub**：[HenryNdubuaku/maths-cs-ai-compendium](https://github.com/HenryNdubuaku/maths-cs-ai-compendium)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Henry Ndubuaku 是具有较强学术与开源影响力的 AI 开发者，凭借高星知识库与深度学习项目在技术社区形成了明确辨识度。
+**技术栈偏好**：其技术栈以 Python 为核心，结合 TypeScript 做知识与工具型项目，并使用 CUDA 深入底层并行计算与模型性能优化。
+**核心领域**：主要聚焦人工智能、深度学习基础设施、自动微分、CUDA 加速计算以及数学/计算机科学/AI 知识体系建设。
