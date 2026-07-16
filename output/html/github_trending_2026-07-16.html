@@ -101,8 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-07-16)</h1>
-<h2>今日热点：AI 代理从代码走向多场景落地</h2>
-<p>今天的热门项目显示，AI 代理生态正在从编程辅助扩展到设计审美、营销增长、交易决策、个性化教育、知识学习与本地化应用构建，同时开源创作工具、安全防护、低成本模型代理、可运行的 Agent/RAG 应用集合，以及面向游戏、健身数据和虚拟陪伴的垂直项目也在升温，整体主题是把 AI 能力嵌入更具体、更可控、更可交付的真实工作流中，具体项目摘要如下：</p>
+<h2>今日热点：AI Agent 从编码走向多场景实用化</h2>
+<p>今天的技术热点集中在 AI Agent 与实用型智能工具的快速扩展：从开源视频剪辑替代品、反 AI 粗糙设计技能、工程师与营销技能库，到低成本编码代理、个人交易代理、终身个性化辅导、可运行的 LLM/RAG 应用集合，再到本地陪伴式 AI、桌面应用控制、防危险命令守护，以及 AI/ML 学习资料、健身数据集和游戏增强工具，项目覆盖开发效率、创意生产、教育学习、金融辅助、个人自动化与垂直数据基础设施等方向，显示开源社区正把大模型能力嵌入更具体、更可落地的工作流中。具体项目摘要如下：</p>
 <h3>✨ OpenCut-app/OpenCut (64111★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：OpenCut 正在重写为一套覆盖 Web、桌面和移动端的开源视频剪辑系统，目标是提供类似 CapCut 的免费替代方案。</p>
@@ -378,6 +378,31 @@
 <p><strong>技术影响力</strong>：Henry Ndubuaku 是具有较强学术与开源影响力的 AI 开发者，凭借高星知识库与深度学习项目在技术社区形成了明确辨识度。
 <strong>技术栈偏好</strong>：其技术栈以 Python 为核心，结合 TypeScript 做知识与工具型项目，并使用 CUDA 深入底层并行计算与模型性能优化。
 <strong>核心领域</strong>：主要聚焦人工智能、深度学习基础设施、自动微分、CUDA 加速计算以及数学/计算机科学/AI 知识体系建设。</p>
+<hr />
+<h3>✨ injaneity/pi-computer-use (1369★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：让 Pi 里的 AI Agent 能看见 macOS 和 Windows 桌面应用窗口，并像人一样点击、输入、滚动和等待界面变化。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：<code>pi-computer-use</code> 是一个 Pi 扩展，给 AI Agent 提供操作桌面应用的能力。它可以查找已打开的应用和窗口，观察窗口里的文字、按钮和控件，再通过点击、输入、滚动、按键等动作完成界面操作。项目同时支持 macOS 和 Windows，其中 macOS 需要额外的 helper 应用和系统权限。</li>
+<li><strong>能解决什么痛点</strong>：当目标软件没有稳定 API、MCP Server 或命令行入口时，Agent 只能面对图形界面，这个项目提供了受控的桌面 UI 操作通道。它也适合处理一些必须经过真实应用窗口完成的流程，例如点击设置项、读取弹窗内容、等待页面状态变化。</li>
+<li><strong>适合谁用</strong>：适合正在构建 Pi Agent 工作流、需要让 Agent 操作本地桌面软件的开发者。也适合做桌面自动化、内部运营工具自动化、AI 代办流程验证的工程团队。</li>
+<li><strong>怎么上手</strong>：<code>pi install npm:@injaneity/pi-computer-use</code></li>
+<li><strong>可以用在哪些场景</strong>：让 Agent 操作没有 API 的传统桌面软件；自动检查应用窗口中的按钮、文本和状态变化；在 macOS 或 Windows 上执行需要真实图形界面参与的内部流程测试。</li>
+<li><strong>技术看点</strong>：项目以不可变、状态作用域的观察结果为核心，把桌面 surface 和 CDP page 组织成多根树结构，并对独立 root 做并行处理。公开工具面向较高层的 <code>find_roots</code>、<code>observe_ui</code>、<code>search_ui</code>、<code>act_ui</code> 等能力，旧的直接截图、点击、设文本接口已不再作为公共扩展接口暴露。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常密集，7 月中旬连续合并了运行时修复、工具输出边界控制、浏览器条件校验、macOS root 身份解析等改动。整体看，项目正在从早期能力验证转向稳定化：一方面修补 macOS 权限、签名、helper 安装与重载问题，另一方面在核心层简化工具契约、限制输出大小，并推进并行和后台优先的 computer use 架构。</li>
+<li><strong>同类对比</strong>：README 明确说明它不是应用 API 或 MCP Server 的替代品；如果目标应用有可靠的直接集成，应优先使用 API 或 MCP，<code>pi-computer-use</code> 更适合只能通过屏幕界面交互的情况。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较新，但 Stars 增长快、近期提交活跃，仍可能存在接口和行为继续调整的风险。macOS 端要求 macOS 14+，并需要授予 Accessibility 和 Screen Recording 权限，签名或 helper 更新后可能涉及重新授权；Windows 需要交互式桌面会话。当前 Open Issues 为 5 个，问题量不高，但从提交记录看平台兼容性和安装权限流程仍是重点打磨区域。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/injaneity/pi-computer-use">injaneity/pi-computer-use</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：injaneity 是一位影响力处于上升期的个人开发者，凭借 <code>pi-computer-use</code> 获得较高关注，在细分 AI 工具方向具备一定社区可见度。
+<strong>技术栈偏好</strong>：其技术栈以 TypeScript 为主，辅以 Python 和 JavaScript，偏向构建 AI 应用、自动化工具与开发者效率类项目。
+<strong>核心领域</strong>：主要聚焦于 AI Agent、计算机使用自动化、智能复制与提示词模板等面向生产力增强的 AI 工具生态。</p>
 <hr />
 <h3>✨ Shubhamsaboo/awesome-llm-apps (118365★)</h3>
 <blockquote>
