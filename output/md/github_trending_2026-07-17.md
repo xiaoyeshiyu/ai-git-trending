@@ -1,5 +1,5 @@
-## 今日热点：AI 代理基础设施与技能化开发工具升温
-今天的热门项目明显围绕 AI 代理生态、开发者工作流和可运行应用范式展开：从 GitHub Copilot SDK、OpenInterpreter、LobeHub、PostHog 到 Graphify，焦点集中在让代理能接入真实产品、理解代码与数据上下文、持续观测并执行任务；同时，Hallmark、skills、ui-skills 等项目把设计、工程和编码经验沉淀成可复用技能，OpenCut、DeepTutor、Bonsai-demo、awesome-llm-apps 则展示了 AI 应用落地的多样场景；Apache Ossie 关注语义数据交换标准，exercises-dataset 提供结构化健身数据，YimMenuV2 面向游戏实验工具，而 build-your-own-x 与 OSSU computer-science 继续代表扎实的计算机学习路线。具体项目摘要如下：
+## 今日热点：AI 代理工具链与开放技术学习加速融合
+今日 GitHub 热点明显围绕 AI 代理工程化、开发者生产力与开放应用生态展开：从 Copilot SDK、OpenInterpreter、LobeHub、Graphify 到 PostHog，开发流程正从单点编码助手走向可观测、可调度、可集成的智能系统；同时，OpenCut、Ossie、DeepTutor、awesome-llm-apps 等项目体现了开源替代、语义数据标准、个性化教育和可运行 AI 应用的持续升温；设计与工程技能类仓库、从零构建技术教程、计算机科学自学路径以及健身数据集、游戏实验工具等也显示出社区对实用技能、结构化数据和垂直场景落地的关注。具体项目摘要如下：
 
 ### ✨ apache/ossie (815★)
 
