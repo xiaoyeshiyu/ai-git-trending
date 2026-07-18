@@ -1,5 +1,5 @@
-## 今日热点：AI 编程基础设施与开源生产力工具升温
-今日 GitHub 热点集中在 AI 编程代理、代码理解、开发者教育与开源生产力基础设施：既有 GitHub Copilot SDK、OpenInterpreter、code-review-graph 等面向智能编码与上下文管理的工具，也有 PostHog、protobuf、turbovec 等支撑产品分析、数据交换和向量检索的底层项目；同时，build-your-own-x、maths-cs-ai-compendium、DeepTutor、cwc-workshops 体现出从底层复刻到 AI/ML 研究训练、个性化教学的学习需求，DocuSeal 与 OpenCut 则延续了开源替代商业软件的趋势，Nutlope/hallmark 和 Bonsai-demo 也反映出 AI 时代设计质量与演示型应用的关注度上升。具体项目摘要如下：
+## 今日热点：AI 编程工具链与开发基础设施升温
+今天的热门项目集中在 AI 驱动的软件开发、代码理解与产品工程基础设施上：从 GitHub Copilot Agent SDK、OpenInterpreter、PostHog、code-review-graph 到面向 Claude Code/Cursor/Codex 的设计与上下文优化工具，显示智能体正在深入编码、观测、评审和产品迭代流程；同时，build-your-own-x、maths-cs-ai-compendium、DeepTutor 等学习型项目延续了从底层复现到 AI/ML 研究训练的热度，protobuf、turbovec 则代表数据交换与向量检索等底层能力，DocuSeal、OpenCut 等开源替代品也反映出生产力软件继续向开放生态迁移。具体项目摘要如下：
 
 ### ✨ codecrafters-io/build-your-own-x (526083★)
 
