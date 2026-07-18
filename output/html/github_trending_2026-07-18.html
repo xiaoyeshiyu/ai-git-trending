@@ -101,48 +101,94 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-07-18)</h1>
-<h2>今日热点：AI 编程工具链与开发基础设施升温</h2>
-<p>今天的热门项目集中在 AI 驱动的软件开发、代码理解与产品工程基础设施上：从 GitHub Copilot Agent SDK、OpenInterpreter、PostHog、code-review-graph 到面向 Claude Code/Cursor/Codex 的设计与上下文优化工具，显示智能体正在深入编码、观测、评审和产品迭代流程；同时，build-your-own-x、maths-cs-ai-compendium、DeepTutor 等学习型项目延续了从底层复现到 AI/ML 研究训练的热度，protobuf、turbovec 则代表数据交换与向量检索等底层能力，DocuSeal、OpenCut 等开源替代品也反映出生产力软件继续向开放生态迁移。具体项目摘要如下：</p>
-<h3>✨ codecrafters-io/build-your-own-x (526083★)</h3>
+<h2>今日热点：AI 工程化与本地智能基础设施</h2>
+<p>今天的技术热点集中在 AI 从模型能力走向工程落地与本地化基础设施：既有面向流式数据的 3D 场景重建基础模型、70B 大模型低显存推理和 CLI 智能体，也有语义元数据标准、产品分析与可观测平台、代码智能图谱、本地优先的搜索抓取研究工具，以及设计工程技能、从零构建 AI 工程能力和经典技术复刻学习资源，整体呈现出围绕 AI 编码、数据语义、开发者体验与低成本部署的全链路演进。具体项目摘要如下：</p>
+<h3>✨ Robbyant/lingbot-map (12655★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把数据库、Docker、Git、浏览器、操作系统、AI 模型等经典技术拆成一组“从零重做”的教程清单，适合用造轮子的方式理解底层原理。</p>
+<p><strong>一句话</strong>：LingBot-Map 可以从连续输入的图像或视频流中实时重建 3D 场景，并在浏览器里交互查看点云和相机轨迹。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：这是一个以 Markdown 维护的学习资源合集，收录大量“Build your own X”类型教程。README 按技术类别组织链接，例如 3D Renderer、AI Model、BitTorrent Client、Blockchain、Database、Docker、Git、Shell、Web Browser、Web Server 等，每个条目通常标注实现语言和教程标题。它本身不是可运行框架，而是面向开发者的系统化项目练习索引。</p>
+<p><strong>它是什么</strong>：LingBot-Map 是一个面向流式 3D 重建的前馈式基础模型，论文名称为 Geometric Context Transformer。它把坐标锚定、密集几何线索、长距离漂移校正放在同一个流式框架里，支持从图片序列或视频中生成场景重建结果。README 提供了交互式 <code>demo.py</code>、离线渲染流水线、多个示例场景，以及 HuggingFace / ModelScope 模型权重下载入口。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：很多开发者想理解 Git、数据库、浏览器、Docker、神经网络这类基础技术，但直接读源码或论文门槛很高；这个仓库提供了从小实现开始的学习路径。另一个痛点是高质量教程分散在博客、书籍、课程和 GitHub 项目里，这里把它们按主题集中整理，减少检索成本。</p>
+<p><strong>能解决什么痛点</strong>：传统 3D 重建常依赖迭代优化，长视频或大尺度场景处理起来慢、显存压力大，且容易出现轨迹漂移。LingBot-Map 通过前馈推理、paged KV cache attention 和关键帧缓存策略，面向超过 10,000 帧的长序列做稳定重建，README 中标称在 518×378 分辨率下可达到约 20 FPS。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合想补计算机系统、网络、数据库、编译器、图形学等基础的后端、基础设施和全栈工程师。也适合准备技术面试、做个人项目集、或希望通过动手实现理解 AI/LLM、RAG、Diffusion 等概念的开发者。</p>
+<p><strong>适合谁用</strong>：适合做机器人感知、SLAM、三维重建、自动驾驶/户外场景理解的研究者和工程师。也适合需要把视频、图片序列快速转成可视化 3D 场景的 Python / PyTorch 用户。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：最小流程是先安装环境和项目，再下载模型权重运行示例：<code>conda create -n lingbot-map python=3.10 -y &amp;&amp; conda activate lingbot-map &amp;&amp; pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cu128 &amp;&amp; pip install -e . &amp;&amp; python demo.py --model_path /path/to/lingbot-map-long.pt --image_folder example/courthouse --mask_sky</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可用于机器人室内巡检视频的三维地图重建，例如 README 中提到的约 25,000 帧、13 分钟室内 walkthrough。可用于 Oxford、KITTI 等户外或车载数据集的场景重建评估。也可用于把航拍、校园、法院建筑、环形路径等图片序列快速转成可交互查看的点云和相机轨迹。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：核心是 Geometric Context Transformer，通过 anchor context、pose-reference window 和 trajectory memory 处理流式输入中的几何上下文和长距离漂移。推理侧支持 FlashInfer 的 paged KV cache attention，也可回退到 PyTorch SDPA；对长序列还提供 <code>--keyframe_interval</code> 和 windowed inference 来控制显存与稳定性。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在 README、安装说明、渲染说明、示例命令和 benchmark 文档补充，说明项目近期重点是降低复现门槛和完善演示流程。7 月初有一次 SDPA KV cache bug 修复，针对长序列性能做了改进；后续多次调整 keyframe interval、indoor demo 和 rendering instructions，方向明显偏向长视频重建、离线渲染和可复现实验。贡献者数量为 3，提交作者较集中，社区协作规模还不大。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确称其在多种 benchmark 上优于现有 streaming 方法和 iterative optimization-based 方法，但未在给定素材中列出具体竞品名称。可以理解为它主要对标传统优化式 3D 重建和已有流式重建方案，差异点在于前馈式实时推理与长序列 KV cache 设计。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026-04-15，时间还很新，虽然 Star 增长很快，但成熟度仍需要结合真实使用验证。安装依赖偏重，推荐 PyTorch 2.8.0 + CUDA 12.8，离线 batch rendering 还涉及 NVIDIA Kaolin；FlashInfer 虽推荐使用，但首次运行会 JIT 编译 CUDA kernel。当前有 63 个 open issues，说明已有用户反馈和待处理问题；近期提交以文档和示例为主，API 或参数行为仍可能继续调整。长序列推理还需要根据场景调 <code>--keyframe_interval</code> 或切到 <code>--mode windowed</code>，README 也提示超过训练距离后可能出现 pose collapse。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Robbyant/lingbot-map">Robbyant/lingbot-map</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Robbyant 是一个新近成立但增长迅速的技术组织，凭借多个高星 Python 项目在开源社区形成了较强关注度。
+<strong>技术栈偏好</strong>：其技术栈明显偏向 Python，项目命名显示主要围绕智能体、视觉语言能力、地图、世界模型与深度感知等方向展开。
+<strong>核心领域</strong>：核心聚焦于具身智能、视觉语言模型与机器人感知决策相关的 AI 技术生态。</p>
+<hr />
+<h3>✨ apache/ossie (815★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Apache Ossie 用 JSON/YAML 规格把 BI、AI Agent、dbt 等数据工具里的指标、维度和业务口径统一成可交换的语义模型。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：Apache Ossie 是 Apache 孵化中的开放规范项目，原名 Open Semantic Interchange（OSI）。它定义了一套厂商中立的语义模型规格，并提供核心 schema、示例模型、校验工具和一批参考转换器，用来在不同分析、AI、BI 平台之间交换语义元数据。仓库里包含 <code>core-spec/</code>、<code>converters/</code>、<code>examples/</code>、<code>validation/</code> 和 <code>docs/</code>，重点不是单一应用，而是推动生态间的语义模型互操作。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：很多公司会在 BI 工具、dbt、AI Agent 和内部数据平台里重复维护“收入”“活跃用户”“转化率”等指标定义，口径稍有不同就会导致报表和 AI 回答互相打架。Ossie 试图提供一个单一、可校验、可转换的语义定义来源，减少跨工具迁移和对齐业务逻辑时的手工协调成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合维护企业语义层、指标平台或 BI 数据模型的数据平台工程师；也适合正在把 dbt、GoodData、Polaris、Salesforce、Omni 等工具接入统一语义模型的数据工程团队和分析工程师。</p>
 </li>
 <li>
 <p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
 </li>
 <li>
-<p><strong>可以用在哪些场景</strong>：可以用于制定个人底层技术学习路线，例如从“Build your own Shell”到“Build your own Operating System”逐步深入系统编程。可以用于团队内部技术读书会或训练营，把“自己实现 Redis / Git / Web Server”作为阶段性练习。也可以用于筛选个人项目题目，做出能展示工程理解深度的作品集。</p>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在公司内部建立统一指标口径，把不同 BI 工具和 AI Agent 使用的业务定义收敛到同一份 JSON/YAML 语义模型。</li>
+<li>做语义模型迁移或互通，例如把 dbt、GoodData、Polaris、Salesforce 或 Omni 相关语义格式转换到 Ossie 规格或从 Ossie 导出。</li>
+<li>
+<p>在数据平台 CI 流程中加入语义模型校验，确保提交的指标、维度、关系定义符合统一 schema。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目的价值不在代码实现，而在信息架构：按技术领域聚合跨语言、跨平台的高质量教程，并优先收录 step-by-step 的从零实现材料。它覆盖面很广，从 C/C++ 系统方向到 Python AI、JavaScript 前端框架、Rust CLI 都有入口。</p>
+<p><strong>技术看点</strong>：核心设计是 JSON/YAML 可读写规格加机器可校验 schema，利于接入现有数据平台和 CI/CD 流程。仓库同时维护多种 converter，说明它更偏“开放交换标准 + 参考实现”，而不是只服务某一个厂商生态。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近提交以维护 README 链接、修正锚点、合并社区新增教程为主，没有看到架构性重构。2026 年新增和更新了 AI Model、Deep Learning、Database、Reddit Bot 等条目，说明项目仍在跟随热门技术主题扩展内容；多条 PR 来自不同贡献者，社区维护活跃度较高。</p>
+<p><strong>近期动向与发展方向</strong>：最近提交非常密集，7 月 14 日到 16 日连续合入 converter 修复、Omni 语义模型转换器、表达式语言文档、dbt pytest 修复、Polaris 构建修复和 schema 打包调整。近期重点明显集中在扩展转换器覆盖面、修复构建与校验链路、补充规范文档，说明项目仍处在快速打磨规格和生态适配阶段。贡献者包含多位个人开发者、维护者和 dependabot，社区协作活跃度较高。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：暂无明显同类对标。它更像 curated list，而不是 Codecrafters 平台那种交互式闯关课程；优势是覆盖面广、入口集中，劣势是教程质量和更新状态取决于外部链接本身。</p>
+<p><strong>同类对比</strong>：README 没有直接点名同类竞品。它的定位更像跨 BI、AI、分析平台的语义模型交换规范，而不是替代某一个具体语义层产品。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2018 年，Star 数超过 52 万，成熟度和影响力很高，但 Open Issues 有 522 个，说明链接失效、分类调整、资源质量争议等维护压力不小。由于它主要是外链合集，部分教程可能过时、断链或技术栈版本较旧，实际学习前需要检查教程更新时间和依赖版本。对新手来说，很多主题并不适合作为第一门编程练习，最好从 CLI、Shell、Web Server、Database 这类边界较清晰的项目开始。</p>
+<p><strong>注意事项</strong>：项目创建时间较新，当前是 Apache incubating，规格和转换器接口存在继续演进的可能。58 个 open issues 对一个早期标准化项目来说不算异常，但也意味着落地时需要关注未解决的兼容性、转换准确性和文档缺口。README 对仓库结构说明清楚，但没有给出最小安装或运行示例，上手需要继续阅读各子目录文档。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/codecrafters-io/build-your-own-x">codecrafters-io/build-your-own-x</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/apache/ossie">apache/ossie</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：CodeCrafters 是面向开发者学习与系统实现实践的高影响力组织，凭借 build-your-own-x 等项目在开源教育社区拥有显著传播力。
-<strong>技术栈偏好</strong>：其技术栈以 Markdown、Shell 和 Ruby 为主，偏向课程内容组织、自动化脚本与学习平台生态支撑。
-<strong>核心领域</strong>：主要聚焦通过从零实现 Git、SQLite、Redis 等经典基础设施来训练开发者的系统编程与底层原理能力。</p>
+<p><strong>技术影响力</strong>：Apache 软件基金会是全球开源基础设施级组织，拥有大量高星项目和广泛社区影响力。
+<strong>技术栈偏好</strong>：技术栈覆盖 TypeScript、Python、Scala、Java，偏向数据平台、分布式系统和开发者基础设施。
+<strong>核心领域</strong>：核心聚焦大数据处理、数据可视化、工作流调度、消息系统和开源企业级中间件。</p>
 <hr />
 <h3>✨ PostHog/posthog (35728★)</h3>
 <blockquote>
@@ -185,225 +231,71 @@
 <strong>技术栈偏好</strong>：其技术栈以 Python 和 TypeScript 为主，偏向全栈 Web 平台、前端 SDK、数据分析与产品基础设施建设。
 <strong>核心领域</strong>：主要聚焦产品分析、功能实验、用户行为观测、特性发布与开源增长平台。</p>
 <hr />
-<h3>✨ HenryNdubuaku/maths-cs-ai-compendium (5061★)</h3>
+<h3>✨ ibelick/ui-skills (4094★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：这是一套从向量、矩阵、概率统计一路讲到大模型、GPU 编程、AI 推理和 ML 系统设计的开放式 AI/ML 研究工程师学习手册。</p>
+<p><strong>一句话</strong>：把常见 UI 设计工程任务整理成可被 CLI 和代理调用的技能集，让开发者按任务快速找到合适的界面实现方法。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：maths-cs-ai-compendium 是一本在线开放教材，覆盖数学、计算机科学和人工智能工程体系，内容按 18 个章节组织，从基础线性代数、微积分、概率统计讲到机器学习、NLP、计算机视觉、多模态、自动驾驶、GNN、操作系统、算法、MLOps、GPU 编程、推理优化和 ML 系统设计。项目还提供在线阅读页面，并包含一个 MCP Server，可让 Claude Code、Cursor、VS Code 等 AI 助手把本仓库作为本地知识库使用。</li>
-<li><strong>能解决什么痛点</strong>：很多 AI/ML 学习资料要么偏考试、要么默认读者已经掌握大量数学和系统背景，这个项目试图用“先讲直觉、再补概念”的方式把知识串起来。对准备 AI/ML 面试或从工程转研究的开发者来说，它把数学、模型、系统、部署和硬件相关知识放在同一条学习路径里，减少到处拼资料的成本。</li>
-<li><strong>适合谁用</strong>：适合想系统补齐 AI/ML 基础的 Python/机器学习工程师、准备进入大模型或 AI Research Engineer 岗位的开发者；也适合已经会写模型代码但缺少线性代数、概率统计、操作系统、GPU/推理优化背景的工程人员。</li>
-<li><strong>怎么上手</strong>：README 提供的最直接方式是在线阅读：https://henryndubuaku.github.io/maths-cs-ai-compendium/ 。如需使用 MCP Server，README 只说明需要本地 clone 仓库，未提供完整快速启动命令。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>按章节补齐 AI/ML 面试知识，例如从向量、矩阵、概率统计一路复习到深度学习、NLP、CV 和系统设计。</li>
-<li>给团队新人制定 AI 工程学习路线，把数学基础、模型架构、MLOps、推理服务和 GPU 编程放进同一个训练计划。</li>
-<li>在 Cursor、Claude Code、VS Code 等工具中接入本地 MCP Server，把教材内容作为开发和学习时可查询的知识库。</li>
-<li><strong>技术看点</strong>：项目虽然主要是教材内容，但仓库语言标记为 TypeScript，README 明确提到内置 MCP Server，这意味着它不只是静态文档，还尝试把知识库接入 AI 编程助手工作流。章节设计也比较工程化，除了模型原理，还覆盖 SIMD/GPU、AI Inference、ML Systems Design 等对生产落地很关键的部分。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交主要集中在 README 和文档质量改进，包括矩阵、向量空间相关表述优化、示例补充、MkDocs 配置修复，以及 MCP 相关内容加入。3 月底集中补齐了第 16 到 18 章，随后转向可读性、措辞和站点配置维护；贡献者数量为 3，近期有外部 PR 合并，说明项目仍在维护，但社区协作规模还不大。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。README 没有直接比较 Fast.ai、Dive into Deep Learning、CS229/CS231n 等课程或教材，项目差异主要体现在覆盖范围更宽，并把 AI 工程、推理优化、GPU 编程和系统设计放进同一份学习资料。</li>
+<li><strong>它是什么</strong>：ui-skills 是面向 Design Engineers 的 UI 技能集合，项目提供网站内容和一个可通过 <code>npx</code> 直接运行的 CLI。README 中明确支持按分类查看技能、列出某类技能，以及获取某个具体技能，例如 <code>baseline-ui</code>。</li>
+<li><strong>能解决什么痛点</strong>：做界面细节时，开发者经常需要在动效、布局、视觉质量、代码质量等零散经验之间来回查找；这个项目把这些内容按“技能”组织起来，便于按任务定位。它还可以把 agent 路由到合适的 UI skill set，减少让 AI 处理 UI 任务时上下文不匹配的问题。</li>
+<li><strong>适合谁用</strong>：适合需要同时关注前端实现和界面质量的 Design Engineer、前端开发者；也适合正在把 AI agent 接入 UI 开发流程、希望为不同 UI 任务提供明确技能上下文的团队。</li>
+<li><strong>怎么上手</strong>：<code>npx ui-skills start</code></li>
+<li><strong>可以用在哪些场景</strong>：用于让 AI agent 处理具体 UI 任务前先加载对应技能集；用于前端团队整理 motion、baseline UI、code quality 等界面工程实践；用于个人开发者在实现新页面或优化组件细节时快速查找相关 UI 技能。</li>
+<li><strong>技术看点</strong>：项目主体使用 TypeScript，并提供无需安装即可通过 <code>npx</code> 调用的 CLI；从 README 看，它不只是静态资料站，还把技能集合设计成可被命令行和 agent 工作流消费的结构化入口。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常密集，7 月中旬连续新增 skills、刷新首页 featured skills，并补充 code quality、improve-ui 等方向内容，说明当前重点是扩充技能库和内容分类。同时也在修复 canonical URL、sitemap、静态资源、Worker、导航按钮和缓存行为，表明项目正处于快速迭代期，网站可访问性和发布稳定性也在同步打磨。近期合并过外部 PR，但最近 20 条提交主要由维护者 ibelick 推进，社区参与有但核心开发仍较集中。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 2 月，时间较新，Stars 增长很快但成熟度仍需观察；当前贡献者只有 3 人、Open Issues 为 7，内容质量和更新节奏较依赖作者本人。README 叙事性较强，学习路径清晰，但 MCP Server 的安装和使用细节在提供材料中不完整，想把它接入本地 AI 助手可能需要自行查看仓库文件。由于覆盖主题很广，读者应把它当作系统学习索引和教材，而不是某个细分方向的权威参考手册。</p>
+<p><strong>注意事项</strong>：项目创建时间较新，但 Stars 增长明显、更新频率高，适合关注早期生态的人试用；同时这也意味着 CLI 行为、技能命名和内容结构仍可能变化。README 较简洁，只给出了基础命令，缺少更完整的技能格式、agent 集成方式和版本兼容说明；当前 Open Issues 为 9 个，问题规模不大，但生产环境接入前仍建议先固定版本并验证工作流。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/HenryNdubuaku/maths-cs-ai-compendium">HenryNdubuaku/maths-cs-ai-compendium</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/ibelick/ui-skills">ibelick/ui-skills</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Henry Ndubuaku 是具有较强学术与开源影响力的 AI 开发者，凭借高星知识库与深度学习项目在技术社区形成了明确辨识度。
-<strong>技术栈偏好</strong>：其技术栈以 Python 为核心，结合 TypeScript 做知识与工具型项目，并使用 CUDA 深入底层并行计算与模型性能优化。
-<strong>核心领域</strong>：主要聚焦人工智能、深度学习基础设施、自动微分、CUDA 加速计算以及数学/计算机科学/AI 知识体系建设。</p>
+<p><strong>技术影响力</strong>：Julien Thibeaut 是前端开源生态中具有较高可见度的个人开发者，多个 TypeScript 项目获得数千 stars，影响力集中在 UI 与交互工具方向。
+<strong>技术栈偏好</strong>：其技术栈明显偏向 TypeScript，主要围绕现代前端组件、动效、设计系统与开发者工具构建项目。
+<strong>核心领域</strong>：主要聚焦于前端 UI 基础设施、交互动效组件、界面素材与 AI/Prompt 相关产品化工具。</p>
 <hr />
-<h3>✨ Nutlope/hallmark (4080★)</h3>
+<h3>✨ rohitg00/ai-engineering-from-scratch (38984★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：Hallmark 给 Claude Code、Cursor 和 Codex 加上一套“反 AI 味”设计规则，让生成的网页不再像换色模板，而是按不同 brief 产出不同结构、字体、配色和视觉节奏。</p>
+<p><strong>一句话</strong>：一套从线性代数、反向传播、Tokenizer、Attention 一路写到 Agent、MCP Server 和多智能体系统的 AI 工程课程仓库。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Hallmark 是一套面向 AI 编程工具的设计 skill，核心是把页面生成过程约束在一套明确的设计协议里。它会根据需求选择宏观页面结构，套用二十个主题之一，或在需求有明确创意方向时进入 Custom 模式从头设计。生成前还会跑 57 个“slop-test”检查点和一次自我审查，避免常见的 AI 生成网页套路。</p>
+<p><strong>它是什么</strong>：这是一个面向 AI 工程学习的开源课程项目，README 标称包含 20 个阶段、503 节课、约 320 小时内容，覆盖 Python、TypeScript、Rust、Julia。每节课按“理解问题、推导数学、手写代码、运行测试、产出可复用 artifact”的路径组织，目标不是只会调用 API，而是能从底层实现理解模型、工具调用和 Agent 系统。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：它主要解决 AI 生成前端页面时常见的“同质化”：大渐变、居中 hero、卡片堆叠、换个颜色就像同一个模板。另一个痛点是设计审查困难，<code>hallmark audit</code> 可以对现有页面按反模式打分并给出修改清单，不直接改代码。</p>
+<p><strong>能解决什么痛点</strong>：很多开发者会做 LLM 应用或 Agent Demo，但解释不清 loss curve、attention、KV cache、agent loop 为什么这样工作；这个项目用从零实现的方式补齐底层理解。另一个痛点是 AI 学习资料分散，数学、深度学习、LLM 工程、MCP、生产部署各学各的，项目把它们串成一条连续路线。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合经常用 Claude Code、Cursor、Codex 生成落地页、产品页、活动页原型的前端开发者和独立开发者。也适合需要快速把品牌、文案和信息架构转成有辨识度网页的设计工程师或产品团队。</p>
+<p><strong>适合谁用</strong>：适合已经会写代码、想系统补 AI 工程基本功的 Python 开发者或后端工程师。也适合正在做 LLM 应用、Agent、MCP 工具链，但希望理解底层机制和生产工程细节的工程师。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：<code>npx skills add nutlope/hallmark</code></p>
+<p><strong>怎么上手</strong>：<code>git clone https://github.com/rohitg00/ai-engineering-from-scratch.git &amp;&amp; cd ai-engineering-from-scratch &amp;&amp; python phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py</code></p>
 </li>
 <li>
-<p><strong>可以用在哪些场景</strong>：可以用于让 AI 生成 SaaS 产品首页时避免默认模板感，按产品气质选择更合适的结构和视觉主题。也可以用于改造已有落地页，通过 <code>hallmark redesign</code> 保留文案、信息架构和品牌，但重做页面结构。还可以用 <code>hallmark study</code> 分析参考设计的宏观结构、字体搭配和色彩锚点，沉淀成可交给其他 AI 工具使用的 <code>design.md</code>。</p>
+<p><strong>可以用在哪些场景</strong>：用于给团队新人设计 AI 工程学习路径，从数学基础逐步过渡到 LLM 和 Agent 工程。用于自学实现 Transformer、Tokenizer、Agent loop、MCP Server 等核心组件，而不是直接复制框架示例。也可以把每节课产出的 prompt、skill、agent 或 MCP server 放进 Claude、Cursor、Codex 等日常开发工作流中复用。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目不是传统运行时库，而是以 <code>SKILL.md</code> 和 references 规则集的形式接入 AI 编程工具，重点在“设计决策协议”而不是组件封装。README 中强调每个示例都是自包含 HTML + CSS，并在 CSS 注释中标记宏观结构，便于回溯页面生成策略。</p>
+<p><strong>技术看点</strong>：课程设计强调“Build It / Use It / Ship It”：先用原始数学和代码实现小版本，再对照 PyTorch、sklearn 等生产库，最后沉淀成可复用工具。近期还加入了课程级交互图系统，README 提到已有 134 个 widgets、覆盖 13 个模块，说明项目不只是静态文档，也在强化可视化学习体验。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近提交集中在 v1.1：新增四个主题、Custom 路由、示例图库和文案重写，同时把 slop-test 检查从 70 项合并到 57 项并同步文档引用。6 月初还有多次 README 展示、主题对比度、现有全局样式追加而非覆盖等修复，说明项目近期重点是完善规则体系、增强示例说服力，并降低安装和集成时的破坏性。贡献者数量为 4，近期提交主要由核心维护者推动，社区参与规模还不大。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在站点和课程体验：新增 About 页面、SEO/AEO 基础、交互式课程图、KV-cache sizer，并修复暗色模式、页面遮挡、图形标签溢出等问题。也有 phase-14 Agent Workbench 文档补齐和 Hugging Face 数据集路径修正，说明当前重点是完善在线课程站点、增强交互内容和修补课程细节；提交主要由作者和 GitHub Actions 产生，社区贡献有但规模不大。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：暂无明显同类对标。README 没有直接比较竞品，项目更像是 AI 编程工具的设计规则包，而不是常规 UI 框架或模板库。</p>
+<p><strong>同类对比</strong>：README 没有明确对标具体竞品。它主动区分的是“零散博客、论文、短视频、Agent Demo”这类学习方式，差异在于把数学基础、模型实现、LLM 工程、Agent 和生产化内容串成完整课程，并要求每节课产出可运行或可复用的东西。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间较新，虽然 Stars 增长很快、Open Issues 只有 5 个，但成熟度仍需要结合实际项目试用判断。它更适合生成营销页、品牌页、产品展示页等视觉表达强的页面，不等同于完整设计系统或组件库。文档和示例较丰富，但规则型项目可能会随着版本更新调整检查项和主题策略，团队接入前应固定版本或在项目内保留本地副本。</p>
+<p><strong>注意事项</strong>：项目创建于 2026-03-18，但已接近 3.9 万 Star，增长很快，仍需要关注内容稳定性和课程完成度。Open Issues 有 100 个，说明使用者反馈不少，也意味着部分课程、站点或示例可能还在快速修补中。课程体量约 320 小时，上手门槛不低，更适合愿意系统投入的人；如果只想快速集成某个 LLM API，这个项目可能偏重。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Nutlope/hallmark">Nutlope/hallmark</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/rohitg00/ai-engineering-from-scratch">rohitg00/ai-engineering-from-scratch</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有多个高星开源项目和较高关注度，是 AI 应用原型与开发者工具方向颇具影响力的独立开发者。
-<strong>技术栈偏好</strong>：明显偏好 TypeScript 生态，倾向于用现代 Web 技术快速构建面向用户的 AI 产品。
-<strong>核心领域</strong>：主要聚焦生成式 AI 应用、AI 辅助开发工具、图像处理与轻量级 SaaS 产品原型。</p>
-<hr />
-<h3>✨ github/copilot-sdk (9587★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 GitHub Copilot CLI 背后的 Agent 运行时嵌进自己的应用，让应用可以通过代码调用 Copilot 完成规划、工具调用、文件编辑等任务。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：github/copilot-sdk 是 GitHub 官方提供的多语言 Copilot Agent SDK，覆盖 TypeScript、Python、Go、.NET、Java 和 Rust。它把 Copilot CLI 的 agentic workflow 暴露成可编程接口，应用只需要定义 Agent 行为、权限和工具配置，底层的任务规划、JSON-RPC 通信、CLI 进程管理和工具调用由 SDK 处理。</li>
-<li><strong>能解决什么痛点</strong>：如果团队想在自己的 IDE、内部平台、自动化服务或开发工具里集成 Copilot Agent，通常需要自己做模型调用、工具编排、权限控制和文件修改流程；这个 SDK 直接复用 Copilot CLI 的成熟运行时，减少重复造轮子。另一个典型痛点是多语言技术栈接入不一致，它提供了多个主流语言 SDK，方便不同服务按各自语言接入同一套 Copilot 能力。</li>
-<li><strong>适合谁用</strong>：适合正在开发 AI 编程助手、内部研发平台、代码自动化工具的工程团队；也适合希望在 Java、Go、Python、Node.js、.NET 或 Rust 应用中嵌入 Copilot Agent 能力的后端和平台开发者。</li>
-<li><strong>怎么上手</strong>：Java 可通过 Maven 坐标接入：<code>com.github:copilot-sdk-java</code>；其他语言可按需安装，例如 <code>npm install @github/copilot-sdk</code>、<code>pip install github-copilot-sdk</code>、<code>go get github.com/github/copilot-sdk/go</code>、<code>dotnet add package GitHub.Copilot.SDK</code> 或 <code>cargo add github-copilot-sdk</code>。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>在公司内部开发者门户中接入 Copilot Agent，让开发者通过 Web 界面触发代码生成、文件修改或项目分析。</li>
-<li>为现有 CLI / 桌面开发工具增加 Copilot 驱动的任务执行能力，例如让用户描述需求后自动调用工具、编辑仓库文件。</li>
-<li>在企业自动化服务中封装自定义 Agent、技能和工具，用于处理代码库维护、脚手架生成、文档更新等重复任务。</li>
-<li><strong>技术看点</strong>：SDK 与 Copilot CLI server 通过 JSON-RPC 通信，应用侧不需要直接管理复杂的 Agent 编排逻辑；Node.js、Python、.NET 默认捆绑 CLI，Go、Java、Rust 则需要手动安装或保证 <code>copilot</code> 在 PATH 中。项目还支持 BYOK，可使用 OpenAI、Azure AI Foundry、Anthropic 等提供商的 API Key，而不一定依赖 GitHub 登录态。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，7 月中旬连续发布 Java v1.0.7 及多个 preview 版本，并同步更新文档版本引用。功能上近期重点包括 Go / Python 的 in-process FFI transport、SDK 工具定义的 <code>metadata</code> 透传、工具搜索配置支持，以及 Windows 测试 teardown 死锁修复；这说明项目正在补齐多语言运行时一致性、传输层能力和稳定性。提交者既有 GitHub bot 自动发布，也有多位工程师参与功能和文档维护，维护节奏较快。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。README 主要强调它复用 Copilot CLI 背后的生产级 Agent runtime，而不是让开发者从零搭建模型编排和工具调用框架。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新，但 Star 已接近 1 万、贡献者 91 人，更新频率很高；同时 open issues 有 236 个，说明仍有不少问题和需求在迭代中。它已标注为 GA 并遵循语义化版本，但近期 preview / release 很密集，接入生产环境时应关注 CHANGELOG 和各语言 SDK 的版本兼容性。标准使用需要 GitHub Copilot 订阅，除非采用 BYOK；另外 Go、Java、Rust 默认不捆绑 CLI，上手时要额外处理 Copilot CLI 安装或路径配置。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/github/copilot-sdk">github/copilot-sdk</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：GitHub 是全球软件开发协作基础设施级组织，凭借超高关注度和大量标杆仓库持续影响开源社区与开发者工作流。
-<strong>技术栈偏好</strong>：其公开代表项目以 Python 和 Go 为主，技术方向明显偏向开发者工具、AI 编程辅助、协议服务与工程规范沉淀。
-<strong>核心领域</strong>：主要聚焦代码托管与协作、开源生态建设、开发者生产力工具以及 Copilot 相关 AI 开发生态。</p>
-<hr />
-<h3>✨ anthropics/cwc-workshops (1529★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Anthropic 把 Code with Claude 线下工作坊的 Claude Code、Managed Agents、多代理、评测驱动开发等实操材料集中整理成了一个公开课程仓库。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：这是 Anthropic Code with Claude workshops 的材料合集，覆盖多个以 Claude Code 和 Claude Managed Agents 为核心的实战工作坊。内容包括模型选择评测、多代理拆分、Managed Agent 上线、Agent Battle 竞赛、跨会话记忆、PPTX 生成评测、M&amp;A 研究团队、SEC filings Research Desk 等具体练习。仓库 README 明确说明这些材料“不维护且不接受贡献”，更像官方 workshop 归档，而不是持续演进的产品 SDK。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：开发者想学习 Claude Managed Agents、Skills、MCP、memory store、LLM-as-judge evals 时，通常缺少端到端、可运行的案例；这个仓库提供了从本地 UI、工具调用、沙箱日志分析到多代理研究流程的完整练习材料。另一个痛点是 agent 开发容易凭感觉改 prompt，<code>eval-driven-agent-development</code>、<code>rightmodel</code> 等 workshop 展示了如何用评测套件和成本、速度、质量指标来指导迭代。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合正在试用 Claude Code、Claude Managed Agents、MCP 和 Skills 的 AI 应用开发者。也适合负责内部 agent 原型、评测体系、多代理工作流或 SRE/研究类自动化场景的工程团队参考。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：可以用来搭建内部 Claude agent 培训课，把 <code>ship-your-first-managed-agent</code>、<code>agents-that-remember</code> 这类材料改造成团队练习。可以参考 <code>eval-driven-agent-development</code> 为生成式应用建立可回归的评测流程，避免只看单次输出效果。也可以参考 <code>production-ready-agent</code> 和 <code>research-desk</code> 设计带多子代理、记忆、工具调用、事件流 UI 的研究型 agent 系统。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目重点围绕 Claude Managed Agents、Claude Code Skills、MCP servers、memory store、Dreaming Service、LLM-as-judge 与程序化评测组合展开。多个 workshop 都不是单点 demo，而是把 agent 配置、工具调用、UI、评测和部署流程串在一起，对评估 agent 工程化落地方式有参考价值。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近一次提交在 2026-06-26，新增了 <code>research-desk</code> 工作坊，主题是基于 Claude Managed Agents 构建 SEC filings 研究台，说明近期重点偏向更完整的研究型多代理应用。6 月初大量提交集中在 <code>agent-battle</code>，包括事件服务器架构、分页、OAuth skill attach 降级、schema 容错、运行时长配置和现场网络问题修复，显示该仓库主要围绕线下 workshop 交付持续补材料和修现场问题。贡献者数量为 7，issue 只有 6 个，但 README 已声明不维护、不接受贡献，因此活跃度不能按普通开源项目理解。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：暂无明显同类对标。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：仓库创建时间较新，Stars 增长快，但 README 明确写着“Not maintained and not accepting contributions”，不适合作为长期依赖的基础库。文档入口只列出了各 workshop 主题，没有在顶层 README 给出统一安装、运行或环境要求；实际使用需要进入具体目录阅读材料。部分内容依赖 Claude Managed Agents、MCP、Skills、memory store 等 Anthropic 生态能力，迁移到其他模型或 agent 平台时需要改造。由于这些材料来自工作坊，可能包含面向活动现场的配置、URL 或流程假设，直接用于生产前需要逐项审查。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/cwc-workshops">anthropics/cwc-workshops</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Anthropic 是 GitHub 上极具影响力的 AI 组织，凭借 Claude 相关工具、教程和示例仓库在开发者社区形成了强传播力与实践引导力。
-<strong>技术栈偏好</strong>：技术栈明显偏向 Python 与 Jupyter Notebook，侧重 AI 应用开发、提示工程、Agent/工具链和可执行教程型内容。
-<strong>核心领域</strong>：主要聚焦大语言模型、AI 编程助手、提示工程、企业级 AI 应用与垂直行业智能化落地。</p>
-<hr />
-<h3>✨ PrismML-Eng/Bonsai-demo (1453★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：在本机用两条命令跑起 Bonsai / Ternary-Bonsai 低比特大模型，并通过 llama.cpp 服务体验聊天、视觉理解和工具调用。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：这是 PrismML 为 Bonsai 系列模型准备的本地运行 Demo 仓库，主要用 Shell / PowerShell 脚本完成依赖安装、模型下载和运行启动。它支持 Bonsai 1-bit 与 Ternary-Bonsai 两个模型家族，覆盖 27B、8B、4B、1.7B 多个尺寸，并面向 macOS Metal、Linux / Windows CUDA、Vulkan、ROCm 和 CPU 等运行环境。默认会下载并运行 Ternary-Bonsai-27B，27B 版本还支持图像、截图、PDF 输入，以及 OpenAI 风格的工具调用和 MCP 服务集成。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：低比特模型本地部署通常要手动匹配 GGUF 文件、llama.cpp 分支、后端二进制和平台脚本，这个仓库把这些步骤封装成 <code>setup.sh</code> / <code>setup.ps1</code> 和运行脚本。对想测试 Bonsai 27B 视觉语言能力或 Ternary-Bonsai 量化效果的开发者来说，它减少了在不同硬件后端上试错模型格式和运行时版本的成本。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合想在本机或工作站上评估低比特 LLM / VLM 的 AI 应用开发者、模型部署工程师。也适合关注 llama.cpp、GGUF、MLX 低比特推理支持进展，并需要在 CUDA、Metal、Vulkan 等后端做验证的人。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：macOS / Linux 最小流程：<code>git clone https://github.com/PrismML-Eng/Bonsai-demo.git &amp;&amp; cd Bonsai-demo &amp;&amp; ./setup.sh &amp;&amp; ./scripts/start_llama_server.sh</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：本地启动 Bonsai-27B，对图片、截图或 PDF 做问答验证；在不同 GPU / CPU 后端上跑 Ternary-Bonsai 的推理速度基准，并向 <code>community-benchmarks/</code> 补充结果；搭建一个本地 OpenAI 风格接口，用来测试带 <code>tool_calls</code> 或 MCP 工具调用的 Agent 原型。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目核心不在训练代码，而在把低比特 Bonsai 模型、GGUF / MLX 格式和各平台运行时打通。README 明确区分了 1-bit <code>Q1_0</code>、ternary <code>Q2_0</code>、<code>Q2_0_g64</code>、计划中的 <code>PQ2_0</code> 等格式，并说明了它们在主线 llama.cpp 与 PrismML fork 中的兼容边界，这对部署决策很有参考价值。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近提交集中在 Bonsai-27B Demo、llama.cpp 二进制版本更新、Windows PowerShell 脚本修复、Ternary-Bonsai 支持和社区 benchmark。7 月的更新还提到 Q2_0 CUDA 上游支持正在 review，并新增了 NVIDIA DGX Spark 上的 Bonsai-27B 性能数据，说明项目当前重点是让 ternary / 低比特格式逐步接入主线 llama.cpp，同时保持跨平台 Demo 可用性。贡献者数 11、近期 PR 和修复较密集，活跃度不错。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 没有直接列出竞品，但项目明显围绕 llama.cpp 与 MLX 生态展开。它不是通用 LLM 管理器，更像是 Bonsai 系列模型的官方本地运行入口，差异点在于默认模型、低比特格式兼容说明和预置的跨平台脚本。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新，虽然更新频繁，但低比特格式和上游后端支持仍在迁移中，尤其 ternary 的 <code>Q2_0</code> / <code>Q2_0_g64</code> / <code>PQ2_0</code> 兼容关系需要仔细看文档。27B 模型仓库在 README 中注明仍可能需要 HuggingFace token；同时 Windows、CUDA、Vulkan 等路径近期修复较多，说明跨平台稳定性还在快速打磨。当前有 13 个 open issues，适合愿意跟进模型格式和运行时变化的开发者使用。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/PrismML-Eng/Bonsai-demo">PrismML-Eng/Bonsai-demo</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：PrismML-Eng 是一个新成立但已凭借 Bonsai 相关 Demo 获得较高关注的机器学习工程组织，具备早期技术传播影响力。
-<strong>技术栈偏好</strong>：其技术栈以 C++、Shell 和 PowerShell 为主，偏向本地高性能推理、模型部署与跨平台演示工程。
-<strong>核心领域</strong>：主要聚焦轻量化机器学习、端侧 AI 推理以及大模型/多模态模型的工程化落地。</p>
-<hr />
-<h3>✨ protocolbuffers/protobuf (71521★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Protocol Buffers 用 <code>.proto</code> 文件定义结构化数据格式，再生成多语言代码，让服务之间用稳定、紧凑的二进制协议交换数据。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：Protocol Buffers 是 Google 开源的语言无关、平台无关的数据序列化机制。开发者先用 <code>.proto</code> 文件描述消息结构，再通过 <code>protoc</code> 编译器生成 C++、Java、Python、C#、Ruby、PHP 等语言的运行时代码。它包含协议编译器、各语言 runtime，以及标准 <code>.proto</code> 文件和构建集成说明。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：当多个服务、客户端或语言栈需要共享同一份数据结构时，手写 JSON 字段约定很容易出现字段名不一致、类型漂移和兼容性问题；protobuf 用 schema 固化结构并生成代码，减少这类接口偏差。它也适合对网络传输体积和解析性能敏感的场景，比文本格式更紧凑。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合需要维护跨语言 API、RPC 协议或内部数据交换格式的后端工程师。也适合在 C++、Java、Python、Go、C# 等多语言系统中统一消息结构的基础设施团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：使用 Bazel Bzlmod 时，在 <code>MODULE.bazel</code> 中添加：<code>bazel_dep(name = "protobuf", version = )</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：用于微服务之间定义请求和响应消息，避免各服务各自维护不一致的数据模型。用于客户端 App 与后端之间传输结构化数据，兼顾兼容性和传输体积。用于日志、配置、内部事件流等需要长期演进字段的二进制数据格式。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：核心设计是 schema-first：用 <code>.proto</code> 作为单一数据契约，再通过编译器生成多语言类型和序列化逻辑。项目同时维护 <code>protoc</code> 编译器和多语言 runtime，适合做跨语言协议标准化，而不是只服务单一生态。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在运行时性能、内存和兼容性细节上，例如 packed repeated fields 解析时预分配集合、优化 Java <code>GeneratedMessageLite.isMutable</code>、拆分 Java builder 的大型 <code>mergeFrom</code> 方法、修复 PHP C 扩展内存泄漏。提交中也有 ThinLTO、Mach-O linker array、Ruby Docker 测试平台、ProGuard 规则等构建和平台适配工作，说明项目仍在高频维护底层兼容性和多语言运行时质量；同时存在自动回滚和 experimental runtime 清理，主分支变动较活跃。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：暂无明显同类对标。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：README 明确建议大多数用户使用已发布版本，不建议直接依赖 main 分支；即使 release 分支在正式 release commit 之间也可能有不稳定变化。项目创建时间早、Star 和贡献者数量很高，成熟度强，但 Open Issues 有 277 个，且近期提交频繁涉及多语言 runtime、构建系统和底层优化，升级时需要关注版本支持策略和破坏性变更风险。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/protocolbuffers/protobuf">protocolbuffers/protobuf</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Protocol Buffers 是结构化数据序列化领域的核心基础设施组织，凭借 protobuf 主仓库的高星标和广泛生态集成具备显著行业影响力。
-<strong>技术栈偏好</strong>：技术栈以 C++、Go、C 为主，兼顾 JavaScript 等多语言实现，偏向高性能、跨语言、底层基础库建设。
-<strong>核心领域</strong>：主要聚焦语言无关、平台无关的数据序列化、接口定义、编码格式及其多语言运行时生态。</p>
+<p><strong>技术影响力</strong>：Rohit Ghumare 是兼具 DevRel、GDE、CNCF Ambassador、Docker Captain 等身份的高影响力技术社区型开发者，在 AI 工程、云原生与开发者教育方向具备显著传播力。
+<strong>技术栈偏好</strong>：其主要使用 JavaScript、Python 和 TypeScript，偏向以脚本化、工程化和全栈工具链方式构建 AI、Agent 与开发者效率项目。
+<strong>核心领域</strong>：其核心聚焦于 AI 工程实践、Agent 工具、DevOps/云原生生态以及面向开发者的知识体系建设。</p>
 <hr />
 <h3>✨ tirth8205/code-review-graph (19670★)</h3>
 <blockquote>
@@ -446,146 +338,188 @@
 <strong>技术栈偏好</strong>：其技术栈明显偏向 Python，项目方向集中在 AI/ML、代码分析、图结构与评估工具等工程化场景。
 <strong>核心领域</strong>：主要聚焦于人工智能与机器学习驱动的软件工程智能化，尤其是代码评审、知识图谱/研究图谱和模型安全评估方向。</p>
 <hr />
-<h3>✨ docusealco/docuseal (17751★)</h3>
+<h3>✨ elder-plinius/G0DM0D3 (9428★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：DocuSeal 可以在浏览器里制作 PDF 表单、发给多人填写签署，并把签名后的文档自动归档或通过 API 接入业务系统。</p>
+<p><strong>一句话</strong>：这是一个把多模型聊天、红队测试、隐私控制和本地模型接入揉在一起的前端应用，主打“在浏览器里同时调多个模型，并看谁给出的答案更好”。</p>
 </blockquote>
 <ul>
+<li><strong>它是什么</strong>：G0DM0D3 的核心是一个面向研究和对抗测试的多模型聊天界面，既能接 OpenRouter、Venice，也能接本地 OpenAI 兼容服务。README 里把它拆成了几个明确模块：GODMODE CLASSIC 做并行竞速，ULTRAPLINIAN 做多模型评分选优，Parseltongue 做输入扰动，AutoTune 做上下文参数选择。整体不是传统聊天壳，而是偏“模型实验台”和“红队工作台”的组合。</li>
+<li><strong>能解决什么痛点</strong>：一是当你要比较多个模型在同一提示词下的表现时，不用手工来回切换接口和页面。二是当你需要测试模型对提示词变形、拒答绕过、局部模型部署、隐私开关这些边界条件的响应时，它把这些能力放进了同一套界面里。</li>
+<li><strong>适合谁用</strong>：做大模型评测、提示词对抗测试、模型路由实验的开发者或研究者。也适合已经有 OpenRouter、Venice 或本地 Ollama/LM Studio/vLLM 服务，希望在浏览器里直接联调的人。</li>
+<li><strong>怎么上手</strong>：最小用法是直接打开单文件前端：<code>open index.html</code>；也可以本地起静态服务：<code>python3 -m http.server 8000</code></li>
+<li><strong>可以用在哪些场景</strong>：1. 在同一轮对话里对比 Claude、Grok、Gemini、GPT 等模型的回答差异。2. 做红队测试时，用 Parseltongue 批量生成不同扰动版本的提示词。3. 在内网或个人设备上接入 Ollama、LM Studio、llama.cpp、vLLM，验证本地模型是否能承担实际交互。</li>
+<li><strong>技术看点</strong>：项目把主界面做成单文件 <code>index.html</code>，部署门槛很低，但同时保留了 Cloudflare Pages Function、React/Next.js 前端和 Node/Express API server 这些扩展面。它还把隐私策略写得比较细，区分了浏览器本地历史、应用遥测、以及可选的数据集贡献路径，这一点在同类项目里不算常见。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在修复和收敛上：本地模型模式、错误提示、遥测分区、恢复逻辑、导入导出契约、模型替换、以及 README 里的隐私表述修正都在密集推进。可以看出项目近期重点不是大改架构，而是在补齐本地模型支持、提升错误可读性、修正文档与实际行为一致性，说明维护者在把它往可用性和说明准确性上收紧。</li>
+<li><strong>同类对比</strong>：README 没有直接点名竞品；从功能形态看，它更接近“多模型竞速 + 红队测试 + 本地模型接入”的组合体，而不是单纯的聊天客户端。</li>
 <li>
-<p><strong>它是什么</strong>：DocuSeal 是一个开源的电子文档填写与签署平台，定位上对标 DocuSign。它支持 WYSIWYG PDF 表单字段编辑、签名、日期、文件上传、复选框等 12 类字段，也支持多人参与同一份文档的填写和签署。项目还提供 SMTP 邮件通知、API、Webhooks、移动端优化页面，以及本地磁盘和 S3、Google Storage、Azure Cloud 等文件存储方式。</p>
+<p><strong>注意事项</strong>：项目功能多，但边界也复杂，尤其是 OpenRouter、Venice、本地模型、遥测、数据集贡献这几条路径并存，上手时需要先分清自己是在用 hosted 版还是自托管版。仓库目前有 56 个 open issues、3 位贡献者，说明项目活跃但团队规模不大，功能推进和长期稳定性仍要看后续维护力度。README 里已经明确提示：遥测默认开启、可选数据集贡献不会自动做 PII 清洗，本地模型和隐私模式也不等于外部服务完全不留日志。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：团队不想把合同、授权书、入职材料等敏感文件全部托管到第三方 SaaS 时，可以自托管一套电子签流程。对于需要把签署能力嵌入 CRM、KYC、房地产、医疗或内部审批系统的开发者，DocuSeal 提供 API、Webhooks 和嵌入式签署组件，避免从零实现 PDF 字段编辑、签名校验和邮件流转。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合需要自托管电子签平台的中小企业技术团队、SaaS 产品后端工程师，以及要把文档签署流程嵌入现有业务系统的 Ruby/Rails 或全栈开发者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：<code>docker run --name docuseal -p 3000:3000 -v.:/data docuseal/docuseal</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：搭建内部合同、报价单、授权书的在线签署系统；在 CRM、KYC、房地产或医疗系统中嵌入客户签署流程；为批量表单、入职材料或供应商文件提供在线填写、签名、邮件通知和归档能力。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目主语言是 Ruby，README 明确支持 Docker 快速部署，默认可用 SQLite，也可通过 <code>DATABASE_URL</code> 切换到 PostgreSQL 或 MySQL。能力边界不只停留在签名页面，还包括 PDF 表单构建、签名验证、对象存储、API/Webhooks 和多语言签署流程，适合做完整业务系统集成评估。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 7 月，说明项目仍在持续维护。近期重点包括 submission 的 <code>completed_at</code> 字段、完成状态判断、过滤条件与索引优化、共享模板查询参数、created_at 查询性能、更新 API、只读参与方视图、SMTP 重置动作，以及 HTML 邮件编辑能力；整体看是在补强签署流程状态管理、后台查询性能和企业集成能力。提交主要来自少数核心维护者，Contributor Count 为 6，社区规模不算大但维护节奏较稳定。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 直接称其为开源 DocuSign alternative。相比传统闭源电子签 SaaS，DocuSeal 的主要差异是可以自托管、可通过 API 和 Webhooks 嵌入业务系统，并使用 AGPLv3 加附加条款发布；但部分企业能力如白标、角色、自动提醒、短信验证、SSO/SAML、批量发送等属于 Pro 功能。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2023 年，Stars 已到 17751，更新频繁，成熟度在同类开源电子签项目中较高；但当前 Open Issues 为 124，实际落地前需要验证关键流程、权限、邮件、存储和签名合规要求。许可证是 AGPLv3 并带 Section 7(b) Additional Terms，商业集成或二次分发前应仔细阅读 <code>LICENSE</code> 和 <code>LICENSE_ADDITIONAL_TERMS</code>。核心维护者数量较少，遇到深度定制或企业合规需求时，建议预留自维护和代码审计成本。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/docusealco/docuseal">docusealco/docuseal</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/elder-plinius/G0DM0D3">elder-plinius/G0DM0D3</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：DocuSeal 是一个快速获得社区关注的开源电子签名组织，核心项目已具备较强的垂直领域影响力。
-<strong>技术栈偏好</strong>：技术栈以 Ruby 为核心，辅以 TypeScript/JavaScript 构建前端 SDK、框架集成和示例生态。
-<strong>核心领域</strong>：主要聚焦开源电子签名、文档签署流程自动化以及 DocuSign 替代方案。</p>
+<p><strong>技术影响力</strong>：pliny 是高关注度的独立开发者/安全研究型账号，凭借多个高星项目在 AI 红队、越狱与对抗测试社区具有显著传播力。
+<strong>技术栈偏好</strong>：技术栈以 TypeScript 和 Python 为主，偏向快速构建 AI 工具、自动化脚本与实验性安全项目。
+<strong>核心领域</strong>：主要聚焦于大模型安全、提示词攻击、AI 红队测试与模型能力边界探索。</p>
 <hr />
-<h3>✨ openinterpreter/openinterpreter (65290★)</h3>
+<h3>✨ lyogavin/airllm (23229★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：在终端里输入需求，它就能调用低成本模型编写代码、执行命令，并在本地沙箱中操作和测试 Web 或桌面应用。</p>
+<p><strong>一句话</strong>：AirLLM 通过按层加载模型，让 70B 级大模型可以在单张 4GB GPU 上完成推理，甚至支持更大规模的 Llama、Qwen、DeepSeek 模型低显存运行。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是 Open Interpreter 的新版 Rust 实现，基于 OpenAI Codex 分支开发，核心目标是让低成本模型也能借助成熟的 Agent Harness 完成编码任务。它提供终端 TUI，可切换模型供应商及 Claude Code、Qwen Code、DeepSeek TUI、SWE-agent 等 Harness，并支持原生沙箱、MCP、Skills、Hooks、权限控制和 ACP 编辑器接入。</li>
-<li><strong>能解决什么痛点</strong>：一是低成本模型直接执行复杂编码任务时效果不稳定，项目通过复用不同 Agent Harness 的上下文组织与执行流程改善表现；二是开发者测试应用时需要在终端、浏览器和桌面环境之间反复切换，它可以直接运行命令，并通过内置 QA Skill 操作真实 Web 或原生界面。</li>
-<li><strong>适合谁用</strong>：适合希望用低成本或自选模型完成代码修改、命令执行和项目排障的开发者；也适合需要自动化测试 Web 应用、桌面应用，或希望通过 ACP 将编码 Agent 接入编辑器的团队。</li>
-<li><strong>怎么上手</strong>：macOS/Linux 执行 <code>curl -fsSL https://www.openinterpreter.com/install | sh</code>，Windows 执行 <code>irm https://www.openinterpreter.com/install.ps1 | iex</code>，安装后在终端输入 <code>i</code> 或 <code>interpreter</code>。</li>
-<li><strong>可以用在哪些场景</strong>：根据自然语言需求修改本地仓库并运行测试；用 <code>/harness</code> 对比不同 Agent Harness 在同一低成本模型上的编码表现；通过 <code>agent-browser</code> 测试真实浏览器中的 Web 应用，或通过 <code>trycua</code> 操作和验证原生桌面应用。</li>
-<li><strong>技术看点</strong>：主体采用 Rust，并在 macOS、Linux 和 Windows 上使用原生沙箱执行命令；其关键设计不是绑定单一模型，而是将模型供应商与 Agent Harness 解耦，并提供多种 Rust 原生 Harness 供运行时切换。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交高度集中在 0.0.23/0.0.24 发布准备、更新诊断、TUI 流式输出与历史回放、Windows 沙箱测试、远程运行文档和跨平台卸载说明，表明项目仍在快速打磨早期版本的稳定性与发布流程。同时新增 Agent 扩展运行器、调整会话缓存键和插件分析认证，并持续同步上游 Codex crate；近期提交主要由核心维护者 killian 推动，也包含多位上游贡献者的功能与修复。</li>
-<li><strong>同类对比</strong>：项目明确基于 OpenAI Codex，但重点是模拟和切换适合低成本模型的 Agent Harness，而非只服务单一模型或执行框架；与原始 Python 版 Open Interpreter 相比，当前主项目已转为 Rust 和 Codex 架构，旧 Python 版本由社区在 <code>endolith/open-interpreter</code> 继续维护。</li>
 <li>
-<p><strong>注意事项</strong>：当前版本号仍处于 0.0.x 阶段，近期又频繁同步上游并调整缓存、TUI、运行时和发布逻辑，接口及行为仍可能发生较大变化。项目有 274 个未关闭 Issue，说明真实使用反馈充足，但也存在一定问题积压；跨平台沙箱和计算机操作涉及命令执行与界面控制，使用时应仔细配置权限和审批策略。</p>
+<p><strong>它是什么</strong>：AirLLM 是一个面向大语言模型推理的 Python 包，核心目标是显著降低 GPU 显存占用。它不是把整个模型一次性放进显存，而是推理时只把当前需要计算的一层加载到 GPU，因此模型总参数量不再直接决定显存门槛。README 中展示了 70B 模型单卡 4GB、Llama 3.1 405B 在 8GB、DeepSeek-V3 671B 约 12GB 的运行目标。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/openinterpreter/openinterpreter">openinterpreter/openinterpreter</a></p>
+<p><strong>能解决什么痛点</strong>：开发者想在消费级显卡或小显存云 GPU 上试跑大模型时，常见问题是模型权重太大、显存直接爆掉，AirLLM 把这类实验门槛降到了更低。另一个痛点是多模型适配成本，项目提供 <code>AutoModel.from_pretrained(...)</code>，尽量用 Hugging Face 模型 ID 直接加载 Llama、Qwen、DeepSeek、Mistral、Gemma 等主流模型。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合需要在低显存 GPU 上做大模型本地推理实验的 Python / AI 工程师。也适合想验证超大模型能力、但暂时没有高端多卡环境的研究者和独立开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装方式是 <code>pip install airllm</code>；最小使用方式是 <code>from airllm import AutoModel; model = AutoModel.from_pretrained("Qwen/Qwen3-32B")</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于在单张消费级 GPU 上测试 70B 级开源模型的问答效果；可以在 Colab 或低配云 GPU 环境中验证 Qwen、Llama、DeepSeek 等模型兼容性；也可以用于需要离线拆分并缓存模型层的本地推理实验，避免每次都依赖完整高显存加载。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：核心设计是推理时只在 GPU 中保留一层模型，显存需求主要取决于单层大小而不是模型总大小。项目还支持 4bit / 8bit block-wise 压缩以减少磁盘加载瓶颈，并在 v3.0 中加入 FP8 与最新模型支持。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交里有大量 Star History 图表自动刷新和 README / 赞助链接维护，说明近期仓库展示和运营维护较多。更关键的功能提交集中在 2026 年 6 月，包括修复干净安装下 <code>import airllm</code> 失败、拆分 PyPI 发布流程、默认使用模型配置 dtype、修复跨 shard layer tensor 丢失，以及更新 FP8 和最新模型支持，方向上更偏向稳定发布、兼容新模型和改善安装可靠性。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确点名竞品。它与常见量化推理方案的差异在于，AirLLM 主要通过按层加载降低显存占用；其 compression 功能也强调主要压缩权重以减少磁盘加载体积，而不是完整的权重与激活量化推理栈。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：这种按层加载方式会把压力转移到磁盘读写和模型拆分缓存上，README 也提醒首次推理会把原始模型按层拆分并保存，需要保证 Hugging Face cache 目录有足够磁盘空间。项目 Star 很高、创建于 2023 年且近期仍有更新，但 Open Issues 有 106 个，使用新模型或复杂环境时仍可能遇到兼容性问题。README 示例和支持模型信息比较丰富，但仓库主语言显示为 Jupyter Notebook，生产环境接入前建议先用目标模型和硬件做实际延迟、吞吐和稳定性测试。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/lyogavin/airllm">lyogavin/airllm</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Open Interpreter 凭借核心项目的高星标表现，在 AI Agent 与本地代码执行工具社区中具有显著影响力。
-<strong>技术栈偏好</strong>：其技术栈以 Python、Rust 和 TypeScript 为主，偏向构建 AI 工具链、桌面/应用层交互与高性能执行组件。
-<strong>核心领域</strong>：主要聚焦于自然语言驱动的计算机操作、AI 编程助手和本地智能体基础设施。</p>
+<p><strong>技术影响力</strong>：Gavin Li 是具备较高社区影响力的 AI 创业者型开发者，代表项目 airllm 获得 2.3 万以上 stars，显示其在大模型工程实践方向有显著关注度。
+<strong>技术栈偏好</strong>：技术栈以 Python 和 Jupyter Notebook 为主，辅以 Java，偏向机器学习实验、AI 工程实现与模型应用原型开发。
+<strong>核心领域</strong>：主要聚焦于人工智能、大模型推理优化、生成式 AI 与动画/视频生成相关应用。</p>
 <hr />
-<h3>✨ RyanCodrai/turbovec (13223★)</h3>
+<h3>✨ KnockOutEZ/wigolo (1083★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：turbovec 用 Rust 实现 TurboQuant 向量索引，并提供 Python 绑定，让大规模 embedding 能以更低内存占用在本地完成快速相似度搜索。</p>
+<p><strong>一句话</strong>：wigolo 把搜索、网页抓取、站点爬取和带引用的研究能力装进本地 MCP 服务，让 Claude Code、Cursor 等编码代理可以直接查网页、读取证据并持续监控页面变化。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：turbovec 是一个面向向量检索的本地索引库，核心用 Rust 编写，Python 用户可以通过 <code>TurboQuantIndex</code> 或 <code>IdMapIndex</code> 直接添加向量、搜索、删除和持久化索引。它基于 Google Research 的 TurboQuant 算法，通过 2-bit / 4-bit 量化把高维向量压缩后直接搜索，README 中给出的例子是 1000 万文档的 float32 向量原本约需 31GB 内存，使用 turbovec 可压到约 4GB。</li>
-<li><strong>能解决什么痛点</strong>：做 RAG 或语义检索时，embedding 数量一大，纯 float32 向量索引会迅速吃满内存，尤其是在本地机器、私有化部署或边缘环境里成本很高。另一个痛点是混合检索和权限过滤：turbovec 支持在 <code>search()</code> 时传入 allowlist，让 SQL、BM25、ACL、时间窗口等外部筛选结果直接参与 SIMD 搜索，而不是先全量搜索再丢弃结果。</li>
-<li><strong>适合谁用</strong>：适合在 Python 或 Rust 项目里做本地向量检索、RAG、语义搜索的工程师，尤其是对内存占用、延迟或数据不出本机有要求的团队。也适合正在使用 LangChain、LlamaIndex、Haystack、Agno 的开发者，用它替换框架里的内存型向量存储。</li>
-<li><strong>怎么上手</strong>：Python 安装：<code>pip install turbovec</code>；最小使用方式：<code>from turbovec import TurboQuantIndex; index = TurboQuantIndex(dim=1536, bit_width=4); index.add(vectors); scores, indices = index.search(query, k=10)</code>。</li>
-<li><strong>可以用在哪些场景</strong>：搭建完全本地化的 RAG 检索层，避免文档向量上传到托管向量数据库；在多租户知识库里先用数据库筛选 tenant、权限或时间范围，再用 allowlist 做密集向量 rerank；在内存受限的服务或工作站上存放千万级 embedding，降低向量索引常驻内存。</li>
-<li><strong>技术看点</strong>：核心是 TurboQuant 的数据无关量化：随机旋转后按已知分布做 Lloyd-Max 标量量化，不需要传统 PQ 那样单独训练码本。实现上提供 NEON、AVX-512BW 和 AVX2 fallback 的 SIMD 搜索内核，并支持 32 向量块粒度的过滤短路，对有选择性的 allowlist 更友好。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 5 月下旬到 6 月上旬，节奏很密，包含多次 Python 包和 Rust crate 发布。开发重点从功能扩展转向工程质量和可靠性：加入 CI、修复 macOS <code>cargo build</code>、处理 upsert 和重复 ID 导致的数据一致性问题，并做了 untrusted-load 加固、Python 绑定 panic 处理、x86 标量 fallback 等安全与兼容性修复。同时也在持续打磨性能和召回表现，例如 TQ+ per-coordinate calibration、ARM/x86 recall 差异修复和基准图更新。</li>
-<li><strong>同类对比</strong>：README 明确对标 FAISS，尤其是 <code>IndexPQ</code> 和 <code>IndexPQFastScan</code>。turbovec 的差异在于不需要训练阶段，支持在线 ingest，并强调在 ARM 上比 FAISS FastScan 快 10–19%；在 x86 上 4-bit 配置有优势，2-bit 配置则部分落后于 FAISS 的 AVX-512 VBMI 路径。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026-03-26，时间还很新，虽然 Star 数高、近期维护活跃、Open Issues 仅 12 个，但成熟度仍需要结合生产环境压测判断。近期版本发布频繁，Python 包和 Rust crate 版本号不同步，集成时要留意版本兼容和变更记录。文档信息较完整，包含 Python、Rust、过滤检索、框架集成、压缩率、召回率和速度基准，但性能结论仍建议用自己的数据维度、CPU 指令集和查询模式复测。</p>
+<p><strong>它是什么</strong>：wigolo 是基于 TypeScript 的本地优先 Web Intelligence 服务，既能作为 MCP Server 接入编码代理，也支持 CLI、REST 和 SDK。它提供 <code>search</code>、<code>fetch</code>、<code>crawl</code>、<code>extract</code>、<code>cache</code>、<code>research</code>、<code>agent</code>、<code>diff</code>、<code>watch</code> 等能力，并会返回原文摘录、引用 ID、来源位置和评分信息，而不只是搜索摘要。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/RyanCodrai/turbovec">RyanCodrai/turbovec</a></p>
+<p><strong>能解决什么痛点</strong>：编码代理经常只能拿到不完整的搜索摘要，无法确认答案对应网页中的具体原文；wigolo 会返回可追溯的证据片段和 <code>source_span</code>。对于需要反复查询或监测的资料，网页抓取结果默认缓存在本机，能够离线复查并检测页面内容变化，减少重复抓取和外部 API 费用。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：需要让 Claude Code、Cursor、Codex、Gemini CLI 或 VS Code 代理访问实时文档、Issue 和网页资料的开发者。也适合使用 LangChain、CrewAI、LlamaIndex、Vercel AI SDK、n8n，或自行维护 Python/Node Agent 的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：需要 Node.js 20 及以上，运行以下命令即可为指定代理完成 MCP 配置、浏览器引擎和本地模型预热：</p>
+</li>
+</ul>
+<p>安装后可用 <code>npx wigolo doctor</code> 检查组件状态；核心搜索、抓取和缓存能力不需要 API Key，<code>research</code> 和 <code>agent</code> 若配置 Gemini 等 LLM Key，才能直接生成质量更高的综合报告。</p>
+<ul>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>给编码代理提供实时技术资料检索，例如查阅 PostgreSQL、框架文档或某个 GitHub 项目的最新变更，并要求答案附带原文证据。</li>
+<li>抓取产品目录、文章或 PDF，使用 <code>extract</code> 按 JSON Schema 提取表格、JSON-LD、Recipe、Product 等结构化数据。</li>
+<li>监控竞品文档、发布页或变更日志，通过 <code>watch</code> 和 Webhook 生成页面差异并推送到内部系统。</li>
+<li>
+<p>为自托管 Agent 或 n8n 部署 REST/MCP 端点，统一处理搜索、抓取和研究请求。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 MCP、REST、CLI、SDK 多入口设计，搜索侧通过 18 个直接引擎适配器、排序融合和本地重排实现多源检索；抓取侧从普通 HTTP 自动升级到无头浏览器，以应对 SPA 和反爬挑战。缓存、嵌入模型、配置和结果默认存放在 <code>~/.wigolo/</code>，同时将失败引擎、过期缓存、截断和反爬阻断显式返回，强调证据可追溯性。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近两天提交非常密集，重点从基础功能扩展转向公开 Beta 的产品化和可用性建设。近期既修复了 <code>watch</code> 使用截断内容计算哈希导致变更漏报的问题，也统一了 <code>fetch_method</code> 的能力命名；同时集中完善 README、安装流程、示例、SDK、REST、Docker、n8n 和远程 MCP 文档，并增强工具描述对宿主 LLM 的引导。最近 20 条提交主要由核心维护者完成，另有合并 PR，说明项目迭代活跃，但目前贡献者仅 5 人，社区协作规模仍较小。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 的 Benchmark 明确将 wigolo 与内置 WebSearch、Tavily、Exa 放在同一场景比较。它的主要差异不是托管 API，而是本地运行、核心查询无需 Key 或按量计费，并额外提供字节位置级来源证据、可解释评分、缓存和页面变更监测；代价是用户需要自行承担本地浏览器引擎和模型的安装与运行成本。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 4 月、当前仍标注为 Public Beta，虽然更新频率高，但 15 个 Open Issues、5 名贡献者和较短的项目历史意味着 API、文档和行为仍可能快速变化。首次初始化约需 1.5 GB 磁盘空间，并会下载浏览器引擎和本地模型；<code>research</code>、<code>agent</code> 的综合回答依赖外部 LLM Key，完全本地运行时只能返回原始研究简报和证据。项目采用 AGPL-3.0-only，若将其集成进闭源网络服务或进行再分发，需要提前评估许可证义务。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/KnockOutEZ/wigolo">KnockOutEZ/wigolo</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Ryan Codrai 是 Anthropic 技术成员，凭借高星 Python 项目 <code>turbovec</code> 在机器学习与向量计算相关社区具备较强可见度。
-<strong>技术栈偏好</strong>：主要使用 Python 与 Jupyter Notebook，偏好面向机器学习实验、模型分析和开发者工具的技术栈。
-<strong>核心领域</strong>：主要聚焦于机器学习、LLM 实验、模型可解释性与高性能向量/数据处理工具。</p>
+<p><strong>技术影响力</strong>：个人开发者，拥有一定开源项目积累，其中 <code>wigolo</code> 获得较高关注度，具备小众但明确的社区影响力
+<strong>技术栈偏好</strong>：偏好 Go、TypeScript 与 JavaScript，兼顾后端工具、开发者工具和自动化应用
+<strong>核心领域</strong>：主要聚焦开发者工具、网络与内容自动化，以及新兴 MCP 生态探索</p>
 <hr />
-<h3>✨ HKUDS/DeepTutor (26137★)</h3>
+<h3>✨ codecrafters-io/build-your-own-x (526083★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把个人资料、课程文档和长期学习记录接入 AI 导师，让它持续记住学习进度，并通过对话、研究、解题和掌握度测验提供个性化辅导。</p>
+<p><strong>一句话</strong>：它把数据库、Docker、Git、浏览器、操作系统、AI 模型等经典技术拆成一组“从零重做”的教程清单，适合用造轮子的方式理解底层原理。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：DeepTutor 是一套面向长期学习的开源 AI 辅导系统，提供对话式学习、引导学习、深度研究、解题、题库和分层记忆等能力。它可以为不同用户隔离知识库与学习记录，并通过 Partners 接入带独立人设、资料、技能和记忆的专属智能体，还支持 Mattermost 等多种通信渠道。</li>
-<li><strong>能解决什么痛点</strong>：解决通用聊天模型每次都要重新交代学习背景、资料和当前进度的问题；也解决课程资料分散在 PDF、Office 文档、Obsidian 等来源中，难以统一检索、引用和转化为练习题的问题。</li>
-<li><strong>适合谁用</strong>：适合希望基于私有课程资料搭建 AI 导师的教师、培训团队和教育产品开发者；也适合需要自托管、多用户隔离及本地模型接入的个人学习者或组织。</li>
-<li><strong>怎么上手</strong>：当前提供的 README 素材未包含快速安装命令，需参考项目的 <a href="https://github.com/HKUDS/DeepTutor#get-started">Get Started</a> 或官方文档。</li>
-<li><strong>可以用在哪些场景</strong>：用内部教材和讲义搭建企业培训问答与测验系统；将个人笔记、PDF 和题库整理为可持续记忆学习进度的私人导师；为在线课程部署多用户隔离的答疑、引导学习和掌握度评估服务。</li>
-<li><strong>技术看点</strong>：后端以 Python 3.11+ 为主，前端采用 Next.js 16；知识检索覆盖 LlamaIndex、LightRAG、GraphRAG、PageIndex、FAISS 和 BM25，并提供多模态文档解析、三层记忆以及统一智能体循环。系统还考虑了容器化、rootless Podman、多用户资源隔离和 OpenAI 兼容模型供应商等部署需求。</li>
-<li><strong>近期动向与发展方向</strong>：项目更新频繁，2026 年 6 月下旬至 7 月上旬连续发布 v1.4.11 至 v1.5.1，近期重点是修复知识库文档删除、RAG 小语料检索、分块重叠参数、测验评分、多用户会话隔离和无根容器部署等生产问题，同时继续扩展 LightRAG、FAISS、多模态解析及 Mattermost 渠道。最近记录中也有多个外部 PR 被合并，说明社区贡献已进入核心功能维护流程。</li>
-<li><strong>同类对比</strong>：README 未明确列出竞品或提供对比表，暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间较短，却已快速迭代到 v1.5.1，功能面覆盖 RAG、智能体、记忆、多用户和多渠道，部署与配置复杂度会高于单一聊天应用。58 个开放 Issue 相对 2.6 万 Stars 不算高，但密集版本发布和持续修复表明接口、配置及数据结构仍可能较快变化，升级前应检查发布说明并备份知识库与用户数据；快速安装方式在所给 README 素材中暂未提供。</p>
+<p><strong>它是什么</strong>：这是一个以 Markdown 维护的学习资源合集，收录大量“Build your own X”类型教程。README 按技术类别组织链接，例如 3D Renderer、AI Model、BitTorrent Client、Blockchain、Database、Docker、Git、Shell、Web Browser、Web Server 等，每个条目通常标注实现语言和教程标题。它本身不是可运行框架，而是面向开发者的系统化项目练习索引。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></p>
+<p><strong>能解决什么痛点</strong>：很多开发者想理解 Git、数据库、浏览器、Docker、神经网络这类基础技术，但直接读源码或论文门槛很高；这个仓库提供了从小实现开始的学习路径。另一个痛点是高质量教程分散在博客、书籍、课程和 GitHub 项目里，这里把它们按主题集中整理，减少检索成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合想补计算机系统、网络、数据库、编译器、图形学等基础的后端、基础设施和全栈工程师。也适合准备技术面试、做个人项目集、或希望通过动手实现理解 AI/LLM、RAG、Diffusion 等概念的开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于制定个人底层技术学习路线，例如从“Build your own Shell”到“Build your own Operating System”逐步深入系统编程。可以用于团队内部技术读书会或训练营，把“自己实现 Redis / Git / Web Server”作为阶段性练习。也可以用于筛选个人项目题目，做出能展示工程理解深度的作品集。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目的价值不在代码实现，而在信息架构：按技术领域聚合跨语言、跨平台的高质量教程，并优先收录 step-by-step 的从零实现材料。它覆盖面很广，从 C/C++ 系统方向到 Python AI、JavaScript 前端框架、Rust CLI 都有入口。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交以维护 README 链接、修正锚点、合并社区新增教程为主，没有看到架构性重构。2026 年新增和更新了 AI Model、Deep Learning、Database、Reddit Bot 等条目，说明项目仍在跟随热门技术主题扩展内容；多条 PR 来自不同贡献者，社区维护活跃度较高。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。它更像 curated list，而不是 Codecrafters 平台那种交互式闯关课程；优势是覆盖面广、入口集中，劣势是教程质量和更新状态取决于外部链接本身。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2018 年，Star 数超过 52 万，成熟度和影响力很高，但 Open Issues 有 522 个，说明链接失效、分类调整、资源质量争议等维护压力不小。由于它主要是外链合集，部分教程可能过时、断链或技术栈版本较旧，实际学习前需要检查教程更新时间和依赖版本。对新手来说，很多主题并不适合作为第一门编程练习，最好从 CLI、Shell、Web Server、Database 这类边界较清晰的项目开始。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/codecrafters-io/build-your-own-x">codecrafters-io/build-your-own-x</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：HKU Data Intelligence Lab 是 GitHub 上具有高可见度的高校研究型组织，多个项目获得数万星标，已在开源 AI 工具生态中形成显著影响力。
-<strong>技术栈偏好</strong>：其技术栈明显以 Python 为核心，偏向大模型应用、智能体、RAG、自动化工具与数据智能系统开发。
-<strong>核心领域</strong>：主要聚焦数据智能与生成式 AI 应用，尤其是轻量级 RAG、AI 助手、教育智能化和垂直场景智能工具。</p>
+<p><strong>技术影响力</strong>：CodeCrafters 是面向开发者学习与系统实现实践的高影响力组织，凭借 build-your-own-x 等项目在开源教育社区拥有显著传播力。
+<strong>技术栈偏好</strong>：其技术栈以 Markdown、Shell 和 Ruby 为主，偏向课程内容组织、自动化脚本与学习平台生态支撑。
+<strong>核心领域</strong>：主要聚焦通过从零实现 Git、SQLite、Redis 等经典基础设施来训练开发者的系统编程与底层原理能力。</p>
 <hr />
-<h3>✨ OpenCut-app/OpenCut (64111★)</h3>
+<h3>✨ MoonshotAI/kimi-cli (9358★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：OpenCut 正在重写为一套覆盖 Web、桌面和移动端的开源视频剪辑系统，目标是提供类似 CapCut 的免费替代方案。</p>
+<p><strong>一句话</strong>：在终端里直接调用 Kimi 作为编程代理，让它读取和修改代码、执行 Shell 命令、搜索网页，并根据执行结果持续调整方案。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：OpenCut 是一个 MIT 协议的开源视频编辑器项目，定位为 CapCut 的开源替代品。README 明确说明当前项目正在从头重写，计划提供 Editor API、插件架构、Rust 核心、多端同源、MCP Server、无头模式和编辑器内脚本能力。当前线上 <code>opencut.app</code> 仍运行 classic 版本，新架构会先放在 <code>new.opencut.app</code>。</li>
-<li><strong>能解决什么痛点</strong>：对创作者和开发者来说，闭源剪辑工具难以扩展、自动化和二次集成，OpenCut 计划通过插件、脚本和 Headless 模式把剪辑流程开放出来。对团队来说，跨 Web、桌面、移动端维护多套编辑器成本高，它的目标是用一套 Rust 核心支撑多端。</li>
-<li><strong>适合谁用</strong>：适合关注开源视频编辑器、想参与或跟踪创作者工具基础设施的前端 / 全栈开发者。当前更适合技术观察和早期试验；如果要立即稳定剪视频，README 建议使用 <code>opencut-classic</code>。</li>
-<li><strong>怎么上手</strong>：<code>proto use &amp;&amp; moon run web:dev</code></li>
-<li><strong>可以用在哪些场景</strong>：搭建可自托管的 Web 视频剪辑入口；为内部内容生产流水线探索批量渲染和自动化剪辑能力；围绕视频编辑器开发第三方插件或脚本扩展。</li>
-<li><strong>技术看点</strong>：项目正在转向插件优先架构，并计划用 Rust core 支撑浏览器、桌面和移动端同一套代码路径。工具链上近期从 Turbo 迁移到 Moon，并使用 proto 固定开发环境，说明团队在重建 monorepo 和多应用工程体系。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交高度集中在 rewrite 分支：替换旧代码库、搭建 monorepo 和 Web 基础、加入 Cloudflare Workers 上的 Elysia API、迁移到 Moon/proto，并在 2026-07-10 scaffold 了桌面应用。提交主要来自 Maze Winther，说明当前处于核心作者主导的架构重写期，而不是稳定功能迭代期。</li>
-<li><strong>同类对比</strong>：README 和描述明确对标 CapCut，差异在于 OpenCut 走免费开源路线，并强调插件、脚本、Headless、MCP Server 等更适合开发者扩展和自动化的能力。</li>
+<li><strong>它是什么</strong>：Kimi CLI 是一个基于 Python 的终端 AI Agent，能够理解代码库、编辑文件、运行命令并自主拆解开发任务。它同时提供交互式 Shell 模式、MCP 工具接入、ACP 协议支持，以及与 VS Code、Zed、JetBrains 等开发环境的集成能力。</li>
+<li><strong>能解决什么痛点</strong>：开发者无需在编辑器、终端和浏览器之间反复切换，就能让 Agent 完成从定位代码、修改实现到运行命令的连续操作。对于需要调用外部工具的任务，MCP 配置可以统一接入网页检索、浏览器调试等服务；ACP 则能把 Kimi CLI 接入兼容的 IDE Agent 面板。</li>
+<li><strong>适合谁用</strong>：经常在终端中开发、调试和维护项目的程序员；需要把 AI Agent 接入 Zed、JetBrains、VS Code 或自定义工具链的开发团队。</li>
+<li><strong>怎么上手</strong>：README 未给出面向普通用户的直接安装命令；开发运行方式是先执行 <code>git clone https://github.com/MoonshotAI/kimi-cli.git &amp;&amp; cd kimi-cli &amp;&amp; make prepare</code>，再运行 <code>uv run kimi</code>。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>在已有 Python、前端或全栈代码库中，根据需求自动定位文件、修改代码并执行测试。</li>
+<li>通过 <code>kimi mcp</code> 接入 Context7、Chrome DevTools 等 MCP 服务，让终端 Agent 查询文档或辅助浏览器调试。</li>
+<li>在 Zed、JetBrains 等支持 ACP 的 IDE 中启动 <code>kimi acp</code>，将 Kimi CLI 作为 IDE 内的编程 Agent 使用。</li>
+<li><strong>技术看点</strong>：项目以终端交互为核心，同时通过 ACP 和 MCP 扩展到 IDE 与外部工具生态，避免把 Agent 能力限制在单一编辑器内。近期还在持续完善 <code>kosong</code> 推理相关数据传递、上下文预算计算、工具调用异常处理和遥测事件结构。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 5 月至 7 月，包含 <code>1.45.0</code> 至 <code>1.49.0</code> 的多次版本发布，说明维护仍较活跃。开发重点以稳定性修复和 Agent 行为治理为主，例如修复 TTY 退出卡住、MCP 连接关闭、空推理内容丢失、上下文完成预算计算，以及连续工具调用失控时的提醒和强制停止；同时补齐了与 TypeScript Schema 对齐的遥测事件和 <code>trace_id</code>。不过项目已明确逐步演进为下一代 Kimi Code CLI，当前仓库将逐渐停止维护。</li>
+<li><strong>同类对比</strong>：README 未明确列出外部竞品；其主要差异在于同时覆盖终端 Shell、MCP、ACP 和 VS Code/IDE 集成。Kimi Code CLI 是该项目团队公布的后继项目，不属于外部同类竞品。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间较新，但 Star 很高，关注度明显高于当前成熟度；README 明确写着“正在从头重写”，且暂不准备接收外部贡献，破坏性变更风险较高。当前 open issues 为 333，文档主要覆盖状态说明和开发命令，面向最终用户的完整使用文档暂未提供。</p>
+<p><strong>注意事项</strong>：项目创建于 2025 年 10 月，当前已有 9358 个 Star、1159 个 Fork、71 位贡献者，但仍有 767 个开放 Issue，说明功能关注度高且维护压力不低。最大风险是项目处于迁移和逐步收尾阶段，新用户应优先评估 Kimi Code CLI；虽然安装后会自动迁移配置和会话，但现有脚本、插件或集成仍可能受到后继项目接口变化影响。README 和文档较完整，覆盖 MCP、ACP、Zsh、VS Code 及开发命令，但普通用户的快速安装路径没有直接写在 README 首页。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/OpenCut-app/OpenCut">OpenCut-app/OpenCut</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/MoonshotAI/kimi-cli">MoonshotAI/kimi-cli</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：OpenCut.app 凭借核心仓库 OpenCut 的高星标数，在开源视频编辑工具社区中已形成显著关注度和较强传播影响力。
-<strong>技术栈偏好</strong>：其主要以 TypeScript 为核心开发语言，技术方向偏向现代 Web 应用、前端工程化与视频编辑相关工具链。
-<strong>核心领域</strong>：主要聚焦开源视频编辑器及相关多媒体处理基础设施。</p>
+<p><strong>技术影响力</strong>：Moonshot AI 是 GitHub 上高关注度的新兴 AI 组织，凭借 Kimi 系列模型与开发工具仓库在开源社区形成了较强影响力。
+<strong>技术栈偏好</strong>：技术栈以 Python 和 TypeScript 为主，偏向大模型研发、AI 工具链、命令行工具与开发者应用生态。
+<strong>核心领域</strong>：主要聚焦大语言模型、多模态 AI、智能编码助手与面向开发者的 AI 产品化能力。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
