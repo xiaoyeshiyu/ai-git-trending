@@ -101,8 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-07-22)</h1>
-<h2>今日热点：AI Agent 与开发者基础设施</h2>
-<p>今天的热门项目明显围绕 AI Agent、代码智能和开发者基础设施展开：一边是面向真实工作流的代码审查图谱、智能代理编排、模型路由与上下文压缩，另一边是把 AI 能力接入检索、研究、CAD、交易分析、部署平台和多端应用框架的实用工具，同时也能看到全球情报看板、开放 SEO、知识工程与老牌网络传输工具等方向的持续活跃，整体呈现出“让 AI 更懂代码、更贴近业务、更容易落地”的趋势，具体项目摘要如下：</p>
+<h2>今日热点：AI Agent 工程化与本地优先工具链升温</h2>
+<p>今天的热门项目集中在 AI Agent、代码智能、模型路由与本地优先工作流上，既有面向开发者的 Agent 框架、代码审查图谱、上下文压缩、CLI/桌面端协作与 Web UI，也覆盖全球情报监控、开源 SEO、TradingView 自动化分析、CAD/机器人设计技能、部署平台、结构化输出、硬件适配选型和跨设备传输等实用场景；与此同时，Hyprland、Dioxus、Apollo 11 源码、Ontology Playground 等项目体现了从系统界面、全栈应用到知识建模与经典工程资料的持续关注，整体趋势显示开发者正在把 AI 能力嵌入更具体、更可控、更本地化的生产工具中，具体项目摘要如下：</p>
 <h3>✨ koala73/worldmonitor (64463★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：把全球新闻、地缘政治信号、金融市场和基础设施动态放进同一块实时态势屏里看，像在一张地图和一组监控面板上同时盯住世界变化。</p>
@@ -702,6 +702,52 @@
 <p><strong>技术影响力</strong>：在 GitHub 上具有较高可见度，依托单个超高星项目在特定技术社区中形成了明显影响力。
 <strong>技术栈偏好</strong>：以 TypeScript 为核心，兼用 HTML 与 Python，整体偏向前端/全栈应用与工具化项目开发。
 <strong>核心领域</strong>：主要聚焦于面向 Omni 生态的应用、远程协作与技能扩展类工具。</p>
+<hr />
+<h3>✨ agegr/pi-web (1889★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把本地 pi coding agent 的命令行会话搬到浏览器里，左侧看项目文件和历史会话，右侧继续聊天、看工具调用、预览代码和配置模型。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：Pi Web 是 pi coding agent 的本地 Web UI，会读取本机 <code>~/.pi/agent/sessions</code> 下的会话文件，并在浏览器中展示历史对话、实时聊天、工具调用结果和 Markdown 内容。它还内置项目文件浏览、源码 / 图片 / 音频 / PDF / DOCX 预览、模型配置、API Key 管理、技能开关、Git worktree 切换等功能，让原本分散在 CLI、文件系统和配置文件里的操作集中到一个界面里。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：使用 CLI agent 时，历史会话通常埋在终端滚动记录或本地 session 文件里，想回到某个项目、某次上下文或某条消息继续工作比较麻烦；Pi Web 可以按项目浏览会话，并支持从早期消息继续或 fork 出新会话。另一个痛点是边让 agent 修改代码边查看项目文件不方便，它把文件树、文件预览、diff 查看和聊天窗口放在同一工作区里，适合跟踪 agent 的实际改动。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合已经在使用 <code>pi coding agent</code> 的开发者，尤其是频繁处理多项目、多会话、长上下文任务的人。也适合希望用浏览器界面管理模型、API Key、技能开关和本地项目文件的 TypeScript / Web 开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：<code>npx @agegr/pi-web@latest</code>，然后打开 <code>http://localhost:30141</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>接手一个已有代码库时，用 Pi Web 一边浏览项目文件，一边让 pi agent 分析模块、生成修改方案或执行代码变更。</li>
+<li>多次尝试同一个需求的不同实现路线时，从历史消息继续或 fork 新会话，避免把试验过程混在同一条 CLI 对话里。</li>
+<li>
+<p>在多个 Git worktree 或分支间工作时，通过侧边栏切换 checkout，让新会话和文件浏览跟随当前工作区。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目基于 TypeScript 和 Next.js 风格目录组织，后端 API 覆盖 agent 会话驱动、SSE 实时事件、文件访问、模型配置、技能管理和 session 解析。设计上比较重视本地安全边界，README 明确说明文件浏览和预览范围限制在选中的项目目录及会话中出现过的工作目录。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交非常密集，7 月 16 日到 22 日连续发布多个版本，并集中加入文件上传、键盘快捷键、shell 命令前缀、Git-aware diff viewer、自动会话命名、headless 自定义 TUI 渲染等能力。提交记录显示核心维护者 Alex Yang 仍在高频迭代，同时有外部贡献者参与功能和修复，当前方向是把 Pi Web 从“会话浏览器”扩展成更完整的本地 agent 工作台。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。README 主要强调它与 pi CLI 共享同一份本地 session，并提供比命令行更清晰的 Markdown、工具调用、会话浏览和项目导航界面。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较新，但 Stars 增长和提交频率都很高，说明热度和迭代速度不错；同时快速发布也意味着功能和交互仍可能变化。当前 Open Issues 为 16，数量不高，但近期有多条 shell 执行、IME、文件预览宽度等修复提交，说明复杂交互还在打磨中。它依赖本地 pi agent 的目录结构和配置文件，未使用 pi coding agent 的用户需要先理解 pi 的会话、模型配置和工作目录机制。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/agegr/pi-web">agegr/pi-web</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在前端与内容型工具圈有一定可见度，<code>pi-web</code> 的高星表现说明其作品具备较强传播力，但整体更偏独立开发者影响力。
+<strong>技术栈偏好</strong>：主要偏向 TypeScript 与 JavaScript，辅以少量 HTML，风格上更接近 Web 应用、交互工具和前端演示类项目。
+<strong>核心领域</strong>：主要聚焦浏览器端产品、可视化表达和轻量工具开发，尤其擅长把信息组织、展示与交互做成可用的 Web 体验。</p>
 <hr />
 <h3>✨ schollz/croc (36606★)</h3>
 <blockquote>
