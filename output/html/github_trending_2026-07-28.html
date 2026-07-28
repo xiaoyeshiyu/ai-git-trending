@@ -101,98 +101,73 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-07-28)</h1>
-<h2>今日热点：AI 原生工具链与开放基础设施加速融合</h2>
-<p>今天的热门项目集中呈现出 AI 能力产品化、开发流程智能化与开放基础设施持续演进的趋势：从自托管 AI 伴侣、视频理解、跨平台信息研究 Agent，到面向代码审查、设计语言、金融市场建模的 LLM 工具；同时，VPN、蓝牙 Mesh 通信、云原生 GIS、现代终端文件管理器、社媒数据采集、Jenkins、Cassandra、Dear ImGui 等项目也显示出开发者对隐私通信、数据平台、自动化工程和高性能原生界面的持续关注，整体热点正在从单点模型能力转向可落地、可集成、可掌控的完整技术栈。具体项目摘要如下：</p>
-<h3>✨ permissionlesstech/bitchat (28393★)</h3>
+<h2>今日热点：AI Agent 走向本地化、治理化与工具化</h2>
+<p>今天的热门项目显示，技术关注点正集中在 AI Agent 的实用落地与基础设施完善：从多模型统一接口、Claude/Codex 等编码代理的技能与记忆增强，到本地语音代理、视频理解、PDF 技术书转技能，再到面向自治代理的身份、沙箱与策略治理；与此同时，开发者工具和垂直应用也保持活跃，涵盖 Jenkins 自动化、现代终端文件管理、云原生 GIS、系统化交易资源、3D 建筑设计，以及可自托管的虚拟陪伴智能体。具体项目摘要如下：</p>
+<h3>✨ pascalorg/editor (18478★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：bitchat 让手机和 Mac 在没有账号、手机号和中心服务器的情况下，通过蓝牙 Mesh 本地聊天，并在有网络时用 Nostr 扩展到更大范围。</p>
+<p><strong>一句话</strong>：在浏览器里绘制楼层、墙体、房间和家具，并实时生成可交互的 3D 建筑场景。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：bitchat 是一个用 Swift 编写的去中心化点对点聊天应用，支持 iOS 和 macOS。它同时提供两套传输方式：离线时使用 Bluetooth LE Mesh 做附近设备发现、多跳转发和本地聊天；联网时通过 Nostr relay 做全球消息和基于地理位置的频道聊天。私聊部分使用 Noise Protocol 和 NIP-17 做端到端加密，交互上保留了 IRC 风格命令，例如 <code>/msg</code>、<code>/who</code>。</p>
+<p><strong>它是什么</strong>：Pascal Editor 是一个基于 React Three Fiber 和 WebGPU 的 3D 建筑编辑器，用来创建、编辑和分享建筑空间项目。它采用 Turborepo 单仓结构，把场景数据、3D 渲染、编辑器交互、内置节点和 UI 组件拆成独立 npm 包，既能作为完整编辑器运行，也能按 <code>@pascal-app/core</code>、<code>@pascal-app/viewer</code>、<code>@pascal-app/editor</code> 等模块集成。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：在灾害、抗议、偏远地区、临时活动等网络不可用或不可信的环境里，用户仍然可以通过附近设备组成蓝牙 Mesh 发送消息。对于不想绑定手机号、账号或依赖中心化服务器的聊天场景，它提供了更低身份暴露的通信方式。</p>
+<p><strong>能解决什么痛点</strong>：做建筑、室内、空间配置类产品时，开发者通常要同时处理 3D 渲染、楼层层级、墙体开洞、物体吸附、撤销重做和场景状态同步，Pascal Editor 已经把这些基础能力封装成可复用的编辑器架构。对于需要在线布置家具、门窗、墙体或楼层的应用，它可以减少从 Three.js 原始场景管理开始搭建编辑器的工作量。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合关注离线通信、去中心化社交、隐私聊天的 iOS/macOS 用户和开发者。也适合研究 Bluetooth LE Mesh、Nostr、端到端加密消息路由的 Swift 工程师参考实现。</p>
+<p><strong>适合谁用</strong>：适合用 React / Next.js 构建空间设计、家装配置、建筑可视化产品的前端团队。也适合需要扩展 3D 节点、插件、查看器能力的 TypeScript / Three.js 开发者。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：<code>cd bitchat &amp;&amp; open bitchat.xcodeproj</code></p>
+<p><strong>怎么上手</strong>：<code>npm install @pascal-app/core @pascal-app/viewer @pascal-app/editor @pascal-app/nodes</code>，然后在挂载 <code>` 前执行</code>await loadPlugin(builtinPlugin)`。</p>
 </li>
 <li>
-<p><strong>可以用在哪些场景</strong>：可以用于大型活动现场的局域聊天，在移动网络拥塞时通过附近设备转发消息；可以用于灾害应急、野外队伍、远程地区的离线短消息通信；也可以用于按地理范围组织的本地社区频道，例如街区、城市或区域讨论。</p>
+<p><strong>可以用在哪些场景</strong>：在线户型编辑器，支持绘制墙体、楼层、房间区域和摆放门窗家具；家装或商业空间配置器，让用户在 Web 页面中选择材质、放置物件并查看 3D 效果；建筑项目预览系统，把已有场景数据渲染成可交互的 viewer 或缩略图。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目采用蓝牙 Mesh + Nostr 的双传输架构，优先走本地蓝牙，无法触达时再回退到互联网 relay，并支持消息排队和智能路由。协议层包含多跳 BLE 转发、LZ4 压缩、Noise 加密、NIP-17 私信封装和基于 geohash 的地理频道设计。</p>
+<p><strong>技术看点</strong>：核心架构采用 <code>core / viewer / editor / nodes</code> 分层，场景节点用扁平字典加 <code>parentId</code> / <code>children</code> 表达层级，便于状态管理和插件扩展。渲染侧使用 React Three Fiber、Three.js WebGPU、Zustand、Zundo 和 dirty nodes 机制，只对变更节点做几何更新，适合复杂交互编辑场景。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近提交非常密集，重点集中在 1.7.x 版本稳定性、安全加固和网络路由质量上，包括修复 BLE 恢复路径死锁、重复链路合并、碎片流去重、DM 路由 DoS 防护、PTT 音频加固、store-and-forward 私信，以及 Mesh bridging 将附近蓝牙网络岛通过互联网桥接。也有本地化和应用体验更新，例如新增波斯语和应用内语言选择器，说明项目仍在快速迭代，并且社区贡献开始覆盖国际化方向。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 floorplan 模式、相机交互、选中与放置流程、材质分类浏览、缩略图捕获、远端 scene patch 和实时协作相关修复上，说明项目当前重点是把编辑器交互打磨稳定，并推进协作与内容管理能力。提交非常密集，且有多位贡献者参与，短期看仍处于快速迭代阶段。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 未明确点名同类竞品。它的差异点主要在于同时覆盖离线蓝牙 Mesh 和联网 Nostr，而不是只做局域网聊天或只做互联网去中心化消息。</p>
+<p><strong>同类对比</strong>：暂无明显同类对标。README 没有直接对比 Blender、SketchUp、Planner 5D 或其他 Web 建筑编辑器，项目更强调可嵌入的 React / TypeScript 编辑器架构和插件化节点系统。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间较新但 Star 增长很快，最近提交显示仍处在快速演进期，协议、安全和路由逻辑还在频繁加固，生产级使用需要关注版本变更和潜在兼容性。当前仍有 72 个 open issues，上手开发需要 Xcode、签名配置和 entitlements 调整；README 给出了构建路径，但移动端真机运行仍需要 Apple Developer Team ID 等配置。</p>
+<p><strong>注意事项</strong>：项目创建时间较新，但已有较高 star 数和频繁提交，说明热度高、变化也快，依赖 API 可能仍在演进。技术栈较重，涉及 Next.js 16、React 19、WebGPU、Three.js、Turborepo 和 Bun，上手前需要接受现代前端 3D 工程的复杂度。README 架构说明比较完整，但生产级集成、兼容性边界和插件生态成熟度仍需要进一步验证。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/permissionlesstech/bitchat">permissionlesstech/bitchat</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/pascalorg/editor">pascalorg/editor</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：permissionlesstech 是一个新近成立但增长迅速的开源组织，凭借 bitchat 在移动端去中心化通信社区形成了较高关注度。
-<strong>技术栈偏好</strong>：技术栈以 Swift 和 Kotlin 为主，明显偏向 iOS 与 Android 原生移动开发，并辅以少量 Web/HTML 项目。
-<strong>核心领域</strong>：主要聚焦于无需中心化基础设施的点对点通信、移动端网络协作与 permissionless 技术实验。</p>
+<p><strong>技术影响力</strong>：Pascal 是一个新近成立但凭借 <code>pascalorg/editor</code> 获得较高关注度的组织，社区影响力集中在少数核心项目上。
+<strong>技术栈偏好</strong>：其技术栈以 TypeScript 为主、Shell 为辅，偏向构建前端/开发工具类项目及自动化脚本能力。
+<strong>核心领域</strong>：主要聚焦于建筑智能化相关的软件基础设施，强调为楼宇场景提供智能升级能力。</p>
 <hr />
-<h3>✨ amnezia-vpn/amnezia-client (13175★)</h3>
+<h3>✨ jenkinsci/jenkins (25661★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：Amnezia VPN 让你输入服务器 IP、SSH 账号和密码后，自动在自己的服务器上部署 VPN 容器，并提供桌面端和移动端客户端连接使用。</p>
+<p><strong>一句话</strong>：Jenkins 用一个可扩展的自动化服务器，把代码构建、测试、静态检查和部署串成可重复执行的流水线。</p>
 </blockquote>
 <ul>
+<li><strong>它是什么</strong>：Jenkins 是一个用 Java 编写的开源自动化服务器，核心用途是把软件交付过程中的重复任务自动化。它通过 2,000 多个插件连接源码仓库、构建工具、测试框架、部署平台和通知系统，常见用法是搭建 CI/CD 流水线。项目提供 WAR、Docker 镜像、Linux/Windows 原生包等多种发行方式，并同时维护 Weekly 和 LTS 两条发布线。</li>
+<li><strong>能解决什么痛点</strong>：当团队每次提交代码后都需要手动构建、跑测试、做静态扫描、再部署到环境时，Jenkins 可以把这些步骤固定成流水线，减少人为漏跑或顺序错误。对于需要兼容多语言、多构建工具、多部署目标的老系统或大型团队，它的插件生态能避免从零拼接大量脚本和集成逻辑。</li>
+<li><strong>适合谁用</strong>：适合负责 CI/CD 平台、构建系统和发布流程的 DevOps 工程师、运维 SRE、平台工程团队。也适合已有 Jenkins 资产、插件依赖或复杂发布流程的企业研发团队继续维护和扩展。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：为 Java、前端、移动端或多语言项目搭建提交后自动构建和测试流程；在企业内部维护统一的发布流水线，把制品构建、审批、部署和通知串起来；对遗留项目补齐自动化测试、静态代码分析和定时任务执行能力。</li>
+<li><strong>技术看点</strong>：Jenkins 的核心价值在于插件化架构和成熟生态，README 明确提到已有 2,000 多个插件，可覆盖大量构建、测试、部署和运维集成场景。它同时提供 Weekly 和 LTS 发布线，适合在“快速获取更新”和“生产环境稳定性”之间做取舍。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交中，大部分是 renovate 触发的依赖升级，包括 webpack、sass、prettier、postcss、stylelint、Jenkins test harness、remoting、JUnit 插件和 GitHub Actions 等，说明项目在持续维护前端构建链、测试基础设施和依赖安全。近期也有 Jenkins 2.574 发布准备提交，以及少量用户可见修复，例如全局搜索下拉框样式修复、PackedMap.values() 返回错误修复、帮助文档示例补充，整体更像成熟项目的稳定维护和小步修补，而不是大规模功能重构。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>它是什么</strong>：这是 Amnezia VPN 的跨平台客户端，覆盖 Windows、macOS、Linux、Android 和 iOS。它面向自建 VPN 场景，客户端可以协助在用户自己的服务器上安装 VPN Docker 容器，并支持 OpenVPN、WireGuard、IKEv2、AmneziaWG、XRay、Shadowsocks、Cloak 等协议或混淆方案。</p>
+<p><strong>注意事项</strong>：项目创建于 2010 年，Star、Fork 和贡献者数量都很高，成熟度和社区规模突出，但 3,593 个开放 issue 也意味着历史包袱和维护面很大。插件生态强是优势，也会带来版本兼容、插件维护状态和升级测试成本；生产环境更适合优先跟随 LTS 线，而不是直接追 Weekly。README 信息完整，能指向下载、贡献、治理、插件和文档入口，但当前素材没有给出一条命令级的快速启动示例。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：</p>
-</li>
-<li>不想手动配置 OpenVPN、WireGuard、XRay 等服务端组件的用户，可以通过客户端完成服务器部署和连接配置。</li>
-<li>
-<p>在网络环境复杂或常规 VPN 流量容易被识别的地区，可以使用 AmneziaWG、OpenVPN over Cloak、OpenVPN over Shadowsocks、XRay 等带流量伪装能力的方案。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合有一台 VPS、希望自建 VPN 的个人用户和小团队；也适合需要在桌面端、Android、iOS 之间统一管理 VPN 连接的运维或技术用户。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：<code>git submodule update --init --recursive</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>在自有 VPS 上快速部署 WireGuard、OpenVPN 或 AmneziaWG，并给电脑和手机共用。</li>
-<li>在 Android 或桌面端按应用配置分流，让部分 App 走 VPN、其他流量保持直连。</li>
-<li>
-<p>在网络限制较强的地区，使用带混淆能力的协议配置来降低 VPN 流量特征暴露。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目主体使用 C++，基于 Qt 6.10+ 构建跨平台桌面和移动客户端，并通过 CMake、Conan、平台构建脚本支撑多端发布。协议层集成 OpenVPN、WireGuard、XRay-core、OpenSSL、libssh 等组件，重点不只是连接 VPN，也包含自动化服务端部署能力。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近提交非常活跃，7 月连续出现版本发布、移动端更新弹窗、AWG3 支持、AmneziaWG 更新、Android 16KB page size 适配、macOS Keychain 路径修复等变更。整体看，近期重点集中在协议能力扩展、移动端体验、平台兼容性和发布流程稳定性上，同时 bugfix 比例较高，说明项目仍在快速维护和打磨。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确提到支持 OpenVPN、WireGuard、IKEv2、XRay 等生态组件，但没有直接声明与某个客户端项目对标。它的差异点在于更偏“自建 VPN 一站式客户端”，不仅连接已有配置，还能通过 SSH 在用户服务器上自动部署 VPN 容器。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2020 年，已有 90 位贡献者和 1.3 万以上 Star，维护活跃度较高；但当前 Open Issues 达 947，说明跨平台兼容、协议支持和用户环境差异带来的问题不少。源码构建依赖 Qt、CMake、Conan、各平台 SDK/编译器，开发上手成本不低；普通用户更适合直接使用官方 releases，而不是从源码构建。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/amnezia-vpn/amnezia-client">amnezia-vpn/amnezia-client</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/jenkinsci/jenkins">jenkinsci/jenkins</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Amnezia VPN 是开源 VPN/抗审查工具生态中具有较高关注度的组织，核心客户端项目拥有万级 Stars，社区影响力较强。
-<strong>技术栈偏好</strong>：技术栈以 C++、Go、Kotlin 为主，偏向跨平台客户端、网络协议实现、内核模块与移动端开发。
-<strong>核心领域</strong>：主要聚焦于开源 VPN、WireGuard 衍生实现、隐私保护与网络访问自由相关基础设施。</p>
+<p><strong>技术影响力</strong>：Jenkins 是开源 CI/CD 与自动化交付领域的标志性组织，凭借庞大的插件生态和高活跃仓库长期影响软件工程实践。
+<strong>技术栈偏好</strong>：技术栈以 Java 为核心，结合 Groovy 流水线脚本与 PowerShell/Docker 相关工具，偏向可扩展的企业级自动化平台建设。
+<strong>核心领域</strong>：主要聚焦持续集成、持续交付、流水线编排、插件生态和 DevOps 自动化基础设施。</p>
 <hr />
 <h3>✨ moeru-ai/airi (44128★)</h3>
 <blockquote>
@@ -218,6 +193,170 @@
 <p><strong>技术影响力</strong>：新兴 AI 组织，凭借高星项目 airi 在开源社区获得显著关注，具备较强增长潜力。
 <strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Go，偏向前端交互、AI 应用框架与工具链开发。
 <strong>核心领域</strong>：主要聚焦 AI 伴侣、智能交互、语音与游戏场景中的 AI Agent 应用。</p>
+<hr />
+<h3>✨ andrewyng/aisuite (15165★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：用同一套 Python Chat Completions 和 Agents API 调用 OpenAI、Anthropic、Google、Ollama 等模型，并在其上运行带工具、MCP 和桌面端能力的 AI Agent。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：aisuite 是一个轻量级 Python 库，把多家生成式 AI 提供商封装成统一的 OpenAI 风格接口，模型名通过 <code>:</code> 路由到对应服务。它不仅支持基础聊天补全、流式输出、工具调用，还提供 Agents API、文件 / Git / Shell 工具包、MCP 集成，以及基于 aisuite 构建的桌面 Agent 应用 OpenWorker。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者在接入多家 LLM 时，通常要分别处理 SDK、鉴权、参数差异和响应结构；aisuite 把这些差异收敛到统一接口，切换模型主要改一个模型字符串。对于需要让模型执行文件读取、Git 查询、Shell 操作或 MCP 工具的 Agent 项目，它也减少了手写工具循环、状态持久化和权限控制的样板代码。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合正在做多模型适配、LLM 应用后端、Agent 原型或内部自动化工具的 Python 工程师。也适合想评估 OpenAI、Anthropic、Google、Ollama 等不同模型效果，但不想维护多套调用代码的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装基础包：<code>pip install aisuite</code>；如果需要一次装齐提供商依赖，可用：<code>pip install 'aisuite[all]'</code>。最小调用方式是创建 <code>ai.Client()</code>，然后用 <code>client.chat.completions.create(model="openai:gpt-4o", messages=[...])</code> 发起请求。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于构建支持多模型切换的聊天机器人或企业内部 AI 助手。可以用于搭建带工具调用的代码库分析 Agent，例如让模型读取本地文件、查询 Git 历史并生成变更摘要。也可以用于桌面自动化场景，通过 OpenWorker 或类似架构读取文件、处理邮件 / Slack、生成 PDF 报告、定时推送每日摘要。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：核心设计是 provider adapter 模式，新提供商通过 <code>_provider.py</code> 和 <code>Provider</code> 命名约定接入，降低扩展成本。Agents 层把函数工具、工具策略、状态存储、Artifacts、Tracing 和 MCP 连接放在同一套运行模型里，对构建生产级 Agent 有参考价值。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 OpenWorker 桌面端体验、MCP 连接器、OAuth 登录、Outlook 日历工具、自动化任务、更新机制和打包发布上，说明项目已从单纯的多模型 SDK 抽象，明显向“可执行任务的桌面 Agent 平台”推进。提交时间密集集中在 2026-07-20 到 2026-07-21，且包含多个 PR merge、版本发布 0.1.3 和 CI release 修复，维护活跃度较高。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确点名 LangChain、LlamaIndex 等竞品。就项目定位看，aisuite 更强调轻量统一的 Chat Completions 接口和可直接落地的 Agents / OpenWorker 参考实现，而不是提供庞大的编排框架。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2024-06-30，虽然 Star 数较高且更新频繁，但 Open Issues 有 132 个，说明仍有不少待处理问题。近期提交涉及桌面端、MCP、OAuth、打包和更新机制，功能面扩张较快，依赖 OpenWorker 或 Agents API 的用户需要关注版本变更和兼容性；单纯使用 Chat Completions 层的上手成本相对较低。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/andrewyng/aisuite">andrewyng/aisuite</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Andrew Ng 在 GitHub 上以少量高星项目形成显著影响力，关注度集中在 AI 工具与智能体相关开源实践。
+<strong>技术栈偏好</strong>：技术栈以 Python 为主、JavaScript 为辅，偏向构建 AI 应用框架、上下文管理与自动化工具。
+<strong>核心领域</strong>：主要聚焦人工智能应用、LLM 工具链、智能体系统与多模态/语音处理方向。</p>
+<hr />
+<h3>✨ affaan-m/ECC (233167★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：ECC 把 Claude Code、Codex、Cursor、OpenCode、Kimi 等 AI 编程代理的提示、技能、记忆、规则、Hook 和安全检查整理成一套可复用的跨环境工作流配置。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：ECC 是面向 AI agent 编程环境的“操作层”，不是单个编辑器插件，而是一组可安装到不同 agent harness 的规则、技能、命令、MCP 配置和安全约束。README 中强调它覆盖技能、instincts、记忆优化、持续学习、安全扫描和 research-first 开发流程，并支持 Codex、Claude Code、Cursor、OpenCode、Gemini、Zed、GitHub Copilot、Kimi 等环境。项目还提供 ECC Pro / GitHub App、npm 包 <code>ecc-universal</code> 和 <code>ecc-agentshield</code>，但开源仓库本身采用 MIT 许可证。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：多种 AI 编程工具并用时，团队很容易在每个工具里重复维护提示词、规则、命令和项目约束，ECC 试图把这些内容统一成可迁移的项目级配置。另一个痛点是 agent 会话之间缺少稳定记忆和安全边界，README 中专门提供 memory persistence、verification loops、security guide、AgentShield 等内容来处理上下文保存、验证和风险扫描。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合已经在日常开发中重度使用 Claude Code、Codex、Cursor、OpenCode 或 Kimi Code 的工程师和团队。也适合维护多语言仓库、希望把 AI 编程流程标准化到项目里的技术负责人或平台工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 中给出的 Kimi 最小路径是：<code>bash ./install.sh --target kimi --profile minimal &amp;&amp; npx ecc doctor --target kimi &amp;&amp; kimi</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于在一个团队仓库里统一 Claude Code、Codex、Cursor 等 agent 的项目说明、技能和工作约束。可以用于给 Kimi Code 配置项目本地 <code>.kimi/AGENTS.md</code> 与 <code>.kimi/skills/</code>，并接入自托管或兼容 OpenAI/Kimi 的模型端点。也可以用于给 AI 编程流程加入安全扫描、凭据检查、命令 shim 约束和代码扫描告警，降低 agent 执行不可信操作的风险。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目的关键设计是跨 harness 适配：同一套 agent 工作流可以落到不同 CLI、编辑器和模型环境中，而不是绑定某一家工具。近期提交还显示它在连接 canonical Itō compute CLI、只读 compute handoff、Kimi setup、Bun lockfile 检测和 OpenCode 命令作用域等细节上持续补齐真实使用场景。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交非常密集，集中在 2026-07-22 到 2026-07-25，说明项目仍处于高频维护状态。近期重点一方面是文档和 README 资产、赞助信息、入口卡片、Kimi 指南的整理；另一方面是 Itō compute 集成、credential-bearing CLI shim 拒绝、plan canvas 扫描告警加固、OpenCode 作用域修复和 Bun lockfile 检测修复。整体方向看，项目正在从“配置集合”演进为更完整的跨 agent 工作流与算力/安全生态入口。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确列出直接竞品。它更像是面向 Claude Code、Codex、Cursor、OpenCode、Kimi 等多种 harness 的统一操作层，而不是只服务单个编辑器或单个模型的插件。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间为 2026-01-18，但 Star、Fork 和贡献者数量已经很高，同时还有 103 个 open issues，说明关注度和使用面很大，也意味着变更和问题反馈会比较密集。README 内容较完整，包含多语言文档、指南、安全提醒和商业入口，但信息量很大，新用户需要先读 The Shorthand Guide 或对应目标环境文档。近期提交中有大量文档、赞助、compute 集成和安全修复，使用前应优先走官方仓库、npm 包和 GitHub App，避免第三方镜像或未审查分发源。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：拥有 23 万星级代表项目和较高关注者规模，属于 AI Agent 与开源工具链领域中影响力突出的个人开发者。
+<strong>技术栈偏好</strong>：主要使用 Python、JavaScript 和 TypeScript，偏向构建 AI Agent 框架、自动化工具与开发者基础设施。
+<strong>核心领域</strong>：核心聚焦 AI Agent 编排、评测/元工具、安全防护以及面向 AI 团队的算力与工作流基础设施。</p>
+<hr />
+<h3>✨ huggingface/speech-to-speech (7018★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把麦克风语音实时送进 VAD、语音识别、LLM 和语音合成流水线，最终跑出一个可本地部署、兼容 OpenAI Realtime API 的语音智能体后端。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：speech-to-speech 是 Hugging Face 开源的低延迟语音智能体框架，核心流程是 <code>VAD -&gt; STT -&gt; LLM -&gt; TTS</code>。它提供 OpenAI Realtime 兼容的 WebSocket API，客户端可以像连接 OpenAI Realtime 服务一样连接本地服务。语音识别、语言模型、语音合成都可以替换后端，既能接 OpenAI 兼容服务，也能接 vLLM、llama.cpp 或 Hugging Face 生态里的开源模型。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者想做本地语音助手时，通常要自己拼 VAD、实时转写、LLM 流式响应、TTS 播放和打断处理，这个项目把这些环节串成了可运行的服务。另一个痛点是客户端适配成本高，它直接暴露 OpenAI Realtime 兼容接口，已有 Realtime 客户端可以较低成本切到自托管后端。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合正在做语音助手、机器人对话、实时语音交互产品的 Python / AI 工程师。也适合希望把 LLM 语音链路从云端迁到本地或私有 GPU 机器上的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：<code>pip install speech-to-speech &amp;&amp; export OPENAI_API_KEY=... &amp;&amp; speech-to-speech</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以作为桌面端或移动端语音助手的本地 Realtime 后端；可以给机器人、智能硬件接入低延迟语音对话能力，README 中提到它已用于 Reachy Mini 机器人的对话后端；也可以在企业内网部署语音问答服务，把 LLM 指向自托管的 llama.cpp 或 vLLM 服务。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目把语音链路拆成独立线程和队列连接的模块，VAD、STT、LLM、TTS 都能通过 CLI 参数切换。默认栈包含 Silero VAD、Parakeet TDT、OpenAI-compatible LLM 和 Qwen3-TTS，同时支持 Faster Whisper、Whisper MLX、Paraformer、Kokoro、Pocket TTS、ChatTTS 等多个后端，对模型选型和硬件适配比较友好。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 Realtime 能力和稳定性上，包括新增 OpenAI Realtime API 的 WebRTC transport、修复 session teardown 时 pipeline unit 卡住的问题，并强化 API warmup 的重试策略。项目在 2026-07-17 准备了 <code>0.2.11</code> 发布，说明仍处于持续迭代状态；近期也有 dependabot 和 star history 自动化维护提交，整体维护活跃。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确对标的是 OpenAI Realtime API 的协议兼容能力，差异在于它可以把后端换成本地或开源模型栈，而不是只能使用 OpenAI 托管服务。除此之外，暂无明确同类项目对标。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2024-08，Star 已超过 7000，但仍有 112 个 open issues，说明关注度高，同时也可能存在较多边界问题和平台适配问题。依赖栈比较复杂，尤其是 TTS、CUDA、macOS MLX、不同 STT 后端的组合，上手前需要确认 Python 3.10+、GPU / Apple Silicon / CPU 环境和对应 wheel 是否匹配。README 文档较完整，但快速跑通之外的生产部署、延迟调优和模型替换仍需要一定语音 AI 工程经验。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/huggingface/speech-to-speech">huggingface/speech-to-speech</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Hugging Face 是全球 AI 开源生态的核心组织之一，凭借 Transformers、Diffusers 等高星项目深度影响机器学习开发范式与社区协作。
+<strong>技术栈偏好</strong>：其技术栈以 Python 为绝对核心，辅以 MDX 文档与课程内容，重点围绕深度学习框架、模型库、推理工具和开发者教育展开。
+<strong>核心领域</strong>：主要聚焦自然语言处理、多模态生成式 AI、计算机视觉、智能体框架以及开源模型生态建设。</p>
+<hr />
+<h3>✨ virgiliojr94/book-to-skill (11046★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把技术书 PDF、文档目录或多份资料转换成 Claude Code、GitHub Copilot CLI、Amp 可按需读取的 Agent Skill，让书里的章节、术语、模式和速查表直接进入日常编码问答流程。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：book-to-skill 是一个 Python 项目，用来从 PDF、EPUB、DOCX、Markdown、HTML、RTF、MOBI 等资料中抽取内容，并生成符合 Agent Skills 标准的技能目录。它不会简单把整本书塞进上下文，而是生成 <code>SKILL.md</code>、分章节摘要、<code>glossary.md</code>、<code>patterns.md</code>、<code>cheatsheet.md</code> 等结构化文件，让智能体在需要时读取对应章节。README 明确支持 Claude Code、GitHub Copilot CLI 和 Amp 等使用同一套 <code>SKILL.md</code> 格式的宿主。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者读完一本技术书后，几个月后很难记起某个概念在哪一章、具体怎么用，只能反复搜索 PDF 或重新翻目录。直接把整本书丢给 Agent 又会消耗大量上下文，还容易在没有真实内容时产生幻觉；这个项目把资料拆成可检索、可按需加载的技能文件，降低每次提问的上下文成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合经常用 Claude Code、GitHub Copilot CLI 或 Amp 辅助编码的开发者，尤其是需要反复查技术书、RFC、架构文档、研究论文的人。也适合维护内部知识库、设计系统文档、运行手册的团队，把静态文档变成可被 Agent 查询的工作资料。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 给出的最小使用方式是：<code>/book-to-skill ./my-book.pdf</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：把《Designing Data-Intensive Applications》这类技术书转换成技能，在实现复制、分区、事务相关代码时直接查询对应章节。把团队的 ADR、runbook、onboarding 文档目录合并成一个内部知识技能，编码或排障时让 Agent 按主题读取。把多篇论文、规范或 API 合同整理成一个统一技能，用于实现功能前快速查找术语、设计约束和决策规则。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目按格式选择不同抽取链路：PDF 可在 <code>pdftotext</code>、<code>pypdf</code>、<code>pdfminer.six</code> 和 Docling 之间切换，技术类书籍优先用 Docling 保留表格和代码块，纯文本书籍则走更快的抽取方式。输出层采用 Agent Skills 的文件结构，把核心索引放在 <code>SKILL.md</code>，章节内容延迟加载，设计目标是减少一次性上下文消耗。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交显示项目仍处于高频维护期，重点集中在安全、格式兼容和文档完善上。7 月新增了生成技能的安全扫描、清理抽取文本中的不可见 Unicode，并改进了章节识别，包括罗马数字章节和泰语章节标题；6 月到 7 月还修复了 PDF、EPUB、DOCX、HTML、UTF-16/UTF-32 文本解码等边界问题。提交者不只项目作者，已有多位贡献者参与格式处理和安全修复，社区协作迹象比较明显。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确列出直接竞品。它主要对比的是“直接搜索 PDF”“把整本书塞进 Agent 上下文”“自己手写读书笔记”这些常见做法，差异在于它生成的是结构化 Agent Skill，而不是一次性摘要或全文索引。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较新，但 Stars 已超过 1.1 万，Forks 超过 1300，Open Issues 为 13，说明关注度高且当前问题积压不算多。上手依赖会随文件格式变化，PDF、EPUB、DOCX、RTF、MOBI 等可能需要额外安装 <code>poppler</code>、Docling、Calibre 或相关 Python 包；技术类 PDF 用 Docling 的质量更好，但 README 给出的基准是约 1.5 秒/页，处理大书会比较慢。文档比较完整，包含用法、格式支持、抽取链路和性能说明，但项目仍在快速演进，近期安全与解析逻辑变更较多，生产团队批量导入内部资料前应先做小范围验证。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在 SRE 与开发者工具领域有一定社区可见度，凭借少量高星 Python 项目体现出较强的实用型影响力。
+<strong>技术栈偏好</strong>：以 Python 为主、辅以 JavaScript，偏向构建自动化工具、效率应用和面向工程实践的小型产品。
+<strong>核心领域</strong>：主要聚焦 SRE、事故响应与开发者效率提升相关的工程工具与知识辅助。</p>
 <hr />
 <h3>✨ opengeos/GeoLibre (2778★)</h3>
 <blockquote>
@@ -260,6 +399,88 @@
 <strong>技术栈偏好</strong>：其技术栈以 Python 为核心，结合 TypeScript 构建地理空间分析、交互式制图、AI 解译与 Web 地图应用工具链。
 <strong>核心领域</strong>：主要聚焦开源地理空间软件、遥感影像分析、GeoAI、Google Earth Engine 生态与交互式地图可视化。</p>
 <hr />
+<h3>✨ paperswithbacktest/awesome-systematic-trading (9412★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：这是一份系统化交易资源索引，把量化交易常用的回测框架、交易机器人、策略论文、书籍、博客和课程按类别整理在一个 README 里。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个 <code>awesome-list</code> 类型的资料库，核心内容不是代码库本身，而是围绕系统化交易 / 量化交易收集可用资源。README 中列出了 97 个交易相关库和包、40+ 个策略、55 本书、23 个视频，以及博客和课程，覆盖回测、实盘交易、指标、风控、数据源、机器学习、时间序列分析等方向。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：做量化交易研究时，开发者经常需要在 backtesting、live trading、broker API、数据源、指标库之间反复搜索和比较，这个项目把常见选择集中到一处。对于刚进入系统化交易的人，它也能减少“先看什么、用什么框架、有哪些经典策略资料”的信息筛选成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合正在用 Python 做量化研究、策略回测或交易系统原型的工程师和研究员。也适合想系统补齐量化交易资料的个人投资者、金融科技学生，以及需要评估开源交易框架选型的技术负责人。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于为内部量化研究平台选型回测框架，比如在 <code>vnpy</code>、<code>zipline</code>、<code>backtrader</code>、<code>vectorbt</code>、<code>Lean</code> 等项目之间做初筛。也可以用于搭建个人量化学习路线，从入门书籍、策略论文、视频访谈和课程中挑选资料。还可以用于整理交易系统依赖清单，例如数据源、指标计算、风控、券商 API 和可视化库。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目按功能域和语言标签组织资源，尤其强调 Python 生态中的事件驱动回测、向量化回测、加密货币交易机器人和数据分析工具。它的价值主要在信息架构和持续维护，而不是某个单一技术实现。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交以修复 URL、移除失效链接、调整文案和补充少量新资源为主，说明项目近期重点是维护资源可用性，而不是大规模扩展结构。提交集中在少数维护者，Contributor Count 为 6，社区参与有但不算活跃；2024 年有合并外部 PR 和更新中文 README，说明仍接受社区补充。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确对标其他同类项目。它更像系统化交易领域的 curated list，而不是 <code>backtrader</code>、<code>vectorbt</code>、<code>vnpy</code> 这类可直接运行的回测或交易框架。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：这是资料索引项目，不提供统一 API、安装包或可直接运行的交易系统，读者仍需要自行判断每个被收录项目的维护状态、许可证和适用市场。当前有 46 个 Open Issues，近期提交多为链接修复，说明资源时效性是持续风险；用于技术选型时，不能只看列表中的星标排序，还需要进入具体项目检查最近提交、文档和实盘风险。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/paperswithbacktest/awesome-systematic-trading">paperswithbacktest/awesome-systematic-trading</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Papers With Backtest 是一个新兴但已具备较高可见度的量化交易开源组织，凭借高星标系统化交易资源库在细分社区形成明显影响力。
+<strong>技术栈偏好</strong>：其技术栈明显以 Python 为核心，偏向量化研究、回测框架、交易工具链和算法策略实验。
+<strong>核心领域</strong>：主要聚焦系统化交易、量化投资、策略回测与金融市场研究工具生态。</p>
+<hr />
+<h3>✨ microsoft/agent-governance-toolkit (5084★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把 AI Agent 的每次工具调用、消息发送和代理委派先送进策略引擎检查，允许才执行，拒绝就直接拦截并留下审计记录。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是微软开源的 AI Agent 治理框架，重点覆盖策略执行、零信任身份、执行沙箱、审计日志和可靠性工程。它不是靠提示词约束模型，而是在应用代码层拦截 Agent 行为，例如调用工具前先按 YAML/OPA/Cedar 策略判断是否允许。项目还提供合规 CLI、MCP 安全网关、Agent Runtime、Agent SRE、Agent Compliance 等模块，并宣称覆盖 OWASP Agentic Top 10 的 10/10 项。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：当 Agent 能发邮件、查数据库、调用 shell 或委派其他 Agent 时，传统 API key、OAuth scope 很难回答“这次具体动作该不该执行”。另一个痛点是事故追踪：多个 Agent 共用凭证时，很难证明是哪一个 Agent、基于哪条策略、在什么上下文下做了某个操作。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合正在把 AI Agent 接入生产系统的 Python 工程师、平台工程团队和安全工程团队。也适合在 MCP、Claude Code、Foundry ACS、多语言 SDK 场景里需要做工具调用治理、审计和合规校验的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 给出的最小安装方式是 <code>pip install agent-governance-toolkit[full]</code>；最小治理调用示例是 <code>safe_tool = govern(my_tool, policy="policy.yaml")</code>，之后每次调用都会按策略检查并记录结果。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于给内部 AI Agent 的数据库操作加策略，例如允许读表但禁止 <code>drop/delete/truncate</code>。可以用于 MCP 工具网关，拦截高风险工具调用、检测工具投毒或漂移。也可以用于需要审计证据的企业 Agent 平台，记录每次允许、拒绝、人工审批的决策链路。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：设计核心是“确定性应用层拦截”，把工具调用放到 Policy Engine、Identity、Audit Log 之前，而不是依赖模型自觉遵守提示词。项目支持 Python 快速接入，同时提供 TypeScript、.NET、Rust、Go 示例，底层还出现了 Rust core 支撑的 Agent Control Specification 策略运行时。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交显示项目非常活跃，7 月 21 日到 28 日持续有功能、CI、依赖和文档更新。近期重点包括新增 native policy runtime 和 sessions、补充网络出口与人工审批的 e2e 测试、增加 Python governance 场景 CI、加入 bounded ACS artifact validation API，说明项目正在从快速预览走向更严肃的策略运行时、端到端验证和多语言生态稳定化。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确列出直接竞品。它的差异点主要是强调不在 prompt 层做“软约束”，而是在工具调用前做确定性拦截，并把身份、审计、沙箱、SRE 和合规检查放进同一个治理体系。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目标注为 Public Preview，README 明确提示 GA 前可能有破坏性变更，生产使用需要锁版本并关注 changelog。仓库创建于 2026-03-02，但已有 5084 stars、831 forks、122 位贡献者和 159 个 open issues，热度和社区参与度高，同时也意味着接口仍在快速演进。README 文档比较完整，但包名、旧 <code>agent_os</code> 兼容层、AGT 5/ACS 新 API 并存，新用户需要注意选择当前推荐路径。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/microsoft/agent-governance-toolkit">microsoft/agent-governance-toolkit</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Microsoft 是 GitHub 上最具影响力的开源组织之一，凭借 VS Code、TypeScript、PowerToys 等项目深度影响全球开发者生态。
+<strong>技术栈偏好</strong>：技术栈以 TypeScript、Python、C 为主，覆盖开发工具、AI 应用、系统工具与编程语言基础设施。
+<strong>核心领域</strong>：主要聚焦开发者工具、编程语言、人工智能教育与 Windows 生产力工具生态。</p>
+<hr />
 <h3>✨ yorukot/superfile (19361★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：superfile 把终端里的文件浏览、复制移动、预览、删除和配置管理做成带主题、插件与快捷键的现代 TUI 文件管理界面。</p>
@@ -284,204 +505,6 @@
 <p><strong>技术影响力</strong>：Yorukot 是一位以 Go 开源项目获得显著关注的个人开发者，代表项目 superfile 已具备较强社区影响力。
 <strong>技术栈偏好</strong>：技术栈明显偏向 Go，同时辅以 TypeScript 和 JavaScript，侧重构建实用型开发工具与 Web 相关项目。
 <strong>核心领域</strong>：主要聚焦命令行工具、开发者效率工具和轻量级网络/交互类开源项目。</p>
-<hr />
-<h3>✨ NanmiCoder/MediaCrawler (57925★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：用 Python 登录真实浏览器后，批量抓取小红书、抖音、快手、B 站、微博、贴吧、知乎的帖子、视频、评论和二级评论数据。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：MediaCrawler 是面向主流中文自媒体平台的多平台公开数据采集项目，覆盖小红书、抖音、快手、B 站、微博、贴吧、知乎等平台。它支持关键词搜索、指定帖子 ID 抓取、创作者主页抓取、评论与二级评论采集，并可将数据保存为 CSV、JSON、JSONL、Excel、SQLite 或 MySQL。项目还提供 WebUI，可通过页面配置平台、登录方式和抓取类型，查看运行日志与数据预览。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：</p>
-</li>
-<li>多个平台的登录态、签名参数和评论分页逻辑各不相同，自己从零写爬虫维护成本很高，MediaCrawler 已经封装了常见平台的采集流程。</li>
-<li>
-<p>对内容分析、舆情观察、评论研究等场景来说，手工收集帖子和评论数据很慢，项目可以按关键词或指定 ID 批量拉取结构化数据。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合做内容数据分析、舆情研究、评论清洗的 Python 工程师或数据分析人员；也适合想学习 Playwright 登录态复用、CDP 连接浏览器、多平台爬虫架构设计的开发者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：推荐使用 uv 安装依赖后运行，例如：<code>uv sync &amp;&amp; uv run main.py --platform xhs --lt qrcode --type search</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>按关键词采集小红书、微博、抖音等平台的内容与评论，用于品牌口碑或话题趋势分析。</li>
-<li>抓取指定视频、帖子、问答下的评论和二级评论，做评论情绪分析、词云或用户反馈归类。</li>
-<li>
-<p>为内部数据分析流程准备原始内容数据，并保存到 SQLite、MySQL、Excel 等格式中进一步处理。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目核心基于 Playwright 和 Chrome CDP 模式，复用用户本地浏览器登录态、Cookie 和扩展，减少重复登录和部分风控问题。README 明确说明其思路是通过保留登录态的浏览器上下文获取签名参数，而不是依赖复杂 JS 逆向，这降低了理解和维护门槛。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：近期提交集中在稳定性修复、依赖升级和 WebUI 整理上，包括修复 WebUI 源码缺失、CDP 连接、快手翻页、知乎指定 ID 场景，以及升级 Playwright、适配 Python 3.13。7 月还将 WebUI 源码纳入仓库、移除打包产物，说明项目正在加强可维护性和可视化使用体验。近期也有外部贡献者提交代理配置和平台逻辑修复，社区仍有一定活跃度。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 没有明确对标其他开源多平台爬虫项目，但提到了作者的 MediaCrawlerPro。相比开源版，Pro 版主打断点续爬、多账号与 IP 代理池、去除 Playwright 依赖、Linux 环境支持和更完整的架构设计；开源版更适合学习和基础采集需求。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目 README 明确声明仅供学习和参考，禁止商业用途、非法用途和大规模爬取，使用前需要认真评估平台规则、法律风险和数据合规要求。项目有 181 个 Open Issues，说明使用场景复杂、平台变动带来的维护压力不小；同时近期提交较密集，依赖、平台逻辑和 WebUI 仍在持续调整，上手时应关注 README、配置文件和 issue 中的最新说明。默认推荐 Chrome CDP 模式，需要本机安装新版 Chrome 并开启远程调试，对纯服务器环境并不算开箱即用。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/NanmiCoder/MediaCrawler">NanmiCoder/MediaCrawler</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有多个高星项目，尤其是 MediaCrawler 影响力突出，是中文开源社区中较具影响力的爬虫与数据采集方向开发者。
-<strong>技术栈偏好</strong>：主要使用 Python 和 TypeScript，偏好爬虫、自动化采集、内容平台数据处理及相关工具链开发。
-<strong>核心领域</strong>：核心聚焦于媒体内容爬取、新闻与社交平台数据采集，以及面向开发者的爬虫教程和实践项目。</p>
-<hr />
-<h3>✨ pbakaus/impeccable (50442★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Impeccable 把前端设计规范、AI 指令、浏览器迭代和静态检测规则打包到 AI 编码工具里，让 AI 生成的页面少一些模板味，多一些可控的设计判断。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：Impeccable 是一套面向 AI coding agent 的前端设计指导系统，安装后通过 <code>/impeccable</code> 命令在 Claude Code、Cursor、Codex、Gemini CLI、Grok Build 等工具中使用。它包含 1 个 skill、23 个设计命令、浏览器 live 迭代模式，以及 60 条无需 LLM 和 API Key 的确定性检测规则，用来检查 AI 生成界面里的常见设计问题。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：它主要解决 AI 生成前端时容易反复出现的“模板化痕迹”，比如一律使用 Inter、紫蓝渐变、卡片套卡片、彩色背景上放灰字、标题上方放圆角图标块等。它也能把产品受众、品牌语气、颜色、字体、组件约束写入 <code>PRODUCT.md</code> 和 <code>DESIGN.md</code>，避免每次让 AI 改页面都要重新解释设计上下文。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合经常用 Claude Code、Cursor、Codex CLI、GitHub Copilot、Gemini CLI 等 AI 编码工具做前端页面的开发者。也适合需要维护产品 UI 一致性的独立开发者、小团队前端工程师，以及想给 AI 生成界面加一层设计审查流程的项目负责人。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：在项目根目录运行 <code>npx impeccable install</code>，然后在 AI 编码工具里执行 <code>/impeccable init</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：可以用于给新项目初始化设计上下文，让后续 AI 生成的页面遵循同一套产品定位和视觉约束。也可以在落地页、仪表盘、设置页、结账流程等页面完成后运行 <code>/impeccable audit</code>、<code>/impeccable critique</code> 或 <code>/impeccable polish</code> 做设计和质量检查。对已经显得平淡或过度花哨的界面，可以用 <code>/impeccable bolder</code>、<code>/impeccable quieter</code>、<code>/impeccable layout</code>、<code>/impeccable typeset</code> 做定向调整。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目把 AI 设计指导拆成可安装的 provider 输出，覆盖 Claude、Cursor、Codex、Gemini、Grok、OpenCode、GitHub Copilot 等多种宿主环境。检测部分包含 60 条确定性规则，CLI 和浏览器扩展可在不调用 LLM 的情况下运行，这对稳定性、成本和 CI 集成更友好。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-07-26，说明项目当前维护非常活跃。近期工作重点包括 OpenCode 全局配置目录适配、legacy 迁移的符号链接和 home-rooted repo 防护、由 subagent 定义生成降级模式 fallback references、刷新 reference docs，以及扩展 CSS 伪条纹、静态命名色边框、注释规则跳过等检测覆盖；整体方向是在补齐多宿主安装兼容性、增强自动生成产物和提升检测规则精度。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确提到 Anthropic 的 <code>frontend-design</code> skill 是早期广泛使用的 Claude 前端设计 skill，Impeccable 从这个方向发展而来。相比单一设计 skill，它额外提供统一初始化流程、23 个命令、live 浏览器迭代模式、多 AI 工具安装支持，以及无需 LLM 的确定性检测规则。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间为 2025-11-16，时间不长但 star 数很高，近期提交密集，仍可能处在快速演进阶段，安装路径、provider 输出和 hook 行为需要关注更新说明。当前 open issues 为 40 个，说明已有一定使用反馈但仍有待收敛的问题；Codex、Grok、Cursor 等不同宿主还有各自的启用、信任或重启要求，上手时需要按 README 对应工具配置。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Paul Bakaus 是前端与创意技术领域的高影响力开发者，凭借 jQuery UI、impeccable 等项目在 Web 开发社区具有广泛认可度。
-<strong>技术栈偏好</strong>：主要偏好 JavaScript 与 HTML，聚焦浏览器端交互、UI 工具、滚动体验和 Web 创意技术实现。
-<strong>核心领域</strong>：核心聚焦前端工程、用户界面交互、创作者工具与高体验 Web 应用。</p>
-<hr />
-<h3>✨ shiyu-coder/Kronos (32515★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Kronos 把金融市场的 K 线序列当作“语言”来建模，用预训练 Transformer 预测 OHLCV 等行情数据的未来走势。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：Kronos 是面向金融 K 线数据的开源基础模型家族，核心输入是 open、high、low、close、volume、amount 等多维行情序列。它先用专门的 tokenizer 将连续 K 线量化成分层离散 token，再用自回归 Transformer 对这些 token 建模，用于行情预测、微调和量化研究实验。项目已提供 Hugging Face 预训练模型、预测接口、批量预测、示例脚本和基于 Qlib 的微调流程。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：做金融时间序列预测时，通用时间序列模型往往没有针对 K 线的高噪声、多市场、多字段结构做专门设计，直接套用效果和工程适配都不稳定。Kronos 提供了从原始 K 线 DataFrame 到预测结果 DataFrame 的封装，也支持批量预测，能减少研究者反复写归一化、截断上下文、反归一化和采样推理代码的工作。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合做量化研究、金融时间序列预测、加密货币或股票行情建模的 Python 工程师和研究人员。也适合已经在用 Hugging Face、PyTorch、Qlib 搭建实验流水线，希望基于预训练模型做微调和回测的人。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：先安装依赖：<code>pip install -r requirements.txt</code>；最小使用方式是加载 tokenizer 和模型：<code>tokenizer = KronosTokenizer.from_pretrained("NeoQuasar/Kronos-Tokenizer-base"); model = Kronos.from_pretrained("NeoQuasar/Kronos-small")</code>，再用 <code>KronosPredictor(model, tokenizer, max_context=512)</code> 对包含 <code>open/high/low/close</code> 的 DataFrame 生成预测。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：可以用于 BTC/USDT 等交易对的短周期 K 线预测，例如 README 中展示的未来 24 小时预测 Demo。可以用于多只股票或多个资产的批量行情预测，利用 <code>predict_batch</code> 在 GPU 上并行处理多个序列。也可以作为量化研究中的预训练起点，结合 Qlib 数据对中国 A 股市场做微调和简单回测实验。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用“两阶段”设计：先把 OHLCV 等连续金融序列离散化为分层 token，再用 decoder-only 自回归 Transformer 预训练，这让金融 K 线可以被类似语言模型的方式建模。模型库覆盖 mini、small、base 等规模，公开模型参数从 4.1M 到 102.3M，便于在不同算力条件下试验。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交以修复和工程完善为主，包括修复批量维度训练问题、归一化窗口数据泄漏、top-k 采样 bug、Python 3.12/WebUI 依赖兼容，以及减少推理内存分配和 CPU-GPU 同步。也有面向中国 A 股市场的功能合入和入门体验改进，说明项目正在从论文原型向更可复现、更易用的研究工具演进；PR 来自多位社区贡献者，社区参与度较高。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确提到它不同于通用 TSFM，Kronos 针对金融 K 线的高噪声特征和 OHLCV 结构做了专门 tokenizer 与预训练设计。未提供与具体竞品模型的系统性 benchmark 对比摘要。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2025-07-01，时间较新，但 Star 和 Fork 增长很快，Open Issues 已有 238 个，说明关注度高的同时仍有不少待处理问题。README 给出了预测、批量预测、微调和 Demo，但金融模型落地需要额外验证数据质量、回测假设、交易成本和风险控制；README 也明确提示微调示例不是生产级量化交易系统。部分能力依赖 Hugging Face 模型和 GPU 环境，<code>Kronos-small/base</code> 的最大上下文长度为 512，长序列会被自动截断，使用前需要确认这是否符合自己的预测任务。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/shiyu-coder/Kronos">shiyu-coder/Kronos</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：ShiYu 凭借 Kronos 等高星项目在开源社区具备较强影响力，尤其在 AI/量化相关开发者群体中关注度突出。
-<strong>技术栈偏好</strong>：主要使用 Python，辅以 C++，技术方向偏向机器学习、金融建模与实验型系统实现。
-<strong>核心领域</strong>：主要聚焦于人工智能驱动的量化金融、时间序列建模与金融市场预测。</p>
-<hr />
-<h3>✨ alibaba/open-code-review (11280★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 Git diff 拆分成可控的审查单元，交给带工具调用能力的 LLM Agent 做逐行代码审查，并输出可定位到具体行的缺陷评论。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：OpenCodeReview 是阿里开源的 AI 代码审查 CLI，源自阿里内部使用两年的代码审查助手。它读取 Git diff 或完整文件内容，结合规则匹配、文件分组、定位模块和 LLM Agent，生成结构化的行级 review 评论。除了常规增量 review，也支持 <code>ocr scan</code> 对陌生代码库或目录做全量审查。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：大型变更中，通用 Agent 容易只看部分文件、漏掉相关上下文，OpenCodeReview 通过确定性的文件选择和分组机制减少漏审。AI review 常见的另一个问题是评论位置漂移，它把评论定位和反思校验从模型输出中拆出来，专门提高行号和内容准确性。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合需要在 PR、分支差异或本地改动中引入 AI code review 的后端、全栈和平台工程团队。也适合已经在用 Claude Code、Codex、Cursor 等编码 Agent，但希望审查流程更可控、误报更少的团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：<code>npm install -g @alibaba-group/open-code-review &amp;&amp; ocr config provider &amp;&amp; ocr config model &amp;&amp; ocr review</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：在本地提交前审查 staged、unstaged 和 untracked 变更，提前发现 NPE、线程安全、XSS、SQL 注入等问题。用于 CI/CD 中审查分支或 Pull Request，给团队提供自动化行级评论。接手陌生仓库时用 <code>ocr scan --path internal/agent</code> 之类的命令审查目录或文件，快速排查潜在风险。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：核心设计不是单纯把 diff 丢给大模型，而是用确定性工程流程负责文件选择、智能分组、规则匹配和评论定位，再让 Agent 处理动态上下文检索和判断。README 中给出的 benchmark 显示，它相对通用 Claude Code 在相同模型下更偏向高 Precision 和低 token 消耗，但 Recall 会更低，这是明确的取舍。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近两天提交非常密集，既有 <code>llmloop</code> 并发评论处理、merge commit diff、二进制 diff 标记、配置 round-trip 等核心修复，也有 VS Code 扩展依赖安全升级、Pages 构建 CI、翻译同步 guardrails。整体看项目仍在快速打磨工程稳定性、安全依赖和文档国际化，社区贡献者参与度较高，不只是单一维护者提交。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确对比了通用 Agent，尤其是 Claude Code。OpenCodeReview 的差异在于把代码审查流程工程化约束起来，而不是依赖自然语言 prompt 驱动；优势是定位更稳、误报更少、token 更省，代价是召回率相对更低。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026-05-18，虽然 Star 增长很快、提交活跃，但开源时间仍短，接口和工作流仍可能继续变化。当前有 40 个 open issues，说明已有真实使用反馈但也存在待修问题。上手需要先配置可用的 LLM provider 和模型，且依赖 Git &gt;= 2.41；团队接入 CI 前应先评估误报、漏报和 token 成本。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Alibaba 是中国开源生态中影响力极高的企业级组织，拥有大量高星项目并在 Java 开发者社区具备广泛采用度。
-<strong>技术栈偏好</strong>：技术栈明显偏向 Java/Kotlin，重点围绕 JVM 生态、企业级中间件、开发工具与工程规范建设。
-<strong>核心领域</strong>：主要聚焦微服务基础设施、应用诊断、数据同步、办公数据处理与企业级研发效能工具。</p>
-<hr />
-<h3>✨ jenkinsci/jenkins (25661★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Jenkins 用一个可扩展的自动化服务器，把代码构建、测试、静态检查和部署串成可重复执行的流水线。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Jenkins 是一个用 Java 编写的开源自动化服务器，核心用途是把软件交付过程中的重复任务自动化。它通过 2,000 多个插件连接源码仓库、构建工具、测试框架、部署平台和通知系统，常见用法是搭建 CI/CD 流水线。项目提供 WAR、Docker 镜像、Linux/Windows 原生包等多种发行方式，并同时维护 Weekly 和 LTS 两条发布线。</li>
-<li><strong>能解决什么痛点</strong>：当团队每次提交代码后都需要手动构建、跑测试、做静态扫描、再部署到环境时，Jenkins 可以把这些步骤固定成流水线，减少人为漏跑或顺序错误。对于需要兼容多语言、多构建工具、多部署目标的老系统或大型团队，它的插件生态能避免从零拼接大量脚本和集成逻辑。</li>
-<li><strong>适合谁用</strong>：适合负责 CI/CD 平台、构建系统和发布流程的 DevOps 工程师、运维 SRE、平台工程团队。也适合已有 Jenkins 资产、插件依赖或复杂发布流程的企业研发团队继续维护和扩展。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：为 Java、前端、移动端或多语言项目搭建提交后自动构建和测试流程；在企业内部维护统一的发布流水线，把制品构建、审批、部署和通知串起来；对遗留项目补齐自动化测试、静态代码分析和定时任务执行能力。</li>
-<li><strong>技术看点</strong>：Jenkins 的核心价值在于插件化架构和成熟生态，README 明确提到已有 2,000 多个插件，可覆盖大量构建、测试、部署和运维集成场景。它同时提供 Weekly 和 LTS 发布线，适合在“快速获取更新”和“生产环境稳定性”之间做取舍。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交中，大部分是 renovate 触发的依赖升级，包括 webpack、sass、prettier、postcss、stylelint、Jenkins test harness、remoting、JUnit 插件和 GitHub Actions 等，说明项目在持续维护前端构建链、测试基础设施和依赖安全。近期也有 Jenkins 2.574 发布准备提交，以及少量用户可见修复，例如全局搜索下拉框样式修复、PackedMap.values() 返回错误修复、帮助文档示例补充，整体更像成熟项目的稳定维护和小步修补，而不是大规模功能重构。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2010 年，Star、Fork 和贡献者数量都很高，成熟度和社区规模突出，但 3,593 个开放 issue 也意味着历史包袱和维护面很大。插件生态强是优势，也会带来版本兼容、插件维护状态和升级测试成本；生产环境更适合优先跟随 LTS 线，而不是直接追 Weekly。README 信息完整，能指向下载、贡献、治理、插件和文档入口，但当前素材没有给出一条命令级的快速启动示例。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/jenkinsci/jenkins">jenkinsci/jenkins</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Jenkins 是开源 CI/CD 与自动化交付领域的标志性组织，凭借庞大的插件生态和高活跃仓库长期影响软件工程实践。
-<strong>技术栈偏好</strong>：技术栈以 Java 为核心，结合 Groovy 流水线脚本与 PowerShell/Docker 相关工具，偏向可扩展的企业级自动化平台建设。
-<strong>核心领域</strong>：主要聚焦持续集成、持续交付、流水线编排、插件生态和 DevOps 自动化基础设施。</p>
 <hr />
 <h3>✨ bradautomates/claude-video (10613★)</h3>
 <blockquote>
@@ -523,125 +546,6 @@
 <p><strong>技术影响力</strong>：新近活跃的个人开发者，凭借高星项目 <code>claude-video</code> 在 AI 自动化与内容生成社区获得较高关注。
 <strong>技术栈偏好</strong>：主要使用 Python，偏向构建围绕 Claude/AI 工作流、内容生产和知识管理的自动化工具。
 <strong>核心领域</strong>：聚焦 AI 驱动的视频生成、内容运营自动化、第二大脑与创作者生产力工具。</p>
-<hr />
-<h3>✨ vudovn/ag-kit (7840★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：AG Kit 会在项目里生成一套面向 Google Antigravity 的 <code>.agents/</code> 工作区，把规则、技能、专家 Agent、工作流、长期记忆、MCP 配置和危险命令拦截一起打包好。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个 Antigravity-first 的 Agent 工程套件，核心产物是可安装到项目中的 <code>.agents/</code> 工作区契约。它包含 20 个专家角色、47 个技能、13 个工作流、6 条规则，以及持久化记忆目录，用来让 Antigravity 在项目中发现规则、选择技能、执行 slash command，并通过原生 <code>PreToolUse</code> hook 拦截高风险命令。</li>
-<li><strong>能解决什么痛点</strong>：一是团队想在 Antigravity 里使用 Agent 流程时，往往要手写规则、命令、记忆目录和 MCP 配置，AG Kit 直接给出一套可验证的目录结构和清单。二是 Agent 执行命令时存在误删根目录、格式化磁盘、覆盖裸盘等风险，项目内置了窄范围的安全 hook，用来拦截高置信度的破坏性命令。</li>
-<li><strong>适合谁用</strong>：适合已经在使用或准备使用 Google Antigravity 的开发团队，尤其是希望把 Agent 规则、技能和工作流固化到仓库里的团队。也适合维护多 Agent 协作流程、需要 <code>/plan</code>、<code>/coordinate</code>、<code>/orchestrate</code> 这类结构化命令的工程负责人或技术团队。</li>
-<li><strong>怎么上手</strong>：<code>npx @vudovn/ag-kit init</code></li>
-<li><strong>可以用在哪些场景</strong>：可以用于给新项目初始化统一的 Antigravity Agent 工作区；给已有代码库补齐 <code>/plan</code>、<code>/debug</code>、<code>/verify</code>、<code>/deploy</code> 等可复用开发流程；在团队内部落地 MCP 配置同步、Agent 记忆管理和危险命令拦截策略。</li>
-<li><strong>技术看点</strong>：项目用 TypeScript 发布 CLI，同时依赖 Node.js、Python 脚本和 Antigravity 原生 hook 完成校验、打包和运行时集成。设计上强调可复现：<code>.agents/manifest.json</code>、锁文件、依赖图和插件内容 SHA-256 清单都用于检测漂移和审计发布内容。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，7 月下旬集中在 Antigravity 生产候选版本、CLI 发布守卫、CI 校验、文档重构和网站加固上。项目近期重点不是简单加功能，而是在补齐生产化链路：包括 managed updates、Antigravity 兼容性检查、release payload 验证、CLI npm bin 处理，以及安全漏洞修复。</li>
-<li><strong>同类对比</strong>：README 没有明确点名竞品；它的差异点主要在于将运行时目标限定为 Google Antigravity，并把 Agent 规则、技能、工作流、MCP、安全 hook 和本地插件打包成一个仓库级工作区契约。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新，但已有 7840 stars、1504 forks，近期维护频率高；同时 open issues 有 53 个，说明仍有不少待处理问题。README 文档较完整，包含迁移、生产检查、安全策略和回滚说明，但也明确指出生产兼容保证只覆盖 Antigravity，其他工具即使能读取 Markdown 组件，也不保证运行时行为。升级时应先看 <code>MIGRATION.md</code>，并使用 <code>ag-kit update --dry-run</code> 预览变更，避免 managed files 与本地修改发生冲突。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/vudovn/ag-kit">vudovn/ag-kit</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Vũ Đỗ 是一位影响力集中在单一高星项目上的个人开发者，凭借 <code>ag-kit</code> 在 GitHub 获得较高关注度。
-<strong>技术栈偏好</strong>：技术栈明显偏向 TypeScript，项目方向与 AI 工具、自动化应用和开发者工具相关。
-<strong>核心领域</strong>：主要聚焦 AI Agent、AI 应用工具链及面向效率提升的自动化产品。</p>
-<hr />
-<h3>✨ apache/cassandra (9887★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Apache Cassandra 把数据按主键分散到多台机器上存储，并在节点增减时自动重新分布，适合承载大规模、高可用的读写负载。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：Cassandra 是 Apache 旗下的开源分布式数据库，用 Java 编写，采用分区行存储模型，数据以表、行、列组织，并要求每行有主键。它通过分区机制把数据透明地分布到集群中的多台机器上，节点加入或移除时会自动重新分区。开发者使用 Cassandra Query Language（CQL）读写数据，语法接近 SQL，但不支持 joins 和子查询。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：当单机数据库难以支撑持续增长的数据量和写入压力时，Cassandra 可以通过增加普通服务器或云主机横向扩容。对于不能轻易停机的业务，它提供经过长期验证的容错能力，适合在节点故障、扩容、缩容时继续保持服务可用。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合需要维护大规模在线数据服务的后端工程师、数据库工程师和 SRE。也适合正在评估分布式存储方案、并且业务可以接受 CQL 数据模型约束的基础设施团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：README 给出的最小启动方式是解压发行包后运行：<code>tar -zxvf apache-cassandra-$VERSION.tar.gz &amp;&amp; cd apache-cassandra-$VERSION &amp;&amp; bin/cassandra -f</code></p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：用于构建跨多台机器的大规模用户画像、设备状态、事件流水等高写入数据存储。用于需要持续扩容的在线业务后端，例如按用户 ID、设备 ID 或订单 ID 分区查询的数据服务。用于在普通硬件或云基础设施上搭建容错数据库集群，减少单点数据库故障风险。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：Cassandra 的核心设计是分区行存储和自动数据重分布，读写模型围绕主键和分区组织，而不是传统关系数据库的任意 join 查询。CQL 接近 SQL，降低了使用门槛，但数据建模需要围绕查询模式提前设计。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交显示项目仍在高频维护，主干与 <code>cassandra-6.0</code>、<code>cassandra-5.0</code>、<code>cassandra-4.1</code> 分支之间持续合并，说明多个稳定版本线仍在同步演进。近期改动集中在消息响应 streamId 修复、反序列化枚举缓存减少内存分配、指标任务调度优化、CDC 测试磁盘占用降低、文档和 <code>nodetool</code> 帮助信息修正等，整体更偏向性能细节、稳定性和运维可用性改进，而不是大规模功能重写。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或对标产品。它的定位可以理解为面向横向扩展和容错的分布式数据库，而不是强调复杂 SQL 查询能力的传统关系数据库。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2009 年，Star 9887、Fork 3988、贡献者 684，成熟度和社区基础较强，但 Open Issues 446 也说明维护面较大。Cassandra 的上手不只是启动服务，还需要理解分区键、主键设计、复制策略和 CQL 限制；如果业务依赖复杂 join、子查询或临时分析查询，需要谨慎评估。近期仍有多版本分支合并和 6.0 相关演进，生产升级时应仔细阅读对应版本发布说明和兼容性说明。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/apache/cassandra">apache/cassandra</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Apache 软件基金会是全球开源基础设施的核心组织之一，拥有大量高星项目和广泛开发者生态影响力。
-<strong>技术栈偏好</strong>：技术栈覆盖 Python、TypeScript、Scala、Java 等，偏向数据平台、分布式系统、可视化与工程基础设施。
-<strong>核心领域</strong>：主要聚焦大数据、数据工程、流处理、调度编排、分析可视化及企业级开源中间件。</p>
-<hr />
-<h3>✨ mvanhorn/last30days-skill (53934★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 Reddit、X、YouTube、HN、Polymarket、GitHub 等近 30 天的公开信号并行搜出来，再按真实互动和引用证据整理成一份可读简报。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个面向 AI Agent 的搜索技能，核心命令是 <code>/last30days</code>，用于围绕任意人物、公司、产品或话题抓取最近 30 天内的多平台信息。它不是只查网页结果，而是把 Reddit upvotes、X likes、YouTube transcripts、Polymarket odds、GitHub 活动等信号放在一起评分，再由 Agent 生成带依据的摘要。</li>
-<li><strong>能解决什么痛点</strong>：当你想了解某个人或某个话题的最新动态时，传统搜索经常只给出官网、旧新闻或 SEO 内容，缺少社区讨论、开发活动和短期舆论变化。它适合解决“明天要开会但不知道对方最近在忙什么”“某个 AI 工具突然火了但信息散在 X、Reddit、HN、YouTube 上”这类问题。</li>
-<li><strong>适合谁用</strong>：适合经常使用 Claude Code、Codex、Cursor、Copilot、Gemini CLI 等 Agent 工具的开发者、产品经理和研究人员；也适合需要做竞品追踪、人物背景调研、技术趋势观察的创业团队或技术博主。</li>
-<li><strong>怎么上手</strong>：Claude Code 推荐方式：<code>/plugin marketplace add mvanhorn/last30days-skill</code> 后执行 <code>/plugin install last30days</code>；其他 Agent Skills 宿主可用：<code>npx skills add mvanhorn/last30days-skill -g</code>。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>会前调研某位候选人、客户 CEO 或技术负责人最近 30 天的推文、播客、GitHub 活动和社区讨论。</li>
-<li>对比多个 AI 工具或开源项目，汇总 GitHub stars、PR 活跃度、社区评价和使用争议。</li>
-<li>追踪某个热点话题是否正在升温，例如 AI Agent、新消费产品、旅行目的地变化或预测市场赔率。</li>
-<li><strong>技术看点</strong>：项目把多个“信息孤岛”接到 Agent 工作流里，并用互动数据、评论、赔率和引用来源参与排序，而不是只依赖网页搜索排名。README 中提到 v3 管线已覆盖 Reddit、HN、Polymarket、GitHub，并可通过配置扩展 X、YouTube、TikTok、arXiv、Techmeme、Digg 等来源。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 CI 修复、GitHub Actions 依赖升级、CodeQL/SARIF、安全扫描和 release workflow 稳定性上，说明项目近期重点不是大功能扩张，而是在加固自动化发布与供应链安全。提交中有 dependabot 持续参与，也有维护者合并 PR 和补充测试，结合 113 位贡献者和近期高频更新，社区活跃度较高。</li>
-<li><strong>同类对比</strong>：README 明确把它与 Google、ChatGPT、Gemini、Claude 的原生搜索能力做了对比：Google 更偏网页和编辑内容，ChatGPT/Gemini/Claude 各自受限于平台接入，而 last30days 的差异在于让用户自带密钥或浏览器会话，把多个社交、视频、代码和预测市场来源并行接入 Agent。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新但 star 数很高，热度和社区参与度都很强，同时还有 73 个 open issues，说明仍处在快速演进阶段。部分数据源需要 API key、登录态、本地 CLI 或额外设置，虽然 README 宣称零配置可先跑 Reddit、HN、Polymarket、GitHub，但要完整覆盖 X、YouTube、TikTok 等平台仍有上手成本；近期 CI 和依赖维护频繁，也意味着工作流和插件生态可能继续变化。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/mvanhorn/last30days-skill">mvanhorn/last30days-skill</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Matt Van Horn 是兼具连续创业背景与开源影响力的开发者，拥有高星项目和较强社区关注度。
-<strong>技术栈偏好</strong>：技术栈以 Go、Python、TypeScript 为主，偏向命令行工具、自动化系统与开发者基础设施。
-<strong>核心领域</strong>：主要聚焦 AI/Agent 工具、生产力自动化、CLI 工具链与面向开发者的轻量级基础设施。</p>
-<hr />
-<h3>✨ ocornut/imgui (75109★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Dear ImGui 让 C++ 程序在渲染循环里直接写出调试面板、编辑器窗口、滑块、曲线和菜单，并把结果输出成可交给 3D 管线绘制的顶点缓冲。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Dear ImGui 是一个面向 C++ 的即时模式 GUI 库，核心代码自包含，几乎不依赖外部库。它不接管窗口系统和 GPU 状态，而是生成顶点缓冲与绘制命令，开发者再用自己的 OpenGL、DirectX、Vulkan、WebGPU、SDL、GLFW 等后端渲染出来。README 明确定位在内容创作工具、可视化工具、调试工具，而不是面向普通终端用户的完整应用 UI 框架。</li>
-<li><strong>能解决什么痛点</strong>：在游戏引擎、实时 3D 应用或嵌入式环境里，开发者经常需要临时查看变量、调参数、做 profiler/debugger 面板，但传统 GUI 框架引入成本高、状态同步麻烦。Dear ImGui 的优势是可以直接在主循环中写 UI 逻辑，少维护一套复杂的界面状态，适合快速插入和删除调试控件。</li>
-<li><strong>适合谁用</strong>：适合做游戏引擎、图形渲染、实时仿真、工业可视化、嵌入式控制台工具的 C++ 开发者。也适合需要为内部编辑器、检查器、日志面板、调参面板做快速界面的工具链工程师。</li>
-<li><strong>怎么上手</strong>：README 给出的最小使用方式是把根目录里的 <code>imgui*.cpp</code>、<code>imgui*.h</code> 加进自己的 C++ 工程，再接入 <code>backends/</code> 中匹配平台和渲染 API 的 backend；使用示例：<code>ImGui::Text("Hello, world %d", 123); if (ImGui::Button("Save")) MySaveFunction();</code></li>
-<li><strong>可以用在哪些场景</strong>：给自研游戏引擎做关卡编辑器、材质参数面板和实体检查器；在渲染器或物理仿真程序里实时显示帧率、曲线、调试开关和内部状态；为 profiler、debugger、hex editor、资源浏览器这类开发者工具搭建跨平台界面。</li>
-<li><strong>技术看点</strong>：Dear ImGui 采用即时模式 API，重点减少用户侧 UI 状态存储和同步成本；同时它只输出绘制数据，不直接触碰 GPU 状态，因此能嵌入到已有 3D 渲染管线中。项目还提供大量 backend 和 examples，降低了接入不同窗口系统与图形 API 的成本。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交显示项目仍由核心维护者高频维护，7 月底发布了 <code>1.92.9</code>，并迅速修复 <code>ImDrawData::CmdListsCount</code> 回归问题。近期重点集中在多线程渲染调试、staged-rendering texture queue、DrawData 字段演进、OpenGL3 backend 纹理更新修复，以及 FAQ 文档补充；同时出现了 <code>ImDrawData::CmdListsCount</code> 标记废弃、默认禁用 <code>ImGuiItemFlags_LiveEditOnInputScalar</code> 等行为变化，说明项目仍在持续调整内部 API 与兼容层。</li>
-<li><strong>同类对比</strong>：README 没有直接点名竞品，但明确区分了 Dear ImGui 与传统 retained-mode GUI 的差异：它更适合程序员驱动的动态工具界面，而不是追求完整国际化、可访问性和通用终端用户界面的高层 UI 框架。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2014 年，Star、Fork 和贡献者数量都很高，成熟度和社区采用度很强，但当前仍有 1226 个 open issues，说明使用场景广、问题面也大。README 明确提到不支持完整国际化、右到左文本、双向文本、文本 shaping 和可访问性功能，不适合直接拿来做面向大众用户的复杂应用 UI。近期提交包含废弃字段和破坏性变更，升级时需要认真阅读 changelog，尤其是依赖内部结构或关闭 obsolete functions 的项目。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/ocornut/imgui">ocornut/imgui</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以 Dear ImGui 为核心项目在开源图形界面与工具开发社区具有极高影响力，是 C++ 即时模式 GUI 生态的重要推动者。
-<strong>技术栈偏好</strong>：主要偏向 C++/C，关注底层、高性能、跨平台的界面库、工具链与测试基础设施开发。
-<strong>核心领域</strong>：主要聚焦即时模式 GUI、开发者工具、图形界面框架及相关测试与辅助生态。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
