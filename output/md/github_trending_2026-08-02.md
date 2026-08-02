@@ -1,5 +1,5 @@
-## 今日热点：AI Agent 走向工程化与多模态落地
-今天的 GitHub 热点集中在 AI 教育、Agent 基础设施、多模态生成与开发协作工具链的持续升温：从微软面向初学者的 AI 与生成式 AI 课程，到 Copilot SDK、长周期 SuperAgent、团队级 Agent Memory、技能路由与本地语音智能体，再到开源项目管理、堆叠 PR、系统化交易资源、安全研究工具链、YouTube 替代前端、IT 自动化、3D 生成以及面向创作者的语音处理 WebUI，整体呈现出 AI 能力从学习、集成、记忆、协作到内容生产和运维自动化的全链路扩展。具体项目摘要如下：
+## 今日热点：AI Agent 工具链与低成本大模型落地升温
+今天的热门项目明显围绕 AI 实用化展开：一端是面向初学者的 AI 与生成式 AI 系统课程，帮助开发者补齐基础能力；另一端是 Agent 工作流、团队记忆、联网检索、技能路由、本地推理和终端编码代理等基础设施快速涌现，覆盖从 Claude/Cursor 等 AI 编码客户端扩展，到跨 Reddit、X、YouTube、GitHub、Bilibili、小红书的信息搜索与摘要，再到 70B 模型单卡低显存推理、DeepSeek 本地推理引擎和开源项目管理工具；同时，YouTube 替代前端、从零复刻技术栈、安全研究技能包等项目也显示开发者仍在关注开放替代、工程训练与安全自动化。具体项目摘要如下：
 
 ### ✨ microsoft/AI-For-Beginners (53620★)
 
@@ -36,38 +36,6 @@
 
 ---
 
-### ✨ paperswithbacktest/awesome-systematic-trading (9412★)
-
-> **一句话**：这是一份系统化交易资源索引，把量化交易常用的回测框架、交易机器人、策略论文、书籍、博客和课程按类别整理在一个 README 里。
-
-- **它是什么**：这是一个 `awesome-list` 类型的资料库，核心内容不是代码库本身，而是围绕系统化交易 / 量化交易收集可用资源。README 中列出了 97 个交易相关库和包、40+ 个策略、55 本书、23 个视频，以及博客和课程，覆盖回测、实盘交易、指标、风控、数据源、机器学习、时间序列分析等方向。
-
-- **能解决什么痛点**：做量化交易研究时，开发者经常需要在 backtesting、live trading、broker API、数据源、指标库之间反复搜索和比较，这个项目把常见选择集中到一处。对于刚进入系统化交易的人，它也能减少“先看什么、用什么框架、有哪些经典策略资料”的信息筛选成本。
-
-- **适合谁用**：适合正在用 Python 做量化研究、策略回测或交易系统原型的工程师和研究员。也适合想系统补齐量化交易资料的个人投资者、金融科技学生，以及需要评估开源交易框架选型的技术负责人。
-
-- **怎么上手**：文档未提供快速上手示例。
-
-- **可以用在哪些场景**：可以用于为内部量化研究平台选型回测框架，比如在 `vnpy`、`zipline`、`backtrader`、`vectorbt`、`Lean` 等项目之间做初筛。也可以用于搭建个人量化学习路线，从入门书籍、策略论文、视频访谈和课程中挑选资料。还可以用于整理交易系统依赖清单，例如数据源、指标计算、风控、券商 API 和可视化库。
-
-- **技术看点**：项目按功能域和语言标签组织资源，尤其强调 Python 生态中的事件驱动回测、向量化回测、加密货币交易机器人和数据分析工具。它的价值主要在信息架构和持续维护，而不是某个单一技术实现。
-
-- **近期动向与发展方向**：最近 20 条提交以修复 URL、移除失效链接、调整文案和补充少量新资源为主，说明项目近期重点是维护资源可用性，而不是大规模扩展结构。提交集中在少数维护者，Contributor Count 为 6，社区参与有但不算活跃；2024 年有合并外部 PR 和更新中文 README，说明仍接受社区补充。
-
-- **同类对比**：README 没有明确对标其他同类项目。它更像系统化交易领域的 curated list，而不是 `backtrader`、`vectorbt`、`vnpy` 这类可直接运行的回测或交易框架。
-
-- **注意事项**：这是资料索引项目，不提供统一 API、安装包或可直接运行的交易系统，读者仍需要自行判断每个被收录项目的维护状态、许可证和适用市场。当前有 46 个 Open Issues，近期提交多为链接修复，说明资源时效性是持续风险；用于技术选型时，不能只看列表中的星标排序，还需要进入具体项目检查最近提交、文档和实盘风险。
-
-- **GitHub**：[paperswithbacktest/awesome-systematic-trading](https://github.com/paperswithbacktest/awesome-systematic-trading)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Papers With Backtest 是一个新兴但已具备较高可见度的量化交易开源组织，凭借高星标系统化交易资源库在细分社区形成明显影响力。
-**技术栈偏好**：其技术栈明显以 Python 为核心，偏向量化研究、回测框架、交易工具链和算法策略实验。
-**核心领域**：主要聚焦系统化交易、量化投资、策略回测与金融市场研究工具生态。
-
----
-
 ### ✨ usekaneo/kaneo (4870★)
 
 > **一句话**：Kaneo 把项目、任务和团队协作收敛到一个干净的看板式界面里，主打自托管、少干扰、开箱即用的项目管理。
@@ -100,6 +68,94 @@
 
 ---
 
+### ✨ lyogavin/airllm (25425★)
+
+> **一句话**：AirLLM 通过按层/按专家流式加载模型，让 70B 甚至更大参数规模的开源大模型能在低显存单卡上完成推理。
+
+- **它是什么**：AirLLM 是面向大语言模型推理的 Python 包，核心目标是显著降低运行大模型时的显存占用。README 中给出的典型能力包括：70B 模型可在单张 4GB GPU 上运行，Llama 3.1 405B 可在 8GB 上运行，DeepSeek-V3 671B 约 12GB，Kimi K3 2.8T 可低于 4GB 显存运行。它通过 `AutoModel.from_pretrained(...)` 接近 Hugging Face Transformers 的使用方式，支持 Qwen、Llama、DeepSeek、Gemma、Phi、ChatGLM、Baichuan、Mistral 等多类模型。
+
+- **能解决什么痛点**：开发者想本地试跑 70B 以上模型时，常见阻碍是显存预算远低于模型完整加载需求，AirLLM 把推理过程改成分层或按专家加载，降低一次性显存占用。另一个痛点是不同模型族加载方式不统一，AirLLM 用 `AutoModel` 尽量屏蔽模型类型差异，减少手动适配成本。
+
+- **适合谁用**：适合需要在消费级 GPU、低显存云主机或单卡工作站上验证大模型推理的 AI 工程师和独立开发者。也适合做 LLM 原型、模型兼容性测试、离线 Demo 的 Python 开发者。
+
+- **怎么上手**：安装：`pip install airllm`；最小使用：`from airllm import AutoModel; model = AutoModel.from_pretrained("Qwen/Qwen3-32B")`。
+
+- **可以用在哪些场景**：在本地低显存机器上试跑 Qwen、Llama、DeepSeek 等大模型，避免一开始就租用高显存 GPU。给内部产品或研究项目做大模型可行性验证，例如快速比较不同开源模型的输出效果。运行超大 MoE 模型的单机推理实验，例如 README 提到的 DeepSeek-V3、Kimi K3 这类专家稀疏模型。
+
+- **技术看点**：项目的关键设计是把模型拆成 layer shards，并在推理时分段加载，显存瓶颈从“完整模型常驻”变成“当前层或当前专家可用”。对 MoE 模型，近期强调 per-expert streaming，只加载 token 实际路由到的专家，这也是 Kimi K3 低显存运行的核心依据。
+
+- **近期动向与发展方向**：最近 20 条提交显示，2026 年 7 月主要开发重点是 Kimi K3 支持，并在 7 月 29 日发布了 `3.1.0`。提交中既有新功能 `feat: support Kimi K3`，也有端到端生成修复和 streaming gap 修复，说明近期不是单纯文档更新，而是在补齐超大 MoE 模型的实际推理链路。其余多条提交是 star history 图表刷新和 CI token 修复，核心代码活跃度集中在新模型适配上。
+
+- **同类对比**：README 没有明确列出竞品或对标项目。它和常见量化方案的差异在于，AirLLM 强调低显存推理并不依赖量化、蒸馏或剪枝；同时也提供 4bit/8bit compression，用来降低加载体积并提升推理速度。
+
+- **注意事项**：首次运行会把原始模型拆分并保存为分层文件，需要预留足够磁盘空间。Kimi K3 支持有明确环境要求，包括 `compressed-tensors`、`flash-attn`、CUDA 12 版本 torch，以及 `transformers` 4.56.x，环境配置门槛不低。项目已有 117 个 open issues，说明社区关注度高但边界场景和兼容性问题也不少；再加上近期在适配非常新的超大模型，升级版本时需要留意依赖变化和推理稳定性。
+
+- **GitHub**：[lyogavin/airllm](https://github.com/lyogavin/airllm)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Gavin Li 是具有较高社区可见度的 AI 创业者型开发者，凭借 airllm 等高星项目在大模型应用与工程优化方向形成明显影响力。
+**技术栈偏好**：技术栈以 Python 和 Jupyter Notebook 为主，兼有 Java 项目经验，偏向 AI 原型实验、模型训练与工程化工具开发。
+**核心领域**：主要聚焦大模型、AI 动画生成、视频生成训练与低资源大模型推理等生成式 AI 方向。
+
+---
+
+### ✨ iv-org/invidious (21527★)
+
+> **一句话**：用 Invidious 打开 YouTube 视频，可以绕开官方页面的广告、追踪和重型前端，用更轻量的网页观看、订阅和管理内容。
+
+- **它是什么**：Invidious 是一个开源的 YouTube 替代前端，用户可以通过公共实例或自托管实例观看 YouTube 内容。它提供视频播放、订阅、通知、偏好设置、浅色/深色主题、音频模式、数据导入导出等功能，并且不依赖官方 YouTube API。
+- **能解决什么痛点**：适合不想在 YouTube 官方页面中接受广告、追踪和复杂前端脚本的用户；也适合需要在自托管环境中提供 YouTube 视频访问入口、但又希望订阅数据独立于 Google 账号的场景。
+- **适合谁用**：关注隐私和轻量网页体验的普通用户；想自建视频访问前端、公共实例或内部实例的运维人员和开源服务维护者。
+- **怎么上手**：README 推荐直接选择公共实例使用：https://instances.invidious.io；自托管安装请按官方文档操作：https://docs.invidious.io/installation/
+- **可以用在哪些场景**：搭建个人或小团队自托管 YouTube 前端，减少对官方页面的依赖；配合 Privacy Redirect 等浏览器扩展，把 YouTube 链接自动跳转到 Invidious 实例；为移动端或弱设备提供更轻量的无广告视频播放页面，并支持音频后台播放。
+- **技术看点**：项目主要使用 Crystal 编写，提供开发者 API、嵌入式视频支持，并明确不使用官方 YouTube API。AGPLv3 许可证意味着如果基于它提供网络服务并修改代码，需要关注相应开源义务。
+- **近期动向与发展方向**：最近提交非常活跃，重点集中在适配 YouTube 变更的 hotfix、发布流程自动化、CI 中 Crystal 版本矩阵更新、Docker/依赖维护以及安全修复。6 月底修复了播放列表跨用户删除的安全问题，并新增可关闭易被滥用 API 端点的选项；7 月还加入并更新了 AI policy，说明项目维护者在加强贡献治理和质量控制。
+- **同类对比**：README 明确提到可从 NewPipe、FreeTube 导入/导出订阅和历史数据，但 Invidious 的定位更偏 Web 前端和可自托管实例；NewPipe、FreeTube 更偏客户端应用。
+- **注意事项**：项目创建于 2018 年，已有 2.1 万 Star、351 位贡献者，成熟度和社区关注度较高；但当前仍有 461 个 open issues，且 YouTube 页面和接口变化会持续带来兼容性维护压力。README 提供了官网、实例列表、FAQ、文档和安装入口，资料较完整；自托管用户需要持续关注版本更新、安全修复和可能因 YouTube 变更导致的临时不可用。
+
+- **GitHub**：[iv-org/invidious](https://github.com/iv-org/invidious)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Invidious 是围绕开源 YouTube 前端替代方案形成的高关注度组织，核心项目拥有较强社区影响力和用户基础。
+**技术栈偏好**：技术栈以 Crystal 为核心服务实现，辅以 Python 自动化工具、TypeScript 辅助组件和 Docker 化部署。
+**核心领域**：主要聚焦隐私友好的视频访问、YouTube 生态替代前端、会话生成与网络访问辅助工具。
+
+---
+
+### ✨ codecrafters-io/build-your-own-x (534646★)
+
+> **一句话**：把数据库、Docker、Git、浏览器、操作系统、AI 模型等常见技术拆成可跟做的“从零实现”教程索引。
+
+- **它是什么**：这是一个以 Markdown 维护的教程合集，收录大量“Build your own X”类学习资源。README 按技术主题分类，例如 3D Renderer、AI Model、BitTorrent Client、Database、Docker、Git、Operating System、Programming Language、Web Browser、Web Server 等，每个条目通常标注实现语言并链接到外部教程或仓库。它本身不提供统一代码库，而是作为高质量手写实现教程的导航入口。
+
+- **能解决什么痛点**：开发者想理解底层系统时，常会被零散博客、过时教程和搜索噪音干扰，这个仓库把可跟做的教程集中到一个目录里。它也适合用来补足“只会调用库、不知道内部怎么工作”的短板，例如通过手写 Redis、Git、浏览器或编程语言来理解核心机制。
+
+- **适合谁用**：适合有一定编程基础、想通过重造经典技术来深入学习的后端、系统、基础设施和 AI 工程师。也适合准备技术面试、课程项目或自学计算机系统的学生和开发者。
+
+- **怎么上手**：文档未提供快速上手示例；最直接的方式是在 README 目录中选择主题，例如 `Build your own Database`、`Build your own Git` 或 `Build your own AI Model`，再进入对应教程链接跟做。
+
+- **可以用在哪些场景**：可以用来设计自学路线，例如按“数据库、网络协议、操作系统、编译器”逐步补齐计算机系统知识。也可以作为团队内部读书会或技术分享材料，让成员分别实现 BitTorrent 客户端、Shell、Web Server 等小项目后复盘原理。还可以用于面试准备，通过手写简化版 Git、Redis、Regex Engine 来训练数据结构、协议和工程拆解能力。
+
+- **技术看点**：项目的核心价值不在技术栈，而在内容组织方式：按技术类别聚合跨语言、跨领域的“从零实现”教程，降低寻找系统性实践材料的成本。仓库使用 Markdown 维护，贡献门槛低，适合社区持续补充和修正链接。
+
+- **近期动向与发展方向**：最近提交以内容维护和新增教程为主，包括修复 AI Model 章节锚点、添加或更新 Deep Learning From Scratch、LLM from scratch、数据库相关教程等。2026 年 2 月有一批 PR 合并，说明社区仍在持续补充资源；整体没有看到大规模重构，演进方向更像是扩充 AI、数据库等热门主题并修正已有链接。
+
+- **同类对比**：暂无明显同类对标。它更接近“精选教程索引”，不是 Codecrafters 那类交互式闯关平台，也不是单一技术的完整课程。
+
+- **注意事项**：这是资源合集而非统一维护的教程体系，外部链接的质量、难度、更新状态会不一致，需要读者自行筛选。项目创建于 2018 年，Star 和 Fork 数很高，说明影响力和社区认知度很强；同时 Open Issues 有 619 个，可能包含失效链接、分类争议或待合并资源，使用时要注意教程是否仍可访问。由于主要是 Markdown 内容，破坏性变更风险低，但目录锚点和外部链接变化会影响阅读体验。
+
+- **GitHub**：[codecrafters-io/build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：CodeCrafters 是开发者教育与“从零实现经典系统”方向的高影响力组织，凭借 build-your-own-x 在技术社区拥有极高传播度。
+**技术栈偏好**：其内容与工具主要围绕 Shell、Markdown、Ruby 展开，偏向课程编排、工程脚手架与多语言学习基础设施。
+**核心领域**：主要聚焦通过动手实现 Git、SQLite、Redis 等基础软件来训练系统编程与工程底层能力。
+
+---
+
 ### ✨ zhaoxuya520/reverse-skill (10413★)
 
 > **一句话**：把 APK、二进制、前端 JS 加密、PCAP、CTF、渗透目标等安全任务交给 AI 客户端后，它会先判定任务类型、检查本机工具链，再把任务路由到对应的逆向或安全分析流程。
@@ -129,6 +185,30 @@
 **技术影响力**：ZhaoXu 是一位新近活跃但已有单仓高影响力项目的个人开发者，社区关注度主要由 `reverse-skill` 拉动。
 **技术栈偏好**：技术栈以 PowerShell 为核心，辅以 JavaScript 和 TypeScript，偏向脚本自动化、桌面工具改造与轻量 Web 应用。
 **核心领域**：主要聚焦逆向技能实践、AI 工具本地化与全栈交付自动化相关方向。
+
+---
+
+### ✨ different-ai/openwork (17674★)
+
+> **一句话**：OpenWork 把 AI 技能、MCP 连接和团队共享能力集中到一个桌面工作区与远程 MCP 服务里，让 Codex、Claude Code、Cursor 等代理复用同一套工作流。
+
+- **它是什么**：OpenWork 是一个开源桌面应用，面向 macOS、Windows 和 Linux，用来创建、管理和共享 AI 工作流。它提供 OpenWork MCP，可接入 Codex、Claude Code、Cursor、OpenCode 等兼容客户端，把技能、插件、Google Workspace、Microsoft 365 和其他 MCP 连接暴露给不同 AI agent 使用。项目还包含 OpenWork Den，作为团队或组织的控制面，用于管理成员、模型提供商、权限、桌面策略和能力发布。
+- **能解决什么痛点**：开发者在多个 AI 编程工具之间切换时，常常要重复配置 MCP、插件、账号连接和自定义技能；OpenWork 试图把这些能力集中管理后分发给不同客户端。团队场景下，管理员也可以避免每个人各自手动配置模型 provider、插件权限和外部服务连接。
+- **适合谁用**：适合同时使用 Codex、Claude Code、Cursor 或 OpenCode 的开发者，尤其是希望在多个 agent 中复用同一套 MCP 与技能的人。也适合需要统一发布 AI 能力、管理团队访问权限和模型供应商配置的工程团队或平台团队。
+- **怎么上手**：已使用 Codex 的用户可以直接添加远程 MCP：`codex mcp add openwork --url https://api.openworklabs.com/mcp/agent`
+- **可以用在哪些场景**：在个人开发环境中，把常用 MCP、插件和账号连接配置一次后，同时给 Codex、Claude Code、Cursor 使用；在公司内部发布标准化 AI 技能，例如代码检索、文档查询、业务系统操作能力，并按团队分配权限；在组织内集中控制可用模型 provider、桌面版本策略和本地模型访问限制。
+- **技术看点**：项目以 TypeScript 为主，形态上同时覆盖 Electron 桌面端、远程 MCP 服务和组织管理控制面。README 明确支持 MCP 协议接入，并把 `search_capabilities` 与 `execute_capability` 作为跨客户端调用能力的核心抽象，这对已有 AI agent 生态的集成比较直接。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-07-29，活跃度很高，主要在补强 evals 测试体系、Den 组织控制面、provider 生命周期和 agent event stream 稳定性。提交中出现了 composable `@openwork` packages、flat vitest spec lane、真实栈验证等内容，说明项目近期不仅在修 bug，也在重整评测与包结构，目标是提升真实环境下的可靠性和可测试性。
+- **同类对比**：README 明确把它定位为 Claude Cowork 和 Codex 的开源替代方案，但它的重点不是单一聊天或编码界面，而是把共享技能、MCP、插件和组织级权限管理做成可被多个 agent 复用的中间层。
+- **注意事项**：项目创建时间为 2026-01-14，但已有 17674 stars、1840 forks 和 69 位贡献者，增长很快；同时仍有 394 个 open issues，说明功能面较广、问题队列也不小。近期提交密集涉及 evals、Den、provider、agent stream 等底层行为，项目仍处在快速演进期，团队落地前应重点验证权限模型、MCP 稳定性和现有 AI 工具链兼容性。README 的快速接入说明比较清楚，但更复杂的组织级部署与策略管理仍需要阅读官方文档。
+
+- **GitHub**：[different-ai/openwork](https://github.com/different-ai/openwork)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Different AI 是一个以 LLM 应用实验和开发者工具为核心的小型但高关注度组织，凭借 openwork 等项目在 AI 工具社区具备较强可见度。
+**技术栈偏好**：其技术栈明显偏向 TypeScript，重点围绕 Web 应用、浏览器扩展、知识库集成和 AI Agent 工具链展开。
+**核心领域**：主要聚焦于大模型应用、AI 办公协作、知识管理与开发者自动化工具。
 
 ---
 
@@ -167,228 +247,35 @@
 
 ---
 
-### ✨ github/copilot-sdk (10098★)
+### ✨ Panniantong/Agent-Reach (64506★)
 
-> **一句话**：把 GitHub Copilot CLI 背后的 Agent 运行时接进自己的应用，让应用能发起规划、调用工具、编辑文件和管理会话。
+> **一句话**：把网页、Twitter/X、Reddit、YouTube、GitHub、B站、小红书等信息源接到 AI Agent 的命令行环境里，让 Agent 能自己搜索、读取和诊断互联网内容。
 
-- **它是什么**：这是 GitHub 官方提供的 Copilot SDK，面向 Python、TypeScript、Go、.NET、Java 和 Rust 等多种语言。它把 Copilot CLI 的 Agent 能力封装成可编程接口，应用通过 SDK 与 Copilot CLI server 进行 JSON-RPC 通信，由 Copilot 处理任务规划、工具调用、文件修改、权限审批和会话事件等流程。
+- **它是什么**：Agent Reach 是一个面向 AI Agent 的互联网能力层，核心不是重写各个平台的读取逻辑，而是替用户选择、安装、配置和检测一组当前可用的上游 CLI / MCP / 浏览器登录态方案。它提供 `agent-reach doctor` 这类诊断能力，并为 Claude Code、OpenClaw、Cursor、Windsurf 等能执行命令的 Agent 注册使用指南，让 Agent 在需要读网页、看视频字幕、搜社媒或查 GitHub 时知道该调用哪个后端。
 
-- **能解决什么痛点**：如果开发者想在 IDE、内部平台、自动化运维系统或代码审查流程里接入 Copilot Agent，不需要自己从零实现 Agent 编排、工具调用协议和 CLI 进程管理。对于多语言技术栈团队，也能用同一套 Copilot Agent 能力分别接入 Java、Python、Node.js、Go、.NET、Rust 应用。
+- **能解决什么痛点**：开发者让 Agent 做调研时，经常卡在 Twitter API 付费、Reddit 匿名访问被封、B站/小红书需要登录态、网页抓取结果全是 HTML 等问题上；Agent Reach 把这些零散的安装、Cookie 配置、后端切换和健康检查集中到一套流程里。另一个痛点是平台接入方式会频繁失效，项目通过“首选 + 备选”后端列表来降低用户反复换工具的成本。
 
-- **适合谁用**：适合正在做开发者工具、代码平台、内部工程效能平台的团队。也适合希望在 Java、Python、Node.js、Go、.NET 或 Rust 服务中嵌入 Copilot Agent 工作流的后端和平台工程师。
+- **适合谁用**：适合经常用 Claude Code、Cursor、Windsurf、OpenClaw 等 Agent 做资料调研、代码仓库分析、竞品分析或内容总结的开发者。也适合需要让内部 Agent 读取公开网页、视频字幕、RSS、GitHub、社媒内容的 Python 工程师或 Agent 应用构建者。
 
-- **怎么上手**：Java 可通过 Maven 坐标引入：`com.github:copilot-sdk-java`。其他语言可使用 `npm install @github/copilot-sdk`、`pip install github-copilot-sdk`、`go get github.com/github/copilot-sdk/go`、`dotnet add package GitHub.Copilot.SDK` 或 `cargo add github-copilot-sdk`。
+- **怎么上手**：最简方式是把这句话交给你的 Agent 执行：`帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md`
 
-- **可以用在哪些场景**：
-  - 在内部开发平台中接入 Copilot Agent，让用户提交任务后自动分析仓库、修改文件并返回执行结果。
-  - 在企业 CLI 或桌面应用中封装自定义 Agent，把公司内部工具、权限审批和 Copilot 的代码编辑能力串起来。
-  - 在支持 BYOK 的场景下，用自有模型 API Key 接入 Copilot SDK，构建不依赖 GitHub 用户认证的 Agent 工作流。
+- **可以用在哪些场景**：让 Agent 阅读 YouTube 或 B站技术视频并提取字幕摘要；让 Agent 搜索 Reddit、Twitter/X、小红书上的产品反馈或 bug 讨论；让 Agent 分析 GitHub 仓库、Issue、RSS 更新和公开网页内容，生成调研报告或开发背景材料。
 
-- **技术看点**：SDK 统一通过 JSON-RPC 与 Copilot CLI server 通信，核心 Agent 运行时复用 Copilot CLI，而不是每个语言 SDK 各自实现一套 Agent 逻辑。Node.js、Python 和 .NET 会自动捆绑 CLI；Go、Java、Rust 默认需要本地可用的 `copilot` CLI，这一点会影响部署方式。
+- **技术看点**：项目采用“渠道注册 + 有序后端探测”的设计，每个平台对应一个 channel 文件，按顺序真实检测后端可用性，而不是只判断命令是否存在。底层能力主要复用成熟工具，如 Jina Reader、yt-dlp、gh CLI、feedparser、OpenCLI、bili-cli、Exa via MCP 等，Agent Reach 负责安装、路由、配置和体检。
 
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-30 到 2026-07-31，活跃度很高。近期重点包括 Java `1.0.9-preview.1` 发布、Python/Node 代码生成修复、会话事件与权限审批逻辑修正、Agent Factories 新 authoring surface、MCP tool filter 文档、usage/billing 文档和多语言 E2E 覆盖修复，说明项目仍在快速补齐跨语言一致性、会话能力和生产使用文档。
+- **近期动向与发展方向**：最近 20 条提交集中在 P0 加固、安全边界和测试覆盖：包括凭据最小权限、诊断只读、配置路径显式化、超大媒体转录拦截、YouTube 依赖修复，以及 Reddit、Web、RSS、雪球、V2EX 等渠道测试覆盖。近期开发重点明显从新增平台转向稳定性、安全性和可验证的诊断行为，项目维护活跃，但提交主要由核心维护者合并。
 
-- **同类对比**：README 没有明确列出直接竞品或对标项目。它的差异点主要在于复用 GitHub Copilot CLI 的官方 Agent 运行时，并提供多语言 SDK，而不是通用 LLM Agent 框架。
+- **同类对比**：README 没有把它直接对标某一个竞品，而是强调它位于单个平台 CLI、MCP 服务和浏览器自动化工具之上。与单独使用 `yt-dlp`、`gh`、OpenCLI、Jina Reader 等工具相比，Agent Reach 的差异在于统一安装、统一诊断、按平台维护后端优先级，并把这些能力暴露给 Agent 使用。
 
-- **注意事项**：项目 Stars 已过万，贡献者 99 人，更新非常频繁，但 Open Issues 有 237 个，说明使用面扩大后仍有不少待处理问题。README 表示 SDK 已 GA 并遵循语义化版本，但近期仍有 preview 版本发布、代码生成修复和 E2E 修正，生产接入时需要关注版本变更、各语言 SDK 功能一致性，以及 Java/Go/Rust 对本地 Copilot CLI 的部署要求。
+- **注意事项**：项目创建时间为 2026-02-24，增长很快，Stars 已达 64506，但仍是较新的项目，Open Issues 有 186 个，说明需求和问题反馈都不少。多个平台依赖 Cookie、浏览器登录态或第三方 CLI，存在平台风控、封号和后端失效风险，README 也建议 Twitter、小红书等使用专用小号。文档写得较完整，安全模式、dry-run、卸载和 Cookie 边界都有说明，但实际可用性仍会受本地环境、平台策略和上游工具变化影响。
 
-- **GitHub**：[github/copilot-sdk](https://github.com/github/copilot-sdk)
+- **GitHub**：[Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：GitHub 是全球软件协作基础设施级组织，凭借庞大关注度和高星仓库在开源社区具有极强的标准塑造与生态引导能力。
-**技术栈偏好**：其公开项目以 Python、Go 为主，技术方向集中在开发者工具、AI 编程辅助、协议服务与工程实践资产。
-**核心领域**：主要聚焦开源协作平台、开发者生产力、代码托管生态以及 Copilot 相关的 AI 开发工具链。
-
----
-
-### ✨ github/gh-stack (749★)
-
-> **一句话**：在 GitHub CLI 里把一串相互依赖的分支自动拆成多层 PR，并负责 rebase、提交、同步和跳转。
-
-- **它是什么**：gh-stack 是 GitHub 官方推出的 GitHub CLI 扩展，用来管理 stacked branches 和 stacked pull requests。开发者可以把一个大改动拆成多条有依赖关系的小分支，每条分支对应一个 PR，底层 PR 基于 trunk，上层 PR 基于下一层分支。它会自动处理分支创建、级联 rebase、PR base 设置、远程 Stack 同步，以及在不同层级之间导航。
-
-- **能解决什么痛点**：当一个大功能必须分多步提交评审时，手工维护每个 PR 的 base branch 很容易出错，尤其是中间层修改后，上层分支需要逐层 rebase。多人协作时，本地 stack 和 GitHub 上的远程 stack 也可能出现不一致，gh-stack 提供 checkout、sync、rebase、submit 等命令来减少这些手工操作。
-
-- **适合谁用**：适合在 GitHub 上做大型功能拆分、希望保持 PR 小而可审的后端、前端、基础设施开发者。也适合已经在使用 GitHub CLI，并且团队代码评审流程偏向“连续小 PR”而不是“大 PR 一次性合并”的工程团队。
-
-- **怎么上手**：安装命令：`gh extension install github/gh-stack`
-
-- **可以用在哪些场景**：
-  - 开发一个涉及数据库 schema、API、前端页面的完整功能时，把迁移、接口、UI 拆成三层 PR，方便 reviewer 分层查看 diff。
-  - 在主干持续变化的仓库里维护一串依赖分支，通过 `gh stack rebase` 将整个 stack 级联 rebase 到最新 trunk。
-  - 接手别人已经提交到 GitHub 的 stacked PR，通过 `gh stack checkout ` 拉取远程 stack 并在本地继续开发。
-
-- **技术看点**：项目以 Go 编写，并作为 GitHub CLI extension 分发，天然贴合 `gh` 的认证、仓库上下文和命令行体验。它在本地使用 `.git/gh-stack` 保存 stack 元数据，并通过 GitHub Stack / PR API 同步远程状态，设计上同时覆盖本地 Git 操作和 GitHub PR 状态管理。
-
-- **近期动向与发展方向**：最近提交非常集中，7 月下旬连续加入了 `merge` 命令、异步 merge API 文档、远程 stack checkout、按 stack number 识别、远程/本地状态同步、交互式 stack picker 等功能，说明项目正在从基础分支管理扩展到完整的 stacked PR 生命周期管理。同时也有多项 rebase 修复，例如处理 amended parent commits、queued PR 被误判为 merged 等，表明当前重点之一是把复杂 Git 历史场景做稳。贡献者数量目前为 5，近期主要提交集中在少数维护者和 dependabot，社区参与还处在早期阶段。
-
-- **同类对比**：暂无明显同类对标。
-
-- **注意事项**：项目创建时间较新，但已有 749 stars 和较高更新频率，说明关注度上升很快；同时 Open Issues 有 59 个，结合近期大量功能演进，仍应视为快速迭代中的工具。README 文档覆盖了安装、核心命令、rebase、modify、sync 等细节，质量较高，但命令语义较多，上手前需要理解 stack 的“底层靠近 trunk、上层远离 trunk”模型。近期提交中出现弃用 branch name prefixes、迁移到新 Stacks REST API 等变化，团队落地时要留意版本升级带来的行为变化。
-
-- **GitHub**：[github/gh-stack](https://github.com/github/gh-stack)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：GitHub 是全球软件协作与开源生态的核心基础设施级组织，拥有极高社区影响力与开发者号召力。
-**技术栈偏好**：技术栈以 Python、Go 为主，重点服务于开发者工具、AI 编程辅助与平台基础能力建设。
-**核心领域**：主要聚焦代码托管、开源协作、开发者生产力工具以及 Copilot/AI 原生软件开发生态。
-
----
-
-### ✨ huggingface/speech-to-speech (7018★)
-
-> **一句话**：把麦克风语音实时送进 VAD、语音识别、LLM 和语音合成流水线，最终跑出一个可本地部署、兼容 OpenAI Realtime API 的语音智能体后端。
-
-- **它是什么**：speech-to-speech 是 Hugging Face 开源的低延迟语音智能体框架，核心流程是 `VAD -> STT -> LLM -> TTS`。它提供 OpenAI Realtime 兼容的 WebSocket API，客户端可以像连接 OpenAI Realtime 服务一样连接本地服务。语音识别、语言模型、语音合成都可以替换后端，既能接 OpenAI 兼容服务，也能接 vLLM、llama.cpp 或 Hugging Face 生态里的开源模型。
-
-- **能解决什么痛点**：开发者想做本地语音助手时，通常要自己拼 VAD、实时转写、LLM 流式响应、TTS 播放和打断处理，这个项目把这些环节串成了可运行的服务。另一个痛点是客户端适配成本高，它直接暴露 OpenAI Realtime 兼容接口，已有 Realtime 客户端可以较低成本切到自托管后端。
-
-- **适合谁用**：适合正在做语音助手、机器人对话、实时语音交互产品的 Python / AI 工程师。也适合希望把 LLM 语音链路从云端迁到本地或私有 GPU 机器上的团队。
-
-- **怎么上手**：`pip install speech-to-speech && export OPENAI_API_KEY=... && speech-to-speech`
-
-- **可以用在哪些场景**：可以作为桌面端或移动端语音助手的本地 Realtime 后端；可以给机器人、智能硬件接入低延迟语音对话能力，README 中提到它已用于 Reachy Mini 机器人的对话后端；也可以在企业内网部署语音问答服务，把 LLM 指向自托管的 llama.cpp 或 vLLM 服务。
-
-- **技术看点**：项目把语音链路拆成独立线程和队列连接的模块，VAD、STT、LLM、TTS 都能通过 CLI 参数切换。默认栈包含 Silero VAD、Parakeet TDT、OpenAI-compatible LLM 和 Qwen3-TTS，同时支持 Faster Whisper、Whisper MLX、Paraformer、Kokoro、Pocket TTS、ChatTTS 等多个后端，对模型选型和硬件适配比较友好。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 Realtime 能力和稳定性上，包括新增 OpenAI Realtime API 的 WebRTC transport、修复 session teardown 时 pipeline unit 卡住的问题，并强化 API warmup 的重试策略。项目在 2026-07-17 准备了 `0.2.11` 发布，说明仍处于持续迭代状态；近期也有 dependabot 和 star history 自动化维护提交，整体维护活跃。
-
-- **同类对比**：README 明确对标的是 OpenAI Realtime API 的协议兼容能力，差异在于它可以把后端换成本地或开源模型栈，而不是只能使用 OpenAI 托管服务。除此之外，暂无明确同类项目对标。
-
-- **注意事项**：项目创建于 2024-08，Star 已超过 7000，但仍有 112 个 open issues，说明关注度高，同时也可能存在较多边界问题和平台适配问题。依赖栈比较复杂，尤其是 TTS、CUDA、macOS MLX、不同 STT 后端的组合，上手前需要确认 Python 3.10+、GPU / Apple Silicon / CPU 环境和对应 wheel 是否匹配。README 文档较完整，但快速跑通之外的生产部署、延迟调优和模型替换仍需要一定语音 AI 工程经验。
-
-- **GitHub**：[huggingface/speech-to-speech](https://github.com/huggingface/speech-to-speech)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Hugging Face 是全球 AI 开源生态的核心组织之一，凭借 Transformers、Diffusers 等高星项目深度影响机器学习开发范式与社区协作。
-**技术栈偏好**：其技术栈以 Python 为绝对核心，辅以 MDX 文档与课程内容，重点围绕深度学习框架、模型库、推理工具和开发者教育展开。
-**核心领域**：主要聚焦自然语言处理、多模态生成式 AI、计算机视觉、智能体框架以及开源模型生态建设。
-
----
-
-### ✨ abus-aikorea/voice-pro (11640★)
-
-> **一句话**：把 YouTube 视频或本地音频导入 WebUI 后，自动完成下载、伴奏/人声分离、语音识别、翻译、字幕生成和多语言配音。
-
-- **它是什么**：Voice-Pro 是一个基于 Gradio 的 AI 语音与多媒体处理 Web 应用，主要面向视频翻译、字幕制作和 AI 配音流程。它集成了 Whisper、Faster-Whisper、Whisper-Timestamped 做语音识别，Edge-TTS、kokoro、F5-TTS、E2-TTS、CosyVoice 做文本转语音和零样本声音克隆，还支持 yt-dlp 下载 YouTube 内容、Demucs/MDX-Net 做人声分离，以及 100+ 语言翻译。
-- **能解决什么痛点**：做多语言视频时，常见流程要在下载器、音频分离、ASR、翻译、TTS、字幕工具之间来回切换，Voice-Pro 把这些步骤集中到一个 WebUI 里。对于想复刻原声风格做配音的创作者，它提供 F5-TTS、E2-TTS、CosyVoice 等零样本声音克隆能力，不必单独拼装多套模型脚本。
-- **适合谁用**：适合做 YouTube/课程/播客多语言搬运和配音的内容创作者，也适合需要快速验证 ASR、翻译、TTS、声音克隆组合链路的 Python/AI 应用开发者。
-- **怎么上手**：README 中主要面向 Windows 使用，最小启动方式是运行：`start.bat`
-- **可以用在哪些场景**：
-  1. 将英文 YouTube 视频下载后识别成字幕，再翻译并生成中文配音版本。
-  2. 给课程、访谈、播客生成多语言字幕和 TTS 音轨。
-  3. 从视频中分离人声，清理音频后用于语音识别、翻译或声音克隆测试。
-- **技术看点**：项目把 ASR、TTS、声音克隆、视频下载、音频分离和翻译链路整合到 Gradio WebUI 中，技术栈覆盖 Whisper/Faster-Whisper、F5-TTS、CosyVoice、kokoro、Edge-TTS、yt-dlp、Demucs 等常用组件。v4.0 已迁移到 uv、Python 3.12、Torch 2.8.0+cu128 和 Gradio 6，并移除了受依赖限制影响的 whisperX。
-- **近期动向与发展方向**：最近提交集中在 v4.0 升级：安装器从 Miniconda/pip 迁移到 uv，升级 Gradio 6，更新 Whisper/TTS 依赖，重新引入上游 CosyVoice，并增强网络重试、错误提示和 Windows 免管理员安装体验。需要注意的是，README 明确提到由于作者投入 WeConnect，Voice-Pro 暂时无法持续开发；同时项目贡献者数量为 1，近期维护主要由作者单人完成。
-- **同类对比**：README 明确将其定位为 ElevenLabs 的替代方案之一。差异在于 Voice-Pro 更偏本地 WebUI 和完整媒体处理流水线，不只是在线 TTS/声音克隆服务；但它对本地环境、GPU 和模型依赖更重。
-- **注意事项**：项目 Star 很高，但 Contributor Count 只有 1，维护风险需要考虑；当前 Open Issues 为 56，说明实际使用中仍有不少环境和功能问题。README 强调 Windows + NVIDIA GPU 运行较可靠，Mac/Linux 未经过验证；v4.0 有 Python、Torch、Gradio、安装器等大版本迁移，老环境升级时可能遇到兼容性问题。文档覆盖多语言 README 和版本说明，信息比较丰富，但首次运行会涉及模型下载、ffmpeg、GPU 驱动等依赖，非技术用户仍可能需要排查环境问题。
-
-- **GitHub**：[abus-aikorea/voice-pro](https://github.com/abus-aikorea/voice-pro)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：ABUS 以单一高星 Python 项目获得较高社区关注，影响力集中在具体应用型开源项目而非广泛仓库生态。
-**技术栈偏好**：其技术栈明显偏向 Python， likely 聚焦于 AI 应用、语音处理或智能交互相关工具开发。
-**核心领域**：主要聚焦于 AI 语音技术与面向韩国语境的语音类应用开发。
-
----
-
-### ✨ iv-org/invidious (21527★)
-
-> **一句话**：用 Invidious 打开 YouTube 视频，可以绕开官方页面的广告、追踪和重型前端，用更轻量的网页观看、订阅和管理内容。
-
-- **它是什么**：Invidious 是一个开源的 YouTube 替代前端，用户可以通过公共实例或自托管实例观看 YouTube 内容。它提供视频播放、订阅、通知、偏好设置、浅色/深色主题、音频模式、数据导入导出等功能，并且不依赖官方 YouTube API。
-- **能解决什么痛点**：适合不想在 YouTube 官方页面中接受广告、追踪和复杂前端脚本的用户；也适合需要在自托管环境中提供 YouTube 视频访问入口、但又希望订阅数据独立于 Google 账号的场景。
-- **适合谁用**：关注隐私和轻量网页体验的普通用户；想自建视频访问前端、公共实例或内部实例的运维人员和开源服务维护者。
-- **怎么上手**：README 推荐直接选择公共实例使用：https://instances.invidious.io；自托管安装请按官方文档操作：https://docs.invidious.io/installation/
-- **可以用在哪些场景**：搭建个人或小团队自托管 YouTube 前端，减少对官方页面的依赖；配合 Privacy Redirect 等浏览器扩展，把 YouTube 链接自动跳转到 Invidious 实例；为移动端或弱设备提供更轻量的无广告视频播放页面，并支持音频后台播放。
-- **技术看点**：项目主要使用 Crystal 编写，提供开发者 API、嵌入式视频支持，并明确不使用官方 YouTube API。AGPLv3 许可证意味着如果基于它提供网络服务并修改代码，需要关注相应开源义务。
-- **近期动向与发展方向**：最近提交非常活跃，重点集中在适配 YouTube 变更的 hotfix、发布流程自动化、CI 中 Crystal 版本矩阵更新、Docker/依赖维护以及安全修复。6 月底修复了播放列表跨用户删除的安全问题，并新增可关闭易被滥用 API 端点的选项；7 月还加入并更新了 AI policy，说明项目维护者在加强贡献治理和质量控制。
-- **同类对比**：README 明确提到可从 NewPipe、FreeTube 导入/导出订阅和历史数据，但 Invidious 的定位更偏 Web 前端和可自托管实例；NewPipe、FreeTube 更偏客户端应用。
-- **注意事项**：项目创建于 2018 年，已有 2.1 万 Star、351 位贡献者，成熟度和社区关注度较高；但当前仍有 461 个 open issues，且 YouTube 页面和接口变化会持续带来兼容性维护压力。README 提供了官网、实例列表、FAQ、文档和安装入口，资料较完整；自托管用户需要持续关注版本更新、安全修复和可能因 YouTube 变更导致的临时不可用。
-
-- **GitHub**：[iv-org/invidious](https://github.com/iv-org/invidious)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Invidious 是围绕开源 YouTube 前端替代方案形成的高关注度组织，核心项目拥有较强社区影响力和用户基础。
-**技术栈偏好**：技术栈以 Crystal 为核心服务实现，辅以 Python 自动化工具、TypeScript 辅助组件和 Docker 化部署。
-**核心领域**：主要聚焦隐私友好的视频访问、YouTube 生态替代前端、会话生成与网络访问辅助工具。
-
----
-
-### ✨ ansible/ansible (69815★)
-
-> **一句话**：用接近自然语言的 Playbook，通过 SSH 批量完成服务器配置、应用发布、云资源管理和网络设备自动化，不需要在远端机器安装 Agent。
-
-- **它是什么**：Ansible 是一个用 Python 编写的 IT 自动化平台，核心能力覆盖配置管理、应用部署、云资源编排、临时任务执行、网络自动化和多节点编排。它强调“无 Agent”架构，通常直接利用远端已有的 SSH 服务执行任务，并用可读性较强的声明式内容描述基础设施状态。README 中特别强调它适合做并行管理、滚动更新、负载均衡配合下的零停机变更等复杂运维动作。
-
-- **能解决什么痛点**：
-  1. 多台服务器需要保持一致配置时，手工 SSH 登录逐台修改容易遗漏、不可审计，也难以复现。
-  2. 应用发布、系统初始化、云资源配置和网络变更分散在脚本、文档和人工操作里，Ansible 可以把这些步骤沉淀成可版本化、可评审的 Playbook。
-
-- **适合谁用**：运维工程师、SRE、平台工程团队，以及需要批量管理 Linux/Unix/Windows 主机、网络设备或云资源的后端与基础设施团队。
-
-- **怎么上手**：README 推荐通过 `pip` 或系统包管理器安装发布版本，最简方式可使用：
-
-- **可以用在哪些场景**：
-  - 新服务器上线时批量安装基础软件、写入系统配置、创建用户和权限。
-  - 应用发布流水线中执行多机器部署、服务重启、健康检查和滚动更新。
-  - 管理云主机、网络设备、防火墙规则等基础设施配置，减少手工变更。
-
-- **技术看点**：Ansible 的关键设计是无 Agent、基于 SSH、用人类可读的语言描述自动化任务，这降低了远端机器接入成本。它还允许模块使用 Python 以外的动态语言编写，对扩展生态比较友好。
-
-- **近期动向与发展方向**：最近 20 条提交主要集中在 bug 修复、测试稳定性、文档补充和兼容性维护，例如修复 `apt_repository` 的 `IndexError`、URL 认证信息脱敏、PowerShell `pwsh` 选择逻辑、CI 超时和 Alpine 测试容器更新。也有少量能力补充，如新增 `ansible_distribution_cpe_name()`。整体看项目仍处于高频维护状态，当前重点更偏向稳定性、安全细节、测试基础设施和跨平台兼容，而不是大规模功能重构。
-
-- **同类对比**：README 没有明确点名竞品。它自身强调的差异点是无 Agent、依赖 SSH、配置内容接近自然语言，以及远端机器无需额外开放端口或预装管理组件。
-
-- **注意事项**：项目创建于 2012 年，Stars、Forks 和贡献者数量都很高，成熟度和社区规模突出；同时 Open Issues 达到 829，说明真实使用场景复杂，边界问题和维护负担也不小。README 提醒 `devel` 分支虽然相对稳定，但更可能遇到破坏性变更；生产环境更适合使用发布版本或稳定分支。文档体系较完整，有安装指南、开发者指南、社区沟通渠道和路线图，但初次接触仍需要理解 Inventory、Playbook、Module、变量和权限模型等概念。
-
-- **GitHub**：[ansible/ansible](https://github.com/ansible/ansible)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Ansible 是自动化运维与基础设施编排领域的标志性开源组织，长期处于该技术社区的核心位置。
-**技术栈偏好**：以 Python 为主、辅以 Shell，技术方向明显偏向自动化工具链、配置管理与测试/质量控制生态。
-**核心领域**：主要聚焦 IT 自动化、配置管理、应用部署与运维编排。
-
----
-
-### ✨ microsoft/TRELLIS.2 (9842★)
-
-> **一句话**：TRELLIS.2 可以把一张图片生成带复杂几何结构和 PBR 材质的高分辨率 3D 资产，并导出为可在 3D 软件中继续使用的 GLB 文件。
-
-- **它是什么**：TRELLIS.2 是微软开源的 3D 生成模型项目，核心模型为 4B 参数，主打 image-to-3D 生成。它使用名为 O-Voxel 的稀疏体素结构来表示 3D 资产，能处理开放曲面、非流形结构、内部封闭结构等传统场表示较难处理的几何情况。项目不仅提供推理代码和预训练权重，也已发布训练代码、PBR 贴图生成流程和 Web Demo。
-
-- **能解决什么痛点**：一是从单张参考图生成可编辑 3D 资产时，传统流程往往需要手工建模、重拓扑、贴材质，TRELLIS.2 把形状生成、材质生成和 GLB 导出串成了相对完整的流程。二是复杂拓扑、透明材质、粗糙度/金属度等 PBR 属性在很多 image-to-3D 管线里容易丢失或简化，该项目明确支持 Base Color、Roughness、Metallic、Opacity 等表面属性建模。
-
-- **适合谁用**：适合做 AIGC 3D 资产生成、游戏/电商/虚拟内容生产管线的 Python 工程师和技术美术团队。也适合研究 3D 生成模型、稀疏体素表示、3D VAE/DiT 架构的科研人员或模型工程师。
-
-- **怎么上手**：最简安装命令：`. ./setup.sh --new-env --basic --flash-attn --nvdiffrast --nvdiffrec --cumesh --o-voxel --flexgemm`；随后可运行 README 中的 `example.py` 加载 `microsoft/TRELLIS.2-4B` 进行图片到 3D 生成，或用 `python app.py` 启动 Web Demo。
-
-- **可以用在哪些场景**：
-  - 根据商品图、概念图快速生成带 PBR 材质的 GLB 资产，用于电商 3D 展示或原型验证。
-  - 为游戏、动画或 AR/VR 项目批量生成初版 3D 道具，再交给美术做精修。
-  - 对已有 3D 形状生成 PBR 贴图，用于补全材质贴图或做风格化材质实验。
-
-- **技术看点**：项目的核心是 O-Voxel 这种“field-free”稀疏体素表示，避免把所有几何都压进等值面场，因而更适合开放曲面和复杂拓扑。模型侧使用 Sparse 3D VAE 将 3D 资产压缩到紧凑 latent 空间，并结合 vanilla DiT 做高分辨率生成；README 中标称在 H100 上 512³ 约 3 秒、1024³ 约 17 秒、1536³ 约 60 秒。
-
-- **近期动向与发展方向**：提交历史显示，项目在 2025 年 12 月完成初始发布、Demo、论文链接和贴图管线更新，2026 年 1 月发布训练代码，说明核心功能已经从推理扩展到可训练/可微调。最近一次 2026 年 6 月的提交主要是新增和修复 CodeQL GitHub Actions 配置，偏工程安全与 CI 维护，不是模型功能更新。贡献者数量为 3，近期功能开发节奏看起来不高，但仓库仍有维护痕迹。
-
-- **同类对比**：README 没有明确列出竞品或对标项目。只能从功能定位看，它面向 image-to-3D 和 PBR 资产生成，差异点主要在 O-Voxel 表示、复杂拓扑处理和完整材质属性建模，而不是单纯生成几何网格。
-
-- **注意事项**：硬件门槛较高，README 明确要求 Linux、NVIDIA GPU、至少 24GB 显存，并推荐 CUDA 12.4；依赖包含 flash-attn、nvdiffrast、nvdiffrec、cumesh、o-voxel 等，安装复杂度不低。项目创建时间较新，但 Star 已接近 1 万，Open Issues 有 143 个，说明关注度高同时也可能存在较多安装、兼容性和使用问题。推理性能数据基于 H100，普通消费级显卡上的速度和可运行分辨率需要自行验证；GLB 默认以 OPAQUE 模式导出，透明通道需要在 3D 软件中手动连接。
-
-- **GitHub**：[microsoft/TRELLIS.2](https://github.com/microsoft/TRELLIS.2)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Microsoft 是 GitHub 上影响力极高的头部开源组织，凭借 VS Code、TypeScript、PowerToys 等项目深度影响开发工具链与开发者生态。
-**技术栈偏好**：技术栈以 TypeScript、Python、C 为主，覆盖前端工程化、AI/数据处理、系统级工具与桌面软件开发。
-**核心领域**：主要聚焦开发者工具、编程语言、AI 教育与生产力工具，形成从基础语言到应用工具的完整技术生态。
+**技术影响力**：Pnant 凭借高星项目 Agent-Reach 在 GitHub 上具备较强可见度，属于 AI Agent 相关方向中有一定社区影响力的个人开发者。
+**技术栈偏好**：技术栈以 Python 为核心，辅以 TypeScript 和 Shell，偏向 AI 工具、自动化脚本与开发者效率工具建设。
+**核心领域**：主要聚焦 AI Agent、Claude/AI 编程生态、信息抓取与知识内容自动化处理。
 
 ---
 
@@ -416,6 +303,33 @@
 **技术影响力**：Tencent Cloud 是具备较高社区关注度的云服务组织，凭借多个万星级项目在开发者生态中具有显著影响力。
 **技术栈偏好**：技术栈覆盖 Rust、TypeScript、Objective-C、Go、Python，偏向高性能基础设施、前端/智能应用、移动端 SDK 与云服务 SDK。
 **核心领域**：主要聚焦云计算基础设施、数据库与 AI Agent 能力、即时通信及多语言云服务开发工具链。
+
+---
+
+### ✨ mvanhorn/last30days-skill (53934★)
+
+> **一句话**：把 Reddit、X、YouTube、HN、Polymarket、GitHub 等近 30 天的公开信号并行搜出来，再按真实互动和引用证据整理成一份可读简报。
+
+- **它是什么**：这是一个面向 AI Agent 的搜索技能，核心命令是 `/last30days`，用于围绕任意人物、公司、产品或话题抓取最近 30 天内的多平台信息。它不是只查网页结果，而是把 Reddit upvotes、X likes、YouTube transcripts、Polymarket odds、GitHub 活动等信号放在一起评分，再由 Agent 生成带依据的摘要。
+- **能解决什么痛点**：当你想了解某个人或某个话题的最新动态时，传统搜索经常只给出官网、旧新闻或 SEO 内容，缺少社区讨论、开发活动和短期舆论变化。它适合解决“明天要开会但不知道对方最近在忙什么”“某个 AI 工具突然火了但信息散在 X、Reddit、HN、YouTube 上”这类问题。
+- **适合谁用**：适合经常使用 Claude Code、Codex、Cursor、Copilot、Gemini CLI 等 Agent 工具的开发者、产品经理和研究人员；也适合需要做竞品追踪、人物背景调研、技术趋势观察的创业团队或技术博主。
+- **怎么上手**：Claude Code 推荐方式：`/plugin marketplace add mvanhorn/last30days-skill` 后执行 `/plugin install last30days`；其他 Agent Skills 宿主可用：`npx skills add mvanhorn/last30days-skill -g`。
+- **可以用在哪些场景**：
+  - 会前调研某位候选人、客户 CEO 或技术负责人最近 30 天的推文、播客、GitHub 活动和社区讨论。
+  - 对比多个 AI 工具或开源项目，汇总 GitHub stars、PR 活跃度、社区评价和使用争议。
+  - 追踪某个热点话题是否正在升温，例如 AI Agent、新消费产品、旅行目的地变化或预测市场赔率。
+- **技术看点**：项目把多个“信息孤岛”接到 Agent 工作流里，并用互动数据、评论、赔率和引用来源参与排序，而不是只依赖网页搜索排名。README 中提到 v3 管线已覆盖 Reddit、HN、Polymarket、GitHub，并可通过配置扩展 X、YouTube、TikTok、arXiv、Techmeme、Digg 等来源。
+- **近期动向与发展方向**：最近 20 条提交集中在 CI 修复、GitHub Actions 依赖升级、CodeQL/SARIF、安全扫描和 release workflow 稳定性上，说明项目近期重点不是大功能扩张，而是在加固自动化发布与供应链安全。提交中有 dependabot 持续参与，也有维护者合并 PR 和补充测试，结合 113 位贡献者和近期高频更新，社区活跃度较高。
+- **同类对比**：README 明确把它与 Google、ChatGPT、Gemini、Claude 的原生搜索能力做了对比：Google 更偏网页和编辑内容，ChatGPT/Gemini/Claude 各自受限于平台接入，而 last30days 的差异在于让用户自带密钥或浏览器会话，把多个社交、视频、代码和预测市场来源并行接入 Agent。
+- **注意事项**：项目创建时间较新但 star 数很高，热度和社区参与度都很强，同时还有 73 个 open issues，说明仍处在快速演进阶段。部分数据源需要 API key、登录态、本地 CLI 或额外设置，虽然 README 宣称零配置可先跑 Reddit、HN、Polymarket、GitHub，但要完整覆盖 X、YouTube、TikTok 等平台仍有上手成本；近期 CI 和依赖维护频繁，也意味着工作流和插件生态可能继续变化。
+
+- **GitHub**：[mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Matt Van Horn 是兼具连续创业背景与开源影响力的开发者，拥有高星项目和较强社区关注度。
+**技术栈偏好**：技术栈以 Go、Python、TypeScript 为主，偏向命令行工具、自动化系统与开发者基础设施。
+**核心领域**：主要聚焦 AI/Agent 工具、生产力自动化、CLI 工具链与面向开发者的轻量级基础设施。
 
 ---
 
@@ -451,37 +365,96 @@
 
 ---
 
-### ✨ bytedance/deer-flow (78616★)
+### ✨ HarbourMasters/Lighthouse (193★)
 
-> **一句话**：DeerFlow 把大模型、子 Agent、长期记忆、沙箱执行环境和工具调用串起来，让 AI 能连续完成从资料调研、代码编写到文件产出的长任务。
+> **一句话**：把《Banjo-Kazooie》从原始 N64 ROM 提取为可在 Windows、Linux、macOS 上运行的现代移植版本，并支持手柄、图形后端、语言包、Romhack 和自定义资产。
 
-- **它是什么**：DeerFlow 是字节开源的 long-horizon SuperAgent harness，定位已经从早期 Deep Research 框架升级为 2.0 的“超级 Agent 编排底座”。它可以调度子 Agent、记忆系统、沙箱文件系统、MCP 工具、技能扩展和消息网关，处理持续数分钟到数小时的复杂任务。README 明确说明 2.0 是一次从零重写，和 v1 不共享代码，当前主线开发集中在 2.0。
+- **它是什么**：Lighthouse 是 Harbour Masters 团队制作的《Banjo-Kazooie》PC 移植项目，基于用户自己提供的正版 ROM 生成运行所需的 `bk.o2r` 文件。它不包含版权素材，启动时需要选择受支持的 `.z64` ROM，并可在 Windows、Linux、macOS 上运行。项目还提供控制器映射、图形后端切换、语言包提取、Romhack 提取和自定义资产加载等功能。
 
-- **能解决什么痛点**：
-  1. 开发者想让 AI 完成跨多步的真实任务时，常常要自己拼上下文管理、工具调用、文件读写、执行隔离和失败恢复；DeerFlow 把这些能力整合成一套可运行的 Agent harness。
-  2. 做长时间研究或编码任务时，普通聊天式 Agent 容易丢上下文、污染长期记忆或缺少沙箱边界；DeerFlow 提供上下文压缩、长期记忆、沙箱模式和权限控制来缓解这些问题。
+- **能解决什么痛点**：对想在现代系统上游玩和调试《Banjo-Kazooie》的玩家或开发者来说，它减少了依赖模拟器配置、输入映射和平台兼容性的折腾。对 Mod / Romhack 作者来说，它提供了更直接的资产包、语言包和 Romhack 加载路径，便于测试改动。
 
-- **适合谁用**：适合正在搭建内部 AI Agent 平台、研究型助手或自动化编码工作流的 Python / 全栈工程师；也适合需要评估多模型、多工具、多子 Agent 协作架构的 AI 应用开发团队。
+- **适合谁用**：适合拥有合法《Banjo-Kazooie》ROM、希望在 PC 或 macOS/Linux 上运行现代移植版的玩家。也适合 N64 游戏反编译、移植、Romhack 和自定义资产制作相关的开发者或爱好者。
 
-- **怎么上手**：README 推荐通过交互式向导初始化配置：
+- **怎么上手**：从 [Releases](https://github.com/HarbourMasters/Lighthouse/releases) 下载对应平台版本，解压后运行 `lighthouse.exe` / `lighthouse.appimage` / `lighthouse`，并选择受支持的 `.z64` ROM。
 
-- **可以用在哪些场景**：
-  1. 搭建内部“研究 + 写作 + 文件产出”Agent，例如自动调研竞品、整理资料并生成报告。
-  2. 构建可在沙箱中执行命令、读写文件、调用外部工具的编码 Agent 工作流。
-  3. 接入 MCP Server、飞书等 IM 渠道，把 Agent 能力封装成团队内部的长任务处理入口。
+- **可以用在哪些场景**：在 Windows、Linux、macOS 上运行《Banjo-Kazooie》的原生移植版本。为 PAL 或日版 ROM 提取语言包，用于多语言游玩。把受支持的 patched ROM 提取为 Romhack Mod，并放入 Lighthouse 环境中测试。
 
-- **技术看点**：项目以 Python 后端为主，同时要求 Node.js 22+，说明它不是单纯 SDK，而是包含前端、网关、运行时和沙箱的一体化系统。设计上强调子 Agent、长期记忆、上下文工程、MCP 工具接入、模型多供应商配置和沙箱隔离，对做复杂 Agent 平台选型有参考价值。
+- **技术看点**：项目主体语言是 C，并基于 Harbour Masters 生态的 `libultraship`，面向 N64 游戏移植场景。图形层支持 DirectX 11、OpenGL 和 Metal，覆盖 Windows、跨平台和 macOS 原生渲染路径。
 
-- **近期动向与发展方向**：最近 20 条提交非常密集，且集中在网关鉴权、MCP 工具命名前缀、前端长任务性能、Feishu 文件接收、沙箱审计、长期记忆边界、Docker 默认绑定、Windows 原子保存等方面。可以看出项目正处于高频迭代期，重点不是单纯加 demo，而是在补齐生产化运行所需的安全、权限、稳定性、跨平台和长任务体验。341 位贡献者、935 个 open issues 也说明社区活跃，但问题积压和快速变化都比较明显。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-29 到 2026-07-31，活跃度很高，且多由 Jeod、Malkierian 等核心贡献者完成。近期重点不是大规模新功能，而是 RC 阶段修复：包括随机化模式 rando 的软锁和地图状态问题、imgui 搜索崩溃、动画罕见崩溃、插值 bug、rumble 线程、事件调用恢复，以及发布前的 RC 调整，说明项目正在接近某个稳定版本或发布节点。
 
-- **同类对比**：README 没有直接对标 LangGraph、AutoGen、CrewAI 等项目，但它强调的是“SuperAgent harness”而不是单一编排库，更偏向提供从模型配置、沙箱、记忆、工具、子 Agent 到前端控制台的一整套可运行系统。明确提到的姊妹项目是 LLM Space，用于原型设计、步骤检查、失败回放和性能基准测试。
+- **同类对比**：暂无明显同类对标。README 主要提到 `retro`、`fast64` 等配套工具，以及 `libultraship` 底层生态，但没有直接拿 Lighthouse 与其他《Banjo-Kazooie》移植项目或模拟器方案做对比。
 
-- **注意事项**：项目创建于 2025-05-07，但 Stars 已超过 7.8 万，增长很快，仍处于快速演进阶段；2.0 已经从零重写，说明 API、配置和运行方式可能存在较大变动风险。README 的配置项较多，涉及模型供应商、搜索工具、沙箱、MCP、IM、Tracing、Docker 等，上手前最好先跑 `make setup` 和 `make doctor`，不要直接按生产服务暴露。项目也明确提醒部署不当会带来安全风险，尤其是开启 bash、文件写入、沙箱和外部工具调用时需要谨慎配置权限边界。
+- **注意事项**：Lighthouse 不提供任何版权游戏素材，必须自行准备受支持的正版 ROM，并确认 SHA-1 与 README 列出的版本匹配。项目创建于 2024-11-27，Stars 193、Open Issues 38，仍处在较活跃迭代阶段；README 也明确说明 CI 构建仅供 playtesting，可能遇到 bug 或崩溃。文档覆盖了使用流程、平台启动、控制配置和图形后端，但开发构建说明需要跳转到单独文档。
 
-- **GitHub**：[bytedance/deer-flow](https://github.com/bytedance/deer-flow)
+- **GitHub**：[HarbourMasters/Lighthouse](https://github.com/HarbourMasters/Lighthouse)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：字节跳动在 GitHub 上拥有较高关注度和大量高星项目，是国内外开源技术社区中影响力显著的组织级玩家。
-**技术栈偏好**：以 Python、TypeScript 和 Go 为主，偏向 AI Agent、智能交互、桌面应用与高性能后端工具链。
-**核心领域**：主要聚焦人工智能应用、智能体系统、UI 自动化与开发者工具生态。
+**技术影响力**：Harbour Masters 是一个在游戏反编译、移植与开源重实现社区具有较高影响力的组织，多个 C 项目获得数千 Star 关注。
+**技术栈偏好**：其技术栈明显偏向 C 语言，侧重底层游戏引擎、原生平台适配与性能敏感型代码。
+**核心领域**：主要聚焦经典游戏的 PC 移植、逆向工程衍生开发与社区驱动的游戏技术重建。
+
+---
+
+### ✨ antirez/ds4 (19909★)
+
+> **一句话**：DwarfStar 把 DeepSeek V4 Flash、GLM 5.2 等少数大模型打包成可在高内存 Mac、CUDA 多卡和 ROCm 机器上本地运行的原生推理引擎。
+
+- **它是什么**：这是一个用 C 写的本地大模型推理引擎，重点优化 DeepSeek V4 Flash，同时支持 GLM 5.2，以及在超大内存机器上运行 DeepSeek V4 PRO。它不是通用 GGUF 运行器，而是把模型加载、提示词渲染、工具调用、KV 状态、HTTP server、coding agent 和测试流程放在同一套窄口径系统里维护。
+
+- **能解决什么痛点**：高端个人机器或工作站想跑 DeepSeek V4 Flash / GLM 5.2 时，常见问题是显存、内存和吞吐都不够稳定，ds4 针对 96GB 以上 Mac、512GB 工作站、CUDA 多卡和 Strix Halo ROCm 做了专门路径。另一个痛点是旧一代 CUDA 卡在新模型服务框架里支持不足，README 提到可用 8xL40S 这类 Ada Lovelace 机器通过 `ds4-server` 微批处理提供多用户 LLM 服务。
+
+- **适合谁用**：适合有高内存 Mac、NVIDIA 多卡服务器、DGX Spark 或 AMD Strix Halo 设备，并且想本地部署 DeepSeek / GLM 开源权重的工程师。也适合需要搭建内部 LLM 服务、能接受自行下载 GGUF 权重和调试推理参数的基础设施团队。
+
+- **怎么上手**：README 给出的最小路径是先下载受支持模型，再按后端编译，例如：`./download_model.sh q2-imatrix && make`
+
+- **可以用在哪些场景**：在 96GB / 128GB MacBook 上本地运行 DeepSeek V4 Flash，用于代码助手或离线推理。在 8 张 L40S 等 CUDA 服务器上部署 `ds4-server`，为公司内部多人提供模型服务。在两台高内存 Mac 或多机环境中通过 tensor parallelism / pipeline parallelism 组合内存，运行更大的 Flash、GLM 或 PRO 模型。
+
+- **技术看点**：项目采用“少模型强优化”的路线，不追求通用 GGUF 兼容，而是针对 DeepSeek V4 Flash、GLM 5.2 的张量布局、量化格式、KV cache、Metal / CUDA / ROCm 图后端做专门实现。它同时支持 SSD streaming、压缩 KV cache、CUDA 多 GPU、Mac 间 RDMA、pipeline parallelism，以及实验性的 DSpark / MTP speculative decoding。
+
+- **近期动向与发展方向**：最近 20 条提交高度集中在 ROCm 和 GLM 5.2 性能路径上，包括 GLM selected attention / causal attention 的 GEMM 默认路径、head tiling、indexed decode tuning、wave value projection，以及 ROCm batched HC norm 修复。开发活跃度很高，7 月 25-28 日连续多次提交和 PR 合并，方向明显是把 GLM 在 ROCm / Strix Halo 等平台上的可用性和性能继续打磨，而不是单纯补文档或小修小改。
+
+- **同类对比**：README 明确提到项目受 `llama.cpp` 和 GGML 启发，并复用了部分量化格式、CPU dot 逻辑和内核思路。差异在于 ds4 不做通用 GGUF runner，而是为 DeepSeek V4 Flash / PRO、GLM 5.2 这类特定模型做窄而深的本地推理路径；这意味着兼容面更窄，但特定硬件和模型组合上更容易做激进优化。
+
+- **注意事项**：项目创建时间较新，README 明确标注当前是 beta quality，且“fast changing”，再加上 376 个 open issues，生产使用前需要充分压测和版本锁定。模型支持是机会主义策略，README 说明当更好的替代模型出现时，已有模型可能被移除；此外它只支持列出的特定 GGUF，任意 GGUF 文件大概率不能直接运行。上手门槛也不低，需要匹配硬件、下载大体积权重，并理解 Metal / CUDA / ROCm 不同构建目标。
+
+- **GitHub**：[antirez/ds4](https://github.com/antirez/ds4)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Salvatore Sanfilippo 是开源基础软件领域的高影响力个人开发者，凭借多个高星 C 项目在系统编程社区具有广泛认可度。
+**技术栈偏好**：其技术栈明显偏向 C 语言，关注简洁、高性能、底层可控的软件实现。
+**核心领域**：主要聚焦数据库、网络服务、数据结构与轻量级系统工具等基础设施方向。
+
+---
+
+### ✨ esengine/DeepSeek-Reasonix (28922★)
+
+> **一句话**：Reasonix 把 DeepSeek 驱动的代码代理放进终端里，可以在长时间会话中持续读项目、调用工具、执行修改，并尽量利用前缀缓存降低上下文成本。
+
+- **它是什么**：DeepSeek-Reasonix 是一个用 Go 编写的终端 AI coding agent，提供 CLI / TUI、桌面端和 VS Code 扩展三种入口，底层共用本地 Reasonix 引擎。它通过 `reasonix.toml` 配置模型、Provider、工具和插件，不把模型写死在代码里；README 明确强调它围绕 DeepSeek prefix cache 设计，适合保持长会话运行。
+
+- **能解决什么痛点**：一是长时间让 AI 参与代码修改时，上下文反复重建会带来 token 成本和状态丢失，Reasonix 通过稳定环境摘要、上下文维护和缓存友好的会话设计来缓解这个问题。二是开发者想把外部工具接入 AI agent 时，不必改核心代码，可以通过 stdio JSON-RPC / MCP 兼容插件机制扩展工具能力。
+
+- **适合谁用**：适合已经在使用 DeepSeek 或 OpenAI 兼容模型、希望在终端里跑本地代码代理的后端、全栈和工具链工程师。也适合需要同时使用 CLI、桌面端、VS Code 扩展，并希望复用同一套本地引擎配置的开发团队。
+
+- **怎么上手**：最短路径是通过 npm 安装并启动：`npm i -g reasonix && reasonix setup && reasonix`
+
+- **可以用在哪些场景**：可以在已有 Go、前端或后端仓库里让 agent 阅读代码并执行 TODO 修改；可以通过 `reasonix run "implement the TODOs in main.go"` 这类命令做一次性代码任务；也可以在 VS Code 中接入本地 `reasonix acp` 后端，用编辑器上下文、工具调用审批和模型选择来管理项目会话。
+
+- **技术看点**：核心实现是 `CGO_ENABLED=0` 的单个 Go 静态二进制，支持跨 macOS、Linux、Windows 的 amd64 / arm64 构建和分发。架构上采用配置驱动、多模型组合、插件驱动，并把 DeepSeek 前缀缓存稳定性作为上下文维护的设计目标，这对长会话 agent 的成本控制有实际参考价值。
+
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-02，活跃度很高，重点包括 v1.19.2 发布说明、npm release alias 迁移与传播修复、桌面端更新失败原子性、移除 Safe Mode 相关旧路径、Windows home 路径测试，以及站点 GitHub header 导航。整体看近期更偏发布工程、更新可靠性、跨平台兼容性和官网体验收尾，而不是单纯堆新功能。
+
+- **同类对比**：README 没有明确列出竞品或对标项目。可确认的差异点是它强调 DeepSeek-native、prefix-cache 稳定性、单 Go 二进制分发，以及 MCP 兼容的插件式工具接入。
+
+- **注意事项**：项目创建于 2026-04-21，但已有 28922 stars、134 位贡献者和非常密集的提交，增长很快；同时 open issues 达到 1377，说明用户反馈和待处理问题不少，采用前需要关注版本变更和已知问题。近期提交中出现 release alias、桌面更新原子性、移除旧 Safe Mode 路径等内容，表明发布链路和部分行为仍在快速调整，生产环境或团队统一推广前建议先锁定版本并验证工作流。文档覆盖安装、CLI、配置路径、ACP、恢复、检查点等主题，入口较全，但完整使用仍需要花时间理解配置和插件机制。
+
+- **GitHub**：[esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：YHH 是具备较高社区可见度的个人开发者，凭借 DeepSeek-Reasonix 等高星项目在开源 AI 工程方向形成显著影响力。
+**技术栈偏好**：其技术栈以 TypeScript 为主，结合 Go 与 C++，偏向构建工程化、性能敏感和跨语言协作的系统工具。
+**核心领域**：主要聚焦 AI 推理与智能体相关基础设施，同时覆盖引擎框架、行为树和工程化开发工具。
