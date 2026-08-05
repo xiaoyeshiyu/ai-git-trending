@@ -1,5 +1,69 @@
-## 今日热点：AI Agent 工程化与开发基础设施升温
-今日热门项目集中体现了 AI Agent 从能力原型走向工程落地的趋势：一方面，Agent 记忆中枢、技能路由、安全观测、实时语音代理、终端编码代理、Claude/Codex/Cursor 插件与视频编辑代理等项目，正在补齐多代理协作、工具链自举、知识复用、威胁检测和多模态交互能力；另一方面，生成式 AI 入门教程、低资源大模型推理、PDF 智能解析等项目降低了 AI 应用构建门槛；同时，Cypress、webpack、Deno、Angular、Tailwind CSS、spdlog、开源项目管理工具等成熟工程基础设施继续保持热度，说明开发者仍在关注测试、构建、运行时、前端框架、日志与协作效率的系统性提升。具体项目摘要如下：
+## 今日热点：AI Agent 工程化与基础设施加速落地
+今天的 GitHub 热点明显围绕 AI Agent 从概念走向生产展开：既有为智能体提供可操作计算环境、长期运行状态内核、团队级记忆中枢、终端编码代理和可复用工程技能的方法论项目，也有面向企业落地的可观测、安全评测与威胁检测方案；同时，系统设计学习、PDF 智能解析、计算机视觉工具、Next.js 与 Tailwind CSS 等前端基础设施，以及低显存大模型推理项目共同构成了从模型运行、代理协作、知识沉淀到应用交付的完整技术链路。具体项目摘要如下：
+
+### ✨ cloudflare/computer (2335★)
+
+> **一句话**：把一个带持久化文件系统和可插拔执行后端的“电脑”放进 Cloudflare Durable Object，让 Agent 能写文件、跑命令、执行 JavaScript 模块。
+
+- **它是什么**：Cloudflare Computer 是运行在 Durable Object 内的虚拟文件系统，权威状态存放在 SQLite 中，并通过 `workspace.runtime` 暴露统一执行入口。它目前提供三类执行后端：容器里的真实 Linux/FUSE 环境、Dynamic Worker 中的 isolate shell，以及 Dynamic Worker 中的 isolate JavaScript。开发者可以让 Agent 在 Workspace 里读写文件、执行命令或运行 ECMAScript 模块，也可以只把它当成持久化文件系统使用。
+
+- **能解决什么痛点**：Agent 做复杂任务时常需要一个可持久化的工作目录，而不是每轮对话都丢失上下文；这个项目把文件状态放进 Durable Object，并让不同执行环境共享同一份 Workspace。另一个痛点是容器、Worker shell、JavaScript isolate 的执行模型差异大，项目用 `workspace.runtime.exec(source, { backend })` 把入口统一起来。
+
+- **适合谁用**：适合在 Cloudflare Workers / Durable Objects 上构建 Agent 工作流的开发者，尤其是需要让 Agent 生成文件、运行脚本、产出构建结果的人。也适合研究 serverless 沙箱、虚拟文件系统、AI coding agent 基础设施的工程团队。
+
+- **怎么上手**：README 未直接给出一行安装命令，建议从 `@cloudflare/computer` 包 README 和 `examples/` 目录开始；最小调用入口形态是 `workspace.runtime.exec(source, { backend })`。
+
+- **可以用在哪些场景**：可以给聊天 Agent 提供持久化工作目录，让它在多轮任务中持续读写项目文件；可以在 Worker 中接收 HTTP 请求后写入文件并执行 shell 或 JavaScript，做轻量代码生成、转换、构建任务；也可以生成 Worker 项目并发布到 Cloudflare Artifacts，形成可 clone 的仓库产物。
+
+- **技术看点**：核心设计是 Durable Object + SQLite 作为权威文件状态，再把这份状态投射到容器 FUSE、Dynamic Worker shell 或 JavaScript isolate 中。容器后端通过 `computerd` 和 capnweb RPC 同步文件系统，isolate 后端则直接通过 Workers RPC 访问 Workspace，减少第二份存储和同步往返。
+
+- **近期动向与发展方向**：最近 20 条提交高度集中在 8 月 3 日到 8 月 5 日，开发活跃度很高。近期重点明显放在统一执行后端和 `exec` 工具稳定性上，包括流式输出、退出事件字段命名、JSON 输入校验、执行中止时杀掉后端、真实 Workspace 测试覆盖，以及文档同步。8 月 5 日还引入了 changesets 发布流程，说明项目正在向更规范的包发布节奏推进。
+
+- **同类对比**：README 没有明确列出直接竞品。它提到了 `just-bash`、Cloudflare sandbox/container、Workers RPC、FUSE 等组件，但定位更像 Cloudflare 平台上的 Agent 工作空间与执行运行时，而不是单纯的 shell、容器或文件系统库。
+
+- **注意事项**：项目明确标注为 **Preview Only**，API 不稳定，设计可能变化，不适合生产环境。仓库创建时间很新，但 Star 增长快、近期提交密集，说明关注度和开发节奏都高；同时贡献者数量只有 7、开放 issue 为 7，社区生态仍处早期。README 也说明 `docs/` 下规格偏前瞻，应按设计意图阅读，不应完全等同于当前代码行为。
+
+- **GitHub**：[cloudflare/computer](https://github.com/cloudflare/computer)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Cloudflare 是全球基础设施与网络技术领域的头部开源组织，凭借高星项目在代理、边缘计算与传输协议社区具备显著影响力。
+**技术栈偏好**：技术栈以 Rust、TypeScript、Go 为主，偏向高性能系统编程、边缘运行时、网络代理与开发者工具建设。
+**核心领域**：主要聚焦边缘计算、网络安全、CDN/代理基础设施、现代传输协议与云原生网络服务。
+
+---
+
+### ✨ huangruiteng/loopx (1958★)
+
+> **一句话**：LoopX 把长时间运行的 AI 编程 Agent 工作拆成可追踪的目标、待办、证据、配额和交接记录，让 Codex、Claude Code、Cursor 等 Agent 在多轮任务中不丢状态。
+
+- **它是什么**：LoopX 是一个本地优先的 AI Agent 控制平面，用 Python 实现，重点管理长周期任务中的目标、权限门禁、待办、证据日志、配额和交接状态。它不替代 Codex、Claude Code、Cursor 这类 Agent 运行时，而是在它们外面维护一层稳定状态，让每一轮执行都有明确边界和可复盘记录。README 中把它类比为“面向长期工作的 agent-native Kanban”，卡片携带身份、授权、证据和下一步动作。
+
+- **能解决什么痛点**：当 AI Agent 处理跨多天的 issue 修复、实验迭代或 PR 审查时，聊天上下文容易丢失，任务范围、证据和下一步经常需要人工重新整理。另一个痛点是调度器可能在没有有效进展时继续消耗额度，LoopX 通过 quota、gate 和 should-run 判断控制下一轮是否值得执行。
+
+- **适合谁用**：适合已经在使用 Codex、Claude Code、Cursor、OpenCode 等 AI 编程 Agent，并希望把复杂任务拆成多轮可审计流程的工程团队。也适合做自动化研究、Auto ML 实验、长期 issue 修复、PR 队列处理的开发者或技术负责人。
+
+- **怎么上手**：最简安装方式是：`curl -fsSL https://raw.githubusercontent.com/huangruiteng/loopx/main/scripts/install-from-github.sh | bash && export PATH="$HOME/.local/bin:$PATH" && loopx doctor`
+
+- **可以用在哪些场景**：用于开源仓库的 issue 修复流程，保留问题范围、测试证据、PR 审查状态和下一步修改建议。用于 Auto ML 或研究实验，把假设、实验分支、无效路径、复现实验和晋级/停止决策记录在同一条轨迹中。用于团队里的多个 AI Agent 协作，让不同 Agent 通过 claim、lease、handoff 接手任务，而不是依赖某个聊天窗口里的隐式记忆。
+
+- **技术看点**：项目强调 agent-loop agnostic，核心状态不绑定单一运行时，已覆盖 Codex App、Codex CLI、Claude Code、OpenCode、Cursor、自定义 shell runner 等接入方式。另一个关键设计是本地控制平面，LoopX 状态作为事实来源，外部看板、网页状态页、Lark Kanban 等只是投影层。
+
+- **近期动向与发展方向**：最近 20 条提交非常密集，集中在 2026-08-03 到 2026-08-05，说明项目仍处于快速迭代期。近期重点包括上线公开主页和托管文档、补强 onboarding、修复 quota 与 paused goal 语义、改进文件锁和 smoke 测试、增强 PR review 队列观察能力，并新增 traex-cli 作为一等 host agent 类型。贡献者不只核心作者一人，近期提交来自多位开发者，社区协作已经开始形成。
+
+- **同类对比**：README 没有明确列出直接竞品。它和普通任务看板、定时脚本或 Agent 聊天记忆的区别在于，LoopX 把目标、门禁、证据、配额和交接作为可执行控制状态，而不是只做展示或提醒。
+
+- **注意事项**：项目创建于 2026-05-31，时间很新，虽然 Star 增长快、提交活跃，但整体成熟度仍需要观察。README 标注 loop agents early，且近期有大量契约修复和运行时适配提交，说明接口和行为仍可能变化。文档材料很丰富，包含官网、Docs、中文手册和多个 showcase，但概念较多，首次接入需要理解 goal、gate、quota、todo、evidence 等控制面模型。
+
+- **GitHub**：[huangruiteng/loopx](https://github.com/huangruiteng/loopx)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有近 4k stars 的 CS-Notes 和近 2k stars 的 loopx，属于在学习资料与工具类项目上具备较高社区影响力的个人开发者。
+**技术栈偏好**：以 Python 为主，辅以 C++ 和 C，技术取向兼具工程工具开发、系统实验与计算机基础实践。
+**核心领域**：主要聚焦计算机基础教育、系统编程实验、开发效率工具及算法/工程实践相关方向。
+
+---
 
 ### ✨ TencentCloud/TencentDB-Agent-Memory (10139★)
 
@@ -28,35 +92,35 @@
 
 ---
 
-### ✨ zhaoxuya520/reverse-skill (10413★)
+### ✨ donnemartin/system-design-primer (360246★)
 
-> **一句话**：把 APK、二进制、前端 JS 加密、PCAP、CTF、渗透目标等安全任务交给 AI 客户端后，它会先判定任务类型、检查本机工具链，再把任务路由到对应的逆向或安全分析流程。
+> **一句话**：这是一份面向系统设计学习和面试准备的开源知识地图，把可扩展系统、缓存、数据库、负载均衡、消息队列、CAP、CDN 等主题整理成可按路径学习的教程、题库和资料索引。
 
-- **它是什么**：reverse-skill 是面向 Claude Code、Codex CLI、Cursor、Cline 等 AI 编码客户端的安全技能路由包。它通过 `RULES.md`、`MASTER-ROUTING.md`、`master-route.ps1` 等规则和脚本，把不同类型的逆向、渗透、CTF、安全研究任务分发到对应的 playbook，并配套工具检测、案例初始化、证据链、时间线和报告模板。
+- **它是什么**：`system-design-primer` 不是传统意义上的 Python 库，而是一个系统设计学习仓库。README 按主题组织了大规模系统设计的核心知识，包括性能与可扩展性、可用性与一致性、数据库、缓存、异步队列、网络通信、安全、真实架构案例和公司工程博客等内容。它还提供系统设计面试题、参考解法、图示资料和 Anki 记忆卡片，适合长期反复查阅。
 
-- **能解决什么痛点**：做 APK、ELF、JS 加密参数、PCAP 或 CTF 题目时，AI 经常不知道该先用 jadx、apktool、Frida、IDA、radare2、BurpSuite 还是其他工具，容易直接猜命令。这个项目把“先确认授权和范围、再识别任务类型、再选择工具和流程”的步骤固化下来，减少重复踩坑和上下文丢失。
+- **能解决什么痛点**：系统设计资料分散在博客、论文、工程文章和面试经验里，新手很难判断先学什么、哪些概念必须掌握；这个项目把学习路径、核心概念和延伸阅读集中在一个 README 体系里。准备系统设计面试时，很多人缺少可练习的问题和参考答案，它提供了常见设计题、解题流程和样例方案，方便对照复盘。
 
-- **适合谁用**：适合把 Claude Code、Cursor、Codex CLI 等 AI 客户端接入安全分析工作流的逆向工程师、安全研究员、授权渗透测试人员。也适合经常处理 CTF、APK 分析、前端 JS 逆向、固件/IoT、供应链安全、LLM 安全等任务的个人或小团队。
+- **适合谁用**：适合准备中高级后端、全栈、架构或技术负责人面试的工程师，尤其是需要补系统设计短板的人。也适合想系统梳理分布式系统基础概念的后端开发者、SRE、平台工程师和计算机专业学生。
 
-- **怎么上手**：`git clone https://github.com/zhaoxuya520/reverse-skill.git`，然后按平台刷新工具索引，例如 Windows 执行 `powershell -File skills/scripts/refresh-tool-index.ps1`，Linux/macOS 执行 `bash skills/scripts/refresh-tool-index.sh`。
+- **怎么上手**：文档未提供快速上手示例。
 
-- **可以用在哪些场景**：分析 Android APK 时自动进入 `skills/apk-reverse/`，结合 jadx、apktool、Frida 等工具梳理代码和动态行为；处理前端 JS 加密参数、请求重放或 HTTP 抓包时，路由到 `js-reverse/` 和相关分析流程；做授权渗透、固件/IoT、N-day 补丁差分、Pwn、EDR 绕过、CTF 竞赛时，按场景进入对应技能目录和操作规范。
+- **可以用在哪些场景**：准备系统设计面试时，用它按“短期 / 中期 / 长期”学习计划梳理复习范围。设计内部服务架构前，用它快速回顾负载均衡、缓存更新策略、数据库分片、消息队列和一致性取舍。团队新人培训时，可把其中的主题索引、真实架构案例和工程博客作为后端基础阅读清单。
 
-- **技术看点**：项目核心不是单一扫描器，而是“AI 任务路由 + 本地工具链探测 + 场景化技能目录 + 证据/报告流程”的组合设计。README 明确要求 AI Agent 优先读取 `README_AI.md`，并通过 `MASTER-ROUTING` 和 `case-init` 在实际操作前完成授权范围、网络画像和证据路径准备。
+- **技术看点**：项目的核心价值在内容组织方式：它把系统设计拆成可独立阅读的主题，并在每个主题下给出权衡点、优缺点和延伸资料，而不是只给面试题答案。Anki 卡片也值得注意，适合把高频概念转成间隔重复记忆材料。
 
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-07-17 到 2026-07-31，既有 README、赞助、链接和英文主 README 的文档整理，也有安全相关改动，例如固定浮动版本并校验 GitHub SHA256、审计包内可执行文件是否存在后门或破坏性操作。功能侧新增了 R21-R30 多个领域技能，并扩展 OT、macOS、厚客户端等场景，说明项目近期重点是扩大安全任务覆盖面，同时补强 bootstrap 和路由规则的可信度。
+- **近期动向与发展方向**：最近 20 条提交主要集中在修复失效链接、更新外部资料 URL、修正文案和补充工程博客链接，没有看到大规模内容重构或新功能建设。提交来自多位社区贡献者，说明仓库仍有人维护，但维护重心更偏资料保鲜和社区修补，而不是快速扩展新章节。
 
-- **同类对比**：README 没有明确列出直接竞品。它更像是把 jadx、Frida、IDA、radare2、Ghidra、BurpSuite、nmap、MCP 服务器等现有工具编排成 AI 可调用的安全工作流，而不是替代这些工具本身。
+- **同类对比**：README 未明确列出直接竞品或对标项目。它更像系统设计学习资料库和面试指南，不是可运行的软件框架，因此不适合与数据库、中间件或架构工具直接比较。
 
-- **注意事项**：项目创建于 2026-05-13，时间较新，但已有 10413 stars、1586 forks、6 个 open issues，热度高且 issue 数量不多；不过贡献者只有 9 人，核心维护仍可能偏集中。项目涉及逆向、渗透、EDR 绕过、攻击链等敏感场景，必须用于授权测试和安全研究；同时它依赖本机 Java、Node.js、Python 以及多种安全工具，初次配置成本会高于普通 CLI 项目。
+- **注意事项**：项目创建于 2017 年，Star 和 Fork 数都很高，内容成熟度和社区影响力很强；但 Open Issues 达到 578，说明积压问题不少，部分链接或内容时效性需要读者自行判断。它的资料覆盖面很广，但也意味着初学者容易读散，最好按 README 的 Study guide 选择短期、中期或长期路径。由于近期提交多为链接维护，想获取最新工业实践时，仍需要结合近年的工程博客、云厂商文档和实际项目经验交叉验证。
 
-- **GitHub**：[zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill)
+- **GitHub**：[donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：ZhaoXu 是一位新近活跃但已有单仓高影响力项目的个人开发者，社区关注度主要由 `reverse-skill` 拉动。
-**技术栈偏好**：技术栈以 PowerShell 为核心，辅以 JavaScript 和 TypeScript，偏向脚本自动化、桌面工具改造与轻量 Web 应用。
-**核心领域**：主要聚焦逆向技能实践、AI 工具本地化与全栈交付自动化相关方向。
+**技术影响力**：Donne Martin 是 GitHub 上高影响力的个人开发者，凭借系统设计、编程面试、数据科学与云计算相关开源内容获得广泛社区关注。
+**技术栈偏好**：其技术栈明显偏向 Python，主要用于构建教育型项目、工程实践资料、数据科学笔记和开发者工具。
+**核心领域**：主要聚焦系统设计、技术面试准备、数据科学、AWS 云生态与工程师学习资源建设。
 
 ---
 
@@ -92,35 +156,67 @@
 
 ---
 
-### ✨ uber/ADR (602★)
+### ✨ esengine/DeepSeek-Reasonix (28922★)
 
-> **一句话**：ADR 用传感器、基准测试和双层检测机制记录 AI Agent 的工具调用轨迹，并识别企业环境里的提示注入、越权操作等高风险行为。
+> **一句话**：Reasonix 把 DeepSeek 驱动的代码代理放进终端里，可以在长时间会话中持续读项目、调用工具、执行修改，并尽量利用前缀缓存降低上下文成本。
 
-- **它是什么**：ADR 全称是 Agentic AI Detection and Response，是 Uber 开源的企业级 AI Agent 安全系统，已在 Uber 生产环境部署。当前仓库包含 ADR Sensor、ADR-Bench 和 ADR Detector，用于采集 Claude Code、Cursor、Codex 等 Agent 的遥测数据，复现 303 个安全基准任务，并运行检测器识别可疑会话。README 中提到的 ADR Prevention 和离线 ADR Explorer 引擎暂未包含在本次开源版本中。
+- **它是什么**：DeepSeek-Reasonix 是一个用 Go 编写的终端 AI coding agent，提供 CLI / TUI、桌面端和 VS Code 扩展三种入口，底层共用本地 Reasonix 引擎。它通过 `reasonix.toml` 配置模型、Provider、工具和插件，不把模型写死在代码里；README 明确强调它围绕 DeepSeek prefix cache 设计，适合保持长会话运行。
 
-- **能解决什么痛点**：企业引入 AI 编码工具、客服 Agent 或内部自动化 Agent 后，很难知道 Agent 实际执行了哪些工具调用、为什么这么做，以及是否碰到了提示注入或敏感操作风险。ADR 试图把 Agent 行为从“黑盒对话记录”变成可观测、可评测、可检测的安全数据流。
+- **能解决什么痛点**：一是长时间让 AI 参与代码修改时，上下文反复重建会带来 token 成本和状态丢失，Reasonix 通过稳定环境摘要、上下文维护和缓存友好的会话设计来缓解这个问题。二是开发者想把外部工具接入 AI agent 时，不必改核心代码，可以通过 stdio JSON-RPC / MCP 兼容插件机制扩展工具能力。
 
-- **适合谁用**：适合负责企业 AI Agent 安全治理的安全工程师、平台工程团队，以及需要评估 Claude Code、Cursor、Codex、MCP 工具链安全风险的研发基础设施团队。
+- **适合谁用**：适合已经在使用 DeepSeek 或 OpenAI 兼容模型、希望在终端里跑本地代码代理的后端、全栈和工具链工程师。也适合需要同时使用 CLI、桌面端、VS Code 扩展，并希望复用同一套本地引擎配置的开发团队。
 
-- **怎么上手**：`git clone https://github.com/uber/ADR && cd ADR/Detection && uv sync`
+- **怎么上手**：最短路径是通过 npm 安装并启动：`npm i -g reasonix && reasonix setup && reasonix`
 
-- **可以用在哪些场景**：用于给公司内部 AI 编码工具采集统一遥测数据，排查 Agent 在终端、编辑器和工具调用中的异常行为；用于跑 ADR-Bench，评估自研检测器或第三方防护方案在 300+ 企业安全任务上的表现；用于在 AI 客服、内部自动化 Agent 上构建会话级风险检测流程。
+- **可以用在哪些场景**：可以在已有 Go、前端或后端仓库里让 agent 阅读代码并执行 TODO 修改；可以通过 `reasonix run "implement the TODOs in main.go"` 这类命令做一次性代码任务；也可以在 VS Code 中接入本地 `reasonix acp` 后端，用编辑器上下文、工具调用审批和模型选择来管理项目会话。
 
-- **技术看点**：项目把可观测性、基准评测和检测放在同一套体系里：Sensor 负责跨工具采集和规范化遥测，Detection 侧采用高召回初筛加深度 agentic reasoning 的双层架构。ADR-Bench 覆盖 133 个 MCP server 和 17 类 Agent 攻击技术，对做 Agent 安全评测有直接参考价值。
+- **技术看点**：核心实现是 `CGO_ENABLED=0` 的单个 Go 静态二进制，支持跨 macOS、Linux、Windows 的 amd64 / arm64 构建和分发。架构上采用配置驱动、多模型组合、插件驱动，并把 DeepSeek 前缀缓存稳定性作为上下文维护的设计目标，这对长会话 agent 的成本控制有实际参考价值。
 
-- **近期动向与发展方向**：最近提交集中在文档、CI、依赖安全和 Sensor 发布流程上，包括新增包发布 workflow、从包元数据派生版本、修复 Dependabot 配置、补充论文和 MLSys 2026 slides。7 月底有大量 Dependabot 依赖升级，说明项目正在整理开源发布后的工程基础设施；近期没有看到大型功能重构，重点更像是稳定开源包、完善复现实验和安全维护。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-02，活跃度很高，重点包括 v1.19.2 发布说明、npm release alias 迁移与传播修复、桌面端更新失败原子性、移除 Safe Mode 相关旧路径、Windows home 路径测试，以及站点 GitHub header 导航。整体看近期更偏发布工程、更新可靠性、跨平台兼容性和官网体验收尾，而不是单纯堆新功能。
 
-- **同类对比**：README 没有明确列出同类竞品。项目中提到可用 `llamafirewall` 做无密钥 smoke test，并包含 detector baselines，但未提供系统性的竞品对比。
+- **同类对比**：README 没有明确列出竞品或对标项目。可确认的差异点是它强调 DeepSeek-native、prefix-cache 稳定性、单 Go 二进制分发，以及 MCP 兼容的插件式工具接入。
 
-- **注意事项**：项目创建时间较新，当前 602 stars、66 forks、8 个 open issues，关注度上升但贡献者数量只有 6 人，生态成熟度还需要观察。Detection 快速上手需要 `uv`，默认 ADR detector 还需要配置 `ANTHROPIC_API_KEY` 和 `OPENAI_API_KEY`；仓库明确说明 Prevention 和 ADR Explorer 未开源，因此不能把它当成完整的端到端 Agent 防护平台直接落地。文档质量较好，提供论文、slides、组件 README 和复现实验说明，但生产部署细节仍需自行评估。
+- **注意事项**：项目创建于 2026-04-21，但已有 28922 stars、134 位贡献者和非常密集的提交，增长很快；同时 open issues 达到 1377，说明用户反馈和待处理问题不少，采用前需要关注版本变更和已知问题。近期提交中出现 release alias、桌面更新原子性、移除旧 Safe Mode 路径等内容，表明发布链路和部分行为仍在快速调整，生产环境或团队统一推广前建议先锁定版本并验证工作流。文档覆盖安装、CLI、配置路径、ACP、恢复、检查点等主题，入口较全，但完整使用仍需要花时间理解配置和插件机制。
 
-- **GitHub**：[uber/ADR](https://github.com/uber/ADR)
+- **GitHub**：[esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Uber Open Source 是大型科技公司级开源组织，凭借多个高星项目在前端、移动架构、分布式系统与地理空间技术社区具备较强影响力。
-**技术栈偏好**：技术栈以 TypeScript、JavaScript、Kotlin 为主，同时覆盖 Go、C 等系统级语言，偏向工程化、跨平台和高性能基础设施。
-**核心领域**：主要聚焦前端设计系统与可视化、移动应用架构、分布式网络服务以及地理空间计算等基础技术领域。
+**技术影响力**：YHH 是具备较高社区可见度的个人开发者，凭借 DeepSeek-Reasonix 等高星项目在开源 AI 工程方向形成显著影响力。
+**技术栈偏好**：其技术栈以 TypeScript 为主，结合 Go 与 C++，偏向构建工程化、性能敏感和跨语言协作的系统工具。
+**核心领域**：主要聚焦 AI 推理与智能体相关基础设施，同时覆盖引擎框架、行为树和工程化开发工具。
+
+---
+
+### ✨ addyosmani/agent-skills (81894★)
+
+> **一句话**：把资深工程师常用的需求澄清、任务拆分、编码、测试、评审和发布流程，打包成 AI 编程代理可直接执行的 24 套 Markdown 技能。
+
+- **它是什么**：agent-skills 是一套面向 AI coding agents 的工程工作流技能库，核心内容不是业务代码，而是结构化的开发规范、检查清单和执行步骤。它提供 `/spec`、`/plan`、`/build`、`/test`、`/review`、`/webperf`、`/code-simplify`、`/ship` 等 8 个生命周期命令，并包含 24 个技能，覆盖需求定义、TDD、API 设计、前端工程、调试、代码评审、发布等环节。README 明确支持 Claude Code、Cursor、Codex、Gemini CLI、Copilot、Windsurf、OpenCode 等多种代理或 IDE 集成。
+
+- **能解决什么痛点**：很多 AI 编程代理容易直接写代码，跳过需求澄清、测试证明和上线前检查，导致输出看似完整但缺少工程约束；这个项目把“先写规格、再拆任务、逐步实现、测试验证、评审发布”固化成可复用流程。另一个痛点是不同工具里的提示词和规则文件难以统一维护，它用 plain Markdown 技能和 CLI 安装方式，让同一套工程规范可以分发到多个 AI 编程环境。
+
+- **适合谁用**：适合已经在使用 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 等 AI 编程代理的工程团队，尤其是希望把 AI 输出纳入固定研发流程的团队。也适合维护大型代码库、需要严格测试和代码评审门禁的全栈工程师、前端工程师和平台工程团队。
+
+- **怎么上手**：最快方式是通过开放的 skills CLI 安装完整技能包：`npx skills add addyosmani/agent-skills`
+
+- **可以用在哪些场景**：可以在新功能开发前用 `/spec` 和 `/plan` 让代理先产出 PRD、任务拆分和验收条件，再进入实现。可以在修复线上缺陷时调用 `test-driven-development` 和 `debugging-and-error-recovery`，要求代理先复现、定位、补测试再修复。也可以在合并 PR 前用 `code-review-and-quality` 或 `/review` 做五轴代码评审，检查可维护性、测试覆盖和接口边界。
+
+- **技术看点**：项目的核心设计是“技能即 Markdown 工作流”，通过目录化的 `skills/` 内容、slash commands 和不同 IDE/agent 的适配文档来实现跨工具复用。它还区分了命令入口和自动触发技能，例如构建 UI 时触发 `frontend-ui-engineering`，设计接口时触发 `api-and-interface-design`，更像是一套代理行为协议，而不是单一工具插件。
+
+- **近期动向与发展方向**：最近 20 条提交以文档修正、集成兼容性和回归测试为主，包括补充 per-skill reference 限制说明、增加 command validator 覆盖、修复 Claude Code 插件加载 persona 的配置问题，以及让 TDD、安全审计、命令目录等内容更加生态中立。近期有多位贡献者参与 PR，说明社区维护活跃；从提交内容看，项目当前重点不是大规模扩展新技能，而是在打磨安装兼容性、文档准确性和跨代理可移植性。
+
+- **同类对比**：暂无明显同类对标。README 强调它可通过 skills CLI 安装到 70+ agents，并原生适配多个工具，但没有直接拿某个竞品做功能对比。
+
+- **注意事项**：项目创建时间是 2026-02-15，虽然 Star 数很高、更新频繁，但仍属于较新的工程规范类项目，148 个 open issues 也说明边界问题和集成细节还在持续收敛。README 提到单独安装某个 skill 时不会复制仓库级 `references/` 目录，相关共享清单路径可能不可用，需要安装全仓库、克隆仓库或手动复制引用内容。整体文档很细，但多代理集成意味着不同工具版本、插件机制和路径规则会带来额外上手成本。
+
+- **GitHub**：[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Addy Osmani 是前 Google 技术负责人级开发者，在前端工程、Web 性能与开发者教育领域拥有极高社区影响力。
+**技术栈偏好**：技术栈明显偏向 JavaScript、HTML 与 Web 生态，兼具工程工具、最佳实践和知识体系沉淀。
+**核心领域**：主要聚焦现代 Web 开发、前端性能优化、JavaScript 架构模式以及 AI/云相关开发者工具。
 
 ---
 
@@ -156,278 +252,67 @@
 
 ---
 
-### ✨ microsoft/generative-ai-for-beginners (114051★)
+### ✨ roboflow/supervision (48840★)
 
-> **一句话**：微软维护的一套生成式 AI 入门课程，用 21 节课带你从大模型基础、提示词工程一路写到 Python / TypeScript 生成式 AI 应用示例。
+> **一句话**：把检测、分割、分类模型的输出接成统一数据结构，再直接完成标注绘制、数据集转换、目标跟踪和区域统计等计算机视觉应用里的常见环节。
 
-- **它是什么**：这是 Microsoft Cloud Advocates 出品的生成式 AI 学习仓库，主体是 21 节课程内容，覆盖 LLM 基础、模型选择、负责任 AI、提示词工程以及应用开发。每节课通常包含 README 教程、短视频入口、延伸学习资料，并配有 Python 和 TypeScript 示例，支持 Azure OpenAI、OpenAI API、Microsoft Foundry Models 等运行方式。
+- **它是什么**：supervision 是 Roboflow 维护的 Python 计算机视觉基础库，核心定位是模型无关的应用层工具箱。它提供 `sv.Detections` 等统一数据结构，可以接入 Ultralytics、Transformers、MMDetection、Roboflow Inference、RF-DETR 等模型输出，并继续做可视化标注、数据集读取与格式转换、视频流分析等工作。README 中重点展示了检测结果绘制、COCO/YOLO/Pascal VOC 数据集加载、拆分、合并和保存这些常见工作流。
 
-- **能解决什么痛点**：很多开发者想学生成式 AI，但容易卡在“概念太散、示例不完整、不同平台 API 不知道怎么选”上；这个仓库把学习路径、代码示例和环境配置放在一起，适合按章节系统学习。它也解决了非英语学习者的门槛问题，仓库维护了 50 多种语言翻译，包括简体中文。
+- **能解决什么痛点**：做目标检测应用时，不同模型库的输出格式不一致，后续画框、过滤、统计、跟踪往往要反复写胶水代码；supervision 用统一接口把这些步骤串起来。另一个痛点是数据集格式迁移，例如 COCO、YOLO、Pascal VOC 之间互转、拆分训练集和验证集，项目提供了现成的 `DetectionDataset` API。
 
-- **适合谁用**：适合有 Python 或 TypeScript 基础、准备开始做生成式 AI 应用的后端、全栈和 AI 应用开发者。也适合团队内部做 GenAI 入门培训，尤其是正在使用 Azure OpenAI、OpenAI API 或 Microsoft Foundry Models 的团队。
+- **适合谁用**：适合正在用 YOLO、RF-DETR、Transformers、MMDetection 或 Roboflow Inference 构建检测、分割、分类应用的 Python 工程师。也适合需要整理视觉数据集、做视频目标统计、区域计数、速度估计等应用原型的计算机视觉开发者。
 
-- **怎么上手**：README 提供了本地克隆方式；如果不想下载大量翻译文件，可以使用稀疏检出：
+- **怎么上手**：`pip install supervision`
 
-- **可以用在哪些场景**：
-  - 给团队新人安排生成式 AI 入门培训，从 LLM 概念、提示词到 API 调用按课程推进。
-  - 快速搭建 Azure OpenAI / OpenAI API 的学习实验环境，参考课程中的 Python 和 TypeScript 示例改造成自己的 Demo。
-  - 为公司内部技术分享、训练营或高校课程准备教学材料，直接复用多语言文档和章节结构。
+- **可以用在哪些场景**：给目标检测结果批量绘制框、标签和分割遮罩，快速生成可视化检查图或演示视频。把 Roboflow 下载的 COCO 数据集加载为统一对象，再拆分、合并或导出为 YOLO/Pascal VOC 格式。基于检测和跟踪结果做零售排队停留时间分析、道路车辆速度估计、指定区域目标计数等视频分析应用。
 
-- **技术看点**：项目不是单一 SDK，而是课程型代码仓库，核心价值在于“教程 + Notebook + Python / TypeScript 示例 + 多平台模型接入”的组合。README 中已将 GitHub Models 迁移方向标注为 Microsoft Foundry Models，并提供 Foundry Local 这类本地离线运行选项，说明课程内容在跟随微软 AI 平台变化更新。
+- **技术看点**：项目的关键设计是模型无关，把多种视觉模型输出收敛到统一的 `sv.Detections` 数据结构，再围绕它提供标注器、数据集工具和分析组件。近期提交中有“移除 OpenCV 依赖”的功能变更，说明项目在降低基础依赖、提升安装兼容性方面有明确动作。
 
-- **近期动向与发展方向**：最近提交主要集中在依赖升级、GitHub Actions 更新、多语言翻译同步，以及课程内容更新到 Microsoft Foundry Models 和 GPT 集成。提交中有 dependabot、localizeflow 等自动化机器人参与，说明维护流程较规范；同时也有维护者合并课程内容更新，项目仍在持续跟进生态变化。当前 Open Issues 仅 11 个，相对 11 万 Star 和 6 万 Fork 的体量来说，维护状态比较健康。
+- **近期动向与发展方向**：最近 20 条提交非常活跃，8 月初刚发布 `0.30.0`，随后进入 `0.31.0.dev` 开发周期。近期重点集中在指标计算正确性、数据集边界情况修复、文档示例 doctest 化、依赖升级和性能优化，例如修复 Recall 中仅出现在预测里的类别、修复 VOC 背景图的空 mask 和 `class_id` 类型问题，并向量化 `get_labels_text()`。提交作者既有维护者、社区贡献者，也有 Dependabot 和 pre-commit 自动更新，说明维护节奏稳定且社区参与度较高。
 
-- **同类对比**：README 没有明确对标竞品；但它提到了面向 .NET 开发者的姊妹项目 Generative AI for Beginners (.NET Edition)，本仓库更偏通用入门课程，并优先覆盖 Python 和 TypeScript 示例。
+- **同类对比**：README 没有直接把它和某个同类库做对标。它更像是位于模型框架和业务应用之间的通用视觉工具层，而不是替代 Ultralytics、Transformers 或 MMDetection 这类训练/推理框架。
 
-- **注意事项**：仓库包含 50 多种语言翻译，完整克隆体积会明显变大，README 已建议用 sparse checkout 排除 translations 和 translated_images。课程适合入门到实践过渡，但运行代码仍需要 OpenAI API、Azure OpenAI、Microsoft Foundry Models 或 Foundry Local 等环境；如果完全没有 Python / TypeScript 基础，建议先补齐编程基础再学。项目创建于 2023 年，更新到 2026 年仍有提交，成熟度和维护连续性都比较强，但 AI 平台接口变化较快，学习时要留意依赖版本和模型服务迁移提示。
+- **注意事项**：项目创建于 2022 年底，已有 4.8 万 Star、178 位贡献者，成熟度和关注度都较高；同时仍有 71 个开放 issue，说明真实使用场景广，边界问题也不少。近期刚发布新版本且已滚动到下一个 dev 周期，生产项目升级时需要关注 release note，尤其是依赖变化和类似“移除 OpenCV 依赖”这种可能影响旧代码路径的变更。README 和文档材料较丰富，包含安装、模型连接器、标注器、数据集 API、教程和 cookbook，上手门槛主要来自使用者本身是否熟悉 Python 视觉模型生态。
 
-- **GitHub**：[microsoft/generative-ai-for-beginners](https://github.com/microsoft/generative-ai-for-beginners)
+- **GitHub**：[roboflow/supervision](https://github.com/roboflow/supervision)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Microsoft 是 GitHub 上影响力极高的头部开源组织，拥有大量高星项目，深度影响开发工具、编程语言与 AI 应用生态。
-**技术栈偏好**：其技术栈以 TypeScript、Python、C 为主，兼顾现代前端/开发工具、AI 工程实践与系统级 Windows 工具开发。
-**核心领域**：主要聚焦开发者工具、编程语言、AI 教育与应用、Windows 生产力工具及开源样例生态。
+**技术影响力**：Roboflow 是计算机视觉开源生态中影响力较强的组织，多个高星项目在模型训练、数据处理与视觉应用落地中被广泛使用。
+**技术栈偏好**：技术栈明显偏向 Python 与 Jupyter Notebook，侧重机器学习、深度学习实验、视觉模型工具链和可复现示例。
+**核心领域**：核心聚焦计算机视觉与视觉 AI，尤其是目标检测、数据集管理、模型推理、跟踪和行业应用方案。
 
 ---
 
-### ✨ cypress-io/cypress (50728★)
+### ✨ vercel/next.js (141475★)
 
-> **一句话**：Cypress 让开发者直接在真实浏览器里编写、运行和调试 Web 应用测试，覆盖页面交互、网络请求、截图等常见测试流程。
+> **一句话**：Next.js 把 React 扩展成可用于生产的全栈 Web 框架，前端页面、服务端渲染、路由、构建优化和部署流程都围绕一个项目组织起来。
 
-- **它是什么**：Cypress 是一个面向浏览器应用的测试框架，主打快速、易用、可靠，适用于“任何运行在浏览器中的东西”。README 提供了 npm、yarn、pnpm 安装方式，并配套官方文档、变更日志、路线图和 Cypress Cloud 测试状态徽章。项目使用 TypeScript 开发，已有 5 万余 Star 和 553 位贡献者，是成熟度很高的前端测试基础设施项目。
+- **它是什么**：Next.js 是 Vercel 维护的 React 框架，用来构建全栈 Web 应用。它在 React 基础上提供页面路由、服务端渲染、预渲染、图片优化、字体处理等能力，并集成 Rust 驱动的 JavaScript 工具链来加快构建。README 明确提到它被多家大型公司使用，官方文档、学习课程、展示案例和社区入口都比较完整。
 
-- **能解决什么痛点**：它解决了前端 E2E 测试中“测试写起来像黑盒脚本、失败后难定位”的问题，开发者可以围绕真实页面行为、请求拦截、截图和错误信息来定位问题。它也适合处理浏览器兼容、异步请求、登录流程、重定向、Service Worker 缓存等容易在传统测试里变得脆弱的场景。
+- **能解决什么痛点**：React 本身主要负责 UI，实际做生产项目时还要自己处理路由、SSR/SSG、构建优化、图片优化和部署约定，Next.js 把这些常见工程问题收进框架里。对于需要兼顾首屏性能、SEO、动态数据和前后端协作的 Web 应用，它能减少从零拼装工程体系的成本。
 
-- **适合谁用**：适合负责 Web 应用质量的前端开发者、测试工程师和 QA 自动化团队。使用 React、Vue、Angular、Next.js 等浏览器端技术栈的团队，都可以把它用于端到端测试和关键用户流程回归。
+- **适合谁用**：适合已经使用 React、准备做生产级 Web 应用的前端团队。也适合需要在同一个项目里同时处理页面渲染、API、静态生成和部署流程的全栈 JavaScript 开发者。
 
-- **怎么上手**：`npm install cypress --save-dev`
+- **怎么上手**：文档未提供快速上手示例。
 
-- **可以用在哪些场景**：可用于给登录、注册、支付、表单提交等核心用户路径编写端到端回归测试；可用于在 CI 中自动跑浏览器测试并生成截图、失败记录和测试状态徽章；可用于拦截和验证前端发出的 HTTP 请求，例如用 `cy.request()` 和 `cy.intercept()` 覆盖接口交互场景。
+- **可以用在哪些场景**：搭建面向用户的官网、文档站、营销页，并需要 SSR/SSG 来改善首屏加载和搜索引擎收录。构建 SaaS 控制台、内容平台、后台系统等 React 应用，同时需要服务端数据读取和路由级性能优化。开发需要图片优化、字体加载优化和增量构建能力的大型前端项目。
 
-- **技术看点**：项目主体使用 TypeScript，围绕浏览器运行时、驱动层、网络拦截、截图、Service Worker、CDP 等能力做了大量工程化封装。近期提交多次涉及 Chrome/CDP、HTTP 方法支持、frame 识别和错误消息插值，说明其核心复杂度集中在浏览器自动化与测试稳定性上。
+- **技术看点**：Next.js 的关键价值在于把 React 最新能力和框架级渲染管线结合起来，并引入 Rust-based JavaScript tooling 来优化构建速度。近期提交中多次出现 App Router、render/prerender pipeline、Turbopack、next/font 等关键词，说明其核心演进集中在渲染架构和构建链路。
 
-- **近期动向与发展方向**：最近 20 条提交非常活跃，集中在 2026-08-02 至 2026-08-04，既有功能增强，也有大量稳定性修复。新增了按轴配置 `scrollBehavior` 的能力，并让 `cy.request()` 和 `cy.intercept()` 支持 HTTP `QUERY` 方法；同时持续修复 CDP Fetch、AUT frame 识别、错误消息中 `$` 字符保留等边界问题。提交中大量 `de-flake` 测试修复表明项目近期重点之一是降低系统测试不稳定性，并维护 Chrome beta、GitHub Actions、lockfile 检查等 CI 基础设施。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-05，活跃度非常高。开发重点包括 React 版本升级、App Page/App Route 渲染与预渲染管线拆分、移除或重构 WorkStore execution mode、Turbopack worker chunk loading 修复、next/font 实现调整、create-next-app 中 Tailwind Turbopack loader 使用，以及 next/image bug 修复。整体看，项目近期不只是修补问题，也在做 App Router 渲染模型和构建系统的持续重构，说明 canary 分支变化可能较快。
 
-- **同类对比**：README 未明确列出竞品或对标项目，因此暂无明显同类对标。
+- **同类对比**：README 未明确提到竞品或直接对标项目。
 
-- **注意事项**：项目创建于 2015 年，更新频率高、贡献者多，成熟度较高；但当前仍有 1085 个 Open Issues，说明使用场景广、浏览器边界问题多，团队接入时需要关注版本升级和已知问题。近期提交涉及 CDP、Chrome beta、测试去抖和锁文件漂移检查，说明底层浏览器变化会持续影响项目维护，生产级 CI 使用时建议固定版本并跟踪 changelog。README 提供安装入口和贡献指南，但更完整的使用方式需要阅读官方文档。
+- **注意事项**：这是一个创建于 2016 年、拥有 14 万以上 Star 和 4000 多名贡献者的成熟项目，生态和文档资源都很强。但当前 open issues 超过 4300，说明使用面广、问题复杂度也高；同时近期提交涉及渲染管线、执行模式、Turbopack 等底层改动，使用 canary 或跟进新特性时要关注破坏性变更和升级说明。
 
-- **GitHub**：[cypress-io/cypress](https://github.com/cypress-io/cypress)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Cypress.io 是前端测试生态中的高影响力组织，其核心仓库拥有极高关注度，并通过示例项目与工具链深度影响 Web 应用测试实践。
-**技术栈偏好**：技术栈以 TypeScript、JavaScript 和 HTML 为主，明显偏向现代前端工程、浏览器自动化测试与 CI 集成场景。
-**核心领域**：核心聚焦于现代 Web 应用的端到端测试、可视化调试、测试示例体系和持续集成自动化。
-
----
-
-### ✨ lyogavin/airllm (25425★)
-
-> **一句话**：AirLLM 通过按层/按专家流式加载模型，让 70B 甚至更大参数规模的开源大模型能在低显存单卡上完成推理。
-
-- **它是什么**：AirLLM 是面向大语言模型推理的 Python 包，核心目标是显著降低运行大模型时的显存占用。README 中给出的典型能力包括：70B 模型可在单张 4GB GPU 上运行，Llama 3.1 405B 可在 8GB 上运行，DeepSeek-V3 671B 约 12GB，Kimi K3 2.8T 可低于 4GB 显存运行。它通过 `AutoModel.from_pretrained(...)` 接近 Hugging Face Transformers 的使用方式，支持 Qwen、Llama、DeepSeek、Gemma、Phi、ChatGLM、Baichuan、Mistral 等多类模型。
-
-- **能解决什么痛点**：开发者想本地试跑 70B 以上模型时，常见阻碍是显存预算远低于模型完整加载需求，AirLLM 把推理过程改成分层或按专家加载，降低一次性显存占用。另一个痛点是不同模型族加载方式不统一，AirLLM 用 `AutoModel` 尽量屏蔽模型类型差异，减少手动适配成本。
-
-- **适合谁用**：适合需要在消费级 GPU、低显存云主机或单卡工作站上验证大模型推理的 AI 工程师和独立开发者。也适合做 LLM 原型、模型兼容性测试、离线 Demo 的 Python 开发者。
-
-- **怎么上手**：安装：`pip install airllm`；最小使用：`from airllm import AutoModel; model = AutoModel.from_pretrained("Qwen/Qwen3-32B")`。
-
-- **可以用在哪些场景**：在本地低显存机器上试跑 Qwen、Llama、DeepSeek 等大模型，避免一开始就租用高显存 GPU。给内部产品或研究项目做大模型可行性验证，例如快速比较不同开源模型的输出效果。运行超大 MoE 模型的单机推理实验，例如 README 提到的 DeepSeek-V3、Kimi K3 这类专家稀疏模型。
-
-- **技术看点**：项目的关键设计是把模型拆成 layer shards，并在推理时分段加载，显存瓶颈从“完整模型常驻”变成“当前层或当前专家可用”。对 MoE 模型，近期强调 per-expert streaming，只加载 token 实际路由到的专家，这也是 Kimi K3 低显存运行的核心依据。
-
-- **近期动向与发展方向**：最近 20 条提交显示，2026 年 7 月主要开发重点是 Kimi K3 支持，并在 7 月 29 日发布了 `3.1.0`。提交中既有新功能 `feat: support Kimi K3`，也有端到端生成修复和 streaming gap 修复，说明近期不是单纯文档更新，而是在补齐超大 MoE 模型的实际推理链路。其余多条提交是 star history 图表刷新和 CI token 修复，核心代码活跃度集中在新模型适配上。
-
-- **同类对比**：README 没有明确列出竞品或对标项目。它和常见量化方案的差异在于，AirLLM 强调低显存推理并不依赖量化、蒸馏或剪枝；同时也提供 4bit/8bit compression，用来降低加载体积并提升推理速度。
-
-- **注意事项**：首次运行会把原始模型拆分并保存为分层文件，需要预留足够磁盘空间。Kimi K3 支持有明确环境要求，包括 `compressed-tensors`、`flash-attn`、CUDA 12 版本 torch，以及 `transformers` 4.56.x，环境配置门槛不低。项目已有 117 个 open issues，说明社区关注度高但边界场景和兼容性问题也不少；再加上近期在适配非常新的超大模型，升级版本时需要留意依赖变化和推理稳定性。
-
-- **GitHub**：[lyogavin/airllm](https://github.com/lyogavin/airllm)
+- **GitHub**：[vercel/next.js](https://github.com/vercel/next.js)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Gavin Li 是具有较高社区可见度的 AI 创业者型开发者，凭借 airllm 等高星项目在大模型应用与工程优化方向形成明显影响力。
-**技术栈偏好**：技术栈以 Python 和 Jupyter Notebook 为主，兼有 Java 项目经验，偏向 AI 原型实验、模型训练与工程化工具开发。
-**核心领域**：主要聚焦大模型、AI 动画生成、视频生成训练与低资源大模型推理等生成式 AI 方向。
-
----
-
-### ✨ webpack/webpack (65904★)
-
-> **一句话**：webpack 会从入口文件出发，把 JavaScript、CSS、图片、JSON 等资源解析成依赖图，并打包成浏览器可加载的少量静态资源。
-
-- **它是什么**：webpack 是 JavaScript 生态中历史很长、使用广泛的模块打包器，核心工作是把 ES Modules、CommonJS、AMD 等模块统一纳入编译流程。它不仅处理 JS，也能通过 loaders 预处理 TypeScript、CSS、LESS、图片、模板等资源，并通过插件系统扩展构建行为。它支持代码分割，可以把应用拆成多个 chunk，在运行时按需加载，减少首屏资源体积。
-
-- **能解决什么痛点**：大型前端项目里，源码往往分散在 JS、CSS、图片、模板和各种模块格式中，webpack 能把这些依赖统一解析、转换和输出，避免手工维护资源加载顺序。对于单页应用或复杂 Web 应用，它可以通过 code splitting 把不需要首屏加载的部分拆出去，缓解初始 bundle 过大的问题。
-
-- **适合谁用**：适合维护中大型 Web 应用的前端工程师，尤其是需要精细控制构建产物、加载策略和插件链路的团队。也适合框架、组件库、内部平台等需要自定义构建流程的 JavaScript/TypeScript 项目。
-
-- **怎么上手**：`npm install --save-dev webpack`
-
-- **可以用在哪些场景**：构建 React、Vue、Angular 等单页应用时，将业务代码、样式和静态资源打包为可部署产物。为组件库或 SDK 配置多入口、多格式输出，控制模块解析和外部依赖处理。通过 loaders 和 plugins 接入 Babel、TypeScript、CSS 抽取、HTML 模板生成、资源压缩等构建环节。
-
-- **技术看点**：webpack 的核心价值在于“依赖图 + loader + plugin”模型，几乎所有资源都能被抽象为模块并进入同一套编译管线。其插件接口非常丰富，适合需要深度定制构建生命周期的项目，但也意味着配置复杂度会随需求增长而上升。
-
-- **近期动向与发展方向**：最近 20 条提交集中在性能优化、CSS/HTML/JS minify、CSS Modules、模块拼接、CommonJS/ESM 互操作和 MultiCompiler 稳定性上，说明项目仍在持续打磨编译器内部性能和边界行为。提交日期密集，且既有核心维护者也有社区贡献者参与，活跃度较高；方向上更偏向增强现有 webpack 5 体系的正确性、内存表现和资源处理能力，而不是大规模改写 API。
-
-- **同类对比**：README 未明确列出竞品对比。按项目定位看，webpack 更强调成熟生态、loader/plugin 扩展能力和复杂构建场景覆盖；是否优于其他构建工具需要结合项目规模、配置复杂度和生态依赖判断。
-
-- **注意事项**：项目创建于 2012 年，Star、Fork 和贡献者数量都很高，成熟度和生态基础很强；同时 open issues 为 142，说明仍存在一定维护队列和复杂边界问题。webpack 的配置能力强，但新手上手成本不低，复杂项目中需要理解 loader、plugin、chunk、runtime、module resolution 等概念。近期提交涉及优化和修复较多，升级时仍建议在 CI 中覆盖构建产物、动态导入、CSS Modules、CommonJS/ESM 混用等关键路径。
-
-- **GitHub**：[webpack/webpack](https://github.com/webpack/webpack)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：webpack 是前端工程化生态中的核心组织之一，其主仓库和配套工具在 JavaScript 构建体系中具有长期且广泛的行业影响力。
-**技术栈偏好**：其技术栈明显集中于 JavaScript，主要围绕模块打包、开发服务器、资源加载与构建分析等前端工具链方向展开。
-**核心领域**：主要聚焦于前端构建工具、模块打包生态及 Web 应用开发效率提升。
-
----
-
-### ✨ gabime/spdlog (29354★)
-
-> **一句话**：spdlog 让 C++ 程序可以用类似 `spdlog::info("value={}", x)` 的方式快速写日志，并直接输出到控制台、文件、syslog、Windows 事件日志等目标。
-
-- **它是什么**：spdlog 是一个面向 C++ 的高性能日志库，支持 header-only 和编译版两种使用方式，最低使用 C++11 编译器即可接入。它基于 `fmt` 做格式化，提供同步/异步日志、多线程/单线程 logger、运行时日志级别控制、日志文件轮转、按日切分、彩色控制台输出、backtrace 缓冲等能力。
-- **能解决什么痛点**：C++ 项目经常需要自己处理日志格式、线程安全、文件轮转和不同平台输出差异，spdlog 把这些常见细节封装成现成 sink 和 logger。对于服务端程序或桌面程序，它也能避免日志量大时阻塞主流程，可用异步模式把日志写入后台线程处理。
-- **适合谁用**：适合开发 C++ 后端服务、基础设施组件、CLI 工具、桌面应用的工程师。也适合需要跨 Linux、Windows、macOS、Android 等平台保持统一日志接口的 C++ 团队。
-- **怎么上手**：最小使用方式是引入头文件后直接调用：`#include "spdlog/spdlog.h"`，然后写 `spdlog::info("Welcome to spdlog!");`。编译版安装可用：`git clone https://github.com/gabime/spdlog.git && cd spdlog && mkdir build && cd build && cmake .. && cmake --build .`
-- **可以用在哪些场景**：在 C++ 后端服务中写入按大小轮转的业务日志，避免单个日志文件无限增长；在跨平台客户端或桌面程序中统一输出到彩色控制台、文件或 Windows debugger；在排查偶发错误时启用 backtrace 缓冲，只在出错后 dump 最近的 debug 日志。
-- **技术看点**：spdlog 的核心设计是 logger + sink 组合，日志目标可以按需拼装，同一个 logger 可同时写控制台和文件并设置不同级别。它支持 header-only 接入，降低集成成本；也推荐编译版以减少大型项目中的编译时间。
-- **近期动向与发展方向**：最近 20 条提交集中在平台兼容性、Windows 网络与文件行为修复、CI 维护，以及新增 sink 能力上，例如 Grafana Loki sink、systemd namespace sink、TCP client 自动重连、自定义命名空间支持、header-only 的 pkg-config 文件。整体看项目仍在持续维护，近期更多是成熟库的增量增强和边界问题修复，社区贡献者也比较活跃。
-- **同类对比**：README 中明确提到使用 `fmt` 作为格式化基础，但未直接对标其他日志库；暂无明显同类对标。
-- **注意事项**：项目创建于 2014 年，Stars、Forks 和贡献者数量都很高，Open Issues 为 46，成熟度和维护状态较好。README 示例丰富，覆盖基础日志、文件轮转、异步、多 sink、自定义类型等常见用法；不过功能面较宽，团队接入时需要提前统一 logger 命名、sink 组合、日志级别和异步策略，避免后期日志行为分散。
-
-- **GitHub**：[gabime/spdlog](https://github.com/gabime/spdlog)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Gabi Melman 是 C++ 开源生态中具有较高影响力的个人开发者，核心项目 `spdlog` 在社区中具备广泛采用度和标杆意义。
-**技术栈偏好**：技术栈明显偏向 C++ 与 CMake，兼有少量 Rust 探索，整体关注高性能、工程化和底层基础设施。
-**核心领域**：主要聚焦于 C++ 高性能日志、轻量级基础库与系统级开发工具链生态。
-
----
-
-### ✨ denoland/deno (108017★)
-
-> **一句话**：把 JavaScript、TypeScript 和 WebAssembly 直接跑在一个自带权限控制、默认更安全的运行时里，常见场景是用它启动服务、跑脚本、执行构建任务。
-
-- **它是什么**：Deno 是一个运行 JavaScript、TypeScript 和 WebAssembly 的运行时，README 明确写到它强调 secure defaults 和良好的开发体验。它基于 V8、Rust 和 Tokio 构建，不是浏览器，也不是前端框架，而是面向服务端脚本、Web 服务和通用开发任务的执行环境。
-- **能解决什么痛点**：一是脚本和服务端程序不必先转译再运行，TypeScript 可以直接执行，减少工具链层层拼接的成本。二是通过权限模型把文件、网络、系统能力显式收口，避免传统 Node 脚本“默认全开”带来的误操作风险。
-- **适合谁用**：做 Web 服务和内部 API 的后端开发者；需要频繁写 TypeScript 工具脚本、构建脚本、自动化任务的工程师；关注 Node 兼容性但想保留更强运行时约束的团队。
-- **怎么上手**：最简安装方式之一是 `curl -fsSL https://deno.land/install.sh | sh`；最小运行示例是写一个 `server.ts`，然后执行 `deno run --allow-net server.ts`。
-- **可以用在哪些场景**：快速起一个本地 HTTP 服务或微型 API；写项目内的自动化脚本、发布脚本、代码检查脚本；在需要显式授权的环境里跑网络请求、文件处理或命令编排。
-- **技术看点**：核心栈是 Rust + V8 + Tokio，说明它既吃底层性能，也把异步运行时和系统能力管得比较紧。近期提交里还能看到 QuickJS 后端实验、Node 兼容层修正、Streams API 补齐，方向很明确：继续扩大可运行面，同时提高兼容性。
-- **近期动向与发展方向**：最近 20 条提交里，功能和修复是混在一起推进的，但重点很清楚：一边在加实验性 QuickJS backend、`Blob/Body textStream()`、workspace task 的 `--members`，一边密集修 Node 兼容和 Web API 边角问题，比如 `node:dns.getServers()` 权限、`fs.readdir` 排序、`http2` 回调时机、headers redirect 保留等。整体看这是一个高频迭代、兼顾新能力和兼容性的成熟项目，不是在大改方向，而是在持续打磨运行时边界。
-- **同类对比**：README 没有直接点名竞品；从定位上看，它更像是在 JavaScript/TypeScript 运行时层面对标 Node.js，同时强调权限隔离和原生 TypeScript 支持。
-- **注意事项**：项目很成熟，但仍然处于高活跃维护状态，`open issues` 有 1425，说明生态复杂、边缘行为和兼容细节还会持续变化。它对权限参数、Node 兼容差异、任务运行方式都有自己的约束，上手时不能按“无脑替代 Node”的思路来用，尤其是现有脚本迁移和依赖兼容要逐项验证。
-
-- **GitHub**：[denoland/deno](https://github.com/denoland/deno)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Deno 是 JavaScript/TypeScript 运行时生态中的高影响力组织，凭借 deno 等核心项目在现代 JS 工具链社区具备显著话语权。
-**技术栈偏好**：技术栈以 Rust 和 TypeScript 为主，偏向用 Rust 构建高性能底层运行时与开发工具，用 TypeScript 完善上层生态。
-**核心领域**：主要聚焦现代 JavaScript/TypeScript 运行时、标准库、代码质量工具和开发者体验生态。
-
----
-
-### ✨ usekaneo/kaneo (4870★)
-
-> **一句话**：Kaneo 把项目、任务和团队协作收敛到一个干净的看板式界面里，主打自托管、少干扰、开箱即用的项目管理。
-
-- **它是什么**：Kaneo 是一个开源项目管理系统，面向团队日常的任务跟踪、项目看板和协作流程。README 里强调它不是堆满按钮和复杂工作流的平台，而是尽量减少无关功能，让用户把注意力放在任务本身。项目支持自托管，也提供 Kaneo Cloud，并采用 MIT 许可证。
-
-- **能解决什么痛点**：适合不想把项目数据完全托管给第三方 SaaS 的团队，可以通过 Docker Compose、Helm 或官方部署工具搭建自己的实例。也适合觉得 Jira、Trello、Linear 等工具在小团队场景中过重的团队，用更轻的界面管理任务和项目进展。
-
-- **适合谁用**：适合需要自托管项目管理系统的开发团队、创业团队和内部工具团队。也适合正在寻找轻量替代品、不需要复杂企业流程配置的小型产品研发团队。
-
-- **怎么上手**：最快方式是使用官方推荐的 drim 部署：`curl -fsSL https://assets.kaneo.app/install.sh | sh && drim setup`
-
-- **可以用在哪些场景**：可以用于小团队的产品需求、Bug 和开发任务看板管理；用于公司内部自托管项目协作平台，避免项目数据散落在外部 SaaS；也可以在 Kubernetes 环境中通过 Helm Chart 部署成团队级项目管理服务。
-
-- **技术看点**：项目主语言是 TypeScript，README 提供 Docker Compose、独立镜像和 Helm Chart 多种部署路径，说明它不是只面向本地试用，而是考虑了生产部署。官方还维护了 `drim` CLI，用来简化 HTTPS、数据库和服务配置，降低自托管门槛。
-
-- **近期动向与发展方向**：最近提交非常活跃，7 月 30 日连续发布了 `v2.10.0`、`v2.11.0`、`v2.12.0`、`v2.12.1`。近期重点集中在商业化和云服务能力，包括 Kaneo Cloud 订阅、Creem 计费集成、结账深链、试用提示、账单设置页优化，以及 Jira、Trello、Linear 对比页等 SEO 内容。也有社区贡献者参与本地化修复，说明项目仍处在快速演进阶段。
-
-- **同类对比**：README 和近期提交都明确对标 Jira、Trello、Linear。Kaneo 的差异点在于强调更少的功能干扰、更简洁的界面，以及可自托管和开源许可；相比大型项目管理平台，它更适合不需要复杂流程引擎的小团队。
-
-- **注意事项**：项目创建于 2024 年底，发展速度快但仍偏年轻，近期频繁发布也意味着功能和部署细节可能变化较快。当前有 71 个 Open Issues，使用前建议先评估关键功能、权限、计费相关能力是否满足团队需求。README 的快速部署说明比较清楚，但完整环境变量、非 Docker 部署和故障排查需要继续阅读官方文档。
-
-- **GitHub**：[usekaneo/kaneo](https://github.com/usekaneo/kaneo)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：作为一个创建时间较新的开源组织，已凭借核心项目获得较高关注度，在自托管项目管理工具细分领域具备明显社区能见度。
-**技术栈偏好**：以 TypeScript 为主、Go 为辅，整体偏向 Web 应用与后端服务协同开发，强调轻量、可部署的工程实现。
-**核心领域**：主要聚焦开源项目管理与协作工具，面向自托管场景提供简洁而完整的工作流管理能力。
-
----
-
-### ✨ livekit/agents (11779★)
-
-> **一句话**：用 Python 在服务器上构建能听、会说、可接电话、可调用工具的实时语音 AI Agent，并通过 LiveKit 的 WebRTC 与电话能力接入真实用户。
-
-- **它是什么**：livekit/agents 是 LiveKit 提供的实时 AI Agent 框架，核心目标是让开发者把 STT、LLM、TTS、Realtime API、VAD、工具调用和会话管理组合成可运行的语音或多模态 Agent。它不是只做聊天接口封装，而是围绕“实时参与者”设计，Agent 可以进入 LiveKit 房间，和用户进行语音对话，也可以通过 SIP 接打电话。README 中还提供了多 Agent handoff、MCP 工具接入、内置测试框架、视频头像、转录等示例。
-
-- **能解决什么痛点**：做语音 AI 产品时，开发者通常要自己拼接语音识别、端点检测、LLM 回复、语音合成、WebRTC 房间、电话接入和中断处理，链路长且容易出时序问题；这个框架把会话、调度、转写、语音播放和工具调用封装到 `AgentSession`、`AgentServer` 等核心概念里。另一个痛点是实时语音 Agent 的可测试性差，项目内置了测试与 judge 机制，方便验证 Agent 是否按预期调用函数和回复用户。
-
-- **适合谁用**：适合正在做实时语音助手、电话客服、语音陪练、AI 前台等产品的 Python 后端工程师。也适合已经使用 LiveKit WebRTC、LiveKit SIP 或需要把 AI Agent 接入音视频房间的团队。
-
-- **怎么上手**：README 给出的核心安装命令是 `pip install "livekit-agents[openai,deepgram,cartesia]"`，运行示例 Agent 需要配置 `LIVEKIT_URL`、`LIVEKIT_API_KEY`、`LIVEKIT_API_SECRET`。
-
-- **可以用在哪些场景**：可以用来搭建接听来电或主动外呼的 AI 电话客服，例如餐厅订位、订单咨询、售后分流。可以用来做 App 或网页里的实时语音助手，通过 LiveKit 房间与用户双向音频交互。也可以用于会议、课堂或多人房间中的实时转录、多用户 push-to-talk Agent、带视频头像的 AI 陪伴或演示场景。
-
-- **技术看点**：项目把实时语音 Agent 抽象为服务器端参与者，并复用 LiveKit 的 WebRTC、SIP、Data API 和调度体系，适合需要真实音视频链路的应用，而不是只处理文本请求。集成层比较完整，README 明确支持混搭 STT、LLM、TTS、Realtime API、MCP、语义轮次检测和原生测试框架，对模型供应商选择有较高灵活性。
-
-- **近期动向与发展方向**：最近 20 条提交非常活跃，集中在语音会话稳定性、转写容错、暂停语音时的轮次处理、OpenAI Realtime、Google GenAI、AWS Bedrock、Anthropic、ElevenLabs、Smallest STT 等插件与供应商适配。近期也在推进 CLI 入口调整，将 console 和 dev 模式迁移到 `lk agent`，说明项目正在整理开发者工作流。整体看，当前重点不是单一大重构，而是围绕真实生产链路中的边界问题、指标统计、客户端释放、模型配置和多供应商兼容持续打磨。
-
-- **同类对比**：README 没有直接点名竞品，但提到如果需要 JS/TS 版本可使用 `AgentsJS`。从定位看，它和只封装 LLM 调用的 Agent 框架不同，核心差异在于深度绑定实时音视频、电话、语音转写和低延迟交互链路。
-
-- **注意事项**：项目创建于 2023 年 10 月，Stars 和贡献者数量都较高，更新频率也很密集，但当前 Open Issues 有 731 个，说明生态活跃的同时也存在不少待处理问题。近期提交中有 CLI 模式弃用、供应商 SDK 重试策略调整、Realtime API 行为修正等变化，生产环境升级前需要认真看 release notes 和迁移说明。README 示例较丰富，但要真正跑通语音 Agent 仍依赖 LiveKit 服务、模型供应商或 LiveKit Inference 配置，上手门槛高于普通文本 Agent 框架。
-
-- **GitHub**：[livekit/agents](https://github.com/livekit/agents)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：LiveKit 是 WebRTC 与实时 AI 基础设施领域影响力较强的开源组织，核心仓库拥有较高关注度并形成了活跃生态。
-**技术栈偏好**：其技术栈以 Go、Python、TypeScript 为主，偏向高性能实时通信后端、AI Agent 框架与跨平台客户端 SDK。
-**核心领域**：主要聚焦实时音视频通信、WebRTC 基础设施、低延迟数据传输与实时 AI 应用开发。
-
----
-
-### ✨ angular/angular (100766★)
-
-> **一句话**：Angular 用 TypeScript 组织组件、路由、表单、SSR、CLI 和构建工具链，帮助团队从零搭建到长期维护大型 Web 应用。
-
-- **它是什么**：Angular 是一个面向移动端和桌面端 Web 应用的开发平台，核心语言是 TypeScript，也支持 JavaScript 等语言。它不只是 UI 渲染库，还提供组件与模板、表单、路由、服务端渲染、动画、CLI、Schematics、升级指南等完整工程体系。README 明确指向 angular.dev 文档、API、SSR、Angular Elements、Angular Material 和 CLI 生态。
-
-- **能解决什么痛点**：对于多人协作的前端项目，Angular 提供统一的项目结构、CLI 命令、组件模型和官方文档，减少团队各自拼装路由、构建、表单和 SSR 方案带来的维护成本。对于需要长期升级的企业应用，它提供 changelog 和 update guide，能把版本迁移路径放到官方流程里，而不是靠零散社区文章排雷。
-
-- **适合谁用**：适合正在构建中大型 Web 应用、后台系统、业务平台的 TypeScript 前端团队。也适合需要 SSR、表单、路由、组件库和 CLI 工程化配套的企业级前端项目。
-
-- **怎么上手**：`npm install -g @angular/cli && ng new my-app && cd my-app && ng serve`
-
-- **可以用在哪些场景**：搭建企业内部管理后台，统一处理表单、权限页面、路由和模块拆分。开发需要服务端渲染的内容型或业务型 Web 应用，利用 Angular SSR 改善首屏和可索引性。构建跨团队维护的前端平台项目，通过 Angular CLI、Angular Material 和官方升级指南约束工程规范。
-
-- **技术看点**：Angular 采用 TypeScript 作为主要开发语言，围绕组件、模板、依赖注入、CLI 和官方生态形成完整平台，而不是只覆盖视图层。README 中列出的 SSR、Schematics、Lazy Loading、Angular Elements 等能力说明它更偏向“框架加工程体系”的路线。
-
-- **近期动向与发展方向**：最近 20 条提交以 bug 修复、文档修正、测试现代化和构建依赖维护为主，涉及 HTTP FetchBackend、Cookie 解析、charset 处理、zone.js 计时器、hydration 触发、SSR 集成测试和 DevTools。可以看出项目仍处于高频维护状态，近期重点更偏稳定性、兼容性、文档准确性和内部测试重构，而不是大规模新功能发布；Angular Robot 也在持续做依赖和跨仓库文档同步，说明自动化维护流程较成熟。
-
-- **同类对比**：README 未明确列出竞品。按项目定位看，它与 React、Vue 等前端框架处在相近领域，但这里不展开编造官方对比。
-
-- **注意事项**：项目创建于 2014 年，Star 超过 10 万、贡献者 2657 人，成熟度和社区规模都很高；同时 open issues 有 1145 个，说明体量大、历史包袱和边界问题也不少。Angular 的工程体系完整，但上手成本通常高于轻量视图库，团队需要接受 TypeScript、CLI、组件生命周期、依赖注入和官方约定。近期提交频繁，文档和兼容性持续更新，生产项目应关注 changelog 与 upgrade guide，避免跨大版本升级时踩到破坏性变更。
-
-- **GitHub**：[angular/angular](https://github.com/angular/angular)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Angular 是前端生态中最具影响力的开源组织之一，长期主导企业级 Web 应用框架、工具链和组件体系建设。
-**技术栈偏好**：技术栈明显偏向 TypeScript 与 JavaScript，重点围绕现代前端框架、CLI 工具、组件库和工程化体系展开。
-**核心领域**：核心聚焦于前端开发框架、单页应用架构、开发工具链和 UI 组件生态。
+**技术影响力**：Vercel 是前端与全栈 Web 生态的头部基础设施组织，凭借 Next.js、SWR、Turborepo 等项目对现代应用开发范式具有显著影响力。
+**技术栈偏好**：技术栈以 TypeScript、JavaScript 为核心，并在构建系统与性能基础设施中重度使用 Rust，偏向现代 Web、开发工具链与 AI 应用层基础设施。
+**核心领域**：主要聚焦于现代 Web 框架、前端工程化、云端部署平台、构建加速以及面向智能体应用的开发基础设施。
 
 ---
 
@@ -463,99 +348,64 @@
 
 ---
 
-### ✨ browser-use/video-use (19154★)
+### ✨ uber/ADR (602★)
 
-> **一句话**：把一堆原始视频素材丢进文件夹，让 Claude Code、Codex 等编码 Agent 读转写稿、判断剪点、渲染并输出 `final.mp4`。
+> **一句话**：ADR 用传感器、基准测试和双层检测机制记录 AI Agent 的工具调用轨迹，并识别企业环境里的提示注入、越权操作等高风险行为。
 
-- **它是什么**：video-use 是一个面向编码 Agent 的开源视频剪辑工作流，核心思路不是让 LLM 逐帧“看视频”，而是把视频转成带时间戳的文字稿、说话人信息、音频事件和按需生成的时间线视图。它可以自动裁掉口头禅和空白、做基础调色、添加字幕、生成动画叠层，并在渲染后对剪切边界做自检。
+- **它是什么**：ADR 全称是 Agentic AI Detection and Response，是 Uber 开源的企业级 AI Agent 安全系统，已在 Uber 生产环境部署。当前仓库包含 ADR Sensor、ADR-Bench 和 ADR Detector，用于采集 Claude Code、Cursor、Codex 等 Agent 的遥测数据，复现 303 个安全基准任务，并运行检测器识别可疑会话。README 中提到的 ADR Prevention 和离线 ADR Explorer 引擎暂未包含在本次开源版本中。
 
-- **能解决什么痛点**：一是开发者或内容创作者不想在传统剪辑软件里反复拖时间线、找口头禅、对齐字幕，希望用对话方式完成粗剪和成片输出。二是长素材中真正有用的信息通常藏在语音里，逐帧喂给 LLM 成本很高，video-use 通过转写稿和按需截图把上下文压到 LLM 能处理的范围内。
+- **能解决什么痛点**：企业引入 AI 编码工具、客服 Agent 或内部自动化 Agent 后，很难知道 Agent 实际执行了哪些工具调用、为什么这么做，以及是否碰到了提示注入或敏感操作风险。ADR 试图把 Agent 行为从“黑盒对话记录”变成可观测、可评测、可检测的安全数据流。
 
-- **适合谁用**：适合已经在使用 Claude Code、Codex、Hermes 等带 shell 访问能力 Agent 的开发者和技术内容创作者。也适合需要批量处理访谈、教程、产品发布视频、旅行或 vlog 素材的团队，把视频剪辑流程接进自动化工作台。
+- **适合谁用**：适合负责企业 AI Agent 安全治理的安全工程师、平台工程团队，以及需要评估 Claude Code、Cursor、Codex、MCP 工具链安全风险的研发基础设施团队。
 
-- **怎么上手**：最简方式是在支持 shell 的 Agent 中粘贴：`Set up https://github.com/browser-use/video-use for me.`；手动安装则是 `git clone https://github.com/browser-use/video-use ~/Developer/video-use && cd ~/Developer/video-use && uv sync`，并安装 `ffmpeg`、配置 ElevenLabs API Key。
+- **怎么上手**：`git clone https://github.com/uber/ADR && cd ADR/Detection && uv sync`
 
-- **可以用在哪些场景**：用于把多段 talking head 原始素材剪成发布视频，自动去掉 `umm`、`uh`、停顿和失败重录。用于教程、访谈、发布会片段的初剪，按语音边界裁切并烧录字幕。用于技术团队把内部录屏、产品演示、社媒短视频素材交给 Agent 生成可预览的 `edit/final.mp4`。
+- **可以用在哪些场景**：用于给公司内部 AI 编码工具采集统一遥测数据，排查 Agent 在终端、编辑器和工具调用中的异常行为；用于跑 ADR-Bench，评估自研检测器或第三方防护方案在 300+ 企业安全任务上的表现；用于在 AI 客服、内部自动化 Agent 上构建会话级风险检测流程。
 
-- **技术看点**：项目把视频理解拆成“文字转写常驻上下文 + 时间线 PNG 按需查看”，避免把大量帧直接塞给 LLM；这对 Agent 类多模态工作流很有参考价值。渲染后还会在剪切边界跑 `timeline_view` 自检，发现视觉跳变、音频爆音、字幕遮挡后最多重渲染 3 次。
+- **技术看点**：项目把可观测性、基准评测和检测放在同一套体系里：Sensor 负责跨工具采集和规范化遥测，Detection 侧采用高召回初筛加深度 agentic reasoning 的双层架构。ADR-Bench 覆盖 133 个 MCP server 和 17 类 Agent 攻击技术，对做 Agent 安全评测有直接参考价值。
 
-- **近期动向与发展方向**：提交历史集中在 2026 年 4 月到 7 月，早期快速补齐了自评循环、自动音效、README、安装文档和 MIT License。5 月的改动主要是修复生产可用性问题，比如竖屏素材方向保持、UTF-8 输出、HLG/PQ 到 Rec.709 SDR 的色彩映射、字幕安全区；6 月以后主要是 README 更新，说明近期更偏文档和可用性打磨，核心功能暂未看到大规模重构。
+- **近期动向与发展方向**：最近提交集中在文档、CI、依赖安全和 Sensor 发布流程上，包括新增包发布 workflow、从包元数据派生版本、修复 Dependabot 配置、补充论文和 MLSys 2026 slides。7 月底有大量 Dependabot 依赖升级，说明项目正在整理开源发布后的工程基础设施；近期没有看到大型功能重构，重点更像是稳定开源包、完善复现实验和安全维护。
 
-- **同类对比**：README 明确对比的是“逐帧喂给 LLM”的朴素方案，video-use 的差异是用约 12KB 的转写文本加少量时间线图来完成剪辑决策。它也借用了 browser-use 的思路：像把网页转成结构化 DOM 一样，把视频转成 LLM 更容易推理的结构化时间线。
+- **同类对比**：README 没有明确列出同类竞品。项目中提到可用 `llamafirewall` 做无密钥 smoke test，并包含 detector baselines，但未提供系统性的竞品对比。
 
-- **注意事项**：项目创建时间较新，但 Star 很高、Fork 数不少，热度明显高于成熟度本身；目前贡献者只有 6 人、Open Issues 59 个，生产使用前需要预留踩坑和修脚本的时间。依赖 `ffmpeg`、`uv`、ElevenLabs API Key，并且要把技能注册到 Claude Code 或 Codex 等 Agent 环境里，上手门槛比普通 Python 包高。README 对理念和流程写得比较清楚，但实际剪辑质量仍依赖素材质量、转写准确率和 Agent 执行稳定性。
+- **注意事项**：项目创建时间较新，当前 602 stars、66 forks、8 个 open issues，关注度上升但贡献者数量只有 6 人，生态成熟度还需要观察。Detection 快速上手需要 `uv`，默认 ADR detector 还需要配置 `ANTHROPIC_API_KEY` 和 `OPENAI_API_KEY`；仓库明确说明 Prevention 和 ADR Explorer 未开源，因此不能把它当成完整的端到端 Agent 防护平台直接落地。文档质量较好，提供论文、slides、组件 README 和复现实验说明，但生产部署细节仍需自行评估。
 
-- **GitHub**：[browser-use/video-use](https://github.com/browser-use/video-use)
+- **GitHub**：[uber/ADR](https://github.com/uber/ADR)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Browser Use 是快速崛起的开发者工具组织，凭借多个高星仓库在 AI 浏览器自动化与智能体社区形成显著影响力。
-**技术栈偏好**：技术栈高度集中于 Python，偏向浏览器控制、自动化执行、Web UI 与智能体工作流相关工程。
-**核心领域**：主要聚焦于 AI Agent 驱动的浏览器自动化、网页任务执行与端到端智能工作流基础设施。
+**技术影响力**：Uber Open Source 是大型科技公司级开源组织，凭借多个高星项目在前端、移动架构、分布式系统与地理空间技术社区具备较强影响力。
+**技术栈偏好**：技术栈以 TypeScript、JavaScript、Kotlin 为主，同时覆盖 Go、C 等系统级语言，偏向工程化、跨平台和高性能基础设施。
+**核心领域**：主要聚焦前端设计系统与可视化、移动应用架构、分布式网络服务以及地理空间计算等基础技术领域。
 
 ---
 
-### ✨ esengine/DeepSeek-Reasonix (28922★)
+### ✨ lyogavin/airllm (25425★)
 
-> **一句话**：Reasonix 把 DeepSeek 驱动的代码代理放进终端里，可以在长时间会话中持续读项目、调用工具、执行修改，并尽量利用前缀缓存降低上下文成本。
+> **一句话**：AirLLM 通过按层/按专家流式加载模型，让 70B 甚至更大参数规模的开源大模型能在低显存单卡上完成推理。
 
-- **它是什么**：DeepSeek-Reasonix 是一个用 Go 编写的终端 AI coding agent，提供 CLI / TUI、桌面端和 VS Code 扩展三种入口，底层共用本地 Reasonix 引擎。它通过 `reasonix.toml` 配置模型、Provider、工具和插件，不把模型写死在代码里；README 明确强调它围绕 DeepSeek prefix cache 设计，适合保持长会话运行。
+- **它是什么**：AirLLM 是面向大语言模型推理的 Python 包，核心目标是显著降低运行大模型时的显存占用。README 中给出的典型能力包括：70B 模型可在单张 4GB GPU 上运行，Llama 3.1 405B 可在 8GB 上运行，DeepSeek-V3 671B 约 12GB，Kimi K3 2.8T 可低于 4GB 显存运行。它通过 `AutoModel.from_pretrained(...)` 接近 Hugging Face Transformers 的使用方式，支持 Qwen、Llama、DeepSeek、Gemma、Phi、ChatGLM、Baichuan、Mistral 等多类模型。
 
-- **能解决什么痛点**：一是长时间让 AI 参与代码修改时，上下文反复重建会带来 token 成本和状态丢失，Reasonix 通过稳定环境摘要、上下文维护和缓存友好的会话设计来缓解这个问题。二是开发者想把外部工具接入 AI agent 时，不必改核心代码，可以通过 stdio JSON-RPC / MCP 兼容插件机制扩展工具能力。
+- **能解决什么痛点**：开发者想本地试跑 70B 以上模型时，常见阻碍是显存预算远低于模型完整加载需求，AirLLM 把推理过程改成分层或按专家加载，降低一次性显存占用。另一个痛点是不同模型族加载方式不统一，AirLLM 用 `AutoModel` 尽量屏蔽模型类型差异，减少手动适配成本。
 
-- **适合谁用**：适合已经在使用 DeepSeek 或 OpenAI 兼容模型、希望在终端里跑本地代码代理的后端、全栈和工具链工程师。也适合需要同时使用 CLI、桌面端、VS Code 扩展，并希望复用同一套本地引擎配置的开发团队。
+- **适合谁用**：适合需要在消费级 GPU、低显存云主机或单卡工作站上验证大模型推理的 AI 工程师和独立开发者。也适合做 LLM 原型、模型兼容性测试、离线 Demo 的 Python 开发者。
 
-- **怎么上手**：最短路径是通过 npm 安装并启动：`npm i -g reasonix && reasonix setup && reasonix`
+- **怎么上手**：安装：`pip install airllm`；最小使用：`from airllm import AutoModel; model = AutoModel.from_pretrained("Qwen/Qwen3-32B")`。
 
-- **可以用在哪些场景**：可以在已有 Go、前端或后端仓库里让 agent 阅读代码并执行 TODO 修改；可以通过 `reasonix run "implement the TODOs in main.go"` 这类命令做一次性代码任务；也可以在 VS Code 中接入本地 `reasonix acp` 后端，用编辑器上下文、工具调用审批和模型选择来管理项目会话。
+- **可以用在哪些场景**：在本地低显存机器上试跑 Qwen、Llama、DeepSeek 等大模型，避免一开始就租用高显存 GPU。给内部产品或研究项目做大模型可行性验证，例如快速比较不同开源模型的输出效果。运行超大 MoE 模型的单机推理实验，例如 README 提到的 DeepSeek-V3、Kimi K3 这类专家稀疏模型。
 
-- **技术看点**：核心实现是 `CGO_ENABLED=0` 的单个 Go 静态二进制，支持跨 macOS、Linux、Windows 的 amd64 / arm64 构建和分发。架构上采用配置驱动、多模型组合、插件驱动，并把 DeepSeek 前缀缓存稳定性作为上下文维护的设计目标，这对长会话 agent 的成本控制有实际参考价值。
+- **技术看点**：项目的关键设计是把模型拆成 layer shards，并在推理时分段加载，显存瓶颈从“完整模型常驻”变成“当前层或当前专家可用”。对 MoE 模型，近期强调 per-expert streaming，只加载 token 实际路由到的专家，这也是 Kimi K3 低显存运行的核心依据。
 
-- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-02，活跃度很高，重点包括 v1.19.2 发布说明、npm release alias 迁移与传播修复、桌面端更新失败原子性、移除 Safe Mode 相关旧路径、Windows home 路径测试，以及站点 GitHub header 导航。整体看近期更偏发布工程、更新可靠性、跨平台兼容性和官网体验收尾，而不是单纯堆新功能。
+- **近期动向与发展方向**：最近 20 条提交显示，2026 年 7 月主要开发重点是 Kimi K3 支持，并在 7 月 29 日发布了 `3.1.0`。提交中既有新功能 `feat: support Kimi K3`，也有端到端生成修复和 streaming gap 修复，说明近期不是单纯文档更新，而是在补齐超大 MoE 模型的实际推理链路。其余多条提交是 star history 图表刷新和 CI token 修复，核心代码活跃度集中在新模型适配上。
 
-- **同类对比**：README 没有明确列出竞品或对标项目。可确认的差异点是它强调 DeepSeek-native、prefix-cache 稳定性、单 Go 二进制分发，以及 MCP 兼容的插件式工具接入。
+- **同类对比**：README 没有明确列出竞品或对标项目。它和常见量化方案的差异在于，AirLLM 强调低显存推理并不依赖量化、蒸馏或剪枝；同时也提供 4bit/8bit compression，用来降低加载体积并提升推理速度。
 
-- **注意事项**：项目创建于 2026-04-21，但已有 28922 stars、134 位贡献者和非常密集的提交，增长很快；同时 open issues 达到 1377，说明用户反馈和待处理问题不少，采用前需要关注版本变更和已知问题。近期提交中出现 release alias、桌面更新原子性、移除旧 Safe Mode 路径等内容，表明发布链路和部分行为仍在快速调整，生产环境或团队统一推广前建议先锁定版本并验证工作流。文档覆盖安装、CLI、配置路径、ACP、恢复、检查点等主题，入口较全，但完整使用仍需要花时间理解配置和插件机制。
+- **注意事项**：首次运行会把原始模型拆分并保存为分层文件，需要预留足够磁盘空间。Kimi K3 支持有明确环境要求，包括 `compressed-tensors`、`flash-attn`、CUDA 12 版本 torch，以及 `transformers` 4.56.x，环境配置门槛不低。项目已有 117 个 open issues，说明社区关注度高但边界场景和兼容性问题也不少；再加上近期在适配非常新的超大模型，升级版本时需要留意依赖变化和推理稳定性。
 
-- **GitHub**：[esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：YHH 是具备较高社区可见度的个人开发者，凭借 DeepSeek-Reasonix 等高星项目在开源 AI 工程方向形成显著影响力。
-**技术栈偏好**：其技术栈以 TypeScript 为主，结合 Go 与 C++，偏向构建工程化、性能敏感和跨语言协作的系统工具。
-**核心领域**：主要聚焦 AI 推理与智能体相关基础设施，同时覆盖引擎框架、行为树和工程化开发工具。
-
----
-
-### ✨ EveryInc/compound-engineering-plugin (23815★)
-
-> **一句话**：把需求澄清、实现计划、编码、简化、代码审查和经验沉淀串成一套可在 Claude Code、Codex、Cursor 等 Agent 环境里调用的工程工作流技能。
-
-- **它是什么**：Compound Engineering 是 Every 官方维护的一组 AI 编程技能插件，核心不是单次生成代码，而是把一次工程任务拆成 `/ce-brainstorm`、`/ce-plan`、`/ce-work`、`/ce-simplify-code`、`/ce-code-review`、`/ce-compound` 等连续步骤。它会引导 Agent 先澄清需求、产出计划，再执行、简化、审查，并把可复用经验写入 `docs/solutions/`，让后续任务能读取这些上下文。
-
-- **能解决什么痛点**：适合解决“AI 直接开写导致需求没想清、改完没人系统复盘”的问题，尤其是多轮功能开发中，计划、审查和历史经验容易散落在聊天记录里。它也针对多 Agent / 跨模型协作中的交接问题做了大量处理，例如 handoff、dispatch、非交互模式、CI 等环节。
-
-- **适合谁用**：适合已经在 Claude Code、Codex、Cursor 等 Agent 编程环境中做日常开发的工程团队。也适合希望把 AI 编程流程标准化的技术负责人、全栈工程师和维护中大型代码库的开发者。
-
-- **怎么上手**：Claude Code 最简安装方式：`/plugin marketplace add EveryInc/compound-engineering-plugin`，然后执行 `/plugin install compound-engineering`。
-
-- **可以用在哪些场景**：
-  1. 开发新功能前，用 `/ce-brainstorm` 和 `/ce-plan` 把模糊需求整理成可执行计划。
-  2. 修复线上 bug 时，用 `/ce-debug` 走复现、定位、修复、复盘的闭环。
-  3. PR 合并前，用 `/ce-code-review` 做多 Agent 报告式审查，再用 `/ce-compound` 把踩坑经验沉淀到项目文档。
-
-- **技术看点**：项目以 TypeScript 编写，但更关键的设计点在于“技能编排”和“本地上下文资产”：它把工程流程固化为一组可组合的 Agent 技能，并通过 `docs/solutions/`、`docs/plans/` 等目录让经验可以被后续任务读取。README 还明确区分了 Claude Code、Cursor、Codex App、Codex CLI 等宿主的安装方式，说明它在做跨编辑器 / 跨 Agent 宿主适配。
-
-- **近期动向与发展方向**：最近 20 条提交非常密集，时间集中在 2026-07-31 到 2026-08-04，说明项目仍在高频迭代。近期重点主要是修复和加固，而不是大规模新增功能：包括 `ce-handoff` 交接行为、`ce-work` 调度能力、`ce-simplify-code` 清理流程、Codex 安装文档、Windows 下 Git Bash / WSL 选择、临时目录处理、CI/PR babysit 流程等。整体方向是在提升真实工程场景中的稳定性，尤其是跨模型派发、非交互运行、PR 交接和文档化经验沉淀。
-
-- **同类对比**：README 没有明确列出直接竞品。它更像是 Claude Code、Codex、Cursor 等 Agent 编程工具之上的工作流层，而不是替代某一个编辑器或代码生成模型。
-
-- **注意事项**：项目创建时间为 2025-10-09，更新到 2026-08-04，增长和迭代都很快，但仍属于快速演进阶段；当前有 94 个 open issues，使用时要预期插件行为和安装方式可能继续变化。README 特别提醒旧版 Codex 安装用户需要清理过时的 Codex tool map，并且 Compound Engineering 已迁移到 root-native 布局，老用户更新前要先刷新 marketplace，这意味着存在一定的迁移成本。文档覆盖面较广，但安装路径较多，新用户需要先确认自己使用的是 Claude Code、Codex App、Codex CLI 还是 Cursor。
-
-- **GitHub**：[EveryInc/compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin)
+- **GitHub**：[lyogavin/airllm](https://github.com/lyogavin/airllm)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Every 在 AI 工具与开发者生态中具备较高可见度，凭借高星 TypeScript 项目形成了较强的社区传播力。
-**技术栈偏好**：其技术栈明显偏向 TypeScript，重点围绕插件、SDK、命令集与 AI 工作流工具构建。
-**核心领域**：主要聚焦 AI 订阅内容、智能体能力扩展、工程辅助工具与知识工作自动化。
+**技术影响力**：Gavin Li 是具有较高社区可见度的 AI 创业者型开发者，凭借 airllm 等高星项目在大模型应用与工程优化方向形成明显影响力。
+**技术栈偏好**：技术栈以 Python 和 Jupyter Notebook 为主，兼有 Java 项目经验，偏向 AI 原型实验、模型训练与工程化工具开发。
+**核心领域**：主要聚焦大模型、AI 动画生成、视频生成训练与低资源大模型推理等生成式 AI 方向。
