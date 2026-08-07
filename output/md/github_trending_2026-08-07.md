@@ -1,5 +1,5 @@
-## 今日热点：AI Agent 工程化与知识记忆基础设施
-今天的热门项目明显围绕 AI Agent 从“能用”走向“可持续工程化”展开：既有 TencentDB-Agent-Memory、agent-skills、skills、superpowers 这类面向团队记忆、技能沉淀和开发方法论的项目，也有 cloudflare/computer、loopx、AutoGPT、DeepSeek-Reasonix 等强化代理运行环境、长任务状态管理和终端编码能力的工具；同时，code-review-graph、Guava、authentik 补足了代码智能、基础库与认证基础设施，ChinaTextbook 与 pdf-inspector 则体现出知识资源整理和 PDF 内容处理仍是 AI 应用落地的重要支撑。具体项目摘要如下：
+## 今日热点：AI Agent 工程化与长期记忆成为主线
+今天的热门项目明显围绕 AI Agent 的工程化落地展开，从团队级记忆中枢、可复用技能库、云端计算环境、长期运行状态内核，到本地代码智能图谱、终端编码代理、Agentic 开发方法论，形成了围绕“让代理更会记、更会用工具、更能持续交付”的技术焦点；同时，身份认证、Java 基础库、教材资源、PDF 检测与抽取等基础设施和知识处理项目也保持热度，显示开发者正在同时补齐 Agent 运行所需的安全、知识、代码理解与文档处理能力。具体项目摘要如下：
 
 ### ✨ TencentCloud/TencentDB-Agent-Memory (10139★)
 
