@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 热点日报 (2026-08-08)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.8;
+            color: #34495e;
+            background: linear-gradient(to right bottom, #fdfbfb, #ebedee);
+            margin: 0;
+            padding: 20px;
+        }
+        .main-container {
+            max-width: 850px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: none;
+        }
+        h2 {
+            font-size: 1.6em;
+            margin-top: 50px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        .card {
+            background: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: #e8f6ff;
+            color: #2980b9;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>GitHub 热点日报 (2026-08-08)</h1>
+<h2>今日热点：AI 智能体工程化与开发基础设施加速演进</h2>
+<p>今日技术热点聚焦于 AI 智能体从代码生成走向长期自主任务、可复用技能体系、计算机操作、群体协作与可追责上下文管理，同时延伸至身份认证、API 网关、开发工具链、分布式基础设施、OSINT 资源、进程溯源、Java 核心库及 Google 产品技能等方向，体现出 AI 应用与传统软件工程基础设施深度融合的趋势，具体项目摘要如下：</p>
+<h3>✨ PrimeIntellect-ai/prime-agent (5833★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Prime Agent 把编码代理变成一个可持续运行的终端工作进程，能在持久 Python 环境里调用子代理、保留任务状态，并跨会话推进代码与研究任务。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Prime Agent 是一个开源的编码与研究代理，面向通用开发任务和长时间自主任务。它围绕 Recursive Language Model（RLM）和 Continual Harness 设计，把提示词、记忆、技能、子代理规格等上下文作为可持续维护的状态，而不是一次性聊天记录。它内置持久 IPython 控制环境，文件操作、Shell 命令、工具调用、子代理编排都可以通过程序化方式完成。</li>
+<li><strong>能解决什么痛点</strong>：适合处理“终端断开后任务不能继续”“长任务上下文丢失”“多个子任务只能手动来回切换”这类问题。它支持后台 daemon、会话恢复、心跳、计划任务、持久目标和 retained subagents，让代理可以持续跟进较长的代码修改、评测或研究流程。</li>
+<li><strong>适合谁用</strong>：适合需要让 AI 长时间参与代码库修改、测试、评估和调研的工程师与 AI 研究人员。也适合已经在终端中工作、愿意让代理直接运行命令和修改文件的 TypeScript / Python / 多语言项目维护者。</li>
+<li><strong>怎么上手</strong>：安装：<code>curl -fsSL https://app.primeintellect.ai/prime-agent/install.sh | sh</code>；启动：<code>cd /path/to/project &amp;&amp; prime-agent</code>，首次使用需要运行 <code>/login</code> 选择订阅或 API-key provider。</li>
+<li><strong>可以用在哪些场景</strong>：可用于在大型代码库中持续推进 bug 修复、测试隔离和重构任务；用于研究评测中运行长时间 autonomous agent 流程，并通过心跳或 schedule 重新进入会话；用于把重复开发流程沉淀成 skills，让后续项目复用相同的操作模式。</li>
+<li><strong>技术看点</strong>：核心设计是把上下文、工具和子代理调用放进持久 REPL 编程模型里，而不是只依赖单轮对话。Continual Harness 支持 <code>/refine</code> 将经过证据支撑的小经验沉淀为补充提示、记忆、技能描述或子代理规格，并保留快照以便回滚。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 coding-agent 稳定性和长任务运行可靠性上，包括重试时恢复 tombstoned workers、隔离 kernel state tests、统计 retained subagents、修复 ACP prompt 错误处理、socket-prefixed commands、MCP websearch 登录路径等。8 月 5 日连续准备 v0.6.1 和 v0.7.0，说明项目正处在快速迭代期；提交作者分布较多，社区参与度较活跃。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。README 只说明其 TUI 基于 <code>pi</code>，并关联 Verifiers、PRIME-RL 等 Prime Intellect 生态项目，差异重点放在 RLM、持久 IPython、可通信子代理和可持续改进的 harness 状态上。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026-05-08，更新频繁且已有 231 个 open issues，说明关注度高但仍处于快速成熟阶段，版本升级可能带来行为变化。README 明确提醒 Prime Agent 会以用户权限执行模型生成的 Python 和项目命令，worker / kernel 隔离不是安全沙箱，建议在可恢复的干净 worktree、一次性 clone 或外部沙箱中使用。文档入口较完整，覆盖 quickstart、CLI、长任务、RLM、JSON/RPC、skills 和架构，但上手前需要理解其权限与信任边界。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/PrimeIntellect-ai/prime-agent">PrimeIntellect-ai/prime-agent</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Prime Intellect 是一个年轻但增长迅速的 AI 开源组织，凭借多个高星仓库在开发者社区具备较强关注度。
+<strong>技术栈偏好</strong>：技术栈以 Python 和 TypeScript 为主，偏向 AI 训练框架、智能体工具链和强化学习相关工程。
+<strong>核心领域</strong>：主要聚焦开放式 AI 基础设施、分布式训练、强化学习与智能体系统。</p>
+<hr />
+<h3>✨ addyosmani/agent-skills (81894★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把资深工程师常用的需求澄清、任务拆分、编码、测试、评审和发布流程，打包成 AI 编程代理可直接执行的 24 套 Markdown 技能。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：agent-skills 是一套面向 AI coding agents 的工程工作流技能库，核心内容不是业务代码，而是结构化的开发规范、检查清单和执行步骤。它提供 <code>/spec</code>、<code>/plan</code>、<code>/build</code>、<code>/test</code>、<code>/review</code>、<code>/webperf</code>、<code>/code-simplify</code>、<code>/ship</code> 等 8 个生命周期命令，并包含 24 个技能，覆盖需求定义、TDD、API 设计、前端工程、调试、代码评审、发布等环节。README 明确支持 Claude Code、Cursor、Codex、Gemini CLI、Copilot、Windsurf、OpenCode 等多种代理或 IDE 集成。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：很多 AI 编程代理容易直接写代码，跳过需求澄清、测试证明和上线前检查，导致输出看似完整但缺少工程约束；这个项目把“先写规格、再拆任务、逐步实现、测试验证、评审发布”固化成可复用流程。另一个痛点是不同工具里的提示词和规则文件难以统一维护，它用 plain Markdown 技能和 CLI 安装方式，让同一套工程规范可以分发到多个 AI 编程环境。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合已经在使用 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 等 AI 编程代理的工程团队，尤其是希望把 AI 输出纳入固定研发流程的团队。也适合维护大型代码库、需要严格测试和代码评审门禁的全栈工程师、前端工程师和平台工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：最快方式是通过开放的 skills CLI 安装完整技能包：<code>npx skills add addyosmani/agent-skills</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以在新功能开发前用 <code>/spec</code> 和 <code>/plan</code> 让代理先产出 PRD、任务拆分和验收条件，再进入实现。可以在修复线上缺陷时调用 <code>test-driven-development</code> 和 <code>debugging-and-error-recovery</code>，要求代理先复现、定位、补测试再修复。也可以在合并 PR 前用 <code>code-review-and-quality</code> 或 <code>/review</code> 做五轴代码评审，检查可维护性、测试覆盖和接口边界。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目的核心设计是“技能即 Markdown 工作流”，通过目录化的 <code>skills/</code> 内容、slash commands 和不同 IDE/agent 的适配文档来实现跨工具复用。它还区分了命令入口和自动触发技能，例如构建 UI 时触发 <code>frontend-ui-engineering</code>，设计接口时触发 <code>api-and-interface-design</code>，更像是一套代理行为协议，而不是单一工具插件。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交以文档修正、集成兼容性和回归测试为主，包括补充 per-skill reference 限制说明、增加 command validator 覆盖、修复 Claude Code 插件加载 persona 的配置问题，以及让 TDD、安全审计、命令目录等内容更加生态中立。近期有多位贡献者参与 PR，说明社区维护活跃；从提交内容看，项目当前重点不是大规模扩展新技能，而是在打磨安装兼容性、文档准确性和跨代理可移植性。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。README 强调它可通过 skills CLI 安装到 70+ agents，并原生适配多个工具，但没有直接拿某个竞品做功能对比。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间是 2026-02-15，虽然 Star 数很高、更新频繁，但仍属于较新的工程规范类项目，148 个 open issues 也说明边界问题和集成细节还在持续收敛。README 提到单独安装某个 skill 时不会复制仓库级 <code>references/</code> 目录，相关共享清单路径可能不可用，需要安装全仓库、克隆仓库或手动复制引用内容。整体文档很细，但多代理集成意味着不同工具版本、插件机制和路径规则会带来额外上手成本。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Addy Osmani 是前 Google 技术负责人级开发者，在前端工程、Web 性能与开发者教育领域拥有极高社区影响力。
+<strong>技术栈偏好</strong>：技术栈明显偏向 JavaScript、HTML 与 Web 生态，兼具工程工具、最佳实践和知识体系沉淀。
+<strong>核心领域</strong>：主要聚焦现代 Web 开发、前端性能优化、JavaScript 架构模式以及 AI/云相关开发者工具。</p>
+<hr />
+<h3>✨ cloudflare/computer (2335★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把一个带持久化文件系统和可插拔执行后端的“电脑”放进 Cloudflare Durable Object，让 Agent 能写文件、跑命令、执行 JavaScript 模块。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：Cloudflare Computer 是运行在 Durable Object 内的虚拟文件系统，权威状态存放在 SQLite 中，并通过 <code>workspace.runtime</code> 暴露统一执行入口。它目前提供三类执行后端：容器里的真实 Linux/FUSE 环境、Dynamic Worker 中的 isolate shell，以及 Dynamic Worker 中的 isolate JavaScript。开发者可以让 Agent 在 Workspace 里读写文件、执行命令或运行 ECMAScript 模块，也可以只把它当成持久化文件系统使用。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：Agent 做复杂任务时常需要一个可持久化的工作目录，而不是每轮对话都丢失上下文；这个项目把文件状态放进 Durable Object，并让不同执行环境共享同一份 Workspace。另一个痛点是容器、Worker shell、JavaScript isolate 的执行模型差异大，项目用 <code>workspace.runtime.exec(source, { backend })</code> 把入口统一起来。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合在 Cloudflare Workers / Durable Objects 上构建 Agent 工作流的开发者，尤其是需要让 Agent 生成文件、运行脚本、产出构建结果的人。也适合研究 serverless 沙箱、虚拟文件系统、AI coding agent 基础设施的工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 未直接给出一行安装命令，建议从 <code>@cloudflare/computer</code> 包 README 和 <code>examples/</code> 目录开始；最小调用入口形态是 <code>workspace.runtime.exec(source, { backend })</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以给聊天 Agent 提供持久化工作目录，让它在多轮任务中持续读写项目文件；可以在 Worker 中接收 HTTP 请求后写入文件并执行 shell 或 JavaScript，做轻量代码生成、转换、构建任务；也可以生成 Worker 项目并发布到 Cloudflare Artifacts，形成可 clone 的仓库产物。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：核心设计是 Durable Object + SQLite 作为权威文件状态，再把这份状态投射到容器 FUSE、Dynamic Worker shell 或 JavaScript isolate 中。容器后端通过 <code>computerd</code> 和 capnweb RPC 同步文件系统，isolate 后端则直接通过 Workers RPC 访问 Workspace，减少第二份存储和同步往返。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交高度集中在 8 月 3 日到 8 月 5 日，开发活跃度很高。近期重点明显放在统一执行后端和 <code>exec</code> 工具稳定性上，包括流式输出、退出事件字段命名、JSON 输入校验、执行中止时杀掉后端、真实 Workspace 测试覆盖，以及文档同步。8 月 5 日还引入了 changesets 发布流程，说明项目正在向更规范的包发布节奏推进。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确列出直接竞品。它提到了 <code>just-bash</code>、Cloudflare sandbox/container、Workers RPC、FUSE 等组件，但定位更像 Cloudflare 平台上的 Agent 工作空间与执行运行时，而不是单纯的 shell、容器或文件系统库。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目明确标注为 <strong>Preview Only</strong>，API 不稳定，设计可能变化，不适合生产环境。仓库创建时间很新，但 Star 增长快、近期提交密集，说明关注度和开发节奏都高；同时贡献者数量只有 7、开放 issue 为 7，社区生态仍处早期。README 也说明 <code>docs/</code> 下规格偏前瞻，应按设计意图阅读，不应完全等同于当前代码行为。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/cloudflare/computer">cloudflare/computer</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Cloudflare 是全球基础设施与网络技术领域的头部开源组织，凭借高星项目在代理、边缘计算与传输协议社区具备显著影响力。
+<strong>技术栈偏好</strong>：技术栈以 Rust、TypeScript、Go 为主，偏向高性能系统编程、边缘运行时、网络代理与开发者工具建设。
+<strong>核心领域</strong>：主要聚焦边缘计算、网络安全、CDN/代理基础设施、现代传输协议与云原生网络服务。</p>
+<hr />
+<h3>✨ mattpocock/skills (208869★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：一套可直接装进 Claude Code、Codex 等编程代理的工程实践技能，让 AI 在写代码前先澄清需求、建立术语、拆分任务，并通过 TDD 和调试流程约束实现质量。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：项目把 Matt Pocock 日常使用的工程方法整理成可组合的 Agent Skills，覆盖需求澄清、领域术语整理、架构检查、问题分诊、任务拆解、实现、测试驱动开发和 Bug 诊断等流程。技能以普通文件形式分发，既可以通过 Claude Code 插件托管更新，也可以使用 <code>skills.sh</code> 安装到项目中自行修改。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者经常在 AI 已经开始编码后才发现双方对需求、术语或边界理解不一致，导致返工；同时，AI 生成的代码缺少测试和反馈闭环，问题往往在较晚阶段才暴露。项目通过 <code>/grill-me</code>、<code>/grill-with-docs</code>、<code>/tdd</code> 和 <code>/diagnosing-bugs</code> 等流程，将澄清、测试和调试变成可重复的操作。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：使用 Claude Code、Codex 或其他代码 Agent 开发真实应用的个人开发者和小型团队；希望把 TDD、ADR、领域语言、Issue 分诊等工程规范固定到日常 AI 开发流程中的技术负责人。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：使用 <code>npx skills@latest add mattpocock/skills</code> 安装技能，选择目标 Agent 和需要的技能，然后在项目中运行 <code>/setup-matt-pocock-skills</code> 完成 Issue 跟踪器、标签和文档目录配置。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在启动一个新功能前，通过 <code>/grill-with-docs</code> 澄清需求、统一项目术语，并同步生成 <code>CONTEXT.md</code> 和 ADR。</li>
+<li>在已有 TypeScript 或 Web 应用中，用 <code>/tdd</code> 先建立失败测试，再驱动 Agent 完成实现和重构。</li>
+<li>
+<p>在积累了大量模块耦合和历史代码的项目中，定期运行 <code>/improve-codebase-architecture</code>，生成架构改进候选并选择具体问题处理。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目没有引入复杂运行时，核心资产是按职责拆分的 Markdown 技能文件，因此可以跨模型、跨 Agent 调整和组合。它同时提供 Claude Code 的只读插件安装方式和可编辑文件安装方式，在集中更新与项目自主定制之间做了明确取舍。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都围绕技能内容和分发机制的细化，重点包括让子 Agent 调度描述保持跨运行环境兼容、在 Bug 诊断中明确脱敏 Secret、删减无效的时间估算和冗余措辞，以及统一文档的第三人称表达。项目在 2026-08-05 至 2026-08-06 持续合并变更并自动发布版本，说明当前阶段更偏向打磨提示词质量、跨 Agent 兼容性和插件发布流程，而不是扩展大型代码功能；不过贡献者数量仅 3 人，主要维护者仍是 Matt Pocock。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确提到 GSD、BMAD 和 Spec-Kit，认为它们倾向于接管完整开发流程，而本项目强调技能小型化、可组合和可修改，让开发者保留对流程的控制权。它们属于相近的问题空间，但 README 未提供系统性的功能或性能对比。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：安装本身较简单，但实际收益取决于团队是否愿意调整需求澄清、文档和测试习惯，不能仅靠安装命令自动改善代码质量。项目创建于 2026-02-03，却已达到 208869 个 Stars、18031 个 Forks 和 306 个开放 Issue，数据表现出极高关注度与较快演进速度，使用时应关注技能版本更新带来的流程或提示词行为变化。Claude Code 插件会自动更新，而 <code>skills.sh</code> 安装的文件需要自行执行更新；两种方式不应同时安装，否则可能出现技能重复。README 内容覆盖面较完整，但部分技能依赖项目已有的 Issue 跟踪器、测试体系和文档约定，首次配置仍有一定理解成本。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/mattpocock/skills">mattpocock/skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：资深 TypeScript 教育者与开源作者，在开发者社区拥有广泛影响力。
+<strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Shell，偏好类型系统、开发者工具与 AI 编程工作流。
+<strong>核心领域</strong>：主要聚焦 TypeScript 工程实践、类型安全、开发者教育与 AI 辅助编程。</p>
+<hr />
+<h3>✨ obra/superpowers (260949★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把编码 Agent 变成按“澄清需求、写设计、拆计划、测试先行、代码审查、收尾合并”流程工作的工程协作者。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：Superpowers 是一套面向编码 Agent 的软件开发方法论和技能框架，不是单一命令行工具。它通过可组合的 skills 和会话启动指令，让 Claude Code、Codex、Cursor、Gemini CLI、GitHub Copilot CLI、OpenCode 等 Agent 在写代码前先澄清目标、产出设计、拆解实施计划，并在执行中遵循 TDD、代码审查和工作区隔离流程。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：适合解决“Agent 一上来就改代码，结果需求没对齐、改动范围失控”的问题；也能缓解长任务中 Agent 偏离计划、缺少测试验证、改完后难以判断是否真的完成的情况。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合已经在日常开发中使用 Claude Code、Codex CLI、Cursor、Gemini CLI 等编码 Agent 的工程师或团队。也适合希望把 AI 编码流程制度化的技术负责人，尤其是重视 TDD、代码审查和可追踪计划的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：以 Codex CLI 为例，打开插件界面后搜索安装：<code>/plugins</code>，然后搜索 <code>superpowers</code> 并选择 <code>Install Plugin</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：可以用于让 Agent 先和你一起整理产品需求，再生成可审阅的设计文档；可以用于把一个较大的功能拆成 2-5 分钟粒度的工程任务，并让 Agent 分批执行和复查；也可以用于修复复杂测试失败，通过 systematic-debugging 流程定位根因，而不是反复猜测式修改。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目的核心设计是“技能触发 + 强制工作流”，把 brainstorming、writing-plans、test-driven-development、requesting-code-review、using-git-worktrees 等流程封装成 Agent 可执行的技能。它同时适配多个 Agent 宿主，并针对不同插件系统提供安装方式和会话启动 hook。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交集中在 v6.2.0、SDD（subagent-driven-development）计划作用域工作区、resume-based fix loop、Windows SessionStart hook、跨平台打包脚本和系统化调试修复上。可以看出项目近期重点不是单纯增加新 skill，而是在强化长任务执行的稳定性、计划隔离、失败修复闭环和多平台兼容性；提交频率较高，主维护者 Jesse Vincent 仍在密集推进，同时也有社区 PR 参与修复文档和脚本问题。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有明确列出直接竞品。它更像是横跨 Claude Code、Codex、Cursor、Gemini CLI 等 Agent 的“开发流程层”，而不是替代某一个具体编码助手。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间显示为 2025-10-09，仍属于较新的高速迭代项目；319 个 open issues 说明使用面较广，但也意味着边界问题和平台兼容细节仍在持续处理。README 文档较完整，覆盖多种宿主安装方式，不过不同 Agent 的插件机制差异较大，团队落地时需要分别安装和验证。近期涉及 SDD 生命周期、计划作用域工作区和修复循环调整，升级时应关注工作流行为变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Jesse Vincent 是具备较高社区可见度的长期 GitHub 开发者，凭借高星项目和近八千关注者在开源社区中具有显著影响力。
+<strong>技术栈偏好</strong>：技术栈以 Shell、JavaScript 和 TypeScript 为主，偏向脚本自动化、Web 工具与轻量级应用生态。
+<strong>核心领域</strong>：主要聚焦于开发者效率工具、AI/能力扩展类项目以及面向 Web 的内容与工具产品。</p>
+<hr />
+<h3>✨ goauthentik/authentik (23162★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：authentik 把 SAML、OAuth2/OIDC、LDAP、RADIUS 等登录协议集中到一个自托管身份平台里，用来统一管理内部应用和外部系统的单点登录。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：authentik 是一个开源 Identity Provider（IdP），面向现代 SSO 场景，核心能力是为应用提供统一认证、授权和身份接入。它支持 SAML、OAuth2/OIDC、LDAP、RADIUS 等常见协议，既能服务个人实验室和小团队，也提供面向生产集群和企业替换 Okta、Auth0、Entra ID、Ping Identity 的商业版本。</li>
+<li><strong>能解决什么痛点</strong>：当团队同时维护多个内部系统、第三方 SaaS 和遗留 LDAP 应用时，登录入口、用户权限和协议适配容易分散在各处，authentik 可以把这些认证流程收敛到一个自托管平台。对不想把核心身份系统完全交给云厂商的组织，它也提供了可自部署、可接入 Kubernetes 和云模板的替代方案。</li>
+<li><strong>适合谁用</strong>：适合需要统一管理内部应用登录的运维 SRE、平台工程团队和安全团队；也适合自托管服务较多、需要 SSO/OIDC/LDAP 接入的 homelab 用户和中小型技术团队。</li>
+<li><strong>怎么上手</strong>：README 推荐小型或测试环境使用 Docker Compose，大型环境使用 Kubernetes Helm Chart；文档未提供一行命令式快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>给 GitLab、Grafana、Wiki、内部管理后台等应用统一接入 OIDC 或 SAML 登录。</li>
+<li>在自建 Kubernetes 集群中部署身份中心，为多套业务系统提供统一认证入口。</li>
+<li>替换分散的 LDAP/RADIUS/SSO 配置，把 VPN、管理后台和遗留系统的身份接入集中维护。</li>
+<li><strong>技术看点</strong>：项目主体使用 Python，README 明确支持 Docker Compose、Kubernetes Helm、AWS CloudFormation 和 DigitalOcean Marketplace，部署路径覆盖从小规模测试到生产集群。协议覆盖面较广，SAML、OAuth2/OIDC、LDAP、RADIUS 都在官方定位中出现，适合做异构身份系统整合。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常密集，既有 OAuth2 provider 授权事件补测试、password input 必填标记修复、embedded outpost 启动死循环修复，也有 blueprints 条件模式、YAML 错误处理和 dry run 能力增强。提交中还包含 Django、Uvicorn、Sentry、CodeQL 等依赖和安全相关更新，以及字体包、文档站集成、翻译和 CI 调整，说明项目当前重点是持续打磨稳定性、自动化配置能力、文档生态和供应链维护，社区与机器人贡献都很活跃。</li>
+<li><strong>同类对比</strong>：README 明确提到可用于替换 Okta、Auth0、Entra ID、Ping Identity 等现有 IdP；差异在于 authentik 强调开源和自托管，同时提供企业版本用于更大规模身份管理。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2019 年，Star 超过 2.3 万、贡献者 583 人，更新频率很高，成熟度和社区活跃度都不错；但 Open Issues 达到 1141，说明需求和问题积压也不少，生产采用前需要评估当前版本的稳定性和待处理缺陷。它覆盖的协议和部署形态较多，上手不会像单一 OIDC 代理那样简单，建议先按官方 Docker Compose 文档验证流程，再规划高可用、备份、升级和企业功能边界。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/goauthentik/authentik">goauthentik/authentik</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 <code>authentik</code> 开源身份认证平台为核心，在自托管 IAM/SSO 社区具备较强影响力和较高关注度。
+<strong>技术栈偏好</strong>：主要采用 Python 构建核心服务，同时围绕 Helm、Terraform Provider 和 Go SDK 完善云原生部署与集成生态。
+<strong>核心领域</strong>：聚焦身份认证、单点登录、访问控制和企业级身份与权限管理。</p>
+<hr />
+<h3>✨ semantica-agi/semantica (2238★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把企业数据、Agent 决策和推理链路沉淀成可查询、可审计的上下文图谱，让 AI 系统在事后能说清楚“为什么这么做”。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Semantica 是一套面向 AI Agent 的图原生上下文基础设施，位于 LLM、向量库和 Agent 框架之下。它可以从文件、数据库、Databricks、Snowflake 等来源摄取数据，抽取实体、关系和事件，构建 Context Graph / Knowledge Graph，并记录决策、因果链路和来源证据。项目强调自托管、可审计、可替换后端，适合对可解释性和治理要求较高的系统。</li>
+<li><strong>能解决什么痛点</strong>：传统 RAG 往往只保存向量相似度，无法回答“某个 AI 决策依据了哪些事实、经过了哪些推理、是否违反规则”。在金融、医疗、法律、政府等场景中，团队还需要把分散在仓库、湖仓和文档里的数据转成带来源、带约束、可追溯的知识图谱，而不是再复制到第三方 SaaS 黑盒里。</li>
+<li><strong>适合谁用</strong>：适合正在构建高风险决策型 AI Agent 的 AI/ML 平台团队，以及需要从 Databricks、Snowflake、文档和业务系统中构建知识图谱的数据平台 / 知识工程团队。合规、风控和审计团队也可以用它追踪 AI 决策依据。</li>
+<li><strong>怎么上手</strong>：安装命令：<code>pip install semantica</code>；README 中还提供了 <code>semantica doctor</code> 用于快速检查本地环境。</li>
+<li><strong>可以用在哪些场景</strong>：可用于贷款审批、供应商选择等需要保留完整决策证据链的 Agent 系统；也可用于把企业湖仓表、文档和事件流转成可查询的内部知识图谱；还适合搭建带 SHACL 规则、PROV-O 来源记录和图推理能力的 AI 治理平台。</li>
+<li><strong>技术看点</strong>：项目同时支持 RDF 和 Labeled Property Graph 后端，README 提到 Oxigraph、Blazegraph、Jena、RDF4J、Neo4j、FalkorDB、Apache AGE、AWS Neptune 等可替换存储。治理层采用 W3C PROV-O、SHACL、OWL、SKOS，并提供 forward chaining、Rete、Datalog、SPARQL 等确定性推理能力，这比单纯向量检索更适合审计和规则约束场景。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在后端兼容性、图存储、Markdown 路径诊断、Qdrant metadata 规范化、DecisionEmbeddingPipeline 持久化后端支持、HybridSearch 非内存后端修复，以及 Knowledge Explorer 渲染循环修复。整体看项目仍处于快速迭代期，维护者和外部贡献者都在活跃提交，近期重点是补齐多后端稳定性、修复边界问题，并增强嵌入式图存储能力。</li>
+<li><strong>同类对比</strong>：README 明确对比了 Vector DB + RAG 和普通 LLM Memory：前者主要依赖 embedding 相似度，通常不保存决策历史、来源和规则执行记录；Semantica 的差异在于把决策、来源、冲突检测、时间快照和规则推理作为一等对象来管理。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025-06-25，时间不算长，但 Stars 和近期提交增长较快，说明热度和开发活跃度都较高。当前 Open Issues 为 16，问题数量不算大，不过近期提交中 bugfix 和后端兼容性修复较多，说明多存储后端和复杂管线仍在打磨；在生产环境采用前，建议重点验证所选图数据库、向量库和企业数据连接器的稳定性。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/semantica-agi/semantica">semantica-agi/semantica</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Semantica 是一个新兴但已获得一定社区关注的 AI 基础设施组织，核心仓库具备较强早期影响力。
+<strong>技术栈偏好</strong>：其技术栈明显偏向 Python，主要围绕语义基础设施、上下文管理与 AI 决策系统展开。
+<strong>核心领域</strong>：主要聚焦于面向 AGI/AI 应用的语义基础设施、上下文系统和智能决策框架。</p>
+<hr />
+<h3>✨ 666ghj/MiroFish (70370★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把新闻、政策草案、金融信号或小说文本喂进去，MiroFish 会生成一个多智能体数字沙盘，让成千上万个带记忆和性格的 Agent 互动，再输出预测报告。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：MiroFish 是一个基于多智能体模拟的 AI 预测引擎，核心流程包括种子信息抽取、GraphRAG 构建、角色生成、仿真运行和预测报告生成。用户用自然语言描述预测需求后，系统会构造一个可交互的平行数字世界，并允许继续和模拟世界中的 Agent 或 ReportAgent 深度对话。</li>
+<li><strong>能解决什么痛点</strong>：适合处理“真实事件还没发生，但需要提前推演多种后果”的问题，例如舆情变化、政策影响、剧情走向或金融事件反应。相比手写规则或只问单个 LLM，它试图通过大量角色之间的持续互动来观察群体行为的涌现结果。</li>
+<li><strong>适合谁用</strong>：适合研究多智能体仿真、GraphRAG、LLM 应用编排的 Python / AI 工程师；也适合需要做舆情推演、内容创作推演、政策或事件情景分析的产品团队和研究人员。</li>
+<li><strong>怎么上手</strong>：配置 <code>LLM_API_KEY</code> 和 <code>ZEP_API_KEY</code> 后运行：<code>npm run setup:all &amp;&amp; npm run dev</code></li>
+<li><strong>可以用在哪些场景</strong>：可用于把突发新闻或舆情材料转成公共讨论模拟，观察不同人群立场如何演化；可用于小说、剧本或世界观文本的结局推演，生成可交互的角色社会；也可用于政策草案、金融信号等材料的情景沙盘，提前比较不同变量注入后的可能走势。</li>
+<li><strong>技术看点</strong>：项目采用前后端双服务架构，后端依赖 Python 3.11-3.12，前端依赖 Node.js 18+，并通过 OpenAI SDK 兼容格式接入大模型。README 明确提到流程里包含 GraphRAG、长期记忆、Persona 生成、动态时间记忆更新，以及基于 OASIS 的多智能体社会交互模拟能力。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交主要集中在 2026 年 7 月下旬到 8 月初，重点不是大功能扩张，而是修复 Zep Cloud 集成、ontology / profile 字段规范化、JSON 生成加固、依赖漏洞更新和 Star History 自动化。提交者除核心作者外还有 BaiFu、octo-patch、ygh1254 等，说明项目仍在维护，并且近期开发方向偏向稳定现有多智能体记忆与知识图谱链路。</li>
+<li><strong>同类对比</strong>：README 明确提到 MiroFish 的仿真引擎由 CAMEL-AI 的 OASIS 支撑；MiroFish 更像是在 OASIS 之上封装了种子材料输入、GraphRAG、预测需求解析、报告生成和可视化交互的一整套应用流程，而不是只提供底层社交仿真框架。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025-11-26，时间不算长，但 Star 和 Fork 增长很快，仍有 113 个 Open Issues，需要按快速迭代项目看待。上手门槛不低，需要同时准备 Node.js、Python、uv、LLM API Key 和 Zep Cloud；README 也提示大模型消耗较高，建议先用少于 40 轮的小规模仿真测试。近期大量修复集中在 Zep 和 ontology 兼容性上，说明相关接口和数据结构仍可能继续调整。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/666ghj/MiroFish">666ghj/MiroFish</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以少量高星 Python 项目获得显著社区关注，在 AI 开源工具方向具备较强传播力。
+<strong>技术栈偏好</strong>：明显偏好 Python，技术方向集中在 AI Agent、智能搜索与自动化应用原型。
+<strong>核心领域</strong>：主要聚焦大模型应用、智能代理与 AI 驱动的信息检索/交互工具。</p>
+<hr />
+<h3>✨ chenyme/grok2api (7104★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把多个 Grok Build、Grok Web、Grok Console 账号汇成一个网关，对外提供 OpenAI / Anthropic 兼容 API，并带有 React 管理后台。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：grok2api 是一个 Go 编写的多账号 Grok API 网关，内置 React 管理控制台。它可以管理 Build、Web、Console 三类 Grok 账号池，负责账号同步、额度同步、模型发现、请求路由、失败重试、审计计费和媒体任务管理，并向客户端暴露 <code>/v1/*</code> 风格的统一接口。</li>
+<li><strong>能解决什么痛点</strong>：适合解决“手里有多个 Grok 账号，但客户端只想接一个 OpenAI / Anthropic 兼容入口”的问题；也能处理账号额度、并发、代理出口、模型能力差异、视频 / 图片任务等在手写转发服务里很容易变乱的部分。</li>
+<li><strong>适合谁用</strong>：适合需要自建 Grok API 中转层的后端工程师、AI 应用开发者，以及需要统一管理多账号、多模型路由、代理出口和客户端密钥的运维或平台团队。</li>
+<li><strong>怎么上手</strong>：<code>git clone https://github.com/chenyme/grok2api.git &amp;&amp; cd grok2api &amp;&amp; cp config.example.yaml config.yaml</code>，随后在 <code>config.yaml</code> 填入 <code>jwtSecret</code>、<code>credentialEncryptionKey</code> 和管理员账号，再执行 <code>docker compose up -d</code> 启动服务。</li>
+<li><strong>可以用在哪些场景</strong>：给 Codex、Claude Code、OpenAI SDK 或 Anthropic SDK 提供统一的 Grok 后端；搭建团队内部的多账号 Grok 访问网关，统一分配客户端 Key 和审计用量；集中管理 Grok Web / Console 的图片、视频、Base64、SSE 输出和本地媒体归档。</li>
+<li><strong>技术看点</strong>：后端采用 Go，前端是 React 19，官方镜像支持 <code>linux/amd64</code> 和 <code>linux/arm64</code>。架构上把 Gateway、Provider Registry、Account Sync、Egress Manager、Audit 等模块拆开，并为不同 Provider 保留独立账号状态、额度、健康度、并发和模型能力，路由失败时也限定在选定 Provider 内部处理。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在 2026-08-07，说明项目维护非常活跃。近期重点包括 Build 账号 bot-risk 调度排除、CLI bot 标记来源校验、URL 图片摄取 SSRF 防护、视频输入的临时图片暂存、多 Provider 流式空闲超时保护，以及订阅代理配置加固；整体方向是在补强安全边界、媒体输入稳定性、代理订阅和多账号调度可靠性。多条 PR 来自不同贡献者，社区参与度不低。</li>
+<li><strong>同类对比</strong>：README 没有明确列出直接竞品；提到的 DEEIX-Chat 更像是赞助 / 关联推荐的自托管 AI Chat 平台，不是明确的同类对标。因此暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025-10-10，增长快、更新频繁，但仍属于较新的基础设施项目，接口和配置有继续变化的可能。README 明确提示仅供技术研究和学习，使用时需要遵守 Grok 官方条款和当地法律；另外 <code>credentialEncryptionKey</code> 在存储凭据后不要轮换，否则会影响已保存账号凭据。配置项覆盖账号、代理、媒体、密钥、数据库和运行时组件，上手前需要认真阅读配置说明。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/chenyme/grok2api">chenyme/grok2api</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在开源社区具备较强个人影响力，代表项目已获得数千级 stars，尤其在 AI API 工具方向有明显传播度。
+<strong>技术栈偏好</strong>：主要使用 Python、Go 和 TypeScript，偏好构建后端服务、API 封装、自动化工具与 AI 应用工具链。
+<strong>核心领域</strong>：主要聚焦 AI 接口适配、开源效率工具、多媒体翻译与开发者工具生态。</p>
+<hr />
+<h3>✨ jdx/mise (32005★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把项目需要的 Node、Python、Terraform 等工具版本、环境变量和构建任务写进同一个 <code>mise.toml</code>，新终端、CI 和新同事拉代码后都按同一套开发环境启动。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：<code>mise</code> 是一个 Rust 写的开发环境 CLI，核心是用 <code>mise.toml</code> 管理项目依赖的开发工具、环境变量和任务脚本。它可以安装并切换 Node、Python、Go、Terraform、cmake 等大量工具版本，也能按项目目录加载 <code>.env</code> 或配置里的环境变量，并用 <code>mise run</code> 执行构建、测试、部署等任务。</li>
+<li><strong>能解决什么痛点</strong>：多人协作时，本地 Node/Python/Terraform 版本不一致、CI 和本机环境不一致，容易出现“我这里能跑”的问题；另一个常见痛点是环境变量、工具版本和脚本散落在 README、<code>.env</code>、Makefile、package.json 里，维护成本高。</li>
+<li><strong>适合谁用</strong>：适合同时维护多语言项目的后端、前端、DevOps/SRE 工程师；也适合需要把本地开发环境和 CI 环境统一起来的基础设施、平台工程团队。</li>
+<li><strong>怎么上手</strong>：最简安装命令是 <code>curl https://mise.run | sh</code>，然后按 shell 类型加入激活脚本，例如 <code>echo 'eval "$(~/.local/bin/mise activate zsh)"' &gt;&gt; ~/.zshrc</code>。</li>
+<li><strong>可以用在哪些场景</strong>：统一团队项目里的 Node、Go、Python、Terraform 版本；在基础设施仓库中把 <code>terraform plan/apply</code>、AWS 校验等流程封装成 <code>mise run</code> 任务；为不同项目目录自动加载对应的环境变量和 <code>.env</code> 文件，减少手动 export。</li>
+<li><strong>技术看点</strong>：项目用 Rust 实现，定位是单个 CLI 覆盖 dev tools、env vars、task runner 三类能力。README 特别强调执行 <code>which node</code> 会得到真实路径而不是 shim，这说明它在工具解析和命令执行体验上做了不少设计取舍。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026-08-05 到 2026-08-07，活跃度很高；方向上既有功能扩展，比如 Flatpak user-scoped packages、pipx per-tool registry URL、shim fallback 设置，也有大量边界修复，覆盖 lockfile、Python、Rust、vfox、task、npm shim、GitHub release age 等模块。提交者除 jdx 外还有多位社区贡献者，说明项目维护节奏快，且真实用户场景正在持续反馈到实现里。</li>
+<li><strong>同类对比</strong>：README 未直接点名竞品，暂无明确同类对标；从功能范围看，它把版本管理、环境变量加载和任务运行合在一个配置文件和 CLI 里，这是它相对单一职责工具的主要差异。</li>
+<li>
+<p><strong>注意事项</strong>：项目 2023 年创建但已有 32005 stars、656 contributors，成熟度和社区热度都较高；Open Issues 只有 42 个，但 README 说明项目主要使用 GitHub Discussions 承接反馈，不能只看 issue 数判断维护压力。近期提交密集且涉及 shim、lockfile、runtime options 等核心路径，升级前建议查看 changelog 或 release note，尤其是 CI 和团队共享环境中使用时。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/jdx/mise">jdx/mise</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：jdx 是高产且具备显著社区影响力的独立开发者，其开源项目在开发者工具领域获得了较高关注度。
+<strong>技术栈偏好</strong>：明显偏好 Rust，技术方向集中在高性能、可靠性强的命令行工具和开发基础设施。
+<strong>核心领域</strong>：主要聚焦开发者生产力工具、运行时/环境管理以及命令行生态建设。</p>
+<hr />
+<h3>✨ Significant-Gravitas/AutoGPT (186050★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：AutoGPT 让用户用自然语言描述目标后，生成并运行可持续执行任务的 AI Agent 工作流，也支持用可视化画布精确编排每一步。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：AutoGPT 是一个面向 AI Agent 的开源平台，核心能力包括用对话创建 Agent、在仪表盘管理运行状态与成本、从 Marketplace 复用社区 Agent，以及用 Build 画布拖拽编排工作流。它既提供托管版 AutoGPT Platform，也支持自托管部署；原始的独立 AutoGPT Classic 仍保留在 <code>classic/</code> 目录下。</li>
+<li><strong>能解决什么痛点</strong>：当团队需要把“查资料、整理上下文、调用外部系统、定时执行、回报结果”串成长期运行的流程时，手写脚本和临时提示词很难维护。AutoGPT 把模型、触发器、集成平台、运行记录和成本管理放在同一个 Agent 平台里，减少从原型到可运行流程之间的工程拼装。</li>
+<li><strong>适合谁用</strong>：适合想把内部运营、销售研究、客服分流、工程告警初筛等流程自动化的工程团队；也适合愿意自托管、自己管理模型 API Key 和基础设施的 Python / 后端开发者。</li>
+<li><strong>怎么上手</strong>：macOS / Linux 自托管可直接运行：<code>curl -fsSL https://setup.agpt.co/install.sh -o install.sh &amp;&amp; bash install.sh</code></li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>每天从内部系统和外部信息源生成管理层简报，并按计划自动运行。</li>
+<li>在销售会议前自动研究客户账户、整理背景资料和待跟进事项。</li>
+<li>对客服请求收集上下文、草拟回复，并把需要人工处理的工单标记出来。</li>
+<li><strong>技术看点</strong>：项目采用 Python 为主，围绕 Agent 运行时、可视化工作流构建器、平台集成和托管 / 自托管双形态展开。README 明确区分 <code>autogpt_platform/</code> 的 Polyform Shield 许可与 <code>classic/</code> 等 MIT 许可，这对二次开发和商业使用边界有实际参考价值。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，重点集中在平台化能力和 Copilot / dream 会话稳定性：包括 Better Auth 替换 Supabase Auth、LLM 模型目录统一、专家市场与 expert-scoped sessions、语音 onboarding，以及 SSRF 防护和下载限制等安全修复。整体看项目已从早期“独立自动代理”演进为完整的托管 / 自托管 Agent 平台，并在持续补齐认证、市场、运行正确性、CI 和前端体验。</li>
+<li><strong>同类对比</strong>：README 没有明确列出竞品或对标项目；更清晰的内部对比是托管 AutoGPT Platform 与 Self-hosted：前者免基础设施和模型 Key 配置、按用量付费，后者免费自部署但需要自己维护 Docker、模型提供商和运行环境。</li>
+<li>
+<p><strong>注意事项</strong>：项目体量很大，Stars 和贡献者数量都高，但仍有 507 个 Open Issues，说明功能面广、维护负担不低。近期提交涉及认证替换、模型目录切换、Copilot 运行时修复等核心路径，自托管用户升级前应关注变更说明和配置兼容性；另外平台目录采用 Polyform Shield 许可，不能简单按全仓库 MIT 来理解商业托管用途。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Significant-Gravitas/AutoGPT">Significant-Gravitas/AutoGPT</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：AutoGPT 是以 AutoGPT 项目为核心形成的高关注度 AI Agent 开源组织，在自主智能体社区具有显著影响力和话题牵引力。
+<strong>技术栈偏好</strong>：技术栈明显偏向 Python，并辅以 Jupyter Notebook 进行实验、评测和能力验证，方向集中在大模型应用工程。
+<strong>核心领域</strong>：主要聚焦于自主 AI Agent、插件生态、基准评测以及面向代码能力的智能体应用。</p>
+<hr />
+<h3>✨ google/guava (51651★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Guava 把 Google 在 Java 项目中长期使用的集合、并发、I/O、哈希、字符串和基础类型处理能力打包成一套通用核心库。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Guava 是 Google 维护的 Java 核心类库集合，面向 JDK 1.8+ 和 Android 提供不同构建版本。它包含 Multimap、Multiset、不可变集合、图结构库，以及并发、I/O、哈希、原始类型、字符串处理等常用能力，适合直接作为 Java 项目的基础依赖。</li>
+<li><strong>能解决什么痛点</strong>：Java 标准库在多值 Map、不可变集合、集合视图、字符串切分、哈希和并发辅助工具等场景下经常需要重复造轮子，Guava 提供了成熟实现。对大型 Java 项目来说，它还能减少团队内部各写一套基础工具类导致的行为不一致和维护成本。</li>
+<li><strong>适合谁用</strong>：适合后端 Java 工程师、Android 开发者，以及维护公共 Java SDK / 中间件库的团队。对于需要长期保持二进制兼容、依赖稳定基础库的企业级 Java 项目尤其合适。</li>
+<li><strong>怎么上手</strong>：Maven：<code>com.google.guava:guava:33.6.0-jre</code>；Android 使用 <code>com.google.guava:guava:33.6.0-android</code>。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>在业务后端中使用 <code>ImmutableList</code>、<code>ImmutableMap</code> 固化配置快照，避免运行期被意外修改。</li>
+<li>用 <code>Multimap</code> / <code>Multiset</code> 处理一对多索引、标签聚合、词频统计等标准 <code>Map&gt;</code> 写起来啰嗦的场景。</li>
+<li>在公共 Java 库中复用 Guava 的字符串、哈希、并发和基础类型工具，减少自维护工具类。</li>
+<li><strong>技术看点</strong>：Guava 同时提供 JRE 与 Android 两种 flavor，并明确区分 Java 8+ 与 Android 兼容需求。README 特别强调非 <code>@Beta</code> API 的长期二进制兼容承诺，这对库作者做依赖决策很关键。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交以 Javadoc 修正、API 文档链接、类型安全改进、依赖升级、GitHub Actions 安全配置和 Android API Level 24 兼容检查为主，也有一次对 <code>ImmutableMap</code> 集合视图缓存的实现调整。整体看项目仍在高频维护，但近期重点不是大功能扩张，而是兼容性、文档质量、构建安全和内部实现细节的持续打磨。</li>
+<li><strong>同类对比</strong>：README 未明确提到竞品；Guava 更像 Java 生态中的基础设施型依赖，而不是针对某个单一库的替代品。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间长、Star 和 Fork 数很高，成熟度强，但 Open Issues 达 746 个，说明使用面广、历史包袱和兼容诉求也多。<code>@Beta</code> API 可能随时变更或移除，库作者不应直接暴露这类 API；序列化形式也不保证长期稳定，不适合把 Guava 对象持久化后假定未来版本可读。Guava 运行时还需要 <code>com.google.guava:failureaccess:1.0.3</code>，并有若干注解类依赖，需要在依赖治理时留意。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/google/guava">google/guava</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Google 是全球开源生态中的顶级组织级参与者，凭借大量高星基础项目和规范类仓库持续影响开发者实践。
+<strong>技术栈偏好</strong>：其技术栈以 C++、Java 和 HTML 为主，偏向高性能基础设施、通用开发库、工程规范与前端设计资源。
+<strong>核心领域</strong>：主要聚焦基础软件、开发者工具、工程标准化、数据库存储组件和开源设计体系。</p>
+<hr />
+<h3>✨ unclebob/swarm-forge (1759★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把多个 AI 编程代理分别放进 tmux 会话和 Git worktree，通过配置好的角色提示词与文件交接协议，让它们像一支有明确分工的软件开发小组协同完成任务。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：SwarmForge 是一个基于 Clojure、Babashka、tmux 和 Git worktree 的本地 AI 代理编排系统。开发者可以配置 <code>specifier</code>、<code>coder</code>、<code>cleaner</code>、<code>architect</code>、<code>QA</code> 等角色，为每个角色指定不同的 AI 后端，并通过 handoff 文件在代理之间传递任务。项目提供 <code>two-pack</code>、<code>four-pack</code>、<code>six-pack</code> 三种协作流程，分别对应快速实现、规格驱动开发和完整质量审查。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：</p>
+</li>
+<li>多个 AI 代理同时修改同一工作目录时容易互相覆盖、状态混乱，SwarmForge 使用独立 Git worktree 和角色分工隔离各代理的工作空间。</li>
+<li>
+<p>代理之间依赖人工复制上下文或直接发送终端消息，容易遗漏任务和交接状态；项目通过 <code>swarm_handoff.sh</code>、<code>ready_for_next.sh</code>、<code>done_with_current.sh</code> 及 handoff 守护进程管理交接流程。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：希望在本地同时运行 Codex、Claude、Copilot 或 Grok 等多个 AI 编程代理的个人开发者和技术负责人；需要把需求分析、编码、重构、架构审查、QA 拆成固定流程的团队也适合尝试。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：选择可运行分支并下载后启动，例如 <code>BRANCH=four-pack &amp;&amp; curl -L "https://github.com/unclebob/swarm-forge/archive/refs/heads/${BRANCH}.tar.gz" | tar -xz --strip-components=1 &amp;&amp; ./swarm</code>。使用前需要准备 <code>zsh</code>、<code>git</code>、<code>tmux</code>、Babashka，以及至少一个已配置的 AI 代理后端。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>为中大型后端功能建立“需求规格编写 → TDD 实现 → 重构 → 架构审查 → QA 验证”的本地自动化流程。</li>
+<li>在需要同时修改多个模块的遗留系统重构中，让不同代理分别负责实现、依赖方向检查、重复代码审查和测试强化。</li>
+<li>
+<p>为个人开发者搭建可观察的 AI 编程流水线，在多个终端窗口中实时查看各代理的执行状态和交接记录。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目没有引入复杂的集中式服务，而是用 tmux 管理代理进程、用 Git worktree 隔离代码、用本地 handoff 文件和 Babashka 守护进程传递任务，整体部署成本较低。角色拓扑、后端选择、提示词和 constitution 规则均由项目目录中的配置文件控制，便于针对不同工作流定制。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 6 月至 7 月，开发活动较连续，重点是完善编排可靠性和交接协议，而不是大规模增加新角色。例如加入关闭 swarm 的脚本、强制链式交接向下游转发、要求角色前缀 check-in、修复 handoff 守护进程退出、兼容现代 tmux、支持额外 CLI 参数和防止系统休眠。提交几乎都由 Robert C. Martin 完成，另有 Jan 参与 iTerm2 适配，说明项目当前仍以核心维护者主导为主；从 <code>4</code> 位贡献者和 <code>18</code> 个开放 Issue 看，社区规模及协作广度仍然有限。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确提到竞品或直接对标项目。它的明显定位是本地、终端可观察、基于配置和 Git worktree 的多代理协作编排，而不是提供云端代理运行平台或独立的 AI 模型服务。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间为 2026 年 4 月，虽然近期更新频繁，但整体成熟度和长期兼容性仍需观察。上手需要同时理解 tmux、Git worktree、Babashka、不同 AI CLI 后端及项目配置，技术门槛高于普通单代理工具；README 也要求直接从特定工作流分支下载，不能把 <code>main</code> 当作可运行配置使用。角色交接、终端适配和后端 CLI 参数仍在持续调整，升级时可能影响现有工作流；此外，多代理并行执行会增加 API 费用、上下文管理和结果审核成本，README 还特别提醒不要购买所谓的 <code>bankrbot SWARM</code> 代币。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/unclebob/swarm-forge">unclebob/swarm-forge</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：软件工程与整洁代码领域的权威人物，拥有广泛的开发者影响力。
+<strong>技术栈偏好</strong>：偏好 Clojure、Java 和 C，关注编程实践、软件设计与代码质量。
+<strong>核心领域</strong>：软件工程方法论、代码质量、架构设计与开发者教育。</p>
+<hr />
+<h3>✨ denoland/celld (2052★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把 Cloudflare Workers 和 Durable Objects 搬到自有机器上运行，让每个对象拥有独立的 SQLite 数据库，并通过 S3 兼容存储完成持久化与节点迁移。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：<code>celld</code> 是一个用 Rust 编写的自托管运行时，内置 V8，可执行 Wrangler 打包的 Worker 和 Durable Object。每个 Durable Object 对应一个独立的 SQLite 数据库，节点之间只通过用户自己的 S3 兼容存储共享部署、状态和所有权记录，不依赖独立控制平面或共识服务。</li>
+<li><strong>能解决什么痛点</strong>：需要 Durable Objects 的团队不必把业务状态和运行环境完全绑定在 Cloudflare 上，可以将数据和计算部署到自有基础设施或兼容 S3 的对象存储中。对象级 SQLite 分片也能降低共享数据库在高并发下的锁竞争，以及单个数据库故障影响整个应用的风险。</li>
+<li><strong>适合谁用</strong>：使用 Cloudflare Workers、Wrangler 和 Durable Objects 模型开发有状态边缘应用的团队；希望自建运行环境、控制数据存储位置，或在 AWS S3、Cloudflare R2 等对象存储上运行分布式 Worker 的平台工程师和 SRE。</li>
+<li><strong>怎么上手</strong>：安装并部署一个 Worker 项目后启动节点：<code>curl -fsSL https://celld.dev/install.sh | sh &amp;&amp; celld deploy . --bucket s3://my-cells-bucket &amp;&amp; celld --bucket s3://my-cells-bucket --listen 0.0.0.0:8080 --advertise 10.0.0.12:8080</code></li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>在自有服务器或私有网络中运行带 Durable Object 状态的实时协作、房间状态或在线连接服务。</li>
+<li>使用 Cloudflare R2 或 AWS S3 保存对象状态，同时在多台可替换节点上承载 Worker 计算。</li>
+<li>为内部边缘服务搭建无需独立控制平面的轻量集群，例如按名称路由的会话、设备状态或租户状态服务。</li>
+<li><strong>技术看点</strong>：项目以对象存储作为分布式系统的持久化事实源，通过对象存储的 compare-and-swap 竞争 cell 所有权，避免引入成员管理、故障检测和共识组件。每个 cell 独立使用 SQLite，配合空闲休眠、状态复制和压力下的 LRU 释放，形成按对象粒度的资源管理模型。</li>
+<li><strong>近期动向与发展方向</strong>：项目在 2026 年 8 月 2 日至 5 日连续发布 <code>v0.0.1</code>、<code>v0.0.2</code> 和 <code>v0.1.0</code>，提交者均为 Ryan Dahl，显示近期重点集中在首个可用版本的快速迭代和发布打磨，而非社区并行开发。README 已覆盖部署、节点诊断、节点间认证、压力释放和安全限制，后续方向明显包括 Workers/Durable Objects 兼容性完善，以及分布式协议在故障注入下的确定性验证。</li>
+<li><strong>同类对比</strong>：README 未明确列出竞品。其明显定位差异是将 Cloudflare Durable Objects 的运行模型自托管化，并用 S3 兼容存储承担状态持久化、节点发现和所有权协调，而不是依赖厂商托管的控制平面。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 4 月，当前仅有 1 位贡献者、14 个 Open Issues，且最近版本仍处于 <code>0.1.0</code> 阶段，成熟度和兼容性仍需谨慎评估。Worker 与 Durable Objects 的兼容面仍在演进，README 明确表示公开测试主要覆盖独立引擎烟测，完整兼容性测试和分布式故障模拟会在发布前运行。节点间 HTTP 默认不终止 TLS，生产环境应使用可信私网或 WireGuard、Tailscale 等加密网络；S3 存储及其凭据相当于整个集群的管理员权限，公开部署前还应阅读项目的 limitations 和 security 文档。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/denoland/celld">denoland/celld</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：知名 JavaScript/TypeScript 运行时生态组织，在开发者工具与现代 Web 基础设施领域具有较高影响力
+<strong>技术栈偏好</strong>：以 Rust 构建高性能运行时与底层组件，结合 TypeScript 发展标准库、工具链和开发体验
+<strong>核心领域</strong>：聚焦 JavaScript/TypeScript 运行时、Web 开发工具链及相关基础设施</p>
+<hr />
+<h3>✨ K2SOsint/Legendary_OSINT (1254★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把人员社交、域名基础设施、钓鱼邮件、恶意软件、暗网泄露、地理空间、商业情报等 OSINT 资源按调查主题整理成一套可直接查阅的 Markdown 目录。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个面向调查工作的 OSINT 资源清单，不提供统一的软件安装包，而是集中收录第三方工具、数据库、搜索引擎、情报源和学习材料。README 将内容拆分为 25 个主题文档，覆盖人员搜索、航空与船舶追踪、域名与 IP、邮件调查、恶意软件分析、公司信息、政府记录、自动化侦察、报告可视化等方向。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：调查人员不必在多个 Telegram 群组、新闻通讯、GitHub 仓库和个人导航页之间反复寻找合适资源，可以按任务类型快速定位工具。面对一个邮箱、域名、公司、航班或可疑文件时，也能从对应分类开始建立调查路径，减少遗漏常用数据源的情况。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合欺诈调查员、KYC/AML 分析师、网络威胁情报（CTI）分析师，以及需要开展人员、公司、基础设施或公开信息核查的安全团队。对刚开始学习 OSINT 的研究人员也有参考价值，但具体工具的使用方法仍需分别阅读第三方文档。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：项目未提供安装流程或代码示例，直接打开 <a href="https://github.com/K2SOsint/Legendary_OSINT">README</a> 并进入对应主题文档即可；例如调查域名和 IP 时可先查看 <code>docs/infra-domains.md</code>，分析恶意软件或威胁情报时可查看 <code>docs/malware-cti.md</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>处理钓鱼邮件事件时，从邮件、域名、IP 和恶意软件分类分别寻找解析、取证和情报查询资源。</li>
+<li>开展 KYC/AML 或欺诈调查时，组合人员社交、商业信息、政府法律记录和新闻监控资源核验个人或企业背景。</li>
+<li>
+<p>进行 CTI 研判时，通过基础设施、暗网泄露、恶意软件、情报订阅源和归档服务补充攻击组织或 IOC 的公开线索。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用纯 Markdown 分主题维护，目录结构直观、阅读成本低，适合复制到团队内部知识库或调查手册中。仓库使用 CC0 1.0 Universal 许可，并通过 <code>.lycheeignore</code> 等文件维护链接检查相关内容，重点在资源编目而非代码实现。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近的提交主要集中在更新 <code>malware-cti.md</code>、<code>learning.md</code>、<code>people-social.md</code> 和 <code>infra-domains.md</code> 等资源分类，说明项目仍在持续补充工具和资料，没有明显的代码重构或功能开发。提交几乎都由 Henri 完成，贡献者总数为 3，维护活跃度尚可，但社区协作程度相对有限；2026 年 3 月和 4 月仍有更新，演进方向更偏向扩充和校正资源目录。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。该项目的定位是跨主题 OSINT 资源索引，差异主要来自分类覆盖范围和收录内容，而不是独立工具功能或自动化调查流程。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目本身不负责第三方工具的安全性、可用性或合法性，README 已明确提醒用户在使用前自行审查并负责任地使用。仓库创建于 2025 年 9 月，当前有 8 个 Open Issues、179 个 Forks，但只有 3 名贡献者，且近期更新高度集中于单一维护者；因此适合作为资源入口，不宜直接当作经过团队审核的生产级工具清单。文档以链接和分类为主，未提供统一的快速上手教程，部分外部服务也可能存在收费、地区限制、访问失效或隐私合规风险。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/K2SOsint/Legendary_OSINT">K2SOsint/Legendary_OSINT</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在开源情报与网络安全细分社区具备一定影响力，代表项目获得较高关注度。
+<strong>技术栈偏好</strong>：主要使用 JavaScript，偏好浏览器工具、信息采集与加密相关项目开发。
+<strong>核心领域</strong>：聚焦开源情报（OSINT）、网络威胁情报（CTI）与加密领域研究。</p>
+<hr />
+<h3>✨ pranshuparmar/witr (19529★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：输入一个进程、端口、容器或文件，witr 会沿着父子进程、服务管理器和容器等关系，追溯出它为什么会出现在当前系统里。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：witr 是用 Go 编写的系统溯源工具，既提供命令行输出，也提供交互式 TUI 界面。它不只显示某个进程或端口当前是什么状态，还会把 <code>systemd → PM2 → node</code> 这类启动链路串起来，并支持机器可读的 JSON 输出。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：</p>
+</li>
+<li>服务器上发现一个陌生端口时，不必分别运行 <code>ps</code>、<code>lsof</code>、<code>ss</code>、<code>systemctl</code> 和 <code>docker ps</code>，再手工拼接它们之间的关系。</li>
+<li>
+<p>排查“服务明明停了却又自动启动”或“容器里的进程由谁拉起”时，可以直接查看从最终对象回溯到启动源头的完整链路。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合负责 Linux、macOS、Windows 或 FreeBSD 主机排障的运维工程师和 SRE；也适合需要处理本地开发环境中端口冲突、后台进程残留和容器进程问题的后端开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：Unix 系统可直接执行 README 提供的安装命令：
+  安装后使用 <code>witr</code> 命令进行进程、端口、容器或文件溯源；具体查询参数示例在当前提供的 README 素材中暂未提供。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>部署 Node.js、Java 或 Python 服务后，通过端口反查实际监听进程及其上游启动者。</li>
+<li>排查 systemd、Supervisor、PM2 等多层守护关系，确认某个服务为何在手动停止后重新出现。</li>
+<li>
+<p>在 Docker 或其他容器环境中定位宿主机、容器和应用进程之间的启动关系。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 Go 构建单一静态二进制，覆盖 Linux、macOS、Windows 和 FreeBSD，并通过 Homebrew、APT、Conda、Winget、NPM 等多个渠道分发。CLI、JSON 和 TUI 三种输出形态兼顾脚本自动化、人工排障和交互式探索，产品定位比较明确。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在 2026 年 7 月，提交频率较高，且有 Claude 和外部贡献者参与。近期重点明显偏向 Playground 交互演示、移动端适配、TUI 展示、安装弹窗、文档整理、<code>llms.txt</code> 和匿名访问统计，说明项目正在加强新用户引导、产品展示和 AI/代理可读性；从给出的记录看，近期没有明显的核心架构重构或大规模功能改写。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确将 <code>ps</code>、<code>top</code>、<code>lsof</code>、<code>ss</code>、<code>systemctl</code> 和 <code>docker ps</code> 作为对照。它们分别提供进程、资源、端口、服务或容器状态，而 witr 的差异在于把这些信息组织成“谁启动了它、经过哪些中间层、为什么还在运行”的因果链。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 12 月，当前已有 19529 个 Stars、634 个 Forks 和 39 位贡献者，且仅有 7 个 Open Issues，社区关注度和维护活跃度都较高，但项目整体仍属于较新的工具。README 的安装渠道和平台覆盖写得较完整，不过当前素材中的命令行参数、权限要求、不同操作系统下的能力差异及异常场景说明不够具体；涉及系统进程、端口和容器信息时，实际可见范围可能受操作系统权限限制。多种社区包由各自维护者打包，版本可能落后于 GitHub 最新发布版。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/pranshuparmar/witr">pranshuparmar/witr</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以高关注度开源项目 <code>witr</code> 为代表，在开发者工具领域具备一定社区影响力。
+<strong>技术栈偏好</strong>：偏好使用 Go 构建工具类项目，同时使用 JavaScript、HTML 进行 Web 与交互式实验开发。
+<strong>核心领域</strong>：主要聚焦开发者工具、命令行应用及轻量级创意项目。</p>
+<hr />
+<h3>✨ google/skills (16094★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把 Google Cloud、Gemini、GKE、BigQuery、Google Ads 等产品的操作知识整理成可被 AI Agent 按需调用的技能目录，让 Agent 能按规范完成配置、部署、排障和查询。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是 Google 官方维护的 Agent Skills 仓库，按 AI/ML、基础设施、数据库与分析、开发者工具、监控、安全、广告等领域提供大量 <code>SKILL.md</code> 技能说明。每项技能包含特定产品的操作流程、命令生成规则、配置建议和故障排查指导，并可通过 <code>skills.sh</code> 或插件机制安装到不同 Agent harness 中。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者使用 AI Agent 操作 GCP 时，容易生成缺少参数校验、项目上下文错误或不符合 Google 产品最佳实践的命令；其中的 <code>gcloud CLI Skill</code>、GKE、Cloud Monitoring 和 Well-Architected Framework 技能可约束命令生成、先执行 <code>--validate-only</code>（若支持）并要求用户确认高风险操作。面对 GCP 产品众多、文档分散的问题，Agent 也可以通过对应技能获得更聚焦的操作流程，而不必每次从零理解产品文档。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：使用 Claude Code、Codex、Antigravity CLI 等 Agent 工具管理 Google Cloud 资源的云平台工程师、SRE 和后端开发者。需要让 AI Agent 辅助完成 Gemini/Agent Platform、BigQuery、GKE、Cloud Run、Google Ads API 等产品开发或运维工作的团队也适合使用。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：执行 <code>npx skills add google/skills</code>，随后从交互式安装流程中选择需要的技能。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>使用 GKE 部署 AI 推理服务，并让 Agent 辅助生成清单、配置扩缩容和定位 TPU/GPU 故障。</li>
+<li>在 BigQuery 中设计 AI/ML、数据血缘或持续查询流程，由 Agent 辅助生成查询和资源操作步骤。</li>
+<li>为 Cloud Run、Cloud SQL、Cloud Storage、Cloud Logging 和 Cloud Monitoring 等生产环境服务编写配置、监控规则和排障流程。</li>
+<li>
+<p>通过 Agent Platform、Gemini API 或 Genkit 构建和部署 AI Agent，并使用对应技能完成模型、端点、RAG 和提示词管理。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用以 Markdown 技能文件和 frontmatter 元数据为核心的轻量分发方式，能够被多个 Agent harness 复用，并通过 <code>skills.sh</code> 和插件机制安装。技能覆盖范围从基础入门到具体运维流程，近期还在强化命令生成前的校验、用户审批和共享责任模型说明，体现出对云资源操作安全性的关注。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：项目更新非常密集，最近 20 条提交主要集中在 2026 年 8 月 3 日至 7 日，提交者均为 Cloud IX Team。近期既有新增 Genkit、Developer Device Platform、BigQuery AI/ML 参考资料和 TPU 故障排查技能，也有对 <code>gcloud</code> 命令生成、元数据格式、监控输出逻辑及配置校验脚本的改进；同时补充了共享责任模型和工作流文档。整体方向是持续扩展 Google 产品覆盖面，并提高技能描述的可执行性、格式一致性和高风险操作控制能力。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未列出直接竞品。与通用 Agent Skills 集合相比，它的差异在于聚焦 Google 产品生态，并额外提供 Claude Code、Codex、Antigravity CLI 的插件安装方式；仓库还链接了 Flutter、Dart、Firestore、Genkit 等其他 Google 相关技能项目。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 3 月 31 日，当前处于活跃开发阶段，虽然已获得 16094 个 Stars 和 1283 个 Forks，但只有 7 位贡献者，社区维护结构相对集中。仓库包含大量面向具体产品和版本的操作知识，使用前应确认技能内容与当前 GCP API、CLI 组件及权限模型一致；涉及设备预留、资源扩容、删除操作或监控配置时，仍需人工确认项目 ID、权限和变更影响。当前有 30 个 Open Issues，文档覆盖面较广，但不同技能的细节深度和成熟度可能不完全一致。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/google/skills">google/skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：全球顶级技术组织之一，凭借大量高星开源项目对开发者生态具有广泛影响力
+<strong>技术栈偏好</strong>：以 C++、Java、Python 为主，偏好高性能基础设施、开发工具与人工智能技术
+<strong>核心领域</strong>：主要聚焦软件基础设施、开发者工具、设计系统与人工智能开源生态</p>
+        <div class="footer">
+            <p>❤️ Generated by GitHub Trending Reporter</p>
+        </div>
+    </div>
+</body>
+</html>
