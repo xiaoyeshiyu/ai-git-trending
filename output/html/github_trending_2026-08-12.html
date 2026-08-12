@@ -101,8 +101,33 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-08-12)</h1>
-<h2>今日热点：AI Agent 工程化与知识基础设施升温</h2>
-<p>今日热门项目呈现出鲜明的 AI Agent 工程化主线：从可组合的代理技能库、并行代理开发环境、工作场景中的代理管理，到面向法律、视频生产、股票分析、个性化教育和长期编码任务的垂直应用，Agent 正在从概念走向可交付流程；同时，知识图谱、Graph-Native 基础设施、代码库 RAG、模型框架与评测基准继续强化上下文、可追责性和多模态能力，nvm、manim、awesome-mac 与 project-based-learning 等成熟工具和学习资源也显示出开发者生态的长期基础需求。具体项目摘要如下：</p>
+<h2>今日热点：AI Agent 工程化加速落地</h2>
+<p>今日热门项目集中体现了 AI Agent 从概念走向生产级工具链的趋势，覆盖 Agent 技能库、并行代理工作台、企业代理管理、代码库 RAG、知识图谱上下文基础设施、自改进编码代理、法律与教育等垂直评测和应用场景，同时传统开发生态与创作工具也保持活跃，包括 Node 版本管理、Transformers 模型框架、数学动画引擎、macOS 软件合集、项目制学习资源，以及股票分析、视频生产和图表设计等面向实际工作流的自动化工具，整体热点指向更可组合、更可评估、更贴近业务交付的智能软件系统。具体项目摘要如下：</p>
+<h3>✨ cathrynlavery/diagram-design (6133★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把 Claude Code 生成的常见技术图，做成了一套偏编辑风格、可直接打开的 HTML+SVG 图表库，重点是让架构图、流程图、时序图这类图不再长得像默认模板。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个面向 Claude Code 的 diagram skill，核心内容是 29 类图形类型的组合与渲染模板，全部以自包含的 HTML + SVG 形式交付。README 里强调它不依赖 Mermaid，也不需要 Figma，图表可以直接在浏览器里打开和导出，适合把网站品牌色、字体快速映射到图里。</li>
+<li><strong>能解决什么痛点</strong>：一是避免 AI 生成图表时落入“通用圆角框 + 默认连线”的样板感，二是减少为了做一张能看、能发的技术图而反复切 Figma 调色和摆版的时间。</li>
+<li><strong>适合谁用</strong>：经常用 Claude Code 写文档、做方案图、画产品架构图的开发者；以及需要把公司官网视觉风格延续到技术示意图里的产品、设计、增长团队。</li>
+<li><strong>怎么上手</strong>：README 给出的最小安装方式是先克隆仓库再软链技能目录：<code>git clone git@github.com:cathrynlavery/diagram-design.git ~/code/diagram-design &amp;&amp; ln -s ~/code/diagram-design/skills/diagram-design ~/.claude/skills/diagram-design</code>。</li>
+<li><strong>可以用在哪些场景</strong>：给新系统写 README 时快速补一张架构图；在产品方案评审里画流程图、泳道图、时序图；把官网的品牌色和字体同步到对外演示材料里的系统结构图。</li>
+<li><strong>技术看点</strong>：项目把“图表类型选择、主题映射、导出、画廊预览”拆成了技能索引和按需加载的参考文件，适合 Claude Code 这种工作流。另一个特点是它强调语义化样式 token 和自动对比度检查，不是单纯堆 SVG 模板。</li>
+<li><strong>近期动向与发展方向</strong>：最近两条提交都集中在 <code>sequence</code> 类型：补了 <code>alt/opt/loop</code> 组合片段、OAuth 示例，并修正了 OAuth 返回值和类型文档对齐，说明维护重点还在扩充时序图表达能力和修边界问题。7 月中旬又合并了大量 curated fork 工作，新增了 12 种图、图标、导出和 onboarding v2，同时加入 loop 类型、终端 primitive 和调色板 lint，整体演进方向很明确，是在把“能画”推进到“更像正式出版物里的图”。</li>
+<li><strong>同类对比</strong>：README 里直接把它和 Mermaid 的默认效果拉开了距离，主张的是“editorial diagrams”，而不是通用流程图语法。它也不走 Figma 手工编辑路线，而是通过 Claude Code 技能和网站品牌采样来自动生成。</li>
+<li>
+<p><strong>注意事项</strong>：项目更新频率高，最近一次更新时间是 2026-08-11，但创建时间也很近，说明仍处在快速演进阶段，接口和图形类型可能还会调整。当前只有 6 个 contributor、6 个 open issues，生态还不算大；如果要在生产文档体系里用，最好先验证你最常用的那几种图是否符合团队规范。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 diagram-design 仓库的高星标表现为主要影响力支点，是兼具创业背景与 AI 原生实践传播属性的独立开发者。
+<strong>技术栈偏好</strong>：主要使用 Shell、Python 与 HTML，偏向自动化脚本、AI Agent 工作流和轻量级工具构建。
+<strong>核心领域</strong>：聚焦 AI Native 转型、开发者效率工具、Agent 改进循环与可复用操作流程沉淀。</p>
+<hr />
 <h3>✨ msitarzewski/agency-agents (140365★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：这是一个把“AI 团队岗位”做成可直接安装的开源仓库，里面不是单一提示词，而是一整套带性格、流程和交付物的专业代理，覆盖前端、后端、SEO、合规、RAG、政府技术、医疗等细分角色。</p>
