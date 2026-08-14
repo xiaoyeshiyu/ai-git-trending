@@ -1,5 +1,5 @@
-## 今日热点：AI Agent 工作流与本地化智能基础设施
-今天的热门项目集中在 AI Agent 生态、模型部署与多模态生成、本地优先工具链以及安全情报自动化等方向：从 Claude Code 图表设计、Agent Skills、Obsidian 技能库，到统一团队工作区、全能 Agent 操作系统与 AI agency；从微型设备基础模型、本地语音听写、LLM/扩散模型训练 UI、RAG 引擎与模型路由网关，到音视频生成、图片生成 3D、本地 GPU 创作工具；同时也覆盖 OSINT、邮箱痕迹查询、攻击面映射和数学动画等实用场景，显示出 AI 正在向可组合、可本地运行、可审计且深度嵌入工作流的基础设施演进。具体项目摘要如下：
+## 今日热点：AI Agent 工作台与本地智能基础设施
+今天的热门项目明显围绕 AI 代理工作流、私有化协作和本地智能能力展开：一边是面向团队的一体化工作台、规格驱动开发工具、浏览器自动化与共享登录态方案，另一边是面向 RAG、上下文管理、Agent 编排、企业应用生成和插件生态的基础设施；同时也能看到轻量化模型、GPU 本地生成、开源远程桌面、视频编辑替代品、OSINT 情报分析，以及图表设计和攻防面映射等更细分但实用的方向，整体反映出开源社区正在把 AI 从单点能力推进到可协作、可集成、可自托管的生产环境。具体项目摘要如下：
 
 ### ✨ cathrynlavery/diagram-design (6133★)
 
@@ -22,54 +22,6 @@
 **技术影响力**：以 diagram-design 仓库的高星标表现为主要影响力支点，是兼具创业背景与 AI 原生实践传播属性的独立开发者。
 **技术栈偏好**：主要使用 Shell、Python 与 HTML，偏向自动化脚本、AI Agent 工作流和轻量级工具构建。
 **核心领域**：聚焦 AI Native 转型、开发者效率工具、Agent 改进循环与可复用操作流程沉淀。
-
----
-
-### ✨ semantica-agi/semantica (2238★)
-
-> **一句话**：把企业数据、Agent 决策和推理链路沉淀成可查询、可审计的上下文图谱，让 AI 系统在事后能说清楚“为什么这么做”。
-
-- **它是什么**：Semantica 是一套面向 AI Agent 的图原生上下文基础设施，位于 LLM、向量库和 Agent 框架之下。它可以从文件、数据库、Databricks、Snowflake 等来源摄取数据，抽取实体、关系和事件，构建 Context Graph / Knowledge Graph，并记录决策、因果链路和来源证据。项目强调自托管、可审计、可替换后端，适合对可解释性和治理要求较高的系统。
-- **能解决什么痛点**：传统 RAG 往往只保存向量相似度，无法回答“某个 AI 决策依据了哪些事实、经过了哪些推理、是否违反规则”。在金融、医疗、法律、政府等场景中，团队还需要把分散在仓库、湖仓和文档里的数据转成带来源、带约束、可追溯的知识图谱，而不是再复制到第三方 SaaS 黑盒里。
-- **适合谁用**：适合正在构建高风险决策型 AI Agent 的 AI/ML 平台团队，以及需要从 Databricks、Snowflake、文档和业务系统中构建知识图谱的数据平台 / 知识工程团队。合规、风控和审计团队也可以用它追踪 AI 决策依据。
-- **怎么上手**：安装命令：`pip install semantica`；README 中还提供了 `semantica doctor` 用于快速检查本地环境。
-- **可以用在哪些场景**：可用于贷款审批、供应商选择等需要保留完整决策证据链的 Agent 系统；也可用于把企业湖仓表、文档和事件流转成可查询的内部知识图谱；还适合搭建带 SHACL 规则、PROV-O 来源记录和图推理能力的 AI 治理平台。
-- **技术看点**：项目同时支持 RDF 和 Labeled Property Graph 后端，README 提到 Oxigraph、Blazegraph、Jena、RDF4J、Neo4j、FalkorDB、Apache AGE、AWS Neptune 等可替换存储。治理层采用 W3C PROV-O、SHACL、OWL、SKOS，并提供 forward chaining、Rete、Datalog、SPARQL 等确定性推理能力，这比单纯向量检索更适合审计和规则约束场景。
-- **近期动向与发展方向**：最近 20 条提交集中在后端兼容性、图存储、Markdown 路径诊断、Qdrant metadata 规范化、DecisionEmbeddingPipeline 持久化后端支持、HybridSearch 非内存后端修复，以及 Knowledge Explorer 渲染循环修复。整体看项目仍处于快速迭代期，维护者和外部贡献者都在活跃提交，近期重点是补齐多后端稳定性、修复边界问题，并增强嵌入式图存储能力。
-- **同类对比**：README 明确对比了 Vector DB + RAG 和普通 LLM Memory：前者主要依赖 embedding 相似度，通常不保存决策历史、来源和规则执行记录；Semantica 的差异在于把决策、来源、冲突检测、时间快照和规则推理作为一等对象来管理。
-- **注意事项**：项目创建于 2025-06-25，时间不算长，但 Stars 和近期提交增长较快，说明热度和开发活跃度都较高。当前 Open Issues 为 16，问题数量不算大，不过近期提交中 bugfix 和后端兼容性修复较多，说明多存储后端和复杂管线仍在打磨；在生产环境采用前，建议重点验证所选图数据库、向量库和企业数据连接器的稳定性。
-
-- **GitHub**：[semantica-agi/semantica](https://github.com/semantica-agi/semantica)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Semantica 是一个新兴但已获得一定社区关注的 AI 基础设施组织，核心仓库具备较强早期影响力。
-**技术栈偏好**：其技术栈明显偏向 Python，主要围绕语义基础设施、上下文管理与 AI 决策系统展开。
-**核心领域**：主要聚焦于面向 AGI/AI 应用的语义基础设施、上下文系统和智能决策框架。
-
----
-
-### ✨ anthropics/skills (167960★)
-
-> **一句话**：Anthropic 把 Claude 可动态加载的“技能包”公开出来，开发者可以直接查看文档处理、API 调用、前端设计、企业流程等任务是如何被拆成可复用指令、脚本和资源的。
-
-- **它是什么**：这是 Anthropic 官方维护的 Claude Agent Skills 仓库，里面的每个 skill 都是一个独立文件夹，通常包含 `SKILL.md`、说明、脚本和相关资源。Claude 在执行特定任务时可以动态加载这些 skill，例如处理 docx、pdf、pptx、xlsx 文档，或按固定流程完成 API、设计、测试、企业沟通等任务。仓库还包含 Agent Skills 规范、模板和可直接安装到 Claude Code 的插件集合。
-- **能解决什么痛点**：开发者想让 AI 稳定执行公司内部流程时，常常只能反复写长提示词，这个项目提供了可版本化、可复用的 skill 组织方式。另一个痛点是复杂文档生成和编辑很难靠一次性提示词稳定完成，仓库里的文档类 skills 展示了 Anthropic 在生产环境中使用的实现参考。
-- **适合谁用**：适合正在为 Claude Code、Claude.ai 或 Claude API 构建自定义能力的 AI 应用开发者。也适合需要把组织内部流程、品牌规范、数据分析步骤或文档处理规则固化下来的平台工程师和自动化工程师。
-- **怎么上手**：在 Claude Code 中添加 marketplace：`/plugin marketplace add anthropics/skills`，然后安装：`/plugin install document-skills@anthropic-agent-skills` 或 `/plugin install example-skills@anthropic-agent-skills`。
-- **可以用在哪些场景**：用于给 Claude Code 安装 PDF、DOCX、PPTX、XLSX 等文档处理能力，例如提取 PDF 表单字段或生成 Office 文件。用于给企业内部流程编写自定义 skill，比如按公司品牌规范生成销售材料或按固定分析模板处理数据。也可以作为开发者学习 Agent Skills 结构的参考，基于 `template` 目录创建自己的 `SKILL.md`。
-- **技术看点**：项目的核心设计是把 AI 能力拆成自包含目录，通过 `SKILL.md` 的 YAML frontmatter 声明名称和描述，再用 Markdown 指令、脚本和资源描述任务执行方式。仓库同时提供规范、模板和 Claude Code 插件入口，说明它不是单个脚本库，而是一套面向 Agent 能力分发和复用的内容格式。
-- **近期动向与发展方向**：最近 20 条提交主要集中在 `claude-api` skill 的持续更新，包括 Managed Agents、模型版本、SDK 文档拆分、工具运行、认证、云平台、token counting、webhooks、memory stores 等内容，说明项目近期重点在跟进 Claude API 与托管 Agent 能力的演进。另有 docx、pptx、xlsx 和 frontend-design skill 更新，表明文档处理与前端设计类能力仍在维护。提交跨度从 2026 年 4 月到 8 月且频率稳定，主要由少数 Anthropic 成员推动，属于官方强维护型项目。
-- **同类对比**：README 未明确列出竞品或直接对标项目；它更像 Anthropic 官方的 Agent Skills 参考实现与分发仓库，而不是通用插件市场或第三方 prompt 模板集合。
-- **注意事项**：README 明确说明这些 skills 主要用于演示和教育目的，实际 Claude 产品中的行为可能与仓库实现不同，关键流程上线前需要自行测试。部分文档创建与编辑 skills 是 source-available，不是 Apache 2.0 开源授权，使用前要看清子目录许可。项目创建时间较新但 Star 和 Issue 数很高，当前仍有 1073 个 open issues，说明关注度极高，同时也可能存在快速迭代、文档追赶实现、API 变更带来的维护成本。
-
-- **GitHub**：[anthropics/skills](https://github.com/anthropics/skills)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Anthropic 在 AI 开发者社区中具有极强的技术号召力与扩散能力，代表仓库的高星数显示其输出内容对实践者和研究者都有显著影响。
-**技术栈偏好**：其技术栈明显偏向 Python 与 Jupyter Notebook，说明它更重视可执行示例、教程、实验性验证和开发者教育。
-**核心领域**：其主要聚焦于大模型应用、提示工程、Claude 相关开发工具与行业落地方案，尤其面向 AI 应用开发生态。
 
 ---
 
@@ -97,78 +49,6 @@
 
 ---
 
-### ✨ altic-dev/FluidVoice (9761★)
-
-> **一句话**：按下全局快捷键说话，FluidVoice 会在 Mac 上实时转写、润色，并把文字直接输入当前正在使用的任意应用。
-
-- **它是什么**：FluidVoice 是一款面向 macOS 的开源本地语音听写应用，支持实时语音转文字、悬浮预览、全局快捷键与跨应用直接输入。它可选用 Nemotron、Parakeet、Whisper、Apple Speech 等语音模型，并支持本地或云端 AI 对转写结果进行格式化、大小写修正和后处理；其中 Fluid Intelligence 提供私有维护的本地增强运行时。
-- **能解决什么痛点**：在 IDE、邮件客户端、文档工具或聊天软件中输入长段文字时，用户无需切换到单独的转写页面再复制粘贴，语音结果可直接注入当前输入框。对隐私敏感的场景，也可使用本地模型完成转写与增强，避免将录音和文本默认发送到云端。
-- **适合谁用**：日常需要频繁写代码注释、PR 描述、邮件和技术文档的 macOS 开发者；需要通过语音快速记录内容、又希望保留本地数据处理能力的知识工作者。
-- **怎么上手**：`brew install --cask fluidvoice`
-- **可以用在哪些场景**：在 VS Code、Xcode 等编辑器中口述代码注释、提交说明或技术文档；在 Slack、邮件客户端中直接口述回复；通过 Command Mode 启动应用、执行快捷指令和触发系统操作；在会议后利用本地音频历史回看并导出听写记录。
-- **技术看点**：项目以 Swift 构建原生 macOS 应用，通过辅助功能 API 将文本稳定写入任意应用，并提供菜单栏、刘海屏适配的实时转写浮层等系统级交互。语音引擎覆盖低延迟的 Parakeet、Nemotron 与兼容 Intel Mac 的 Whisper，模型选择在延迟、语言覆盖和下载体积之间留有明确取舍。
-- **近期动向与发展方向**：8 月 10 日至 13 日连续合并和提交，维护节奏活跃。近期工作同时覆盖口述格式化动作、流式 AI 工具调用与推理文本兼容、说话人分离、媒体暂停检测、外接麦克风和首次麦克风授权等，说明项目正集中打磨语音输入链路、AI 后处理可靠性及 macOS 边界场景；提交中也有多位外部贡献者参与修复。
-- **同类对比**：README 明确将其定位为 Wispr Flow 的本地替代方案。区别在于 FluidVoice 以 GPLv3 开源、可选本地语音模型和本地 AI 增强为卖点，强调不上传语音和文本；但其 Fluid Intelligence 运行时目前仍为私有维护，并非完整开源。
-- **注意事项**：当前仅支持 macOS 15.0 及以上；除 Whisper 外的大多数模型需要 Apple Silicon，且本地模型通常需约 1 GB 磁盘空间，Fluid Intelligence 额外需要约 3.5 GB。项目创建时间较短但已积累 103 个开放 Issue，功能面广且近期迭代密集，升级时应关注语音模型、权限和 AI 增强相关行为变化。使用跨应用输入必须授予麦克风与辅助功能权限，接入 OpenAI、Groq 等云端增强时则不再是完全本地处理。
-
-- **GitHub**：[altic-dev/FluidVoice](https://github.com/altic-dev/FluidVoice)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：ALTIC 以高星 Swift 项目 FluidVoice 为核心，在 AI 原生应用与苹果平台开发社区已形成显著开源影响力。
-**技术栈偏好**：以 Swift 驱动原生端产品，结合 TypeScript 构建工具与交互层，并以 Python 承担 AI、MCP 和服务端能力。
-**核心领域**：主要聚焦语音 AI、AI Agent/MCP 集成及面向 Apple 生态的智能开发者工具。
-
----
-
-### ✨ unslothai/unsloth (70924★)
-
-> **一句话**：在个人电脑上下载模型、打开聊天与 API 服务、微调 LLM 或扩散模型，并把本地模型接入 Claude Code、Codex 等智能体的桌面化 AI 工作台。
-
-- **它是什么**：Unsloth 覆盖了本地模型的运行、训练和部署：既有免配置的 Tauri 桌面应用，也提供 Web 版 Studio 和 Python 代码库。它可运行 LLM、图像/视频扩散、嵌入和音频模型，支持 LoRA、QLoRA、全量微调、强化学习、DPO、GRPO 等训练方式，并可导出 GGUF、FP8、NVFP4 等格式。
-- **能解决什么痛点**：一是开发者在 Windows、macOS、Linux、NVIDIA、AMD、Intel 等不同软硬件组合上部署本地模型时，常需要分别处理推理后端、驱动和环境依赖；Unsloth 将这些选择收敛到安装器和 Studio 设置中。二是本地模型通常难以直接接入编码智能体和现有应用，它提供 OpenAI 兼容 API，以及 `unsloth start` 命令来连接 Claude Code、Codex、MCP 等工具。
-- **适合谁用**：需要在自有硬件上进行模型推理、微调或数据准备的 AI 应用开发者；希望用本地模型驱动 Claude Code、Codex 等编码智能体，同时避免把代码和上下文发送到第三方模型服务的工程团队。
-- **怎么上手**：macOS、Linux 或 WSL 可执行 `curl -fsSL https://unsloth.ai/install.sh | sh`，随后运行 `unsloth studio -p 8888` 启动本地 Studio。
-- **可以用在哪些场景**：在内网部署 OpenAI 兼容的本地推理接口，供内部应用调用；用 PDF、CSV、DOCX 构建训练数据后，对领域模型进行 LoRA/QLoRA 微调；在本机启动 GGUF 模型，再让 Claude Code 或 Codex 将其作为本地子智能体使用；在 AMD 或 Intel GPU 设备上通过 Vulkan 运行 GGUF 聊天推理。
-- **技术看点**：项目将桌面端、Web Studio 与 Python Core 三种交付形态放在同一产品体系内，兼顾非编程用户和代码集成需求。硬件适配范围较广，覆盖 CUDA、ROCm、Metal、Vulkan 与 CPU，并允许切换 llama.cpp 的 GGUF 推理后端。
-- **近期动向与发展方向**：最近 20 条提交集中在同一天，开发活跃度很高。重点包括 Studio 模型选择器与外部 Provider 工具调用、图像和视频加载时的 GPU 选择、桌面端登录自启、主窗口关闭后的后台运行，以及 Windows/macOS 安装与启动稳定性；同时修复前端契约测试、CUDA/HIP 上下文占用和杀毒软件误报，说明团队当前正在强化跨平台桌面产品的可用性与发布质量。
-- **同类对比**：README 未明确列出直接竞品。其差异化方向是把本地推理、训练、模型导出、数据处理和智能体接入整合进一个跨平台桌面与 Web 工作流，而不只提供单一推理服务器或训练脚本。
-- **注意事项**：Studio 仍标注为 Beta，且仓库有 1111 个开放 Issue，跨平台、GPU 驱动和模型后端组合较多时仍可能遇到兼容性问题。项目创建于 2023 年末、更新非常频繁，安装器和桌面端功能迭代快，升级前应关注版本说明与本地模型、环境配置的兼容性；通过 Cloudflare 暴露远程访问时，README 明确提示需妥善保管访问链接和 API Key，因为远程用户可能调用模型并执行代码。
-
-- **GitHub**：[unslothai/unsloth](https://github.com/unslothai/unsloth)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Unsloth AI 凭借高星标核心项目在本地大模型训练与优化社区中具备显著影响力。
-**技术栈偏好**：以 Python 和 Jupyter Notebook 为主，辅以 C++，偏向 AI 模型训练、实验与底层推理优化。
-**核心领域**：主要聚焦本地化大语言模型的高效训练、微调与运行。
-
----
-
-### ✨ macro-inc/macro (1453★)
-
-> **一句话**：Macro 把团队邮件、聊天、文档、任务、会议、CRM 和 AI Agent 放进同一个工作区，并用 @链接和共享记忆把所有上下文串起来。
-
-- **它是什么**：Macro 是面向团队的一体化工作空间，核心界面覆盖统一邮箱、频道消息、任务、Markdown 文档、Canvas、文件、会议记录、CRM 和 Agent。它强调所有内容都能被 @mention、搜索和双向关联，例如从客户邮件创建任务、在文档里引用邮件、把 PR 关联到任务，并让 Agent 读取同一套团队上下文。
-- **能解决什么痛点**：适合解决小团队同时使用 Slack、Linear、Notion、HubSpot、Superhuman 等工具时上下文分散的问题，尤其是“任务为什么产生”“客户最近说了什么”“这封邮件和哪个项目相关”需要跨系统追溯的场景。另一个痛点是 CRM 和任务系统容易过期，Macro 通过把它们放在聊天、邮件、文档的原始协作流里，减少手动同步和重复录入。
-- **适合谁用**：适合想把邮件、团队沟通、任务跟踪、客户信息和 AI Agent 收到同一工作区的创业团队或小型技术团队。也适合需要从客户邮件、技术讨论、PR 和文档之间频繁建立上下文关系的产品、工程、销售协作团队。
-- **怎么上手**：README 未提供本地安装命令或最小运行示例，可通过官网入口注册使用：`https://macro.com/app`。
-- **可以用在哪些场景**：从客户邮件直接创建带上下文的工程任务，并关联到后续 PR 和频道讨论；用统一 inbox 同时处理 Gmail、团队消息、@mentions 和待办事项；在销售或客户成功流程中，通过联系人、公司记录聚合团队邮件、文件和内部讨论，替代单独维护一套容易失真的 CRM。
-- **技术看点**：项目使用 Rust 和 SolidJS 构建，README 明确提到文档协作基于 CRDT，并通过 Cloudflare Durable Objects 支撑接近实时的多人编辑。其关键设计是把邮件、消息、任务、文档、CRM 等对象存成双向图，而不是只做多个工具的浅层聚合。
-- **近期动向与发展方向**：最近 20 条提交集中在邮箱、日历、任务视图、Markdown、AI、频道、iOS 和桌面 CI 上，既有功能增强也有大量修复，说明项目仍在快速迭代。近期新增了 Google 风格日历提醒、任务视图合并、Markdown checklist 进度插件、split 位置交换等功能，同时修复 Google Calendar 权限申请、邮箱回填、AI tool_use 输入兼容、macOS 打包链路等问题，开发重点明显围绕核心协作体验、邮箱/日历集成和跨平台稳定性展开。
-- **同类对比**：README 明确对标 Slack、Linear、Notion、HubSpot、Superhuman 等产品，差异在于 Macro 不是单点替代其中某一个工具，而是尝试把团队沟通、任务、文档、邮箱、CRM 和 Agent 作为同一套可链接、可搜索、可被 AI 使用的系统来设计。
-- **注意事项**：项目创建时间为 2025-11-08，当前 Stars 1453、Open Issues 56，更新非常频繁，说明关注度和开发活跃度不错，但成熟度仍需要谨慎评估。README 偏产品说明和理念介绍，本地部署、架构细节、最小开发运行路径在提供素材中未看到；近期提交里也有多条修复和临时处理，使用时要预期接口、权限、桌面/iOS 和协作编辑相关行为仍可能快速变化。
-
-- **GitHub**：[macro-inc/macro](https://github.com/macro-inc/macro)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Macro 在开源社区影响力中等偏小，但核心 Rust 仓库获得较高关注，显示其在 AI 原生协作工作空间方向具备一定技术辨识度。
-**技术栈偏好**：其技术栈以 Rust 为核心，结合 JavaScript、C++ 与 Electron/LibreOffice 相关能力，偏向高性能桌面端与文档处理基础设施。
-**核心领域**：主要聚焦于融合邮件、消息、文档、任务、文件与 CRM 的 AI 原生团队协作工作空间。
-
----
-
 ### ✨ megadose/holehe (12283★)
 
 > **一句话**：输入一个邮箱，Holehe 会依次检查 Twitter、Instagram、Imgur 等 120 多个站点，判断它是否注册过账号，并尽量返回找回密码流程中暴露的部分恢复信息。
@@ -193,6 +73,30 @@
 **技术影响力**：Palenath 凭借多个高星 Python 开源安全工具在 GitHub 技术社区具有较强影响力，尤其在 OSINT 与安全研究圈层辨识度较高。
 **技术栈偏好**：主要使用 Python 构建自动化信息收集、账号枚举与网络安全相关工具，偏向轻量实用型安全脚本与框架。
 **核心领域**：主要聚焦开源情报、数字身份调查、网络侦察与隐私安全相关的安全工具开发。
+
+---
+
+### ✨ macro-inc/macro (1453★)
+
+> **一句话**：Macro 把团队邮件、聊天、文档、任务、会议、CRM 和 AI Agent 放进同一个工作区，并用 @链接和共享记忆把所有上下文串起来。
+
+- **它是什么**：Macro 是面向团队的一体化工作空间，核心界面覆盖统一邮箱、频道消息、任务、Markdown 文档、Canvas、文件、会议记录、CRM 和 Agent。它强调所有内容都能被 @mention、搜索和双向关联，例如从客户邮件创建任务、在文档里引用邮件、把 PR 关联到任务，并让 Agent 读取同一套团队上下文。
+- **能解决什么痛点**：适合解决小团队同时使用 Slack、Linear、Notion、HubSpot、Superhuman 等工具时上下文分散的问题，尤其是“任务为什么产生”“客户最近说了什么”“这封邮件和哪个项目相关”需要跨系统追溯的场景。另一个痛点是 CRM 和任务系统容易过期，Macro 通过把它们放在聊天、邮件、文档的原始协作流里，减少手动同步和重复录入。
+- **适合谁用**：适合想把邮件、团队沟通、任务跟踪、客户信息和 AI Agent 收到同一工作区的创业团队或小型技术团队。也适合需要从客户邮件、技术讨论、PR 和文档之间频繁建立上下文关系的产品、工程、销售协作团队。
+- **怎么上手**：README 未提供本地安装命令或最小运行示例，可通过官网入口注册使用：`https://macro.com/app`。
+- **可以用在哪些场景**：从客户邮件直接创建带上下文的工程任务，并关联到后续 PR 和频道讨论；用统一 inbox 同时处理 Gmail、团队消息、@mentions 和待办事项；在销售或客户成功流程中，通过联系人、公司记录聚合团队邮件、文件和内部讨论，替代单独维护一套容易失真的 CRM。
+- **技术看点**：项目使用 Rust 和 SolidJS 构建，README 明确提到文档协作基于 CRDT，并通过 Cloudflare Durable Objects 支撑接近实时的多人编辑。其关键设计是把邮件、消息、任务、文档、CRM 等对象存成双向图，而不是只做多个工具的浅层聚合。
+- **近期动向与发展方向**：最近 20 条提交集中在邮箱、日历、任务视图、Markdown、AI、频道、iOS 和桌面 CI 上，既有功能增强也有大量修复，说明项目仍在快速迭代。近期新增了 Google 风格日历提醒、任务视图合并、Markdown checklist 进度插件、split 位置交换等功能，同时修复 Google Calendar 权限申请、邮箱回填、AI tool_use 输入兼容、macOS 打包链路等问题，开发重点明显围绕核心协作体验、邮箱/日历集成和跨平台稳定性展开。
+- **同类对比**：README 明确对标 Slack、Linear、Notion、HubSpot、Superhuman 等产品，差异在于 Macro 不是单点替代其中某一个工具，而是尝试把团队沟通、任务、文档、邮箱、CRM 和 Agent 作为同一套可链接、可搜索、可被 AI 使用的系统来设计。
+- **注意事项**：项目创建时间为 2025-11-08，当前 Stars 1453、Open Issues 56，更新非常频繁，说明关注度和开发活跃度不错，但成熟度仍需要谨慎评估。README 偏产品说明和理念介绍，本地部署、架构细节、最小开发运行路径在提供素材中未看到；近期提交里也有多条修复和临时处理，使用时要预期接口、权限、桌面/iOS 和协作编辑相关行为仍可能快速变化。
+
+- **GitHub**：[macro-inc/macro](https://github.com/macro-inc/macro)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Macro 在开源社区影响力中等偏小，但核心 Rust 仓库获得较高关注，显示其在 AI 原生协作工作空间方向具备一定技术辨识度。
+**技术栈偏好**：其技术栈以 Rust 为核心，结合 JavaScript、C++ 与 Electron/LibreOffice 相关能力，偏向高性能桌面端与文档处理基础设施。
+**核心领域**：主要聚焦于融合邮件、消息、文档、任务、文件与 CRM 的 AI 原生团队协作工作空间。
 
 ---
 
@@ -228,27 +132,35 @@
 
 ---
 
-### ✨ NVIDIA-NeMo/Switchyard (702★)
+### ✨ citrolabs/ego-lite (10216★)
 
-> **一句话**：Switchyard 把 Claude Code、Codex 等编码代理的 OpenAI / Anthropic 请求接进来，再按路由策略转发到 vLLM、NVIDIA NIM、Ollama 或 OpenAI 兼容模型后端。
+> **一句话**：ego lite 让 Codex、Claude Code 等 AI Agent 在独立浏览器空间里操作你的真实登录态网页，同时不抢你的标签页和鼠标。
 
-- **它是什么**：Switchyard 是一个用 Rust 编写的 LLM 流量代理和路由库，负责在 OpenAI Chat、OpenAI Responses、Anthropic Messages 等 API 格式之间做协议转换。它既可以作为独立代理服务器运行，也可以作为 `switchyard-libsy` 嵌入到 Rust 应用中，用来实现随机路由、LLM 分类器路由、Stage Router 等模型流量调度逻辑。项目还内置 Prometheus 指标，覆盖请求量、错误、延迟、token 和路由开销。
-- **能解决什么痛点**：很多编码代理只会调用固定的 OpenAI 或 Anthropic API，而团队实际想接入的是本地 vLLM、Ollama、NVIDIA NIM 或 OpenAI 兼容服务，Switchyard 负责中间的协议翻译。另一个痛点是多模型实验和成本控制：开发者可以按请求内容、会话信号或固定比例把流量分到弱模型、强模型或不同供应商上，而不必在客户端里硬编码多套逻辑。
-- **适合谁用**：适合正在把 Claude Code、Codex CLI、OpenClaw 接到自托管或第三方模型后端的 AI 工程师。也适合在内部 LLM 网关、代理服务或 Agent Runtime 中需要嵌入模型路由算法的 Rust 后端开发者。
-- **怎么上手**：最短路径可以用 uv 安装 CLI：`uv tool install --python 3.12 "nemo-switchyard[cli]"`。
-- **可以用在哪些场景**：用于把 Claude Code 或 Codex CLI 的请求转到 OpenRouter、vLLM、NVIDIA NIM、Ollama 等后端；用于搭建内部 LLM 代理网关，在同一个入口下兼容 OpenAI 和 Anthropic 客户端；用于做多模型 A/B 测试、弱强模型分层路由或根据工具调用错误信号进行 Stage Router 调度。
-- **技术看点**：项目核心用 Rust 实现，提供独立 server、协议转换 crate 和可嵌入的 `libsy` 路由库，架构上把“协议翻译”“后端调用”“路由决策”拆开。路由策略不是只做简单转发，还包括 LLM-as-classifier、escalation router、stage router 等面向 Agent 流量的算法。
-- **近期动向与发展方向**：最近 20 条提交集中在 API 命名重构、路由模型抽象、Stage Router 指标、Responses JSON schema 修复、Rust crate 发布流程和 0.2.0 changelog，说明项目仍处于快速演进期。提交作者较多，近期有 18 位贡献者参与，开发活跃；但大量 rename、remove deprecated stack、remove legacy routing profiles 等提交也表明接口还不稳定，当前重点是在清理早期设计并强化 Rust 库化和可观测性。
-- **同类对比**：README 没有明确点名竞品。它的差异点主要在于同时面向编码代理启动器、独立 LLM 代理服务器和可嵌入 Rust 路由库，而不是只做单一 API 转发。
-- **注意事项**：README 明确标注项目是 pre-alpha、Experimental software，且“不建议生产使用”，在 v1.0 前 API 和算法都可能有较大变化。项目创建时间很新，Stars 702、Forks 76，但 Open Issues 已有 81 个，说明关注度和迭代速度都不低，同时也可能存在未解决的稳定性和兼容性问题。文档结构比较完整，包含 Getting Started、核心概念、路由算法和各 crate 文档，但上手仍需要理解模型后端、API 格式和 TOML 路由配置。
+- **它是什么**：ego lite 是面向 AI Agent 的浏览器，当前主要支持 macOS。它可以迁移 Chrome 的登录态、Cookie、扩展和书签，让 Agent 通过 `ego-browser` 直接访问真实网页会话。项目的核心不是再做一个浏览器自动化库，而是提供一个你和 Agent 可以并行使用的浏览器环境，每个 Agent 任务运行在独立 Space 中。
 
-- **GitHub**：[NVIDIA-NeMo/Switchyard](https://github.com/NVIDIA-NeMo/Switchyard)
+- **能解决什么痛点**：传统浏览器自动化常见问题是登录态不好复用，Agent 需要单独打开浏览器、重新登录，或者和用户争用同一批标签页。ego lite 解决的是“让 Agent 操作真实网页但不打扰我继续浏览”的场景，尤其适合需要登录后台、CRM、社交平台、数据网站的自动化任务。
+
+- **适合谁用**：适合经常使用 Claude Code、Codex、Cursor 等 Agent CLI 做网页操作的开发者。也适合需要批量处理网页任务的增长、运营、数据工程或自动化脚本使用者，例如抓取竞品页面、整理线索、填写后台表单等。
+
+- **怎么上手**：最简方式是只安装 `ego-browser` skill：`npx skills add citrolabs/ego-lite`。首次运行浏览器任务时，Agent 会引导安装 ego lite macOS 应用。
+
+- **可以用在哪些场景**：可以让 Agent 登录并操作你已有账号的 SaaS 后台，例如批量整理客户线索或补全表单。可以让多个 Agent 在不同 Space 中并行抓取竞品网站、检查页面信息或完成重复网页流程。也可以用于需要浏览器快照、点击、填写、导航、截图等动作组合的端到端自动化任务。
+
+- **技术看点**：README 强调它把浏览器能力封装成 JavaScript 函数供 Agent 直接调用，而不是反复走 CLI 命令交互，这有助于减少工具调用轮次和 token 消耗。另一个关键设计是 Space 隔离：每个 Agent 任务拥有独立工作区，但仍能复用本机浏览器状态。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 README、安装脚本、文档措辞、Skill 发布流程和 issue/PR 模板上，说明项目近期重点偏向发布、安装体验和文档包装，而不是大规模核心功能改造。7 月下旬加入了 `ego-browser` 执行生命周期相关改动和 Skill 版本发布工作流，方向上是在把浏览器能力更稳定地分发给不同 Agent 使用。贡献者数量为 6，提交较集中，社区热度高但维护主体仍偏核心团队。
+
+- **同类对比**：README 明确对比了 Browser-Use、Vercel 的 agent-browser、ChatGPT Atlas 和 Perplexity Comet。ego lite 的差异点在于它既是可日常使用的浏览器，又允许外部 Agent 控制，并强调继承 Chrome 数据、独立 Space、多任务并行和本地数据存储；Browser-Use、agent-browser 更偏自动化框架，Atlas、Comet 则更偏内置 Agent 的 AI 浏览器。
+
+- **注意事项**：当前 README 写明只支持 macOS，Windows 和 Linux 还在 roadmap 中，跨平台团队需要谨慎评估。项目创建于 2026-04-16，时间较新，但已有 106 个 open issues，说明需求和问题反馈不少，成熟度仍需观察。README 文档信息较完整，提供下载、npx 安装、Agent 引导安装和对比说明；但核心浏览器是单独的免费应用，仓库 MIT 许可覆盖的是仓库内容，不等同于完整浏览器本体开源。
+
+- **GitHub**：[citrolabs/ego-lite](https://github.com/citrolabs/ego-lite)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：NVIDIA-NeMo 依托多个高星 AI 项目，在语音、LLM 安全与生成式 AI 社区具备较强影响力。
-**技术栈偏好**：以 Python 和 Jupyter Notebook 为主，偏向深度学习、模型训练、数据设计与实验型 AI 工作流。
-**核心领域**：主要聚焦语音 AI、大语言模型安全护栏、强化学习与 NVIDIA 生态下的生成式 AI 基础设施。
+**技术影响力**：CitroLabs 是一个新兴但增长迅速的技术组织，凭借 ego-lite 获得较高社区关注，已在个人计算相关开源领域形成初步影响力。
+**技术栈偏好**：其技术栈以 JavaScript、TypeScript 和 Python 为主，偏向浏览器自动化、前端工具链与基准测试框架开发。
+**核心领域**：主要聚焦未来个人计算、浏览器智能体及轻量化 AI 驱动的人机交互体验。
 
 ---
 
@@ -279,111 +191,38 @@
 
 ---
 
-### ✨ kepano/obsidian-skills (45513★)
+### ✨ github/spec-kit (128237★)
 
-> **一句话**：它把 Obsidian 的 Markdown、Bases、JSON Canvas、CLI 和网页内容提取能力整理成标准化 Agent Skills，让 Claude Code、Codex、OpenCode 等智能代理能够直接操作知识库。
+> **一句话**：把“先写清需求、再定技术方案、拆任务、执行代码”固化成一套可被 AI 编程代理直接执行的开发流程。
 
-- **它是什么**：项目遵循 Agent Skills specification，提供 5 组可被兼容代理加载的技能文件。代理可以据此读写带有 Wikilinks、嵌入、Callouts 和 Properties 的 Obsidian Markdown，生成 Bases 查询与视图，编辑 JSON Canvas，并通过 Obsidian CLI 操作 Vault；`defuddle` 技能还可将网页提取为干净的 Markdown。
+- **它是什么**：Spec Kit 是 GitHub 开源的规范驱动开发工具包，通过 `specify` CLI 初始化项目，并为 Copilot、Codex 等 30 多种 AI 编程代理安装一组标准化命令。开发者可以依次使用 `/speckit.constitution`、`/speckit.specify`、`/speckit.plan`、`/speckit.tasks` 和 `/speckit.implement`，将项目原则、需求、技术方案、任务拆分和代码实现串联起来。
 
-- **能解决什么痛点**：普通代码代理不了解 Obsidian Flavored Markdown、`.base` 和 `.canvas` 的具体语法，容易生成格式看似正确但无法正常显示或查询的文件。处理网页资料时，代理还经常把导航、广告和无关页面结构一起塞进上下文，`defuddle` 可先提取正文以减少噪声和 Token 消耗。
+- **能解决什么痛点**：AI 编程时经常出现需求理解偏差、技术方案与实现脱节、生成代码缺少边界条件等问题，Spec Kit 用结构化规格和计划文档作为中间约束。对于多人协作项目，它还可以把任务清单转换为 GitHub Issues，减少需求文档、开发任务和实际代码之间的断层。
 
-- **适合谁用**：使用 Claude Code、Codex 或 OpenCode 管理个人 Obsidian Vault 的知识工作者、开发者和研究人员。需要批量整理 Markdown 笔记、维护 Bases 数据视图，或从网页自动采集资料的用户也适合使用。
+- **适合谁用**：使用 GitHub Copilot、Codex、Claude Code 等 AI 编程代理进行项目开发的个人开发者和团队。尤其适合需要统一需求流程、代码规范和交付检查标准的企业研发团队。
 
-- **怎么上手**：兼容 `npx skills` 的代理可直接执行 `npx skills add https://github.com/kepano/obsidian-skills`；Codex 用户也可以将仓库中的 `skills/` 目录复制到通常的 `~/.codex/skills` 路径。
+- **怎么上手**：安装并初始化项目：
 
 - **可以用在哪些场景**：
-  - 让代码代理批量整理 Obsidian 笔记，补充 Properties、建立 Wikilinks 和页面嵌入。
-  - 在 Vault 中生成或维护 `.base` 文件，用筛选器、公式和汇总视图管理项目、阅读或任务数据。
-  - 将网页文章提取为干净 Markdown，再写入 Obsidian，或用 JSON Canvas 自动构建知识关系图。
+  - 从零搭建内部管理系统时，先用规格描述用户故事，再生成技术方案和可执行任务。
+  - 团队使用多个 AI 编程代理协作时，用统一的命令、模板和项目原则约束生成结果。
+  - 将需求拆解为 GitHub Issues，配合代码仓库进行功能排期、实现和后续收敛检查。
 
-- **技术看点**：项目采用跨代理的 Agent Skills 标准，通过 `SKILL.md` 将 Obsidian 的领域规则和操作方式注入 Claude Code、Codex、OpenCode 等不同运行环境。技能覆盖 Markdown、Bases、JSON Canvas、CLI 和网页正文提取，既处理文件格式，也连接 Obsidian 的实际操作能力。
+- **技术看点**：项目采用 Python 编写 `specify` CLI，将规范驱动流程封装为可安装、可升级的命令行工具，并通过模板、Extensions、Presets 和项目级 Overrides 支持分层定制。它不绑定单一 AI 助手或技术栈，核心流程与具体代理、框架和语言解耦。
 
-- **近期动向与发展方向**：最近 20 条提交集中在文档、示例和兼容性修复，包括 Bases 过滤器 Schema、Bases 嵌入示例、Defuddle 链接与 Markdown URL 处理，以及 OpenCode 和 HTTPS 安装说明。项目在 2026 年 2 月至 6 月持续有合并记录，社区贡献者参与了多项改进，但目前没有看到重大架构重构；整体方向是提升技能质量、补齐使用示例和扩大不同 Agent 的安装兼容性。
+- **近期动向与发展方向**：最近提交非常活跃，连续两天包含版本发布、依赖升级、工作流安全加固和多项缺陷修复，同时持续向社区目录加入 SpecAssay、SpecJudge、Architecture Governance 等扩展和预设。近期重点明显偏向生态扩展、集成兼容性、工作流可靠性与安全性，而不是大规模架构重构；截至 2026-08-14 已发布 `0.16.4`，并开始 `0.16.5.dev0` 开发。
 
-- **同类对比**：README 未明确列出竞品。其主要差异在于专门针对 Obsidian 的多种开放格式和 CLI 提供技能定义，而不是通用的笔记应用操作模板。
+- **同类对比**：README 未明确提及竞品或直接对标项目。其明显特点是把 AI 编程从单次对话式代码生成，组织成包含需求、计划、任务和验证的规范化流程，并支持多个 AI 编程代理。
 
-- **注意事项**：项目创建时间、更新时间和提交记录均显示为 2026 年，且元数据中的更新时间晚于提供的最新提交记录，时间信息可能来自特定数据快照。仓库只有 16 位贡献者，却拥有 62 个开放 Issue，说明关注度很高但维护规模相对有限；使用时应关注 Obsidian CLI、Bases 语法和 Agent Skills 规范变化。README 提供了多种安装方式，但具体技能的行为仍取决于所使用的代理及其访问本地 Vault 的权限。
+- **注意事项**：项目创建于 2025-08-21，但已经积累 128237 个 Stars、11462 个 Forks 和 273 名贡献者，说明关注度和社区规模很高；同时 306 个开放 Issue 也意味着项目仍在快速演进。README 和文档较完整，但上手需要理解 Spec-Driven Development、CLI、代理集成及模板优先级；社区扩展和预设由各自作者维护，安装前应审查源码。AI 根据规格生成的实现仍需人工进行架构、安全性和测试审查，版本快速迭代也带来命令、模板或集成行为变化的风险。
 
-- **GitHub**：[kepano/obsidian-skills](https://github.com/kepano/obsidian-skills)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：作为 Obsidian 生态的重要创作者，Steph Ango 通过高星插件、主题与工具项目在知识管理和个人生产力开发者社区具备显著影响力。
-**技术栈偏好**：主要使用 CSS 与 TypeScript，偏好以精细化界面设计、可扩展插件和轻量 Web 工具改善本地优先软件体验。
-**核心领域**：聚焦 Obsidian 相关的个人知识管理、笔记工作流、阅读内容提取与设计系统。
-
----
-
-### ✨ 3b1b/manim (90056★)
-
-> **一句话**：Manim 用 Python 精确编排几何图形、公式、坐标轴和动画过程，生成类似 3Blue1Brown 数学讲解视频中的可视化画面。
-
-- **它是什么**：这是 3Blue1Brown 作者 Grant Sanderson 最初为制作数学解释视频开发的程序化动画引擎，当前仓库对应 ManimGL，PyPI 包名是 `manimgl`。它通过 Python 代码描述场景、图形对象和动画流程，并依赖 FFmpeg、OpenGL，按需结合 LaTeX 渲染数学公式。
-- **能解决什么痛点**：适合处理手工剪辑或普通演示软件很难精确表达的数学动画，比如函数变换、几何构造、向量运动和公式推导过程。对于需要反复调整参数、复用动画逻辑的视频创作者，代码化场景比逐帧编辑更容易维护。
-- **适合谁用**：适合制作数学、物理、算法可视化内容的 Python 用户和科普视频创作者；也适合需要把抽象概念做成精确动态图示的教师、课程作者和技术内容团队。
-- **怎么上手**：最简安装与试运行：`pip install manimgl && manimgl`；本地开发仓库可运行：`manimgl example_scenes.py OpeningManimExample`。
-- **可以用在哪些场景**：制作函数图像变换、线性代数、微积分等数学解释视频；为算法课程生成排序、图遍历、动态规划状态转移等动画片段；在技术演讲或教学材料中生成可复现的公式推导和几何演示视频。
-- **技术看点**：项目以 Python 作为场景描述语言，底层结合 OpenGL 做实时预览和渲染，FFmpeg 负责视频输出，LaTeX 可用于高质量公式排版。README 明确要求 Python 3.10 及以上，并区分该仓库的 ManimGL 与 Manim Community 版本，避免包名和文档混用。
-- **近期动向与发展方向**：最近提交非常密集，集中在渲染性能、动画插值、对象曲线处理、SVG stroke 支持、CPU 占用修复、Windows LaTeX 检测和文档工具链现代化等方向。主维护者 Grant Sanderson 仍在持续推进内部清理和渲染路径优化，同时也有多位社区贡献者提交安装文档、平台兼容和 bug 修复，说明项目仍保持活跃维护。
-- **同类对比**：README 明确提到 Manim Community 是 2020 年从该项目分叉出的社区版，目标是更稳定、测试更完善、响应社区贡献更快、对新手更友好；本仓库则更接近 3Blue1Brown 原始视频制作工作流，包名为 `manimgl`，安装说明不能与社区版混用。
-- **注意事项**：项目创建于 2015 年、Star 很高且近期更新活跃，但仍有 487 个 open issues，上手前要预期一定的环境配置成本，尤其是 FFmpeg、OpenGL、LaTeX、Linux Pango 或平台相关依赖。README 也提示文档仍在进展中，新用户如果更看重稳定文档和社区支持，需要认真比较 ManimGL 与 Manim Community 的差异。
-
-- **GitHub**：[3b1b/manim](https://github.com/3b1b/manim)
+- **GitHub**：[github/spec-kit](https://github.com/github/spec-kit)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：在数学可视化与技术内容创作社区具有极高影响力，核心开源项目 `manim` 已成为同类领域的事实性基础工具之一。
-**技术栈偏好**：以 Python 为主，辅以 MDX、TypeScript 和 JavaScript，整体偏向动画渲染、内容工程化与交互式数学表达。
-**核心领域**：主要聚焦数学教育、算法/几何可视化与技术科普内容生产。
-
----
-
-### ✨ msitarzewski/agency-agents (140365★)
-
-> **一句话**：这是一个把“AI 团队岗位”做成可直接安装的开源仓库，里面不是单一提示词，而是一整套带性格、流程和交付物的专业代理，覆盖前端、后端、SEO、合规、RAG、政府技术、医疗等细分角色。
-
-- **它是什么**：它本质上是一个 AI agent 角色库和分发仓库，每个 agent 都有明确的职责边界、沟通风格和输出要求。README 还提供了配套桌面应用 `Agency Agents`，可以直接浏览 roster 并安装到 Claude Code、Cursor、Codex、Gemini 等工具里，不需要手工拷贝文件。
-- **能解决什么痛点**：一是团队里经常要反复整理“不同任务该用哪种提示词”，这里把角色和流程预先分好了；二是多工具环境下手工同步 agent 配置很麻烦，它提供脚本和桌面应用来统一安装与更新。
-- **适合谁用**：用 Claude Code、Cursor、Codex、OpenCode 这类 AI 编程工具的开发者；以及需要把工作流拆成多个专门角色的技术团队，比如前端工程师、SRE、SEO、合规、数据工程和产品原型团队。
-- **怎么上手**：README 里最省事的方式是直接装桌面应用，或用脚本安装到 Claude Code：`brew install --cask msitarzewski/agency-agents/agency-agents`；也可以在仓库里执行 `./scripts/install.sh --tool claude-code`。
-- **可以用在哪些场景**：给 React/Vue 项目快速切出“前端开发、代码审查、UI 收尾”几个专用代理；在做安全合规项目时切到 FedRAMP、RMF、508 无障碍这类角色；在处理检索增强生成或数据管道时启用 RAG Pipeline Engineer、Data Engineer、AI Data Remediation 这类细分代理。
-- **技术看点**：仓库不是单纯的文本集合，而是围绕多工具安装、转换和分发设计的 Shell 脚本体系，README 明确给出了 `convert.sh` 和 `install.sh` 的使用方式。它还处理了工具差异，比如提示 OpenCode 有代理数量上限，并给出按 division 安装的规避方案。
-- **近期动向与发展方向**：最近的提交明显在持续扩充细分 agent，新增了 Economy Designer、Privacy Engineer、Aging Parent Care Companion、GaussDB Expert、RAG Pipeline Engineer、Resume Tailor，以及多批工程/学术/政府技术/医疗相关角色，说明项目重心还在“横向扩张专业岗位覆盖面”。同时也有不少维护性提交，比如修复章节识别、导出参数、lint 问题和 README roster，说明仓库规模已经大到需要持续整理和修补基础设施。
-- **同类对比**：README 没有明确写出竞品；它更像“可安装的 AI 专业角色库”，而不是通用聊天框架或单一提示词模板仓库。
-- **注意事项**：项目星标和活跃度都很高，但开放 issue 也不少，说明使用人数多、反馈面广，细节上仍在快速演进。仓库最近持续加 agent 和改安装逻辑，存在目录结构、章节命名、工具适配这类变动；如果你要批量集成，最好先按一个 division 试装，避免一次性拉满所有角色后超出工具限制或引入不匹配配置。
-
-- **GitHub**：[msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：资深创业型开发者，凭借高星级开源项目在 AI Agent 与开发者工具社区具备较强影响力
-**技术栈偏好**：偏好 Shell、Rust 与 TypeScript，重视自动化、跨平台工具和可产品化的工程实践
-**核心领域**：主要聚焦 AI Agent、智能软件产品、开发者工具与创业创新实践
-
----
-
-### ✨ Lightricks/LTX-2 (8644★)
-
-> **一句话**：它把文本生成的视频、同步音频、LoRA 微调和多种推理管线放在同一个 Python 仓库里，面向的是 LTX-2 这套音视频生成模型的本地推理和定制化工作流。
-
-- **它是什么**：这是 LTX-2 音视频生成模型的官方 Python 推理与 LoRA 训练包。README 里给出的内容不是“演示级封装”，而是完整的模型使用说明：从依赖安装、模型下载、推理命令，到不同管线、不同 VAE、上采样器和 LoRA 的组合方式都有列出。它同时覆盖快速出图/出视频、带音频生成、两阶段高质量生成、以及训练相关工作流。
-- **能解决什么痛点**：一是把分散的模型权重、编码器、VAE、上采样器和 LoRA 组合成可执行的统一入口，避免开发者自己拼路径、拼组件。二是给显存受限的机器提供 `fp8-cast`、`cpu/disk offload` 这类降载选项，解决“模型能下但跑不动”的实际问题。
-- **适合谁用**：做生成式多媒体应用的 Python 工程师，尤其是需要本地跑音视频生成推理的人；以及想在 LTX-2 基座上训练或接入 LoRA 的研究人员、算法工程师。
-- **怎么上手**：README 提供的最小流程是先装依赖，再调用推理入口：
-  实际使用还需要先下载对应模型权重，README 明确写了大约 66 GiB。
-- **可以用在哪些场景**：生成带同步音轨的宣传短片或概念预览视频；在本地/内网环境里做视频内容原型验证，不依赖在线 SaaS；围绕固定角色、固定风格做 LoRA 微调，然后批量生成同主题音视频素材。
-- **技术看点**：仓库以 DiT 路线为核心，围绕推理做了多管线拆分，包括 Distilled、DFR、TI2Vid 等不同目标的实现。它对部署现实考虑得比较细，既支持 Linux + CUDA 下的 `natten` 加速，也保留 Triton / eager fallback，说明作者在兼顾性能和可移植性。
-- **近期动向与发展方向**：最近提交集中在 2026-08-11 的版本发布、依赖约束修正和自动化 PR 合并，说明项目仍在持续维护，且重点偏向稳定性和发布节奏控制。8 月初还有把 `LipDub` 管线改名为 `Dub-It` 的提交，能看出它在整理产品命名和管线边界；更早的提交多数是自动化更新，整体呈现“少量人工功能迭代 + 持续依赖维护”的节奏。当前 116 个 open issues 也说明它还在快速演进，积累了较多待处理问题。
-- **同类对比**：README 里没有直接点名竞品；从内容看，它更像是“模型官方运行时 + 管线集合”，而不是单纯的推理 API 封装。
-- **注意事项**：上手门槛不低，核心原因是权重体积大、组件多、还依赖 GPU 环境和特定加速后端。项目星标高、更新活跃，但创建时间较新、问题数偏多，说明热度和成长性都在，稳定性和文档完整度还需要结合具体管线再评估。README 已经给出快速开始路径，但对硬件、下载、权限和不同管线的选择仍然需要用户自己消化。
-
-- **GitHub**：[Lightricks/LTX-2](https://github.com/Lightricks/LTX-2)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：聚焦生成式视频与创意工具，在开源 AI 社区具有较高知名度和持续影响力。
-**技术栈偏好**：以 Python 为核心，结合 TypeScript 与 Ruby，偏向 AI 模型、工作流工具和跨平台应用开发。
-**核心领域**：主要聚焦生成式视频、计算机视觉、创意内容生产与 AI 开源生态。
+**技术影响力**：GitHub 是全球开发者协作与开源生态的核心组织之一，凭借极高关注度和多个高星项目，在软件开发社区具有强大的基础设施级影响力。
+**技术栈偏好**：其技术栈以 Python 和 Go 为主，整体更偏向开发者工具、平台服务、自动化能力与 AI 编程辅助方向。
+**核心领域**：主要聚焦于代码托管、开发协作、开源工具链以及面向开发流程的智能化产品与服务。
 
 ---
 
@@ -443,3 +282,191 @@
 **技术影响力**：在开源社区具备显著影响力，核心项目 `ragflow` 拥有极高星标，说明其在同类技术方向中处于头部位置。
 **技术栈偏好**：以 C++ 和 Go 为主，辅以 MDX 文档体系，整体偏向高性能后端、基础设施与工程化交付。
 **核心领域**：主要聚焦于 RAG、检索增强生成与相关数据/知识管理平台。
+
+---
+
+### ✨ cursor/plugins (2760★)
+
+> **一句话**：Cursor 把官方插件规范、内置开发者工作流插件，以及 Gmail、Salesforce、HubSpot、X 等第三方 MCP 集成集中放在这个仓库里，作为 Cursor 插件市场的源头目录。
+
+- **它是什么**：这是 Cursor 官方维护的多插件仓库，每个插件都是仓库根目录下的独立目录，并通过自己的 `.cursor-plugin/plugin.json` 描述名称、作者、分类和能力。仓库同时包含 Cursor 自家的开发者工具插件，例如代码审查、文档画布、SDK、并行 agent 编排，也收录了多款基于远程 MCP Server 的 SaaS 集成插件。
+- **能解决什么痛点**：一是 Cursor 插件分散时，开发者很难确认插件清单、manifest 结构和官方约定，这个仓库给出了可直接参照的规范样板。二是把 Gmail、Google Drive、Salesforce、HubSpot、Intercom 等服务接入 Cursor Agent 时，减少手写 MCP 配置和反复查各家接口说明的成本。
+- **适合谁用**：适合正在为 Cursor 编写或维护插件的 TypeScript / 工具链开发者，也适合希望把常用 SaaS、CRM、邮件、日历、文档系统接入 Cursor Agent 工作流的团队。对关注 MCP 生态落地方式的开发者也有参考价值。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：
+  - 为团队内部开发 Cursor 插件时，参考 `create-plugin`、`.cursor-plugin/plugin.json` 和 marketplace manifest 的目录组织方式。
+  - 在 Cursor 中接入 Gmail、Google Calendar、Google Drive，用 agent 查询邮件、安排会议或处理文档资料。
+  - 把 Salesforce、HubSpot、Intercom、Docusign 等业务系统通过官方远程 MCP Server 接入开发或运营工作流，让 agent 能检索、更新或汇总业务数据。
+- **技术看点**：仓库采用多插件 marketplace 结构，根目录的 `.cursor-plugin/marketplace.json` 统一登记插件，每个插件独立维护 manifest、skills、rules、MCP 配置和文档。设计上强调 Cursor 插件与 MCP Server 的组合，把本地 agent 能力和远程 SaaS API 连接起来。
+- **近期动向与发展方向**：最近提交非常活跃，8 月 8 日到 13 日连续合入 HubSpot、Intercom、Circleback、Docusign、Navan、Profound、AgentMail 等第三方 MCP 插件，说明当前重点是扩充官方插件市场中的 SaaS 集成覆盖面。同时 X 插件切换到带写权限 scope 的 OAuth 用户登录，插件描述也被改为 client-agnostic，显示项目正在从单一客户端描述走向更通用的插件规范和认证能力。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：项目创建时间较新但更新频率很高，Stars 已到 2760，说明关注度上升较快；同时 Open Issues 有 31 个，且近期出现过新增第三方插件后又 revert 的情况，插件清单和接口能力可能仍在快速调整。README 更像插件目录和结构说明，缺少安装命令、开发教程和端到端快速上手示例，新用户需要直接阅读各插件目录下的 manifest、README 或 MCP 配置。
+
+- **GitHub**：[cursor/plugins](https://github.com/cursor/plugins)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：AI 编程工具领域的高影响力开发者组织，拥有较高社区关注度和项目传播力
+**技术栈偏好**：以 TypeScript 为主、Python 为辅，偏好现代 Web、插件生态与 AI 工具开发
+**核心领域**：聚焦 AI 辅助编程、开发者工具及可扩展的编辑器插件生态
+
+---
+
+### ✨ deepseek-ai/awesome-deepseek-agent (5616★)
+
+> **一句话**：这是一份把 DeepSeek 模型接入 Claude Code、Cline、Qwen Code、Copilot CLI、Cherry Studio 等主流 Agent / 编程助手的配置指南合集。
+
+- **它是什么**：awesome-deepseek-agent 不是一个可执行框架，而是一个围绕 DeepSeek 模型的集成文档仓库。它按工具整理了安装、API 配置和首次运行步骤，覆盖终端编码助手、VS Code 插件、桌面 AI 客户端、聊天机器人和多 Agent 平台等类型。
+- **能解决什么痛点**：开发者想在不同 Agent 工具里使用 DeepSeek 时，常会卡在 provider 配置、API Key 填写位置、模型名和兼容参数上；这个仓库把这些步骤拆成单独指南，减少逐个翻官方文档和社区帖子试错的成本。对于同时评估多个编码助手的团队，也可以用它快速比较哪些工具已支持 DeepSeek 接入。
+- **适合谁用**：适合正在使用 Claude Code、Cline、Qwen Code、OpenCode、Cherry Studio、LobeHub 等工具，并希望切换到 DeepSeek 模型的开发者；也适合需要为团队整理 AI 编程助手接入规范的技术负责人或平台工程师。
+- **怎么上手**：文档未提供统一快速上手示例；建议从 README 的工具列表中选择正在使用的工具，进入对应 `docs/*.md` 指南按步骤配置。
+- **可以用在哪些场景**：
+  - 在 VS Code 的 Cline 或 GitHub Copilot 相关工具中配置 DeepSeek，完成代码解释、修改和多文件任务。
+  - 在 Claude Code、Qwen Code、OpenCode、Pi 等终端 Agent 中接入 DeepSeek，用于命令行环境下的项目分析和代码生成。
+  - 在 Cherry Studio、LobeHub、AstrBot、OpenClaw 等桌面或聊天平台里统一配置 DeepSeek，用于团队知识问答、机器人助手或多 Agent 工作流。
+- **技术看点**：项目的价值主要在文档编排和生态覆盖，而不是代码实现；它围绕 OpenAI-compatible API、各类 Agent provider 配置、MCP 支持工具和终端 / IDE / 桌面端使用路径做了集中整理。对技术选型来说，最有参考价值的是可以直观看到 DeepSeek 在哪些主流 Agent 工具中已有可操作的集成路径。
+- **近期动向与发展方向**：最近提交几乎都集中在新增和修订集成指南，包括 Qwen Code、Cline、LobeHub、Cherry Studio、Codex、Pi 等，说明项目当前重点是扩大工具覆盖面和修正文档细节，而不是做底层架构开发。提交中有多位外部贡献者参与 PR，社区补充指南较活跃；但最近记录停留在 6 月中旬，而项目更新时间为 8 月 14 日，后续可能仍以文档维护和新增工具适配为主。
+- **同类对比**：README 没有明确给出同类项目或对标仓库。它与单个 Agent 工具文档的差异在于横向汇总多个工具的 DeepSeek 接入方式，而不是只服务某一个客户端。
+- **注意事项**：这是文档型仓库，语言字段为 None，不能把它当作 SDK 或 Agent 框架使用。项目创建时间较新，但已有 5616 Stars、686 Forks 和 24 位贡献者，关注度较高；同时 Open Issues 达 309，说明需求和反馈积压不少，部分指南可能会受上游工具版本、模型名称或 API 参数变化影响，需要以对应工具的官方文档和实际版本为准。
+
+- **GitHub**：[deepseek-ai/awesome-deepseek-agent](https://github.com/deepseek-ai/awesome-deepseek-agent)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：高影响力人工智能组织，在开源大模型社区拥有广泛关注和开发者影响力
+**技术栈偏好**：以 Python 和 TypeScript 为主，偏好大模型研发、训练推理及开发者工具生态
+**核心领域**：主要聚焦生成式人工智能、基础大模型、代码智能与模型集成应用
+
+---
+
+### ✨ semantica-agi/semantica (2238★)
+
+> **一句话**：把企业数据、Agent 决策和推理链路沉淀成可查询、可审计的上下文图谱，让 AI 系统在事后能说清楚“为什么这么做”。
+
+- **它是什么**：Semantica 是一套面向 AI Agent 的图原生上下文基础设施，位于 LLM、向量库和 Agent 框架之下。它可以从文件、数据库、Databricks、Snowflake 等来源摄取数据，抽取实体、关系和事件，构建 Context Graph / Knowledge Graph，并记录决策、因果链路和来源证据。项目强调自托管、可审计、可替换后端，适合对可解释性和治理要求较高的系统。
+- **能解决什么痛点**：传统 RAG 往往只保存向量相似度，无法回答“某个 AI 决策依据了哪些事实、经过了哪些推理、是否违反规则”。在金融、医疗、法律、政府等场景中，团队还需要把分散在仓库、湖仓和文档里的数据转成带来源、带约束、可追溯的知识图谱，而不是再复制到第三方 SaaS 黑盒里。
+- **适合谁用**：适合正在构建高风险决策型 AI Agent 的 AI/ML 平台团队，以及需要从 Databricks、Snowflake、文档和业务系统中构建知识图谱的数据平台 / 知识工程团队。合规、风控和审计团队也可以用它追踪 AI 决策依据。
+- **怎么上手**：安装命令：`pip install semantica`；README 中还提供了 `semantica doctor` 用于快速检查本地环境。
+- **可以用在哪些场景**：可用于贷款审批、供应商选择等需要保留完整决策证据链的 Agent 系统；也可用于把企业湖仓表、文档和事件流转成可查询的内部知识图谱；还适合搭建带 SHACL 规则、PROV-O 来源记录和图推理能力的 AI 治理平台。
+- **技术看点**：项目同时支持 RDF 和 Labeled Property Graph 后端，README 提到 Oxigraph、Blazegraph、Jena、RDF4J、Neo4j、FalkorDB、Apache AGE、AWS Neptune 等可替换存储。治理层采用 W3C PROV-O、SHACL、OWL、SKOS，并提供 forward chaining、Rete、Datalog、SPARQL 等确定性推理能力，这比单纯向量检索更适合审计和规则约束场景。
+- **近期动向与发展方向**：最近 20 条提交集中在后端兼容性、图存储、Markdown 路径诊断、Qdrant metadata 规范化、DecisionEmbeddingPipeline 持久化后端支持、HybridSearch 非内存后端修复，以及 Knowledge Explorer 渲染循环修复。整体看项目仍处于快速迭代期，维护者和外部贡献者都在活跃提交，近期重点是补齐多后端稳定性、修复边界问题，并增强嵌入式图存储能力。
+- **同类对比**：README 明确对比了 Vector DB + RAG 和普通 LLM Memory：前者主要依赖 embedding 相似度，通常不保存决策历史、来源和规则执行记录；Semantica 的差异在于把决策、来源、冲突检测、时间快照和规则推理作为一等对象来管理。
+- **注意事项**：项目创建于 2025-06-25，时间不算长，但 Stars 和近期提交增长较快，说明热度和开发活跃度都较高。当前 Open Issues 为 16，问题数量不算大，不过近期提交中 bugfix 和后端兼容性修复较多，说明多存储后端和复杂管线仍在打磨；在生产环境采用前，建议重点验证所选图数据库、向量库和企业数据连接器的稳定性。
+
+- **GitHub**：[semantica-agi/semantica](https://github.com/semantica-agi/semantica)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Semantica 是一个新兴但已获得一定社区关注的 AI 基础设施组织，核心仓库具备较强早期影响力。
+**技术栈偏好**：其技术栈明显偏向 Python，主要围绕语义基础设施、上下文管理与 AI 决策系统展开。
+**核心领域**：主要聚焦于面向 AGI/AI 应用的语义基础设施、上下文系统和智能决策框架。
+
+---
+
+### ✨ rustdesk/rustdesk (120516★)
+
+> **一句话**：RustDesk 让你像使用 TeamViewer 一样远程控制另一台电脑、传输文件和建立 TCP 隧道，同时可以把中继与 rendezvous 服务部署在自己的服务器上。
+
+- **它是什么**：RustDesk 是用 Rust 编写的开源远程桌面客户端，支持 Windows、Linux、macOS、Android 等平台，并提供 Flutter 桌面与移动端界面。连接建立后可进行屏幕控制、键鼠操作、剪贴板同步、文件传输、音频通信和 TCP 隧道转发；网络连接既可以使用官方服务，也可以自建或自行实现 rendezvous/relay 服务。
+- **能解决什么痛点**：传统远程桌面软件通常要求依赖第三方云服务，企业难以完全控制连接数据和中继节点；RustDesk 支持自托管，适合对数据驻留、内网访问和权限边界有要求的环境。对于跨网络设备连接，还提供直连、TCP 打洞和中继路径，减少手工配置端口转发的工作量。
+- **适合谁用**：需要远程支持员工电脑、管理分支机构设备的企业 IT、运维和技术支持团队。希望替代 TeamViewer、掌控中继服务器，或需要二次开发远程桌面客户端与服务端能力的 Rust、Flutter 开发者也适合使用。
+- **怎么上手**：完成 Rust、C++、vcpkg 及系统依赖准备后，在仓库根目录执行 `VCPKG_ROOT=$HOME/vcpkg cargo run`；也可以先构建 Docker 环境：`docker build -t rustdesk-builder .`。
+- **可以用在哪些场景**：
+  - 为企业员工提供远程办公和桌面故障排查，并将中继服务部署在企业内网或私有云。
+  - 为多地机房、门店或实验室设备提供集中式远程维护，减少现场登录和人工巡检。
+  - 在客户支持系统中集成远程协助、文件传输和 TCP 隧道，用于处理需要访问客户现场环境的技术工单。
+- **技术看点**：核心连接、屏幕采集、键鼠控制、编解码和平台适配主要由 Rust 及其模块化库实现，Flutter 覆盖桌面和移动端 UI，项目还保留已标记为弃用的 Sciter UI。网络层支持直接连接、TCP 打洞和 rendezvous/relay 中继，既能开箱即用，也保留自建基础设施和定制服务端的空间。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 8 月 7 日至 14 日，开发频率较高，重点是稳定性、安全性和平台兼容性，而非大规模新增功能。近期包括移除 `plugin-framework` 及清理遗留代码、升级 `fuser` 以处理安全公告、修复 Linux Wayland/DRM 登录屏幕适配、改进终端鼠标滚轮与滚动选择、强化登录重试和连接模式处理；同时持续合并中文、葡萄牙语、希腊语等翻译贡献，显示项目正在推进架构收敛、跨平台修复和国际化维护。
+- **同类对比**：README 明确将 RustDesk 定位为 TeamViewer 的开源替代方案。相比主要依赖厂商云服务的远程桌面产品，RustDesk 的突出差异是允许用户自建 rendezvous/relay 服务并控制数据路径，但部署服务端、维护网络连通性和升级安全补丁也需要用户承担更多运维工作。
+- **注意事项**：项目创建于 2020 年，拥有 120516 个 Stars、18455 个 Forks 和 463 名贡献者，近期提交密集，整体成熟度和社区规模较高；但仍有 132 个开放 Issue，跨 Windows、Linux、macOS、移动端及 Wayland 等平台意味着兼容性验证成本不低。源码构建需要 Rust、C++、vcpkg、系统图形与音视频依赖，首次构建耗时和环境配置复杂度都较高；README 同时存在 Flutter 主线与 Sciter 教程、部分依赖版本固定等情况，正式部署前应核对当前构建文档和发布版本。插件框架移除、GUI 技术迁移及底层依赖升级可能影响扩展和构建流程，升级时应重点验证自定义客户端、服务端和平台集成。
+
+- **GitHub**：[rustdesk/rustdesk](https://github.com/rustdesk/rustdesk)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：RustDesk 凭借超 12 万星的核心远程桌面项目和活跃生态，已成为开源远程控制领域最具影响力的项目之一。
+**技术栈偏好**：以 Rust 为核心技术栈，辅以 HTML 文档站点和 Shell 运维脚本，偏向高性能、安全性和跨平台系统级开发。
+**核心领域**：主要聚焦低成本、可自托管的远程桌面服务及其服务端基础设施。
+
+---
+
+### ✨ OpenCut-app/OpenCut (82992★)
+
+> **一句话**：OpenCut 正在把类似 CapCut 的视频剪辑体验做成开源版本，并计划同时覆盖网页、桌面和移动端。
+
+- **它是什么**：OpenCut 是一个免费开源的视频编辑器项目，目标是提供可在 Web、桌面和移动端运行的剪辑应用。README 明确说明当前项目正在从头重写，未来会围绕 Rust core、Editor API、插件架构、脚本面板、Headless 模式和 MCP server 展开；当前线上可用版本仍是 classic 版。
+- **能解决什么痛点**：对希望使用开源视频编辑器、避免被商业闭源剪辑软件绑定的团队来说，OpenCut 提供了一个可审计、可自托管和可参与演进的替代方向。对需要批量渲染、自动化剪辑或二次开发编辑器能力的开发者，规划中的 Headless 模式、Editor API 和脚本能力可以减少从零搭建视频编辑基础设施的成本。
+- **适合谁用**：适合关注开源创作者工具、希望跟进视频编辑器底层架构演进的前端 / 全栈开发者；也适合准备做剪辑自动化、插件系统或 AI Agent 集成的工具团队提前研究。
+- **怎么上手**：`proto use && moon run web:dev`
+- **可以用在哪些场景**：搭建面向创作者的在线视频剪辑产品原型；在内部工具中集成视频剪辑、预览和导出能力；基于未来的 Headless 模式做批量视频处理、自动化渲染或脚本化生成。
+- **技术看点**：项目当前以 TypeScript 为主要语言，但 README 显示新架构会采用 Rust core 支撑 Web、桌面和移动端共用一套核心能力。插件优先架构、Editor API、MCP server 和 Headless 模式是后续最值得关注的技术方向。
+- **近期动向与发展方向**：最近提交集中在重写后的桌面端和工作区基础设施：包括 GPUI primitives、桌面 shell、浏览器 / 预览 / 检查器 / 时间线面板、系统主题跟随、WSL2 兼容和 crates 目录准备。整体看项目仍处于架构重建和基础界面搭建阶段，提交较密集，但外部贡献暂未完全开放，主要由核心维护者推进。
+- **同类对比**：README 明确将其定位为开源 CapCut alternative。差异在于 OpenCut 强调 MIT 开源、插件优先、跨端共用 Rust core，以及面向自动化和 AI Agent 的 MCP / Headless 能力；但当前成熟度还不能按生产级 CapCut 替代品来判断。
+- **注意事项**：项目创建时间较新，虽然 Star 数很高、关注度强，但 README 明确写着正在从头重写，当前推荐使用的是 opencut-classic；这意味着主仓库存在较高的破坏性变更风险。367 个 open issues 说明社区反馈已经不少，但项目也声明架构设计期间暂不适合外部贡献，想直接用于生产剪辑场景需要谨慎评估。
+
+- **GitHub**：[OpenCut-app/OpenCut](https://github.com/OpenCut-app/OpenCut)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：作为新近成立但已凭借明星仓库 `OpenCut` 快速聚拢高关注度的开源组织，已在视频编辑工具圈形成明显的社区影响力。
+**技术栈偏好**：以 `TypeScript` 为主，技术方向偏向前端应用与音视频工程结合，并辅以 `ffmpeg` 相关底层能力。
+**核心领域**：主要聚焦开源视频编辑器及其周边音视频处理能力。
+
+---
+
+### ✨ unslothai/unsloth (70924★)
+
+> **一句话**：在个人电脑上下载模型、打开聊天与 API 服务、微调 LLM 或扩散模型，并把本地模型接入 Claude Code、Codex 等智能体的桌面化 AI 工作台。
+
+- **它是什么**：Unsloth 覆盖了本地模型的运行、训练和部署：既有免配置的 Tauri 桌面应用，也提供 Web 版 Studio 和 Python 代码库。它可运行 LLM、图像/视频扩散、嵌入和音频模型，支持 LoRA、QLoRA、全量微调、强化学习、DPO、GRPO 等训练方式，并可导出 GGUF、FP8、NVFP4 等格式。
+- **能解决什么痛点**：一是开发者在 Windows、macOS、Linux、NVIDIA、AMD、Intel 等不同软硬件组合上部署本地模型时，常需要分别处理推理后端、驱动和环境依赖；Unsloth 将这些选择收敛到安装器和 Studio 设置中。二是本地模型通常难以直接接入编码智能体和现有应用，它提供 OpenAI 兼容 API，以及 `unsloth start` 命令来连接 Claude Code、Codex、MCP 等工具。
+- **适合谁用**：需要在自有硬件上进行模型推理、微调或数据准备的 AI 应用开发者；希望用本地模型驱动 Claude Code、Codex 等编码智能体，同时避免把代码和上下文发送到第三方模型服务的工程团队。
+- **怎么上手**：macOS、Linux 或 WSL 可执行 `curl -fsSL https://unsloth.ai/install.sh | sh`，随后运行 `unsloth studio -p 8888` 启动本地 Studio。
+- **可以用在哪些场景**：在内网部署 OpenAI 兼容的本地推理接口，供内部应用调用；用 PDF、CSV、DOCX 构建训练数据后，对领域模型进行 LoRA/QLoRA 微调；在本机启动 GGUF 模型，再让 Claude Code 或 Codex 将其作为本地子智能体使用；在 AMD 或 Intel GPU 设备上通过 Vulkan 运行 GGUF 聊天推理。
+- **技术看点**：项目将桌面端、Web Studio 与 Python Core 三种交付形态放在同一产品体系内，兼顾非编程用户和代码集成需求。硬件适配范围较广，覆盖 CUDA、ROCm、Metal、Vulkan 与 CPU，并允许切换 llama.cpp 的 GGUF 推理后端。
+- **近期动向与发展方向**：最近 20 条提交集中在同一天，开发活跃度很高。重点包括 Studio 模型选择器与外部 Provider 工具调用、图像和视频加载时的 GPU 选择、桌面端登录自启、主窗口关闭后的后台运行，以及 Windows/macOS 安装与启动稳定性；同时修复前端契约测试、CUDA/HIP 上下文占用和杀毒软件误报，说明团队当前正在强化跨平台桌面产品的可用性与发布质量。
+- **同类对比**：README 未明确列出直接竞品。其差异化方向是把本地推理、训练、模型导出、数据处理和智能体接入整合进一个跨平台桌面与 Web 工作流，而不只提供单一推理服务器或训练脚本。
+- **注意事项**：Studio 仍标注为 Beta，且仓库有 1111 个开放 Issue，跨平台、GPU 驱动和模型后端组合较多时仍可能遇到兼容性问题。项目创建于 2023 年末、更新非常频繁，安装器和桌面端功能迭代快，升级前应关注版本说明与本地模型、环境配置的兼容性；通过 Cloudflare 暴露远程访问时，README 明确提示需妥善保管访问链接和 API Key，因为远程用户可能调用模型并执行代码。
+
+- **GitHub**：[unslothai/unsloth](https://github.com/unslothai/unsloth)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Unsloth AI 凭借高星标核心项目在本地大模型训练与优化社区中具备显著影响力。
+**技术栈偏好**：以 Python 和 Jupyter Notebook 为主，辅以 C++，偏向 AI 模型训练、实验与底层推理优化。
+**核心领域**：主要聚焦本地化大语言模型的高效训练、微调与运行。
+
+---
+
+### ✨ ToolJet/ToolJet (38915★)
+
+> **一句话**：ToolJet 把数据库、API、SaaS 服务和对象存储接入一个可视化画布，让团队通过拖拽组件和编写少量 JavaScript/Python，快速搭建内部系统、仪表盘、工作流与 AI Agent。
+
+- **它是什么**：ToolJet 是 ToolJet AI 的开源基础，核心是一个面向企业内部应用的低代码开发平台。社区版提供 60 多种响应式组件、内置数据库、80 多种数据源连接器、多页应用、多人协作编辑、权限控制，以及 Docker、Kubernetes 和云平台自托管能力。企业版进一步提供自然语言生成应用、AI 查询构建、AI 调试、Agent Builder、GitSync 和多环境管理等功能。
+
+- **能解决什么痛点**：企业内部系统往往需要重复开发表单、列表、图表、权限和数据连接，ToolJet 可以用可视化组件快速组合这些功能。它还减少了为每个数据库、API 或 SaaS 服务单独编写前后端集成代码的工作量，并支持将数据流通过代理方式处理，避免浏览器直接暴露后端连接。
+
+- **适合谁用**：适合需要快速交付管理后台、运营工具和数据看板的前端或全栈开发者，也适合希望由业务技术团队自行搭建内部应用的平台工程师。对需要自托管、接入企业数据库并配置细粒度权限的中小企业和企业 IT 团队也比较合适。
+
+- **怎么上手**：README 提供了 Docker 快速启动方式：`docker run --name tooljet --restart unless-stopped -p 80:80 --platform linux/amd64 -v tooljet_data:/var/lib/postgresql/13/main tooljet/try:ee-lts-latest`
+
+- **可以用在哪些场景**：
+  - 用数据库、API 和表单组件搭建库存、订单、客户或工单管理后台。
+  - 将 Airtable、S3、企业数据库等数据源组合成运营数据看板或内部查询门户。
+  - 通过工作流、权限控制和 Agent Builder，搭建审批、数据处理和重复性运营任务自动化应用。
+
+- **技术看点**：项目采用 JavaScript 生态，提供可视化拖拽构建器，同时允许在应用中执行 JavaScript 和 Python，兼顾低代码开发与定制逻辑。其设计覆盖 80 多种数据源、插件与连接器扩展、AES-256-GCM 加密、代理式数据流和多种自托管部署方式，适合纳入企业现有基础设施。
+
+- **近期动向与发展方向**：最近 20 条提交主要集中在持续发布 beta 版本、修复组件动态行为和权限界面问题，以及完善 RDS SSL 自动配置、全局证书运行时支持和 Netlify 部署兼容性，说明项目处于高频维护和版本迭代阶段。近期没有明显的大规模重构迹象，开发重点更偏向部署可靠性、企业环境兼容性和现有功能稳定性；同时多人持续提交，681 位贡献者构成了较活跃的社区基础。
+
+- **同类对比**：README 未明确列出竞品。ToolJet 的定位明显偏向可自托管的企业内部应用平台，除可视化组件和数据源连接外，还覆盖多人协作、权限、GitSync、企业部署和 AI 应用生成；但与其他低代码平台的具体功能和商业授权差异，README 未提供系统对比。
+
+- **注意事项**：项目创建于 2021 年 3 月，已有较高的社区关注度和持续更新记录，但开放 Issue 达 1120 个，使用时需要区分已知问题与版本行为。README 同时区分社区版与 ToolJet AI 企业能力，AI 生成、AI 调试、Agent Builder、GitSync 等功能不应默认视为开源社区版全部可用。自托管涉及数据库、密钥、证书、权限和部署环境配置，生产环境建议优先采用 LTS 版本，并提前确认 AGPL-3.0 对二次分发和网络服务使用方式的影响。
+
+- **GitHub**：[ToolJet/ToolJet](https://github.com/ToolJet/ToolJet)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：ToolJet 凭借近 4 万星的核心开源项目，在低代码业务应用开发领域具备较高社区影响力和开发者认知度。
+**技术栈偏好**：以 JavaScript 为核心，辅以 Python 和 Helm/Smarty 生态，偏向 Web 应用、平台工程与部署工具链建设。
+**核心领域**：主要聚焦开源低代码平台，面向企业内部工具、业务应用构建与快速部署场景。
