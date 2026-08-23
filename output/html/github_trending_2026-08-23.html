@@ -101,8 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-08-23)</h1>
-<h2>今日热点：AI 编程代理与开发者工具生态升温</h2>
-<p>今天的热门项目几乎都围绕 AI 编程代理、技能与工作流框架、研发协作平台以及安全治理展开，从终端编码助手、Claude Code 生态、skills 配置和 agent harness 优化，到 n8n、Plane、PostHog 这类提升效率与可观测性的基础平台，再到 TypeScript、Modular、Cursor 插件等底层与工具链项目，以及 AI 红队、订阅中转、外设管理和本地化实用工具，整体呈现出“让 AI 更好地参与软件开发，同时把效率、成本、安全与可控性一起做深”的趋势，具体项目摘要如下：</p>
+<h2>今日热点：AI 代理与技能生态加速成型</h2>
+<p>今天的热门项目几乎都围绕“可落地的 AI 代理工作流”展开：从终端里的轻量编码助手，到本地优先的 agent 工作台、记忆与多代理编排系统，再到面向 Claude Code、Codex、Cursor 等生态的 Skills、插件市场和提示词模板库，整体呈现出“工具链标准化、能力模块化、工作流自动化”的趋势，同时也延伸到本地化系统、开源替代方案、开发者福利资源与创作类模型工具，覆盖编程、研究、协作、隐私和生产力多个方向，具体项目摘要如下：</p>
 <h3>✨ openai/codex (112619★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：Codex CLI 把能读写代码、执行命令并调用外部工具的 AI 编程代理直接带进本地终端，让开发者可以在自己的项目目录里交代任务并监督执行过程。</p>
@@ -130,6 +130,34 @@
 <p><strong>技术影响力</strong>：全球领先的人工智能技术组织，在开发者社区拥有极高关注度和广泛影响力。
 <strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，结合 Rust，聚焦机器学习、深度学习与高性能 AI 工程。
 <strong>核心领域</strong>：主要聚焦生成式人工智能、语音识别、计算机视觉、强化学习及 AI 开发者生态。</p>
+<hr />
+<h3>✨ freestylefly/awesome-gpt-image-2 (12572★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把 GPT-Image2 的 532 个真实生成案例拆解成可复制的提示词、模板和 Agent Skill，用户可以按 UI、海报、产品图、信息图等类型直接查找并复用。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个面向 GPT-Image2 的 Prompt as Code 资料库，收录 500+ 个逆向工程案例，并按界面、信息图、海报、产品、电商、摄影、插画等场景分类。项目还提供 20+ 套工业级提示词模板，将主体、灯光、材质、布局和文字层级等要素拆成可组合结构，并附带 GPT-Image2 风格库 Agent Skill。</li>
+<li><strong>能解决什么痛点</strong>：解决图片生成提示词依赖反复试错、难以复现的问题，开发者可以从已有案例复制完整提示词并按模块修改。对于批量出图、固定品牌视觉或要求文字和版式稳定的任务，结构化模板比零散的自然语言描述更容易维护和自动化。</li>
+<li><strong>适合谁用</strong>：使用 GPT-Image2 构建图片生成产品、批量内容流水线或 Agent 工作流的开发者。也适合设计师、产品运营和电商团队，用现成案例快速搭建海报、商品图、社交媒体素材和信息图提示词。</li>
+<li><strong>怎么上手</strong>：README 未提供安装命令或最小代码示例；可直接访问 <a href="https://gpt-image2.canghe.ai/">在线图库</a>，按风格或场景筛选案例、打开大图并复制完整提示词，也可以从 <code>docs/gallery.md</code> 和 <code>docs/templates.md</code> 开始阅读。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>为电商商品建立统一的产品摄影、包装展示和卖点广告图模板。</li>
+<li>在内容发布流水线中批量生成社交媒体封面、活动海报和长图信息图。</li>
+<li>为图片生成 Agent 或脚本提供可复用的风格库，按品牌色、版式、材质和镜头语言组合提示词。</li>
+<li><strong>技术看点</strong>：项目将提示词从长段描述整理为主体、布局、灯光、材质等原子化结构，强调可组合、可复用和适配自动化流程。仓库同时提供独立的 <code>agents/skills/gpt-image-2-style-library/SKILL.md</code>，方便接入 Agent、脚本或编码助手工作流。</li>
+<li><strong>近期动向与发展方向</strong>：近期开发重点仍是持续扩充案例库，2026 年 6 月至 8 月陆续加入 506 至 532 号案例，维护者保持较稳定的更新节奏。与此同时，项目增加了会员入口、支付宝付费社区、官方账号联系卡和 Vercel 部署修复，并持续调整赞助商展示，说明项目正从单纯的开源提示词仓库向在线图库、付费社群和赞助运营结合的产品形态发展。提交主要由仓库作者完成，另有一位贡献者参与社区支付和部署相关功能。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。README 的定位不是通用图片生成器或模型服务，而是围绕 GPT-Image2 的案例库、结构化提示词模板和 Agent Skill 集合。</li>
+<li>
+<p><strong>注意事项</strong>：仓库创建于 2026 年 4 月 25 日，项目年龄较短，但已获得 12572 个 Stars 和 1419 个 Forks；目前仅有 5 位贡献者、11 个开放 Issue，后续维护对核心维护者依赖较高。README 的资料索引和在线图库较完整，但未提供标准化安装流程、API 接入示例或自动化测试说明，开发者需要自行将提示词接入具体模型服务。项目包含付费社区和多个商业赞助链接，使用时应区分开源案例内容与第三方 API、会员服务，具体服务稳定性和价格需向对应平台确认。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/freestylefly/awesome-gpt-image-2">freestylefly/awesome-gpt-image-2</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：AI 创业者与 Microsoft MVP，在开源社区拥有较高关注度和持续传播力。
+<strong>技术栈偏好</strong>：以 TypeScript、JavaScript 为主，辅以 Python，偏好 AI 应用、智能工具与全栈产品开发。
+<strong>核心领域</strong>：聚焦生成式 AI、AI Agent、开发者工具及社交平台智能化。</p>
 <hr />
 <h3>✨ mattpocock/skills (232110★)</h3>
 <blockquote>
@@ -183,6 +211,180 @@
 <strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Shell，重点关注类型系统、开发者工具与 AI 编程工作流。
 <strong>核心领域</strong>：主要聚焦生产级 TypeScript 工程实践、类型安全和开发者教育。</p>
 <hr />
+<h3>✨ basecamp/omarchy (25204★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Omarchy 是 DHH 主导的现代 Linux 发行版，预设了 Hyprland 桌面、终端、开发工具、AI 工具、主题、热键和系统配置，让用户开箱就进入一套带有强烈取向的工作环境。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Omarchy 是一个“有主见”的 Linux 发行版，核心不是只提供基础系统，而是把桌面交互、开发环境、Shell 工具、GUI/TUI 应用、主题、热键、剪贴板、截图录屏、AI 工具等都整理成一套完整体验。README 显示其权威文档放在 <code>manual/</code> 目录，并按入门、应用、配置、故障排查、安全、无人值守安装等章节组织，说明它更像是一套完整工作站方案，而不是单个配置脚本。</li>
+<li><strong>能解决什么痛点</strong>：它面向的是“装完 Linux 还要花很多时间拼桌面环境、终端、开发工具、快捷键和 dotfiles”的痛点，尤其适合不想从零组装 Hyprland、Neovim、Shell 插件、截图录屏、剪贴板历史等组件的用户。另一个现实问题是跨机器复现环境困难，近期提交中已经出现了规划 dots 功能来保留和同步用户配置的方向。</li>
+<li><strong>适合谁用</strong>：适合愿意接受强预设工作流的 Linux 桌面用户、Web/后端开发者、长期在终端和编辑器里工作的开发者。也适合从 macOS 或 Windows 转向 Linux、希望有一套现成导航、热键、应用和文档指引的人。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>给新开发机器快速铺一套统一的 Linux 桌面和开发环境，减少反复配置终端、编辑器、浏览器、Shell 工具和主题的时间。</li>
+<li>在团队或个人多台机器之间维护相近的工作站体验，结合后续 dotfiles 同步方向统一热键、Shell 插件和桌面配置。</li>
+<li>从 macOS/Windows 迁移到 Linux 时，用手册中的“Coming From Mac or Windows”、Windows VM、双系统安装等章节降低迁移成本。</li>
+<li><strong>技术看点</strong>：项目主要语言是 Shell，说明大量能力围绕系统安装、配置编排和桌面环境脚本化展开；文档覆盖 Hyprland 相关行为、CLI、主题、硬件认证、系统快照、无人值守安装等，技术重点在“把 Linux 桌面工作站产品化”。它不是中立的通用发行版，而是通过默认应用、快捷键、主题和配置形成固定工作流。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交非常密集，集中在文档补齐、Hyprland 相关问题修复、菜单和状态栏交互、默认应用安装、Windows VM 启动、终端配置修复、SSH 无交互参数以及 AI agent 启动策略调整。可以看出项目仍处于高速迭代期，开发重点一边在修复真实使用中的边角问题，一边补齐手册和配置同步能力；贡献者数量达到 490，近期也有多位社区成员提交，活跃度很高。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025-06-01，但已经有 25204 stars、2569 forks 和 673 个 open issues，热度很高同时也意味着问题反馈量大、变化可能较快。它的“opinionated”属性很强，适合接受默认选择的人；如果你希望完全自由拼装桌面环境，可能会觉得预设太多。文档结构很完整，但 README 本身没有给出一行安装命令，实际采用前建议先阅读官网和 <code>manual/</code> 中的安装、更新、配置、故障排查章节。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/basecamp/omarchy">basecamp/omarchy</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在开源基础设施和开发者工具圈具有较强影响力，代表项目在命令行、部署和编辑体验上形成了高可见度的技术影响。
+<strong>技术栈偏好</strong>：明显偏好 Shell、Ruby 和 JavaScript，强调轻量脚本化、Web 应用能力与工程效率工具的结合。
+<strong>核心领域</strong>：主要聚焦于协作办公产品、开发运维工具和提升开发者生产力的基础软件。</p>
+<hr />
+<h3>✨ AprilNEA/OpenLogi (11463★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把罗技鼠标、键盘、摄像头的按键、DPI、SmartShift、灯光和图像参数都接管到本地，用 Rust 做成了一个不依赖账号、也不上传数据的 Options+ 替代品。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：OpenLogi 是面向罗技外设的本地控制套件，核心覆盖 HID++、UVC 和系统输入钩子三条线。它既有图形界面，也带 CLI 和纯文本 TOML 配置，可以改按键映射、DPI、手势、应用级配置覆盖、键盘 RGB、摄像头画面参数和 Litra 灯控。</li>
+<li><strong>能解决什么痛点</strong>：一是替代 Options+ 这类必须登录、占资源、还带遥测的厂商软件；二是在 Linux 等平台上补齐罗技外设的高级功能，尤其是按键重映射、SmartShift、摄像头控制和多设备管理。</li>
+<li><strong>适合谁用</strong>：罗技鼠标/键盘/摄像头的重度用户；需要在 macOS、Linux、Windows 间统一管理外设配置的人；以及希望用 TOML 和命令行管理外设行为的技术用户。</li>
+<li><strong>怎么上手</strong>：macOS 可直接安装：<code>brew install --cask openlogi</code>。</li>
+<li><strong>可以用在哪些场景</strong>：给办公鼠标的侧键绑定全局快捷键；在 Linux 上给 MX Master 配置手势和 DPI 切换；用摄像头预览时直接调曝光、白平衡、对焦，让参数在 Meet、Zoom、OBS 里生效。</li>
+<li><strong>技术看点</strong>：项目用 Rust + GPUI 做桌面端，走本地优先和跨平台路线；配置和控制面拆得比较细，既有 HID++ 设备层能力，也有 UVC 摄像头控制，说明它不是简单的热键工具，而是完整接管外设协议栈的一层。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常密集，既有 <code>v0.7.2</code> 发布，也在修 Linux 打包、Wayland 标识、窗口关闭行为、Input Monitoring 重启等实际问题，同时大量重构 <code>hidpp</code>、<code>gui</code>、<code>camera</code>、<code>core</code> 模块，并补强 rustdoc/文档链接。整体看是在边扩功能边做稳定性和跨平台收敛，重点明显落在 Linux、窗口/覆盖层、设备抽象与发布质量上。</li>
+<li><strong>同类对比</strong>：README 明确对标 Logitech Options+，主打本地、无账号、无遥测、Linux 友好；同时也提到 Solaar 和 Mouser，OpenLogi 更像是把两者的设备控制、系统集成和图形体验整合到一个更完整的桌面应用里。</li>
+<li>
+<p><strong>注意事项</strong>：项目仍处于活跃开发期，README 已明确提示“尚不稳定”，配置和功能可能继续变动；当前 open issues 有 203 个，说明边界情况和平台兼容性还在持续打磨。部分能力有平台限制，比如 Linux 上的应用覆盖、macOS 专属动作、Wayland/X11 差异，安装前还要注意先退出 Options+，否则会争抢 HID++ 设备。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：活跃且具备较强开源影响力的独立开发者，代表项目在 Rust、AI 应用社区拥有较高关注度
+<strong>技术栈偏好</strong>：偏好 Rust 与 TypeScript，兼顾高性能系统开发、跨平台桌面应用和全栈产品构建
+<strong>核心领域</strong>：主要聚焦 AI 应用、开发者工具、聊天系统及 Rust 生态软件工程 荣富</p>
+<hr />
+<h3>✨ block/buzz (29976★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把聊天频道、代码分支、CI、工作流和 AI Agent 放进同一个可自托管的协作空间，让人和 Agent 在同一条可审计事件流里共同开发。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：Buzz 是基于 Nostr Relay 的团队协作工作区，用户可以通过频道、线程、私信、画布、媒体评论和搜索协作。消息、反应、审批、工作流步骤和 Git 事件都会以签名事件写入同一份日志，AI Agent 也以独立身份加入频道、执行任务并留下审计记录。项目同时提供 Tauri + React 桌面客户端、<code>buzz-cli</code> 和 ACP Agent 接入能力。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发讨论、代码评审、CI 结果和发布记录分散在聊天工具、代码托管平台与自动化系统中，事后很难还原决策依据；Buzz 尝试让分支直接对应协作频道，把补丁、构建状态、Agent 评审和合并决定集中保存。另一个痛点是 Agent 通常只能通过零散 Bot 或脚本接入，Buzz 为 Agent 分配独立密钥、频道成员关系和操作审计轨迹。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：需要在内部部署协作基础设施、并希望保留数据与 Relay 控制权的开发团队；希望通过 Goose、Codex、Claude Code 或 <code>buzz-cli</code> 将 AI Agent 接入代码评审、故障排查和发布流程的工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：需要 Docker 和 Hermit，执行 <code>git clone https://github.com/block/buzz.git &amp;&amp; cd buzz &amp;&amp; . ./bin/activate-hermit &amp;&amp; just setup &amp;&amp; just build</code>，随后运行 <code>. ./bin/activate-hermit &amp;&amp; just dev</code> 启动本地 Relay 和桌面应用。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>为功能分支建立专属频道，集中记录补丁、CI 结果、Agent 初审意见和最终合并决定。</li>
+<li>在生产故障频道中让 Agent 检索历史线程，返回类似错误的根因、修复记录和相关责任人。</li>
+<li>
+<p>通过标签触发工作流，让 Agent 根据已合并变更起草发布说明，经人工反应确认后继续发布流程。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目主体是 Rust workspace，Relay 使用 Axum 提供 WebSocket 与 REST 接口，Postgres 保存事件并支持全文搜索，Redis 负责发布订阅，S3/MinIO 承载对象存储。其核心设计是以 Nostr 签名事件统一人、Agent、工作流和 Git 数据，并通过 Agent 独立密钥实现身份级隔离与审计。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎全部集中在 2026 年 8 月 22 至 23 日，开发非常活跃。近期重点包括移动端和桌面端 Huddles 语音能力、参与者交互优化、Projects 页面性能、Agent 跨消息保持提及关系，以及桌面缩放和消息编辑体验修复；同时有多项 Rust、Tauri、前端依赖更新。提交主要由核心贡献者持续推进，说明项目正处于快速完善桌面端、移动端和 Agent 协作体验的阶段，Huddles 语音协议仍在调整。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品。与传统聊天工具、代码托管平台和独立 Agent Bot 的组合相比，Buzz 的明显差异是将人和 Agent 放入同一社区、身份模型与事件日志中，并提供自托管 Relay 和统一搜索。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 3 月 6 日，更新频率很高，但仍属于快速演进阶段；近 3 万 Stars 与 99 位贡献者显示关注度较高，3045 个 Open Issues 则说明待处理事项较多。README 的架构和部署说明较完整，但本地运行需要 Docker、Hermit、Rust、Node、pnpm 等环境，初次搭建成本不低。Huddles 等功能近期仍在调整协议，移动端能力也标注为正在接入，生产部署前应重点验证兼容性、数据备份、身份密钥管理和 Relay 的运维成本。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/block/buzz">block/buzz</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Block 旗下活跃的开源组织，拥有较高社区关注度和广泛的项目影响力。
+<strong>技术栈偏好</strong>：偏好 Kotlin、Rust 与 TypeScript，重视跨平台、基础设施及开发者工具建设。
+<strong>核心领域</strong>：主要聚焦金融科技、支付基础设施、软件工程工具与企业级开源项目。</p>
+<hr />
+<h3>✨ apache/maka (2024★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Maka 把桌面端、终端和自动化评测统一接到同一套本地 Agent 运行时，让每次模型回复、文件修改、Shell 执行与授权决定都能像事件流水账一样回放和恢复。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Maka 是 Apache 孵化中的本地优先 AI Agent 工作区，提供 Electron 桌面应用、交互式 TUI、非交互 CLI 和评测能力。它可连接云端 API、本地模型或兼容网关，调用 <code>Read</code>、<code>Write</code>、<code>Edit</code>、<code>Bash</code>、<code>Glob</code>、<code>Grep</code> 等工具处理本地项目。其核心是 Runtime Event Log：模型消息、工具调用与结果、权限决策、任务终止等都会写入可追加的事件日志。</li>
+<li><strong>能解决什么痛点</strong>：开发者让 Agent 修改代码或执行命令后，常常难以追踪“它做过什么、为什么停下、能否从中断处恢复”；Maka 将这些执行事实持久化，并提供会话分支、重试、恢复和工具时间线。对于不愿将代码库上下文、会话记录和模型连接配置交给托管平台的团队，它默认将工作区数据保留在本机。</li>
+<li><strong>适合谁用</strong>：需要让 AI Agent 在本地代码仓库中读写文件、执行命令并保留完整执行记录的软件工程师；希望在桌面端与 CLI 间共享 Agent 工作区和模型连接的个人开发者或小型研发团队。</li>
+<li><strong>怎么上手</strong>：<code>git clone https://github.com/apache/maka.git &amp;&amp; cd maka &amp;&amp; npm ci &amp;&amp; npm run dev</code></li>
+<li><strong>可以用在哪些场景</strong>：在本地仓库中让 Agent 分析代码风险、生成修改并执行测试；通过 <code>maka run</code> 在 CI 前或脚本中非交互式完成一次任务；用 <code>maka eval run  --out</code> 对不同模型、提示词或 Agent 方案进行可复现实验对比。</li>
+<li><strong>技术看点</strong>：项目采用 TypeScript Monorepo，桌面端使用 Electron 与 React，运行时、存储、CLI、评测和共享 UI 分包维护。架构上由 Runtime Host 统一管理 Session、AgentRun、工具、权限与事件，界面和上下文均是事件日志的投影，避免多入口各自维护执行状态。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026-08-21，开发活跃度较高，贡献者覆盖桌面端、运行时、CLI、存储、OAuth 和 CI。近期工作以稳定性和工程化为主，包括会话 trace 源端分页、Node PTY 生命周期回归测试、凭据删除修复、桌面端更新前资源清理，以及统一 Desktop 与 CLI 的发布流程；同时也在扩展 Computer Use 语义 UI、Markdown 响应引导等能力。</li>
+<li><strong>同类对比</strong>：README 未直接点名竞品，但其定位明显区别于仅提供聊天界面或单次命令执行的编码助手：Maka 强调本地优先、统一运行时和不可丢弃的执行事件记录，并将评测系统与实际 Agent 运行时解耦。</li>
+<li>
+<p><strong>注意事项</strong>：项目仍处于活跃开发和 Apache 孵化阶段，README 明确说明数据格式、CLI 命令及实验性能力可能变动。当前已签名的桌面正式构建仅支持 Apple Silicon macOS；Windows 为未签名预览版，Linux 暂未支持。项目有 283 个开放 Issue，说明功能边界和稳定性仍在快速迭代；升级还可能不迁移旧版会话历史与旧凭据，生产数据应先备份。开发环境要求 Node.js 22.19+、npm、Git 和 <code>ripgrep</code>，并需要自行配置模型服务。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/apache/maka">apache/maka</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Apache 是全球最具影响力的开源基金会之一，依托超 3,000 个公开项目持续定义大数据、云原生与企业级基础软件的行业标准。
+<strong>技术栈偏好</strong>：以 Python、TypeScript、Scala 为核心，覆盖数据工程、分布式计算、可视化分析及面向现代平台的服务开发。
+<strong>核心领域</strong>：主要聚焦开源基础设施、大数据处理、数据编排、消息系统、商业智能与分布式系统。</p>
+<hr />
+<h3>✨ Alishahryar1/free-claude-code (47739★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把 Claude Code、Codex、OpenCode 等一堆编程代理统一接到同一套本地代理和管理界面里，让你在终端、桌面、IDE 甚至手机上，直接切换可用模型和提供商继续写代码。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个用 Python 写的开源项目，核心目标是把多个大模型提供商和多个 coding agent 统一到 Free Claude Code（FCC）这层中间件里。它提供安装器、桌面/服务端启动器和 Admin UI，用户可以在里面配置 API key、选择模型、设置回退模型，然后把 Claude Code、Codex、Pi、OpenCode、Cline、Hermes、DeepSeek Harness、Grok Build、Muse Code 等客户端接到同一套后端。</li>
+<li><strong>能解决什么痛点</strong>：一是不同工具各自绑定不同模型和账号，切换时要重复配置，FCC 把这些入口收拢到一个地方；二是某个提供商限流、宕机或不可用时，项目会自动尝试下一个配置好的模型，减少中断后的手工重启和反复改配置。</li>
+<li><strong>适合谁用</strong>：经常在 Claude Code、Codex、OpenCode 之间切换的全栈开发者；需要同时管理多家模型供应商、又想保留本地终端工作流的工程师；以及希望在 VS Code、JetBrains、桌面端或手机上统一调用 coding agent 的个人开发者和小团队。</li>
+<li><strong>怎么上手</strong>：README 给出的最小安装方式是 <code>curl -fsSL "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.sh" | sh</code>，安装后 Linux 直接运行 <code>fcc-server</code>，再按需要启动对应客户端，例如 <code>fcc-claude</code> 或 <code>fcc-codex</code>。</li>
+<li><strong>可以用在哪些场景</strong>：在公司内同时使用多个模型供应商时，集中管理 API key 和模型白名单；当主供应商偶发故障时，自动切到备用模型继续完成一次长对话或代码生成；在终端、桌面和远程协作工具之间共享同一套代理配置，减少重复登录和复制粘贴。</li>
+<li><strong>技术看点</strong>：项目不只是“包一层接口”，而是把 provider、客户端、流式响应、回退策略、安装器和 Admin UI 都做成完整链路；从最近提交看，它在持续打磨流式生命周期、提供商执行与 transport 清理，说明核心关注点是稳定性和多供应商路由的一致性。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交非常活跃，重点集中在修复和重构底层执行链路，比如流式恢复、attempt 生命周期、transport cleanup、日志抑制、安装器校验、自动模式请求控制等，同时新增了 Muse Code、DeepSeek 视觉附件转发、Poolside 支持和更多模型/提供商适配。整体看，项目正从“能连很多模型”走向“更稳地接入更多客户端和更复杂的能力”。</li>
+<li><strong>同类对比</strong>：README 明确提到它常被拿来和 Claude Code、Codex、OpenCode、Cline 等客户端配合使用，但没有给出正式竞品对照表；就定位看，它更像是多模型路由层和统一管理入口，而不是单一 coding agent 本身。</li>
+<li>
+<p><strong>注意事项</strong>：项目当前 issue 数量较多（344），说明使用面广，但也意味着边界情况和兼容性问题仍在持续修；仓库更新非常频繁，功能迭代快，配置项和启动器行为可能有变化，升级前最好先看安装脚本和最近提交。README 信息很全，但涉及 provider、模型名和支持范围的内容较多，上手时仍需要按 Admin UI 逐项验证。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Alishahryar1/free-claude-code">Alishahryar1/free-claude-code</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以高关注度开源项目为代表，在 AI 开发者工具社区具备较强影响力。
+<strong>技术栈偏好</strong>：主要使用 Python 和 Go，偏好 AI 工具、机器学习及云原生基础设施开发。
+<strong>核心领域</strong>：聚焦 AI 编程工具、机器学习工程与 GPU 运维平台。</p>
+<hr />
+<h3>✨ tinyhumansai/openhuman (36596★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把分散在邮件、日历、文档、聊天和代码仓库里的上下文，压成一套本地可持久保存的“记忆树”和工作流编排中枢，让 AI 不只是聊天，而是能长期记住你、调度工具、推进任务。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：OpenHuman 主打三件事：长期记忆、Agent 编排和深度 शोध研。它会把你的数据同步到本地，再压缩成 Markdown 记忆树和 Obsidian Wiki；同时还能把多个 agent、工具和工作流串成可恢复、可暂停、可审计的图式流程。</li>
+<li><strong>能解决什么痛点</strong>：一是解决 AI 每次对话都“失忆”的问题，让它不用反复问你背景信息；二是解决复杂任务只能靠人工盯着跑的问题，比如跨多个工具收集信息、分派子任务、等审批、出错后继续执行。</li>
+<li><strong>适合谁用</strong>：需要长期上下文的重度知识工作者，比如产品经理、研究员、创作者；以及要把多个 AI 工具和自动化流程串起来的开发者、AI 工程师、折腾本地优先工作流的技术用户。</li>
+<li><strong>怎么上手</strong>：README 给出的最简方式是直接从 <a href="https://tinyhumans.ai/openhuman?utm_source=github&amp;utm_medium=readme">tinyhumans.ai/openhuman</a> 或 <a href="https://github.com/tinyhumansai/openhuman/releases/latest">GitHub Releases</a> 下载安装包；如果走命令行安装，README 指向了 <code>INSTALL.md</code>。文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：1）把 Gmail、Notion、GitHub、Slack 等账号接入后，自动沉淀成可检索的个人知识库；2）让多个 agent 分工处理调研、检索、写作、执行，再由人类审批关键步骤；3）在本地优先和隐私敏感环境里，搭建一个能记住历史决策和业务背景的 AI 助手。</li>
+<li><strong>技术看点</strong>：它强调本地优先、可持久化记忆和可回放的图式编排，内核用 Rust 实现；README 里还提到 OAuth 集成、MCP 服务器、Token 压缩、Signal 加密的 agent 间通信，以及可切换到本地模型或自有 provider key 的模型路由。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在 2026-08-23，频繁出现模块接线、记忆线程测试、UI 修复、脚本白名单、文档和注释修正等内容，说明项目仍在高强度迭代中。短期重点偏向测试修整、模块重构和新模块接入，属于一边补稳定性、一边扩展功能的阶段。</li>
+<li><strong>同类对比</strong>：README 里明确拿传统单循环 agent、Claude Code、Codex、OpenClaw、Hermes 这类方案作对照。OpenHuman 的差异点不在“会不会聊天”，而在于更强调长期记忆、可恢复的工作流编排、本地优先和多 agent 协同。</li>
+<li>
+<p><strong>注意事项</strong>：项目还标着 early beta，README 也明确说处于活跃开发期，说明功能在快速变化，接口和工作流可能有破坏性调整。当前 open issues 有 258 个，说明问题积压不少；虽然 stars 很高、更新也很勤，但更像是“热度和开发速度都很高”的早期项目，上手前要接受文档和体验仍可能有粗糙边角。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/tinyhumansai/openhuman">tinyhumansai/openhuman</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：凭借超高星标仓库迅速成为 AI 开源社区里极具话题度的新兴组织，影响力主要体现在高关注度与技术传播力。
+<strong>技术栈偏好</strong>：以 Rust 为核心、TypeScript 为补充，明显偏向高性能基础设施与 AI 应用/代理相关方向。
+<strong>核心领域</strong>：主要聚焦 AI 驱动的数字人、智能体平台与相关工具链生态。</p>
+<hr />
 <h3>✨ affaan-m/ECC (241804★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：把 Claude Code、Codex、Cursor 等 AI 编程助手改造成一套会先规划、写测试、检查结果、保存经验并持续复用技能的工程化开发流程。</p>
@@ -229,265 +431,154 @@
 <strong>技术栈偏好</strong>：以 Python、JavaScript、TypeScript 为主，偏好构建 AI Agent 框架、安全工具与开发者基础设施
 <strong>核心领域</strong>：聚焦 AI Agent 编排、智能体安全、自动化开发工作流与算力交易生态</p>
 <hr />
-<h3>✨ obra/superpowers (274088★)</h3>
+<h3>✨ ruvnet/ruflo (68650★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把一套面向编码代理的工作流和技能装进插件里，让模型先问清需求、再出方案、再按 TDD 和分工流程持续执行，而不是上来就直接改代码。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Superpowers 是一套给 coding agent 用的软件开发方法论，外加一组可组合的 skills 和启动指令。它的核心不是单个命令，而是一整套从澄清需求、分阶段设计、写计划、并行/子代理执行，到测试和代码审查的流程约束，目标是让代理更稳定地按工程化方式工作。README 里明确支持 Claude Code、Codex、Cursor、Devin、Gemini、Copilot 等多个 harness。</li>
-<li><strong>能解决什么痛点</strong>：一是模型一接到任务就直接开写，容易把需求猜错、方案跑偏；它把“先澄清再动手”固定成流程。二是长任务里代理容易丢上下文、跳过测试或中途失控；它用分阶段技能、plan-scoped workspace、resume-based fix loop 这类机制减少这类问题。</li>
-<li><strong>适合谁用</strong>：经常让 AI 参与编码的工程师，尤其是已经在用 Claude Code、Codex CLI、Cursor、Devin CLI 这类代理式工具的人。也适合需要把团队编码习惯固化成流程的技术负责人，特别是重视 TDD、review 和多轮修复的团队。</li>
-<li><strong>怎么上手</strong>：README 给出的最小安装方式之一是 <code>devin plugins install obra/superpowers</code>，更新用 <code>devin plugins update superpowers</code>。如果是 Claude Code，也可以直接通过官方插件市场安装 <code>superpowers@claude-plugins-official</code>。</li>
-<li><strong>可以用在哪些场景</strong>：例如让 AI 代理接手一个中型后端功能时，先产出可审阅的设计，再拆成小任务逐步实现。也可以用于多人协作的代码库维护，把“写计划、跑测试、做复审、再继续”的节奏固定下来。对需要跨多个代理工具统一工作方式的团队，也能作为一层流程模板。</li>
-<li><strong>技术看点</strong>：它不是单纯的提示词集合，而是把工作流拆成多个可触发 skills，并尽量适配不同 agent harness 的插件机制。近期版本还明显在强化 SDD 流程、计划作用域工作区、恢复式修复循环，以及 Windows 兼容性，说明项目在往“更可执行、更少上下文污染”的方向演进。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常密集，重点集中在 <code>v6.2.0</code> 和 <code>v6.3.0</code> 的发布、SDD 重构、plan-scoped workspace、resume-based fix loop、skills compression、以及 Devin CLI / Hermes Agent 支持。与此同时还有 Windows 会话启动、<code>find-polluter</code>、测试抖动、脚本可移植性等修复，说明当前维护重心是提升跨平台稳定性和长流程代理执行质量，而不是单纯加新技能。贡献者记录里主要还是 Jesse Vincent 主导，辅以少量外部贡献，项目节奏比较集中。</li>
-<li><strong>同类对比</strong>：README 没有直接点名竞品；从定位看，它更像“跨代理平台的开发方法论 + 技能框架”，而不是单一 IDE 插件或代码助手。</li>
-<li>
-<p><strong>注意事项</strong>：项目目前 issues 仍有 288 个，说明活跃但也存在不少待处理问题；对外部使用者来说，插件安装和 harness 适配并不算轻量。README 内容较长但更偏流程说明和安装指引，真正要落地时还是要看各个 harness 的兼容性、技能触发条件和团队是否愿意接受较强的开发流程约束。更新频率高，意味着能力在演进，但也要留意版本升级带来的行为变化和工作流调整。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为 GitHub 早期活跃用户之一，拥有较高关注度和大量公开仓库，代表作获得了显著星标，属于在开发者社区内有持续可见度的资深技术创作者。
-<strong>技术栈偏好</strong>：以 Shell、JavaScript 和 TypeScript 为主，偏向脚本自动化、前端/交互式工具与 Web 相关开发。
-<strong>核心领域</strong>：主要聚焦于开源工具、Web 应用与可复用开发组件的构建。</p>
-<hr />
-<h3>✨ Wei-Shaw/sub2api (38728★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 Claude、OpenAI、Gemini、Grok 等订阅和接口统一接到一个中转层里，再按账号/配额做分发，方便多人共享和集中管理调用成本。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个用 Go 编写的 AI API 网关平台，核心目标不是“再做一个聊天客户端”，而是把多个上游模型订阅和 API 接入统一封装起来。README 明确写到它支持订阅额度分发、拼车共享，并能让 Claude Code、Codex 这类原生工具直接接入使用。</li>
-<li><strong>能解决什么痛点</strong>：一是多人共用多个模型账号时，手工切换、分配配额、控制成本很麻烦；二是开发工具往往只认固定的 API 形态，接不同供应商时要反复改配置。它把这些差异收敛到一个入口，减少账号切换和兼容适配的折腾。</li>
-<li><strong>适合谁用</strong>：需要统一管理多家大模型订阅的团队管理员；以及经常要在 Claude Code、Codex、Gemini CLI 之间切换接口的开发者、AI 工程师或中小团队运维人员。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>团队内部把多个 Claude/OpenAI/Gemini 账号接成一个统一出口，按人或按项目分摊额度。</li>
-<li>给 Claude Code、Codex 这类客户端接入自建中转层，避免每个工具单独维护不同厂商配置。</li>
-<li>在需要统一审计和限流的场景里，把多家模型调用收敛到单一网关后再做策略控制。</li>
-<li><strong>技术看点</strong>：项目采用 Go + Vue + PostgreSQL + Redis + Docker 的组合，偏向“后端网关 + 管理后台”的架构。近期提交集中在 OpenAI、DeepSeek、Ollama、Responses、图像生成等适配与修复，说明它更像一个持续追着各家接口变化做兼容的中转平台。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交里，绝大多数是合并修复 PR，重点落在 responses/client tools、图像生成流程、Ollama Cloud、OpenAI 兼容性和 HTTP bridge 回放等问题上，说明项目当前主要精力在稳定性和协议兼容，而不是大改产品形态。贡献者和合并记录都很活跃，属于高频维护中的项目。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目 README 已明确提示可能涉及上游服务条款风险，使用前要自己确认所在地区法律和供应商协议；仓库 issue 数量很高，说明需求旺、反馈多，但也意味着边角问题和兼容性坑不少。仓库星标很高、更新很频繁，整体热度和活跃度都强，但更适合能接受配置复杂度、并愿意跟进接口变化的用户。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Wei-Shaw/sub2api">Wei-Shaw/sub2api</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有较高社区关注度，代表性开源项目累计获得超过5万颗星。
-<strong>技术栈偏好</strong>：以 Go、JavaScript 和 Python 为主，偏好后端服务、API 中继与开发工具。
-<strong>核心领域</strong>：主要聚焦大模型应用基础设施、AI API 服务中继及相关开发工具。</p>
-<hr />
-<h3>✨ makeplane/plane (56318★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Plane 把任务、迭代周期、产品路线图、文档和问题分诊放在同一个开源项目管理平台里，面向想自托管替代 Jira、Linear、Monday、ClickUp 的团队。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Plane 是一个用 TypeScript 为主构建的现代项目管理平台，核心围绕 Work Items、Cycles、Modules、Views、Pages 和 Analytics 展开。团队可以在里面创建任务、规划 sprint/cycle、拆分模块、保存筛选视图、编写带富文本和 AI 能力的页面，并通过分析视图跟踪项目进展。</li>
-<li><strong>能解决什么痛点</strong>：一类典型痛点是团队不想把项目数据完全放在 SaaS 工具里，希望能自托管并掌控数据和基础设施；另一类是任务、迭代、文档和路线图分散在多个系统中，导致需求追踪、进度查看和知识沉淀来回切换。</li>
-<li><strong>适合谁用</strong>：适合需要替代 Jira、Linear、Monday 或 ClickUp 的产品研发团队，尤其是有自托管、安全合规或数据控制要求的团队；也适合运维/SRE 或平台团队为公司内部搭建统一项目协作系统。</li>
-<li><strong>怎么上手</strong>：README 提供的最快方式是注册 Plane Cloud；自托管可按官方文档使用 Docker、Kubernetes 或托管部署方案，文档未提供单行快速启动命令。</li>
-<li><strong>可以用在哪些场景</strong>：用于研发团队管理需求、缺陷和迭代周期；用于产品团队维护路线图、模块拆分和优先级视图；用于企业内部自托管项目管理平台，把任务、文档和分析集中到一个系统中。</li>
-<li><strong>技术看点</strong>：项目技术栈包含 React Router、Django 和 Node.js，前后端与部署体系都比较完整；README 明确支持 Docker、Kubernetes 和托管部署，对需要私有化部署的团队有参考价值。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交以稳定性、安全和基础设施维护为主，包括修复前端页面崩溃、接口路径问题、筛选逻辑错误、文件上传大小限制，以及处理 Dependabot、CodeQL 安全告警。另有 Django 4.2 升级到 5.2、nginx 镜像升级、工作区成员恢复命令和 API 查询增强，说明项目仍在高频维护，近期重点偏向成熟化、兼容性和自托管可靠性。</li>
-<li><strong>同类对比</strong>：README 和项目描述明确对标 Jira、Linear、Monday、ClickUp；Plane 的差异点在于开源、可自托管，并把 issue 管理、cycle、roadmap、docs 和 analytics 放进同一套系统。</li>
-<li>
-<p><strong>注意事项</strong>：项目已有 5.6 万 Star、161 位贡献者，活跃度和关注度较高，但 Open Issues 超过 1000，说明功能面广、用户反馈量大，也可能存在较多边界问题。近期提交包含 Django 主版本升级和多项安全/依赖修复，自托管用户升级前应关注 release note、迁移步骤和配置兼容性；项目采用 AGPL-3.0 许可证，商业集成或二次分发前需要确认合规要求。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/makeplane/plane">makeplane/plane</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为新兴的开源项目管理平台组织，凭借 <code>plane/plane</code> 的高星级项目在开发者社区建立了较强可见度与产品影响力。
-<strong>技术栈偏好</strong>：以 <code>TypeScript</code> 为主，辅以 <code>Python</code> 和 <code>Dart</code>，技术方向明显偏向全栈应用、服务端能力与移动端协同。
-<strong>核心领域</strong>：主要聚焦现代团队协作与项目管理工具，并延伸到文档、移动端和基础部署生态。</p>
-<hr />
-<h3>✨ n8n-io/n8n (201668★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把“拖拽工作流 + 写一点代码 + 接 AI 模型 + 连上现成系统”放进同一个画布里，n8n 适合直接搭出能跑在本地或云端的自动化流程和 AI Agent。</p>
+<p><strong>一句话</strong>：把 Claude Code、Codex 等模型接入一个可自组织的多智能体运行层，让多个代理分工协作、跨会话记忆，并通过 CLI、MCP 和钩子持续执行复杂开发任务。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：n8n 是一个基于 TypeScript 的工作流自动化平台，核心是可视化编排：你可以在画布上把触发器、条件分支、API 调用、人工审批和自定义代码串起来。它不仅能做传统的自动化流程，还强调原生 AI 能力，支持接入 OpenAI、Anthropic、Google 和开源模型，并把多步 AI workflow 直接落地到生产环境。
-  它支持自托管，也提供云端方案，README 中提到可连接 1500+ 集成和 9000+ 工作流模板，比较适合拿现成系统快速拼装业务流。</p>
+<p><strong>它是什么</strong>：Ruflo 是运行在 Claude Code、Codex 等模型外围的 agent meta-harness，负责提供任务路由、代理编排、记忆、循环执行、沙箱和安全控制。项目内置 35 个插件，覆盖 swarm 协作、RAG 与向量记忆、目标规划、浏览器测试、安全审计、成本追踪和跨机器 federation 等能力。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：</p>
-</li>
-<li>很多团队做自动化时，常见问题不是“没有工具”，而是“各系统之间接口很多、逻辑又不只是简单串联”，n8n 把条件判断、重试、人工确认、脚本处理放在同一套流程里，避免到处写胶水代码。</li>
-<li>
-<p>做 AI 应用时，单纯接一个模型接口不够用，n8n 能把模型调用和内部数据、Webhook、数据库、CRM、审批流串起来，解决“模型有了，但业务闭环没法落地”的问题。</p>
+<p><strong>能解决什么痛点</strong>：当一个开发任务需要代码分析、测试生成、文档维护和安全扫描时，开发者不必手动切换多个代理或反复传递上下文，Ruflo 可以把任务拆分后交给不同代理协同处理。对于跨会话工作，内置记忆和 RAG 能减少代理重复理解代码库、丢失历史决策的问题。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：</p>
-</li>
-<li>需要把 SaaS、数据库、Webhook、内部系统串起来的后端工程师、平台工程师、自动化开发者。</li>
-<li>
-<p>想快速搭建 AI Agent、内部运营自动化、客服或数据流转流程的产品/技术团队。</p>
+<p><strong>适合谁用</strong>：适合已经使用 Claude Code 或 Codex、希望把单代理扩展为多代理工作流的开发团队。也适合需要本地 LLM 路由、长期记忆、自动化测试、跨机器代理协作或企业安全审计的工程师和平台团队。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：</p>
+<p><strong>怎么上手</strong>：完整 CLI 路径可直接运行 <code>npx ruflo init</code>；如果只想试用 Claude Code 插件，可执行 <code>/plugin marketplace add ruvnet/ruflo</code>，再安装 <code>/plugin install ruflo-core@ruflo</code>。</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>把表单提交、邮件通知、Slack/飞书提醒、CRM 写入串成一条“线索自动流转”流程。</li>
-<li>搭一个带人工审批的 AI 助手：模型先生成草稿，再经人工确认后发布到知识库或工单系统。</li>
+<li>在大型 TypeScript 项目中，让规划、编码、测试、代码审查和文档代理围绕同一个任务协作。</li>
+<li>为持续维护的代码库建立跨会话知识库，让代理基于历史修复记录和项目上下文生成变更。</li>
 <li>
-<p>自托管内部集成平台，用来统一处理各类 API 调用、定时任务和失败重试，而不是散落在多个脚本仓库里。</p>
+<p>在企业内部部署带安全扫描、成本预算、可观测性和跨机器通信的自动化开发工作流。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：
-  核心设计是“可视化编排 + 自定义代码并存”，既照顾非纯开发用户，也保留 JavaScript、Python、npm 包的扩展能力。它还强调模型可切换和自托管，意味着在 AI 供应商选择、数据合规和部署边界上更灵活。</p>
+<p><strong>技术看点</strong>：项目采用 TypeScript 作为主语言，以 CLI、MCP server 和 hooks 组成完整执行链路，并通过插件化设计拆分编排、记忆、智能路由和安全能力。近期还在探索基于 Thompson sampling 的模型路由、显式启用的 hybrid search、消息总线重试上限和 Ed25519 回执校验，说明其重点已从功能堆叠延伸到运行可靠性与可验证性。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：
-  最近 20 条提交里，AI Assistant、form trigger OAuth2、sub-agent、live pull progress 相关功能都在推进，说明项目重心明显偏向 AI Agent 化和安装/使用体验优化。与此同时，修复类提交也很多，涉及 editor、core、Google Calendar 节点、密钥脱敏、域名限制、冷启动安装风暴等，表明项目处于高频迭代期，既在扩功能，也在补稳定性和安全细节。贡献者活跃，提交来源既有核心开发者也有 bot，维护节奏很强。</p>
+<p><strong>近期动向与发展方向</strong>：项目近期非常活跃，2026 年 8 月 20 至 21 日连续发布多个 3.38.x 版本，提交内容同时包含 Windows 启动、MCP 工具选择、会话结束状态和记忆缓存等缺陷修复，以及模型路由、混合检索、消息重试和不可信配置扫描等新能力。开发重点集中在 agent swarm 的稳定性、记忆与学习闭环、安全防护和协议/回执规范化；20 条提交中绝大多数由核心维护者 rUv 完成，另有 Wu Shuwen 等贡献者参与，社区规模相对 68650 个 Star 仍偏小。项目创建于 2025 年 6 月，当前已有 830 个开放 Issue，迭代速度快但维护压力也较高。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：暂无明显同类对标。</p>
+<p><strong>同类对比</strong>：README 明确将 Ruflo 定位为 Claude Code 和 Codex 的 harness，而不是新的基础模型；其差异在于把多个代理、MCP 工具、记忆、学习循环、插件和 federation 组合成完整运行层。README 未明确列出可直接对标的竞品，因此暂无明显同类对标。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：
-  这个项目非常成熟，Stars 和 Forks 都很高，说明生态和用户基础都不小，但 Open Issues 也有 1000+，意味着边界场景和稳定性问题不会少。它的能力很强，但也因此配置项、节点、权限和部署细节会比较多，不太适合“只想要一个简单自动化脚本”的用户。若选择自托管，还要考虑 Docker、持久化存储、权限与密钥管理；另外它采用 fair-code 许可，商用和分发前最好先看清许可证条款。</p>
+<p><strong>注意事项</strong>：CLI 安装会写入 <code>.claude/</code>、<code>.claude-flow/</code>、<code>CLAUDE.md</code>、配置和 hooks，工作区改动范围明显大于仅安装插件的轻量路径，需要先确认团队配置和权限策略。项目虽然 Star 和版本迭代数量很高，但创建时间较短、开放 Issue 达 830 个，且核心提交高度集中，接口、插件行为和配置方式仍可能快速变化；生产环境应锁定版本，并重点验证 hooks、MCP 权限、模型调用成本、记忆数据隔离和跨机器通信安全。README 信息量较大，但 CLI 路径与 Claude Code 插件路径的能力边界不同，初次使用时容易误以为两者提供同样的工具和 hooks。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/n8n-io/n8n">n8n-io/n8n</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/ruvnet/ruflo">ruvnet/ruflo</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：知名开源工作流自动化项目，在开发者社区拥有较高关注度和广泛影响力
-<strong>技术栈偏好</strong>：以 TypeScript 为核心，结合 Go Template，偏好节点化、可扩展的自动化平台技术
-<strong>核心领域</strong>：聚焦工作流自动化、自托管部署、AI 集成与开发者工具生态</p>
+<p><strong>技术影响力</strong>：高影响力开源开发者，拥有大量关注者及高星项目，在开发者工具与智能系统生态中具有显著影响力
+<strong>技术栈偏好</strong>：偏好使用 TypeScript 与 Rust，侧重高性能基础设施、开发者工具及可扩展智能系统
+<strong>核心领域</strong>：主要聚焦 AI Agent、向量计算、分布式协作与智能软件工程基础设施</p>
 <hr />
-<h3>✨ anthropics/claude-code (142416★)</h3>
+<h3>✨ VoltAgent/awesome-agent-skills (31119★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：在终端里输入自然语言指令，让 Claude 直接理解项目代码、执行日常修改、解释复杂逻辑，并完成部分 Git 工作流。</p>
+<p><strong>一句话</strong>：这是一个把各大厂和社区的 Agent Skills 整理成可直接检索目录的仓库，面向 Claude Code、Codex、Gemini CLI、Cursor 等工具，方便你按任务快速找到可复用的技能包。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：Claude Code 是面向代码库的智能编程代理，运行在终端中，也支持 IDE 和 GitHub 场景。它可以读取项目上下文，执行例行任务、回答代码问题、协助修改文件和处理 Git 操作，并通过插件扩展自定义命令与 Agent。</li>
-<li><strong>能解决什么痛点</strong>：面对陌生或大型代码库时，开发者不必先逐层翻阅文件才能定位逻辑，可以直接让 Claude 解释相关代码或查找修改点。对于重复性的代码调整、测试修复、提交准备和 Git 操作，也能减少在终端与编辑器之间反复切换。</li>
-<li><strong>适合谁用</strong>：需要快速理解既有项目的前端、后端和全栈开发者；经常处理代码迁移、批量修改、测试修复或仓库维护任务的工程师。</li>
-<li><strong>怎么上手</strong>：macOS/Linux 推荐执行 <code>curl -fsSL https://claude.ai/install.sh | bash</code>，安装后进入项目目录运行 <code>claude</code>。</li>
+<li><strong>它是什么</strong>：它不是单纯收集链接的“清单”，而是一个持续维护的技能索引库，里面收录了 1000+、最新 README 中标称 1497+ 的 Agent Skills。内容覆盖 Anthropic、Google Labs、Vercel、Stripe、Cloudflare、Netlify、Sentry、Figma 等官方团队，以及社区贡献的技能，并按来源分组整理，方便按场景查找。</li>
+<li><strong>能解决什么痛点</strong>：一是避免在网上到处翻找零散、质量不一的 skill，直接从这份精选目录里找更靠谱的入口；二是减少“同一个工具要适配多套代理环境”的重复成本，因为它明确标注了 Claude Code、Codex、Gemini CLI、Cursor 等兼容性。</li>
+<li><strong>适合谁用</strong>：做 AI 编程助手集成的工程师、需要给团队沉淀可复用工作流的技术负责人，以及经常使用 Claude Code/Cursor/Codex 的开发者。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例</li>
+<li><strong>可以用在哪些场景</strong>：1）给内部 AI 编程助手建立“技能目录”，让团队按任务直接选用现成 skill；2）为测试、前端、API、文档等不同工作流挑选官方或高质量社区技能；3）在评估某个 agent 工具是否适合落地时，快速查看它能否接入对应技能生态。</li>
+<li><strong>技术看点</strong>：它的核心价值在于“跨工具兼容 + 来源分层 + 人工精选”。相比随手堆链接的仓库，它更像一套面向 agent 工作流的能力索引，强调真实团队使用过的技能，而不是批量生成内容。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，几乎每天都有合并 PR 和 README 更新，说明项目处在持续扩充目录的阶段。近期新增了 apitube/news-api、zincio/universal-checkout、context-doctor、skillreaper、simple-man 等条目，方向很明确：继续扩大技能覆盖面，同时保持目录更新和社区合并节奏。</li>
+<li><strong>同类对比</strong>：README 明确强调它不同于“bulk-generated skill repositories”，核心差异是只收录官方团队和真实社区贡献的技能，主打手工筛选而不是批量生成。</li>
+<li>
+<p><strong>注意事项</strong>：仓库内容很多，但本质上是索引和聚合，不是统一封装好的运行时框架；真正上手时还要回到每个 skill 的原始文档。项目创建时间较新，但星标、贡献者和更新频率都很高，说明热度和活跃度强，不过也意味着目录变化快，使用前最好再核对最新路径与说明。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/VoltAgent/awesome-agent-skills">VoltAgent/awesome-agent-skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：VoltAgent 以高关注度的开源 AI Agent 项目在社区中形成较强影响力，属于快速崛起的 Agent 工程平台代表。
+<strong>技术栈偏好</strong>：主要偏好 TypeScript 与 Shell，技术方向集中在开源 AI Agent 框架、工程化工具链与开发者生态。
+<strong>核心领域</strong>：主要聚焦 AI Agent 平台与智能体工程基础设施，面向构建和扩展 Agent 应用。</p>
+<hr />
+<h3>✨ virgiliojr94/book-to-skill (24454★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把一本技术书、一个文档文件夹，甚至一堆零散资料，整理成 Claude Code 这类代理能按需翻阅的“技能包”，让你在工作时直接按主题调用书里的内容。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个用 Python 写的转换器，核心目标不是“总结一本书”，而是把 PDF、EPUB、DOCX、HTML、MD 等内容提炼成结构化的 Agent Skill。它会生成 <code>SKILL.md</code>、章节文件、术语表、模式清单和速查表，让模型在需要时只加载相关章节，而不是把整本书硬塞进上下文。</li>
+<li><strong>能解决什么痛点</strong>：第一，解决“书看过但用的时候翻不到”的问题，把章节知识变成可直接检索和调用的技能；第二，解决把 PDF 整本丢给模型后上下文浪费、容易跑偏的问题，项目明确强调比直接塞全文少 24×–51× token。</li>
+<li><strong>适合谁用</strong>：适合经常读技术书并希望反复查用的开发者、架构师、SRE；也适合需要把内部规范、标准文档、研究资料整理成可供 Copilot CLI、Amp、Claude Code 调用的团队。</li>
+<li><strong>怎么上手</strong>：README 给出的最短安装方式是：<code>npx skills add virgiliojr94/book-to-skill</code>。安装后可直接对文件或目录运行 <code>/book-to-skill  [skill-name]</code>。</li>
+<li><strong>可以用在哪些场景</strong>：比如把一本系统设计书变成随时可问的知识技能；把公司内部 runbook、架构决策记录、组件规范折叠成一个统一技能；把多篇研究论文和笔记合并成可持续更新的参考库。</li>
+<li><strong>技术看点</strong>：项目把“提取”和“生成”拆成两段流程：前者负责从不同格式里稳健抽取文本，后者按 Agent Skills 规范生成结构化文件。最近还在持续强化解析质量与安全性，比如引入 <code>trafilatura</code> 处理 HTML、修复章节识别、加固 symlink/XXE 相关风险。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交里，修复类和文档类更新很多，集中在章节检测、提取器鲁棒性、安装说明、安全提示和跨平台兼容上，说明项目正从“能用”继续向“更稳、更安全、更易分发”推进；同时也在补语言翻译和宿主支持，社区贡献者参与度不低。</li>
+<li><strong>同类对比</strong>：README 明确对标的是 Agent Skills 这一开放标准，但没有直接点名其他同类项目。相比普通“文档摘要工具”，它更强调结构化章节、按需加载和跨宿主复用。</li>
+<li>
+<p><strong>注意事项</strong>：项目已积累较多星标和贡献者，但仍有 22 个 open issues，说明活跃度高、迭代快，接口和行为仍可能变化；另外它依赖不同格式的外部解析工具，像 PDF、MOBI、DOCX 这类输入在不同环境下要先装依赖，扫描版 PDF 还需要先做 OCR。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：在 Python 技术社区中具有较高曝光度，依托高星项目展现出面向实用场景的影响力。
+<strong>技术栈偏好</strong>：明显偏好 Python，侧重构建工具型与应用型项目，兼顾自动化与产品化方向。
+<strong>核心领域</strong>：主要聚焦 SRE 相关的工程实践，并延伸到文档处理、知识整理与效率工具。</p>
+<hr />
+<h3>✨ dani-garcia/vaultwarden (65905★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把 Bitwarden 的客户端接口搬到你自己的服务器上，让你能用官方客户端直接连上一个更轻量的自建密码库后端。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Vaultwarden 是用 Rust 写的 Bitwarden 客户端 API 替代实现，能兼容官方 Bitwarden 的手机端、桌面端和浏览器端。它提供个人密码库、Send、附件、网站图标、组织管理、双因素认证、紧急访问和管理后台等功能，定位很明确：给想自建密码管理服务的人一套可跑在普通服务器上的后端。</li>
+<li><strong>能解决什么痛点</strong>：一是官方服务对小团队或个人自托管来说偏重，Vaultwarden 可以用更轻的资源占用搭起同样的使用入口。二是企业或家庭内部想自建密码共享与组织管理时，不必自己从零拼接账户、分享、2FA、审计这些能力。</li>
+<li><strong>适合谁用</strong>：需要自建密码管理系统的个人站长、家庭用户、小团队运维人员；以及已经在用 Bitwarden 官方客户端，但希望把后端放到自己 NAS、VPS 或内网服务器上的用户。</li>
+<li><strong>怎么上手</strong>：</li>
 <li><strong>可以用在哪些场景</strong>：</li>
-<li>接手一个陌生的 Python、Node.js 或前端仓库时，让 Claude 梳理模块关系并定位功能入口。</li>
-<li>批量调整 API、配置文件或测试用例，并让 Claude 根据现有代码风格完成修改。</li>
-<li>在提交代码前检查变更、解释失败测试，协助整理 Git 提交和处理代码审查反馈。</li>
-<li><strong>技术看点</strong>：项目采用终端优先的 Agent 形态，把代码理解、文件操作和 Git 工作流统一到自然语言交互中，同时通过插件目录提供自定义命令与 Agent 扩展。README 显示当前推荐通过独立安装脚本、Homebrew 或 Windows 包管理器安装，npm 安装方式已被弃用。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交中绝大多数是 GitHub Actions 自动更新 <code>CHANGELOG.md</code> 和 <code>feed.xml</code>，提交频率接近每日一次，说明版本发布或变更同步流程较活跃。期间出现一次外部贡献者提交的合并请求，但从这些记录无法判断近期是否有重大功能新增或架构重构。</li>
-<li><strong>同类对比</strong>：README 未明确列出竞品；与传统只能补全代码的编辑器插件相比，它更强调在终端中理解完整代码库并执行多步骤任务，但具体能力边界仍取决于模型、权限配置和项目上下文。</li>
+<li>在家庭 NAS 上部署一个可共享的密码库，给家人统一管理账号和 2FA。</li>
+<li>给小团队搭建内部密码库，按组织、集合和角色分配访问权限。</li>
+<li>作为自建 Bitwarden 后端，配合反向代理和 HTTPS，替代直接暴露官方重型服务。</li>
+<li><strong>技术看点</strong>：核心实现语言是 Rust，兼顾性能和内存占用；同时强调与官方 Bitwarden 客户端的兼容性，并通过容器镜像、反向代理和 HTTPS 的部署方式适配自托管环境。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交以修复和维护为主，同时夹杂少量功能补丁与兼容性调整，比如发送邮件权限检查、登录日志补充用户邮箱、trusted proxy 支持、未认证限流、SSO 参数兼容、Debian 交叉链接修复和测试/CI 调整。整体看项目仍在活跃演进，重点集中在稳定性、部署兼容性和周边集成细节上。</li>
+<li><strong>同类对比</strong>：README 明确对标官方 Bitwarden 服务；Vaultwarden 的差异在于它是替代后端，强调更轻量、适合自托管，而不是完整复刻官方托管服务的全部基础设施。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2025 年 2 月，却已拥有 14 万以上 Stars 和 1.5 万个开放 Issue，关注度与反馈规模都很高，但 Issue 数量也意味着筛选问题和跟进变更需要成本。README 明确提示 npm 安装已弃用，应优先采用官方安装脚本或系统包管理器；同时，工具会收集包括代码接受或拒绝情况、关联对话数据及 <code>/bug</code> 反馈在内的使用数据，企业使用前应审查数据使用政策和隐私条款。项目更新频繁，安装方式、命令行为和插件接口存在随版本变化的风险。</p>
+<p><strong>注意事项</strong>：Web Vault 依赖 HTTPS 和安全上下文，不开 HTTPS 基本无法正常使用；官方文档也建议配合反向代理部署。项目虽然很成熟、星标很高，但仍有 83 个开放 issue，说明维护活跃但也持续存在兼容性和边缘问题；另外它并不隶属 Bitwarden 官方，生产环境使用前最好做好备份和升级验证。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/dani-garcia/vaultwarden">dani-garcia/vaultwarden</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：AI 领域头部组织，凭借高星开源项目和广泛开发者关注度形成显著社区影响力
-<strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，侧重生成式 AI、智能体开发与提示工程实践
-<strong>核心领域</strong>：聚焦大语言模型、AI 智能体、提示工程及面向金融等行业的应用落地</p>
+<p><strong>技术影响力</strong>：开源安全工具领域的高影响力开发者，凭借 Vaultwarden 获得广泛社区关注。
+<strong>技术栈偏好</strong>：偏好 Rust 与 Shell，兼顾 Python，重视高性能、异步编程及自动化构建。
+<strong>核心领域</strong>：主要聚焦密码管理、身份凭据安全及相关基础设施工具。</p>
 <hr />
-<h3>✨ AprilNEA/OpenLogi (11463★)</h3>
+<h3>✨ anthropics/claude-plugins-community (809★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把罗技鼠标、键盘、摄像头的按键、DPI、SmartShift、灯光和图像参数都接管到本地，用 Rust 做成了一个不依赖账号、也不上传数据的 Options+ 替代品。</p>
+<p><strong>一句话</strong>：这是 Claude Cowork 和 Claude Code 的社区插件商店镜像，收录了通过审核、可直接安装的插件清单。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：OpenLogi 是面向罗技外设的本地控制套件，核心覆盖 HID++、UVC 和系统输入钩子三条线。它既有图形界面，也带 CLI 和纯文本 TOML 配置，可以改按键映射、DPI、手势、应用级配置覆盖、键盘 RGB、摄像头画面参数和 Litra 灯控。</li>
-<li><strong>能解决什么痛点</strong>：一是替代 Options+ 这类必须登录、占资源、还带遥测的厂商软件；二是在 Linux 等平台上补齐罗技外设的高级功能，尤其是按键重映射、SmartShift、摄像头控制和多设备管理。</li>
-<li><strong>适合谁用</strong>：罗技鼠标/键盘/摄像头的重度用户；需要在 macOS、Linux、Windows 间统一管理外设配置的人；以及希望用 TOML 和命令行管理外设行为的技术用户。</li>
-<li><strong>怎么上手</strong>：macOS 可直接安装：<code>brew install --cask openlogi</code>。</li>
-<li><strong>可以用在哪些场景</strong>：给办公鼠标的侧键绑定全局快捷键；在 Linux 上给 MX Master 配置手势和 DPI 切换；用摄像头预览时直接调曝光、白平衡、对焦，让参数在 Meet、Zoom、OBS 里生效。</li>
-<li><strong>技术看点</strong>：项目用 Rust + GPUI 做桌面端，走本地优先和跨平台路线；配置和控制面拆得比较细，既有 HID++ 设备层能力，也有 UVC 摄像头控制，说明它不是简单的热键工具，而是完整接管外设协议栈的一层。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常密集，既有 <code>v0.7.2</code> 发布，也在修 Linux 打包、Wayland 标识、窗口关闭行为、Input Monitoring 重启等实际问题，同时大量重构 <code>hidpp</code>、<code>gui</code>、<code>camera</code>、<code>core</code> 模块，并补强 rustdoc/文档链接。整体看是在边扩功能边做稳定性和跨平台收敛，重点明显落在 Linux、窗口/覆盖层、设备抽象与发布质量上。</li>
-<li><strong>同类对比</strong>：README 明确对标 Logitech Options+，主打本地、无账号、无遥测、Linux 友好；同时也提到 Solaar 和 Mouser，OpenLogi 更像是把两者的设备控制、系统集成和图形体验整合到一个更完整的桌面应用里。</li>
+<li><strong>它是什么</strong>：这个仓库不是插件本体的开发仓库，而是一个只读镜像，核心文件是 <code>.claude-plugin/marketplace.json</code>，里面列着当前可安装的社区插件。它会从 Anthropic 的内部审核流程每晚同步，保证列表里的插件都经过自动安全扫描并获准分发。</li>
+<li><strong>能解决什么痛点</strong>：一是开发者不用自己到处找零散插件来源，直接从统一目录挑选可用插件；二是减少安装未审核扩展带来的安全和兼容性风险，避免手工甄别来源是否可信。</li>
+<li><strong>适合谁用</strong>：使用 Claude Code/Claude Cowork 的开发者；以及需要给团队统一分发、管理 Claude 插件来源的技术人员。</li>
+<li><strong>怎么上手</strong>：<code>claude plugin marketplace add anthropics/claude-plugins-community</code></li>
+<li><strong>可以用在哪些场景</strong>：给 Claude Code 快速接入社区插件市场；在团队内部统一安装某个已审核插件；需要查看当前可用插件目录并据此选择安装项时。</li>
+<li><strong>技术看点</strong>：仓库定位很清晰：只做市场镜像，不接受直接 PR，所有变更都从内部审核管线同步过来。这种设计把插件分发、审核和发布链路和使用端分离开，便于控制安全边界。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交主要集中在插件目录维护和自动化扫描规则调整上，例如新增 <code>eli5</code> 插件、修正其 manifest 与提示词，以及加强静态 pin 检查、来源可用性校验和批量清理不可用上游源。整体看，项目仍在高频维护，重点是持续扩充可用插件，同时收紧供应链和源站健康检查。</li>
+<li><strong>同类对比</strong>：README 明确提到同类仓库 <code>anthropics/claude-plugins-official</code>，它是 Anthropic 维护的官方插件集合；本仓库则是面向社区提交的市场镜像，侧重点是社区插件分发。</li>
 <li>
-<p><strong>注意事项</strong>：项目仍处于活跃开发期，README 已明确提示“尚不稳定”，配置和功能可能继续变动；当前 open issues 有 203 个，说明边界情况和平台兼容性还在持续打磨。部分能力有平台限制，比如 Linux 上的应用覆盖、macOS 专属动作、Wayland/X11 差异，安装前还要注意先退出 Options+，否则会争抢 HID++ 设备。</p>
+<p><strong>注意事项</strong>：这是只读镜像，不支持直接向仓库提 PR；上手前需要区分 <code>claude-community</code> 与官方插件源，避免装错市场。仓库当前 open issues 为 38，说明仍有持续维护压力，但更新时间很近，活跃度不低，适合跟随官方发布节奏使用。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：活跃且具备较强开源影响力的独立开发者，代表项目在 Rust、AI 应用社区拥有较高关注度
-<strong>技术栈偏好</strong>：偏好 Rust 与 TypeScript，兼顾高性能系统开发、跨平台桌面应用和全栈产品构建
-<strong>核心领域</strong>：主要聚焦 AI 应用、开发者工具、聊天系统及 Rust 生态软件工程 荣富</p>
-<hr />
-<h3>✨ modular/modular (27696★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：这是 Modular Platform 的开源主仓库，里面同时放着 Mojo 语言相关组件和 MAX 推理/加速框架，目标是把模型开发、部署和底层算子优化放在同一套平台里。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这个仓库承载了 Modular Platform 的开源部分，不只是“代码集合”，而是把 Mojo 编译器、Mojo 标准库、MAX accelerator library、MAX inference server、MAX model pipelines 这些核心模块集中在一起。README 里能看到它同时面向 AI 开发和部署，既有语言层的 Mojo，也有面向模型服务和算子加速的 MAX。</li>
-<li><strong>能解决什么痛点</strong>：一类典型问题是，模型推理服务、算子加速、示例代码和语言工具链分散在不同仓库，开发和排障来回切换成本高；另一类是，想从“写模型”直接走到“部署模型”，却缺少一套统一的平台组件。</li>
-<li><strong>适合谁用</strong>：做 AI 推理服务和模型部署的平台工程师、关注高性能计算/算子优化的基础设施工程师、以及想尝试 Mojo 语言和其标准库的开发者。</li>
-<li><strong>怎么上手</strong>：README 未提供快速上手示例；可先看官方文档入口：MAX quickstart 或 Mojo quickstart。</li>
-<li><strong>可以用在哪些场景</strong>：搭建 OpenAI 兼容的内部模型服务；为 GPU/CPU 推理链路编写和调优高性能 kernels；用 Mojo 写语言特性、标准库或示例代码并和 MAX 组件联调。</li>
-<li><strong>技术看点</strong>：它把 Mojo 语言工具链和 MAX 推理栈放在同一仓库，说明设计上强调“语言 + 运行时 + 推理服务 + 算子库”的垂直整合。仓库里还能看到对 KGEN、stdlib、kernels、serve、pipelines 的持续演进，技术栈覆盖编译、库、服务和底层性能优化。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，重点集中在三块：一是发布与版本锁定，频繁 pin Mojo/MAX 的 dev 版本；二是 stdlib 和语言基础设施整理，例如移除旧闭包、统一 closures、修复 Int.MAX 边界问题、重命名接口；三是 kernels 和 MAX 侧的性能与协议优化，比如 AMD decode scoring、split-K、KVConnector 清理等。整体看，项目仍在快速迭代，且社区贡献者参与度高，不只是修 bug，也在持续做语言和推理栈的结构性调整。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。README 没有直接点名竞品，更多是在展示 Modular 自己的语言与推理平台组合。</li>
-<li><strong>注意事项</strong>：这个项目成熟度还在快速演进中，仓库创建于 2023 年，但当前 open issues 仍有 1104，说明需求多、变更快、待处理问题也不少。Mojo 本身门槛较高，且 README 明确写了 Mojo compiler 还不接受贡献；同时仓库涉及 Apache v2.0 with LLVM Exceptions 和 Modular Community License，两套许可边界要先看清。近期大量版本 pin 和接口调整也意味着，跟进时要留意破坏性变更和文档滞后的风险。</li>
-<li><strong>GitHub</strong>：<a href="https://github.com/modular/modular">modular/modular</a></li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为新兴 AI 基础设施组织，凭借高星仓库和较强社区关注度，在编译器、GPU 与推理工具链方向具有较高技术可见度。
-<strong>技术栈偏好</strong>：以 Mojo 为核心，辅以 Python 和 TypeScript，明显偏向 AI 基础设施、开发工具和推理工程实现。
-<strong>核心领域</strong>：主要聚焦 AI 基础设施、模型推理、GPU 编程与开发者工具生态。</p>
-<hr />
-<h3>✨ multica-ai/andrej-karpathy-skills (205134★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 Andrej Karpathy 对 LLM 写代码常见失误的观察，整理成一份可以直接塞进 <code>CLAUDE.md</code>、Claude Code 插件或 Cursor 规则里的行为准则，专门约束模型少猜、多问、少改、先验收。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这个仓库本质上不是“代码库”，而是一份可复用的 AI 编码提示规范。核心内容是四条原则：先思考再写、优先简单、只做外科手术式修改、围绕可验证目标执行。README 还把它做成了可安装的 Claude Code 插件，并提供了 Cursor 规则文件，方便在不同工具里复用同一套约束。</li>
-<li><strong>能解决什么痛点</strong>：一是模型在需求不明确时直接脑补实现，写完才发现方向错了；二是 AI 喜欢顺手重构、扩展抽象、改动无关代码，导致 diff 变脏、回归风险变高。</li>
-<li><strong>适合谁用</strong>：经常用 Claude Code、Cursor、Copilot 类工具写项目代码的开发者；以及希望给团队统一 AI 编码行为的技术负责人、架构师、独立开发者。</li>
-<li><strong>怎么上手</strong>：README 提供了最直接的安装方式，例如在 Claude Code 里执行：<code>/plugin marketplace add forrestchang/andrej-karpathy-skills</code>，然后再执行 <code>/plugin install andrej-karpathy-skills@karpathy-skills</code>。如果是按项目文件使用，也可以直接把仓库里的 <code>CLAUDE.md</code> 拉到当前项目。</li>
-<li><strong>可以用在哪些场景</strong>：1）让 AI 在改生产代码前先写测试、再按测试结果收敛修改；2）在多人协作仓库里限制 AI 只改需求相关文件，避免顺手重排目录或改注释；3）给内部代码助手加一层统一规则，减少“看起来聪明但实际不稳”的输出。</li>
-<li><strong>技术看点</strong>：项目的设计重点不是模型算法，而是把提示原则产品化成可落地的项目规则文件和插件结构。近期还补了中文 README、Cursor 支持和插件结构修复，说明它在向多工具兼容和易安装方向演进。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交主要集中在文档同步、中文翻译、Cursor 支持和 Claude Code 插件兼容性修复上，说明项目当前重心是“把这套规则更容易接入更多编辑器/代理工具”，而不是持续扩展理论内容。贡献者只有 7 人，但最近几轮提交比较密集，社区维护仍然活跃。</li>
-<li><strong>同类对比</strong>：README 没有直接对标其他竞品；它更像是一份可复制的 AI 编码行为规范模板，区别在于既能作为 <code>CLAUDE.md</code> 使用，也能作为 Claude Code 插件和 Cursor 规则分发。</li>
-<li>
-<p><strong>注意事项</strong>：这是一个高星、强传播的提示词/规则类项目，但不是成熟的“软件功能库”；真正效果取决于你所在工具对 <code>CLAUDE.md</code>、插件或规则文件的支持程度。仓库当前 open issues 有 126 个，说明仍在迭代中，文档和安装路径虽然清晰，但遇到兼容问题时还得自己排查。它强调谨慎和最小化改动，适合减少 AI 误操作，不适合追求“让模型大胆发挥”的场景。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/multica-ai/andrej-karpathy-skills">multica-ai/andrej-karpathy-skills</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/claude-plugins-community">anthropics/claude-plugins-community</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以高关注度 AI 开源项目为核心，已具备较强的开发者社区影响力。
-<strong>技术栈偏好</strong>：偏好 Go 构建核心系统与运行时，结合 TypeScript、Python 开发工具链和应用层能力。
-<strong>核心领域</strong>：主要聚焦 AI 开发者工具、智能体运行时、命令行工具及相关工程基础设施。</p>
-<hr />
-<h3>✨ mahlernim/google-timeline-visualizer (1282★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 Google Maps 的 Timeline 轨迹 JSON 变成一段可预览、可导出的旅行动画视频，手机上就能生成 MP4，还提供 iPhone 网页版直接使用。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这个项目围绕 Google Location History / Timeline 数据做可视化，把你某一段时间的行程路线渲染成会动的地图视频。README 里既有 Android 应用，也有可在 Safari 打开的 iPhone Web App；用户导入 <code>Timeline.json</code> 后，可以选日期范围、预览旅程、再导出 MP4。它还支持保存成视频库、分享成品，以及导出 1080×1080 的旅程概览图。</li>
-<li><strong>能解决什么痛点</strong>：一是把原本很难直观看懂的 Timeline 坐标和路径，转成普通人一眼能看懂的旅行回放视频；二是解决“想发朋友圈/视频平台分享旅行轨迹，但手动做图太麻烦”的问题。对于长途、跨时区、跨日期的路线，它也把路线连续化处理，避免地图跳来跳去。</li>
-<li><strong>适合谁用</strong>：经常导出 Google Timeline、想整理年度旅行足迹的普通用户；以及需要给旅行内容做可视化展示的独立开发者、内容创作者、数字游民。对想研究 Android 本地视频渲染、地图轨迹动画、隐私友好型数据处理的人也有参考价值。</li>
-<li><strong>怎么上手</strong>：README 提供了桌面版命令示例：<code>python visualizer.py --input Timeline.json --year 2025 --camera-movement steady --long-trip-compression balanced --output my_trip_2025.mp4</code>。如果走手机端，Android 可从最新 Release 下载 APK 安装，iPhone 则直接在 Safari 打开网页应用并选择 <code>Timeline.json</code>。</li>
-<li><strong>可以用在哪些场景</strong>：旅行博主做年度行程回顾视频；家庭用户整理一次长途自驾、出国旅行的路线纪念片；把 Google Timeline 里的轨迹导出成可分享的演示素材，用于社交媒体、年终总结或个人作品集。</li>
-<li><strong>技术看点</strong>：项目核心是把 Timeline JSON 解析后做路线重建、插值和平滑动画，并在 Android 端完成本地 MP4 生成。README 里还能看到对隐私的明确处理：不上传 Timeline 数据，渲染在设备本地完成，地图底图只请求 CARTO/OpenStreetMap 图块。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常密集，集中在 v2.2.0~v2.2.5 一系列更新，重点包括导出进度常显、视频导出体验修复、原始位置回退提示、网页端大堆栈溢出修复、地图重复换行修复、导出格式预设、距离单位自动识别和隐私说明补充。整体看，项目当前仍在高频修 bug、打磨导出流程和兼容性，方向偏向“更稳的移动端/网页端视频生成体验”。</li>
-<li><strong>同类对比</strong>：README 没有明确点名竞品；如果按功能形态看，它与“手动用地图截图拼视频”相比，更像是把 Timeline 自动化渲染成成片。</li>
-<li>
-<p><strong>注意事项</strong>：项目功能比较完整，但贡献者只有 2 人，说明主要还是小团队维护；Open Issues 还有 8 个，活跃度高但并不意味着完全稳定。Android 端要求 8.0+，桌面版还需要 Python 3.9+ 和 FFmpeg。README 里明确提到地图图块会向第三方服务请求，因此虽然 Timeline JSON 不会上传，底图请求仍会暴露查看区域；另外 Android 安装需要手动允许未知来源应用。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/mahlernim/google-timeline-visualizer">mahlernim/google-timeline-visualizer</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在小众但实用的个人开发者圈层中有一定可见度，凭借少量高星项目体现出解决真实问题的能力。
-<strong>技术栈偏好</strong>：以 Python、Kotlin 和 JavaScript 为主，偏向脚本自动化、跨平台工具和轻量应用开发。
-<strong>核心领域</strong>：主要聚焦于数据可视化、浏览器自动化与生活效率类工具。</p>
+<p><strong>技术影响力</strong>：全球领先的人工智能研究与开发组织，在开发者社区拥有广泛关注和显著影响力
+<strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，偏重人工智能开发、提示工程与开发者工具
+<strong>核心领域</strong>：聚焦大语言模型、生成式人工智能、Claude 生态及企业级人工智能应用落地</p>
 <hr />
 <h3>✨ ripienaar/free-for-dev (133735★)</h3>
 <blockquote>
@@ -552,130 +643,97 @@
 <strong>技术栈偏好</strong>：偏好 Ruby、HTML、CSS 等偏应用层技术，整体方向聚焦自动化、可视化和工程效率工具。
 <strong>核心领域</strong>：主要聚焦系统架构、自动化运维与开发者工具生态。</p>
 <hr />
-<h3>✨ microsoft/TypeScript (110382★)</h3>
+<h3>✨ Comfy-Org/ComfyUI (125295★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：TypeScript 为 JavaScript 代码加上可选的静态类型，再编译成浏览器和 Node.js 都能运行的规范 JavaScript。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：TypeScript 是面向大型应用开发的 JavaScript 超集，允许开发者为变量、函数、对象和模块声明类型，并在开发阶段通过编译器检查错误。它最终输出可读、符合标准的 JavaScript，可运行在不同浏览器、操作系统和宿主环境中，同时提供 Playground、语言服务和编辑器集成能力。</li>
-<li><strong>能解决什么痛点</strong>：多人维护大型前端项目时，函数参数、接口数据和对象结构容易在运行时才暴露错误，TypeScript 能在编译阶段提前发现这类问题。代码重构或跨模块调用时，类型信息还能帮助编辑器定位引用、补全 API，减少手动搜索和误改。</li>
-<li><strong>适合谁用</strong>：使用 React、Vue、Angular、Node.js 等技术栈开发中大型应用的前端和全栈开发者；需要长期维护公共 SDK、后端服务或复杂业务代码的 JavaScript 团队。</li>
-<li><strong>怎么上手</strong>：<code>npm install -D typescript</code>；需要尝试 nightly 构建时可使用 <code>npm install -D typescript@next</code>。</li>
-<li><strong>可以用在哪些场景</strong>：为 React 或 Vue 管理后台定义接口响应、表单模型和组件属性，减少页面运行时类型错误；开发 Node.js API 服务或 CLI 工具时约束请求参数、配置对象和模块边界；维护浏览器端 SDK 或 npm 公共库时，为使用者提供类型提示并在发布前检查兼容性。</li>
-<li><strong>技术看点</strong>：项目以编译器为核心，将带类型的 JavaScript 代码转换为可读的标准 JavaScript，并通过类型系统、控制流分析和语言服务支持大规模重构。近期仓库元数据显示语言标记为 Go，提交记录显示项目正在推进 TypeScript 7 的 Go 代码库布局、从 Go 源码生成 TS API 等架构迁移。</li>
-<li><strong>近期动向与发展方向</strong>：近期提交非常活跃，20 条记录集中在 2026 年 8 月 19 日至 21 日，既有控制流分析崩溃、联合类型属性重复声明、版本号和构建产物等问题修复，也有 <code>.getReducedType()</code>、<code>TypeFormatFlags</code> 等 API 扩展。更明显的方向是 TypeScript 7 的 Go 化重构，包括调整仓库布局、重命名 Go module、移除历史子模块、从 Go 源码生成 TypeScript API，并同步更新 CI、依赖和包发布检查；这表明项目正处于重大底层迁移和工程体系调整阶段。</li>
-<li><strong>同类对比</strong>：README 未明确提及竞品或直接对标项目；TypeScript 的定位是为 JavaScript 增加可选类型并编译回 JavaScript，而不是替换 JavaScript 运行时。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2014 年，拥有 110382 个 Stars、1052 位贡献者，但仍有 5200 个开放 Issue，说明生态成熟、规模庞大，问题分类和版本兼容性需要持续关注。近期 TypeScript 7 的 Go 迁移涉及构建布局、API 生成、包版本和 CI，可能带来构建流程、编译器行为或生态工具链方面的破坏性变更；生产项目应优先使用稳定版，升级前检查编译器版本、构建脚本和第三方类型声明兼容性。官方文档、手册、首页和 Playground 较完整，但大型项目仍需要额外理解 <code>tsconfig</code>、类型系统边界及编译性能。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/microsoft/TypeScript">microsoft/TypeScript</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：微软是全球顶级开源技术组织之一，拥有庞大开发者关注度和广泛社区影响力。
-<strong>技术栈偏好</strong>：以 TypeScript、Python、C 为主，覆盖开发工具、人工智能、系统工具与开发者平台。
-<strong>核心领域</strong>：主要聚焦软件开发工具、人工智能教育与应用、操作系统工具及编程语言生态。</p>
-<hr />
-<h3>✨ cursor/plugins (2760★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Cursor 把官方插件规范、内置开发者工作流插件，以及 Gmail、Salesforce、HubSpot、X 等第三方 MCP 集成集中放在这个仓库里，作为 Cursor 插件市场的源头目录。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是 Cursor 官方维护的多插件仓库，每个插件都是仓库根目录下的独立目录，并通过自己的 <code>.cursor-plugin/plugin.json</code> 描述名称、作者、分类和能力。仓库同时包含 Cursor 自家的开发者工具插件，例如代码审查、文档画布、SDK、并行 agent 编排，也收录了多款基于远程 MCP Server 的 SaaS 集成插件。</li>
-<li><strong>能解决什么痛点</strong>：一是 Cursor 插件分散时，开发者很难确认插件清单、manifest 结构和官方约定，这个仓库给出了可直接参照的规范样板。二是把 Gmail、Google Drive、Salesforce、HubSpot、Intercom 等服务接入 Cursor Agent 时，减少手写 MCP 配置和反复查各家接口说明的成本。</li>
-<li><strong>适合谁用</strong>：适合正在为 Cursor 编写或维护插件的 TypeScript / 工具链开发者，也适合希望把常用 SaaS、CRM、邮件、日历、文档系统接入 Cursor Agent 工作流的团队。对关注 MCP 生态落地方式的开发者也有参考价值。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>为团队内部开发 Cursor 插件时，参考 <code>create-plugin</code>、<code>.cursor-plugin/plugin.json</code> 和 marketplace manifest 的目录组织方式。</li>
-<li>在 Cursor 中接入 Gmail、Google Calendar、Google Drive，用 agent 查询邮件、安排会议或处理文档资料。</li>
-<li>把 Salesforce、HubSpot、Intercom、Docusign 等业务系统通过官方远程 MCP Server 接入开发或运营工作流，让 agent 能检索、更新或汇总业务数据。</li>
-<li><strong>技术看点</strong>：仓库采用多插件 marketplace 结构，根目录的 <code>.cursor-plugin/marketplace.json</code> 统一登记插件，每个插件独立维护 manifest、skills、rules、MCP 配置和文档。设计上强调 Cursor 插件与 MCP Server 的组合，把本地 agent 能力和远程 SaaS API 连接起来。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常活跃，8 月 8 日到 13 日连续合入 HubSpot、Intercom、Circleback、Docusign、Navan、Profound、AgentMail 等第三方 MCP 插件，说明当前重点是扩充官方插件市场中的 SaaS 集成覆盖面。同时 X 插件切换到带写权限 scope 的 OAuth 用户登录，插件描述也被改为 client-agnostic，显示项目正在从单一客户端描述走向更通用的插件规范和认证能力。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新但更新频率很高，Stars 已到 2760，说明关注度上升较快；同时 Open Issues 有 31 个，且近期出现过新增第三方插件后又 revert 的情况，插件清单和接口能力可能仍在快速调整。README 更像插件目录和结构说明，缺少安装命令、开发教程和端到端快速上手示例，新用户需要直接阅读各插件目录下的 manifest、README 或 MCP 配置。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/cursor/plugins">cursor/plugins</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：AI 编程工具领域的高影响力开发者组织，拥有较高社区关注度和项目传播力
-<strong>技术栈偏好</strong>：以 TypeScript 为主、Python 为辅，偏好现代 Web、插件生态与 AI 工具开发
-<strong>核心领域</strong>：聚焦 AI 辅助编程、开发者工具及可扩展的编辑器插件生态</p>
-<hr />
-<h3>✨ PostHog/posthog (37881★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：PostHog 把产品分析、用户会话回放、功能开关、实验、错误追踪、日志和 AI 可观测性集中在一个平台里，并让 AI 代理直接基于这些数据定位问题、发现机会和提交修复。</p>
+<p><strong>一句话</strong>：把图像、视频、音频和 3D 生成流程拆成可连接的节点图，用户可以像搭建流程图一样组合模型、参数与后处理步骤，并通过本地界面或 API 执行。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：PostHog 是面向产品团队和开发者的开源产品数据平台，能够采集事件、分析用户行为、回放真实会话，并管理 Feature Flags、A/B 实验、问卷、错误和日志。它还提供数据仓库、数据管道、LLM 追踪，以及通过 Slack、桌面端或 MCP 操作 PostHog 的自驱动能力。</p>
+<p><strong>它是什么</strong>：ComfyUI 是一个基于 Python 的模块化 AI 内容创作引擎，核心界面是可视化节点图：模型、提示词、采样器、ControlNet、放大器、遮罩和合成操作都可以连接成可复用工作流。它支持本地离线运行，也提供桌面应用、Windows 便携版、API 接口和可选的云端及闭源模型 API 节点，覆盖图像、视频、音频、3D 与文本生成。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：当用户反馈“页面不好用”但缺少上下文时，可以结合事件数据、rage click、失败查询和 Session Replay 还原问题，而不是只依赖文字描述。发布新功能时，可以用 Feature Flags 和实验逐步放量、衡量指标，出现异常后再结合错误追踪和日志定位原因。</p>
+<p><strong>能解决什么痛点</strong>：传统生成界面通常把参数固定在单一流程里，难以复现复杂的多模型组合；ComfyUI 可以将完整工作流保存为 JSON，并从生成媒体中恢复工作流和种子。对于显存有限的设备，它还提供异步队列、局部节点重算、显存管理、模型卸载和量化模型支持，减少运行大型模型时的显存压力。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：需要同时负责埋点、转化分析、功能灰度和实验的 Web、移动端产品开发团队。需要把 LLM 调用的 trace、延迟、成本与业务行为放在一起分析的 AI 应用团队，以及希望自托管数据分析平台的工程团队。</p>
+<p><strong>适合谁用</strong>：适合需要精细控制采样参数、模型组合和后处理链路的 AI 绘画、视频和音频创作者；也适合需要把生成流程嵌入产品或生产管线的 Python 开发者、研究人员和工作室技术美术。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：Linux 环境安装 Docker 后，可用 README 提供的一行命令部署 Hobby 实例：<code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/posthog/posthog/HEAD/bin/deploy-hobby)"</code>。官方建议至少准备 4GB 内存；部署后可通过 JavaScript Snippet、SDK 或 API 接入数据。</p>
+<p><strong>怎么上手</strong>：README 推荐优先使用 <a href="https://www.comfy.org/download">Desktop Application</a>，Windows 用户也可以使用便携版；README 未提供可直接复制的命令行快速上手示例。</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>为 SaaS 产品搭建从注册、激活到付费转化的事件分析和漏斗报表。</li>
-<li>新版本上线时按用户或 Cohort 灰度发布，用实验比较转化率、留存率等指标。</li>
-<li>AI 客服、代码助手等 LLM 应用中，关联请求链路、模型生成、延迟、成本、错误和用户反馈。</li>
+<li>搭建可重复的商品图生产流程，例如模型生成、参考图控制、局部重绘、放大和背景合成串成一张工作流。</li>
+<li>为视频团队制作从文本或图片生成视频、帧插值、放大和音频处理的批量任务管线。</li>
 <li>
-<p>线上出现异常交互时，通过 Session Replay、错误追踪和日志联合排查具体用户路径。</p>
+<p>通过本地 API 将固定的图像生成工作流接入内部设计工具、内容审核系统或素材生产服务。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目采用大型 Monorepo 组织多个产品模块，覆盖分析、CDP、错误追踪、数据仓库和 AI 能力，并提供 Python、JavaScript、React、React Native、Android、iOS 等多端 SDK。开源仓库主体采用 MIT 许可证，但 <code>ee</code> 目录存在单独许可；官方还提供完全 FOSS 的 <code>posthog-foss</code> 仓库。</p>
+<p><strong>技术看点</strong>：节点图和 JSON 工作流将模型推理、参数配置与后处理步骤显式化，便于复用、调试和接入 API。项目同时强调异步队列、部分图重执行、VRAM/RAM 管理、模型卸载和量化支持，在高度模块化的前提下兼顾消费级硬件运行能力。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-08-20，显示项目仍保持很高的开发活跃度，内容以问题修复、可靠性改进和局部功能扩展为主。重点包括 CDP 运行卡死恢复、输入默认值和筛选逻辑修复、仪表盘失败状态展示、集成密钥校验、数据表行为修正，以及 Slack、桌面端、LLM Gateway 和客户分析功能；同时发布了 <code>posthog-cli v0.13.1</code>。整体演进方向明显偏向 AI 代理、自驱动产品工作流、多渠道协作和平台稳定性。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 8 月 7 日至 9 日，显示项目仍处于高频开发状态，并发布了 <code>v0.31.0</code>。近期一方面持续修复低显存、模型卸载、音频 VAE 和张量调试等底层问题，另一方面扩展分层图像合成、ByteDance SeeDance 2.5、ER-SDE 噪声缩放、非对称量化以及 API 媒体资产状态；同时将最低官方支持的 PyTorch 版本提升至 2.7，说明项目正围绕新模型、新硬件优化和生产化 API 能力持续演进。提交涉及核心维护者、外部贡献者和自动化机器人，社区协作较为活跃。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 将 Web Analytics 描述为类似 GA 的流量分析能力，但没有明确列出竞品或进行功能对比。它的差异化重点在于把产品分析、Session Replay、Feature Flags、实验、错误追踪、日志和 AI 可观测性放在同一套数据体系中，并接入 Slack、桌面端和 MCP。</p>
+<p><strong>同类对比</strong>：README 未明确列出竞品。相较于只提供固定参数面板的生成式 AI 应用，ComfyUI 更强调节点级控制、工作流复用、本地执行和 API 集成；但这种灵活性也意味着配置复杂度更高。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：自托管属于进阶用法，Hobby 部署官方建议约支持每月 10 万事件，超过后建议迁移到 PostHog Cloud，开源部署不提供客户支持或服务保证。项目创建于 2020 年，拥有 557 位贡献者和 37881 个 Star，成熟度和社区关注度较高；但 5133 个 Open Issues 也说明系统规模大、维护面广，部署、升级和问题排查的复杂度不可忽视。项目同时包含开源与商业代码，二次分发或商用前需要确认 <code>ee</code> 目录及相关组件的许可证；近期频繁涉及核心产品模块，升级前应阅读变更记录并验证数据采集、权限和自托管部署兼容性。</p>
+<p><strong>注意事项</strong>：项目创建于 2023 年 1 月，已积累 125295 个 Stars、14827 个 Forks 和 336 位贡献者，说明关注度和生态规模较大；但同时有 4494 个 Open Issues，使用体验和兼容性仍可能受具体模型、显卡、插件及自定义节点影响。主干提交可能较不稳定，README 明确提示稳定版本之外的提交可能破坏自定义节点；近期将最低官方支持的 PyTorch 提升到 2.7，也可能带来环境升级和插件兼容性问题。对于生产环境，建议锁定稳定版本、固定模型与自定义节点依赖，并单独验证升级后的工作流。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/PostHog/posthog">PostHog/posthog</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/Comfy-Org/ComfyUI">Comfy-Org/ComfyUI</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：PostHog 是开源产品分析与功能交付领域的高影响力组织，核心仓库星标规模突出，社区关注度较高。
-<strong>技术栈偏好</strong>：以 Python 和 TypeScript 为主，偏向构建全栈数据分析平台、前端 SDK、网站与可观测性相关工具。
-<strong>核心领域</strong>：主要聚焦产品分析、A/B 测试、用户行为追踪、功能发布与工程可观测性的一体化平台。</p>
+<p><strong>技术影响力</strong>：专注开源生成式 AI 工具生态，凭借 ComfyUI 及相关项目在社区拥有较高知名度和广泛影响力
+<strong>技术栈偏好</strong>：以 Python 为核心，结合 TypeScript 构建 AI 工作流、桌面端及前端应用
+<strong>核心领域</strong>：主要聚焦生成式 AI、视觉创作工作流与 ComfyUI 开源生态建设</p>
 <hr />
-<h3>✨ Tencent/AI-Infra-Guard (4845★)</h3>
+<h3>✨ NousResearch/hermes-agent (234766★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把 AI 系统的红队测试做成了一套可落地的平台，能直接去扫智能体、MCP 服务、技能包、AI 基础设施和提示词越狱风险。</p>
+<p><strong>一句话</strong>：Hermes Agent 像一个常驻云端的个人 AI 助手，既能在终端里操作文件和执行任务，也能通过 Telegram、Discord、Slack 等聊天平台持续记住你的工作上下文。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是腾讯朱雀实验室做的 AI 安全检测平台，覆盖 ClawScan、Agent Scan、Skill Scan、MCP Scan 和 Jailbreak Evaluation 等模块。它不是单点检测脚本，而是把多种 AI 生态组件放进同一套安全审计流程里，既有 Web 界面，也有 CLI 和可集成到 CI/CD 的扫描能力。</li>
-<li><strong>能解决什么痛点</strong>：一是企业上线智能体、MCP 服务或技能市场前，缺少统一的安全体检入口，容易漏掉工具劫持、提示注入、凭据泄露这类问题。二是 AI 基础设施和模型接入链路越来越长，靠人工排查成本高，且很难持续跟踪 CVE、越狱手法和新型攻击面变化。</li>
-<li><strong>适合谁用</strong>：做企业 AI 安全评估的研发或安全团队。也适合要把智能体、MCP Server、技能插件纳入发布流程的 Python 工程师、平台工程师和红队成员。</li>
-<li><strong>怎么上手</strong>：README 提供的最短路径是 Docker 部署：<code>git clone https://github.com/Tencent/AI-Infra-Guard.git &amp;&amp; cd AI-Infra-Guard &amp;&amp; docker-compose -f docker-compose.images.yml up -d</code>，然后访问 <code>http://localhost:8088</code>。</li>
-<li><strong>可以用在哪些场景</strong>：发布内部智能体前做红队回归扫描。接入企业 CI/CD 后定期检查技能包和 MCP 服务的高危风险。对现有 AI 基础设施做版本升级前的 CVE 和配置审计。</li>
-<li><strong>技术看点</strong>：项目把 AI 安全拆成了多个专门扫描面，并且在最近版本里把技能扫描、MCP 扫描和越狱评估都做了持续扩展，说明它在向“多组件、可自动化、可量化”的平台化方向演进。SkillTrustBench 上的指标和 2000+ CVE 规则库，也说明它不只是演示型项目，而是在做可复用的规则和评测体系。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在修复兼容性、稳定性和规则逻辑，比如清理 JSON 序列化崩溃、修 MCP SDK 兼容问题、补依赖、修 Docker/Compose 兼容、修加权风险分数，同时新增 LLM API poisoning detection。整体看，项目当前一边补工程质量和部署兼容性，一边继续扩攻击检测面，活跃度很高，且明显在强化可用性与覆盖面。</li>
-<li><strong>同类对比</strong>：README 里更像是把 ClawScan、Skill Scanner、MCP Scanner、Agent Scan 和 Jailbreak Evaluation 组合成一套平台，没有明确写出直接竞品。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间很新，但更新非常频繁，说明仍在快速演进，接口和规则库都有变动风险。README 也明确提示当前缺少认证机制，不适合直接暴露到公网；如果接入生产环境，最好放在内网或受控测试环境里。</p>
+<p><strong>它是什么</strong>：这是 Nous Research 用 Python 开发的自我改进型 AI Agent，提供终端 TUI、桌面端和统一消息网关。它支持 Nous Portal、OpenRouter、OpenAI 及自定义模型接口，并通过记忆检索、技能创建与改进、定时任务、子 Agent 并行执行和多种终端后端来完成长期任务。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Tencent/AI-Infra-Guard">Tencent/AI-Infra-Guard</a></p>
+<p><strong>能解决什么痛点</strong>：开发者不必为 CLI、Telegram、Discord 等入口分别维护不同的上下文，Agent 可以跨平台延续会话并接收语音消息。对于需要长期运行的任务，还能把每日报告、备份、审计等工作交给内置调度器，避免依赖本地电脑持续在线。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合希望拥有可持久化个人编程助手的 Python 开发者、独立开发者和研究人员。也适合需要在 VPS、GPU 集群或云端沙盒中运行 Agent，并通过聊天软件远程管理任务的运维和自动化用户。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：Linux、macOS、WSL2 和 Termux 可执行 <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>，安装后运行 <code>hermes</code> 开始对话；Windows 原生环境则使用 <code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在一台低成本 VPS 上运行 Telegram 或 Discord 机器人，远程执行代码、查询资料和维护项目。</li>
+<li>设置定时任务，让 Agent 自动发送日报、执行夜间备份或生成周期性审计报告。</li>
+<li>
+<p>使用 Docker、SSH、Modal、Daytona 等后端，为批量轨迹生成、工具调用实验或并行子任务提供隔离运行环境。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目把 TUI、消息平台、桌面端和多种执行后端统一到一个 Gateway 架构中，并支持本地、Docker、SSH、Singularity、Modal、Daytona、Vercel Sandbox 七类终端环境。其核心差异在于把记忆检索、技能自我改进、用户建模和定时自动化直接纳入 Agent 工作流，而不是只提供一次性的对话接口。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎全部集中在 2026 年 8 月 23 日，开发非常活跃，重点是桌面端与多 Bot、多 Profile 架构的稳定性。近期既有 Bot Chat 所属网关路由、跨生命周期保留 Bot 标签页等修复，也有配置随 Profile fleet 迁移、重启计划管理和 Windows E2E 测试等功能，说明项目正从核心 Agent 能力扩展到多实例桌面运行、自动更新和跨平台交付的工程化阶段。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出直接竞品，但项目提供了 <code>hermes claw migrate</code>，说明它考虑了从 OpenClaw 迁移的用户。相较只提供单一 CLI 或聊天机器人的 Agent 项目，Hermes Agent 更强调跨平台消息入口、长期记忆、技能演进、定时任务和远程执行环境的一体化。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 7 月，已经获得 234766 个 Stars、47276 个 Forks 和 2979 位贡献者，但同时有 35003 个开放 Issue，规模大、迭代快，使用时应关注版本更新带来的配置迁移、网关重启和路由行为变化。安装过程会自动管理 Python、Node.js、ripgrep、ffmpeg 及 Windows 下的 MinGit，依赖较多；项目支持的模型、消息平台和云端后端较广，正式部署前仍需核对对应平台的密钥、权限、费用和安全隔离配置。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：全球知名科技组织，在 GitHub 拥有较高关注度和广泛开发者影响力。
-<strong>技术栈偏好</strong>：偏好 C++、JavaScript 与 HTML，覆盖高性能基础组件、前端框架及跨平台开发。
-<strong>核心领域</strong>：主要聚焦移动端基础设施、人工智能、前端生态与企业级开发工具。</p>
+<p><strong>技术影响力</strong>：以 Hermes Agent 等高关注度项目为核心，在开源智能体与大模型开发社区具有显著影响力
+<strong>技术栈偏好</strong>：以 Python 为主，辅以 TypeScript 和 Jupyter Notebook，偏好大模型应用、智能体编排与实验开发
+<strong>核心领域</strong>：主要聚焦自主智能体、模型能力调用、自我进化系统及生成式 AI 工程化</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
