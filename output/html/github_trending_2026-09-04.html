@@ -101,33 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-09-04)</h1>
-<h2>今日热点：AI Agent 技能化与本地开源工具生态加速发展</h2>
-<p>今天的技术热度集中在 AI Agent 从“会调用模型”走向具备工程方法、长期记忆、安全与研究能力的技能化发展，同时本地推理、语音与视频生成、时间序列预测、提示词管理、系统设计学习、媒体下载及开发基础设施等方向持续升温，项目覆盖 fmt 格式化库、各类 Agent Skills 与性能优化框架、Claude Code 生态、TimesFM、VoiceStudio、本地模型服务、学术研究工具和开源开发资源，具体项目摘要如下：</p>
-<h3>✨ fmtlib/fmt (23797★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它把 C 和 C++ 里那些又长又容易写错的格式化输出，收拢成一套更安全、更快、也更接近现代语法的写法，常见于日志、终端输出和字符串拼接。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：<code>fmt</code> 是一个现代 C++ 格式化库，提供 <code>fmt::format</code>、<code>fmt::print</code>、<code>printf</code> 风格接口以及对 <code>std::format</code>、<code>std::print</code> 的实现支持。它强调类型安全、编译期检查、Unicode 处理和跨平台一致输出，既能直接打印到终端，也能生成字符串、格式化时间日期、容器和用户自定义类型。</li>
-<li><strong>能解决什么痛点</strong>：一是避免 <code>printf</code> 参数类型不匹配、格式串写错这类运行时隐患；二是在日志、报错信息、CLI 输出里减少 <code>iostreams</code> 的冗长语法和性能损耗。对于需要高频拼接字符串、同时又在意可读性和性能的代码，这个库很实用。</li>
-<li><strong>适合谁用</strong>：写 C++ 服务、基础设施工具、命令行程序的开发者；也适合维护日志系统、数据库、编译器、终端工具这类对输出性能和稳定性要求较高的项目。</li>
-<li><strong>怎么上手</strong>：README 给出的最小示例是直接包含头文件后调用 <code>fmt::print</code>：<code>#include</code>，然后 <code>fmt::print("Hello, world!\n");</code>。</li>
-<li><strong>可以用在哪些场景</strong>：在服务端程序里统一日志和告警输出格式；在 CLI 工具中生成对用户更友好的表格、进度和诊断信息；在需要导出报告或构造错误消息的模块里替代手写字符串拼接。</li>
-<li><strong>技术看点</strong>：它把安全性、性能和可移植性同时放在前面，README 里直接强调了编译期格式检查、Dragonbox 浮点格式化、对 C++20 <code>std::format</code> / C++23 <code>std::print</code> 的支持，以及较小的代码体积。项目也长期通过测试和 fuzzing 维持可靠性。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交主要集中在兼容性修复、警告清理、文档补充和细节行为修正，比如修正 emoji 宽度、抑制 GCC 16 警告、处理 <code>FMT_USE_LOCALE=0</code>、补充 C++20 modules 文档、调整 <code>C++26</code> reflection 的默认行为。这说明项目当前仍在持续打磨边角行为，同时跟进新标准和新编译器环境，维护活跃度很高。</li>
-<li><strong>同类对比</strong>：README 明确对比了 <code>printf</code>、<code>iostreams</code>、<code>Boost Format</code>、<code>std::ostringstream</code>、<code>double-conversion</code>、<code>ryu</code> 等。它的定位很清楚：比传统 C/C++ 输出接口更安全、通常也更快，并且对现代 C++ 标准特性支持更完整。</li>
-<li>
-<p><strong>注意事项</strong>：这是一个成熟且历史很久的库，创建于 2012 年，star、贡献者和使用案例都很多，但也意味着 API 和行为有较强的稳定性约束，升级时要留意格式化细节、编译器版本和标准库实现差异。README 内容丰富，但真正落地时仍建议结合文档核对 C++ 标准版本、模块支持和头文件/库配置方式。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/fmtlib/fmt">fmtlib/fmt</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以高星 C++ 库 <code>fmt</code> 为核心，在 C++ 基础设施与格式化库生态中具备显著影响力。
-<strong>技术栈偏好</strong>：主要偏向 C++ 系统级库开发，同时使用 HTML 维护项目官网与文档入口。
-<strong>核心领域</strong>：聚焦 C++ 字符串格式化、性能基准测试与相关开发者工具基础设施。</p>
-<hr />
+<h2>今日热点：AI Agent 工程化与本地智能基础设施加速演进</h2>
+<p>今日技术热点聚焦 AI Agent 的技能体系、性能优化、记忆与安全、代码编程代理及智能体协作，同时延伸至本地模型推理、语音克隆与多语言音频生产、时间序列基础模型、LLM/VLM 强化学习后训练、格式化库、游戏图形优化、技术图表生成、网络工具与漏洞研究等方向，具体项目摘要如下：</p>
 <h3>✨ mattpocock/skills (232110★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：它把需求澄清、领域建模、写规格、拆工单、TDD、调试和代码审查等工程流程，整理成可被 Claude Code、Codex 等编程代理调用的 <code>/skill</code> 指令。</p>
@@ -179,52 +154,6 @@
 <p><strong>技术影响力</strong>：TypeScript 领域的知名教育者与开源开发者，拥有广泛社区影响力。
 <strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Shell，重点关注类型系统、开发者工具与 AI 编程工作流。
 <strong>核心领域</strong>：主要聚焦生产级 TypeScript 工程实践、类型安全和开发者教育。</p>
-<hr />
-<h3>✨ NousResearch/hermes-agent (234766★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Hermes Agent 像一个常驻云端的个人 AI 助手，既能在终端里操作文件和执行任务，也能通过 Telegram、Discord、Slack 等聊天平台持续记住你的工作上下文。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：这是 Nous Research 用 Python 开发的自我改进型 AI Agent，提供终端 TUI、桌面端和统一消息网关。它支持 Nous Portal、OpenRouter、OpenAI 及自定义模型接口，并通过记忆检索、技能创建与改进、定时任务、子 Agent 并行执行和多种终端后端来完成长期任务。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：开发者不必为 CLI、Telegram、Discord 等入口分别维护不同的上下文，Agent 可以跨平台延续会话并接收语音消息。对于需要长期运行的任务，还能把每日报告、备份、审计等工作交给内置调度器，避免依赖本地电脑持续在线。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合希望拥有可持久化个人编程助手的 Python 开发者、独立开发者和研究人员。也适合需要在 VPS、GPU 集群或云端沙盒中运行 Agent，并通过聊天软件远程管理任务的运维和自动化用户。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：Linux、macOS、WSL2 和 Termux 可执行 <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>，安装后运行 <code>hermes</code> 开始对话；Windows 原生环境则使用 <code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>在一台低成本 VPS 上运行 Telegram 或 Discord 机器人，远程执行代码、查询资料和维护项目。</li>
-<li>设置定时任务，让 Agent 自动发送日报、执行夜间备份或生成周期性审计报告。</li>
-<li>
-<p>使用 Docker、SSH、Modal、Daytona 等后端，为批量轨迹生成、工具调用实验或并行子任务提供隔离运行环境。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目把 TUI、消息平台、桌面端和多种执行后端统一到一个 Gateway 架构中，并支持本地、Docker、SSH、Singularity、Modal、Daytona、Vercel Sandbox 七类终端环境。其核心差异在于把记忆检索、技能自我改进、用户建模和定时自动化直接纳入 Agent 工作流，而不是只提供一次性的对话接口。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎全部集中在 2026 年 8 月 23 日，开发非常活跃，重点是桌面端与多 Bot、多 Profile 架构的稳定性。近期既有 Bot Chat 所属网关路由、跨生命周期保留 Bot 标签页等修复，也有配置随 Profile fleet 迁移、重启计划管理和 Windows E2E 测试等功能，说明项目正从核心 Agent 能力扩展到多实例桌面运行、自动更新和跨平台交付的工程化阶段。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出直接竞品，但项目提供了 <code>hermes claw migrate</code>，说明它考虑了从 OpenClaw 迁移的用户。相较只提供单一 CLI 或聊天机器人的 Agent 项目，Hermes Agent 更强调跨平台消息入口、长期记忆、技能演进、定时任务和远程执行环境的一体化。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2025 年 7 月，已经获得 234766 个 Stars、47276 个 Forks 和 2979 位贡献者，但同时有 35003 个开放 Issue，规模大、迭代快，使用时应关注版本更新带来的配置迁移、网关重启和路由行为变化。安装过程会自动管理 Python、Node.js、ripgrep、ffmpeg 及 Windows 下的 MinGit，依赖较多；项目支持的模型、消息平台和云端后端较广，正式部署前仍需核对对应平台的密钥、权限、费用和安全隔离配置。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以 Hermes Agent 等高关注度项目为核心，在开源智能体与大模型开发社区具有显著影响力
-<strong>技术栈偏好</strong>：以 Python 为主，辅以 TypeScript 和 Jupyter Notebook，偏好大模型应用、智能体编排与实验开发
-<strong>核心领域</strong>：主要聚焦自主智能体、模型能力调用、自我进化系统及生成式 AI 工程化</p>
 <hr />
 <h3>✨ DietrichGebert/ponytail (110613★)</h3>
 <blockquote>
@@ -280,52 +209,30 @@
 <strong>技术栈偏好</strong>：主要使用 JavaScript，辅以少量 Python，偏向前端或轻量级开源工具开发。
 <strong>核心领域</strong>：主要聚焦于 JavaScript 生态下的实用型开源项目与个人技术实验。</p>
 <hr />
-<h3>✨ anthropics/skills (173417★)</h3>
+<h3>✨ fmtlib/fmt (23797★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把一组可动态加载的指令、脚本和资源封装成 Claude 能按需调用的专业技能，让模型能够稳定执行文档处理、数据分析、前端设计和 API 开发等重复性任务。</p>
+<p><strong>一句话</strong>：它把 C 和 C++ 里那些又长又容易写错的格式化输出，收拢成一套更安全、更快、也更接近现代语法的写法，常见于日志、终端输出和字符串拼接。</p>
 </blockquote>
 <ul>
+<li><strong>它是什么</strong>：<code>fmt</code> 是一个现代 C++ 格式化库，提供 <code>fmt::format</code>、<code>fmt::print</code>、<code>printf</code> 风格接口以及对 <code>std::format</code>、<code>std::print</code> 的实现支持。它强调类型安全、编译期检查、Unicode 处理和跨平台一致输出，既能直接打印到终端，也能生成字符串、格式化时间日期、容器和用户自定义类型。</li>
+<li><strong>能解决什么痛点</strong>：一是避免 <code>printf</code> 参数类型不匹配、格式串写错这类运行时隐患；二是在日志、报错信息、CLI 输出里减少 <code>iostreams</code> 的冗长语法和性能损耗。对于需要高频拼接字符串、同时又在意可读性和性能的代码，这个库很实用。</li>
+<li><strong>适合谁用</strong>：写 C++ 服务、基础设施工具、命令行程序的开发者；也适合维护日志系统、数据库、编译器、终端工具这类对输出性能和稳定性要求较高的项目。</li>
+<li><strong>怎么上手</strong>：README 给出的最小示例是直接包含头文件后调用 <code>fmt::print</code>：<code>#include</code>，然后 <code>fmt::print("Hello, world!\n");</code>。</li>
+<li><strong>可以用在哪些场景</strong>：在服务端程序里统一日志和告警输出格式；在 CLI 工具中生成对用户更友好的表格、进度和诊断信息；在需要导出报告或构造错误消息的模块里替代手写字符串拼接。</li>
+<li><strong>技术看点</strong>：它把安全性、性能和可移植性同时放在前面，README 里直接强调了编译期格式检查、Dragonbox 浮点格式化、对 C++20 <code>std::format</code> / C++23 <code>std::print</code> 的支持，以及较小的代码体积。项目也长期通过测试和 fuzzing 维持可靠性。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交主要集中在兼容性修复、警告清理、文档补充和细节行为修正，比如修正 emoji 宽度、抑制 GCC 16 警告、处理 <code>FMT_USE_LOCALE=0</code>、补充 C++20 modules 文档、调整 <code>C++26</code> reflection 的默认行为。这说明项目当前仍在持续打磨边角行为，同时跟进新标准和新编译器环境，维护活跃度很高。</li>
+<li><strong>同类对比</strong>：README 明确对比了 <code>printf</code>、<code>iostreams</code>、<code>Boost Format</code>、<code>std::ostringstream</code>、<code>double-conversion</code>、<code>ryu</code> 等。它的定位很清楚：比传统 C/C++ 输出接口更安全、通常也更快，并且对现代 C++ 标准特性支持更完整。</li>
 <li>
-<p><strong>它是什么</strong>：这是 Anthropic 为 Claude 提供的 Agent Skills 示例与实现仓库，每个技能通常是一个独立目录，核心文件为包含 YAML 元数据和操作指令的 <code>SKILL.md</code>。仓库覆盖创意与设计、开发与技术、企业沟通，以及 <code>docx</code>、<code>pdf</code>、<code>pptx</code>、<code>xlsx</code> 等文档技能，同时提供 Agent Skills 规范和技能模板。</p>
+<p><strong>注意事项</strong>：这是一个成熟且历史很久的库，创建于 2012 年，star、贡献者和使用案例都很多，但也意味着 API 和行为有较强的稳定性约束，升级时要留意格式化细节、编译器版本和标准库实现差异。README 内容丰富，但真正落地时仍建议结合文档核对 C++ 标准版本、模块支持和头文件/库配置方式。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：开发者不必把同一套品牌规范、数据处理流程或 API 操作步骤反复写进每次提示词，可以将它们固化为可复用的技能。面对 Claude API、Managed Agents 或 Python SDK 升级时，也能通过专门的 <code>claude-api</code> 技能集中维护迁移说明、参数约束和常见问题。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合使用 Claude Code、Claude.ai 或 Claude API 构建 AI 工作流的开发者，尤其是需要封装企业内部流程的应用工程师。也适合希望学习 <code>SKILL.md</code> 结构、编写自定义技能，或为文档生成、数据分析和软件开发任务建立标准操作规范的团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：在 Claude Code 中注册插件市场并安装示例技能：
-  随后选择 <code>Browse and install plugins</code>，安装 <code>document-skills</code> 或 <code>example-skills</code>；也可以直接执行 <code>/plugin install example-skills@anthropic-agent-skills</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>按公司品牌规范批量生成和修改 Word、PDF、PowerPoint、Excel 文件。</li>
-<li>在接入 Claude API 或 Managed Agents 时，辅助完成 SDK 升级、模型切换、凭据配置和 token 统计。</li>
-<li>
-<p>为团队内部的前端设计、MCP 服务生成、测试 Web 应用等流程编写统一的 Claude 操作规范。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用“目录即技能”的轻量结构，以 <code>SKILL.md</code> 的 YAML frontmatter 定义名称和触发描述，以 Markdown 指令、脚本和资源补充执行细节，便于版本管理和复用。技能可通过 Claude Code 插件、Claude.ai 或 Claude API 分发，文档技能还展示了生产级复杂技能的组织方式。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：近期开发高度集中在 <code>claude-api</code> 技能，连续跟进 Python SDK 0.x 到 1.x、Claude Opus 5、Claude Fable 5.1、Claude Mythos 5.1、Managed Agents、合作方定价和凭据管理等变化，说明项目正在承担 Claude 平台文档与使用方式的持续同步工作。同时，仓库也在新增 <code>academy-guide</code>、<code>discernment-nudge</code> 等技能，并更新文档编辑与前端设计技能；最近 20 条提交从 2026 年 5 月持续到 9 月，更新频率较高，但贡献主要集中在少数核心贡献者。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品；<code>agentskills.io</code> 是 Agent Skills 标准的参考站点，而本仓库主要提供 Anthropic 对该机制的实现、示例技能和模板，两者分别偏向规范与具体实现。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较新，但已达到 17 万以上 Stars，同时有 1208 个 Open Issues，说明关注度很高，问题规模也不小。技能内容会随 Claude 模型、API 和 SDK 快速变化，近期提交中已经出现 Python SDK 升级和模型版本迁移，直接复制旧技能可能导致参数、行为或文档不一致。仓库明确声明技能主要用于演示和教育用途，部分文档创建与编辑技能是 source-available 而非 Apache 2.0 开源，生产环境使用前需要核对授权范围并自行测试。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/fmtlib/fmt">fmtlib/fmt</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：顶尖人工智能组织，在开发者社区拥有广泛关注度和显著影响力
-<strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，偏好生成式 AI、智能体与提示工程技术
-<strong>核心领域</strong>：聚焦大语言模型、AI 应用开发、Claude 生态与开发者工具链</p>
+<p><strong>技术影响力</strong>：以高星 C++ 库 <code>fmt</code> 为核心，在 C++ 基础设施与格式化库生态中具备显著影响力。
+<strong>技术栈偏好</strong>：主要偏向 C++ 系统级库开发，同时使用 HTML 维护项目官网与文档入口。
+<strong>核心领域</strong>：聚焦 C++ 字符串格式化、性能基准测试与相关开发者工具基础设施。</p>
 <hr />
 <h3>✨ affaan-m/ECC (241804★)</h3>
 <blockquote>
@@ -373,6 +280,124 @@
 <strong>技术栈偏好</strong>：以 Python、JavaScript、TypeScript 为主，偏好构建 AI Agent 框架、安全工具与开发者基础设施
 <strong>核心领域</strong>：聚焦 AI Agent 编排、智能体安全、自动化开发工作流与算力交易生态</p>
 <hr />
+<h3>✨ anthropics/skills (173417★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把一组可动态加载的指令、脚本和资源封装成 Claude 能按需调用的专业技能，让模型能够稳定执行文档处理、数据分析、前端设计和 API 开发等重复性任务。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是 Anthropic 为 Claude 提供的 Agent Skills 示例与实现仓库，每个技能通常是一个独立目录，核心文件为包含 YAML 元数据和操作指令的 <code>SKILL.md</code>。仓库覆盖创意与设计、开发与技术、企业沟通，以及 <code>docx</code>、<code>pdf</code>、<code>pptx</code>、<code>xlsx</code> 等文档技能，同时提供 Agent Skills 规范和技能模板。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者不必把同一套品牌规范、数据处理流程或 API 操作步骤反复写进每次提示词，可以将它们固化为可复用的技能。面对 Claude API、Managed Agents 或 Python SDK 升级时，也能通过专门的 <code>claude-api</code> 技能集中维护迁移说明、参数约束和常见问题。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合使用 Claude Code、Claude.ai 或 Claude API 构建 AI 工作流的开发者，尤其是需要封装企业内部流程的应用工程师。也适合希望学习 <code>SKILL.md</code> 结构、编写自定义技能，或为文档生成、数据分析和软件开发任务建立标准操作规范的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：在 Claude Code 中注册插件市场并安装示例技能：
+  随后选择 <code>Browse and install plugins</code>，安装 <code>document-skills</code> 或 <code>example-skills</code>；也可以直接执行 <code>/plugin install example-skills@anthropic-agent-skills</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>按公司品牌规范批量生成和修改 Word、PDF、PowerPoint、Excel 文件。</li>
+<li>在接入 Claude API 或 Managed Agents 时，辅助完成 SDK 升级、模型切换、凭据配置和 token 统计。</li>
+<li>
+<p>为团队内部的前端设计、MCP 服务生成、测试 Web 应用等流程编写统一的 Claude 操作规范。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用“目录即技能”的轻量结构，以 <code>SKILL.md</code> 的 YAML frontmatter 定义名称和触发描述，以 Markdown 指令、脚本和资源补充执行细节，便于版本管理和复用。技能可通过 Claude Code 插件、Claude.ai 或 Claude API 分发，文档技能还展示了生产级复杂技能的组织方式。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：近期开发高度集中在 <code>claude-api</code> 技能，连续跟进 Python SDK 0.x 到 1.x、Claude Opus 5、Claude Fable 5.1、Claude Mythos 5.1、Managed Agents、合作方定价和凭据管理等变化，说明项目正在承担 Claude 平台文档与使用方式的持续同步工作。同时，仓库也在新增 <code>academy-guide</code>、<code>discernment-nudge</code> 等技能，并更新文档编辑与前端设计技能；最近 20 条提交从 2026 年 5 月持续到 9 月，更新频率较高，但贡献主要集中在少数核心贡献者。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品；<code>agentskills.io</code> 是 Agent Skills 标准的参考站点，而本仓库主要提供 Anthropic 对该机制的实现、示例技能和模板，两者分别偏向规范与具体实现。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较新，但已达到 17 万以上 Stars，同时有 1208 个 Open Issues，说明关注度很高，问题规模也不小。技能内容会随 Claude 模型、API 和 SDK 快速变化，近期提交中已经出现 Python SDK 升级和模型版本迁移，直接复制旧技能可能导致参数、行为或文档不一致。仓库明确声明技能主要用于演示和教育用途，部分文档创建与编辑技能是 source-available 而非 Apache 2.0 开源，生产环境使用前需要核对授权范围并自行测试。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：顶尖人工智能组织，在开发者社区拥有广泛关注度和显著影响力
+<strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，偏好生成式 AI、智能体与提示工程技术
+<strong>核心领域</strong>：聚焦大语言模型、AI 应用开发、Claude 生态与开发者工具链</p>
+<hr />
+<h3>✨ blader/humanizer (39857★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它会把一段“像模型写出来的文字”重新揉成更像真人会直接写下来的版本，同时尽量不改原意。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个面向 Agent/技能系统的 Python 项目，核心任务是改写 AI 风格文本，让语言更自然、更像人工写作。README 里明确说它会先做一轮重写，再对照 35 条“AI 写作迹象”继续修正，同时检查原文事实，避免凭空补内容。它还能在处理文件时只改正文，不碰代码、数据、frontmatter 和链接目标。</li>
+<li><strong>能解决什么痛点</strong>：一是模型输出常见的套话、空话、过度工整的句式，读起来一眼像机器；二是很多场景里，文本需要“更像人写的”，但又不能改掉事实或把技术文档改乱。</li>
+<li><strong>适合谁用</strong>：做内容发布、产品文案或博客草稿整理的人；需要把 Agent 生成文本统一成自然口吻的 Python 开发者、技术写作者、知识库维护者。</li>
+<li><strong>怎么上手</strong>：<code>/humanizer</code></li>
+<li><strong>可以用在哪些场景</strong>：把大模型生成的博客初稿改成更自然的发布稿；把客服回复、产品说明、公告草案里的模板味去掉；批量整理 Markdown 文档时只润色正文，不误改代码块和链接。</li>
+<li><strong>技术看点</strong>：项目不是简单做同义改写，而是结合“35 条 AI 写作迹象”做规则化重写，并且强调不编造事实、保留原始信息边界。最近还在处理 Claude Desktop 打包、插件发现、ZIP 上传和 README 重写，说明它在往更稳定的分发和更清晰的使用方式推进。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交高度集中在 2026-08-17 到 2026-08-19，节奏很密，说明项目活跃度高。更新重点一边是规则层和文案层的持续打磨，比如新增词汇规则、句式模式、Plain Language 重写 README；另一边是发布和兼容性修复，比如 Claude Desktop 的 ZIP 上传、插件发现、包装结构调整。整体看，项目在继续强化“更像人写”这条主线，同时把分发和可用性做得更稳。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：项目更新非常频繁，且最近有不少规则和包装层改动，使用时要留意版本变化带来的行为差异。开源元数据里仓库创建时间显示为 2026-01-18，但近期已有较多提交和 15 位贡献者，说明它还在快速演进中；Open Issues 为 27，功能成熟度看起来不错，但离“完全稳定无变化”还早。文档写得很细，规则说明充分，但实际效果仍依赖输入文本质量和场景约束，不能指望把任何 AI 文本都改成毫无痕迹的人类原稿。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/blader/humanizer">blader/humanizer</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：作为资深独立开发者/开源贡献者，在 Shell 与 Python 方向凭借高星项目获得了较强的社区可见度和影响力。
+<strong>技术栈偏好</strong>：明显偏向 Python 与 Shell，技术方向集中在自动化工具、开发效率提升和脚本化工程实践。
+<strong>核心领域</strong>：主要聚焦于开发者工具、生产力增强和轻量级自动化应用。</p>
+<hr />
+<h3>✨ NousResearch/hermes-agent (234766★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Hermes Agent 像一个常驻云端的个人 AI 助手，既能在终端里操作文件和执行任务，也能通过 Telegram、Discord、Slack 等聊天平台持续记住你的工作上下文。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是 Nous Research 用 Python 开发的自我改进型 AI Agent，提供终端 TUI、桌面端和统一消息网关。它支持 Nous Portal、OpenRouter、OpenAI 及自定义模型接口，并通过记忆检索、技能创建与改进、定时任务、子 Agent 并行执行和多种终端后端来完成长期任务。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者不必为 CLI、Telegram、Discord 等入口分别维护不同的上下文，Agent 可以跨平台延续会话并接收语音消息。对于需要长期运行的任务，还能把每日报告、备份、审计等工作交给内置调度器，避免依赖本地电脑持续在线。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合希望拥有可持久化个人编程助手的 Python 开发者、独立开发者和研究人员。也适合需要在 VPS、GPU 集群或云端沙盒中运行 Agent，并通过聊天软件远程管理任务的运维和自动化用户。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：Linux、macOS、WSL2 和 Termux 可执行 <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>，安装后运行 <code>hermes</code> 开始对话；Windows 原生环境则使用 <code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在一台低成本 VPS 上运行 Telegram 或 Discord 机器人，远程执行代码、查询资料和维护项目。</li>
+<li>设置定时任务，让 Agent 自动发送日报、执行夜间备份或生成周期性审计报告。</li>
+<li>
+<p>使用 Docker、SSH、Modal、Daytona 等后端，为批量轨迹生成、工具调用实验或并行子任务提供隔离运行环境。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目把 TUI、消息平台、桌面端和多种执行后端统一到一个 Gateway 架构中，并支持本地、Docker、SSH、Singularity、Modal、Daytona、Vercel Sandbox 七类终端环境。其核心差异在于把记忆检索、技能自我改进、用户建模和定时自动化直接纳入 Agent 工作流，而不是只提供一次性的对话接口。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎全部集中在 2026 年 8 月 23 日，开发非常活跃，重点是桌面端与多 Bot、多 Profile 架构的稳定性。近期既有 Bot Chat 所属网关路由、跨生命周期保留 Bot 标签页等修复，也有配置随 Profile fleet 迁移、重启计划管理和 Windows E2E 测试等功能，说明项目正从核心 Agent 能力扩展到多实例桌面运行、自动更新和跨平台交付的工程化阶段。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出直接竞品，但项目提供了 <code>hermes claw migrate</code>，说明它考虑了从 OpenClaw 迁移的用户。相较只提供单一 CLI 或聊天机器人的 Agent 项目，Hermes Agent 更强调跨平台消息入口、长期记忆、技能演进、定时任务和远程执行环境的一体化。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 7 月，已经获得 234766 个 Stars、47276 个 Forks 和 2979 位贡献者，但同时有 35003 个开放 Issue，规模大、迭代快，使用时应关注版本更新带来的配置迁移、网关重启和路由行为变化。安装过程会自动管理 Python、Node.js、ripgrep、ffmpeg 及 Windows 下的 MinGit，依赖较多；项目支持的模型、消息平台和云端后端较广，正式部署前仍需核对对应平台的密钥、权限、费用和安全隔离配置。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 Hermes Agent 等高关注度项目为核心，在开源智能体与大模型开发社区具有显著影响力
+<strong>技术栈偏好</strong>：以 Python 为主，辅以 TypeScript 和 Jupyter Notebook，偏好大模型应用、智能体编排与实验开发
+<strong>核心领域</strong>：主要聚焦自主智能体、模型能力调用、自我进化系统及生成式 AI 工程化</p>
+<hr />
 <h3>✨ JuliusBrussee/caveman (103165★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：Caveman 把 AI 编程助手冗长的解释压缩成短句，同时通过本地代理裁剪日志、差异和工具输出，让同样的代码任务少写、少读一些 token。</p>
@@ -418,200 +443,6 @@
 <p><strong>技术影响力</strong>：以超 10 万星代表作在开源社区形成较高影响力，是活跃的独立开发者。
 <strong>技术栈偏好</strong>：偏好 Go、TypeScript 与 Swift，兼顾后端工具、跨平台应用及开发者工具链。
 <strong>核心领域</strong>：主要聚焦开源开发者工具、编程基础设施与工程效率。</p>
-<hr />
-<h3>✨ blader/humanizer (39857★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它会把一段“像模型写出来的文字”重新揉成更像真人会直接写下来的版本，同时尽量不改原意。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个面向 Agent/技能系统的 Python 项目，核心任务是改写 AI 风格文本，让语言更自然、更像人工写作。README 里明确说它会先做一轮重写，再对照 35 条“AI 写作迹象”继续修正，同时检查原文事实，避免凭空补内容。它还能在处理文件时只改正文，不碰代码、数据、frontmatter 和链接目标。</li>
-<li><strong>能解决什么痛点</strong>：一是模型输出常见的套话、空话、过度工整的句式，读起来一眼像机器；二是很多场景里，文本需要“更像人写的”，但又不能改掉事实或把技术文档改乱。</li>
-<li><strong>适合谁用</strong>：做内容发布、产品文案或博客草稿整理的人；需要把 Agent 生成文本统一成自然口吻的 Python 开发者、技术写作者、知识库维护者。</li>
-<li><strong>怎么上手</strong>：<code>/humanizer</code></li>
-<li><strong>可以用在哪些场景</strong>：把大模型生成的博客初稿改成更自然的发布稿；把客服回复、产品说明、公告草案里的模板味去掉；批量整理 Markdown 文档时只润色正文，不误改代码块和链接。</li>
-<li><strong>技术看点</strong>：项目不是简单做同义改写，而是结合“35 条 AI 写作迹象”做规则化重写，并且强调不编造事实、保留原始信息边界。最近还在处理 Claude Desktop 打包、插件发现、ZIP 上传和 README 重写，说明它在往更稳定的分发和更清晰的使用方式推进。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交高度集中在 2026-08-17 到 2026-08-19，节奏很密，说明项目活跃度高。更新重点一边是规则层和文案层的持续打磨，比如新增词汇规则、句式模式、Plain Language 重写 README；另一边是发布和兼容性修复，比如 Claude Desktop 的 ZIP 上传、插件发现、包装结构调整。整体看，项目在继续强化“更像人写”这条主线，同时把分发和可用性做得更稳。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目更新非常频繁，且最近有不少规则和包装层改动，使用时要留意版本变化带来的行为差异。开源元数据里仓库创建时间显示为 2026-01-18，但近期已有较多提交和 15 位贡献者，说明它还在快速演进中；Open Issues 为 27，功能成熟度看起来不错，但离“完全稳定无变化”还早。文档写得很细，规则说明充分，但实际效果仍依赖输入文本质量和场景约束，不能指望把任何 AI 文本都改成毫无痕迹的人类原稿。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/blader/humanizer">blader/humanizer</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为资深独立开发者/开源贡献者，在 Shell 与 Python 方向凭借高星项目获得了较强的社区可见度和影响力。
-<strong>技术栈偏好</strong>：明显偏向 Python 与 Shell，技术方向集中在自动化工具、开发效率提升和脚本化工程实践。
-<strong>核心领域</strong>：主要聚焦于开发者工具、生产力增强和轻量级自动化应用。</p>
-<hr />
-<h3>✨ google-research/timesfm (28984★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：这是 Google Research 把时间序列预测做成“可直接拿来推理”的基础模型，输入历史数据后，能直接输出单变量或多变量的未来走势，连协变量一起吃进去。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：TimesFM 是一个预训练的时间序列基础模型，核心目标是做 forecasting。README 明确给出了 TimesFM 3.0 的能力：原生支持多变量预测、单变量预测，以及过去协变量和未来协变量的联合输入；同时还保留了 2.5 及更早版本的代码路径，方便老模型继续使用。</li>
-<li><strong>能解决什么痛点</strong>：一是不用为每个业务场景单独训练一套预测模型，尤其适合需要快速做零样本预测的团队；二是面对多维指标、长上下文和协变量时，不必自己拼接一堆特征工程和任务特化逻辑。</li>
-<li><strong>适合谁用</strong>：做时序预测的 Python 工程师、数据科学家，以及需要把销量、流量、传感器、金融序列直接接入模型的算法团队。</li>
-<li><strong>怎么上手</strong>：最简安装可用 <code>pip install timesfm[torch]</code>；最小用法示例里，README 给的是先初始化 <code>TimesFM3Evaluator</code>，再调用 <code>predict_batch(...)</code>。例如：<code>from timesfm3 import TimesFM3Evaluator, ModelConfig</code>。</li>
-<li><strong>可以用在哪些场景</strong>：零样本预测业务销量、库存或需求曲线；对 IoT/工业传感器做多变量未来值预测；把日常指标接到支持协变量的模型里，做更贴近业务约束的短中期预测。</li>
-<li><strong>技术看点</strong>：TimesFM 3.0 主打原生 multivariate forecasting，并支持 past-only / past-and-future covariates；README 还强调了在 fev-bench、TIME Benchmark、GIFT-Eval 上的排名表现，说明项目正朝“通用时序基础模型”方向推进。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交非常集中在 TimesFM 3.0 发布链路上，包括 README 更新、3.0 说明澄清、许可证说明、基准测试套件、<code>TimesFM3Evaluator</code>、variate chunking、推理精度增强，以及 <code>pyproject.toml</code> 和下载追踪相关修复。整体看，项目正在从 2.5 向 3.0 迁移，重点落在新版本能力、文档整理、评测体系和发布细节修补上，维护仍然活跃。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目星标高、更新很近，但 open issues 仍有 228 个，说明功能推进快、待处理问题也不少。另一个关键点是许可：源码和 2.5 及以前权重是 Apache-2.0，但 TimesFM 3.0 预训练权重目前是非商业、非生产用途限制，商用前必须仔细核对授权边界。仓库创建于 2024-04，属于较新的项目，文档和版本演进都还在持续调整中。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/google-research/timesfm">google-research/timesfm</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Google Research 在全球 AI/机器学习社区具有顶级影响力，持续输出高引用成果并推动前沿技术普及。
-<strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，偏重机器学习、深度学习与实验性研究实现。
-<strong>核心领域</strong>：主要聚焦人工智能基础研究，尤其是大模型、视觉、时间序列与通用机器学习方法。</p>
-<hr />
-<h3>✨ averygan/reclip (7400★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：在浏览器里粘贴 YouTube、TikTok、Instagram 等链接，选择 MP4 或 MP3 格式后，直接把视频或音频下载到自托管服务器。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：ReClip 是一个自托管的视频与音频下载 Web 应用，底层调用 <code>yt-dlp</code> 覆盖 1000+ 网站，并依赖 <code>ffmpeg</code> 处理格式转换。用户可一次粘贴多个链接，获取视频信息与缩略图，按单条或批量下载，并选择可用的清晰度或分辨率。</li>
-<li><strong>能解决什么痛点</strong>：需要从多个内容平台保存素材时，无须在不同网站、浏览器插件或在线转换站之间切换，也避免将待下载链接交给不受控的第三方下载服务。批量粘贴链接、自动去重和逐项下载，适合处理一组公开视频或音频素材。</li>
-<li><strong>适合谁用</strong>：需要整理公开视频素材、课程片段或音频参考的内容团队与个人用户；希望在内网或个人服务器部署轻量下载入口的开发者、家庭实验室用户。</li>
-<li><strong>怎么上手</strong>：<code>brew install yt-dlp ffmpeg &amp;&amp; git clone https://github.com/averygan/reclip.git &amp;&amp; cd reclip &amp;&amp; ./reclip.sh</code></li>
-<li><strong>可以用在哪些场景</strong>：为内容制作团队搭建内部素材下载页，统一收集多个平台的公开参考视频；将公开视频转换为 MP3，用于离线收听课程、访谈或演讲；在个人 NAS 或家庭服务器上部署下载服务，集中保存可合法获取的媒体文件。</li>
-<li><strong>技术看点</strong>：后端采用 Flask，README 标注核心后端约 150 行；前端为原生 HTML/CSS/JS 单文件，无框架和构建步骤，部署链路短。下载能力交由成熟的 <code>yt-dlp</code>，格式处理依赖 <code>ffmpeg</code>，项目自身主要聚焦交互界面与下载编排。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交集中在下载稳定性与容器化：修复多视频 JSON 解析、自动更新 <code>yt-dlp</code>、优化 Dockerfile 与 <code>docker-compose</code>、修正文件名截断及 Gunicorn 配置。功能上已加入 YouTube 播放列表支持，说明项目正从单链接下载向批量和播放列表等实际工作流扩展；近期多项改动来自外部贡献者，但总贡献者仅 4 人，维护仍较集中。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。其定位与直接使用 <code>yt-dlp</code> 不同：ReClip 为命令行下载能力补充了浏览器操作界面、批量链接处理、格式选择和容器化部署方式。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 3 月，历史较短；虽然 Stars 较高，但仅 4 名贡献者、47 个开放 Issue，长期维护能力和问题响应速度仍需观察。实际可下载范围受目标网站策略、<code>yt-dlp</code> 更新速度及网络环境影响；使用者还需遵守目标平台服务条款、版权规定及当地法律。README 提供了本地与 Docker 启动方式，但生产环境的鉴权、访问控制、存储配额和下载任务隔离需要自行补齐。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/averygan/reclip">averygan/reclip</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在前端与轻量应用开发圈具备较高可见度，凭借高星项目获得了明显的社区关注与传播力。
-<strong>技术栈偏好</strong>：主要偏向 JavaScript 和 HTML，结合 Go，整体更侧重 Web 应用、前端实现与产品型项目开发。
-<strong>核心领域</strong>：主要聚焦于应用构建与增长相关的实用型互联网产品，偏向面向用户的 Web 工具和小型应用。</p>
-<hr />
-<h3>✨ bannedbook/fanqiang (51905★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它把安卓、Windows、macOS、iOS、路由器和游戏机上的科学上网软件、配置教程及服务器搭建资料集中到一个长期更新的项目库中。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：项目不是单一客户端，而是一个覆盖多平台的翻墙资料集合，包含 V2Ray、Shadowsocks、SSR、Clash、Tor Browser 等软件的使用教程。README 还提供 ChromeGo、EdgeGo、Firefox 一键包，以及自建 V2Ray、Shadowsocks 服务器的简明指南。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：用户面对不同操作系统和设备时，不需要分别搜索软件安装、代理配置和局域网共享教程。网络环境、地区和运营商差异较大时，项目提供多种协议和客户端供用户逐一尝试，降低单一方案失效后的排查成本。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：需要在受限网络环境中访问外部网站和服务的普通用户，以及希望自行部署 V2Ray 或 Shadowsocks 服务的技术用户。也适合需要为手机、电脑、路由器或游戏机配置代理连接的跨设备用户。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：README 未提供命令行安装或最小代码示例；最直接的方式是先安装 Google Chrome，下载对应的 Chrome 一键翻墙包，解压到不含中文或空格的路径后，按压缩包内的使用说明尝试不同方案。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>在 Windows 上使用 V2rayN、Clash 或 Tor Browser 配置个人网络连接。</li>
-<li>在 Android、iPhone/iPad 或 macOS 上配置 V2Ray、Shadowsocks、Shadowrocket、ClashX 等客户端。</li>
-<li>
-<p>将电脑配置为局域网代理或旁路由，为 Switch、PlayStation、Xbox、Apple TV 等设备提供网络访问或游戏加速。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目以 Kotlin 标注为主要语言，但整体形态更接近多平台代理工具与教程的聚合仓库，而非单一 Kotlin 应用。其价值在于同时覆盖客户端选择、协议配置、自建服务器和跨设备共享，形成从软件使用到网络部署的完整资料链。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部由 <code>bannedbook</code> 完成，提交信息均为 <code>update</code>，从 2026 年 1 月持续到 8 月底，说明项目仍保持较高的单人维护频率。由于提交信息缺乏具体变更说明，暂时无法判断近期是在修复问题、更新节点，还是新增客户端教程；Contributor Count 仅为 3，社区协作规模较小。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：暂无明显同类对标。项目重点不是与某个代理客户端竞争，而是汇总多个客户端、协议和平台的教程，并提供 ChromeGo 等打包方案。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2015 年，累计 51905 个 Stars 和 8433 个 Forks，说明关注度和使用历史较高；但同时有 335 个 Open Issues，且主要由少数维护者更新，问题响应和长期维护存在一定集中度风险。README 内容覆盖面很广，但部分资料依赖外部软件、免费账号或服务器，实际可用性会受到网络环境、地区、运营商和第三方服务变动影响；使用前应核验软件来源、配置内容和服务器安全性，并遵守当地法律法规。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/bannedbook/fanqiang">bannedbook/fanqiang</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有约 3,900 名关注者及多个高热度仓库，其网络访问工具项目在中文开源社区具备显著传播力与用户影响力。
-<strong>技术栈偏好</strong>：以 Kotlin 为主，结合 Swift 与 C++，主要面向 Android、macOS 等客户端及网络性能相关开发。
-<strong>核心领域</strong>：聚焦网络代理、VPN、跨平台网络访问与连接加速工具。</p>
-<hr />
-<h3>✨ addyosmani/agent-skills (90778★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把资深工程师从需求澄清、规划、编码、测试到发布的完整工作流，封装成 AI 编程代理可以直接执行的技能和命令。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：这是一个面向 AI 编程代理的工程技能包，包含 24 个生命周期技能和一个用于技能路由的元技能，覆盖 <code>/spec</code>、<code>/plan</code>、<code>/build</code>、<code>/test</code>、<code>/review</code>、<code>/ship</code> 等开发阶段。每项技能都包含具体步骤、验证门槛和反规避规则，要求代理先写规格和计划，再分片实现、测试和审查，而不是直接生成大段代码。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：AI 代理经常跳过需求确认、任务拆分和测试，直接修改多处代码，导致结果难以审查和回滚。团队的编码规范、代码审查标准和发布流程通常分散在个人经验或文档中，该项目将这些规则整理为可复用的代理工作流，并通过约束和验证步骤减少代理绕过检查的情况。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：使用 Claude Code、Cursor、Codex、GitHub Copilot、Gemini CLI、OpenCode 等 AI 编程工具的个人开发者和团队。尤其适合需要统一代理行为、执行测试驱动开发、规范代码审查和控制变更风险的工程团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：使用 <code>skills</code> CLI 安装全部技能：</p>
-</li>
-</ul>
-<p>也可以只安装单项技能，例如：</p>
-<ul>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>新建一个内部服务或前端功能时，先用 <code>/spec</code> 形成 PRD，再用 <code>/plan</code> 拆成带验收标准的小任务。</li>
-<li>修改涉及多个文件的业务逻辑时，用增量实现和测试驱动开发逐个提交，避免一次性产生难以审查的改动。</li>
-<li>合并高风险代码前，用 <code>/review</code> 检查质量，用 <code>/webperf</code> 审计网页性能，并通过 <code>/constraints</code> 将性能、测试或代码质量阈值固定到项目中。</li>
-<li>
-<p>已有项目引入 AI 编程代理时，按照 Adoption Guide 逐步部署技能，而不是一次性把所有规则塞进提示词或规则文件。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目主体采用结构化 Markdown 技能文件、代理定义和插件清单，依赖较少，便于跨工具迁移；同时为 Claude Code、Cursor、Codex、Copilot、Gemini CLI、OpenCode 等提供对应安装和配置方式。其设计重点不是模型能力本身，而是通过阶段化工作流、质量门禁、任务级提交和约束检查，将代理输出纳入可审查的工程流程。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在工作流约束、规划可靠性、性能技能和多工具集成，说明项目仍处于高频迭代阶段。近期新增并完善了 <code>constraint-driven-development</code>，明确了性能流程中的 Guard 步骤，修复了代理覆盖未完成计划、技能校验和代码审查严重级别不一致等问题，同时持续补充 OpenCode、Codex 等安装文档。8 月 14 日和 28 日两次发布插件清单版本，社区贡献者也参与了性能、规划、验证器和文档修改，项目正在从技能集合进一步演进为带质量控制的代理插件体系。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。它与通用的 AI 代理规则文件、提示词模板相比，覆盖了更完整的开发生命周期，并提供了面向多个代理工具的安装适配；但其核心仍是 Markdown 工作流和约束，不是独立的代码生成模型或 CI 平台。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：上手前需要理解所用代理工具的技能、插件或规则目录结构，不同平台的安装方式并不统一。单独安装某个技能时不会复制仓库级 <code>references/</code> 目录，相关共享检查清单可能无法访问，该兼容性问题已由 issue #361 跟踪。项目创建时间为 2026-02-15，当前已有 90778 个 Stars、9712 个 Forks 和 71 位贡献者，关注度很高且近期更新密集，但仍有 124 个开放 Issue；在团队正式采用前，应锁定技能版本，审查其中的流程规则，并验证它们是否适配现有 CI、提交策略和代码审查制度。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在前端与开发者工具社区具有极强的标杆影响力，长期输出高关注度项目与方法论内容，覆盖面广且带动性强。
-<strong>技术栈偏好</strong>：以 JavaScript 为核心，辅以 HTML 和文档型技术表达，明显偏向前端工程、架构模式与开发体验相关方向。
-<strong>核心领域</strong>：主要聚焦前端工程实践、JavaScript 设计模式、开发者工具与 AI 辅助开发相关主题。</p>
-<hr />
-<h3>✨ ByteByteGoHq/system-design-101 (88101★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 API、负载均衡、数据库、消息队列、AI 系统以及 Netflix、Uber、Discord 等真实架构，压缩成一张张配图和几段易懂说明的系统设计学习资料库。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个以 README 和配套图解为核心的系统设计知识库，不是需要安装运行的代码项目。内容覆盖 API 与 Web 开发、真实公司架构案例、AI 与机器学习、数据库与存储等主题，例如 gRPC、GraphQL、Kafka、缓存、推送系统、Netflix 架构和 Discord 消息存储。</li>
-<li><strong>能解决什么痛点</strong>：系统设计面试中，开发者常常知道单个组件，却难以把 API 网关、负载均衡、缓存、数据库和消息队列串成完整架构；项目通过流程图和简化文字降低了理解复杂系统交互关系的难度。面对“如何设计 Stack Overflow”“如何扩展视频上传或推送系统”等开放问题时，也能提供可复习的案例素材。</li>
-<li><strong>适合谁用</strong>：准备系统设计面试的后端开发者、全栈工程师和软件架构师；希望快速补齐 HTTP、API、数据库、消息队列和分布式系统基础的在职开发者。</li>
-<li><strong>怎么上手</strong>：项目无需安装，直接打开 <a href="https://github.com/ByteByteGoHq/system-design-101#readme">README</a>，从目录选择主题阅读；README 未提供需要执行的安装命令或代码示例。</li>
-<li><strong>可以用在哪些场景</strong>：准备“设计一个 API 网关”“设计高并发消息或推送系统”等系统设计面试题；团队内部培训 HTTP、REST、GraphQL、Kafka、缓存和数据库隔离级别等基础概念；在设计类似视频上传、社交时间线、支付系统或大规模消息存储方案前，用真实公司案例快速建立架构认知。</li>
-<li><strong>技术看点</strong>：项目采用“架构图加简明文字”的知识呈现方式，覆盖从 HTTP/1 到 HTTP/3、轮询与 WebSocket、API 网关与负载均衡，到 Kafka、CDC、事件溯源和一致性等常见分布式系统决策点。案例内容将抽象概念放入 Netflix、Uber、Airbnb、TikTok、Pinterest 等实际系统中，适合用于理解组件选择背后的规模和性能约束。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交中，最新提交集中在 2025 年 4 月，主要是新增 ByteByteGo 指南链接、贡献者工作流和贡献规范；更早的提交以修正文案、图文顺序、拼写和翻译说明为主，没有看到重大代码重构或可运行功能开发。项目由 16 名贡献者维护，近期更新更偏向内容运营、外部资料整合和社区协作规范，整体开发活跃度有限但内容持续维护。</li>
-<li><strong>同类对比</strong>：README 未明确提到竞品或直接对标项目，暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目本质是阅读型资料库，不能替代对 CAP、共识、容量估算、故障恢复和成本权衡的深入学习，也不包含可直接运行的实验代码。项目创建于 2023 年 9 月，已获得 8.8 万 Stars 和近万 Forks，内容影响力较大；但近期提交间隔较长、开放 Issue 有 67 个，部分链接和案例可能随外部文章变化，使用时应结合官方文档和最新工程实践核验。由于内容覆盖面很广，适合按主题学习，不宜将所有图解直接当作生产架构模板。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/ByteByteGoHq/system-design-101">ByteByteGoHq/system-design-101</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以系统设计与面试教育内容为核心，在开发者社区具有较高知名度和显著传播影响力。
-<strong>技术栈偏好</strong>：主要使用 Java，关注系统设计、面向对象设计、机器学习与生成式 AI 等技术方向。
-<strong>核心领域</strong>：聚焦软件工程面试、系统架构设计及人工智能知识普及。</p>
 <hr />
 <h3>✨ magnitudedev/magnitude (1767★)</h3>
 <blockquote>
@@ -663,87 +494,72 @@
 <strong>技术栈偏好</strong>：以 TypeScript 为主，偏好构建浏览器自动化、智能体框架及本地模型集成工具。
 <strong>核心领域</strong>：主要聚焦本地大模型、浏览器智能体与智能化 Web 自动化。</p>
 <hr />
-<h3>✨ Imbad0202/academic-research-skills (44606★)</h3>
+<h3>✨ bikini/exploitarium (4384★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把 Claude Code 变成一套学术研究流水线，从文献检索、论文写作、同行评审到修改定稿都有对应的技能、检查点和命令入口。</p>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
 <ul>
+<li><strong>它是什么</strong>：A single archive of public exploit PoCs and vulnerability research writeups. At the time I post these, none have been reported. Feel free to report them yourself and take credit for the CVE if handed out lulz. Please do not abuse these. I do this so to allure people into the field, and I've always found this is the most efficient way.</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>它是什么</strong>：这是面向 Claude Code 的学术研究技能套件，覆盖 research → write → review → revise → finalize 的完整论文工作流。它不是自动代写论文，而是把参考文献查找、引用格式化、数据核验、逻辑一致性检查、写作质量检查等重复性环节拆成可调用的 Claude Code 技能和命令。README 中强调 human-in-the-loop：研究问题、方法选择、结果解释和核心论证仍由研究者负责。</p>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：一是论文写作中引用、参考文献、格式转换和证据核验容易出错，尤其是 AI 生成内容可能带来幻觉引用或“引用存在但不支持该论点”的问题。二是从开题、综述、写作到审稿修改往往散落在不同工具和文档里，ARS 把这些步骤组织成带质量门禁的流程，减少人工来回检查的负担。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合已经在用 Claude Code 的研究生、科研人员和学术写作者，尤其是需要处理英文论文、系统综述、投稿修改和引用核验的人。也适合希望把 AI 写作纳入可审计流程的科研团队或高校实验室。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：最简方式是在 Claude Code 中安装插件：<code>/plugin marketplace add Imbad0202/academic-research-skills</code>，然后执行 <code>/plugin install academic-research-skills</code>，安装后可用 <code>/ars-plan</code> 规划论文结构，或用 <code>/ars-lit-review "你的主题"</code> 做单次文献综述测试。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：可以用于写论文前通过苏格拉底式对话梳理章节结构和研究问题；可以用于系统综述中结合 PRISMA 流程、Semantic Scholar API 和引用核验整理文献；也可以用于投稿前做多视角审稿、写作质量检查、LaTeX/DOCX/PDF 输出和修订轨迹管理。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目把学术写作流程拆成多个 Claude Code skill、slash command、hook 和可选 Python 脚本，并用质量门禁约束不同阶段的输出。近期版本重点加入 citation locator、claim audit、risk register、data flow 文档和跨模型校验等机制，核心设计目标是降低 AI 研究写作中的幻觉引用、证据不匹配和流程不可追溯风险。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交非常活跃，集中在发布 v3.21.x、完善治理和安全文档、补充风险登记、增强 Codex 订阅传输兼容、处理中文标题匹配和 CJK 标点边界问题。提交记录还显示项目在做 inventory parity、lint、release audit、workflow profile contracts 和 promotion bakeoff，说明当前重点不是简单堆功能，而是在补齐安装渠道一致性、质量审计、跨模型/跨平台适配和流程治理。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确把自身立场与全自动科研系统 The AI Scientist 做了区分：ARS 不追求端到端自动完成研究和论文，而是强调研究者保留判断权，AI 处理引用、格式、核验、审稿辅助等工作。它还提到 Codex CLI 用户应使用 sibling distribution <code>academic-research-skills-codex</code>，说明主仓库主要面向 Claude Code 生态。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间为 2026-02-26，但 Star 数和更新频率都很高，当前仍处于快速演进阶段，安装渠道、CLI 版本和插件能力可能需要跟随文档更新。核心技能不强依赖 Python，但可选的写入范围 guard、submission verifier、cache 命令等需要真实 Python 环境；Windows 下还涉及 Git Bash、PowerShell 降级行为等细节。许可证为 CC BY-NC 4.0，商业使用前需要特别确认授权边界。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Imbad0202/academic-research-skills">Imbad0202/academic-research-skills</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/bikini/exploitarium">bikini/exploitarium</a></p>
 </li>
 </ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：专注学术研究与智能代理工具，在 GitHub 具备较高社区关注度和一定开发者影响力
-<strong>技术栈偏好</strong>：以 Python 为主，辅以 JavaScript，偏好研究自动化、智能代理与知识工作流开发
-<strong>核心领域</strong>：主要聚焦学术研究辅助、实验代理、批判性思维与正式写作工具</p>
 <hr />
-<h3>✨ Gitlawb/openclaude (31187★)</h3>
+<h3>✨ bannedbook/fanqiang (51905★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：在终端里统一调用 OpenAI、Gemini、GitHub Models、Ollama 等云端和本地模型，并提供文件操作、命令执行、MCP、Agent、流式输出等编码助手能力。</p>
+<p><strong>一句话</strong>：它把安卓、Windows、macOS、iOS、路由器和游戏机上的科学上网软件、配置教程及服务器搭建资料集中到一个长期更新的项目库中。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：OpenClaude 是一个开源的编码 Agent CLI，主打“一个终端工作流接入多种 LLM 后端”。它支持 OpenAI 兼容 API、Gemini、GitHub Models、Codex OAuth、Ollama、Atomic Chat 等提供方，同时内置提示词、工具调用、子 Agent、任务、MCP、斜杠命令和流式输出。README 还提到它带有 VS Code 扩展，可用于从编辑器侧启动和配合主题集成。</p>
+<p><strong>它是什么</strong>：项目不是单一客户端，而是一个覆盖多平台的翻墙资料集合，包含 V2Ray、Shadowsocks、SSR、Clash、Tor Browser 等软件的使用教程。README 还提供 ChromeGo、EdgeGo、Firefox 一键包，以及自建 V2Ray、Shadowsocks 服务器的简明指南。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：开发者如果同时试用云端模型、本地 Ollama 模型和不同 OpenAI 兼容网关，通常要切换多套 CLI、环境变量和配置方式；OpenClaude 用 <code>/provider</code> 和保存的 profile 把这些入口收拢到一个终端里。另一个痛点是长任务执行，项目提供 <code>openclaude --bg</code>、<code>openclaude logs</code>、<code>openclaude kill</code> 等后台会话能力，适合把“修测试”“重构某模块”这类任务丢到本地子进程中跟踪。</p>
+<p><strong>能解决什么痛点</strong>：用户面对不同操作系统和设备时，不需要分别搜索软件安装、代理配置和局域网共享教程。网络环境、地区和运营商差异较大时，项目提供多种协议和客户端供用户逐一尝试，降低单一方案失效后的排查成本。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合频繁在终端中使用 AI 编码助手、并且想在 OpenAI、Gemini、Ollama、GitHub Models 等后端之间切换的全栈或后端开发者。也适合在公司内网、自建模型网关或本地模型环境中，需要保留 CLI 工作流的工程团队。</p>
+<p><strong>适合谁用</strong>：需要在受限网络环境中访问外部网站和服务的普通用户，以及希望自行部署 V2Ray 或 Shadowsocks 服务的技术用户。也适合需要为手机、电脑、路由器或游戏机配置代理连接的跨设备用户。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：<code>npm install -g @gitlawb/openclaude@latest &amp;&amp; openclaude</code></p>
+<p><strong>怎么上手</strong>：README 未提供命令行安装或最小代码示例；最直接的方式是先安装 Google Chrome，下载对应的 Chrome 一键翻墙包，解压到不含中文或空格的路径后，按压缩包内的使用说明尝试不同方案。</p>
 </li>
 <li>
-<p><strong>可以用在哪些场景</strong>：用本地 Ollama 跑代码问答和小规模重构，同时保留和云端模型相同的终端交互方式；在多模型网关环境中，通过 <code>/provider</code> 管理不同模型提供方的配置和凭据；把较长的修复或重构请求放到后台会话中执行，再用 <code>openclaude logs  -f</code> 查看进度。</p>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在 Windows 上使用 V2rayN、Clash 或 Tor Browser 配置个人网络连接。</li>
+<li>在 Android、iPhone/iPad 或 macOS 上配置 V2Ray、Shadowsocks、Shadowrocket、ClashX 等客户端。</li>
+<li>
+<p>将电脑配置为局域网代理或旁路由，为 Switch、PlayStation、Xbox、Apple TV 等设备提供网络访问或游戏加速。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目使用 TypeScript 编写，运行时要求 Node.js <code>&gt;=22.0.0</code>，面向 npm 全局安装和 CLI 分发。设计重点在 provider 抽象、OpenAI shim、MCP/工具调用、后台 session 管理和终端 TUI 输入处理，近期提交也显示这些模块是维护重点。</p>
+<p><strong>技术看点</strong>：项目以 Kotlin 标注为主要语言，但整体形态更接近多平台代理工具与教程的聚合仓库，而非单一 Kotlin 应用。其价值在于同时覆盖客户端选择、协议配置、自建服务器和跨设备共享，形成从软件使用到网络部署的完整资料链。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交中既有 <code>0.29.0</code>、<code>0.29.1</code>、<code>0.30.0</code> 连续发布，也有 provider、settings、background session、TUI、openai-shim、prompt cache 等多个核心路径的修复，说明项目处于高频迭代期。新增方向集中在更多模型/网关支持，例如 OpenRouter、OpenGateway 的实时模型列表，以及 LLMTR hybrid gateway；同时也在补单元测试、收紧安全校验，比如 marketplace hostPattern 防仿冒域名、权限规则验证和 attribution 处理。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部由 <code>bannedbook</code> 完成，提交信息均为 <code>update</code>，从 2026 年 1 月持续到 8 月底，说明项目仍保持较高的单人维护频率。由于提交信息缺乏具体变更说明，暂时无法判断近期是在修复问题、更新节点，还是新增客户端教程；Contributor Count 仅为 3，社区协作规模较小。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 没有直接列出明确竞品。它的定位明显对标终端型 AI 编码助手，但差异点在于强调开放 provider 接入、本地与云端模型共用一套 CLI，而不是绑定单一模型服务。</p>
+<p><strong>同类对比</strong>：暂无明显同类对标。项目重点不是与某个代理客户端竞争，而是汇总多个客户端、协议和平台的教程，并提供 ChromeGo 等打包方案。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026-04-01，但已经有 31187 stars、150 位贡献者和近期连续 release，热度和维护活跃度很高；同时仍有 71 个 open issues，且提交中修复项占比不低，说明快速演进下仍可能遇到兼容性和边界问题。安装要求 Node.js 22 以上，部分功能还依赖系统 <code>ripgrep</code>；配置方面它明确不读取 <code>.claude</code>、项目 <code>.claude/</code> 或 <code>CLAUDE_CONFIG_DIR</code>，从旧配置迁移需要手动处理，不能直接照搬 Claude Code 的凭据文件。</p>
+<p><strong>注意事项</strong>：项目创建于 2015 年，累计 51905 个 Stars 和 8433 个 Forks，说明关注度和使用历史较高；但同时有 335 个 Open Issues，且主要由少数维护者更新，问题响应和长期维护存在一定集中度风险。README 内容覆盖面很广，但部分资料依赖外部软件、免费账号或服务器，实际可用性会受到网络环境、地区、运营商和第三方服务变动影响；使用前应核验软件来源、配置内容和服务器安全性，并遵守当地法律法规。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Gitlawb/openclaude">Gitlawb/openclaude</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/bannedbook/fanqiang">bannedbook/fanqiang</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在 AI 驱动的协作开发与去中心化代码平台领域具有很强社区号召力，代表仓库显示出显著的技术传播力和关注度。
-<strong>技术栈偏好</strong>：以 TypeScript 为主，配合 Go 和 Rust，偏向构建分布式协作平台、开发者工具链与高性能基础设施。
-<strong>核心领域</strong>：主要聚焦去中心化代码协作、AI 代理参与的软件开发流程，以及面向开发者的底层平台能力。</p>
+<p><strong>技术影响力</strong>：拥有约 3,900 名关注者及多个高热度仓库，其网络访问工具项目在中文开源社区具备显著传播力与用户影响力。
+<strong>技术栈偏好</strong>：以 Kotlin 为主，结合 Swift 与 C++，主要面向 Android、macOS 等客户端及网络性能相关开发。
+<strong>核心领域</strong>：聚焦网络代理、VPN、跨平台网络访问与连接加速工具。</p>
 <hr />
 <h3>✨ debpalash/VoiceStudio (13141★)</h3>
 <blockquote>
@@ -770,76 +586,143 @@
 <strong>技术栈偏好</strong>：偏好 Python，兼顾 Zig 与 QML，关注语音应用、系统工具及现代软件工程。
 <strong>核心领域</strong>：主要聚焦语音人工智能、开发者工具、桌面应用与可启动系统。</p>
 <hr />
-<h3>✨ f/prompts.chat (168718★)</h3>
+<h3>✨ google-research/timesfm (28984★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把社区提交的 AI 角色设定、任务模板和工作流提示词集中整理成可搜索、可复用，并能私有部署的开放提示词库。</p>
+<p><strong>一句话</strong>：这是 Google Research 把时间序列预测做成“可直接拿来推理”的基础模型，输入历史数据后，能直接输出单变量或多变量的未来走势，连协变量一起吃进去。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：项目原名为 Awesome ChatGPT Prompts，现提供面向 ChatGPT、Claude、Gemini、Llama、Mistral 等模型的提示词集合。用户可以在 prompts.chat 浏览和提交提示词，也可以通过 CSV、Markdown 或 Hugging Face 数据集获取内容；组织还可以自建带品牌、主题和登录认证的私有实例。</li>
-<li><strong>能解决什么痛点</strong>：开发者和普通用户不必在聊天记录、收藏夹或零散网页中反复寻找角色设定、代码审查、文章摘要等提示词。企业如果不希望内部提示词和使用数据依赖公共站点，可以自行部署并接入 GitHub、Google 或 Azure AD 认证。</li>
-<li><strong>适合谁用</strong>：需要为 ChatGPT、Claude 等模型整理团队提示词规范的产品、研发和运营团队；希望直接复用现成提示词，或基于社区内容搭建内部 AI 知识入口的个人开发者和组织。</li>
-<li><strong>怎么上手</strong>：使用脚手架创建实例：<code>npx prompts.chat new my-prompt-library</code>，进入目录后按向导配置品牌、主题、认证和功能。</li>
-<li><strong>可以用在哪些场景</strong>：为企业内部客服、销售和内容团队搭建带统一提示词模板的私有 AI 门户；将“Code Review Specialist”“Article Summarizer”等模板接入研发或内容审核流程；通过 MCP 服务把提示词库接入 AI 编程工具和其他模型客户端。</li>
-<li><strong>技术看点</strong>：项目同时提供网站、CLI、Claude Code 插件和 MCP Server，既支持远程 MCP 地址 <code>https://prompts.chat/api/mcp</code>，也支持通过 npm 在本地运行。自托管方案以 PostgreSQL 为推荐数据库，并内置 GitHub、Google、Azure AD 等认证配置。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-09-03，主要是新增或更新提示词，主题涵盖股票分析、动漫、视频、代码审查、面试准备、虚拟医生和提示词生成等。提交者来自大量不同账号，说明社区内容持续流入；当前重点是扩充和维护提示词库，暂未看到重大重构、基础设施升级或核心功能变更的迹象。</li>
-<li><strong>同类对比</strong>：README 未明确列出竞品。相较于只提供静态提示词列表的仓库，该项目还提供在线浏览、提交同步、自托管、CLI、Claude Code 插件和 MCP 接入，但具体功能完整度仍需结合实际部署验证。</li>
+<li><strong>它是什么</strong>：TimesFM 是一个预训练的时间序列基础模型，核心目标是做 forecasting。README 明确给出了 TimesFM 3.0 的能力：原生支持多变量预测、单变量预测，以及过去协变量和未来协变量的联合输入；同时还保留了 2.5 及更早版本的代码路径，方便老模型继续使用。</li>
+<li><strong>能解决什么痛点</strong>：一是不用为每个业务场景单独训练一套预测模型，尤其适合需要快速做零样本预测的团队；二是面对多维指标、长上下文和协变量时，不必自己拼接一堆特征工程和任务特化逻辑。</li>
+<li><strong>适合谁用</strong>：做时序预测的 Python 工程师、数据科学家，以及需要把销量、流量、传感器、金融序列直接接入模型的算法团队。</li>
+<li><strong>怎么上手</strong>：最简安装可用 <code>pip install timesfm[torch]</code>；最小用法示例里，README 给的是先初始化 <code>TimesFM3Evaluator</code>，再调用 <code>predict_batch(...)</code>。例如：<code>from timesfm3 import TimesFM3Evaluator, ModelConfig</code>。</li>
+<li><strong>可以用在哪些场景</strong>：零样本预测业务销量、库存或需求曲线；对 IoT/工业传感器做多变量未来值预测；把日常指标接到支持协变量的模型里，做更贴近业务约束的短中期预测。</li>
+<li><strong>技术看点</strong>：TimesFM 3.0 主打原生 multivariate forecasting，并支持 past-only / past-and-future covariates；README 还强调了在 fev-bench、TIME Benchmark、GIFT-Eval 上的排名表现，说明项目正朝“通用时序基础模型”方向推进。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常集中在 TimesFM 3.0 发布链路上，包括 README 更新、3.0 说明澄清、许可证说明、基准测试套件、<code>TimesFM3Evaluator</code>、variate chunking、推理精度增强，以及 <code>pyproject.toml</code> 和下载追踪相关修复。整体看，项目正在从 2.5 向 3.0 迁移，重点落在新版本能力、文档整理、评测体系和发布细节修补上，维护仍然活跃。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2022 年，拥有 1216 名贡献者、71 个开放 Issue 和持续更新记录，整体成熟度和社区规模较高，但提示词质量会因用户提交而存在差异，使用前应检查事实性、适用模型和安全风险。源代码及站点自有内容采用 MIT，用户提交的提示词数据采用 CC0，二者授权范围不同；自托管还需要配置 PostgreSQL、认证和部署环境。近期提交以内容编辑为主，若将提示词直接用于医疗、投资或生产代码审查，不应替代专业判断和现有审核流程。</p>
+<p><strong>注意事项</strong>：项目星标高、更新很近，但 open issues 仍有 228 个，说明功能推进快、待处理问题也不少。另一个关键点是许可：源码和 2.5 及以前权重是 Apache-2.0，但 TimesFM 3.0 预训练权重目前是非商业、非生产用途限制，商用前必须仔细核对授权边界。仓库创建于 2024-04，属于较新的项目，文档和版本演进都还在持续调整中。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/f/prompts.chat">f/prompts.chat</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/google-research/timesfm">google-research/timesfm</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：GitHub Star 级开发者，拥有高关注度与数百个开源项目，在开发者工具和 AI 社区具有显著影响力
-<strong>技术栈偏好</strong>：以 JavaScript 和 HTML 为主，兼顾 Swift 与 Go，偏好 Web 开发、跨平台应用及开发者工具构建
-<strong>核心领域</strong>：聚焦 AI 提示词工程、开发者工具、Web/移动应用开发与开源生态建设</p>
+<p><strong>技术影响力</strong>：Google Research 在全球 AI/机器学习社区具有顶级影响力，持续输出高引用成果并推动前沿技术普及。
+<strong>技术栈偏好</strong>：以 Python 和 Jupyter Notebook 为主，偏重机器学习、深度学习与实验性研究实现。
+<strong>核心领域</strong>：主要聚焦人工智能基础研究，尤其是大模型、视觉、时间序列与通用机器学习方法。</p>
 <hr />
-<h3>✨ obra/superpowers (281109★)</h3>
+<h3>✨ radixark/miles (2466★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把编码代理从“接到需求就开始写代码”改造成会先澄清设计、拆分计划、执行测试并逐步审查的完整开发流程。</p>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Miles is an enterprise-facing reinforcement learning framework for LLM and VLM post-training, forked from and co-evolving with slime.</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/radixark/miles">radixark/miles</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ anomalyco/opencode (179562★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：OpenCode 把 AI 编程代理放进终端和桌面应用里，让开发者直接在本地项目中让代理读代码、改代码、跑命令并切换不同权限模式。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：OpenCode 是一个开源 AI coding agent，主入口是终端 UI，同时提供 Beta 版桌面应用。它内置 <code>build</code> 和 <code>plan</code> 两种代理模式：<code>build</code> 用于实际开发改动，<code>plan</code> 默认只读，适合先浏览代码、分析问题和制定方案；还支持通过 <code>@general</code> 调用通用子代理处理复杂搜索和多步骤任务。</li>
+<li><strong>能解决什么痛点</strong>：适合处理“接手陌生仓库时不知道从哪里看起”的问题，可以先用只读代理梳理结构、定位相关文件；也适合在本地开发中把代码修改、命令执行、问题排查集中在同一个终端工作流里，减少在聊天窗口、编辑器和 shell 之间反复切换。</li>
+<li><strong>适合谁用</strong>：适合日常在终端里工作的全栈、后端、前端开发者；也适合需要审查大型代码库、排查 bug、规划重构方案的技术负责人或开源维护者。</li>
+<li><strong>怎么上手</strong>：<code>npm i -g opencode-ai@latest</code></li>
+<li><strong>可以用在哪些场景</strong>：在接手大型 TypeScript/Node.js 仓库时先用 <code>plan</code> 模式做只读代码探索；在修复线上 bug 时让代理定位调用链并生成补丁；在本地开发中通过终端 UI 让代理执行构建、测试、重构等连续任务。</li>
+<li><strong>技术看点</strong>：项目主语言是 TypeScript，提供终端 UI、桌面应用和多平台安装方式，覆盖 npm、Homebrew、Scoop、Chocolatey、Pacman、Nix 等分发渠道。内置代理权限分层是一个实用设计：读代码和改代码可以用不同模式隔离，降低误操作风险。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-06-27，开发非常活跃；重点包括 core 层 node builder graph 测试与模块重命名、app 调试栏和视觉更新、会话页并发事件修复、TUI 快捷键修复、桌面认证输入修复，以及 v2 runtime fixes 回迁到 dev。可以看出近期一边在做核心架构整理和测试补强，一边持续打磨应用界面、会话体验和桌面端细节。</li>
+<li><strong>同类对比</strong>：README 未明确列出竞品或对标项目，暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025-04-30，但 Star、Fork 和贡献者数量增长很快，说明热度和社区参与度都很高；同时 Open Issues 达到 7024，意味着需求、缺陷和讨论积压较多。README 提到桌面应用仍是 Beta，且提示需要移除 0.1.x 之前的旧版本，早期使用者要留意版本兼容和潜在破坏性变更。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Anomaly 是一个高关注度开发者工具组织，凭借 opencode、sst 等明星项目在开源社区具备显著影响力。
+<strong>技术栈偏好</strong>：其技术栈高度集中于 TypeScript，偏好构建面向现代云原生、AI 与开发者体验的工具链。
+<strong>核心领域</strong>：主要聚焦开发者基础设施、云应用框架、终端 UI、认证与 AI 编程工具等工程效率领域。</p>
+<hr />
+<h3>✨ clshortfuse/renodx (3412★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Renovation Engine for DirectX Games</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/clshortfuse/renodx">clshortfuse/renodx</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ cathrynlavery/diagram-design (30544★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把架构图、流程图、数据图表和用户旅程等 39 类信息，直接生成带有编辑感的静态 HTML + SVG 图示，供 Claude Code、Codex 等 AI 编程工具调用。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Superpowers 是一套构建在可组合技能和启动指令之上的编码代理开发方法论。它覆盖头脑风暴、设计确认、Git worktree 隔离、实施计划、子代理驱动开发、TDD、代码审查和分支收尾，并通过插件接入 Claude Code、Codex、Cursor、Gemini CLI、Devin CLI 等多个代理宿主。</p>
+<p><strong>它是什么</strong>：这是一个面向 AI 编程助手的 Diagram Design 技能与插件集合，内置架构、时序、状态机、桑基图、鱼骨图、部署图、数据库模型等 39 种图示类型。每种图示都提供浅色、深色和完整编辑风格的静态变体，生成结果不依赖 JavaScript、构建步骤或外部图片资源，也支持重绘 draw.io 和 Mermaid 图表。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：编码代理容易跳过需求澄清和测试，直接生成大量难以审查的代码；Superpowers 强制先形成设计和细粒度计划，再按 RED-GREEN-REFACTOR 流程实现。长任务中代理还可能偏离原始目标或重复调查，近期的计划级 SDD workspace、持久进度和 resume-based 修复循环正针对这类问题。</p>
+<p><strong>能解决什么痛点</strong>：AI 生成的图表容易退化成大量通用圆角框和 Mermaid 风格，难以匹配产品或技术文档的视觉规范；项目通过固定布局语法、颜色使用规则和信息密度约束，减少开发者反复在 Figma 中调整图形的工作。对于已有 Mermaid 或 draw.io 资料，也可以在指定尺寸、格式和细节级别下重新绘制。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：希望在 Claude Code、Codex CLI、Cursor、Gemini CLI 等环境中建立统一开发流程的个人开发者和团队。它尤其适合需要让代理持续处理数小时任务，同时仍要求测试、代码审查和分支隔离的工程项目。</p>
+<p><strong>适合谁用</strong>：使用 Claude Code、Codex、Factory Droid、Pi 等 AI 编程助手生成技术文档的开发者；需要制作架构图、数据流图、部署图、产品流程图或汇报图表，但不希望手工维护 Figma 文件的工程师和技术写作者。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：以 Claude Code 为例，执行 <code>/plugin install superpowers@claude-plugins-official</code> 安装官方插件。</p>
+<p><strong>怎么上手</strong>：Claude Code 中执行 <code>/plugin marketplace add cathrynlavery/diagram-design</code>，随后执行 <code>/plugin install diagram-design@diagram-design</code>。</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>让编码代理先把新功能需求拆成可确认的设计文档和实施计划，再逐任务修改现有 Web 或后端项目。</li>
-<li>在多人协作仓库中为代理创建独立 Git worktree，完成测试、代码审查后再选择合并或提交 PR。</li>
+<li>为内部服务或数据平台绘制包含区域、主机和制品的部署图，放入架构设计文档。</li>
+<li>将数据仓库的来源、核心处理层、消费者及角色权限整理成数据流图或安全矩阵。</li>
 <li>
-<p>调查难以复现的测试失败或回归问题，使用 systematic-debugging、verification-before-completion 等技能完成根因定位和修复验证。</p>
+<p>把产品需求中的用户阶段、操作、情绪变化和发布切片制作成用户旅程图或故事地图。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：核心不是复杂运行时，而是用 Shell 技能、启动钩子、模板和代理指令编排一套可组合的工程流程，并适配多个 coding-agent harness。SDD 已演进到按计划隔离工作区、持久化进度、恢复式修复循环和最多五轮 breaker，体现出对长流程代理可靠性的持续工程化。</p>
+<p><strong>技术看点</strong>：项目采用自包含 HTML + SVG 输出，静态结果可直接在浏览器打开，无构建和外部资源依赖，适合提交到文档仓库或直接发布。它将“语义模式”和“视觉布局类型”分离，使队列、策略追踪、信任边界等语义可以复用已有图表类型，并通过 SVG <code>viewBox</code>、标题规则、数据校验和对抗性测试加强输出可靠性与可访问性。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：近期开发非常活跃，重点集中在 SDD 生命周期重构、计划级 workspace、恢复式修复循环和技能压缩；同时持续修复 Windows SessionStart、跨平台打包和系统调试脚本兼容性问题。2026 年 8 月的 v6.3.0 又加入 Devin CLI、Hermes Agent 和头脑风暴三路径路由支持，项目正从单一代理插件扩展为覆盖更多宿主的通用工作流层；最近 20 条提交主要由 Jesse Vincent 推进，但也有少量社区贡献和测试修复。</p>
+<p><strong>近期动向与发展方向</strong>：近期提交非常活跃，重点从新增图表类型转向质量加固和发布工程治理，包括合并已审核修正、加固桑基图和 treemap 校验、修复 YAML 与插件打包问题、完善图库同步验证，并加入针对语义动画和 OAuth 序列验证器的对抗性测试。同时仍在扩展 scatter bubble、ridgeline 等图表变体，并持续维护 Claude Code、Codex、Droid 等插件分发渠道，方向是把图表覆盖面、生成正确性和多平台安装体验一起做稳。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。它与普通提示词包的主要区别在于提供了完整的强制式研发流程、技能行为测试、插件基础设施测试以及多代理宿主安装入口。</p>
+<p><strong>同类对比</strong>：README 明确将其定位为避免通用 Mermaid 图表风格的方案；相比 Mermaid 主要通过文本描述生成通用图形，diagram-design 更强调固定的编辑式视觉规范、品牌匹配、静态 HTML + SVG 交付和多种版式变体。但它仍支持导入并重绘 Mermaid，因此更像是视觉输出层和 AI 技能层的补充，而不是完全替代 Mermaid 的通用语法生态。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：安装和行为依赖具体代理宿主，使用多个宿主时需要分别安装；Windows 需要 Git Bash 或额外的 PowerShell/CMD 回退处理，部分宿主还存在压缩上下文后启动指令丢失的限制。项目创建于 2025 年 10 月，却已达到 281109 Stars、25184 Forks，说明传播速度极快；同时有 354 个开放 Issue、仅 44 名贡献者，用户规模与协作规模并不对称，升级时应关注版本说明和跨宿主兼容性。技能会改变代理的默认工作方式，且近期 SDD 生命周期持续重构，现有团队流程可能需要随版本调整；README 还说明可选的视觉伴侣功能默认会上报版本信息，可通过 <code>SUPERPOWERS_DISABLE_TELEMETRY</code> 关闭。</p>
+<p><strong>注意事项</strong>：项目创建于 2026 年 4 月，当前已获得 30544 个 Stars、1964 个 Forks，但仍处于快速演进阶段，公开 Issue 有 38 个，插件版本、图表规范和校验规则可能持续调整。README 对支持平台和图表类型说明较完整，并提供在线图库，但不同宿主的安装命令和自动更新机制不同，需要按平台配置；另外项目元数据描述写的是 38 种图表，而 README 当前列出 39 种，采用前应以仓库实际版本和图库内容为准。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有较高社区影响力，其代表项目获得数十万星标，并具备广泛开发者关注度。
-<strong>技术栈偏好</strong>：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、工具链和可扩展开发框架。
-<strong>核心领域</strong>：主要聚焦 AI 辅助软件开发、开发者生产力工具与自动化工作流。</p>
+<p><strong>技术影响力</strong>：以创业者和独立开发者身份形成较高社区影响力，代表性设计仓库获广泛关注，并持续输出 AI 实践经验。
+<strong>技术栈偏好</strong>：偏好 Shell、Python 与 HTML，聚焦 Codex、智能代理、自动化运维及开发流程工具。
+<strong>核心领域</strong>：主要聚焦 AI 原生创业、智能代理工作流与开发者效率工具。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
