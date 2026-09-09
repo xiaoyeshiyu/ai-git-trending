@@ -101,8 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-09-09)</h1>
-<h2>今日热点：AI 智能体开发进入工程化与垂直场景落地阶段</h2>
-<p>今日热门项目集中展现了 AI 编程智能体从输出体验、技能框架、性能优化、记忆与安全机制，到本地优先桌面端和团队级 AI 工作流的全面工程化；同时，能力边界正扩展至 3D 建筑设计、文本生成 CAD/CAE/CAM、编辑型信息图、金融多智能体交易、工业级图像提示词、系统设计学习与 AI 工程实践等垂直领域，反映出开发者正在把通用大模型能力封装为可复用、可验证、可交付的专业生产工具，具体项目摘要如下：</p>
+<h2>今日热点：Agentic Skills 与 AI 工程化</h2>
+<p>今天的技术主题集中在 AI Agent 从个人效率工具走向团队级、工程级和垂直场景落地：既有面向编码代理输出风格、技能框架、插件体系、性能优化和本地桌面形态的项目，也覆盖 AI 原生团队协作、从零构建 AI 工程能力、GPT-Image 提示词工程、3D 建筑/CAD/CAE/CAM、编辑型图表设计、金融交易多智能体框架，以及系统设计学习资料等方向，整体呈现出“Agent 技能化、工作流产品化、垂直工具专业化”的趋势，具体项目摘要如下：</p>
 <h3>✨ ayghri/i-have-adhd (28244★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：把编码助手的回答风格强行拉回“先给结论、再给步骤”，避免它长篇铺垫后把真正可执行的信息埋在最后。</p>
@@ -131,26 +131,52 @@
 <strong>技术栈偏好</strong>：以 Python 为主，偏好机器学习、强化学习、自然语言处理及算法工程。
 <strong>核心领域</strong>：主要聚焦人工智能研究与应用，尤其是机器学习、智能算法和生产力工具。</p>
 <hr />
-<h3>✨ Tencent/teamai-cli (2683★)</h3>
+<h3>✨ Tencent/teamai-cli (2872★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+<p><strong>一句话</strong>：TeamAI 把团队维护的技能、规则、MCP、Hooks 和知识库放进 Git 仓库，再自动同步到 Claude Code、Codex、Cursor 等多个 AI 编程工具中。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：Make Every Team AI Native</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+<p><strong>它是什么</strong>：这是一个基于 TypeScript 的团队级 AI 开发环境管理 CLI。管理员通过共享 Git 仓库维护技能、规则、文档、Agent、Hooks、MCP、环境变量和团队文化，成员执行 <code>pull</code> 后即可同步到本地多个 AI Agent。项目还提供经验沉淀、知识召回、代码库图谱和会话改进等 beta 能力。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：团队成员使用不同 AI 编程工具时，规则、技能和 MCP 配置容易分散，更新也依赖手工复制；TeamAI 通过 Git 的 <code>push → review/merge → pull</code> 流程统一分发。开发过程中遇到的高摩擦问题还可以被识别并整理为团队知识，减少同类问题重复排查。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：需要统一管理 Claude Code、Codex、Cursor、CodeBuddy、OpenCode 等 AI 工具配置的软件团队。也适合维护内部技能库、编码规范、评审 Agent 和共享 MCP 服务的团队管理员。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：先安装 CLI，再将其初始化到团队 Git 仓库：</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在大型研发团队中统一下发代码规范、项目文档、审查 Agent 和 Hooks。</li>
+<li>为不同岗位配置不同技能集合，通过 <code>teamai roles</code> 和 <code>teamai tags</code> 让前端、后端或 SRE 成员只同步所需内容。</li>
+<li>将团队在部署故障、工具调用失败等会话中总结出的经验提交回共享仓库，并在后续任务中自动召回。</li>
+<li>
+<p>同时维护多个项目时，通过成员名册、项目命令和 <code>push --project</code> 管理不同项目的团队资源。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目选择 Git 作为团队资源的版本管理、审核和分发基础，并通过 SessionStart、Stop 等 Hooks 将同步和经验采集嵌入 AI 会话。它还采用适配层支持多种 AI Agent，并提供 project scope、user scope、角色、标签和多仓库订阅等组织级配置能力。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 9 月 8 至 9 日，开发非常活跃，重点从基础分发能力扩展到多项目管理和新 Agent 兼容。近期新增了 ZCode 的一等支持，修复了 ZCode Hook 状态持久化和命令规范化问题，同时持续修复 worktree 迁移、路径重绑定、仓库锁和自更新相关问题；README 也在同步完善 Team Context、Team Improvement、知识维护和配置边界说明。整体方向是从“同步 AI 配置”演进为覆盖执行、团队知识和持续改进的完整协作层。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确提到竞品或直接对标项目。相较于只管理单个 AI 工具规则文件的方案，TeamAI 的差异在于使用共享 Git 仓库统一分发多类 AI 资源，并覆盖多个 AI Agent 和团队知识沉淀。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 4 月，当前有 2872 个 Stars、180 个 Forks、39 位贡献者和 22 个开放 Issue，近期提交密集，但整体仍处于较早期快速迭代阶段。Team Context 和 Team Improvement 标注为 beta，部分 Agent 的 Hooks、MCP 或会话能力尚未完整支持；README 也明确说明模型配置尚未覆盖所有提供商。初始化团队仓库需要成员具备写权限，<code>env</code> 只用于团队开关和环境变量，不能存放密钥；worktree、路径迁移和多项目功能近期仍在修复，升级时应关注配置格式和行为变化。</p>
 </li>
 <li>
 <p><strong>GitHub</strong>：<a href="https://github.com/Tencent/teamai-cli">Tencent/teamai-cli</a></p>
 </li>
 </ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：拥有 1.4 万+关注者和多个 2 万星级项目，是 GitHub 上影响力较强的企业级开源组织。
+<strong>技术栈偏好</strong>：以 C++、HTML、JavaScript 为主，兼顾高性能基础组件、前端/小程序框架与移动端能力。
+<strong>核心领域</strong>：主要聚焦移动开发、前端生态、AI 推理框架和通用基础设施工具。</p>
 <hr />
 <h3>✨ obra/superpowers (281109★)</h3>
 <blockquote>
@@ -245,30 +271,33 @@
 <strong>技术栈偏好</strong>：以 TypeScript 为主，辅以 Shell 和 Python，整体偏向可扩展的应用层工具、自动化脚本与集成型开发体验。
 <strong>核心领域</strong>：主要聚焦于面向建筑场景的智能化工具与插件生态，结合编辑器、语言和工作流能力做“建筑智能升级”。</p>
 <hr />
-<h3>✨ earthtojake/text-to-cad (8954★)</h3>
+<h3>✨ earthtojake/text-to-cad (14966★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把自然语言、图片和本地工程文件直接转成 CAD、机器人和制造相关的可执行技能，目标产物包括 STEP、STL、URDF、SDF、DXF、G-code 等。</p>
+<p><strong>一句话</strong>：让 AI Agent 根据自然语言或图片生成 CAD 模型，并继续完成预览、格式转换、机器人描述、切片和打印交付。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是一个面向代理式工作流的技能库，不是单一建模软件，而是一组按任务拆分的 CAD/机器人/硬件设计能力。README 里能看到它覆盖了 CAD 创建与编辑、CAD 预览、标准件检索、二维出图、机器人描述文件、仿真文件、切割前检查、切片和打印控制等环节，明显是围绕“从需求到工程交付物”的链路来组织的。</li>
-<li><strong>能解决什么痛点</strong>：一类是把口头需求或参考图快速落到可导出的工程文件，减少人工在建模、导出、预览之间来回切换。另一类是处理 CAD 之外的配套文件时不用再手写一堆机器人描述、仿真配置或切片/打印前检查步骤，尤其适合本地文件驱动的工作流。</li>
-<li><strong>适合谁用</strong>：做机械设计、机器人系统集成、硬件原型验证的工程师。也适合在代码里调用代理能力、希望把 CAD 生成、预览和交付格式统一起来的 AI 工具开发者。</li>
-<li><strong>怎么上手</strong>：<code>npx skills install earthtojake/text-to-cad</code></li>
-<li><strong>可以用在哪些场景</strong>：给机械零件、支架、外壳这类实体件生成可导出的 STEP/STL，并在本地预览结果。为机器人项目生成或修正 URDF、SDF、SRDF，再交给仿真或 MoveIt 流程。把 DXF/STEP 先做 SendCutSend 上传前检查，减少加工前返工。</li>
-<li><strong>技术看点</strong>：仓库把能力拆成多个 <code>skills/*</code> 子模块，说明它更像一套可组合的工程能力包，而不是单体应用。README 同时提供 Skills CLI 安装和 Codex/Claude Code 的插件安装方式，说明它重点在“让代理直接接入工作流”，而不是只做演示。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交主要集中在 0.3.7 到 0.3.9 的连续发布、兼容性修复和体验修补，比如修复高刷新率下的预览旋转速度、保留 GLB 材质透明度、把 Discord 链接做成可配置、升级到 Python 3.12。整体看是一个正在快速打磨的项目，节奏偏维护和增强稳定性，同时社区贡献者已经开始参与进来，说明项目并不完全由单人封闭推进。</li>
-<li><strong>同类对比</strong>：README 没有明确点名竞品，暂未提供直接对标对象。</li>
+<li><strong>它是什么</strong>：这是一个面向 AI Agent 的 CAD、CAE、CAM 技能库，提供可直接安装的工作流。项目覆盖 CAD 建模与编辑、STEP/STL/3MF/GLB 导出、DXF 绘图、CAD 文件浏览，以及 URDF、SRDF、SDF 等机器人描述文件生成。除此之外，还支持 STEP 零件检索、DfAM 可制造性检查、G-code 切片和 Bambu Lab 打印任务处理。</li>
+<li><strong>能解决什么痛点</strong>：开发者不必为每次建模任务手写完整的 CAD 脚本，也能通过 Agent 生成带有 STEP 等工程格式输出的模型。对于机器人和制造流程，它还减少了在 CAD 文件、URDF/SDF 配置、网格检查、切片和打印机软件之间反复转换与人工校验的工作。</li>
+<li><strong>适合谁用</strong>：使用 Codex、Claude Code 或 Grok Build，并希望让 Agent 处理工程建模任务的开发者；机器人、3D 打印、机械设计和数字制造团队中，需要自动生成或检查 CAD、URDF、SDF、G-code 文件的工程师。</li>
+<li><strong>怎么上手</strong>：使用 Skills CLI 安装全部技能：<code>npx skills add earthtojake/text-to-cad</code>。项目要求 Python 3.11+，也提供 Codex、Claude Code 和 Grok Build 的原生插件安装方式。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>根据文字或图片生成机械零件，导出 STEP 交给后续 CAD、加工或供应链流程。</li>
+<li>为机器人项目生成 URDF、SRDF 和 SDF，配置 MoveIt2 的规划组、末端执行器及仿真环境。</li>
+<li>将网格模型执行可制造性检查、FDM 切片并生成经过打印机配置校验的 G-code，再提交到本地 Bambu Lab 打印任务。</li>
+<li><strong>技术看点</strong>：项目采用“Agent skill”拆分方式，把 CAD、机器人描述、切片和打印等能力分别封装为可安装的技能，而不是绑定到单一应用。它同时关注工程交付格式和本地文件工作流，支持 STEP、DXF、URDF、SDF、STL、3MF、GLB 等实际生产链路中的格式，并配套浏览器 CAD Viewer 进行本地预览。</li>
+<li><strong>近期动向与发展方向</strong>：近期提交非常活跃，2026 年 9 月连续发布 0.5.0 和 0.5.1，并持续合并依赖升级、Viewer 构建更新和文档部署改进。提交中出现 <code>spiral-mesh</code> 功能分支，结合现有 CAD Viewer、网格优化和动画图标更新来看，项目正在继续完善几何网格处理、可视化和发布工程化流程，而不只是维护基础技能。当前共有 23 位贡献者、14 个 Open Issues，社区规模仍偏小，但主仓库维护节奏较密集。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。README 未列出具体竞品；该项目的定位也不是传统 CAD 软件，而是为 AI Agent 提供跨 CAD、机器人仿真和制造流程的技能集合。</li>
 <li>
-<p><strong>注意事项</strong>：项目更新很新，说明活跃，但也意味着不同 skill 的成熟度可能不一致，接入前要按具体任务验证输出质量。README 明确提到主分支用于发布产物、开发在 <code>develop</code>，并且依赖本地工具链和 Git LFS 资源，初次环境准备会比纯 JS 库重一些；目前开放 issue 也还有 19 个，说明仍在持续修正边角问题。</p>
+<p><strong>注意事项</strong>：项目覆盖的流程较多，上手时除了安装技能，还可能需要 Python 3.11+、本地 CAD/切片相关依赖以及对应的机器人或打印环境，实际配置复杂度取决于使用的技能。项目创建于 2026 年 4 月，当前虽已获得较高关注度并保持高频更新，但整体仍处于快速演进阶段；版本从 0.4.x 进入 0.5.x，技能接口、依赖和插件安装要求可能继续变化。README 文档较完整，提供了安装、技能清单和各技能入口，但具体建模任务的最小调用示例暂未提供。</p>
 </li>
 <li>
 <p><strong>GitHub</strong>：<a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：earthtojake 是小而高影响力的独立开发者，凭借 <code>text-to-cad</code> 在开源 CAD/生成式设计方向获得显著关注。
-<strong>技术栈偏好</strong>：主要使用 JavaScript 与 TypeScript，偏好 Web 技术栈下的 CAD 建模、几何处理与交互式工具开发。
-<strong>核心领域</strong>：核心聚焦于文本到 CAD、在线 CAD 查看器、参数化建模与面向工程设计的生成式工具。</p>
+<p><strong>技术影响力</strong>：聚焦生成式 CAD 与开发者工具，在开源技术社区具备较高的垂直影响力。
+<strong>技术栈偏好</strong>：以 Python、JavaScript 和 TypeScript 为主，偏好结合几何建模、Web 可视化与 AI 的跨端技术栈。
+<strong>核心领域</strong>：主要聚焦文本生成 CAD、参数化建模、STEP 数据处理与 CAD 浏览器工具。</p>
 <hr />
 <h3>✨ cathrynlavery/diagram-design (30544★)</h3>
 <blockquote>
@@ -316,30 +345,30 @@
 <strong>技术栈偏好</strong>：偏好 Shell、Python 与 HTML，聚焦 Codex、智能代理、自动化运维及开发流程工具。
 <strong>核心领域</strong>：主要聚焦 AI 原生创业、智能代理工作流与开发者效率工具。</p>
 <hr />
-<h3>✨ TauricResearch/TradingAgents (100009★)</h3>
+<h3>✨ TauricResearch/TradingAgents (103806★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把“研究员、交易员、风控、投资组合经理”拆成一组协作的 LLM 角色，让你像看一场投行内部讨论一样，跑完一条完整的选股、研判、下单模拟流程。</p>
+<p><strong>一句话</strong>：TradingAgents 把一家交易公司的分析、辩论、交易、风控和组合经理流程拆成多个 LLM Agent，让它们围绕股票、加密货币等标的协作生成交易决策。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是一个基于 Python 和 LangGraph 的多智能体金融交易研究框架，核心思路不是让单个模型直接给结论，而是让基本面、情绪、新闻、技术分析等专门代理先各自出报告，再经过研究辩论、交易决策和风控审核，最后生成交易建议。README 里还给出了 CLI、Docker、包调用和多模型/多供应商接入方式，说明它更像一套可运行的研究工作流，而不是单纯的演示脚本。</li>
-<li><strong>能解决什么痛点</strong>：一是把“看新闻、查指标、比情绪、做风控”这些分散步骤串成固定流程，减少人工来回切换工具；二是给量化/投研实验提供一套可复现的多轮推理框架，方便对比不同模型、不同数据源和不同日期下的结果。</li>
-<li><strong>适合谁用</strong>：做量化研究原型的 Python 工程师、想把 LLM 引入投研流程的金融科技团队、以及需要验证多智能体工作流的研究人员。</li>
-<li><strong>怎么上手</strong>：README 提供的最简方式是：<code>git clone https://github.com/TauricResearch/TradingAgents.git &amp;&amp; cd TradingAgents &amp;&amp; pip install . &amp;&amp; tradingagents</code></li>
-<li><strong>可以用在哪些场景</strong>：1）搭建内部选股研究台，让基本面/情绪/技术分析分工输出统一报告；2）做回测前的事件研判，比如在财报、宏观数据或突发新闻后快速生成多视角判断；3）验证不同 LLM 在金融推理链路上的表现差异。</li>
-<li><strong>技术看点</strong>：项目用 LangGraph 组织多代理流程，支持结构化输出、检查点恢复、CLI/API 共用报告写入逻辑，并且兼容 OpenAI、Anthropic、Gemini、xAI、DeepSeek、Qwen、GLM、MiniMax、Bedrock、Ollama 和其他 OpenAI-compatible 服务。它的重点不是单一模型能力，而是把数据流、路由、重试预算、风控路径和多供应商适配做成可配置框架。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交明显集中在稳定性修复和数据正确性上，比如修复同日 OHLCV 缓存、Yahoo 新闻时间窗、Alpha Vantage 基本面前视偏差、图路由崩溃、结构化 agent 的工具调用问题，以及 CLI 终端异常处理。同时也在继续扩展模型目录和供应商支持，例如加入 Claude Sonnet 5、Fable 5 和 Bedrock API-key 认证。整体看，项目当前重点是“把能跑”推进到“跑得稳、接得广、数据更干净”。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li><strong>它是什么</strong>：这是一个用 Python 编写的多智能体金融交易研究框架。它内置基本面分析师、情绪分析师、新闻分析师、技术分析师、看多/看空研究员、Trader、风控团队和 Portfolio Manager，模拟真实交易团队从信息收集、观点辩论到下单审批的流程。README 明确说明它面向研究用途，不构成投资或交易建议。</li>
+<li><strong>能解决什么痛点</strong>：一是减少开发者手工拼接财务数据、新闻、社媒情绪、技术指标和宏观数据后再喂给 LLM 的流程成本；二是帮助做交易研究的人处理回测中常见的 look-ahead bias、历史数据时间点一致性和决策日志可追踪问题。</li>
+<li><strong>适合谁用</strong>：适合做 LLM Agent、量化研究、金融 NLP 或交易策略原型的 Python 开发者；也适合需要评估不同大模型在金融分析任务中表现的研究团队。</li>
+<li><strong>怎么上手</strong>：<code>git clone https://github.com/TauricResearch/TradingAgents.git &amp;&amp; cd TradingAgents &amp;&amp; pip install . &amp;&amp; tradingagents</code></li>
+<li><strong>可以用在哪些场景</strong>：可用于搭建股票或加密货币的多 Agent 交易研究原型；用于比较 GPT、Claude、Gemini、Qwen、GLM、Ollama 等不同模型在同一交易流程中的输出差异；用于教学或论文实验中复现“分析师—研究员—交易员—风控”的决策链路。</li>
+<li><strong>技术看点</strong>：项目基于 LangGraph 组织多 Agent 工作流，并支持大量 LLM Provider，包括 OpenAI、Google、Anthropic、xAI、DeepSeek、Qwen、GLM、MiniMax、OpenRouter、Ollama、Azure OpenAI、AWS Bedrock 和 OpenAI-compatible endpoint。近期版本持续强化 point-in-time 数据保护、FRED/Alpha Vantage/Reddit 等数据流稳定性，这对金融回测比单纯堆 Agent 更关键。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 v0.4.0、v0.4.1、v0.4.2 发布线上，重点不是大规模重构，而是修复交易研究中容易出错的细节：Alpha Vantage 日期裁剪、FRED vintage 时间钉住、Reddit 429/Retry-After、历史基本面避免混入实时 profile、Trader 必须给出绝对价格水平、辩论管理器在不确定时不强行给方向。同时也在更新模型目录，例如加入 Kimi、GPT-5.6、GLM-5.3，说明项目仍在快速跟进模型生态。</li>
+<li><strong>同类对比</strong>：README 没有明确点名竞品或对标项目；更准确地说，它不是单一回测框架或单一聊天机器人，而是偏“多角色 LLM 交易决策实验框架”。</li>
 <li>
-<p><strong>注意事项</strong>：这是面向研究的框架，不是投资建议，也不是直接可上线的自动交易系统；效果高度依赖所选模型、数据源、时间窗口和提示词。项目当前 open issues 较多，且贡献者相对集中，说明还在快速迭代中，上手前要留意 API Key、数据源可用性和不同后端的兼容细节。</p>
+<p><strong>注意事项</strong>：项目创建于 2024-12-28，但 Star 已超过 10 万、Fork 接近 2 万，热度很高；同时 open issues 有 365 个，说明真实使用中的边界问题不少。近期提交大量围绕数据正确性、网络请求、历史时间点和 Agent 决策约束做修补，金融场景使用时应先验证数据源、回测逻辑和提示词输出稳定性，不宜直接用于真实资金交易。</p>
 </li>
 <li>
 <p><strong>GitHub</strong>：<a href="https://github.com/TauricResearch/TradingAgents">TauricResearch/TradingAgents</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Tauric Research 凭借 TradingAgents 的高星标表现，在 AI 交易智能开源社区中具备显著关注度和影响力。
-<strong>技术栈偏好</strong>：以 Python 为核心技术栈，偏向构建 AI Agent、金融智能分析与量化交易相关工具。
-<strong>核心领域</strong>：主要聚焦 AI 驱动的交易决策、金融市场分析与智能投研系统。</p>
+<p><strong>技术影响力</strong>：以 TradingAgents 等高关注度开源项目建立了较强的社区影响力，是新兴 AI 交易智能领域的活跃组织。
+<strong>技术栈偏好</strong>：以 Python 为主，偏好结合大语言模型、多智能体协作与量化交易系统进行研发。
+<strong>核心领域</strong>：主要聚焦 AI 驱动的金融交易分析、量化研究与交易决策智能化。</p>
 <hr />
 <h3>✨ liquidslr/system-design-notes (17554★)</h3>
 <blockquote>
@@ -415,30 +444,30 @@
 </li>
 </ul>
 <hr />
-<h3>✨ rohitg00/ai-engineering-from-scratch (48148★)</h3>
+<h3>✨ rohitg00/ai-engineering-from-scratch (53569★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：这是一套把 AI 工程从数学基础一路铺到 Agent、MCP 和生产交付的开源课程仓库，目标不是“看懂概念”，而是把每一阶段都做成能跑、能交付的实战材料。</p>
+<p><strong>一句话</strong>：把 AI 工程从线性代数、Tokenizer、Attention 到 Agent、MCP 的完整路线拆成 523 节可运行课程，让学习者边推导、边写代码、边留下可复现实验产物。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是一个面向 AI 工程学习的系统化课程项目，README 明确给出了 20 个阶段、511 节课和约 329 小时的学习路径，覆盖 Python、TypeScript、Rust、Julia。它把线性代数、Transformer、LLM、Agent、MCP、Agent Skills、基础设施与生产等内容串成一条完整路线，每节课都要求读、写、跑、留证据。</li>
-<li><strong>能解决什么痛点</strong>：一是很多人会用现成模型，却说不清注意力、反向传播、Tokenizer 或 Agent Loop 的底层逻辑，这个仓库把这些内容拆开重建。二是想从“会调 API”进到“能做可复用课程、技能、MCP 服务和可交付工件”的人，通常缺少一条连续的练习路径，这里把学习和产物绑定了。</li>
-<li><strong>适合谁用</strong>：适合想系统补齐 AI 工程基础的 Python 开发者，适合做 LLM 应用、Agent、MCP 集成的工程师，也适合技术团队里负责内部培训或知识沉淀的人。</li>
-<li><strong>怎么上手</strong>：README 给出的最小开始方式是先克隆仓库，再跑预检和基础数学示例：<code>git clone https://github.com/rohitg00/ai-engineering-from-scratch.git</code>，<code>cd ai-engineering-from-scratch</code>，然后执行 <code>python3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner</code> 和 <code>python3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py</code>。</li>
-<li><strong>可以用在哪些场景</strong>：可以用来做 AI 工程新人入门训练营，把“会调用模型”升级到“理解并能实现核心模块”；可以用来给做 LLM 产品的团队补齐 Agent、MCP、工具调用和评测基础；也可以作为内部知识库，给技术面试或岗位培养提供统一课纲。</li>
-<li><strong>技术看点</strong>：项目不是单纯堆文章，而是把课程、练习、可执行脚本、网站和多语言翻译一起组织起来，并且强调每节课都要产出可复用工件。最近提交集中在站点重建、移动端与动效体验改进、课程导航修复、MCP 路径统一、Agent Skills 课程加入等，说明它正从纯内容仓库往更完整的学习平台演进。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在 2026-08-23，活跃度很高，且以 <code>feat(site)</code>、<code>feat(course)</code>、<code>fix(mcp)</code>、<code>fix(site)</code>、<code>docs</code>、<code>chore</code> 为主，说明当前重点是课程站点体验、学习路径整理、MCP 课程收敛和 Agent Skills 新路线扩展。没有看到大面积重写核心算法，更像是在持续扩展课程体系并修正学习链路中的边界问题。</li>
-<li><strong>同类对比</strong>：README 没有直接点名竞品，暂未提供明确同类对标。</li>
+<li><strong>它是什么</strong>：这是一个面向 AI 工程学习的开源课程仓库，包含 20 个阶段、523 节课，覆盖 Python、TypeScript、Rust、Julia 等实现路线。它不是只给概念文章，而是要求每节课都按“读懂问题、推导数学、写代码、运行命令、保留产物”的方式完成，最终产出 prompt、skill、agent、MCP server 等可复用成果。</li>
+<li><strong>能解决什么痛点</strong>：很多人会拼装聊天机器人或 Agent Demo，但说不清 loss curve、attention、tool calling 背后的机制；这个项目用从基础数学到生产 LLM 应用的连续路径补齐中间断层。另一个痛点是 AI 学习资料过于碎片化，它把课程、代码、学习路径、网站版本和多语言入口集中在同一个仓库里。</li>
+<li><strong>适合谁用</strong>：适合想从零系统补 AI 工程能力的 Python / 后端开发者，也适合已经会 Python、想深入 LLM 应用、Agent Engineering、MCP 或 Agent Skills 的工程师。团队做内部 AI 工程训练营时，也可以把它当作开放课程骨架。</li>
+<li><strong>怎么上手</strong>：<code>git clone https://github.com/rohitg00/ai-engineering-from-scratch.git &amp;&amp; cd ai-engineering-from-scratch &amp;&amp; python3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner</code></li>
+<li><strong>可以用在哪些场景</strong>：用于新人从开发环境、线性代数、机器学习一路补到 LLM 和 Agent 的系统学习；用于团队内部搭建 AI Engineering 培训路线，要求学员每节课提交命令、退出码、输出和产物证据；用于专门学习 MCP、Agent Skills 或 coding agent 工作流时，按 README 中的 focused path 路线推进。</li>
+<li><strong>技术看点</strong>：项目强调“从原始数学和手写实现开始”，在引入 PyTorch 等框架前先解释底层机制，适合想理解原理而不是只调用 API 的开发者。README 还提供 skill-capable coding agent 的学习入口，支持通过 <code>npx skills add rohitg00/ai-engineering-from-scratch</code> 安装课程技能。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026-08-23 到 2026-09-07，活跃度很高。近期重点一方面是修复书籍导出质量，包括 PDF/EPUB 的长代码行、URL、literal token 保留和构建失败检测；另一方面持续扩展课程站点、学习路径、Agent Skills、MCP 课程和响应式体验，说明项目正在从“课程仓库”向“课程网站 + Agent 辅助学习系统”演进。</li>
+<li><strong>同类对比</strong>：README 没有明确列出竞品或对标项目。它比较突出的差异是课程体量大、强调每课产出可运行 artifact，并把 MCP、Agent Skills、coding agent 使用路线纳入同一套课程。</li>
 <li>
-<p><strong>注意事项</strong>：内容体量很大，511 节课意味着不适合零散浏览，更适合按阶段推进。仓库开放问题数有 93 个，说明项目仍在持续迭代中，学习路径和站点内容可能会有调整；另外它强调按仓库根目录运行命令，且不少内容依赖 <code>python3</code>、Node.js、<code>npx</code> 或支持技能的宿主环境，上手前要先确认本机条件。项目创建时间与当前时间相差很近，但 stars 已达 4.8 万，热度高、更新也密集，属于“活跃且在快速演进”的课程型仓库。</p>
+<p><strong>注意事项</strong>：项目创建于 2026-03-18，到 2026-09-09 已有 53,569 stars 和 9,366 forks，增长很快，但也意味着内容仍在快速迭代。当前 open issues 为 105，近期提交里多次修复站点、书籍导出和课程路径问题，使用者应预期文档、路径或构建流程还可能继续调整；另外 523 节、约 342 小时的体量较大，不适合只想快速复制一个现成 Agent 模板的人。</p>
 </li>
 <li>
 <p><strong>GitHub</strong>：<a href="https://github.com/rohitg00/ai-engineering-from-scratch">rohitg00/ai-engineering-from-scratch</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：在 AI 与开发者工具社区具有较强传播力和号召力，凭借高星仓库与 DevRel 身份形成明显的技术影响输出。
-<strong>技术栈偏好</strong>：主要偏向 JavaScript、TypeScript 与 Python，集中于 AI 工程、Agent 工具和开发者效率相关方向。
-<strong>核心领域</strong>：核心聚焦 AI 工程化、Agent 记忆系统、DevOps 与开发者生态工具。</p>
+<p><strong>技术影响力</strong>：高影响力的开发者布道者与开源维护者，在 AI 工程、云原生和 DevRel 社区拥有广泛影响力。
+<strong>技术栈偏好</strong>：以 Python、TypeScript 和 JavaScript 为主，偏好 AI 应用、智能体、开发者工具与自动化工作流技术。
+<strong>核心领域</strong>：主要聚焦 AI 工程与智能体开发，同时覆盖云原生、DevOps 和开发者生产力。</p>
 <hr />
 <h3>✨ vastsa/PI-Desktop (1457★)</h3>
 <blockquote>
