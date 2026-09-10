@@ -28,39 +28,38 @@
 
 ---
 
-### ✨ Tencent/teamai-cli (2872★)
+### ✨ bilawalsidhu/gods-eye-view (8050★)
 
-> **一句话**：TeamAI 把团队维护的技能、规则、MCP、Hooks 和知识库放进 Git 仓库，再自动同步到 Claude Code、Codex、Cursor 等多个 AI 编程工具中。
+> **一句话**：在浏览器里的拟真 3D 地球上实时追踪飞机、船舶、卫星、地震、交通和公开摄像头，并用类似卫星监控台的视角观察世界。
 
-- **它是什么**：这是一个基于 TypeScript 的团队级 AI 开发环境管理 CLI。管理员通过共享 Git 仓库维护技能、规则、文档、Agent、Hooks、MCP、环境变量和团队文化，成员执行 `pull` 后即可同步到本地多个 AI Agent。项目还提供经验沉淀、知识召回、代码库图谱和会话改进等 beta 能力。
+- **它是什么**：这是一个基于 JavaScript 的浏览器端空间情报可视化项目，把航班遥测、船舶信标、卫星轨道、地震数据、交通信息和公开摄像头投射到拟真的 3D 地球上。用户可以点击目标进行跟踪、切换驾驶舱和 FLIR/NVG 等传感器画面、查看 250 公里范围内的附近目标，还能通过语音控制镜头、绘制边界和路线。
 
-- **能解决什么痛点**：团队成员使用不同 AI 编程工具时，规则、技能和 MCP 配置容易分散，更新也依赖手工复制；TeamAI 通过 Git 的 `push → review/merge → pull` 流程统一分发。开发过程中遇到的高摩擦问题还可以被识别并整理为团队知识，减少同类问题重复排查。
+- **能解决什么痛点**：公开情报通常分散在航班、船舶、卫星、地震和摄像头等多个网页中，用户需要反复切换页面，难以建立统一的地理上下文。项目还区分实时、延迟、模拟和重建估计数据，并显示数据来源与新鲜度，减少把模拟画面误认为真实直播的风险。
 
-- **适合谁用**：需要统一管理 Claude Code、Codex、Cursor、CodeBuddy、OpenCode 等 AI 工具配置的软件团队。也适合维护内部技能库、编码规范、评审 Agent 和共享 MCP 服务的团队管理员。
+- **适合谁用**：适合需要快速浏览公开地理与实时目标数据的 OSINT 研究者、地图和空间数据开发者。也适合想研究 WebGL/3D 地球、实时数据图层、浏览器端交互式可视化或 AI 语音代理的 JavaScript 前端开发者。
 
-- **怎么上手**：先安装 CLI，再将其初始化到团队 Git 仓库：
+- **怎么上手**：需要 Node.js `24.14.x` 或 `26.x`，先在 `.env` 中配置 `GOOGLE_MAPS_API_KEY`，然后运行 `npm install && npm run dev -- --host localhost --port 4173`，访问 `http://localhost:4173`。
 
 - **可以用在哪些场景**：
-  - 在大型研发团队中统一下发代码规范、项目文档、审查 Agent 和 Hooks。
-  - 为不同岗位配置不同技能集合，通过 `teamai roles` 和 `teamai tags` 让前端、后端或 SRE 成员只同步所需内容。
-  - 将团队在部署故障、工具调用失败等会话中总结出的经验提交回共享仓库，并在后续任务中自动召回。
-  - 同时维护多个项目时，通过成员名册、项目命令和 `push --project` 管理不同项目的团队资源。
+  - 搭建机场、港口或城市区域的实时态势展示页面，集中查看附近航班、船舶、交通和公开摄像头。
+  - 制作地震、卫星轨道、航空流量等公开数据的交互式演示、教学或视频内容。
+  - 在内部地理信息工具中加入目标跟踪、传感器风格切换、语音导航和可分享视角链接。
 
-- **技术看点**：项目选择 Git 作为团队资源的版本管理、审核和分发基础，并通过 SessionStart、Stop 等 Hooks 将同步和经验采集嵌入 AI 会话。它还采用适配层支持多种 AI Agent，并提供 project scope、user scope、角色、标签和多仓库订阅等组织级配置能力。
+- **技术看点**：项目将 Google Maps 的拟真 3D 地球与多类公开实时数据源结合，并对飞机数据采用落后一轮轮询再插值的方式，让移动目标显示更平滑。语音控制通过实时 AI 代理完成，浏览器端使用短期会话令牌，`OPENAI_API_KEY` 不直接暴露给客户端；无语音密钥时核心地图和数据图层仍可运行。
 
-- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 8 至 9 日，开发非常活跃，重点从基础分发能力扩展到多项目管理和新 Agent 兼容。近期新增了 ZCode 的一等支持，修复了 ZCode Hook 状态持久化和命令规范化问题，同时持续修复 worktree 迁移、路径重绑定、仓库锁和自更新相关问题；README 也在同步完善 Team Context、Team Improvement、知识维护和配置边界说明。整体方向是从“同步 AI 配置”演进为覆盖执行、团队知识和持续改进的完整协作层。
+- **近期动向与发展方向**：项目在 2026 年 8 月 24 日正式开源，随后重点完善 README、安装说明、演示视频和统一的首次使用流程，近期没有明显的 bug 修复或大规模重构记录。提交几乎全部由 Bilawal Sidhu 完成，Contributor Count 为 1；结合 8050 个 Stars、1819 个 Forks 和 81 个 Open Issues 看，项目发布后获得了较高关注，但社区协作和问题收敛仍处于早期阶段。
 
-- **同类对比**：README 未明确提到竞品或直接对标项目。相较于只管理单个 AI 工具规则文件的方案，TeamAI 的差异在于使用共享 Git 仓库统一分发多类 AI 资源，并覆盖多个 AI Agent 和团队知识沉淀。
+- **同类对比**：暂无明显同类对标。README 将其定位为把分散的公开情报从多个浏览器标签页汇总到一个可交互 3D 地球中的开源项目，重点差异在于拟真地球、实时目标跟踪、传感器视图和语音操作的组合。
 
-- **注意事项**：项目创建于 2026 年 4 月，当前有 2872 个 Stars、180 个 Forks、39 位贡献者和 22 个开放 Issue，近期提交密集，但整体仍处于较早期快速迭代阶段。Team Context 和 Team Improvement 标注为 beta，部分 Agent 的 Hooks、MCP 或会话能力尚未完整支持；README 也明确说明模型配置尚未覆盖所有提供商。初始化团队仓库需要成员具备写权限，`env` 只用于团队开关和环境变量，不能存放密钥；worktree、路径迁移和多项目功能近期仍在修复，升级时应关注配置格式和行为变化。
+- **注意事项**：上手至少需要 Google Maps API 密钥，部分功能还依赖 OpenAI、TomTom 等可选密钥，其中 Google Maps 3D 瓦片和语音功能存在计费或配额管理要求。项目创建于 2026 年 6 月、正式开源时间较近，当前只有 1 位贡献者且有 81 个 Open Issues，成熟度和长期维护能力仍需观察；部分交通、摄像头姿态和发射过程属于模拟或重建估计，不能直接当作完整的实时情报系统使用。
 
-- **GitHub**：[Tencent/teamai-cli](https://github.com/Tencent/teamai-cli)
+- **GitHub**：[bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有 1.4 万+关注者和多个 2 万星级项目，是 GitHub 上影响力较强的企业级开源组织。
-**技术栈偏好**：以 C++、HTML、JavaScript 为主，兼顾高性能基础组件、前端/小程序框架与移动端能力。
-**核心领域**：主要聚焦移动开发、前端生态、AI 推理框架和通用基础设施工具。
+**技术影响力**：以高关注度开源项目为核心，在计算机视觉与空间计算开发者社区具备较强影响力
+**技术栈偏好**：偏好 JavaScript 与 Swift，侧重浏览器体验、移动端开发及视觉交互技术
+**核心领域**：主要聚焦计算机视觉、增强现实、空间计算与现实世界数字化交互
 
 ---
 
@@ -99,67 +98,109 @@
 
 ---
 
-### ✨ pascalorg/editor (22097★)
+### ✨ alsk1992/CloddsBot (1341★)
 
-> **一句话**：在浏览器里绘制墙体、楼板、门窗和家具，搭建可编辑、可分享的三维建筑项目。
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Pascal Editor 是一个基于 React Three Fiber 和 WebGPU 的 3D 建筑编辑器，用户可以按“场地、建筑、楼层、墙体、构件”的层级组织场景，并直接进行绘制、选择和参数化编辑。项目同时提供 `core`、`viewer`、`editor`、`nodes` 等可复用 npm 包，以及 CLI、本地数据存储和 MCP 服务，既能独立运行，也能嵌入其他应用。
+- **它是什么**：Open Source AI trading agent that operates autonomously across 1000+ markets - Polymarket, Kalshi, Binance, Hyperliquid, Solana DEXs, 5 EVM chains. Scans    for edge, executes instantly, manages risk while you sleep. Agent commerce protocol for machine-to-machine payments. Self-hosted. Built on Claude.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **能解决什么痛点**：传统建筑可视化应用往往需要分别处理场景数据、Three.js 渲染对象、几何重建和编辑状态，Pascal 将这些能力拆分为节点模型、注册表、脏节点系统和编辑工具，降低了维护复杂交互的成本。对于需要频繁调整墙体开口、楼层显示模式、家具尺寸或镜头视角的场景，它提供了比手写 Three.js 场景更完整的编辑闭环。
+- **GitHub**：[alsk1992/CloddsBot](https://github.com/alsk1992/CloddsBot)
 
-- **适合谁用**：适合使用 React、React Three Fiber 和 TypeScript 开发建筑设计、空间规划或 3D 场景编辑产品的前端团队。也适合希望通过插件扩展建筑节点、渲染器、参数面板和编辑工具的开发者。
-
-- **怎么上手**：Node.js 22.13 或更高版本可直接运行本地编辑器：
-
-  若要集成已发布的包，可安装：
-
-- **可以用在哪些场景**：
-  - 搭建支持墙体、门窗、楼板和屋顶编辑的浏览器端建筑方案设计器。
-  - 为室内设计或空间规划系统增加楼层切换、剖切视图、家具摆放和碰撞校验。
-  - 将三维场景编辑器部署为本地应用，并通过 MCP 暴露场景工具、资源和提示，供 AI 主机操作建筑项目。
-
-- **技术看点**：项目采用 Turborepo 单仓库，将场景状态、3D viewer、编辑器 UI、内置节点、捕获协议、CLI 和 MCP 服务拆成独立包；场景数据使用 Zustand 管理，并结合 IndexedDB 持久化和 Zundo 提供 50 步撤销历史。渲染层通过注册表定位 Three.js 对象，再由 `useFrame` 驱动的系统按脏节点增量更新几何，近期还针对墙体 CSG、`BatchedMesh` 批处理和 GPU 性能采集持续优化。
-
-- **近期动向与发展方向**：项目近期保持高频开发，最近 20 条提交集中在 2026 年 9 月 1 日至 7 日，重点是 3D 捕获和镜头快照能力，包括显式相机姿态、后台捕获隔离、快照队列与生命周期清理，以及 JSON 预览产物渲染。与此同时，团队持续修复墙体 CSG、批处理、场景加载失败重试、脏状态和撤销逻辑，并完善柜体精确尺寸、工具状态机和性能监测，说明项目正从基础编辑能力向可回放的捕获、展示和性能工程演进。提交主要来自 Aymeric Rabot 和 Wassim SAMAD，外部贡献者数量为 41，核心开发较集中。
-
-- **同类对比**：暂无明显同类对标。README 未列出具体竞品，但从插件清单、可发布 viewer 包、本地 CLI 和 MCP 服务来看，它更偏向可嵌入的开源建筑场景编辑基础设施，而不是单一的在线建模产品。
-
-- **注意事项**：项目创建于 2025 年 10 月，虽然已有 22097 个 Stars、2849 个 Forks，且近期更新频繁，但整体仍处于快速演进阶段，44 个 Open Issues 也意味着部分功能和 API 可能持续调整。上手运行较简单，但要开发插件或深度集成，需要理解节点层级、Zustand 状态、scene registry、脏节点系统和 React Three Fiber 渲染生命周期；WebGPU、CSG 和批量渲染也会带来浏览器兼容性与性能调试成本。README 提供了架构说明和本地运行入口，但完整业务示例较少，正式集成前应锁定包版本并重点验证场景持久化、撤销恢复、几何重建和捕获流程。
-
-- **GitHub**：[pascalorg/editor](https://github.com/pascalorg/editor)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：作为新近成立但已凭借单一旗舰仓库获得极高星标的组织，Pascal 在开发者工具与 AI/工作流生态里具备明显的早期高关注度。
-**技术栈偏好**：以 TypeScript 为主，辅以 Shell 和 Python，整体偏向可扩展的应用层工具、自动化脚本与集成型开发体验。
-**核心领域**：主要聚焦于面向建筑场景的智能化工具与插件生态，结合编辑器、语言和工作流能力做“建筑智能升级”。
 
 ---
 
-### ✨ earthtojake/text-to-cad (14966★)
+### ✨ Tencent/teamai-cli (2872★)
 
-> **一句话**：让 AI Agent 根据自然语言或图片生成 CAD 模型，并继续完成预览、格式转换、机器人描述、切片和打印交付。
+> **一句话**：TeamAI 把团队维护的技能、规则、MCP、Hooks 和知识库放进 Git 仓库，再自动同步到 Claude Code、Codex、Cursor 等多个 AI 编程工具中。
 
-- **它是什么**：这是一个面向 AI Agent 的 CAD、CAE、CAM 技能库，提供可直接安装的工作流。项目覆盖 CAD 建模与编辑、STEP/STL/3MF/GLB 导出、DXF 绘图、CAD 文件浏览，以及 URDF、SRDF、SDF 等机器人描述文件生成。除此之外，还支持 STEP 零件检索、DfAM 可制造性检查、G-code 切片和 Bambu Lab 打印任务处理。
-- **能解决什么痛点**：开发者不必为每次建模任务手写完整的 CAD 脚本，也能通过 Agent 生成带有 STEP 等工程格式输出的模型。对于机器人和制造流程，它还减少了在 CAD 文件、URDF/SDF 配置、网格检查、切片和打印机软件之间反复转换与人工校验的工作。
-- **适合谁用**：使用 Codex、Claude Code 或 Grok Build，并希望让 Agent 处理工程建模任务的开发者；机器人、3D 打印、机械设计和数字制造团队中，需要自动生成或检查 CAD、URDF、SDF、G-code 文件的工程师。
-- **怎么上手**：使用 Skills CLI 安装全部技能：`npx skills add earthtojake/text-to-cad`。项目要求 Python 3.11+，也提供 Codex、Claude Code 和 Grok Build 的原生插件安装方式。
+- **它是什么**：这是一个基于 TypeScript 的团队级 AI 开发环境管理 CLI。管理员通过共享 Git 仓库维护技能、规则、文档、Agent、Hooks、MCP、环境变量和团队文化，成员执行 `pull` 后即可同步到本地多个 AI Agent。项目还提供经验沉淀、知识召回、代码库图谱和会话改进等 beta 能力。
+
+- **能解决什么痛点**：团队成员使用不同 AI 编程工具时，规则、技能和 MCP 配置容易分散，更新也依赖手工复制；TeamAI 通过 Git 的 `push → review/merge → pull` 流程统一分发。开发过程中遇到的高摩擦问题还可以被识别并整理为团队知识，减少同类问题重复排查。
+
+- **适合谁用**：需要统一管理 Claude Code、Codex、Cursor、CodeBuddy、OpenCode 等 AI 工具配置的软件团队。也适合维护内部技能库、编码规范、评审 Agent 和共享 MCP 服务的团队管理员。
+
+- **怎么上手**：先安装 CLI，再将其初始化到团队 Git 仓库：
+
 - **可以用在哪些场景**：
-  - 根据文字或图片生成机械零件，导出 STEP 交给后续 CAD、加工或供应链流程。
-  - 为机器人项目生成 URDF、SRDF 和 SDF，配置 MoveIt2 的规划组、末端执行器及仿真环境。
-  - 将网格模型执行可制造性检查、FDM 切片并生成经过打印机配置校验的 G-code，再提交到本地 Bambu Lab 打印任务。
-- **技术看点**：项目采用“Agent skill”拆分方式，把 CAD、机器人描述、切片和打印等能力分别封装为可安装的技能，而不是绑定到单一应用。它同时关注工程交付格式和本地文件工作流，支持 STEP、DXF、URDF、SDF、STL、3MF、GLB 等实际生产链路中的格式，并配套浏览器 CAD Viewer 进行本地预览。
-- **近期动向与发展方向**：近期提交非常活跃，2026 年 9 月连续发布 0.5.0 和 0.5.1，并持续合并依赖升级、Viewer 构建更新和文档部署改进。提交中出现 `spiral-mesh` 功能分支，结合现有 CAD Viewer、网格优化和动画图标更新来看，项目正在继续完善几何网格处理、可视化和发布工程化流程，而不只是维护基础技能。当前共有 23 位贡献者、14 个 Open Issues，社区规模仍偏小，但主仓库维护节奏较密集。
-- **同类对比**：暂无明显同类对标。README 未列出具体竞品；该项目的定位也不是传统 CAD 软件，而是为 AI Agent 提供跨 CAD、机器人仿真和制造流程的技能集合。
-- **注意事项**：项目覆盖的流程较多，上手时除了安装技能，还可能需要 Python 3.11+、本地 CAD/切片相关依赖以及对应的机器人或打印环境，实际配置复杂度取决于使用的技能。项目创建于 2026 年 4 月，当前虽已获得较高关注度并保持高频更新，但整体仍处于快速演进阶段；版本从 0.4.x 进入 0.5.x，技能接口、依赖和插件安装要求可能继续变化。README 文档较完整，提供了安装、技能清单和各技能入口，但具体建模任务的最小调用示例暂未提供。
+  - 在大型研发团队中统一下发代码规范、项目文档、审查 Agent 和 Hooks。
+  - 为不同岗位配置不同技能集合，通过 `teamai roles` 和 `teamai tags` 让前端、后端或 SRE 成员只同步所需内容。
+  - 将团队在部署故障、工具调用失败等会话中总结出的经验提交回共享仓库，并在后续任务中自动召回。
+  - 同时维护多个项目时，通过成员名册、项目命令和 `push --project` 管理不同项目的团队资源。
 
-- **GitHub**：[earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)
+- **技术看点**：项目选择 Git 作为团队资源的版本管理、审核和分发基础，并通过 SessionStart、Stop 等 Hooks 将同步和经验采集嵌入 AI 会话。它还采用适配层支持多种 AI Agent，并提供 project scope、user scope、角色、标签和多仓库订阅等组织级配置能力。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 8 至 9 日，开发非常活跃，重点从基础分发能力扩展到多项目管理和新 Agent 兼容。近期新增了 ZCode 的一等支持，修复了 ZCode Hook 状态持久化和命令规范化问题，同时持续修复 worktree 迁移、路径重绑定、仓库锁和自更新相关问题；README 也在同步完善 Team Context、Team Improvement、知识维护和配置边界说明。整体方向是从“同步 AI 配置”演进为覆盖执行、团队知识和持续改进的完整协作层。
+
+- **同类对比**：README 未明确提到竞品或直接对标项目。相较于只管理单个 AI 工具规则文件的方案，TeamAI 的差异在于使用共享 Git 仓库统一分发多类 AI 资源，并覆盖多个 AI Agent 和团队知识沉淀。
+
+- **注意事项**：项目创建于 2026 年 4 月，当前有 2872 个 Stars、180 个 Forks、39 位贡献者和 22 个开放 Issue，近期提交密集，但整体仍处于较早期快速迭代阶段。Team Context 和 Team Improvement 标注为 beta，部分 Agent 的 Hooks、MCP 或会话能力尚未完整支持；README 也明确说明模型配置尚未覆盖所有提供商。初始化团队仓库需要成员具备写权限，`env` 只用于团队开关和环境变量，不能存放密钥；worktree、路径迁移和多项目功能近期仍在修复，升级时应关注配置格式和行为变化。
+
+- **GitHub**：[Tencent/teamai-cli](https://github.com/Tencent/teamai-cli)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：聚焦生成式 CAD 与开发者工具，在开源技术社区具备较高的垂直影响力。
-**技术栈偏好**：以 Python、JavaScript 和 TypeScript 为主，偏好结合几何建模、Web 可视化与 AI 的跨端技术栈。
-**核心领域**：主要聚焦文本生成 CAD、参数化建模、STEP 数据处理与 CAD 浏览器工具。
+**技术影响力**：拥有 1.4 万+关注者和多个 2 万星级项目，是 GitHub 上影响力较强的企业级开源组织。
+**技术栈偏好**：以 C++、HTML、JavaScript 为主，兼顾高性能基础组件、前端/小程序框架与移动端能力。
+**核心领域**：主要聚焦移动开发、前端生态、AI 推理框架和通用基础设施工具。
+
+---
+
+### ✨ AlexsJones/llmfit (32109★)
+
+> **一句话**：在终端里自动识别本机 CPU、内存和 GPU/VRAM，然后把上百个本地大模型按“能不能跑、跑得快不快、质量如何”排好序。
+
+- **它是什么**：llmfit 是一个用 Rust 编写的本地 LLM 适配与推荐项目，核心是根据机器硬件配置为不同模型打分。它会检测 RAM、CPU、GPU/VRAM 和后端环境，并从内置模型目录中计算内存适配、速度估计、模型质量和上下文长度等指标。默认提供交互式 TUI，也支持传统 CLI 输出 JSON，方便脚本、自动化流程或 agent 调用。
+- **能解决什么痛点**：本地跑模型时，开发者经常不知道某个 7B、14B、30B 或 MoE 模型在自己的显卡和内存上是否能稳定运行，llmfit 可以先给出可解释的适配结果，减少反复下载和试错。另一个痛点是不同运行时后端信息分散，它把 Ollama、llama.cpp、MLX、Docker Model Runner、LM Studio 等本地 provider 纳入同一套推荐和验证流程。
+- **适合谁用**：适合经常在个人工作站、Mac、游戏显卡机器或多 GPU 环境上跑本地 LLM 的开发者。也适合需要把模型推荐结果接入脚本、内部工具或自动化环境的 AI 工程师和本地推理平台维护者。
+- **怎么上手**：`brew install AlexsJones/llmfit/llmfit && llmfit`
+- **可以用在哪些场景**：
+  - 给一台新机器选本地编码模型，先比较 Qwen、Llama、Mistral 等模型在当前显存和内存下的可运行性。
+  - 在团队内部整理“哪些硬件适合跑哪些模型”的推荐表，用 `llmfit recommend --json` 输出给脚本或看板消费。
+  - 对已经部署在 Ollama、llama.cpp、MLX 等后端上的模型做基准测试，并把真实 tok/s 数据回馈到社区 benchmark。
+- **技术看点**：项目采用 Rust 实现命令行和 TUI，适合做跨平台单文件分发与硬件探测类工具。模型评分不是只看参数量，而是结合内存适配、带宽估算、动态量化、MoE 架构、多 GPU 和社区实测数据，`llmfit info` 还能展示估算依据和验证命令。
+- **近期动向与发展方向**：最近提交非常活跃，8 月 17 日集中发布了 1.1.10，并进行大量依赖更新，说明维护节奏较快。功能上近期加入 RamaLama runtime discovery、Qwen3.8 系列模型和 Qwen 生成解析修复，同时持续合入 AMD Radeon、Apple M4 Pro、GTX 1070 等社区 benchmark 数据，方向明显是扩大模型目录、增强运行时发现能力，并用真实硬件数据修正估算结果。
+- **同类对比**：README 明确提到 llm-checker。llm-checker 更偏向通过 Ollama 直接拉取并实测模型，适合已有 Ollama 环境的人；llmfit 更偏向先基于硬件规格和模型目录做大范围适配评估，并且覆盖 MoE、多 provider、社区 benchmark 和可解释估算。
+- **注意事项**：项目创建于 2026 年 2 月，时间不长但已有 3.2 万 Star、94 位贡献者和持续提交，热度与活跃度都很高；同时还有 61 个 open issues，说明快速迭代中仍可能存在硬件识别、provider 兼容或模型数据准确性问题。文档覆盖安装、TUI、CLI、benchmark、provider 和自定义模型，质量较完整；但依赖模型目录和估算公式，最终性能仍建议用 `llmfit bench` 在目标机器上验证。
+
+- **GitHub**：[AlexsJones/llmfit](https://github.com/AlexsJones/llmfit)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Alex Jones 是在 AI 基础设施与开发者工具领域具有较高社区影响力的资深工程师，代表项目 llmfit 获得大量关注。
+**技术栈偏好**：主要偏好 Rust，并辅以 Makefile 与 JavaScript，技术方向集中在高性能后端、LLM 工具链与基础设施工程。
+**核心领域**：核心聚焦于智能体时代的 AI/LLM 基础设施、模型服务与云原生开发工具。
+
+---
+
+### ✨ liquidslr/system-design-notes (17554★)
+
+> **一句话**：将《System Design Interview》两卷中的系统设计题拆成 28 个可逐章阅读的 Markdown 笔记，覆盖从限流、分布式 ID 到支付、对象存储和证券交易所的设计思路。
+
+- **它是什么**：这是围绕 Alex Xu《System Design Interview - An Insider's Guide》Vol.1 与 Vol.2 整理的学习笔记仓库，不提供可运行的软件或 SDK。内容按系统设计主题分章组织，包括容量估算、设计面试框架、KV 存储、消息队列、地图、酒店预订、S3 类对象存储、数字钱包等，并为部分主题补充 Dynamo、Bigtable、Snowflake、Discord、Netflix 等外部资料。
+- **能解决什么痛点**：准备系统设计面试时，读者无需在书籍章节、论文和工程博客之间反复跳转，可以按题目快速定位相关知识点。面对“如何设计限流器、聊天系统、支付系统或实时排行榜”这类开放题，也能用章节目录建立复习路径和答题框架。
+- **适合谁用**：准备中高级后端、分布式系统或架构岗位面试的工程师；需要系统补齐高并发服务、存储、消息和一致性基础的后端开发者。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：面试前按“容量估算→设计框架→具体系统题”顺序制定复习清单；设计内部通知、聊天、搜索联想或指标告警服务时，用对应章节梳理组件与容量问题；团队技术分享中，将一致性哈希、分布式 ID、对象存储等章节及其附带论文作为讨论材料。
+- **技术看点**：项目的价值在于以真实互联网系统题串联分布式设计中的核心权衡，而非提供统一实现。补充资源覆盖 Dynamo、Cassandra、Bigtable、Snowflake、Google Maglev 等经典资料，适合从面试模型继续追溯到工程原理。
+- **近期动向与发展方向**：2026 年 4 月集中新增第 17 至 28 章，扩展重点从基础系统设计题延伸到消息队列、监控告警、广告聚合、预订、邮件、对象存储、支付、数字钱包和证券交易等业务系统。此后提交频率明显降低，最近两次更新主要是 README 与文档措辞修正；贡献者数量为 4，近期可见外部贡献以修复拼写错误为主，项目当前更接近内容沉淀与维护阶段。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：内容明确标注为持续完善中，且以书籍笔记为定位，不能替代原书、官方文档或生产架构评审。仓库没有代码语言标识，也未提供安装、运行、测试或完整索引式学习指引；创建时间较新但星标较高，开放 Issue 仅 5 个，维护负担较小，不过近期更新以轻量文档维护为主。元数据中的更新时间为 2026-09-09，属于未来日期，需以 GitHub 实际页面为准。
+
+- **GitHub**：[liquidslr/system-design-notes](https://github.com/liquidslr/system-design-notes)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：凭借近 3 万星的公司向算法题库与 1.7 万星的系统设计笔记，成为技术面试准备和工程知识沉淀领域具有广泛影响力的开发者。
+**技术栈偏好**：以 JavaScript 和 Python 为主，结合 AWS 背景，偏好算法实现、开发者工具与可复用的工程学习资源。
+**核心领域**：主要聚焦算法与编码面试、系统设计、分布式系统及机器学习相关工程实践。
 
 ---
 
@@ -198,78 +239,6 @@
 
 ---
 
-### ✨ TauricResearch/TradingAgents (103806★)
-
-> **一句话**：TradingAgents 把一家交易公司的分析、辩论、交易、风控和组合经理流程拆成多个 LLM Agent，让它们围绕股票、加密货币等标的协作生成交易决策。
-
-- **它是什么**：这是一个用 Python 编写的多智能体金融交易研究框架。它内置基本面分析师、情绪分析师、新闻分析师、技术分析师、看多/看空研究员、Trader、风控团队和 Portfolio Manager，模拟真实交易团队从信息收集、观点辩论到下单审批的流程。README 明确说明它面向研究用途，不构成投资或交易建议。
-- **能解决什么痛点**：一是减少开发者手工拼接财务数据、新闻、社媒情绪、技术指标和宏观数据后再喂给 LLM 的流程成本；二是帮助做交易研究的人处理回测中常见的 look-ahead bias、历史数据时间点一致性和决策日志可追踪问题。
-- **适合谁用**：适合做 LLM Agent、量化研究、金融 NLP 或交易策略原型的 Python 开发者；也适合需要评估不同大模型在金融分析任务中表现的研究团队。
-- **怎么上手**：`git clone https://github.com/TauricResearch/TradingAgents.git && cd TradingAgents && pip install . && tradingagents`
-- **可以用在哪些场景**：可用于搭建股票或加密货币的多 Agent 交易研究原型；用于比较 GPT、Claude、Gemini、Qwen、GLM、Ollama 等不同模型在同一交易流程中的输出差异；用于教学或论文实验中复现“分析师—研究员—交易员—风控”的决策链路。
-- **技术看点**：项目基于 LangGraph 组织多 Agent 工作流，并支持大量 LLM Provider，包括 OpenAI、Google、Anthropic、xAI、DeepSeek、Qwen、GLM、MiniMax、OpenRouter、Ollama、Azure OpenAI、AWS Bedrock 和 OpenAI-compatible endpoint。近期版本持续强化 point-in-time 数据保护、FRED/Alpha Vantage/Reddit 等数据流稳定性，这对金融回测比单纯堆 Agent 更关键。
-- **近期动向与发展方向**：最近 20 条提交集中在 v0.4.0、v0.4.1、v0.4.2 发布线上，重点不是大规模重构，而是修复交易研究中容易出错的细节：Alpha Vantage 日期裁剪、FRED vintage 时间钉住、Reddit 429/Retry-After、历史基本面避免混入实时 profile、Trader 必须给出绝对价格水平、辩论管理器在不确定时不强行给方向。同时也在更新模型目录，例如加入 Kimi、GPT-5.6、GLM-5.3，说明项目仍在快速跟进模型生态。
-- **同类对比**：README 没有明确点名竞品或对标项目；更准确地说，它不是单一回测框架或单一聊天机器人，而是偏“多角色 LLM 交易决策实验框架”。
-- **注意事项**：项目创建于 2024-12-28，但 Star 已超过 10 万、Fork 接近 2 万，热度很高；同时 open issues 有 365 个，说明真实使用中的边界问题不少。近期提交大量围绕数据正确性、网络请求、历史时间点和 Agent 决策约束做修补，金融场景使用时应先验证数据源、回测逻辑和提示词输出稳定性，不宜直接用于真实资金交易。
-
-- **GitHub**：[TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以 TradingAgents 等高关注度开源项目建立了较强的社区影响力，是新兴 AI 交易智能领域的活跃组织。
-**技术栈偏好**：以 Python 为主，偏好结合大语言模型、多智能体协作与量化交易系统进行研发。
-**核心领域**：主要聚焦 AI 驱动的金融交易分析、量化研究与交易决策智能化。
-
----
-
-### ✨ liquidslr/system-design-notes (17554★)
-
-> **一句话**：将《System Design Interview》两卷中的系统设计题拆成 28 个可逐章阅读的 Markdown 笔记，覆盖从限流、分布式 ID 到支付、对象存储和证券交易所的设计思路。
-
-- **它是什么**：这是围绕 Alex Xu《System Design Interview - An Insider's Guide》Vol.1 与 Vol.2 整理的学习笔记仓库，不提供可运行的软件或 SDK。内容按系统设计主题分章组织，包括容量估算、设计面试框架、KV 存储、消息队列、地图、酒店预订、S3 类对象存储、数字钱包等，并为部分主题补充 Dynamo、Bigtable、Snowflake、Discord、Netflix 等外部资料。
-- **能解决什么痛点**：准备系统设计面试时，读者无需在书籍章节、论文和工程博客之间反复跳转，可以按题目快速定位相关知识点。面对“如何设计限流器、聊天系统、支付系统或实时排行榜”这类开放题，也能用章节目录建立复习路径和答题框架。
-- **适合谁用**：准备中高级后端、分布式系统或架构岗位面试的工程师；需要系统补齐高并发服务、存储、消息和一致性基础的后端开发者。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：面试前按“容量估算→设计框架→具体系统题”顺序制定复习清单；设计内部通知、聊天、搜索联想或指标告警服务时，用对应章节梳理组件与容量问题；团队技术分享中，将一致性哈希、分布式 ID、对象存储等章节及其附带论文作为讨论材料。
-- **技术看点**：项目的价值在于以真实互联网系统题串联分布式设计中的核心权衡，而非提供统一实现。补充资源覆盖 Dynamo、Cassandra、Bigtable、Snowflake、Google Maglev 等经典资料，适合从面试模型继续追溯到工程原理。
-- **近期动向与发展方向**：2026 年 4 月集中新增第 17 至 28 章，扩展重点从基础系统设计题延伸到消息队列、监控告警、广告聚合、预订、邮件、对象存储、支付、数字钱包和证券交易等业务系统。此后提交频率明显降低，最近两次更新主要是 README 与文档措辞修正；贡献者数量为 4，近期可见外部贡献以修复拼写错误为主，项目当前更接近内容沉淀与维护阶段。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：内容明确标注为持续完善中，且以书籍笔记为定位，不能替代原书、官方文档或生产架构评审。仓库没有代码语言标识，也未提供安装、运行、测试或完整索引式学习指引；创建时间较新但星标较高，开放 Issue 仅 5 个，维护负担较小，不过近期更新以轻量文档维护为主。元数据中的更新时间为 2026-09-09，属于未来日期，需以 GitHub 实际页面为准。
-
-- **GitHub**：[liquidslr/system-design-notes](https://github.com/liquidslr/system-design-notes)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：凭借近 3 万星的公司向算法题库与 1.7 万星的系统设计笔记，成为技术面试准备和工程知识沉淀领域具有广泛影响力的开发者。
-**技术栈偏好**：以 JavaScript 和 Python 为主，结合 AWS 背景，偏好算法实现、开发者工具与可复用的工程学习资源。
-**核心领域**：主要聚焦算法与编码面试、系统设计、分布式系统及机器学习相关工程实践。
-
----
-
-### ✨ openai/plugins (5572★)
-
-> **一句话**：这个仓库把一批可直接参考的 Codex 插件样例整理成了统一的插件目录，外层还有市场配置文件把它们分发到默认市场和 API key 用户市场里。
-
-- **它是什么**：这是一个面向 Codex 的插件样例合集，不是单一应用。每个插件放在 `plugins//` 下，至少包含 `.codex-plugin/plugin.json` 清单，还可以带上 `skills/`、`.app.json`、`.mcp.json`、`agents/`、`commands/`、`hooks.json`、`assets/` 等配套内容。仓库里还维护了 `.agents/plugins/marketplace.json` 和 `.agents/plugins/api_marketplace.json`，说明它同时承担了插件样例库和市场编排层的角色。
-- **能解决什么痛点**：一是避免团队从零拼接插件目录结构、清单文件和辅助资源，直接照着仓库里的成熟样例做；二是把不同能力面统一进一个可分发的市场配置里，减少手工维护多个入口、多个版本的混乱。
-- **适合谁用**：做 Codex 插件或市场集成的工程师，尤其是需要同时维护 manifest、skills、MCP、App 配置的开发者；以及想快速参考 Figma、Notion、Expo、Netlify 这类真实插件组织方式的团队。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：内部要搭一个 Codex 插件市场时，直接参考它的目录和市场配置拆分方式；为某个产品线编写插件模板时，借鉴 `plugins//` 的清单与资源组织；给设计、知识管理、移动端、部署等不同工作流做插件包时，复用仓库里的 richer examples。
-- **技术看点**：这个仓库的核心不是运行时逻辑，而是“清单驱动的插件打包与分发”。它把插件能力拆成 manifest、skills、MCP、命令、钩子和资产几个层面，再通过市场 JSON 做统一编排，适合大规模维护和按场景投放。
-- **近期动向与发展方向**：最近 20 条提交几乎都围绕“市场整理、插件同步、资源补全、集成接入”展开，比如补回 curated plugins、增加远程 marketplace integrations、合并 CrowdStrike/Google Drive/DigitalOcean/Figma 等插件资源。整体看，项目在持续做目录维护和市场扩展，而不是重构底层框架，活跃度也比较稳定。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：这是一个示例和市场编排仓库，不是开箱即用的完整产品；上手时要理解它的目录约定和清单格式。仓库星标和贡献者数量都不低，近期更新也频繁，说明项目在活跃演进，但仍会有清单、资源和市场结构上的调整风险；另外 README 没给快速开始步骤，文档对新手不算完整。
-
-- **GitHub**：[openai/plugins](https://github.com/openai/plugins)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：全球领先的人工智能组织，在开发者社区拥有极高关注度和广泛技术影响力
-**技术栈偏好**：以 Python 和 Jupyter Notebook 为主，结合 Rust，聚焦机器学习、深度学习与高性能 AI 工程
-**核心领域**：主要聚焦生成式人工智能、语音识别、计算机视觉及 AI 开发工具生态
-
----
-
 ### ✨ freestylefly/awesome-gpt-image-2 (29679★)
 
 > **一句话**：把 544 个 GPT-Image2 图片案例拆解成可复制的结构化提示词、工业级模板和 Agent Skill，用户可以按风格或场景浏览、复制并继续生成。
@@ -291,27 +260,135 @@
 
 ---
 
-### ✨ rohitg00/ai-engineering-from-scratch (53569★)
+### ✨ armory3d/armorpaint (4257★)
 
-> **一句话**：把 AI 工程从线性代数、Tokenizer、Attention 到 Agent、MCP 的完整路线拆成 523 节可运行课程，让学习者边推导、边写代码、边留下可复现实验产物。
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：这是一个面向 AI 工程学习的开源课程仓库，包含 20 个阶段、523 节课，覆盖 Python、TypeScript、Rust、Julia 等实现路线。它不是只给概念文章，而是要求每节课都按“读懂问题、推导数学、写代码、运行命令、保留产物”的方式完成，最终产出 prompt、skill、agent、MCP server 等可复用成果。
-- **能解决什么痛点**：很多人会拼装聊天机器人或 Agent Demo，但说不清 loss curve、attention、tool calling 背后的机制；这个项目用从基础数学到生产 LLM 应用的连续路径补齐中间断层。另一个痛点是 AI 学习资料过于碎片化，它把课程、代码、学习路径、网站版本和多语言入口集中在同一个仓库里。
-- **适合谁用**：适合想从零系统补 AI 工程能力的 Python / 后端开发者，也适合已经会 Python、想深入 LLM 应用、Agent Engineering、MCP 或 Agent Skills 的工程师。团队做内部 AI 工程训练营时，也可以把它当作开放课程骨架。
-- **怎么上手**：`git clone https://github.com/rohitg00/ai-engineering-from-scratch.git && cd ai-engineering-from-scratch && python3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner`
-- **可以用在哪些场景**：用于新人从开发环境、线性代数、机器学习一路补到 LLM 和 Agent 的系统学习；用于团队内部搭建 AI Engineering 培训路线，要求学员每节课提交命令、退出码、输出和产物证据；用于专门学习 MCP、Agent Skills 或 coding agent 工作流时，按 README 中的 focused path 路线推进。
-- **技术看点**：项目强调“从原始数学和手写实现开始”，在引入 PyTorch 等框架前先解释底层机制，适合想理解原理而不是只调用 API 的开发者。README 还提供 skill-capable coding agent 的学习入口，支持通过 `npx skills add rohitg00/ai-engineering-from-scratch` 安装课程技能。
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-08-23 到 2026-09-07，活跃度很高。近期重点一方面是修复书籍导出质量，包括 PDF/EPUB 的长代码行、URL、literal token 保留和构建失败检测；另一方面持续扩展课程站点、学习路径、Agent Skills、MCP 课程和响应式体验，说明项目正在从“课程仓库”向“课程网站 + Agent 辅助学习系统”演进。
-- **同类对比**：README 没有明确列出竞品或对标项目。它比较突出的差异是课程体量大、强调每课产出可运行 artifact，并把 MCP、Agent Skills、coding agent 使用路线纳入同一套课程。
-- **注意事项**：项目创建于 2026-03-18，到 2026-09-09 已有 53,569 stars 和 9,366 forks，增长很快，但也意味着内容仍在快速迭代。当前 open issues 为 105，近期提交里多次修复站点、书籍导出和课程路径问题，使用者应预期文档、路径或构建流程还可能继续调整；另外 523 节、约 342 小时的体量较大，不适合只想快速复制一个现成 Agent 模板的人。
+- **它是什么**：Graphics Creation Tools
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch)
+- **GitHub**：[armory3d/armorpaint](https://github.com/armory3d/armorpaint)
+
+
+---
+
+### ✨ diegosouzapw/OmniRoute (20640★)
+
+> **一句话**：把 Claude Code、Codex、Cursor、Cline、Copilot 等 AI 编程客户端统一接到本地一个 `/v1` 端点，再自动在数百个模型和供应商之间切换、压缩上下文、避开额度耗尽。
+
+- **它是什么**：OmniRoute 是一个 MIT 许可的 AI 网关，用 TypeScript 构建，主打“一个端点接入多家模型服务”。README 中强调它支持 268+ AI providers、500+ models，并兼容 Claude、GPT、Gemini、Kimi、GLM、DeepSeek 等模型生态。它还提供 Dashboard、CLI、MCP/A2A、多模态、Desktop/PWA，以及面向配额和成本的自动路由能力。
+
+- **能解决什么痛点**：开发者同时使用 Claude Code、Cursor、Cline、Copilot 等工具时，常会遇到每个工具各配一套 API Key、模型、限额和账单的问题，OmniRoute 试图把这些入口收敛成一个本地网关。另一个核心痛点是免费额度、订阅额度或低价模型的切换成本高，项目通过 quota-aware auto-fallback 和 combo 路由，在额度耗尽或供应商故障时自动切到下一个可用模型。
+
+- **适合谁用**：适合重度使用 AI 编程工具的个人开发者，尤其是同时使用 Claude Code、Codex、Cursor、Cline、Copilot 的用户。也适合需要把多个 LLM Provider 统一接入团队工作流的工程团队，例如内部开发平台、AI Coding Agent 平台或模型成本管控场景。
+
+- **怎么上手**：文档未提供快速上手示例。
+
+- **可以用在哪些场景**：可以把本地 AI 编程工具统一配置到 `http://localhost:20128/v1`，减少每个 IDE 或 CLI 单独维护模型配置的工作。可以用在多供应商兜底路由中，例如 Claude 额度用尽后自动切到 API Key、低价模型或免费模型。也可以用于长上下文、工具调用较多的编码会话，通过 RTK + Caveman 压缩降低 token 消耗。
+
+- **技术看点**：项目的核心设计不是单纯代理请求，而是围绕“路由策略、配额状态、成本、可用性和压缩”做统一调度；README 提到 18 种 routing strategies、circuit breakers、key cooldown、model lockout 等机制。压缩层 RTK + Caveman 是重要卖点，README 宣称可节省 15-95% tokens，并在 Dashboard 中展示免费额度和用量。
+
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-07-20，活跃度很高，但以修复和稳定性改进为主。近期重点包括 OAuth/OIDC 认证、GitHub Enterprise Copilot 兼容、Dashboard 类型检查和布局修复、Windows CLI 检测、Docker native binary、SQLite 启动失败日志、SSE/tool_use 兼容、压缩逻辑和 provider connection 缓存。可以看出项目正在从功能扩张转向打磨多平台、多 Provider、多认证方式下的可靠性。
+
+- **同类对比**：README 没有直接点名竞品。它明显对标的是 OpenAI-compatible gateway、LLM Router、AI API 聚合网关这类方案，但差异点在于更强调 AI 编程工具兼容、免费额度聚合、自动 fallback 和 token 压缩，而不是只做 API 转发。
+
+- **注意事项**：项目创建于 2026-02-13，增长很快，Stars 已超过 2 万，但从 207 个 open issues 和近期大量 fix 提交看，仍处在快速迭代期，生产使用前需要关注版本稳定性和升级风险。README 信息量很大，营销表达较强，涉及“免费 tokens”“节省比例”“供应商数量”等数据时，建议以实际部署后的 Dashboard 和文档方法论为准。多 Provider、OAuth、MITM host list、TLS native binary、SQLite 等组件交织较多，上手和排障成本可能高于普通单 Provider SDK。
+
+- **GitHub**：[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：高影响力的开发者布道者与开源维护者，在 AI 工程、云原生和 DevRel 社区拥有广泛影响力。
-**技术栈偏好**：以 Python、TypeScript 和 JavaScript 为主，偏好 AI 应用、智能体、开发者工具与自动化工作流技术。
-**核心领域**：主要聚焦 AI 工程与智能体开发，同时覆盖云原生、DevOps 和开发者生产力。
+**技术影响力**：在 GitHub 上具有较高可见度，依托单个超高星项目在特定技术社区中形成了明显影响力。
+**技术栈偏好**：以 TypeScript 为核心，兼用 HTML 与 Python，整体偏向前端/全栈应用与工具化项目开发。
+**核心领域**：主要聚焦于面向 Omni 生态的应用、远程协作与技能扩展类工具。
+
+---
+
+### ✨ JustVugg/colibri (27297★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[JustVugg/colibri](https://github.com/JustVugg/colibri)
+
+
+---
+
+### ✨ THU-MAIC/OpenMAIC (22476★)
+
+> **一句话**：它把“输入一个主题/资料，几分钟内生成一整套可互动课堂”这件事做成了可部署的产品，产出的不只是课件，还包括 AI 老师、AI 同学、白板讲解、测验和交互式演示。
+
+- **它是什么**：OpenMAIC 全称是 Open Multi-Agent Interactive Classroom，核心是把文档、音频、视频或一个话题，交给多智能体协作生成一套完整课堂。它不是单纯的 PPT 生成器，而是同时覆盖幻灯片、测验、互动 HTML、PBL、白板、语音讲解和实时讨论的课堂工作台。README 里也明确提到支持从 Feishu、Slack、Telegram 等消息应用直接触发生成。
+- **能解决什么痛点**：一是把“先搜资料、再写提纲、再做课件、再补互动题”的重复工作压缩到一次输入；二是让课程内容不只停留在静态幻灯片，减少教师或培训人员手工拼装测验、演示和讲解环节的负担。
+- **适合谁用**：高校教师、培训讲师、教研人员，以及需要把资料快速整理成课堂内容的教育产品团队；也适合做内部知识培训、技术分享、入职培训的内容团队。
+- **怎么上手**：README 给出的最小方式是 `git clone https://github.com/THU-MAIC/OpenMAIC.git && cd OpenMAIC && pnpm install`，然后复制 `.env.example` 为 `.env.local`，至少配置一个 LLM provider 的 API Key。
+- **可以用在哪些场景**：把一篇技术文档快速改造成带讲解、测验和白板演示的内部培训课；把课程大纲连同参考材料直接生成可交互的课堂页面；通过 OpenClaw 在飞书、Slack、Telegram 里直接发起课程生成任务。
+- **技术看点**：项目采用 Next.js、React、TypeScript、LangGraph 和 Tailwind CSS，路线是明显的 Web 应用 + 多智能体编排。近期还强化了 provider-neutral 设计、服务端持久化和可插拔存储，说明它在向可部署、可维护的生产形态推进。
+- **近期动向与发展方向**：最近 20 条提交里，大头集中在稳定性、性能和运行时修复，例如课堂加载加速、存储帧裁剪、工作区恢复内存、PostgreSQL 死锁修复、导入 `.pptx` 的大小和超时限制、以及 provider 兼容性和模型路由校验。与此同时也在继续加功能，比如事实核查技能、单页 PPT 引用、白板破坏性操作、以及 1.0.0 发布，整体看是“边补强底座，边扩展课堂能力”的阶段，活跃度很高。
+- **同类对比**：README 没有直接拿它对标某个具体竞品；从定位上看，它更像“多智能体课堂生成器”，而不是传统课件工具或单纯的聊天式教学助手。
+- **注意事项**：项目已经很活跃，但 open issues 还有 207 个，说明功能推进快，边界和细节还在持续打磨。上手门槛不低，至少要配置一个模型供应商，若要本地化或多 provider 组合，还要处理环境变量、服务端配置和存储后端；另外 1.0.0 刚发布不久，版本演进和兼容性仍有一定变动风险。
+
+- **GitHub**：[THU-MAIC/OpenMAIC](https://github.com/THU-MAIC/OpenMAIC)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：MAIC 是一个成立时间较短但凭借 OpenMAIC 获得高关注度的新兴技术组织，已在 AI 教育与智能体相关开源社区形成显著影响力。
+**技术栈偏好**：其技术栈以 Python、TypeScript 和 JavaScript 为主，兼顾后端智能能力、前端交互界面与 Web 应用开发。
+**核心领域**：主要聚焦 AI 时代教育、智能体平台与相关开源基础设施建设。
+
+---
+
+### ✨ nashsu/llm_wiki (17835★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically. Instead of traditional RAG (retrieve-and-answer from scratch every time), the LLM incrementally builds and maintains a persistent wiki from your sources。
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[nashsu/llm_wiki](https://github.com/nashsu/llm_wiki)
+
+
+---
+
+### ✨ vercel-labs/skills (30902★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：The open agent skills tool - npx skills
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[vercel-labs/skills](https://github.com/vercel-labs/skills)
+
 
 ---
 
@@ -347,35 +424,3 @@
 **技术影响力**：独立开发者，在开源文件传输、桌面应用与 AI 工具领域具备较高社区影响力。
 **技术栈偏好**：偏好使用 Python 构建后端与 AI 工具，使用 TypeScript 开发桌面及前端应用。
 **核心领域**：主要聚焦文件共享、桌面工具、AI 应用与效率工具开发。
-
----
-
-### ✨ affaan-m/ECC (250047★)
-
-> **一句话**：ECC 把 Claude Code、Codex、Cursor 等 AI 编程助手接入一套固定工程流程，让它们按“计划、测试、实现、审查、验证、记忆、改进”的节奏写代码。
-
-- **它是什么**：ECC 是面向 AI 编程代理的工程化运行框架，核心不是单个代码生成能力，而是给代理补上工作流、技能库、记忆、规则、钩子和安全扫描。README 中提到它包含 68 个 agents、286 个 skills、94 个 legacy command shims，并支持 Claude Code、Codex、OpenCode、Cursor、Gemini、Zed、GitHub Copilot 等多种 harness，其中 Claude Code 支持最完整。
-
-- **能解决什么痛点**：当开发者反复要求 AI “先规划、写测试、改代码、再自查”时，提示词容易散落在每次会话里，ECC 试图把这些流程固化为可复用的技能和钩子。另一个痛点是多种 AI 编程工具之间规则不一致，ECC 提供统一的安装、同步和安全检查路径，减少每个工具单独配置的成本。
-
-- **适合谁用**：适合重度使用 Claude Code 或 Codex 做日常开发、代码审查、修复构建问题的工程师。也适合团队内想统一 AI 编程助手行为规范、安全边界和项目记忆的技术负责人。
-
-- **怎么上手**：`npx ecc-universal setup`
-
-- **可以用在哪些场景**：用于给 Claude Code 安装统一的 agents、skills 和 hooks，让它在真实项目中按固定流程改代码。用于在 Codex、Kimi Code 等不同 harness 中同步相近的工程规则和工作习惯。用于在引入 AI agent 前扫描 prompts、hooks、MCP 配置、权限、密钥和 agent 文件，降低配置层面的安全风险。
-
-- **技术看点**：项目以 JavaScript / TypeScript 生态为主要入口，通过 `ecc-universal` npm 包提供跨 harness 的安装和引导配置。设计上把 agents、skills、commands、hooks、memory、rules、AgentShield 拆成不同能力层，方便按平台能力做适配，而不是假设所有 AI 编程工具功能完全一致。
-
-- **近期动向与发展方向**：最近 20 条提交主要集中在依赖更新、安全修复、CI 稳定性和安装路径加固，例如更新 `fast-uri`、固定 patched `@humanfs/node`、调整 Windows/macOS 测试超时和 hook runner 行为。8 月底发布了 signed 2.2.1 patch，并补充了 ito accept / MCP workflow 文档，说明近期重点偏向稳定性、供应链安全、安装可靠性和平台集成细节，而不是大规模新增功能。提交者中既有维护者也有 dependabot 和外部贡献者，活跃度较高。
-
-- **同类对比**：README 没有明确列出直接竞品。它更像是叠加在 Claude Code、Codex、Cursor、OpenCode 等工具之上的“代理工程流程层”，而不是替代这些 AI 编程助手本身。
-
-- **注意事项**：README 明确提醒只从 GitHub、官方 npm 包、GitHub App、插件 slug 和官网安装，说明该项目存在第三方镜像或重上传带来的供应链风险。项目创建时间为 2026-01-18，但 Star、Fork 和贡献者数量增长非常快，热度高的同时也要关注 issue 数量已有 157 个、平台支持矩阵存在功能差异，不能默认所有 harness 都有同等能力。安装 Claude Code 路径要求 Node.js 18+、Git、Claude Code 2.1+，并且 README 特别强调同一 harness 只选一种安装方式，避免重复叠加配置。
-
-- **GitHub**：[affaan-m/ECC](https://github.com/affaan-m/ECC)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Affaan Mustafa 是高关注度 AI/Agentic 方向开发者，凭借 ECC 等高星项目在开源智能体工具生态中具备显著影响力。
-**技术栈偏好**：技术栈以 Python、JavaScript、TypeScript 为主，偏向构建 AI Agent 框架、工具链与安全/协作型开发基础设施。
-**核心领域**：主要聚焦 Agentic Compute、AI 智能体编排、开源评测/元工具链以及智能体安全防护。
