@@ -1,5 +1,5 @@
-## 今日热点：GitHub 热门趋势
-今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
+## 今日热点：AI Agent 技能化与本地智能基础设施
+今日 GitHub 热点明显围绕 AI Agent 的工程化落地展开：从让编码代理更高效表达、团队 AI 原生化、开放技能框架与可安装插件，到多模型/多供应商网关、本地 MoE 推理、桌面知识库、沉浸式多智能体课堂，再延伸到真实地理空间情报模拟、AI 交易代理、系统设计笔记、图表设计、图像提示词案例库和图形创作工具，整体呈现出“能力可编排、模型可切换、数据可本地化、场景更垂直”的技术主线。具体项目摘要如下：
 
 ### ✨ ayghri/i-have-adhd (28244★)
 
@@ -98,22 +98,38 @@
 
 ---
 
-### ✨ alsk1992/CloddsBot (1341★)
+### ✨ alsk1992/CloddsBot (1517★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：CloddsBot 把 Polymarket、Kalshi、币安、Hyperliquid、Solana DEX 等 1000+ 个市场接入一个由 Claude 驱动的对话式交易终端，可自动扫描机会、执行交易并进行风险控制。
 
-- **它是什么**：Open Source AI trading agent that operates autonomously across 1000+ markets - Polymarket, Kalshi, Binance, Hyperliquid, Solana DEXs, 5 EVM chains. Scans    for edge, executes instantly, manages risk while you sleep. Agent commerce protocol for machine-to-machine payments. Self-hosted. Built on Claude.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是一个基于 TypeScript 和 Claude 的自托管 AI 交易代理，支持预测市场、现货、永续合约、Solana 与 EVM DeFi、代币发行及 Bittensor 挖矿。用户可以通过 WebChat、CLI 或 Telegram、Discord 等 21 个消息平台下达指令，由代理调用 119+ 个技能完成行情分析、下单、持仓管理、套利和自动化任务。
+
+- **能解决什么痛点**：它将多个交易所、预测市场和链上协议统一到一个接口中，减少用户分别维护账户、行情 API、交易命令和持仓记录的成本。对于需要持续监控市场的场景，还提供止盈止损、熔断、VaR/CVaR、压力测试、每日亏损限制和 kill switch，避免完全依赖人工盯盘。
+
+- **适合谁用**：适合熟悉加密资产、预测市场和链上交易，并希望自行托管交易代理的个人交易者或量化开发者。也适合需要通过 Claude Desktop、Claude Code 或 MCP 将交易、行情和链上操作接入其他 AI 工作流的开发者。
+
+- **怎么上手**：README 提供的最简方式是 `npm install -g clodds --loglevel=error && clodds onboard`，完成 API Key、消息渠道配置后，WebChat 默认运行在 `http://localhost:18789/webchat`。
+
+- **可以用在哪些场景**：
+  - 同时监控 Polymarket 的 BTC/ETH/SOL 短周期预测市场和 Binance、Hyperliquid 永续合约，并通过预设策略执行交易。
+  - 管理 Solana 上 Jupiter、Raydium、Orca、Kamino、Pump.fun 等协议的交易、借贷、代币安全检查和持仓。
+  - 搭建面向 AI Agent 的交易或数据服务，通过 x402 使用 USDC 进行机器间支付，并用 MCP 暴露交易技能给 Claude Desktop 或 Claude Code。
+
+- **技术看点**：项目采用本地 SQLite、LanceDB 和 PostgreSQL 组合，分别覆盖交易记录、语义记忆、混合检索和分析数据；同时通过统一风险引擎、交易决策审计日志及 SHA-256 完整性哈希记录自动化交易过程。其插件化 Skills 和 MCP Server 设计，使 119+ 个交易与数据能力可以被对话式代理按需调用。
+
+- **近期动向与发展方向**：最近提交集中在安全和兼容性修复，而不是新增大功能，包括恢复安全 CI、修复已退役的 Anthropic 模型默认配置、改进 Discord 环境变量读取，以及处理 browserslist 高危安全公告。项目还连续修复了 Pump.fun 毕业检测、Drift 订单过滤、Kamino 借贷、Raydium CLMM 和 Orca 等链上适配问题，说明当前重点是提高多协议交易链路的可靠性。9 月 1 日至 10 日持续有提交和合并请求，但贡献者数量仅 5 人，维护仍较集中。
+
+- **同类对比**：README 未明确提到直接竞品。相较于只覆盖单一交易所的量化机器人或只提供聊天交互的 AI 助手，CloddsBot 的明显差异是同时覆盖预测市场、中心化交易所、永续 DEX、多个公链协议和 Agent 支付，但这也带来了更高的配置和维护复杂度。
+
+- **注意事项**：项目创建于 2026 年 1 月，当前有 30 个 Open Issues、仅 5 名贡献者，虽然近期更新频繁，但多协议适配仍在快速修复阶段，不宜直接视为成熟的无人值守交易系统。运行需要 Node.js 22+、Claude 或其他模型凭据，以及各交易所和链上钱包权限；涉及杠杆、自动下单、代币发行和跨链操作时，密钥保管、权限隔离、资金限额和策略回测都必须由使用者自行负责。README 功能覆盖面很广，但实际部署仍需逐项核对 API、网络、地区限制和协议状态，升级时也应关注模型默认值及交易适配器的破坏性变化。
 
 - **GitHub**：[alsk1992/CloddsBot](https://github.com/alsk1992/CloddsBot)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：凭借千星级项目 CloddsBot，AL 属于具备单点爆款影响力的新兴个人开发者。
+**技术栈偏好**：主要使用 TypeScript 与 Python，并对 Rust、自动化和交易系统方向有明显偏好。
+**核心领域**：主要聚焦自动化工具、AI Agent 与高频交易相关应用。
 
 ---
 
@@ -153,30 +169,27 @@
 
 ---
 
-### ✨ AlexsJones/llmfit (32109★)
+### ✨ AlexsJones/llmfit (35652★)
 
-> **一句话**：在终端里自动识别本机 CPU、内存和 GPU/VRAM，然后把上百个本地大模型按“能不能跑、跑得快不快、质量如何”排好序。
+> **一句话**：输入一条命令，它会扫出你机器的 CPU、内存和显卡配置，并告诉你哪些开源大模型能跑、跑得是否舒服、该选哪种量化版本。
 
-- **它是什么**：llmfit 是一个用 Rust 编写的本地 LLM 适配与推荐项目，核心是根据机器硬件配置为不同模型打分。它会检测 RAM、CPU、GPU/VRAM 和后端环境，并从内置模型目录中计算内存适配、速度估计、模型质量和上下文长度等指标。默认提供交互式 TUI，也支持传统 CLI 输出 JSON，方便脚本、自动化流程或 agent 调用。
-- **能解决什么痛点**：本地跑模型时，开发者经常不知道某个 7B、14B、30B 或 MoE 模型在自己的显卡和内存上是否能稳定运行，llmfit 可以先给出可解释的适配结果，减少反复下载和试错。另一个痛点是不同运行时后端信息分散，它把 Ollama、llama.cpp、MLX、Docker Model Runner、LM Studio 等本地 provider 纳入同一套推荐和验证流程。
-- **适合谁用**：适合经常在个人工作站、Mac、游戏显卡机器或多 GPU 环境上跑本地 LLM 的开发者。也适合需要把模型推荐结果接入脚本、内部工具或自动化环境的 AI 工程师和本地推理平台维护者。
-- **怎么上手**：`brew install AlexsJones/llmfit/llmfit && llmfit`
-- **可以用在哪些场景**：
-  - 给一台新机器选本地编码模型，先比较 Qwen、Llama、Mistral 等模型在当前显存和内存下的可运行性。
-  - 在团队内部整理“哪些硬件适合跑哪些模型”的推荐表，用 `llmfit recommend --json` 输出给脚本或看板消费。
-  - 对已经部署在 Ollama、llama.cpp、MLX 等后端上的模型做基准测试，并把真实 tok/s 数据回馈到社区 benchmark。
-- **技术看点**：项目采用 Rust 实现命令行和 TUI，适合做跨平台单文件分发与硬件探测类工具。模型评分不是只看参数量，而是结合内存适配、带宽估算、动态量化、MoE 架构、多 GPU 和社区实测数据，`llmfit info` 还能展示估算依据和验证命令。
-- **近期动向与发展方向**：最近提交非常活跃，8 月 17 日集中发布了 1.1.10，并进行大量依赖更新，说明维护节奏较快。功能上近期加入 RamaLama runtime discovery、Qwen3.8 系列模型和 Qwen 生成解析修复，同时持续合入 AMD Radeon、Apple M4 Pro、GTX 1070 等社区 benchmark 数据，方向明显是扩大模型目录、增强运行时发现能力，并用真实硬件数据修正估算结果。
-- **同类对比**：README 明确提到 llm-checker。llm-checker 更偏向通过 Ollama 直接拉取并实测模型，适合已有 Ollama 环境的人；llmfit 更偏向先基于硬件规格和模型目录做大范围适配评估，并且覆盖 MoE、多 provider、社区 benchmark 和可解释估算。
-- **注意事项**：项目创建于 2026 年 2 月，时间不长但已有 3.2 万 Star、94 位贡献者和持续提交，热度与活跃度都很高；同时还有 61 个 open issues，说明快速迭代中仍可能存在硬件识别、provider 兼容或模型数据准确性问题。文档覆盖安装、TUI、CLI、benchmark、provider 和自定义模型，质量较完整；但依赖模型目录和估算公式，最终性能仍建议用 `llmfit bench` 在目标机器上验证。
+- **它是什么**：llmfit 是用 Rust 写的本地 LLM 适配与推荐项目，会检测 CPU、系统内存、GPU/VRAM、Apple Silicon、CUDA、ROCm、Intel OneAPI 等硬件信息，再根据模型参数量、上下文长度和 GGUF/AWQ/GPTQ/EXL2 等量化格式估算可运行性。它提供默认 TUI、传统 CLI、Web Dashboard 和 REST API，也能对接 Ollama、llama.cpp、MLX、Docker Model Runner、LM Studio 等本地运行时。
+- **能解决什么痛点**：本地跑大模型前，开发者常常不知道“这张显卡到底能不能跑某个 7B/14B/70B 模型、该选 Q4 还是 Q8、会不会爆显存”；llmfit 把这些判断前置成硬件检测、内存占用估算、速度评分和推荐列表。它还支持把真实 benchmark 结果提交回社区，减少只靠理论估算导致的偏差。
+- **适合谁用**：适合在个人电脑、工作站或小型服务器上部署本地 LLM 的开发者、AI 工具爱好者和运维工程师；也适合需要把模型推荐结果接入自动化脚本、内部面板或部署管线的团队。
+- **怎么上手**：macOS / Linux 可用：`brew install AlexsJones/llmfit/llmfit && llmfit`；Windows 可用：`scoop install llmfit`。
+- **可以用在哪些场景**：本地机器上挑选能稳定运行的 Qwen、Llama、Mistral 等模型量化版本；给团队机器做硬件盘点后生成可运行模型清单；在 Web UI/API 中把推荐结果接入内部模型下载、启动或部署流程。
+- **技术看点**：核心设计不是简单列模型清单，而是把硬件探测、模型元数据、量化格式、上下文长度和内存带宽估算组合成 fit / speed / quality / context 评分。社区 benchmark 结果会进入后续 release，让相同硬件用户优先看到真实 tok/s 数据，而不是纯估算。
+- **近期动向与发展方向**：最近一周提交非常密集，9 月 3 日到 9 月 10 日连续发布了 1.1.13、1.1.14、1.1.15，重点在修 TUI 渲染、benchmark 数据格式、Docker 多平台构建、Linux APU 显存识别和 provider 识别。多条提交来自社区硬件 benchmark，包括 RTX 3080、RTX 5070 Ti、GTX 1650 Max-Q、Intel Iris Xe、NVIDIA GB10 等，说明项目正在从“估算推荐”继续往“社区实测数据库”演进。
+- **同类对比**：README 明确提到 llm-checker，后者是 Node.js CLI，更偏向通过 Ollama 实际拉起模型做测试；llmfit 则更强调先基于硬件规格做大范围模型适配推荐，并支持 MoE 架构、更多本地 runtime provider 和社区 benchmark 回流。
+- **注意事项**：项目创建于 2026-02-15，还比较年轻，但 Stars、贡献者数量和近期 release 频率都很高；64 个 Open Issues 说明仍有不少硬件兼容、provider 识别或平台边界问题在迭代。文档覆盖安装、TUI、CLI、benchmark、provider、平台支持等内容，质量较完整；但由于模型目录、硬件数据库和本地推理生态变化快，升级版本时需要留意推荐逻辑或 provider 检测行为的变化。
 
 - **GitHub**：[AlexsJones/llmfit](https://github.com/AlexsJones/llmfit)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Alex Jones 是在 AI 基础设施与开发者工具领域具有较高社区影响力的资深工程师，代表项目 llmfit 获得大量关注。
-**技术栈偏好**：主要偏好 Rust，并辅以 Makefile 与 JavaScript，技术方向集中在高性能后端、LLM 工具链与基础设施工程。
-**核心领域**：核心聚焦于智能体时代的 AI/LLM 基础设施、模型服务与云原生开发工具。
+**技术影响力**：凭借高星 Rust 项目和较多关注者，属于 AI 基础设施与开发工具方向具有明显社区影响力的独立开发者。
+**技术栈偏好**：明显偏好 Rust 构建高性能系统，同时结合 JavaScript、Makefile 与 Kubernetes/GitOps 工程化能力。
+**核心领域**：主要聚焦 LLM/Agent 时代的基础设施、模型服务、工作流与云原生部署体系。
 
 ---
 
@@ -260,73 +273,86 @@
 
 ---
 
-### ✨ armory3d/armorpaint (4257★)
+### ✨ armory3d/armorpaint (4349★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：在 3D 模型表面直接绘制颜色、材质和细节，并实时预览 PBR 纹理效果的开源纹理制作软件。
 
-- **它是什么**：Graphics Creation Tools
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：ArmorPaint 面向 3D PBR 纹理绘制，可以在模型表面制作颜色、粗糙度、金属度等材质通道，并通过 3D 视图查看最终效果。项目仓库主要服务开发者，支持 Windows、Linux、macOS、Android、iOS 和 WASM 等构建目标。
+
+- **能解决什么痛点**：它把纹理绘制和材质预览放在同一个工作流中，减少在图像编辑器、3D 软件和渲染器之间反复导入导出的成本。对于需要快速验证光照、材质参数和贴图变化的场景，也能避免仅在二维贴图上绘制导致的比例和接缝判断偏差。
+
+- **适合谁用**：适合制作游戏资产、影视资产或实时渲染模型的 3D 美术人员，以及需要将纹理绘制能力集成到自有工具链中的图形程序开发者。需要从源码构建的用户还应熟悉 C/C++ 工具链及各平台原生构建环境。
+
+- **怎么上手**：Linux x64 可执行 `git clone https://github.com/armory3d/armorpaint && cd armorpaint/paint && ../base/make --run`；Windows、macOS 等平台则需使用对应的 Visual Studio、Xcode 或 Android Studio 打开生成的工程。
+
+- **可以用在哪些场景**：
+  - 为游戏中的角色、武器、场景道具制作金属、木材、皮革等 PBR 贴图。
+  - 在实时渲染项目中快速调整模型材质，并通过光线追踪或超采样效果检查最终观感。
+  - 将 ArmorPaint 编译为 WASM 或移动端版本，用于定制化的网页、移动设备或跨平台图形工具链。
+
+- **技术看点**：项目以 C 为主要语言，配套自有的 `base`、`minic` 和 `iron` 等底层代码与构建流程，覆盖桌面端、移动端及 WASM。近期提交持续涉及 Vulkan、D3D12、光线追踪着色器、跨平台异步进程执行和 C23 `#embed` 支持，说明项目重点仍在底层渲染能力和多平台适配。
+
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026 年 9 月 3 日至 9 日，开发较为活跃，但主要由 `luboslenco` 提交。近期工作以修复和底层稳定性改进为主，包括光线追踪输出、Vulkan 纹理标记、macOS/Linux 异步执行、纹理变化重绘、超采样配置和指针类型等问题，同时加入了控制台模型的 Codex 支持，暂未看到大规模功能重构。
+
+- **同类对比**：README 未明确列出竞品或同类项目，暂无明显同类对标。
+
+- **注意事项**：仓库明确说明开发版可能不稳定，面向开发者的源码仓库与官方分发二进制并非同一使用门槛，官方二进制需要付费。源码构建需要按平台安装编译器和依赖，Linux 还需参考额外依赖文档；跨平台底层改动可能带来构建或渲染差异。项目创建于 2017 年，当前有 99 个开放 Issue、31 名贡献者，近期更新频繁但提交高度集中于单一核心维护者，采用前应评估问题响应和长期维护风险。
 
 - **GitHub**：[armory3d/armorpaint](https://github.com/armory3d/armorpaint)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：凭借多个数千星级项目，Armory 3D 在开源图形创作与实时 3D 工具社区具备较强的垂直影响力。
+**技术栈偏好**：技术栈以 Haxe、C、C++ 为主，偏向高性能图形工具、渲染引擎与跨平台创作软件开发。
+**核心领域**：主要聚焦于 3D 图形创作、材质绘制、实时渲染与游戏/视觉内容制作工具链。
 
 ---
 
-### ✨ diegosouzapw/OmniRoute (20640★)
+### ✨ diegosouzapw/OmniRoute (64083★)
 
-> **一句话**：把 Claude Code、Codex、Cursor、Cline、Copilot 等 AI 编程客户端统一接到本地一个 `/v1` 端点，再自动在数百个模型和供应商之间切换、压缩上下文、避开额度耗尽。
+> **一句话**：把 Claude Code、Codex、Cursor、Cline、Copilot 等开发工具统一接到一个 AI 入口，再按额度、可用性和模型能力自动切到不同 AI 提供商。
 
-- **它是什么**：OmniRoute 是一个 MIT 许可的 AI 网关，用 TypeScript 构建，主打“一个端点接入多家模型服务”。README 中强调它支持 268+ AI providers、500+ models，并兼容 Claude、GPT、Gemini、Kimi、GLM、DeepSeek 等模型生态。它还提供 Dashboard、CLI、MCP/A2A、多模态、Desktop/PWA，以及面向配额和成本的自动路由能力。
-
-- **能解决什么痛点**：开发者同时使用 Claude Code、Cursor、Cline、Copilot 等工具时，常会遇到每个工具各配一套 API Key、模型、限额和账单的问题，OmniRoute 试图把这些入口收敛成一个本地网关。另一个核心痛点是免费额度、订阅额度或低价模型的切换成本高，项目通过 quota-aware auto-fallback 和 combo 路由，在额度耗尽或供应商故障时自动切到下一个可用模型。
-
-- **适合谁用**：适合重度使用 AI 编程工具的个人开发者，尤其是同时使用 Claude Code、Codex、Cursor、Cline、Copilot 的用户。也适合需要把多个 LLM Provider 统一接入团队工作流的工程团队，例如内部开发平台、AI Coding Agent 平台或模型成本管控场景。
-
+- **它是什么**：OmniRoute 是一个 MIT 协议的 AI Gateway，用 TypeScript 编写，主打“一个 endpoint 接入多家模型服务”。README 中强调它覆盖 352 个 AI providers、150+ 免费来源、1200+ 模型，并支持 Kimi、Claude、GPT、Gemini、GLM、DeepSeek、MiniMax 等模型生态。它还提供额度感知自动 fallback、免费额度看板、流式响应处理、MCP/A2A、Desktop/PWA 等能力。
+- **能解决什么痛点**：开发者手动接入多家 AI SDK 时，需要分别处理 API 格式、限流、余额、区域不可用和模型下线，OmniRoute 把这些差异收敛到统一入口。另一个核心痛点是免费额度管理：项目会汇总并去重不同 provider 的免费 token 池，避免开发者自己维护一堆配额表。
+- **适合谁用**：适合重度使用 Claude Code、Cursor、Codex、Cline、Copilot 等 AI 编程工具的开发者，希望把请求路由到更便宜或免费的模型服务。也适合搭建内部 AI 代理层的团队，用统一网关管理多模型接入、fallback 和用量监控。
 - **怎么上手**：文档未提供快速上手示例。
-
-- **可以用在哪些场景**：可以把本地 AI 编程工具统一配置到 `http://localhost:20128/v1`，减少每个 IDE 或 CLI 单独维护模型配置的工作。可以用在多供应商兜底路由中，例如 Claude 额度用尽后自动切到 API Key、低价模型或免费模型。也可以用于长上下文、工具调用较多的编码会话，通过 RTK + Caveman 压缩降低 token 消耗。
-
-- **技术看点**：项目的核心设计不是单纯代理请求，而是围绕“路由策略、配额状态、成本、可用性和压缩”做统一调度；README 提到 18 种 routing strategies、circuit breakers、key cooldown、model lockout 等机制。压缩层 RTK + Caveman 是重要卖点，README 宣称可节省 15-95% tokens，并在 Dashboard 中展示免费额度和用量。
-
-- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-07-20，活跃度很高，但以修复和稳定性改进为主。近期重点包括 OAuth/OIDC 认证、GitHub Enterprise Copilot 兼容、Dashboard 类型检查和布局修复、Windows CLI 检测、Docker native binary、SQLite 启动失败日志、SSE/tool_use 兼容、压缩逻辑和 provider connection 缓存。可以看出项目正在从功能扩张转向打磨多平台、多 Provider、多认证方式下的可靠性。
-
-- **同类对比**：README 没有直接点名竞品。它明显对标的是 OpenAI-compatible gateway、LLM Router、AI API 聚合网关这类方案，但差异点在于更强调 AI 编程工具兼容、免费额度聚合、自动 fallback 和 token 压缩，而不是只做 API 转发。
-
-- **注意事项**：项目创建于 2026-02-13，增长很快，Stars 已超过 2 万，但从 207 个 open issues 和近期大量 fix 提交看，仍处在快速迭代期，生产使用前需要关注版本稳定性和升级风险。README 信息量很大，营销表达较强，涉及“免费 tokens”“节省比例”“供应商数量”等数据时，建议以实际部署后的 Dashboard 和文档方法论为准。多 Provider、OAuth、MITM host list、TLS native binary、SQLite 等组件交织较多，上手和排障成本可能高于普通单 Provider SDK。
+- **可以用在哪些场景**：把 Cursor 或 Claude Code 的模型请求接到统一网关，在 Claude/GPT/Gemini/DeepSeek 等模型之间自动切换；为团队搭建内部 AI API 入口，统一管理多家 provider 的额度、失败重试和可用性；通过 RTK + Caveman 压缩在长上下文代码任务中减少 token 消耗。
+- **技术看点**：项目的核心设计点是“quota-aware routing + auto-fallback”，不仅按模型名称转发，还结合额度窗口、provider 状态和错误类型做调度。README 还重点宣传 RTK+Caveman 堆叠压缩，声称可节省 15–95% token，并把免费额度池的去重计算展示在 dashboard 中。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-09-10，说明项目维护非常活跃。近期重点不是单纯堆功能，而是在修稳定性和边界问题：包括 SSE/streaming 异常、队列超时、credential health、批量删除权限隔离、大 catalog 分页，以及 dashboard 可视化细节；同时也在推进 orchestration canvas 的 UI 重构和测试覆盖治理。
+- **同类对比**：README 没有明确点名竞品，但它明显对标“多模型统一代理 / AI Gateway”这类方案。差异点在于它把免费额度聚合、额度感知调度、开发工具兼容和 token 压缩包装成一个完整产品，而不只是做 OpenAI-compatible 转发。
+- **注意事项**：项目创建于 2026-02-13，但已经有 64083 stars、8978 forks、591 contributors 和 666 个 open issues，增长很快，也意味着需求和问题积压都不小。README 中 provider 数量存在 352/356 等不同口径，且免费额度说明写明会每两周重新审计、可能上下波动；依赖这类免费池做生产链路时，需要预留 provider 政策变化、限流和区域验证带来的不确定性。
 
 - **GitHub**：[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：在 GitHub 上具有较高可见度，依托单个超高星项目在特定技术社区中形成了明显影响力。
-**技术栈偏好**：以 TypeScript 为核心，兼用 HTML 与 Python，整体偏向前端/全栈应用与工具化项目开发。
-**核心领域**：主要聚焦于面向 Omni 生态的应用、远程协作与技能扩展类工具。
+**技术影响力**：开源 AI 网关 OmniRoute 的创建者与维护者，拥有较高社区关注度和广泛协作影响力。
+**技术栈偏好**：偏好 TypeScript，辅以 Python 与 HTML，聚焦 AI 工具、网关服务和开发者生态。
+**核心领域**：主要聚焦开放式 AI 基础设施、模型接入与 AI 开发工具。
 
 ---
 
-### ✨ JustVugg/colibri (27297★)
+### ✨ JustVugg/colibri (27386★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：把 744B 到 2.8T 参数级别的 MoE 大模型拆成“按需搬运的专家”，在本地消费级硬件上用 C 程序从磁盘、内存、显存分层流式推理。
 
-- **它是什么**：Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
+- **它是什么**：colibri 是一个纯 C、零运行时依赖的 MoE 推理引擎，核心思路不是把整个模型塞进显存，而是把 VRAM、RAM、NVMe 存储当成统一的推理层级。README 中展示它已支持 GLM、Kimi K3、DeepSeek V4 Flash、Qwen、OLMoE 等多个模型家族，并提供 `coli chat`、`coli serve`、`coli web` 作为统一入口。
+- **能解决什么痛点**：第一，开发者想在本地跑超大 MoE 模型时，常被“显存装不下整个模型”卡住，colibri 通过磁盘流式加载专家来降低对高端集群的依赖。第二，做推理系统研究的人通常很难观察专家路由、缓存命中、分层放置等细节，它提供 Web Dashboard、Brain、Atlas 等页面来观察每轮 token 的专家调度和硬件层级状态。
+- **适合谁用**：适合研究本地大模型推理、MoE 路由、KV 缓存、CPU/GPU/存储协同的系统工程师；也适合有多 GPU、NVMe、大内存工作站，想尝试私有化运行超大 MoE 模型的高级玩家和实验室团队。
+- **怎么上手**：README 展示的最小交互入口是：`./coli chat`
+- **可以用在哪些场景**：本地运行 744B 级 MoE 模型做私有问答或实验；搭建 `coli serve` 作为内部推理服务，测试不同硬件配置下的吞吐和 TTFT；用 Brain / Atlas 页面观察专家路由热度，研究不同 prompt、语言、任务对 MoE 专家的调用模式。
+- **技术看点**：核心设计是“AI memory multitiering”：把显存、内存、NVMe 统一成权重放置层级，并通过 LRU、热专家固定、提前一层预取来减少磁盘访问。它强调语义不被悄悄改变，即优化不应默认改变模型精度或 router 语义，而要通过端到端测量证明收益。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-09-06，包含 1.10.2 发布、KV slots 修复、image_url 安全加固、Windows launcher 文档、Qwen3.6 tier 修复、DeepSeek V4 Flash REAP-150B 文档更新和模型转换路径修复。整体看，项目近期不只是加新模型说明，也在补安全、兼容性、转换流程和不同模型族的边界问题，说明维护活跃且正在快速工程化。
 - **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **注意事项**：项目创建于 2026-07-01，时间很新但 Star 增长很快，当前仍有 110 个 open issues，属于高速迭代期，接口和行为可能继续变化。README 也明确没有速度 SLA，很多优化仍以实验假设和端到端 A/B 为准；此外运行 744B 级模型仍需要较大的本地存储和一定硬件调优能力，不适合期待“下载即稳定生产部署”的用户。
 
 - **GitHub**：[JustVugg/colibri](https://github.com/JustVugg/colibri)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：专注高性价比硬件与 AI 推理基础设施，在 GitHub 具备较高关注度和开源影响力
+**技术栈偏好**：以 C/CUDA 为核心，辅以 Rust 和 Go，偏好底层系统、GPU 加速与高性能工程
+**核心领域**：聚焦面向廉价硬件的轻量级 AI 模型运行时、推理引擎与系统软件 beve
 
 ---
 
@@ -354,41 +380,54 @@
 
 ---
 
-### ✨ nashsu/llm_wiki (17835★)
+### ✨ nashsu/llm_wiki (17975★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：把 PDF、Office 文档、网页和图片持续导入桌面知识库，由 LLM 自动整理成带来源链接、交叉引用和知识图谱的可维护 Wiki。
 
-- **它是什么**：LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically. Instead of traditional RAG (retrieve-and-answer from scratch every time), the LLM incrementally builds and maintains a persistent wiki from your sources。
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
+- **它是什么**：LLM Wiki 是一款基于 TypeScript 的跨平台桌面应用，采用“原始资料 → LLM 生成的 Wiki 页面 → 查询与维护”的流程，把分散文档整理为结构化、互相链接的知识库。它支持增量导入、来源追踪、语义搜索、知识图谱、Deep Research，以及通过聊天 Agent 查询 Wiki、原始资料和图谱。
+- **能解决什么痛点**：传统 RAG 每次提问都要从原始文档重新检索和生成答案，难以沉淀知识；LLM Wiki 会缓存已处理内容，并持续更新 `index.md`、摘要页和交叉引用。面对大量来源文件时，用户也不容易知道某个 Wiki 页面来自哪些文档，该项目通过 YAML `sources[]`、来源过滤和 Read Sources Only 模式保留可追溯性。
+- **适合谁用**：需要长期整理论文、技术文档、课程资料或行业报告的研究人员和知识工作者；希望在本地桌面环境中结合 Obsidian、Claude Code、Codex 或 MCP Agent 管理个人资料的开发者。
 - **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **可以用在哪些场景**：
+  - 将研究论文、PDF 报告和网页剪藏导入个人研究 Wiki，追踪概念之间的关联和知识缺口。
+  - 为软件项目整理 API 文档、设计文档、Issue 记录和会议资料，并通过来源链接回溯原始依据。
+  - 在团队内部搭建可迁移的项目知识库，通过项目归档导入导出、MCP Server 或本地 HTTP API 供 Agent 查询。
+- **技术看点**：项目没有停留在“向量检索加问答”，而是采用两阶段导入流程，先分析实体、概念、冲突和已有连接，再生成 Wiki 页面，并配合 SHA256 增量缓存和持久化任务队列。知识图谱同时结合直接链接、来源重叠、Adamic-Adar 和类型相似度，并使用 Louvain 算法发现知识社区。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 8 月 20 日至 25 日，期间连续发布 v0.6.10 和 v0.6.11，开发重点包括可配置的导入推理、按来源过滤知识、Deep Research 重跑与批量处理、失败操作重试、模型路由和大规模重复扫描优化。提交中既有维护者主导的功能迭代，也有外部贡献者提交导入推理功能和构建文档，说明项目仍处于高频演进阶段，方向正从核心 Wiki 生成扩展到 Agent、研究流程和复杂资料管理。
+- **同类对比**：README 明确将项目与传统 RAG 区分开来：传统 RAG 通常在每次查询时从头检索并回答，而 LLM Wiki 会把知识编译为持久化 Wiki 并持续维护。其设计基础来自 Andrej Karpathy 的 LLM Wiki 模式，同时扩展为带桌面界面、图谱分析、异步 Review、Web Clipper 和 MCP/API 接口的完整应用；README 未明确列出具体竞品。
+- **注意事项**：项目创建于 2026 年 4 月 8 日，当前已有 17975 个 Stars，但仍较新；257 个 Open Issues 相对于 42 位贡献者偏多，使用前应关注版本变更和已知问题。项目依赖 LLM、可选的向量模型及 Deep Research 搜索服务，成本、隐私、模型兼容性和本地运行配置需要单独评估；README 素材中未提供最简安装命令，首次部署的具体步骤暂未提供。近期版本连续发布并持续修复 Agent、模型参数和导入流程问题，升级时应重点验证已有项目索引、任务队列和自定义 Provider 配置。
 
 - **GitHub**：[nashsu/llm_wiki](https://github.com/nashsu/llm_wiki)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：具备较强开源影响力，多个 AI 工具类项目获得高星关注，属于活跃的独立开发者/AI 创业者型技术人物。
+**技术栈偏好**：偏好 TypeScript、Python 与 Rust，技术方向集中在 LLM 应用、智能体工具链和开发者效率工具。
+**核心领域**：主要聚焦 AI 原生应用、知识检索、自动化 CLI 与可复用技能/Agent 工作流。
 
 ---
 
-### ✨ vercel-labs/skills (30902★)
+### ✨ vercel-labs/skills (31035★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：用 `npx skills` 在 OpenCode、Claude Code、Codex、Cursor 等几十种编码代理之间发现、安装、复用同一套 `SKILL.md` 能力包。
 
-- **它是什么**：The open agent skills tool - npx skills
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是面向“agent skills”生态的 TypeScript CLI，核心是把可复用的代理指令集安装到不同编码代理的本地目录中。它支持从 GitHub、GitLab、任意 Git URL、本地路径、直接下载链接或私有仓库安装技能，也能执行 `list`、`find`、`update`、`remove`、`init` 等管理命令。
+- **能解决什么痛点**：开发者同时使用 Claude Code、Codex、Cursor、OpenCode 等代理时，技能文件路径和安装方式各不相同，容易重复维护；`skills` 把安装、更新、移除和跨代理分发统一成一套命令。另一个场景是临时使用某个技能时，可以通过 `skills use` 生成提示词或直接启动指定代理，不必先把技能永久装进本地环境。
+- **适合谁用**：适合同时使用多个编码代理的开发者和团队，尤其是需要共享代码规范、发布流程、PR 规范、设计指南等 agent 指令集的工程团队。也适合维护 `SKILL.md` 能力包的开源作者或平台方。
+- **怎么上手**：`npx skills add vercel-labs/agent-skills`
+- **可以用在哪些场景**：把团队的前端设计规范安装到 Claude Code 和 Cursor；在 CI/CD 或脚本环境里用 `-y`、`--skill`、`--agent` 非交互式分发指定技能；临时调用某个技能生成提示词，例如 `npx skills use vercel-labs/agent-skills --skill web-design-guidelines --agent claude-code`。
+- **技术看点**：项目把技能抽象为带 YAML frontmatter 的 `SKILL.md`，再通过 CLI 适配不同代理的项目级和全局目录。安装源覆盖 GitHub shorthand、完整 URL、GitLab、SSH、私有仓库、本地路径和归档下载，对团队内部私有技能库比较友好。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-09-06 到 2026-09-08，说明维护频率很高；内容包括 v1.5.24、v1.5.25 发布、支持按 commit SHA 固定安装技能、迁移已移动的技能路径，以及修复无 TTY 安装、重复技能定义、非技能目录扫描等问题。近期还合入了 fx agent、Sarvam Code agent、Droid、Kilo Code 等代理适配，发展方向明显是扩大支持的 agent 覆盖面，同时补齐安装稳定性和边界场景。
+- **同类对比**：README 未明确提到竞品或直接对标项目；从定位看，它更像 agent skills 生态的统一包管理入口，而不是某个单一编码代理的插件系统。
+- **注意事项**：项目创建于 2026-01-14，更新到 2026-09-10，增长和迭代都很快，但 1189 个 open issues 也意味着仍有不少兼容性、需求或 bug 待处理。支持 75+ 代理带来覆盖面优势，也会增加路径适配和行为一致性的维护成本；如果用于团队规范分发，建议固定版本或 commit SHA，并先在目标代理组合上验证安装路径和更新流程。
 
 - **GitHub**：[vercel-labs/skills](https://github.com/vercel-labs/skills)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：Vercel Labs 依托 Next.js 生态和多个高星项目，在前端与开发者工具社区具备显著影响力。
+**技术栈偏好**：以 TypeScript 为主，结合 Rust 与 JavaScript，偏向高性能 Web 工具、自动化与 AI Agent 方向。
+**核心领域**：主要聚焦现代 Web 开发、AI Agent 能力、预览部署与开发者体验优化。
 
 ---
 
