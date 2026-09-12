@@ -101,36 +101,8 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-09-12)</h1>
-<h2>今日热点：AI 智能体从编程助手走向全场景自动化</h2>
-<p>今日技术热点聚焦于 AI 智能体的工程化与自主执行能力，覆盖 ADHD 友好型编码输出、桌面端本地优先开发、智能体技能框架与规范驱动开发，也延伸至数学建模、并行科研、研究知识库和文档自动构建；与此同时，AI 正进入销售 CRM、自动交易、家庭媒体管理、网络研究、空间情报、3D 建模与建筑设计等领域，并与插件、MCP、本地部署及开源基础设施深度结合，具体项目摘要如下：</p>
-<h3>✨ ayghri/i-have-adhd (28244★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把编码助手的回答风格强行拉回“先给结论、再给步骤”，避免它长篇铺垫后把真正可执行的信息埋在最后。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个面向代码助手的 <code>skill/plugin</code>，目标很明确：让模型输出更像可执行的操作指令，而不是先讲一堆背景再迟迟不给答案。README 里直接给出了对比示例，核心改造点包括“先行动作”“多步任务编号”“每轮重申状态”“最后给出一个明确下一步”。</li>
-<li><strong>能解决什么痛点</strong>：一是开发者在排查问题时，经常被助手的长段解释拖慢节奏，真正要改哪一行、先跑哪个命令反而要翻半天。二是在多人协作或复杂排障里，助手如果一直发散讨论，会让下一步操作不清晰，容易造成重复沟通和执行偏差。</li>
-<li><strong>适合谁用</strong>：适合日常大量依赖 Claude Code、类 Copilot 工作流或其他编码代理的开发者；也适合经常要处理调试、改配置、跑测试这类“要直接给步骤”的工程师。</li>
-<li><strong>怎么上手</strong>：README 给出的最简方式是直接在 CLI 里安装：<code>Install the i-have-adhd skill/plugin from https://github.com/ayghri/i-have-adhd, refer to the repo's AGENTS.md for instructions.</code></li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>让代码助手在修复报错时直接输出“改哪份文件、执行哪条测试命令”。</li>
-<li>在重构 API、更新依赖、修正配置时，把助手回答收敛成步骤清单，避免讨论跑偏。</li>
-<li>在团队统一 AI 输出风格时，作为约束模板减少“看起来很认真但不可执行”的回复。</li>
-<li><strong>技术看点</strong>：项目本质上不是业务库，而是对 LLM 输出行为的提示词/技能约束层，重点在规则设计而不是复杂运行时。README 明确强调了 10 条输出规则，并提供多语言文档，说明它更像一个可移植的交互规范。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交主要集中在文档对齐、翻译同步、安装说明收紧，以及 <code>eval</code> 相关测试和隔离修正，说明项目当前重点是稳定规则、统一多语言文档、提升评测可靠性，而不是大规模扩功能。提交里还能看到 <code>alwaysOn</code>、Pi 配置、会话启动超时等适配修补，表明它在向更广的客户端/环境兼容。社区贡献者有 36 人，最近仍有持续合并 PR，活跃度不低。</li>
-<li><strong>同类对比</strong>：README 没有明确点名竞品；从定位看，它更像是针对编码助手输出风格的行为规范插件，而不是通用提示词合集。</li>
-<li>
-<p><strong>注意事项</strong>：它依赖具体 AI 客户端的 skill/plugin 机制，落地效果取决于你用的工具是否支持这套接入方式。项目星标很多，但问题数也不低，说明关注度高、使用面广，同时也意味着规则在不同环境下可能还会有适配和打磨成本。文档有多语言版本，但真正的行为边界还是要看 <code>SKILL.md</code>，上手前最好先确认你当前的代理工具是否按这个约束生效。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：具备中等规模的开发者影响力，凭借高关注度的开源项目在细分社区获得较强曝光。
-<strong>技术栈偏好</strong>：以 Python 为主，偏好机器学习、强化学习、自然语言处理及算法工程。
-<strong>核心领域</strong>：主要聚焦人工智能研究与应用，尤其是机器学习、智能算法和生产力工具。</p>
-<hr />
+<h2>今日热点：AI 智能体驱动的开源工具生态持续扩张</h2>
+<p>今日技术热点聚焦于 AI 智能体的自主执行与行业落地，覆盖销售 CRM、数学建模、交易决策、渗透测试、音乐生成、代码协作和 RAG 应用，同时延伸至地理空间情报、网络通信、媒体管理、图形创作、系统提示词研究、Android TV 体验及跨平台内容访问等方向，体现出开源项目正从单一工具加速迈向具备感知、推理、执行与自动化能力的综合系统，具体项目摘要如下：</p>
 <h3>✨ bilawalsidhu/gods-eye-view (27324★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：在浏览器里打开一颗逼真的三维地球，实时查看飞机、船舶、卫星、地震、交通和公共摄像头等公开数据，并像操作卫星监控终端一样跟踪目标。</p>
@@ -176,34 +148,6 @@
 <p><strong>技术影响力</strong>：以高关注度开源项目为代表，在计算机视觉与沉浸式交互领域具备较强社区影响力。
 <strong>技术栈偏好</strong>：偏好 JavaScript 与 Swift，侧重视觉应用、空间计算及跨现实体验开发。
 <strong>核心领域</strong>：主要聚焦计算机视觉、增强现实与人机交互。</p>
-<hr />
-<h3>✨ nab138/iloader (2860★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 iPhone 连接到电脑后，iloader 能引导你登录 Apple ID、导入配对文件，并直接安装 SideStore 或其他 IPA 应用。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：iloader 是面向 iPhone/iPad 侧载的桌面应用，支持 Windows、macOS 和 Linux。它可以安装 SideStore、LiveContainer，导入任意 IPA，自动处理配对文件，还能查看或撤销开发证书和 App ID。</li>
-<li><strong>能解决什么痛点</strong>：手动准备 <code>rpairing</code>、Lockdown 配对文件并放入指定应用目录的过程较为繁琐，iloader 可以自动导入和管理这些文件。侧载过程中遇到 Apple ID、双重验证、签名或设备连接问题时，它还会提供错误建议和日志，减少用户自行排查的成本。</li>
-<li><strong>适合谁用</strong>：需要在非 App Store 环境安装 SideStore、LiveContainer 或其他 IPA 的 iPhone/iPad 用户；需要管理多个设备配对文件、开发证书和 App ID 的侧载及 iOS 开发用户。</li>
-<li><strong>怎么上手</strong>：先安装对应平台的 <code>usbmuxd</code> 依赖并连接 iDevice，然后从 <a href="https://github.com/nab138/iloader/releases">Releases</a> 下载应用，启动后登录 Apple ID 并选择安装 SideStore 等操作；从源码构建可执行 <code>bun i &amp;&amp; bun tauri dev</code>。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>在 Windows、macOS 或 Linux 电脑上为个人 iPhone 安装 SideStore，减少手动配置配对文件的步骤。</li>
-<li>在测试设备上导入开发中的 IPA，配合开发证书和 App ID 进行真机验证。</li>
-<li>管理 StikDebug、SideStore、Protokolle 等应用使用的配对文件，并清理不再使用的开发证书。</li>
-<li><strong>技术看点</strong>：项目采用 TypeScript + Tauri 构建桌面界面，同时依赖 Rust 生态中的 <code>idevice</code>、<code>isideload</code> 和 <code>apple-codesign-quick</code> 完成设备通信、IPA 安装及签名相关流程。通过 i18next 提供多语言支持，近期已覆盖中文、日文、法文、希腊文、瑞士德文等多种语言。</li>
-<li><strong>近期动向与发展方向</strong>：近期提交非常活跃，重点集中在更新 <code>isideload</code>、Apple 签名与双重验证流程、Tauri 依赖和设备构建问题修复，说明项目仍在快速跟随底层依赖和 Apple 认证流程变化。与此同时，社区持续贡献翻译、README 和 Fedora COPR 等发行渠道支持；未来计划包括自动检测开发者模式、Anisette 回退、自动刷新已安装应用、团队选择和 DDI 挂载等功能。</li>
-<li><strong>同类对比</strong>：README 未明确列出直接竞品。项目更偏向“带图形界面的完整侧载助手”，而不是只提供命令行安装或签名能力的底层工具。</li>
-<li>
-<p><strong>注意事项</strong>：首次使用仍需要安装平台对应的 <code>usbmuxd</code>/iTunes 依赖，并准备可用于侧载的 Apple ID；涉及 Apple 认证、配对和签名流程，底层服务变化可能导致版本兼容问题。项目创建于 2025 年 11 月，截至 2026 年 9 月仍保持高频更新，但有 253 个 Open Issues，说明用户规模增长较快、边界问题也较多；使用时应优先从官方仓库或 iloader.app 下载，避免第三方伪造版本。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/nab138/iloader">nab138/iloader</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以 iOS 侧载工具为核心，在开发者社区具备一定影响力，代表项目累计获得数千 Star。
-<strong>技术栈偏好</strong>：偏好 TypeScript，辅以 Rust、Astro 和 D，侧重跨平台工具、网站与系统级开发。
-<strong>核心领域</strong>：主要聚焦 iOS 应用侧载、开发者工具及相关生态建设。</p>
 <hr />
 <h3>✨ melgarafael/DeskcommCRM (1091★)</h3>
 <blockquote>
@@ -265,245 +209,107 @@
 <strong>技术栈偏好</strong>：以 Python、TypeScript 和 JavaScript 为主，偏好 AI 应用、自动化工具与全栈产品开发。
 <strong>核心领域</strong>：主要聚焦人工智能赋能、客户关系管理、知识管理及增长工具。</p>
 <hr />
-<h3>✨ vastsa/PI-Desktop (1457★)</h3>
+<h3>✨ asgeirtj/system_prompts_leaks (65003★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把本地代码仓库、AI Agent 对话、模型配置、文件修改审查和插件扩展集中到一个可跨平台运行的桌面工作区中。</p>
+<p><strong>一句话</strong>：把 ChatGPT、Claude、Gemini、Grok、Codex 等产品在用户发消息前接收的系统提示词按模型和功能逐份保存下来，像翻开 AI 聊天产品的“开场规则”。</p>
 </blockquote>
 <ul>
-<li>
-<p><strong>它是什么</strong>：PI-Desktop 是一款基于 Electron 的本地优先 AI 编程桌面应用，底层使用 Rust 主机核心和 pi Agent Harness 驱动 Agent。用户可以打开本地项目，连接 OpenAI、Anthropic、Ollama、LM Studio 或兼容 OpenAI API 的模型，让 Agent 读取文件、修改代码、运行命令，并在 Review 面板中检查变更。它还支持 Agent、Plan、Goal 三种工作模式，以及 Skills、MCP、Subagents 和可安装插件。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：开发者不必在终端、编辑器插件和托管式 AI 服务之间切换，也不需要把项目迁移到特定编辑器中才能使用 Agent。对于需要控制权限和审查改动的场景，文件编辑、命令执行等特权操作会经过权限层，模型请求则直接发送到用户配置的服务商。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：希望在本地仓库中使用多个云端或本地模型，并统一管理长时间编码会话的个人开发者和小型研发团队。也适合需要通过 MCP、Subagents 或插件扩展 Agent 能力，同时关注凭据和项目数据本地存储的技术用户。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：从 <a href="https://github.com/vastsa/PI-Desktop/releases/latest">GitHub Releases</a> 下载对应 macOS、Windows 或 Linux 的安装包，启动后进入 <code>Settings → Model configuration</code> 配置模型，再从侧边栏打开本地项目；文档未提供快速上手示例。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>在已有 TypeScript、Rust 或 Python 仓库中，让 Agent 分析代码、实现跨文件功能并在 Review 面板检查补丁。</li>
-<li>使用 Plan 模式先生成并审核不可变的实施计划，再执行涉及数据库、构建配置或权限逻辑的较大改动。</li>
-<li>
-<p>在团队内部通过 Subagents 分派代码探索、测试分析和对抗性审查任务，并用插件接入 MCP 服务或项目专用工作面板。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：Electron Renderer、Electron Main、Rust Host Core 和 pi Agent Sidecar 分层，分别承担界面、桌面编排、文件系统与权限、Agent 循环和流式模型交互。会话以本地 JSONL 保存并由 SQLite 建索引，凭据存入操作系统密钥链；插件进程经过权限控制并与 Renderer 隔离，但项目明确说明插件仍是用户信任代码，不等同于操作系统级沙箱。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-09-09，开发非常密集，且主要由 <code>vastsa</code> 推进。近期重点包括压缩子 Agent 和模型高级设置界面、将文本匹配式 Edit 改为基于行锚点的操作、增加 Windows portable exe、完善中文规格文档与发布镜像流程，说明项目正同时推进编辑可靠性、桌面交互、跨平台分发和文档规范化。当前仍处于 Early Preview，功能开发速度较快，接口和桌面行为可能继续调整。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：暂无明显同类对标。README 未列出具体竞品；项目定位更接近独立于终端和编辑器的本地 AI 编程工作区，而不是单纯的聊天窗口或编辑器插件。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2023-03-22，目前有 1457 个 Stars、144 个 Forks、19 位贡献者和 47 个开放 Issue，近期更新频率很高，但 Watchers 仅 2，社区参与度仍需继续观察。项目明确处于 Early Preview，插件接口、API 和部分桌面行为可能发生破坏性变化；Linux x64 构建要求 glibc 2.35 及以上。虽然数据和凭据默认本地保存，使用远程模型时上下文仍会发送到所配置的服务商，插件也不能视为完整的安全沙箱。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/vastsa/PI-Desktop">vastsa/PI-Desktop</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：独立开发者，在开源文件传输、桌面应用与 AI 工具领域具备较高社区影响力。
-<strong>技术栈偏好</strong>：偏好使用 Python 构建后端与 AI 工具，使用 TypeScript 开发桌面及前端应用。
-<strong>核心领域</strong>：主要聚焦文件共享、桌面工具、AI 应用与效率工具开发。</p>
-<hr />
-<h3>✨ armory3d/armorpaint (4349★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：在 3D 模型表面直接绘制颜色、材质和细节，并实时预览 PBR 纹理效果的开源纹理制作软件。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：ArmorPaint 面向 3D PBR 纹理绘制，可以在模型表面制作颜色、粗糙度、金属度等材质通道，并通过 3D 视图查看最终效果。项目仓库主要服务开发者，支持 Windows、Linux、macOS、Android、iOS 和 WASM 等构建目标。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：它把纹理绘制和材质预览放在同一个工作流中，减少在图像编辑器、3D 软件和渲染器之间反复导入导出的成本。对于需要快速验证光照、材质参数和贴图变化的场景，也能避免仅在二维贴图上绘制导致的比例和接缝判断偏差。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合制作游戏资产、影视资产或实时渲染模型的 3D 美术人员，以及需要将纹理绘制能力集成到自有工具链中的图形程序开发者。需要从源码构建的用户还应熟悉 C/C++ 工具链及各平台原生构建环境。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：Linux x64 可执行 <code>git clone https://github.com/armory3d/armorpaint &amp;&amp; cd armorpaint/paint &amp;&amp; ../base/make --run</code>；Windows、macOS 等平台则需使用对应的 Visual Studio、Xcode 或 Android Studio 打开生成的工程。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>为游戏中的角色、武器、场景道具制作金属、木材、皮革等 PBR 贴图。</li>
-<li>在实时渲染项目中快速调整模型材质，并通过光线追踪或超采样效果检查最终观感。</li>
-<li>
-<p>将 ArmorPaint 编译为 WASM 或移动端版本，用于定制化的网页、移动设备或跨平台图形工具链。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目以 C 为主要语言，配套自有的 <code>base</code>、<code>minic</code> 和 <code>iron</code> 等底层代码与构建流程，覆盖桌面端、移动端及 WASM。近期提交持续涉及 Vulkan、D3D12、光线追踪着色器、跨平台异步进程执行和 C23 <code>#embed</code> 支持，说明项目重点仍在底层渲染能力和多平台适配。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026 年 9 月 3 日至 9 日，开发较为活跃，但主要由 <code>luboslenco</code> 提交。近期工作以修复和底层稳定性改进为主，包括光线追踪输出、Vulkan 纹理标记、macOS/Linux 异步执行、纹理变化重绘、超采样配置和指针类型等问题，同时加入了控制台模型的 Codex 支持，暂未看到大规模功能重构。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或同类项目，暂无明显同类对标。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：仓库明确说明开发版可能不稳定，面向开发者的源码仓库与官方分发二进制并非同一使用门槛，官方二进制需要付费。源码构建需要按平台安装编译器和依赖，Linux 还需参考额外依赖文档；跨平台底层改动可能带来构建或渲染差异。项目创建于 2017 年，当前有 99 个开放 Issue、31 名贡献者，近期更新频繁但提交高度集中于单一核心维护者，采用前应评估问题响应和长期维护风险。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/armory3d/armorpaint">armory3d/armorpaint</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：凭借多个数千星级项目，Armory 3D 在开源图形创作与实时 3D 工具社区具备较强的垂直影响力。
-<strong>技术栈偏好</strong>：技术栈以 Haxe、C、C++ 为主，偏向高性能图形工具、渲染引擎与跨平台创作软件开发。
-<strong>核心领域</strong>：主要聚焦于 3D 图形创作、材质绘制、实时渲染与游戏/视觉内容制作工具链。</p>
-<hr />
-<h3>✨ alsk1992/CloddsBot (1517★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：CloddsBot 把 Polymarket、Kalshi、币安、Hyperliquid、Solana DEX 等 1000+ 个市场接入一个由 Claude 驱动的对话式交易终端，可自动扫描机会、执行交易并进行风险控制。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：这是一个基于 TypeScript 和 Claude 的自托管 AI 交易代理，支持预测市场、现货、永续合约、Solana 与 EVM DeFi、代币发行及 Bittensor 挖矿。用户可以通过 WebChat、CLI 或 Telegram、Discord 等 21 个消息平台下达指令，由代理调用 119+ 个技能完成行情分析、下单、持仓管理、套利和自动化任务。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：它将多个交易所、预测市场和链上协议统一到一个接口中，减少用户分别维护账户、行情 API、交易命令和持仓记录的成本。对于需要持续监控市场的场景，还提供止盈止损、熔断、VaR/CVaR、压力测试、每日亏损限制和 kill switch，避免完全依赖人工盯盘。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合熟悉加密资产、预测市场和链上交易，并希望自行托管交易代理的个人交易者或量化开发者。也适合需要通过 Claude Desktop、Claude Code 或 MCP 将交易、行情和链上操作接入其他 AI 工作流的开发者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：README 提供的最简方式是 <code>npm install -g clodds --loglevel=error &amp;&amp; clodds onboard</code>，完成 API Key、消息渠道配置后，WebChat 默认运行在 <code>http://localhost:18789/webchat</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>同时监控 Polymarket 的 BTC/ETH/SOL 短周期预测市场和 Binance、Hyperliquid 永续合约，并通过预设策略执行交易。</li>
-<li>管理 Solana 上 Jupiter、Raydium、Orca、Kamino、Pump.fun 等协议的交易、借贷、代币安全检查和持仓。</li>
-<li>
-<p>搭建面向 AI Agent 的交易或数据服务，通过 x402 使用 USDC 进行机器间支付，并用 MCP 暴露交易技能给 Claude Desktop 或 Claude Code。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用本地 SQLite、LanceDB 和 PostgreSQL 组合，分别覆盖交易记录、语义记忆、混合检索和分析数据；同时通过统一风险引擎、交易决策审计日志及 SHA-256 完整性哈希记录自动化交易过程。其插件化 Skills 和 MCP Server 设计，使 119+ 个交易与数据能力可以被对话式代理按需调用。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近提交集中在安全和兼容性修复，而不是新增大功能，包括恢复安全 CI、修复已退役的 Anthropic 模型默认配置、改进 Discord 环境变量读取，以及处理 browserslist 高危安全公告。项目还连续修复了 Pump.fun 毕业检测、Drift 订单过滤、Kamino 借贷、Raydium CLMM 和 Orca 等链上适配问题，说明当前重点是提高多协议交易链路的可靠性。9 月 1 日至 10 日持续有提交和合并请求，但贡献者数量仅 5 人，维护仍较集中。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确提到直接竞品。相较于只覆盖单一交易所的量化机器人或只提供聊天交互的 AI 助手，CloddsBot 的明显差异是同时覆盖预测市场、中心化交易所、永续 DEX、多个公链协议和 Agent 支付，但这也带来了更高的配置和维护复杂度。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 1 月，当前有 30 个 Open Issues、仅 5 名贡献者，虽然近期更新频繁，但多协议适配仍在快速修复阶段，不宜直接视为成熟的无人值守交易系统。运行需要 Node.js 22+、Claude 或其他模型凭据，以及各交易所和链上钱包权限；涉及杠杆、自动下单、代币发行和跨链操作时，密钥保管、权限隔离、资金限额和策略回测都必须由使用者自行负责。README 功能覆盖面很广，但实际部署仍需逐项核对 API、网络、地区限制和协议状态，升级时也应关注模型默认值及交易适配器的破坏性变化。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/alsk1992/CloddsBot">alsk1992/CloddsBot</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：凭借千星级项目 CloddsBot，AL 属于具备单点爆款影响力的新兴个人开发者。
-<strong>技术栈偏好</strong>：主要使用 TypeScript 与 Python，并对 Rust、自动化和交易系统方向有明显偏好。
-<strong>核心领域</strong>：主要聚焦自动化工具、AI Agent 与高频交易相关应用。</p>
-<hr />
-<h3>✨ nashsu/llm_wiki (17975★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 PDF、Office 文档、网页和图片持续导入桌面知识库，由 LLM 自动整理成带来源链接、交叉引用和知识图谱的可维护 Wiki。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：LLM Wiki 是一款基于 TypeScript 的跨平台桌面应用，采用“原始资料 → LLM 生成的 Wiki 页面 → 查询与维护”的流程，把分散文档整理为结构化、互相链接的知识库。它支持增量导入、来源追踪、语义搜索、知识图谱、Deep Research，以及通过聊天 Agent 查询 Wiki、原始资料和图谱。</li>
-<li><strong>能解决什么痛点</strong>：传统 RAG 每次提问都要从原始文档重新检索和生成答案，难以沉淀知识；LLM Wiki 会缓存已处理内容，并持续更新 <code>index.md</code>、摘要页和交叉引用。面对大量来源文件时，用户也不容易知道某个 Wiki 页面来自哪些文档，该项目通过 YAML <code>sources[]</code>、来源过滤和 Read Sources Only 模式保留可追溯性。</li>
-<li><strong>适合谁用</strong>：需要长期整理论文、技术文档、课程资料或行业报告的研究人员和知识工作者；希望在本地桌面环境中结合 Obsidian、Claude Code、Codex 或 MCP Agent 管理个人资料的开发者。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>它是什么</strong>：这是一个持续更新的系统提示词档案库，收录 Anthropic、OpenAI、Google、xAI、Perplexity、Kimi 等产品的提示词文本，并按厂商、模型和产品组件分类。内容不仅包括聊天模型，还覆盖 Claude Code、Codex、Claude Design、Cowork、MCP 服务、工具、技能、人格设定和 API 注入提示词等。仓库 README 还记录了 Claude Fable 5.1、Codex GPT-6-Astra 等近期新增条目，并曾被《华盛顿邮报》和 CEPS 的 AI World 用于相关报道或数据展示。</li>
+<li><strong>能解决什么痛点</strong>：面对闭源 AI 产品时，开发者很难知道模型的默认行为、工具调用规则和安全约束从何而来；该仓库提供可检索的版本化材料，便于对比不同模型的行为差异。对于构建 AI Agent 的团队，它也能帮助排查系统提示词、子代理、MCP 指令和技能定义之间可能造成的行为影响。</li>
+<li><strong>适合谁用</strong>：研究大模型行为、提示词工程和 AI 安全的开发者或研究人员；正在开发 Claude Code、Codex、MCP 或其他 Agent 产品，需要参考成熟系统指令组织方式的工程团队。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例；可直接打开仓库 README，按 Anthropic、OpenAI、Google 等目录进入目标模型的 Markdown 提示词文件阅读。</li>
 <li><strong>可以用在哪些场景</strong>：</li>
-<li>将研究论文、PDF 报告和网页剪藏导入个人研究 Wiki，追踪概念之间的关联和知识缺口。</li>
-<li>为软件项目整理 API 文档、设计文档、Issue 记录和会议资料，并通过来源链接回溯原始依据。</li>
-<li>在团队内部搭建可迁移的项目知识库，通过项目归档导入导出、MCP Server 或本地 HTTP API 供 Agent 查询。</li>
-<li><strong>技术看点</strong>：项目没有停留在“向量检索加问答”，而是采用两阶段导入流程，先分析实体、概念、冲突和已有连接，再生成 Wiki 页面，并配合 SHA256 增量缓存和持久化任务队列。知识图谱同时结合直接链接、来源重叠、Adamic-Adar 和类型相似度，并使用 Louvain 算法发现知识社区。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 8 月 20 日至 25 日，期间连续发布 v0.6.10 和 v0.6.11，开发重点包括可配置的导入推理、按来源过滤知识、Deep Research 重跑与批量处理、失败操作重试、模型路由和大规模重复扫描优化。提交中既有维护者主导的功能迭代，也有外部贡献者提交导入推理功能和构建文档，说明项目仍处于高频演进阶段，方向正从核心 Wiki 生成扩展到 Agent、研究流程和复杂资料管理。</li>
-<li><strong>同类对比</strong>：README 明确将项目与传统 RAG 区分开来：传统 RAG 通常在每次查询时从头检索并回答，而 LLM Wiki 会把知识编译为持久化 Wiki 并持续维护。其设计基础来自 Andrej Karpathy 的 LLM Wiki 模式，同时扩展为带桌面界面、图谱分析、异步 Review、Web Clipper 和 MCP/API 接口的完整应用；README 未明确列出具体竞品。</li>
+<li>对比 Claude Code、Codex 等编程 Agent 的工具权限、工作流要求和子代理指令，设计企业内部代码 Agent 的系统提示词。</li>
+<li>在复现某个聊天产品的行为时，检查模型版本变化、人格设定、记忆功能和 API 注入指令可能带来的差异。</li>
+<li>做 AI 安全评估或提示词泄露研究时，将不同厂商的规则、工具说明和安全约束作为静态样本进行分类与对比。</li>
+<li><strong>技术看点</strong>：项目的核心不是复杂运行时代码，而是以 Markdown 文件构成的、按厂商和产品组件组织的提示词档案，并持续保留模型、模式、工具和技能等细分版本。其价值在于将原本分散在产品交互中的隐性规则变成可检索、可审阅、可通过 Git 追踪变化的文本资料。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎全部围绕 Claude Code 及其配套内容更新，包括 Fable 5/5.1 提示词、headless 模式、agents、skills、statusline、指南和 MCP Server Instructions；同时也持续维护 README 与归档链接。9 月 4—9 日连续提交显示维护活跃，但提交主要由项目创建者 Ásgeir Thor Johnson 完成，暂未看到大规模重构或明显的社区协作扩张迹象。整体方向是跟踪新模型和 Agent 产品的提示词变化，并把工具链细节一并归档。</li>
+<li><strong>同类对比</strong>：README 未明确提到竞品或同类项目；从定位看，它更接近跨厂商的提示词资料库，而不是提供模型调用、提示词管理或 Agent 运行能力的开发框架，因此暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 4 月 8 日，当前已有 17975 个 Stars，但仍较新；257 个 Open Issues 相对于 42 位贡献者偏多，使用前应关注版本变更和已知问题。项目依赖 LLM、可选的向量模型及 Deep Research 搜索服务，成本、隐私、模型兼容性和本地运行配置需要单独评估；README 素材中未提供最简安装命令，首次部署的具体步骤暂未提供。近期版本连续发布并持续修复 Agent、模型参数和导入流程问题，升级时应重点验证已有项目索引、任务队列和自定义 Provider 配置。</p>
+<p><strong>注意事项</strong>：仓库内容的真实性、完整性、采集时间和是否仍代表线上版本，需要结合具体文件、提交记录及原产品行为自行核验，不能把归档文本直接视为厂商正式发布的 API 文档。部分内容可能涉及产品条款、版权或敏感的系统指令，二次使用前应审查许可和合规风险；不要仅凭这些文本复制安全策略或直接暴露内部提示词。项目创建于 2025 年 5 月 3 日，已有 65003 个 Stars、10682 个 Forks、25 位贡献者和 53 个 Open Issues，关注度很高且更新频繁，但贡献者规模相对有限；README 主要承担索引作用，阅读具体提示词仍需要自行比较上下文和版本差异。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/nashsu/llm_wiki">nashsu/llm_wiki</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/asgeirtj/system_prompts_leaks">asgeirtj/system_prompts_leaks</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：具备较强开源影响力，多个 AI 工具类项目获得高星关注，属于活跃的独立开发者/AI 创业者型技术人物。
-<strong>技术栈偏好</strong>：偏好 TypeScript、Python 与 Rust，技术方向集中在 LLM 应用、智能体工具链和开发者效率工具。
-<strong>核心领域</strong>：主要聚焦 AI 原生应用、知识检索、自动化 CLI 与可复用技能/Agent 工作流。</p>
+<p><strong>技术影响力</strong>：凭借 6.5 万星级仓库和超 2,000 Followers，在 AI 提示词与开源观察社区具备显著传播影响力。
+<strong>技术栈偏好</strong>：主要使用 JavaScript，偏向轻量化 Web、数据整理型项目与 AI 相关内容聚合。
+<strong>核心领域</strong>：主要聚焦大模型系统提示词、AI 产品透明度与提示工程资料的收集和传播。</p>
 <hr />
-<h3>✨ obra/superpowers (281109★)</h3>
+<h3>✨ nab138/iloader (2860★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把编码代理从“接到需求就开始写代码”改造成会先澄清设计、拆分计划、执行测试并逐步审查的完整开发流程。</p>
+<p><strong>一句话</strong>：把 iPhone 连接到电脑后，iloader 能引导你登录 Apple ID、导入配对文件，并直接安装 SideStore 或其他 IPA 应用。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：iloader 是面向 iPhone/iPad 侧载的桌面应用，支持 Windows、macOS 和 Linux。它可以安装 SideStore、LiveContainer，导入任意 IPA，自动处理配对文件，还能查看或撤销开发证书和 App ID。</li>
+<li><strong>能解决什么痛点</strong>：手动准备 <code>rpairing</code>、Lockdown 配对文件并放入指定应用目录的过程较为繁琐，iloader 可以自动导入和管理这些文件。侧载过程中遇到 Apple ID、双重验证、签名或设备连接问题时，它还会提供错误建议和日志，减少用户自行排查的成本。</li>
+<li><strong>适合谁用</strong>：需要在非 App Store 环境安装 SideStore、LiveContainer 或其他 IPA 的 iPhone/iPad 用户；需要管理多个设备配对文件、开发证书和 App ID 的侧载及 iOS 开发用户。</li>
+<li><strong>怎么上手</strong>：先安装对应平台的 <code>usbmuxd</code> 依赖并连接 iDevice，然后从 <a href="https://github.com/nab138/iloader/releases">Releases</a> 下载应用，启动后登录 Apple ID 并选择安装 SideStore 等操作；从源码构建可执行 <code>bun i &amp;&amp; bun tauri dev</code>。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>在 Windows、macOS 或 Linux 电脑上为个人 iPhone 安装 SideStore，减少手动配置配对文件的步骤。</li>
+<li>在测试设备上导入开发中的 IPA，配合开发证书和 App ID 进行真机验证。</li>
+<li>管理 StikDebug、SideStore、Protokolle 等应用使用的配对文件，并清理不再使用的开发证书。</li>
+<li><strong>技术看点</strong>：项目采用 TypeScript + Tauri 构建桌面界面，同时依赖 Rust 生态中的 <code>idevice</code>、<code>isideload</code> 和 <code>apple-codesign-quick</code> 完成设备通信、IPA 安装及签名相关流程。通过 i18next 提供多语言支持，近期已覆盖中文、日文、法文、希腊文、瑞士德文等多种语言。</li>
+<li><strong>近期动向与发展方向</strong>：近期提交非常活跃，重点集中在更新 <code>isideload</code>、Apple 签名与双重验证流程、Tauri 依赖和设备构建问题修复，说明项目仍在快速跟随底层依赖和 Apple 认证流程变化。与此同时，社区持续贡献翻译、README 和 Fedora COPR 等发行渠道支持；未来计划包括自动检测开发者模式、Anisette 回退、自动刷新已安装应用、团队选择和 DDI 挂载等功能。</li>
+<li><strong>同类对比</strong>：README 未明确列出直接竞品。项目更偏向“带图形界面的完整侧载助手”，而不是只提供命令行安装或签名能力的底层工具。</li>
+<li>
+<p><strong>注意事项</strong>：首次使用仍需要安装平台对应的 <code>usbmuxd</code>/iTunes 依赖，并准备可用于侧载的 Apple ID；涉及 Apple 认证、配对和签名流程，底层服务变化可能导致版本兼容问题。项目创建于 2025 年 11 月，截至 2026 年 9 月仍保持高频更新，但有 253 个 Open Issues，说明用户规模增长较快、边界问题也较多；使用时应优先从官方仓库或 iloader.app 下载，避免第三方伪造版本。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/nab138/iloader">nab138/iloader</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 iOS 侧载工具为核心，在开发者社区具备一定影响力，代表项目累计获得数千 Star。
+<strong>技术栈偏好</strong>：偏好 TypeScript，辅以 Rust、Astro 和 D，侧重跨平台工具、网站与系统级开发。
+<strong>核心领域</strong>：主要聚焦 iOS 应用侧载、开发者工具及相关生态建设。</p>
+<hr />
+<h3>✨ Flowseal/zapret-discord-youtube (33162★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：在 Windows 上通过 WinDivert 拦截并调整网络流量，切换不同策略来恢复 Discord、YouTube 等服务的访问。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Superpowers 是一套构建在可组合技能和启动指令之上的编码代理开发方法论。它覆盖头脑风暴、设计确认、Git worktree 隔离、实施计划、子代理驱动开发、TDD、代码审查和分支收尾，并通过插件接入 Claude Code、Codex、Cursor、Gemini CLI、Devin CLI 等多个代理宿主。</p>
+<p><strong>它是什么</strong>：这是一个基于 <code>zapret</code> 的 Windows 批处理脚本集合，内置多种 <code>ALT</code>、<code>FAKE</code> 等流量处理策略，并通过 <code>winws.exe</code> 与 WinDivert 工作。用户可以手动运行策略，也可以通过 <code>service.bat</code> 安装系统服务、更新 IP 列表、修改 hosts、运行诊断和测试。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：编码代理容易跳过需求澄清和测试，直接生成大量难以审查的代码；Superpowers 强制先形成设计和细粒度计划，再按 RED-GREEN-REFACTOR 流程实现。长任务中代理还可能偏离原始目标或重复调查，近期的计划级 SDD workspace、持久进度和 resume-based 修复循环正针对这类问题。</p>
+<p><strong>能解决什么痛点</strong>：当本地网络环境导致 YouTube、Discord 网页版或 Discord 语音连接失败时，可以通过切换策略恢复访问。对于部分使用 UDP/TCP 高端口的游戏和应用，还可以启用 <code>Game Filter</code> 或更新 <code>ipset</code> 列表进行针对性处理。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：希望在 Claude Code、Codex CLI、Cursor、Gemini CLI 等环境中建立统一开发流程的个人开发者和团队。它尤其适合需要让代理持续处理数小时任务，同时仍要求测试、代码审查和分支隔离的工程项目。</p>
+<p><strong>适合谁用</strong>：使用 Windows、需要排查 Discord/YouTube 连接问题的普通用户；需要自行测试网络策略、维护域名/IP 排除列表的高级用户和网络运维人员。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：以 Claude Code 为例，执行 <code>/plugin install superpowers@claude-plugins-official</code> 安装官方插件。</p>
+<p><strong>怎么上手</strong>：从 <a href="https://github.com/Flowseal/zapret-discord-youtube/releases/latest">Latest Release</a> 下载压缩包，解除文件锁定后解压到不含空格、特殊字符或西里尔字母的路径，运行所需的 <code>general*.bat</code>；确认策略有效后，再通过 <code>service.bat</code> 安装为自动启动服务。</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>让编码代理先把新功能需求拆成可确认的设计文档和实施计划，再逐任务修改现有 Web 或后端项目。</li>
-<li>在多人协作仓库中为代理创建独立 Git worktree，完成测试、代码审查后再选择合并或提交 PR。</li>
+<li>Windows 电脑上测试多种策略，恢复 YouTube 网页和视频服务访问。</li>
+<li>处理 Discord 桌面端、网页版或语音频道无法连接的问题，并配合 hosts 更新功能修复部分连接。</li>
 <li>
-<p>调查难以复现的测试失败或回归问题，使用 systematic-debugging、verification-before-completion 等技能完成根因定位和修复验证。</p>
+<p>在运行网络受限的游戏或其他高端口 UDP/TCP 应用时，启用 <code>Game Filter</code> 和 <code>ipset</code> 规则进行测试。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：核心不是复杂运行时，而是用 Shell 技能、启动钩子、模板和代理指令编排一套可组合的工程流程，并适配多个 coding-agent harness。SDD 已演进到按计划隔离工作区、持久化进度、恢复式修复循环和最多五轮 breaker，体现出对长流程代理可靠性的持续工程化。</p>
+<p><strong>技术看点</strong>：项目采用 Batchfile 作为 Windows 操作入口，底层依赖 WinDivert 和 <code>zapret</code> 的 <code>winws</code> 流量处理能力，通过策略脚本、域名列表、IP 集合和排除列表组合适配不同网络环境。<code>service.bat</code> 集成了服务管理、诊断、缓存清理、自动更新和策略测试，降低了反复手工配置的成本。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：近期开发非常活跃，重点集中在 SDD 生命周期重构、计划级 workspace、恢复式修复循环和技能压缩；同时持续修复 Windows SessionStart、跨平台打包和系统调试脚本兼容性问题。2026 年 8 月的 v6.3.0 又加入 Devin CLI、Hermes Agent 和头脑风暴三路径路由支持，项目正从单一代理插件扩展为覆盖更多宿主的通用工作流层；最近 20 条提交主要由 Jesse Vincent 推进，但也有少量社区贡献和测试修复。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在 2026 年 8 月，提交频率较高，重点是持续调整绕过策略、更新域名排除列表和测试目标，并修复 GitHub 下载、Discord 加载等具体问题。项目还在完善诊断、Issue 机器人回复和策略测试流程，演进方向偏向快速跟进网络环境变化，而不是进行大规模架构重构；社区贡献者也在持续提交列表更新、诊断改进和连接修复。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。它与普通提示词包的主要区别在于提供了完整的强制式研发流程、技能行为测试、插件基础设施测试以及多代理宿主安装入口。</p>
+<p><strong>同类对比</strong>：README 明确提到原始项目 <a href="https://github.com/bol-van/zapret">bol-van/zapret</a> 和替代方案 <a href="https://github.com/bol-van/zapret-win-bundle">zapret-win-bundle</a>。本项目更偏向面向 Windows 用户的开箱即用配置，预置 Discord、YouTube 等服务相关策略、列表和批处理入口；原始项目及通用 bundle 则更接近底层工具和通用发行包。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：安装和行为依赖具体代理宿主，使用多个宿主时需要分别安装；Windows 需要 Git Bash 或额外的 PowerShell/CMD 回退处理，部分宿主还存在压缩上下文后启动指令丢失的限制。项目创建于 2025 年 10 月，却已达到 281109 Stars、25184 Forks，说明传播速度极快；同时有 354 个开放 Issue、仅 44 名贡献者，用户规模与协作规模并不对称，升级时应关注版本说明和跨宿主兼容性。技能会改变代理的默认工作方式，且近期 SDD 生命周期持续重构，现有团队流程可能需要随版本调整；README 还说明可选的视觉伴侣功能默认会上报版本信息，可通过 <code>SUPERPOWERS_DISABLE_TELEMETRY</code> 关闭。</p>
+<p><strong>注意事项</strong>：项目创建于 2024 年 10 月，已有 33162 个 Star、2537 个 Fork，但同时存在 633 个 Open Issues，说明用户规模大且网络环境差异带来的问题较多。策略可能因服务端检测或网络运营商变化而失效，需要逐个尝试并运行诊断；WinDivert 可能被杀毒软件识别为高风险工具，使用前应核对来源和文件校验值。启用 <code>ipset any</code> 或游戏过滤器可能影响原本正常的网站和应用，安装服务、修改 hosts 及驱动操作也需要管理员权限。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有较高社区影响力，其代表项目获得数十万星标，并具备广泛开发者关注度。
-<strong>技术栈偏好</strong>：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、工具链和可扩展开发框架。
-<strong>核心领域</strong>：主要聚焦 AI 辅助软件开发、开发者生产力工具与自动化工作流。</p>
-<hr />
-<h3>✨ Sonarr/Sonarr (15617★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它持续监控 Usenet 和 BitTorrent 的 RSS 来源，发现新剧集后自动下载、整理、重命名，并在更高画质版本出现时替换旧文件。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Sonarr 面向电视剧和剧集库管理，可监控多个 RSS Feed，自动识别新集、搜索缺失内容，并交给 SABnzbd、NZBGet 等下载客户端处理。下载完成后，它会按规则整理目录和文件名，还能处理特别篇、多集发布和已有文件的画质升级，并向 Plex、Kodi 等媒体中心发送更新通知。</li>
-<li><strong>能解决什么痛点</strong>：追更多部剧时，不需要手动查看 RSS、搜索发布版本并逐集下载；下载失败时可以自动尝试其他发布源。已有媒体库也能自动扫描缺失剧集，避免手工对照季数、集数和文件名。</li>
-<li><strong>适合谁用</strong>：使用 Usenet 或 BitTorrent 搭建家庭影音库的个人用户；维护 Plex、Kodi 等媒体中心，并希望自动完成剧集追更、归档和质量升级的家庭服务器运维者。</li>
-<li><strong>怎么上手</strong>：README 仅提供安装入口、FAQ、Wiki 和 API 文档链接，未提供命令行安装或最小配置示例；可从 <a href="https://sonarr.tv/#downloads-v3">Download/Installation</a> 开始。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>在家庭服务器上自动追踪正在播出的电视剧，并将下载结果归档到 Plex 或 Kodi 媒体库。</li>
-<li>扫描已有硬盘剧集目录，补齐缺失集数，并将低画质文件自动升级为更高质量版本。</li>
-<li>将 Sonarr 与 SABnzbd、NZBGet 及下载客户端组合，构建从订阅剧集、获取资源到重命名入库的自动化流程。</li>
-<li><strong>技术看点</strong>：项目采用 C#/.NET 构建，提供 API 并支持 Windows、Linux、macOS、Raspberry Pi 等平台，适合长期运行在家庭服务器或小型自托管环境中。其核心价值集中在复杂的剧集发布解析、下载失败重试、质量规则和媒体库整理，而不只是下载任务调度。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交覆盖 2026 年 8 月 31 日至 9 月 11 日，开发保持高频，重点仍是稳定性和边界场景修复，而非大规模重构。近期集中改进多集、多季和动漫风格发布名解析，修复 Trakt 导入、手动导入、三位数集数、IPv6 下载客户端等问题，同时补充 v5 API 内容类型、改进 Allowed Hosts/Trusted Networks 日志，并升级到 .NET 10.0.12；Weblate 也在持续更新翻译，显示项目仍在维护现有版本并推进平台演进。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。README 明确展示了它与 SABnzbd、NZBGet、Plex、Kodi 等组件的集成关系，这些项目在整体方案中主要承担下载或媒体播放职责，并非 Sonarr 的直接替代品。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2011 年，拥有 365 名贡献者、15617 个 Stars 和 1943 个 Forks，且近期持续提交，成熟度和维护活跃度较高；90 个 Open Issues 相对于项目规模不算多，但不能据此判断所有问题都已解决。上手需要理解 RSS、Usenet/BitTorrent、下载客户端、媒体目录和质量规则之间的配置关系，初次部署并非零配置。README 提供 Wiki、FAQ 和 API 文档入口，但安装链接仍指向包含 <code>v3</code> 的地址，而近期提交已涉及 v5 API 和 .NET 10，正式部署前应核对当前版本、安装方式及升级兼容性。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Sonarr/Sonarr">Sonarr/Sonarr</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/Flowseal/zapret-discord-youtube">Flowseal/zapret-discord-youtube</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：老牌开源媒体管理项目，核心仓库拥有较高关注度，在自托管媒体社区具有较强影响力
-<strong>技术栈偏好</strong>：以 C# 和 .NET 为主，辅以 CoffeeScript 与 HTML，偏向服务端应用及配套 Web 界面开发
-<strong>核心领域</strong>：聚焦影视媒体库管理、剧集自动追踪与下载自动化###</p>
+<p><strong>技术影响力</strong>：网络代理与访问优化领域的高影响力独立开发者，拥有较强社区关注度和传播力。
+<strong>技术栈偏好</strong>：偏好 Python、Batchfile 与 C，侧重代理工具、网络通信和跨平台脚本开发。
+<strong>核心领域</strong>：主要聚焦网络代理、流量转发及 Discord、YouTube、Telegram 等平台的访问优化。</p>
 <hr />
 <h3>✨ jihe520/MathModelAgent (4747★)</h3>
 <blockquote>
@@ -552,6 +358,158 @@
 <strong>技术栈偏好</strong>：偏好 Python、Shell 与 TypeScript，重视自动化脚本、智能代理和桌面应用开发
 <strong>核心领域</strong>：主要聚焦 AI Agent、数学建模、效率工具与个人智能应用娱乐主管</p>
 <hr />
+<h3>✨ Sonarr/Sonarr (15617★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它持续监控 Usenet 和 BitTorrent 的 RSS 来源，发现新剧集后自动下载、整理、重命名，并在更高画质版本出现时替换旧文件。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Sonarr 面向电视剧和剧集库管理，可监控多个 RSS Feed，自动识别新集、搜索缺失内容，并交给 SABnzbd、NZBGet 等下载客户端处理。下载完成后，它会按规则整理目录和文件名，还能处理特别篇、多集发布和已有文件的画质升级，并向 Plex、Kodi 等媒体中心发送更新通知。</li>
+<li><strong>能解决什么痛点</strong>：追更多部剧时，不需要手动查看 RSS、搜索发布版本并逐集下载；下载失败时可以自动尝试其他发布源。已有媒体库也能自动扫描缺失剧集，避免手工对照季数、集数和文件名。</li>
+<li><strong>适合谁用</strong>：使用 Usenet 或 BitTorrent 搭建家庭影音库的个人用户；维护 Plex、Kodi 等媒体中心，并希望自动完成剧集追更、归档和质量升级的家庭服务器运维者。</li>
+<li><strong>怎么上手</strong>：README 仅提供安装入口、FAQ、Wiki 和 API 文档链接，未提供命令行安装或最小配置示例；可从 <a href="https://sonarr.tv/#downloads-v3">Download/Installation</a> 开始。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>在家庭服务器上自动追踪正在播出的电视剧，并将下载结果归档到 Plex 或 Kodi 媒体库。</li>
+<li>扫描已有硬盘剧集目录，补齐缺失集数，并将低画质文件自动升级为更高质量版本。</li>
+<li>将 Sonarr 与 SABnzbd、NZBGet 及下载客户端组合，构建从订阅剧集、获取资源到重命名入库的自动化流程。</li>
+<li><strong>技术看点</strong>：项目采用 C#/.NET 构建，提供 API 并支持 Windows、Linux、macOS、Raspberry Pi 等平台，适合长期运行在家庭服务器或小型自托管环境中。其核心价值集中在复杂的剧集发布解析、下载失败重试、质量规则和媒体库整理，而不只是下载任务调度。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交覆盖 2026 年 8 月 31 日至 9 月 11 日，开发保持高频，重点仍是稳定性和边界场景修复，而非大规模重构。近期集中改进多集、多季和动漫风格发布名解析，修复 Trakt 导入、手动导入、三位数集数、IPv6 下载客户端等问题，同时补充 v5 API 内容类型、改进 Allowed Hosts/Trusted Networks 日志，并升级到 .NET 10.0.12；Weblate 也在持续更新翻译，显示项目仍在维护现有版本并推进平台演进。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。README 明确展示了它与 SABnzbd、NZBGet、Plex、Kodi 等组件的集成关系，这些项目在整体方案中主要承担下载或媒体播放职责，并非 Sonarr 的直接替代品。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2011 年，拥有 365 名贡献者、15617 个 Stars 和 1943 个 Forks，且近期持续提交，成熟度和维护活跃度较高；90 个 Open Issues 相对于项目规模不算多，但不能据此判断所有问题都已解决。上手需要理解 RSS、Usenet/BitTorrent、下载客户端、媒体目录和质量规则之间的配置关系，初次部署并非零配置。README 提供 Wiki、FAQ 和 API 文档入口，但安装链接仍指向包含 <code>v3</code> 的地址，而近期提交已涉及 v5 API 和 .NET 10，正式部署前应核对当前版本、安装方式及升级兼容性。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Sonarr/Sonarr">Sonarr/Sonarr</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：老牌开源媒体管理项目，核心仓库拥有较高关注度，在自托管媒体社区具有较强影响力
+<strong>技术栈偏好</strong>：以 C# 和 .NET 为主，辅以 CoffeeScript 与 HTML，偏向服务端应用及配套 Web 界面开发
+<strong>核心领域</strong>：聚焦影视媒体库管理、剧集自动追踪与下载自动化###</p>
+<hr />
+<h3>✨ alsk1992/CloddsBot (1517★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：CloddsBot 把 Polymarket、Kalshi、币安、Hyperliquid、Solana DEX 等 1000+ 个市场接入一个由 Claude 驱动的对话式交易终端，可自动扫描机会、执行交易并进行风险控制。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个基于 TypeScript 和 Claude 的自托管 AI 交易代理，支持预测市场、现货、永续合约、Solana 与 EVM DeFi、代币发行及 Bittensor 挖矿。用户可以通过 WebChat、CLI 或 Telegram、Discord 等 21 个消息平台下达指令，由代理调用 119+ 个技能完成行情分析、下单、持仓管理、套利和自动化任务。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：它将多个交易所、预测市场和链上协议统一到一个接口中，减少用户分别维护账户、行情 API、交易命令和持仓记录的成本。对于需要持续监控市场的场景，还提供止盈止损、熔断、VaR/CVaR、压力测试、每日亏损限制和 kill switch，避免完全依赖人工盯盘。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合熟悉加密资产、预测市场和链上交易，并希望自行托管交易代理的个人交易者或量化开发者。也适合需要通过 Claude Desktop、Claude Code 或 MCP 将交易、行情和链上操作接入其他 AI 工作流的开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 提供的最简方式是 <code>npm install -g clodds --loglevel=error &amp;&amp; clodds onboard</code>，完成 API Key、消息渠道配置后，WebChat 默认运行在 <code>http://localhost:18789/webchat</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>同时监控 Polymarket 的 BTC/ETH/SOL 短周期预测市场和 Binance、Hyperliquid 永续合约，并通过预设策略执行交易。</li>
+<li>管理 Solana 上 Jupiter、Raydium、Orca、Kamino、Pump.fun 等协议的交易、借贷、代币安全检查和持仓。</li>
+<li>
+<p>搭建面向 AI Agent 的交易或数据服务，通过 x402 使用 USDC 进行机器间支付，并用 MCP 暴露交易技能给 Claude Desktop 或 Claude Code。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用本地 SQLite、LanceDB 和 PostgreSQL 组合，分别覆盖交易记录、语义记忆、混合检索和分析数据；同时通过统一风险引擎、交易决策审计日志及 SHA-256 完整性哈希记录自动化交易过程。其插件化 Skills 和 MCP Server 设计，使 119+ 个交易与数据能力可以被对话式代理按需调用。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交集中在安全和兼容性修复，而不是新增大功能，包括恢复安全 CI、修复已退役的 Anthropic 模型默认配置、改进 Discord 环境变量读取，以及处理 browserslist 高危安全公告。项目还连续修复了 Pump.fun 毕业检测、Drift 订单过滤、Kamino 借贷、Raydium CLMM 和 Orca 等链上适配问题，说明当前重点是提高多协议交易链路的可靠性。9 月 1 日至 10 日持续有提交和合并请求，但贡献者数量仅 5 人，维护仍较集中。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确提到直接竞品。相较于只覆盖单一交易所的量化机器人或只提供聊天交互的 AI 助手，CloddsBot 的明显差异是同时覆盖预测市场、中心化交易所、永续 DEX、多个公链协议和 Agent 支付，但这也带来了更高的配置和维护复杂度。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 1 月，当前有 30 个 Open Issues、仅 5 名贡献者，虽然近期更新频繁，但多协议适配仍在快速修复阶段，不宜直接视为成熟的无人值守交易系统。运行需要 Node.js 22+、Claude 或其他模型凭据，以及各交易所和链上钱包权限；涉及杠杆、自动下单、代币发行和跨链操作时，密钥保管、权限隔离、资金限额和策略回测都必须由使用者自行负责。README 功能覆盖面很广，但实际部署仍需逐项核对 API、网络、地区限制和协议状态，升级时也应关注模型默认值及交易适配器的破坏性变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/alsk1992/CloddsBot">alsk1992/CloddsBot</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：凭借千星级项目 CloddsBot，AL 属于具备单点爆款影响力的新兴个人开发者。
+<strong>技术栈偏好</strong>：主要使用 TypeScript 与 Python，并对 Rust、自动化和交易系统方向有明显偏好。
+<strong>核心领域</strong>：主要聚焦自动化工具、AI Agent 与高频交易相关应用。</p>
+<hr />
+<h3>✨ yuliskov/SmartTube (33077★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把 Android TV 或电视盒子变成一个没有广告界面、能跳过赞助片段并支持高规格播放的开源媒体客户端。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：SmartTube 面向 Android TV、Google TV、NVIDIA Shield 和兼容的电视盒子，提供适合遥控器操作的媒体浏览与播放界面。它支持 SponsorBlock、8K、60fps、HDR、可调倍速、直播聊天、画中画和后台播放，并且不依赖 Google 服务。</li>
+<li><strong>能解决什么痛点</strong>：官方客户端在电视上的广告和赞助商口播会打断观看，SmartTube 可通过无广告界面和 SponsorBlock 跳过已提交的赞助片段。对于没有完整 Google 服务、仍在使用旧版 Android TV，或希望统一控制播放速度、字幕和遥控器按键的电视设备，也提供了更完整的替代方案。</li>
+<li><strong>适合谁用</strong>：使用 Android TV、Google TV、Fire TV 旧款设备、Chromecast with Google TV 或 Android 电视盒子的家庭用户；希望在客厅电视上使用开源客户端、减少对 Google 服务依赖的高级用户。</li>
+<li><strong>怎么上手</strong>：在 Android TV 安装 Downloader，打开后输入 <code>kutt.to/stn_beta</code>（或 <code>kutt.to/stn_stable</code>）下载并安装对应版本；也可以从 GitHub Releases 下载 APK 后通过 USB、文件传输应用或 ADB 侧载。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>在 NVIDIA Shield、Chromecast with Google TV 或 Android 电视上替换默认的视频客户端，减少广告和赞助片段干扰。</li>
+<li>在没有 Google 服务的 Android 电视盒子上浏览和播放公开视频，同时使用 SponsorBlock、倍速、HDR 和 8K 播放能力。</li>
+<li>在客厅设备上启用画中画、后台播放或手机电视码投屏，作为家庭媒体播放入口；不过投屏前需要先打开电视端 SmartTube。</li>
+<li><strong>技术看点</strong>：项目使用 Java 开发，针对 Android TV 的大屏和遥控器交互设计，支持 Android 4.3 及以上的较宽设备范围。近期提交持续处理 MediaServiceCore、SABR 播放格式与字幕加载、播放器错误恢复等底层播放问题，并集成 SponsorBlock 和内置更新机制。</li>
+<li><strong>近期动向与发展方向</strong>：2026 年 9 月 6 日至 12 日的最近 20 条提交非常密集，重点不是大规模新功能，而是围绕播放稳定性和细节修复持续迭代：包括 SABR 回退时间和外部字幕加载、播放器报错时的控件行为、观看进度重启后重置、已看完视频隐藏、音量漂移修复以及屏蔽频道默认排序。项目仍由 Yuriy Liskov 主导开发，同时合并了外部贡献者的修复和德语翻译，并连续发布 32.45、32.46 版本；整体处于高频维护状态。</li>
+<li><strong>同类对比</strong>：README 未明确列出具体竞品；从定位看，它主要与 Android TV 上的官方视频客户端形成替代关系，差异集中在开源、无需 Google 服务、SponsorBlock、无广告界面和更丰富的播放控制，而不是手机端通用播放器。</li>
+<li><strong>注意事项</strong>：</li>
+<li>仅支持 Android TV/Google TV 及兼容的 Android 电视设备，不面向手机和平板优化，也不支持 Samsung Tizen、LG webOS、Apple TV 等非 Android 平台。2025 年 10 月后采用 Amazon VegaOS 的 Fire TV 新设备（包括 Fire Stick 4K Select 及更新型号）不兼容，旧款 Android 系统 Fire TV 才在支持范围内。</li>
+<li>安装需要侧载 APK，README 明确警告不要从非官方应用商店、APK 网站或博客下载；应优先使用项目 GitHub Releases 或 README 指向的 F-Droid 来源。项目曾披露开发环境感染未知恶意软件、部分构建可能受影响的安全事件，虽然已清理环境、更新公钥并对构建进行 VirusTotal 扫描，但安装前仍应核对来源、版本和签名。</li>
+<li>项目创建于 2020 年，拥有 33077 个 Stars 和 2009 个 Forks，更新频率高，说明用户基础和维护活跃度较强；但仍有 710 个 Open Issues，使用者可能遇到设备、字幕、投屏或播放协议相关兼容性问题。评论功能本身不稳定，语音搜索和投屏表现也会因设备而异。</li>
+<li>
+<p>Beta 版更新更快但风险更高，稳定性优先时应选择 stable 版；部分倍速可能掉帧，SponsorBlock 也依赖社区提交和服务可用性，不能保证所有赞助片段都被识别。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/yuliskov/SmartTube">yuliskov/SmartTube</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：凭借 SmartTube 等高星项目，在开源社区尤其是 Android/智能电视应用方向具备较强个人影响力。
+<strong>技术栈偏好</strong>：以 Java 和 JavaScript 为主，辅以 Batchfile，偏向客户端应用、媒体服务与系统工具开发。
+<strong>核心领域</strong>：主要聚焦智能电视/Android 影音应用生态、输入法与轻量级系统调优工具。</p>
+<hr />
+<h3>✨ Shubhamsaboo/awesome-llm-apps (137347★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它像一套可直接拆开运行的 AI 应用实验室，收录了从单文件 Agent、RAG 应用到多智能体团队和编码 Agent Skills 的 100 多个 Python 开源范例。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个面向大语言模型应用开发的开源案例集合，包含 Starter AI Agents、Advanced AI Agents、Always-on Agents、Multi-agent Teams、Agent Skills 等目录。示例覆盖旅行规划、数据分析、网页抓取、深度研究、投资分析、语音理赔、浏览器自动化等场景，并提供可运行代码、README 和部分端到端测试或评估配置。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者不必从零拼接模型调用、工具编排、记忆、RAG 检索和多智能体协作，可以直接从相近案例复制出第一个可运行版本。对于编码 Agent 用户，项目还提供可通过 <code>npx skills add</code> 安装的技能，例如项目复盘、范围蔓延检测、依赖检查和文稿首读评估，减少重复编写提示词、工具调用和评测逻辑的工作量。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合使用 Python、Streamlit 及主流大模型 API 快速验证 AI 产品想法的开发者，也适合希望研究 Agent 编排、RAG、模型工具调用和多智能体协作的工程师。使用 Claude Code、Codex、Cursor 等编码 Agent 的开发者，也可以直接采用其中的 Agent Skills。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：运行一个 Starter Agent 的最小流程是：<code>git clone https://github.com/Shubhamsaboo/awesome-llm-apps.git &amp;&amp; cd awesome-llm-apps/starter_ai_agents/ai_travel_agent &amp;&amp; pip install -r requirements.txt &amp;&amp; streamlit run travel_agent.py</code>。若只想安装一个编码技能，可执行：<code>npx skills add https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>为企业内部搭建一个读取 CSV 或 Excel、用自然语言回答业务问题的数据分析助手。</li>
+<li>为投研或销售团队制作基于网页、财报或公开记录的研究和尽调报告生成流程。</li>
+<li>
+<p>为团队编码 Agent 安装 <code>dependency-doctor</code>、<code>scope-creep-detector</code> 等技能，在提交代码前检查依赖声明和变更范围。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 Apache-2.0 许可，示例同时覆盖 Claude、Gemini、GPT、DeepSeek、Llama、Qwen 等模型及多个 Agent SDK，适合比较不同模型和编排方式。Agent Skills 强调真实代码、评测以及安全检查，近期还出现了 advisor-orchestrator-worker 这类多模型分工模式，体现出项目正从简单 Demo 向可复用工作流演进。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交非常活跃，2026 年 9 月 10 至 12 日集中新增并完善 <code>first-reader</code> Agent Skill，补充目录说明、评测描述，并修复将 verdict 内容插入 HTML 时的转义问题。同期还刷新了 <code>advisor-orchestrator-worker</code> 的模型配置和封面文档，并持续迁移已废弃的 LangChain API；整体方向是扩大技能目录、完善安全与评测门槛，同时跟进模型和框架版本变化。最近 20 条提交中既有项目维护者的连续开发，也有外部贡献者提交的修复，项目更新节奏和社区参与度都较高。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。与只提供单一 Agent 框架的仓库相比，它更像按应用场景组织的案例目录和模板集合，重点是快速运行、改造和参考，而不是提供统一的底层 Agent 抽象。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2024 年 4 月，当前拥有 137347 个 Stars、20213 个 Forks、115 位贡献者和 12 个开放 Issue，且近期持续更新，说明关注度和维护活跃度较高；但示例数量多、目录和依赖差异大，实际运行通常需要分别配置模型、搜索、数据库或第三方服务的 API Key，并承担相应费用。README 适合快速定位案例，但不能替代每个子项目的部署文档；模型名称、SDK 调用和 LangChain API 变化较快，复制示例用于生产环境前仍需自行补充鉴权、限流、数据脱敏、错误处理和结果评估。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Shubhamsaboo/awesome-llm-apps">Shubhamsaboo/awesome-llm-apps</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：AI 开源领域的高影响力实践型创作者，拥有超 10 万级仓库 Star 与 1 万级关注者。
+<strong>技术栈偏好</strong>：以 Python、TypeScript 为主，偏好构建 LLM 应用、RAG 系统与 AI Agent 工具。
+<strong>核心领域</strong>：聚焦生成式 AI、AI Agent、RAG、LLM 教程及相关开源生态建设。</p>
+<hr />
 <h3>✨ p1neappleXpress/OpenFlux (950★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：OpenFlux 将本地 SOCKS5 流量封装进可插拔传输层，经 Yandex Docs 或 MAX WebRTC DataChannel 转发到远端出口节点，再访问目标网络。</p>
@@ -598,198 +556,235 @@
 <strong>技术栈偏好</strong>：偏好 Go、Kotlin 与 C，覆盖后端工具、Android、桌面端及系统级开发。
 <strong>核心领域</strong>：主要聚焦跨平台应用、Telegram 自动化工具与网络/基础设施类开源项目。</p>
 <hr />
-<h3>✨ jordan-gibbs/hyperresearch (2249★)</h3>
+<h3>✨ armory3d/armorpaint (4349★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把 Claude Code 变成一名会分解问题、批量检索网页、交叉核验证据，并把全部资料沉淀成可持续搜索知识库的深度研究助手。</p>
+<p><strong>一句话</strong>：在 3D 模型表面直接绘制颜色、材质和细节，并实时预览 PBR 纹理效果的开源纹理制作软件。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Hyperresearch 是一个基于 Python 的 Agent 研究流水线，接收一个研究问题后，自动完成查询拆解、多视角搜索、矛盾分析、深度调查、报告撰写、批评、补充检索和引用核验。它采用最多 16 个步骤的分层流程，将抓取到的网页、论文和引用保存为 Markdown 加 SQLite 索引的持久化知识库，后续研究可以复用已有资料。</p>
+<p><strong>它是什么</strong>：ArmorPaint 面向 3D PBR 纹理绘制，可以在模型表面制作颜色、粗糙度、金属度等材质通道，并通过 3D 视图查看最终效果。项目仓库主要服务开发者，支持 Windows、Linux、macOS、Android、iOS 和 WASM 等构建目标。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：</p>
-</li>
-<li>长篇研究通常会丢失来源、混淆转载与独立证据，Hyperresearch 会保存来源 provenance、聚合转载内容，并在报告发布前检查引用是否真正支持对应句子。</li>
-<li>
-<p>长流程 Agent 运行容易因上下文过长或中途崩溃而失控，它通过分步骤执行、运行 manifest 和 <code>run resume</code> 支持断点恢复，并限制修改阶段只能进行小范围补丁式编辑。</p>
+<p><strong>能解决什么痛点</strong>：它把纹理绘制和材质预览放在同一个工作流中，减少在图像编辑器、3D 软件和渲染器之间反复导入导出的成本。对于需要快速验证光照、材质参数和贴图变化的场景，也能避免仅在二维贴图上绘制导致的比例和接缝判断偏差。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：</p>
-</li>
-<li>使用 Claude Code 进行技术调研、竞品分析、政策研究或文献综述的 Python 开发者和研究人员。</li>
-<li>
-<p>需要产出带完整引用、反方观点和来源审计的长篇报告，且希望长期积累可搜索研究资料的团队。</p>
+<p><strong>适合谁用</strong>：适合制作游戏资产、影视资产或实时渲染模型的 3D 美术人员，以及需要将纹理绘制能力集成到自有工具链中的图形程序开发者。需要从源码构建的用户还应熟悉 C/C++ 工具链及各平台原生构建环境。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：在项目目录执行 <code>pip install hyperresearch &amp;&amp; hyperresearch install</code>，然后在 Claude Code 中运行 <code>/hyperresearch</code>。项目要求 Python 3.11–3.13，当前不支持 Python 3.14。</p>
+<p><strong>怎么上手</strong>：Linux x64 可执行 <code>git clone https://github.com/armory3d/armorpaint &amp;&amp; cd armorpaint/paint &amp;&amp; ../base/make --run</code>；Windows、macOS 等平台则需使用对应的 Visual Studio、Xcode 或 Android Studio 打开生成的工程。</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>为新技术选型时，收集论文、官方文档、工程实践和反对观点，生成带引用的技术评估报告。</li>
-<li>对一个研究主题持续迭代，例如先做量子计算综述，后续通过知识库检索已有来源，再补充最新论文和争议点。</li>
+<li>为游戏中的角色、武器、场景道具制作金属、木材、皮革等 PBR 贴图。</li>
+<li>在实时渲染项目中快速调整模型材质，并通过光线追踪或超采样效果检查最终观感。</li>
 <li>
-<p>进行数小时到数天的论文综述或 dissertation 级研究，按章节组织 300–450 个来源并生成 2.5 万至 8 万字的初稿。</p>
+<p>将 ArmorPaint 编译为 WASM 或移动端版本，用于定制化的网页、移动设备或跨平台图形工具链。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：核心设计不是单次提示词调用，而是由多个角色化 Agent 组成的分阶段流水线：抓取、来源分析、批评、引用检查和修补分别承担明确职责。项目还使用 Markdown 加 SQLite 全文检索构建持久化 vault，并通过 <code>[Read, Edit]</code> 工具权限限制补丁和润色 Agent，降低其重新生成整篇报告或篡改既有内容的风险。</p>
+<p><strong>技术看点</strong>：项目以 C 为主要语言，配套自有的 <code>base</code>、<code>minic</code> 和 <code>iron</code> 等底层代码与构建流程，覆盖桌面端、移动端及 WASM。近期提交持续涉及 Vulkan、D3D12、光线追踪着色器、跨平台异步进程执行和 C23 <code>#embed</code> 支持，说明项目重点仍在底层渲染能力和多平台适配。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：近期提交非常集中，2026 年 7 月 18 日至 8 月 4 日连续发布 <code>v0.8.7</code>、<code>v0.9.0</code>、<code>v0.9.1</code> 和 <code>v0.10.0</code>，开发重点从 2.0 架构基础逐步扩展到 profile、来源排序、浏览器抓取、验证流程和自适应写作参数。同期修复了存储型 XSS、不可信笔记正文、孤儿笔记外键崩溃、全文搜索语法、批量 PDF 处理和 CJK 报告长度校验等问题，也加入了 paywall 论文的开放版本恢复能力。20 条提交中 Jordan Gibbs 和 Francois du Plessis 贡献较多，结合 7 名贡献者来看，项目迭代活跃但核心维护仍较集中。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026 年 9 月 3 日至 9 日，开发较为活跃，但主要由 <code>luboslenco</code> 提交。近期工作以修复和底层稳定性改进为主，包括光线追踪输出、Vulkan 纹理标记、macOS/Linux 异步执行、纹理变化重绘、超采样配置和指针类型等问题，同时加入了控制台模型的 Codex 支持，暂未看到大规模功能重构。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 将项目定位在 DeepResearch-Bench 深度研究系统一类，并展示其相对 Grep Deep Research、Cellcog Max、NVIDIA AIQ、Gemini Deep Research 和 OpenAI Deep Research 的内部评测结果。不过该结果明确属于分层试验的前瞻性投影，第三方验证尚未完成，因此更适合将其理解为项目方的定位和设计目标，而不是已被独立证实的榜单结论。它与一般一次性研究 Agent 的主要差异，是保留可复用资料库、执行来源独立性审计，并在报告生成后进行对抗式检查和受限修补。</p>
+<p><strong>同类对比</strong>：README 未明确列出竞品或同类项目，暂无明显同类对标。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 4 月，虽已获得 2249 个 Stars 和 239 个 Forks，但仍处于快速演进阶段，当前有 27 个 Open Issues，频繁版本发布也意味着依赖和流程可能继续变化。上手不仅需要 Python，还依赖 Claude Code、模型调用额度以及网页抓取和浏览器环境；完整研究通常需要约 1.5–2.5 小时，premier 或 dissertation 配置的耗时和成本更高。README 信息较完整，但配置 profile、浏览器抓取、模型选择和长流程故障排查仍有一定学习成本；近期已有安全和兼容性修复，生产使用前应固定版本并审查生成报告和外部来源。</p>
+<p><strong>注意事项</strong>：仓库明确说明开发版可能不稳定，面向开发者的源码仓库与官方分发二进制并非同一使用门槛，官方二进制需要付费。源码构建需要按平台安装编译器和依赖，Linux 还需参考额外依赖文档；跨平台底层改动可能带来构建或渲染差异。项目创建于 2017 年，当前有 99 个开放 Issue、31 名贡献者，近期更新频繁但提交高度集中于单一核心维护者，采用前应评估问题响应和长期维护风险。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/jordan-gibbs/hyperresearch">jordan-gibbs/hyperresearch</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/armory3d/armorpaint">armory3d/armorpaint</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以个人开发者身份活跃于开源社区，凭借 <code>hyperresearch</code> 等项目获得一定关注度。
-<strong>技术栈偏好</strong>：偏好 Python，辅以 Rust，重点使用人工智能、语音交互与命令行工具相关技术。
-<strong>核心领域</strong>：主要聚焦 AI 研究辅助、自动化研究与语音 AI 应用开发。</p>
+<p><strong>技术影响力</strong>：凭借多个数千星级项目，Armory 3D 在开源图形创作与实时 3D 工具社区具备较强的垂直影响力。
+<strong>技术栈偏好</strong>：技术栈以 Haxe、C、C++ 为主，偏向高性能图形工具、渲染引擎与跨平台创作软件开发。
+<strong>核心领域</strong>：主要聚焦于 3D 图形创作、材质绘制、实时渲染与游戏/视觉内容制作工具链。</p>
 <hr />
-<h3>✨ alphaXiv/OpenResearch (1064★)</h3>
+<h3>✨ SnailSploit/Claude-Red (3347★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把 Claude Code、Codex 或 OpenCode 组织成多个并行研究代理，让代理分别查文献、提出假设、修改代码、运行实验，并把日志、差异和实验结果沉淀在本地工作区中。</p>
+<p><strong>一句话</strong>：把 SQL 注入、无线攻击、EDR 绕过、漏洞利用开发等红队方法整理成可按需加载的 <code>SKILL.md</code> 文件，让 Claude 在对话中切换成对应攻击面的安全顾问。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：OpenResearch 是一个本地优先的研究代理工作区，支持为不同研究方向创建独立代理会话和隔离的 Git worktree。它能管理从假设提出、代码修改、实验运行到结果分析的完整流程，并通过实验树保存不同尝试之间的 lineage 和不可变运行归档。项目同时支持本地计算、自有基础设施、SSH、Slurm、Kubernetes、Ray、Modal 等计算环境。</p>
+<p><strong>它是什么</strong>：Claude-Red 是面向 Claude Skills 系统的进攻性安全知识库，目前覆盖 23 个类别、78 个技能。每个技能以结构化 <code>SKILL.md</code> 文件组织，包含特定攻击面的测试方法、工具、边界情况和进一步利用路径，例如 SQLi、SSTI、ADCS、云环境、移动端、无线协议和 Shellcode 等。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：研究型开发通常需要同时尝试多个方向，手动复制代码、区分实验版本、整理日志和结果容易导致实验之间互相覆盖或无法复现。它还将文件、diff、运行日志和研究产物绑定到具体实验，减少“知道结果但找不到产生过程”的问题。</p>
+<p><strong>能解决什么痛点</strong>：安全人员在进行授权渗透测试、漏洞复现或 CTF 时，不必每次重新整理某类攻击面的检查清单、工具链和利用思路。面对 SQL 注入、WPA3、Kubernetes 逃逸等细分问题时，也能让 Claude 通过对应技能获得更聚焦的上下文，而不是依赖一份过于宽泛的通用提示词。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合使用 Claude Code、Codex 或 OpenCode 进行 AI 辅助编程的研究人员和算法工程师。也适合需要在本地代码、远程 GPU 或集群之间反复运行实验的机器学习团队。</p>
+<p><strong>适合谁用</strong>：适合进行授权红队演练、漏洞赏金排查、安全研究和 CTF 的安全工程师，以及希望用 Claude 辅助学习攻击面分析、漏洞验证和专业报告编写的安全从业者。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：macOS 或 Linux 可直接执行 <code>curl -LsSf https://openresearch.sh/install.sh | sh &amp;&amp; orx up</code>，随后在浏览器访问 <code>http://127.0.0.1:4791</code>；Windows 版本需从 Releases 安装，并先阅读 Windows 说明。</p>
+<p><strong>怎么上手</strong>：按 README 的推荐方式克隆到 Claude Skills 目录：</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>针对一个模型训练项目，让多个代理分别测试学习率、网络结构和数据增强方案，并在实验树中比较结果。</li>
-<li>让代理完成论文复现：检索论文、修改实现、运行实验，再把代码 diff、运行日志和产物关联保存。</li>
+<li>在授权 Web 渗透测试中加载 <code>offensive-sqli</code>、<code>offensive-ssrf</code> 或 <code>offensive-business-logic</code>，辅助梳理输入点、验证路径和业务流程绕过思路。</li>
+<li>在企业无线安全评估中使用 WPA2/WPA3、Evil Twin、BLE、Zigbee 等细分技能，分别处理握手捕获、认证降级和物联网协议测试。</li>
 <li>
-<p>在笔记本上操作浏览器工作区，同时通过 <code>orx up --remote user@host</code> 将实验放到带 GPU 的远程主机执行。</p>
+<p>在内网红队演练或漏洞研究中，结合 Active Directory、EDR 绕过、权限提升、漏洞利用开发和数据外传等技能，按攻击链阶段组织分析和记录。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目采用 Rust 构建 CLI 和本地服务，以 SQLite 保存本地项目、会话、实验、运行记录和产物；通过 Git worktree 与提交快照实现并行隔离和实验复现。计算后端与代理模型可按会话选择，兼顾本地模型端点、远程基础设施和托管计算。</p>
+<p><strong>技术看点</strong>：项目没有构建复杂的运行时框架，而是采用可移植的 Markdown 技能文件和按需触发加载机制，降低了接入 Claude 环境的门槛，也避免一次性占用全部上下文。仓库同时提供类别目录、技能索引、<code>claude-skills.json</code> 清单和安装脚本，支持完整安装或通过 sparse checkout 只获取 Web、Active Directory 等部分目录。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026-09-04 至 2026-09-11，开发节奏较快，重点从核心实验能力扩展到产品化和跨平台使用：新增 Windows CLI 与 dashboard 支持、原生 SSH 远程工作区、本地模型端点选择、Overleaf 实时同步、工作区恢复、文件安全刷新和技能库管理。同时还加入 onboarding、demo、starter 和 first-action 遥测，并持续完善 CI、合并队列和发布流程，说明项目正在从早期功能验证走向稳定分发；但目前主要由 5 名贡献者维护，社区协作规模仍较小。</p>
+<p><strong>近期动向与发展方向</strong>：8 月 25 日至 29 日出现一轮高密度更新，重点包括新增 20 个技能、扩展网络攻击与数据外传技能、重写 SSTI 技能、补充代理行为细节，以及同步更新 README、CHANGELOG 和 manifest；随后通过多个合并提交完善技能深度和覆盖面。项目创建于 2026 年 3 月，近期更新频率较高，但贡献者仅 5 人，当前演进仍主要由维护者及 Claude 生成或辅助完成的内容推动，方向明显偏向扩大攻击面覆盖和细化技能质量。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。其差异主要体现在将 Claude Code、Codex、OpenCode 等代理接入同一个本地研究工作区，并把并行代理、Git 实验树和多种计算后端组合起来，而不是只提供单一聊天式代理界面。</p>
+<p><strong>同类对比</strong>：暂无明显同类对标。它更接近面向 Claude 的进攻安全知识与提示上下文集合，而不是传统的漏洞扫描器、C2 框架或渗透测试自动化平台。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026-06-07，仍处于较早阶段；虽然已有 1064 个 Stars、78 个 Forks，但贡献者仅 5 人，API、CLI 和工作区数据模型仍可能快速变化。Windows 支持目前标注为 beta，且依赖 Git for Windows；SSH 远程服务绑定在 loopback，但没有应用层认证，同一主机上的其他用户可能访问该服务。官方发布版本默认发送可选择关闭的粗粒度使用事件，涉及企业环境时应先检查遥测策略；README 提供了文档、Windows 和本地模型说明，但复杂的 Slurm、Kubernetes 及各类远程后端配置细节仍需进一步查阅文档。</p>
+<p><strong>注意事项</strong>：项目面向的内容包含钓鱼、Shellcode、EDR 绕过、凭据获取和数据外传等高风险技术，只应在明确授权的资产、实验环境或 CTF 中使用。当前项目创建时间较短，虽然已有 3347 个 Star、534 个 Fork，但贡献者数量较少，11 个开放 Issue 也意味着部分内容仍可能需要校验和补充；技能文件提供的是方法论与操作上下文，不等同于经过充分验证的工具实现。README 结构完整，包含安装方式、分类索引、变更记录和安全说明，但批量更新技能或 manifest 可能导致目录内容、技能触发行为与既有 Claude 配置不一致，接入生产流程前应固定版本并逐项审核。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/alphaXiv/OpenResearch">alphaXiv/OpenResearch</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/SnailSploit/Claude-Red">SnailSploit/Claude-Red</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：聚焦开放科研与研究复现，已形成一定社区关注度和项目影响力。
-<strong>技术栈偏好</strong>：以 Python、Rust、TypeScript 为主，偏好科研工具、系统工程与智能体开发。
-<strong>核心领域</strong>：主要聚焦 AI 研究基础设施、论文实现复现与开放科学协作。</p>
+<p><strong>技术影响力</strong>：聚焦生成式 AI 安全与红队实践，在 GitHub 具备一定社区影响力。
+<strong>技术栈偏好</strong>：以 Python 为主，偏好 AI 安全测试、对抗性威胁建模与自动化安全工具开发。
+<strong>核心领域</strong>：生成式 AI 安全、LLM 红队、提示词攻击、对抗性 AI 与漏洞研究。</p>
 <hr />
-<h3>✨ github/spec-kit (135515★)</h3>
+<h3>✨ multimodal-art-projection/YuE (7021★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把“想做什么”依次整理成项目原则、功能规格、技术方案和任务清单，再交给 AI 编程代理按步骤实现并持续对照验证。</p>
+<p><strong>一句话</strong>：输入歌词和风格提示词，YuE2 先生成可查看、可修改的旋律与和弦乐谱，再把它渲染成带人声和伴奏的完整歌曲。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Spec Kit 是 GitHub 发布的规范驱动开发工具包，提供 <code>constitution</code>、<code>specify</code>、<code>plan</code>、<code>tasks</code>、<code>implement</code>、<code>converge</code> 等命令，将需求从描述阶段逐步转化为可执行任务。它支持 GitHub Copilot、Claude 等多种 AI coding agent，并通过扩展、预设和社区目录加入 Bug 修复、产品想法评估等工作流。</p>
+<p><strong>它是什么</strong>：YuE2 是一个基于 Python 的开放权重音乐生成项目，支持从歌词和风格描述生成歌曲，也能先产出 ABC 格式的旋律与和弦计划。它还支持零样本翻唱和基于乐谱、编曲、歌词的智能体式编辑，相关流程由 YuE2、MERT2 和 SheetSage2 等模型共同组成。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：AI 编程代理直接根据一句需求生成代码时，容易遗漏边界条件、技术约束和验收标准，后续也难以判断实现是否仍符合原始意图。Spec Kit 把需求、方案、任务和实现结果保存为连续的规范产物，减少“代码写出来了但方向错了”的返工；Bug 扩展还提供“评估根因、修复、测试”的固定流程，避免只根据错误描述盲目改代码。</p>
+<p><strong>能解决什么痛点</strong>：传统文本生成音乐通常只能反复修改提示词，无法直接检查或调整旋律、和弦、速度和曲式；YuE2 将这些内容导出为可编辑乐谱，便于在重新渲染前修改。对于翻唱场景，它可以从源录音转录旋律，再换歌词和目标风格，而不需要针对每首歌单独训练模型。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：使用 GitHub Copilot、Claude、Codex 等 AI 编程代理开发应用的个人开发者和团队。需要统一需求规格、架构决策、任务拆分和代码审查流程的产品研发团队也适合采用，尤其是希望让不同成员或不同 AI 代理遵循同一套项目原则的组织。</p>
+<p><strong>适合谁用</strong>：适合需要本地生成歌曲、控制旋律和和声的音乐创作者、编曲者与研究人员；也适合希望让智能体通过修改乐谱完成多轮音乐创作和版本比较的 AI 应用开发者。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：先安装 CLI，再初始化项目：</p>
+<p><strong>怎么上手</strong>：README 给出的最简方式是准备 Linux、Python 3.12、支持 BF16 且显存至少 24 GB 的 NVIDIA GPU，然后执行 <code>python3.12 -m venv .venv &amp;&amp; source .venv/bin/activate &amp;&amp; python -m pip install . &amp;&amp; python examples/generate.py --output outputs/first-song</code>。</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>为内部管理系统或 SaaS 功能建立从需求到实现的完整记录，先用 <code>/speckit.specify</code> 明确用户流程和验收条件，再让 AI 按任务实现。</li>
-<li>修复登录崩溃、数据丢失等高风险缺陷时，安装 <code>bug</code> 扩展，依次执行 <code>/speckit-bug-assess</code>、<code>/speckit-bug-fix</code> 和 <code>/speckit-bug-test</code>。</li>
+<li>根据歌词和风格提示词生成广告配乐、游戏原声或短视频背景歌曲，并保留生成的乐谱和中间产物。</li>
+<li>将一段已有歌曲转录为旋律 ABC 乐谱，改写成爵士、流行等新风格并生成零样本翻唱。</li>
 <li>
-<p>在决定开发离线模式、批量导入等较大功能前，使用 <code>assess</code> 扩展完成调研、目标定义、方案权衡和 go / needs-clarification / kill 决策。</p>
+<p>让音乐编辑智能体批量尝试和声、速度、乐器编制或歌词调整，输出多个版本供创作者试听比较。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目以 Python CLI 和 <code>uv</code> 安装链路为核心，通过 AI agent 命令、扩展、预设、Bundle 和社区目录构成可组合的工作流，而不是把开发流程硬编码成单一模板。近期还加入 JSON 格式的 preset 和 extension 列表、按步骤配置集成等能力，便于自动化脚本和组织级工具链接入。</p>
+<p><strong>技术看点</strong>：项目采用 AR-NAR 混合 Transformer，同时自回归预测符号乐谱和语义音乐 token，再通过流匹配生成声学 latent，最后由 VAE 解码为 48 kHz 立体声音频。<code>plan()</code>、<code>generate_semantic()</code>、<code>synthesize()</code>、<code>decode()</code> 分阶段暴露生成流程，使乐谱能够在音频渲染前被人工或智能体介入修改。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：最近两天持续有提交，开发重点集中在稳定性、安全性和生态扩展：修复目录下载 URL 必须绑定 tag 的问题、限制生成 dispatcher 的 stdin、修正扩展作者信息保留，并刷新工作流依赖。与此同时，项目持续增加 Secure Development Assurance Governance、Product Definition as Code、ProductShape 等 preset 或 extension，并在 2026-09-10 发布 1.0.6、开始 1.0.7.dev0 开发，说明项目已进入版本化迭代和社区生态扩张阶段。20 条提交中既有核心维护者，也有外部贡献者和自动化机器人，292 名贡献者显示社区参与度较高。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交几乎集中在 YuE2 发布后的 README、许可证、基准测试和资源入口整理，包括补充 WildSongBench 复现说明、Hugging Face 模型链接、机构信息和协作联系渠道，并将仓库代码与 skill 置于 Apache 2.0 许可下。9 月 11 日同步了 Suno v6 的 WildSongBench 结果，说明项目当前重点是发布完善、可复现评测和生态协作，而不是大规模重构；提交主要由核心维护者完成，外部贡献者数量为 9 人。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：暂无 README 明确列出的同类竞品。项目的差异点在于它不绑定某一个 AI 编程代理，而是围绕“规范先行、任务拆解、实现后收敛”提供跨代理流程，并允许通过扩展和预设改造方法论。</p>
+<p><strong>同类对比</strong>：README 明确将 YuE2 与 Suno v5/v6、Mureka 9 等系统放在 WildSongBench 上比较。YuE2 的主要差异不只是生成质量：它公开 YuE2-3B 权重，并把旋律、和弦和结构作为可检查、可编辑的中间表示；在 README 给出的评测中，YuE2 单次设置的 SongBench Avg 为 6.7316，best-of-8 为 6.9632，但不同指标的领先者并不相同，且最高均值差距尚未证明具有统计显著性。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2025-08-21，但已积累 135515 个 Star、12182 个 Fork 和 299 个 Open Issues，热度与迭代速度都很高，同时也意味着功能和文档仍可能快速变化。上手前需要安装 <code>uv</code> 并理解 AI agent 的命令或 skills 集成方式；扩展、预设和社区目录较多，团队需要先确定自己的规范模板，避免生成大量难以维护的流程文件。项目近期仍在频繁修复安全、工作流和 CLI 行为，升级时应固定 release tag，并在 CI 中验证初始化、扩展安装及生成结果，降低版本变更带来的风险。</p>
+<p><strong>注意事项</strong>：项目创建于 2025 年 1 月，当前有 7021 个 Stars、806 个 Forks 和 10 个开放 Issue，近期更新频繁，但贡献仍主要集中在少数维护者。上手需要 Linux、Python 3.12、BF16 NVIDIA GPU 和约 24 GB 显存，模型会从 Hugging Face 下载，硬件门槛明显高于普通音频应用。README 和指南较完整，但翻唱还需要单独部署 SheetSage2；生成结果会重新渲染完整录音，并不会保留原始音频中未编辑的波形片段。仓库当前主线已转向 YuE2，原始 YuE 代码、文档和许可证保存在 <code>YuE-v1</code> 分支，升级时应注意接口和模型行为差异。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/github/spec-kit">github/spec-kit</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/multimodal-art-projection/YuE">multimodal-art-projection/YuE</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：全球领先的软件开发平台与开源协作生态组织，社区影响力极强。
-<strong>技术栈偏好</strong>：以 Python、JavaScript、Go 为主，聚焦开发者工具、自动化与 AI 辅助编程。
-<strong>核心领域</strong>：软件工程协作、代码托管、开发者生产力与生成式 AI。</p>
+<p><strong>技术影响力</strong>：成立时间较短但已形成以 YuE 为代表的高关注开源项目，在多模态与生成式 AI 社区具备一定影响力
+<strong>技术栈偏好</strong>：以 Python 为主，偏好深度学习、生成模型、智能体与机器学习基准开发
+<strong>核心领域</strong>：主要聚焦多模态生成、AI 音乐、视觉语言推理及自动化机器学习工具 vele</p>
 <hr />
-<h3>✨ pascalorg/editor (22097★)</h3>
+<h3>✨ max-sixty/worktrunk (7019★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：在浏览器里绘制墙体、楼板、门窗和家具，搭建可编辑、可分享的三维建筑项目。</p>
+<p><strong>一句话</strong>：Worktrunk 把 Git worktree 封装成类似分支切换的工作流，让开发者可以为多个 AI Agent 同时创建、运行、查看和合并彼此隔离的代码目录。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：Pascal Editor 是一个基于 React Three Fiber 和 WebGPU 的 3D 建筑编辑器，用户可以按“场地、建筑、楼层、墙体、构件”的层级组织场景，并直接进行绘制、选择和参数化编辑。项目同时提供 <code>core</code>、<code>viewer</code>、<code>editor</code>、<code>nodes</code> 等可复用 npm 包，以及 CLI、本地数据存储和 MCP 服务，既能独立运行，也能嵌入其他应用。</p>
+<p><strong>它是什么</strong>：Worktrunk 是用 Rust 编写的 Git worktree 管理 CLI，核心命令包括 <code>wt switch</code>、<code>wt list</code>、<code>wt merge</code> 和 <code>wt remove</code>。它会根据分支名自动计算 worktree 路径，并通过 Shell 集成、Hooks、交互式选择器、CI 状态和 LLM 提交信息等功能，管理多个并行开发任务。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：传统建筑可视化应用往往需要分别处理场景数据、Three.js 渲染对象、几何重建和编辑状态，Pascal 将这些能力拆分为节点模型、注册表、脏节点系统和编辑工具，降低了维护复杂交互的成本。对于需要频繁调整墙体开口、楼层显示模式、家具尺寸或镜头视角的场景，它提供了比手写 Three.js 场景更完整的编辑闭环。</p>
+<p><strong>能解决什么痛点</strong>：原生 <code>git worktree</code> 创建工作目录时需要重复输入分支名、路径并手动切换目录；多个 AI Agent 并行工作时，还需要自行处理依赖安装、开发服务器端口、状态查看和分支清理。Worktrunk 将这些步骤集中到统一命令中，并支持每个 worktree 自动执行初始化和收尾 Hooks。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合使用 React、React Three Fiber 和 TypeScript 开发建筑设计、空间规划或 3D 场景编辑产品的前端团队。也适合希望通过插件扩展建筑节点、渲染器、参数面板和编辑工具的开发者。</p>
+<p><strong>适合谁用</strong>：使用 Claude Code、Codex 等 AI 编程 Agent，同时运行 5 到 10 个并行任务的开发者；需要频繁切换多个功能分支，并希望自动完成依赖准备、开发服务器启动和合并清理的个人开发者或小型团队。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：Node.js 22.13 或更高版本可直接运行本地编辑器：</p>
-</li>
-</ul>
-<p>若要集成已发布的包，可安装：</p>
-<ul>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>搭建支持墙体、门窗、楼板和屋顶编辑的浏览器端建筑方案设计器。</li>
-<li>为室内设计或空间规划系统增加楼层切换、剖切视图、家具摆放和碰撞校验。</li>
-<li>
-<p>将三维场景编辑器部署为本地应用，并通过 MCP 暴露场景工具、资源和提示，供 AI 主机操作建筑项目。</p>
+<p><strong>怎么上手</strong>：macOS 或 Linux 可直接安装并启用 Shell 集成：<code>brew install worktrunk &amp;&amp; wt config shell install</code>；创建并切换到新功能分支：<code>wt switch --create feature-auth</code>。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目采用 Turborepo 单仓库，将场景状态、3D viewer、编辑器 UI、内置节点、捕获协议、CLI 和 MCP 服务拆成独立包；场景数据使用 Zustand 管理，并结合 IndexedDB 持久化和 Zundo 提供 50 步撤销历史。渲染层通过注册表定位 Three.js 对象，再由 <code>useFrame</code> 驱动的系统按脏节点增量更新几何，近期还针对墙体 CSG、<code>BatchedMesh</code> 批处理和 GPU 性能采集持续优化。</p>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>为认证、分页修复、测试编写等多个独立任务分别启动 AI Agent，避免它们修改同一个工作目录。</li>
+<li>在同一项目中为每个 worktree 启动独立开发服务器，并通过 <code>hash_port</code> 为不同分支分配不同端口。</li>
+<li>
+<p>完成多个功能分支后，用 <code>wt merge main</code> 执行提交、变基或合并，并自动清理已合并的 worktree 和分支。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：项目近期保持高频开发，最近 20 条提交集中在 2026 年 9 月 1 日至 7 日，重点是 3D 捕获和镜头快照能力，包括显式相机姿态、后台捕获隔离、快照队列与生命周期清理，以及 JSON 预览产物渲染。与此同时，团队持续修复墙体 CSG、批处理、场景加载失败重试、脏状态和撤销逻辑，并完善柜体精确尺寸、工具状态机和性能监测，说明项目正从基础编辑能力向可回放的捕获、展示和性能工程演进。提交主要来自 Aymeric Rabot 和 Wassim SAMAD，外部贡献者数量为 41，核心开发较集中。</p>
+<p><strong>技术看点</strong>：项目选择 Rust 实现跨平台 CLI，并围绕 Git worktree 建立了模板化路径、Shell 集成、Hooks、别名、分支变量和缓存共享机制。其设计重点不是替代 Git，而是把原生 worktree 的目录切换、状态查看、Agent 启动和合并流程组合成一套可自动化的命令行工作流。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：暂无明显同类对标。README 未列出具体竞品，但从插件清单、可发布 viewer 包、本地 CLI 和 MCP 服务来看，它更偏向可嵌入的开源建筑场景编辑基础设施，而不是单一的在线建模产品。</p>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中在配置迁移、Shell 输出、命令别名、<code>dry_run</code> 行为、CI 临时文件、提交记录校验和测试修复，新增功能相对较少，说明项目当前重点是打磨边界行为、配置兼容性和发布质量。提交频率很高，既有项目作者和 72 名贡献者的开发，也有 Dependabot 和 Worktrunk Bot 参与维护，整体仍处于快速迭代阶段；后续方向可能继续围绕 AI Agent 工作流、CI 集成和自动化可靠性演进。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2025 年 10 月，虽然已有 22097 个 Stars、2849 个 Forks，且近期更新频繁，但整体仍处于快速演进阶段，44 个 Open Issues 也意味着部分功能和 API 可能持续调整。上手运行较简单，但要开发插件或深度集成，需要理解节点层级、Zustand 状态、scene registry、脏节点系统和 React Three Fiber 渲染生命周期；WebGPU、CSG 和批量渲染也会带来浏览器兼容性与性能调试成本。README 提供了架构说明和本地运行入口，但完整业务示例较少，正式集成前应锁定包版本并重点验证场景持久化、撤销恢复、几何重建和捕获流程。</p>
+<p><strong>同类对比</strong>：README 主要将 Worktrunk 与原生 <code>git worktree</code> 命令对比。原生 Git 只负责创建和列出工作目录，而 Worktrunk 进一步提供分支式切换、带状态的列表、Agent 启动、Hooks、合并清理和交互式选择器；README 未明确列出其他第三方竞品。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/pascalorg/editor">pascalorg/editor</a></p>
+<p><strong>注意事项</strong>：项目创建于 2025 年 10 月，当前已有 7019 个 Stars，但仍保持高频更新，40 个 Open Issues 也表明部分行为和配置仍在持续调整。上手依赖 Git、Shell 集成以及可选的 Claude Code、<code>gh</code> 或 <code>glab</code> 等外部工具；Windows 下由于 <code>wt</code> 与 Windows Terminal 命令存在冲突，默认需要使用 <code>git-wt</code>。配置表结构、命令行为和 Hooks 细节近期有变更记录，团队正式采用前应固定版本并检查升级说明。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/max-sixty/worktrunk">max-sixty/worktrunk</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为新近成立但已凭借单一旗舰仓库获得极高星标的组织，Pascal 在开发者工具与 AI/工作流生态里具备明显的早期高关注度。
-<strong>技术栈偏好</strong>：以 TypeScript 为主，辅以 Shell 和 Python，整体偏向可扩展的应用层工具、自动化脚本与集成型开发体验。
-<strong>核心领域</strong>：主要聚焦于面向建筑场景的智能化工具与插件生态，结合编辑器、语言和工作流能力做“建筑智能升级”。</p>
+<p><strong>技术影响力</strong>：活跃的开源开发者与项目维护者，在 Rust、Python 生态拥有较强社区影响力。
+<strong>技术栈偏好</strong>：偏好 Rust 与 Python，重点投入开发者工具、测试工具及数据处理相关项目。
+<strong>核心领域</strong>：主要聚焦开发者生产力、编程语言工具链、软件测试与科学数据计算。</p>
+<hr />
+<h3>✨ vxcontrol/pentagi (23081★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：PentAGI 让 AI 代理在隔离的 Docker 环境里自主规划侦察、调用安全工具、执行渗透测试并生成漏洞报告。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个基于 Go 后端和多智能体架构的自主渗透测试平台，能够把任务拆分给研究、开发和执行等不同角色的 AI Agent。它内置 nmap、Metasploit、sqlmap 等 20 多种安全工具，并通过 PostgreSQL、向量存储、可选知识图谱和长期记忆保存测试过程与结果。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：面对需要多轮信息搜集、工具调用和结果整理的测试任务，安全人员不必手工串联浏览器、搜索服务和多种命令行工具。测试过程、命令输出和发现结果会被持久化，并可生成包含复现与利用指南的报告，减少人工汇总和重复排查工作。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合安全研究员、渗透测试工程师和红队团队，用于在授权目标上验证 AI 辅助或自动化测试流程。也适合希望自托管 LLM、保留测试数据并接入内部监控系统的安全平台开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 说明通过 Docker Compose 部署，并支持配置多个 LLM Provider；在给定文档素材中未提供可直接复制的启动命令，文档未提供快速上手示例。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>对内部 Web 系统、API 和网络服务执行授权后的自动化侦察、漏洞验证和结果汇总。</li>
+<li>在安全实验室或靶场中，让 AI Agent 调用 nmap、sqlmap、Metasploit 等工具完成多步骤测试流程。</li>
+<li>
+<p>将渗透测试结果接入 Langfuse、Grafana、Prometheus 等系统，跟踪 LLM 行为、任务执行状态和基础设施运行指标。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 Go + GraphQL 后端、React + TypeScript 前端和基于 Docker 的隔离执行环境，任务通过异步队列交给多智能体系统处理。它同时提供 REST/GraphQL API、PostgreSQL + pgvector 持久化、Neo4j/Graphiti 可选知识图谱，以及 10 多类 LLM Provider 和 OpenAI-compatible 自定义接口，适合搭建可观测的自托管测试平台。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交主要集中在 2026 年 8 月 3 日至 6 日，说明项目近期仍在持续维护。开发重点包括新增 xAI 和 OpenCode Provider、更新 Langchaingo 与 Docker/Go 依赖、修复容器丢失后的重建和状态上报问题，以及改进 Provider 管理、测试覆盖和安装文档；整体方向是增强模型接入能力、提高容器运行可靠性，并完善多智能体执行质量。17 名贡献者对应较高的项目关注度，后续仍需观察社区贡献是否进一步分散。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确说明 PentAGI 目前不是 CALDERA 类的 Breach and Attack Simulation（BAS）或带预定义攻击战役的对抗模拟产品，而是偏向自主规划和辅助式渗透测试平台。除这一能力边界外，README 未提供明确的竞品对标。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 1 月，已经获得 2.3 万以上 Stars 和 3000 多个 Fork，但仍有 57 个 Open Issues，且贡献者数量为 17，使用时应关注维护集中度和未解决问题。部署依赖 Docker、PostgreSQL/pgvector，并可能涉及 Neo4j、监控组件、搜索服务及外部 LLM，完整环境的配置复杂度高于普通单体工具。AI Agent 能够自主执行安全操作，必须限定在明确授权、隔离且可回滚的目标环境中；README 还明确提示当前不支持 BAS 预定义战役，也未将 JSON 流程报告导出列为已支持能力。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/vxcontrol/pentagi">vxcontrol/pentagi</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 PentAGI 为代表作，在网络安全与自动化领域具备较高社区关注度和一定影响力。
+<strong>技术栈偏好</strong>：偏好 Go 构建后端与安全工具，辅以 Shell 进行系统运维、Python 支撑数据与分类处理。
+<strong>核心领域</strong>：主要聚焦网络安全、渗透测试自动化、容器化基础设施与云原生运维。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
