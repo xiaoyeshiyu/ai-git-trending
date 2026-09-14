@@ -1,5 +1,5 @@
-## 今日热点：开源智能体与本地 AI 加速渗透开发、创作与现实世界
-今日技术热点聚焦于开源 AI 的本地化、智能体化与多模态落地，从零依赖运行 MoE 模型、代码审查、音乐生成、语音克隆和群体智能预测，到让智能体连接全网信息、构建长期记忆与安全技能体系，同时延伸至跨平台文件传输、密码管理、量化交易、WiFi 空间感知、离线知识服务、图谱调查、移动副屏及攻防安全，传统基础设施和开发框架也持续完善，具体项目摘要如下：
+## 今日热点：本地化智能与 AI Agent 生态加速演进
+今日技术热点聚焦于让人工智能更自主、更安全、更贴近本地设备与真实场景，覆盖端侧运行大模型、代码审查、音乐与语音生成、群体智能预测、全网信息检索、Agent 记忆与技能扩展、系统提示词研究、跨平台文件传输、密码管理、金融交易、多模态感知、企业管理、离线知识服务、网络调查、移动扩展屏及攻防安全，同时也体现出开源基础模型框架与本地化部署持续成熟，具体项目摘要如下：
 
 ### ✨ JustVugg/colibri (27386★)
 
@@ -491,35 +491,38 @@
 
 ---
 
-### ✨ Crosstalk-Solutions/project-nomad (33677★)
+### ✨ Crosstalk-Solutions/project-nomad (36852★)
 
-> **一句话**：Project N.O.M.A.D. 把离线百科、教育内容、地图、本地 AI、数据工具和应用目录打包成一台可用浏览器访问的离线知识服务器。
+> **一句话**：把 Wikipedia、书籍、课程、地图和本地 AI 集成进一台由用户自己掌控的服务器，即使断网也能继续查资料、学习和处理文档。
 
-- **它是什么**：Project N.O.M.A.D. 是一个离线优先的知识与教育服务器，核心是名为 Command Center 的管理 UI 和 API，用来编排一组 Docker 容器化工具。它内置 Kiwix 离线资料库、Kolibri 教育平台、ProtoMaps 离线地图、Ollama + Qdrant 本地 AI/RAG、CyberChef 数据工具、FlatNotes 笔记，以及可一键安装应用的 Supply Depot。安装后主要通过浏览器访问，本机或局域网设备都可以打开 `http://localhost:8080` 或设备 IP 使用。
+- **它是什么**：Project NOMAD 是一个基于 Docker 的离线优先知识与教育服务器，通过 Command Center 管理 Kiwix、Kolibri、ProtoMaps、CyberChef、FlatNotes 等容器化服务。它还集成 Ollama 和 Qdrant，支持本地 AI 对上传文档进行语义检索和问答，并能按需下载离线内容与应用。
 
-- **能解决什么痛点**：它解决的是断网、弱网或不希望依赖云服务时，知识检索、学习资料、地图和 AI 助手无法稳定使用的问题。对自己搭建离线资料库的人来说，它也减少了手动拼装 Kiwix、Kolibri、Ollama、Qdrant、地图服务和多个 Docker 应用的配置成本。
+- **能解决什么痛点**：在偏远地区、灾害应急或网络不稳定环境中，用户无需依赖持续联网即可访问 Wikipedia、医学资料、教材、电子书和地图。对重视隐私的个人或组织，它也能把文档问答、笔记和知识库部署在自有硬件上，避免资料发送到云端。
 
-- **适合谁用**：适合需要离线知识库和本地 AI 的技术用户、应急通信/户外/灾备场景搭建者，以及想在家庭、教室、实验室或小团队内部部署离线教育资源的运维和自托管用户。
+- **适合谁用**：适合需要在无网或弱网环境部署知识基础设施的学校、社区、救灾团队和野外工作场所；也适合熟悉 Debian、Docker 和本地大模型的技术用户，用它搭建家庭或机构内网知识中心。
 
-- **怎么上手**：Debian 系系统可用 README 提供的一行安装命令：
+- **怎么上手**：在 Debian 系统上执行 `sudo apt-get update && sudo apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/install/install_nomad.sh -o install_nomad.sh && sudo bash install_nomad.sh`，安装完成后访问 `http://localhost:8080`。
 
-- **可以用在哪些场景**：在离线设备上预装 Wikipedia、医疗参考、电子书和生存资料，作为局域网内的资料查询站；在教室或社区中心部署 Khan Academy 课程和学习进度管理，不依赖持续联网；在移动工作站或家庭服务器上运行本地 LLM，结合上传文档做语义检索和问答。
+- **可以用在哪些场景**：
+  - 在学校或培训点部署 Khan Academy 离线课程，为没有稳定互联网的学生提供课程和进度跟踪。
+  - 在救灾、远程施工或野外驻地提供离线百科、医学参考、求生指南和区域地图。
+  - 在家庭或小型机构内搭建本地文档知识库，用 Ollama 和 Qdrant 对规章、手册、教材等资料进行私有问答。
 
-- **技术看点**：项目采用 TypeScript 构建管理端，并通过 Docker 编排多个成熟开源服务，而不是从零实现百科、教育平台、地图和 AI 基础设施。AI 部分使用 Ollama 承载本地模型，结合 Qdrant 做 RAG 语义检索；Supply Depot 则把常用自托管应用做成可安装目录，降低扩展成本。
+- **技术看点**：项目采用 TypeScript 编写管理界面与 API，以 Docker 编排多个成熟的开源服务，并通过统一的管理中心处理安装、配置、更新和内容选择。AI 部分支持 Ollama 及 OpenAI API 兼容服务，知识库使用 Qdrant 实现语义检索，既可本机部署，也可把模型放到另一台主机上。
 
-- **近期动向与发展方向**：最近提交集中在 v1.33.0 / v1.33.1 发布流程、自动更新文档、Supply Depot 镜像版本固定、Ollama/CyberChef 镜像升级、RAG 嵌入任务取消、知识库文档查看与下载、ZIM 上传稳定性等方向。可以看出项目仍处于高频迭代阶段，重点在提升离线内容管理、应用安装可靠性、本地 AI 任务控制和更新机制稳定性；提交中也出现了发布提交回滚，说明 release 流程仍在调整。
+- **近期动向与发展方向**：最近的提交以版本发布、下载流程和内容索引修复为主，包括中断下载续传、拒绝授权后的四小时重试冷却、集合归属保持，以及 Kiwix OPDS 地址修正；同时补充了 FDA Drug Reference 内容和药品参考文档。8 月至 9 月持续有发布和 CI 更新，说明项目仍在活跃维护，当前重点偏向稳定性、离线内容覆盖、自动更新和部署流程完善，而不是大规模架构重构。项目创建于 2025 年 6 月，现有 37 位贡献者、91 个开放 Issue，较高的 Star 数也表明其关注度明显高于贡献者规模。
 
-- **同类对比**：README 没有直接点名同类竞品。它更像是把 Kiwix、Kolibri、Ollama、Qdrant、ProtoMaps、CyberChef 等工具整合成一个面向离线生存/教育/知识场景的套件，而不是单一替代其中某个项目。
+- **同类对比**：README 未明确列出竞品或直接对标项目；Kiwix、Kolibri、ProtoMaps 和 CyberChef 在这里更像被统一编排的底层组件，而不是 Project NOMAD 的竞品，因此暂无明显同类对标。
 
-- **注意事项**：项目创建于 2025-06-24，Star 增长很快但时间仍较短，当前有 66 个 open issues，适合关注更新节奏和版本稳定性后再用于关键场景。README 明确说明默认没有认证机制，不建议直接暴露到公网，局域网访问也需要自己用防火墙或网络策略控制端口。基础管理应用要求不高，但如果要运行本地 LLM，README 建议使用 32GB 内存和较强 GPU；首次安装和下载内容仍需要联网。近期发布提交有回滚记录，自动更新和版本升级前建议先阅读 release notes 并保留备份。
+- **注意事项**：安装要求 Debian 系统、sudo/root 权限，并且首次安装需要联网；虽然管理应用本身最低可用配置为双核 CPU、4GB 内存和 5GB 磁盘，但运行本地大模型建议使用 32GB 内存、RTX 3060 级别 GPU 和至少 250GB 存储。项目默认不提供身份认证，README 明确不建议直接暴露到互联网，局域网共享时需要依靠防火墙等网络层控制访问。项目更新频繁且仍有 91 个开放 Issue，功能面广、依赖组件多，升级和内容下载可能带来较高的磁盘、网络及运维成本；README 提供了安装、硬件和自动更新文档，但不同应用的具体配置仍需结合各自组件文档确认。
 
 - **GitHub**：[Crosstalk-Solutions/project-nomad](https://github.com/Crosstalk-Solutions/project-nomad)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：整体属于小型但有明显爆款项目带动的组织，凭借 `project-nomad` 获得了远高于其关注者规模的社区可见度。
-**技术栈偏好**：以 `TypeScript` 和 `Python` 为主，辅以 `Shell`，偏向脚本化工具、自动化能力和工程集成。
-**核心领域**：主要聚焦于网络/基础设施管理、工具链开发以及与企业环境运维相关的实用型软件。
+**技术影响力**：以 project-nomad 的高星标为核心，Crosstalk Solutions 在开源工具社区具备较强可见度和垂直影响力。
+**技术栈偏好**：主要使用 TypeScript、Python 和 Shell，偏向构建 Web 工具、自动化脚本与网络运维辅助工具。
+**核心领域**：主要聚焦网络基础设施、UniFi/Ubiquiti 生态工具、地图与自托管实用项目。
 
 ---
 
@@ -560,22 +563,38 @@
 
 ---
 
-### ✨ peetzweg/opendisplay (3401★)
+### ✨ peetzweg/opendisplay (3500★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：把闲置的 iPhone、iPad，甚至另一台 Mac 变成 Mac 的第二块显示器，支持 USB 或 WiFi 连接、原生扩展桌面和触控操作。
 
-- **它是什么**：Free, open-source Sidecar/Duet alternative — use your iPhone or iPad as a true second monitor for your Mac over USB or WiFi. Low latency H.264, Retina HiDPI, touch input.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：OpenDisplay 是一个 Swift 编写的开源 Sidecar、Duet Display 替代方案，由 Mac 端创建虚拟显示器并通过硬件 H.264 编码传输画面，iPhone、iPad 或另一台 Mac 负责接收和显示。它支持真正的扩展桌面，不只是镜像，还提供 Retina/HiDPI、USB 有线连接、WiFi 自动发现、触控点击、拖拽和双指滚动。
+
+- **能解决什么痛点**：不需要两个设备登录同一 Apple ID，也不受 Sidecar 硬件兼容范围限制；同时避免 Duet Display 的订阅费用和 Luna Display 的专用硬件。对于已有闲置 iPhone、iPad 或旧 Mac 的用户，可以在没有额外显示器或转接设备时增加一块屏幕。
+
+- **适合谁用**：拥有闲置 Apple 移动设备、希望临时扩展 Mac 工作区的开发者、设计师和远程办公用户。也适合需要研究虚拟显示器、低延迟视频传输、跨设备输入协议的 Swift/macOS/iOS 开发者。
+
+- **怎么上手**：macOS 端可直接从最新 Release 下载并安装 `OpenDisplay.dmg`；从源码构建时，先执行 `brew install xcodegen`，再运行 `git clone https://github.com/peetzweg/opendisplay.git && cd opendisplay`，使用 Xcode 15+ 打开项目并配置 Apple Developer Team。
+
+- **可以用在哪些场景**：
+  - 用 iPad 作为 Mac 编程时的日志、终端或文档副屏，主屏保留编辑器。
+  - 出差或临时办公时，用 iPhone/iPad 通过 USB 提供一块低延迟的扩展屏，减少对便携显示器的依赖。
+  - 将家中的旧 Mac 安装为 OpenDisplay Receiver，作为另一台 Mac 的无线或 Thunderbolt/Ethernet 副屏。
+
+- **技术看点**：项目通过 macOS 私有的 `CGVirtualDisplay` 创建真实虚拟显示器，再结合 `ScreenCaptureKit`、VideoToolbox 硬件 H.264 编码和 `AVSampleBufferDisplayLayer` 解码渲染；传输层使用带长度前缀的 TCP 视频帧，并通过 `usbmuxd` 复用 USB 连接、Bonjour 完成 WiFi 发现。私有虚拟显示器 API 带来较强的系统集成能力，但也意味着无法上架 App Store，并存在 macOS 更新后的兼容风险。
+
+- **近期动向与发展方向**：近期开发较活跃，20 条提交集中在 2026 年 8 月至 9 月，连续发布了 v1.16.1、v1.17.0、v1.18.0 和 v1.19.0。开发重点从基础的 iPhone/iPad 接收端扩展到独立的 Mac Receiver、全像素镜像捕获、接收端解码上限和下载页改版，同时持续修复显示捕获、显示器镜像状态和调试构建问题；项目也补充了 wire protocol 文档和连接日志分享功能。提交主要由维护者完成，仅能看到少量外部贡献记录，社区协作规模仍较小。
+
+- **同类对比**：相较 Apple Sidecar，OpenDisplay 支持 iPhone、不要求双方使用同一 Apple ID，也不局限于特定硬件组合；相较 Duet Display，它免费、开源且无订阅；相较 Luna Display，不需要购买硬件 Dongle。它的代价是依赖 macOS 私有 `CGVirtualDisplay` API，安装和系统兼容性不如系统内置 Sidecar 可控。
+
+- **注意事项**：Mac 发送端需要 macOS 14+，iPhone/iPad 接收端需要 iOS/iPadOS 16.4+；作为接收端的旧 Mac 需要 macOS 12 Monterey+。WiFi 连接依赖两端的 Local Network 权限和同一局域网，USB 连接必须使用支持数据传输的线缆。项目目前有 141 个 Open Issues，而贡献者仅 6 人，说明功能增长较快但维护资源有限；核心功能依赖私有 API，macOS 升级可能导致兼容性问题。README 文档较完整，覆盖安装、传输协议、隐私、兼容客户端和常见故障，但触控输入目前不包含 Apple Pencil，接收端 Mac 的键盘鼠标输入也仍在后续事项中。
 
 - **GitHub**：[peetzweg/opendisplay](https://github.com/peetzweg/opendisplay)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有较强的独立开发者影响力，代表项目获得较高社区关注度。
+**技术栈偏好**：偏好 TypeScript、Swift 与 Rust，覆盖跨平台工具、编辑器扩展及系统级应用开发。
+**核心领域**：主要聚焦开发者工具、软件工程效率与跨平台应用生态。
 
 ---
 
