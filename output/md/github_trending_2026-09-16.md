@@ -1,5 +1,5 @@
 ## 今日热点：AI 编程代理与智能开发基础设施加速融合
-今日技术热点聚焦 AI 编程代理、安全审计与知识工作流的工程化落地，同时延伸至本地模型运行、语音与音乐生成、研究智能体、企业管理、RAG 知识平台、计算机视觉、数据库开发、逆向工程及效率工具等方向，代表项目涵盖 Alibaba Open Code Review、Cloudflare Security Audit Skill、Claude Code、Cline、Anthropic Knowledge Work Plugins、Agent Skills、ECC、Colibri、Voicebox、YuE、OpenResearch、WeKnora、Supabase、Gauzy、Ghidra、Supervision、Anki、Tinycast 与 VPhone CLI，具体项目摘要如下：
+今天的技术热点聚焦于 AI 编程代理、自动化代码审查与安全审计能力的持续演进，同时延伸至知识库与 RAG 平台、研究型智能体、开发者技能体系、终端与 IDE 工具、模型本地运行、语音与音乐生成、计算机视觉、反向工程、企业管理软件及效率应用等方向，展现出从代码生成到安全治理、从个人工作流到企业级智能平台的完整生态，具体项目摘要如下：
 
 ### ✨ alibaba/open-code-review (22910★)
 
