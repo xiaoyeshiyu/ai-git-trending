@@ -1,5 +1,5 @@
-## 今日热点：AI 智能体基础设施与开源生产力生态加速发展
-今天的技术热点集中在 AI 智能体、开发者工具与端到端基础设施的持续演进，覆盖安全审计、跨操作系统电脑使用、工程技能、智能编程、开发环境、知识工作插件、文档解析与模型训练编排，同时延伸至 QUIC/HTTP3 网络协议、个人搜索、金融数据、英语学习、端侧小模型及 Codex 工具管理等方向，体现出开源社区正推动 AI 从代码生成走向安全可控、软硬件协同和日常工作全面自动化，具体项目摘要如下：
+## 今日热点：AI 智能体工程化与开源基础设施加速融合
+今日技术热点聚焦 AI 编程智能体、知识工作插件与安全审计能力的工程化落地，同时延伸至计算机使用代理、开发者安全环境、GPU 集群与端侧小模型、文档智能处理、QUIC/HTTP3 网络协议、个人搜索、开源金融数据、英语学习及开发工具生态，覆盖 cloudflare/security-audit-skill、trycua/cua、addyosmani/agent-skills、coder/coder、anthropics/claude-code、OpenStock、higgsfield、docling、cloudflare/quiche、hister、ruanyf/weekly、everyone-can-use-english、knowledge-work-plugins、needle 与 Codex-X 等项目，体现出从模型能力、开发流程到终端设备和垂直应用的全面扩展，具体项目摘要如下：
 
 ### ✨ cloudflare/security-audit-skill (5695★)
 
