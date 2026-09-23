@@ -1,0 +1,285 @@
+## 今日热点：智能体基础设施与生产力工具加速融合
+今日热门技术聚焦 AI 智能体生态的全面扩展，覆盖金融服务、核心运行底座、办公套件、代码助手配置与监控、智能体编排、移动设备取证、工具路由及智能视频编辑，展现智能体从基础设施走向专业场景与多模态生产力应用的趋势。具体项目摘要如下：
+
+### ✨ anthropics/financial-services (35288★)
+
+> **一句话**：把投行、股票研究、私募、基金运营和财富管理中的分析流程封装成可安装的 Claude 插件、工作流 Agent 以及数据连接器。
+
+- **它是什么**：这是 Anthropic 面向金融服务行业提供的一套参考实现，包含 Pitch Agent、Market Researcher、Earnings Reviewer、Model Builder、GL Reconciler、KYC Screener 等端到端 Agent，以及 `comps`、`dcf`、`lbo`、三表模型和 Excel 审计等技能。项目内容主要由 Markdown、JSON、插件配置和部署脚本组成，同一套提示词和技能既可以作为 Claude Cowork / Claude Code 插件运行，也可以通过 Claude Managed Agents API 部署到企业自己的工作流引擎中。
+
+- **能解决什么痛点**：金融团队通常需要把估值模型、研究报告、客户会议纪要、财务对账和 KYC 审核拆成多个重复步骤，这个项目将这些流程固化为可复用的 Agent 和技能，减少从空白提示词开始搭建的成本。它还通过 MCP 连接 FactSet、LSEG、S&P Global、Morningstar、PitchBook、Box 等数据源，缓解金融数据分散在多个终端和文档系统中的问题。
+
+- **适合谁用**：适合投行、券商研究、私募基金、基金行政和财富管理团队中，希望在 Claude 内部复用估值、研究、对账或客户服务流程的技术人员和业务专家。也适合需要通过 Claude Managed Agents API 将金融 Agent 接入自有工作流、数据权限体系和审批流程的企业开发团队。
+
+- **怎么上手**：添加市场后安装核心技能或具体 Agent，例如 `claude plugin marketplace add anthropics/financial-services && claude plugin install market-researcher@claude-for-financial-services`。
+
+- **可以用在哪些场景**：
+  - 投行团队将可比公司、先例交易和 LBO 分析串联起来，生成带品牌格式的客户 Pitch Deck。
+  - 股票研究团队把财报、电话会和现有模型交给 Earnings Reviewer，形成模型更新和研究笔记初稿。
+  - 基金运营团队用 GL Reconciler、Month-End Closer 和 Statement Auditor 处理总账差异、月结、LP 报表审核，并将结果提交人工复核。
+  - 财富管理团队将会议准备、客户跟进、再平衡审查和合规预检查接入 CRM、投资组合及规划系统。
+
+- **技术看点**：项目采用“源技能 + Agent 自包含副本”的文件化结构，Agent 可作为 Claude 插件运行，也可转换为 Managed Agent 部署，避免维护两套业务逻辑。数据接入集中在核心 `financial-analysis` 插件的 MCP 配置中，并提供 `access_policies`、Entra 身份认证、主权云文档和只读数据导出等企业部署能力。
+
+- **近期动向与发展方向**：最近 20 条提交主要围绕企业部署、权限和插件质量治理展开，包括新增并校验 `access_policies`、支持 `available_models`、Entra 认证、GCC-High / DoD / 21Vianet 等主权云文档，以及插件验证 CI、版本钩子和缓存修复。9 月先发布 Claude for Financial Advisors，随后移除财富管理插件并撤下相关 marketplace 条目，说明项目仍在快速调整产品边界；最近一次提交于 2026 年 9 月 18 日，提交者约 11 人，近几个月持续有维护活动，但贡献仍明显集中在少数核心维护者。
+
+- **同类对比**：README 未明确列出竞品或同类项目。它与通用 Agent 框架的主要区别在于，直接提供金融工作流、行业技能、MCP 数据连接器和 Managed Agents 部署模板，而不是只提供底层 Agent 编排能力。
+
+- **注意事项**：项目明确声明所有输出都只是供专业人士审核的分析草稿，不构成投资、法律、税务或会计建议，也不会自动执行交易、记账、风险批准或客户开户。实际使用通常需要第三方数据服务的订阅或 API Key，并需要自行配置企业权限、数据合规和人工审批流程。项目创建于 2026 年 2 月 23 日，当前有 210 个 Open Issues，虽然更新频繁且拥有 35288 个 Stars，但仍属于快速演进中的参考实现；近期出现插件发布后撤回、财富管理模块移除等调整，升级时应重点检查插件目录、安装入口和配置字段是否发生变化。
+
+- **GitHub**：[anthropics/financial-services](https://github.com/anthropics/financial-services)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：全球领先的人工智能组织之一，在开发者工具、编程代理与生成式 AI 社区具有显著影响力。
+**技术栈偏好**：以 Python 和 Jupyter Notebook 支撑 AI 研究、工程实践与教程，以 TypeScript 构建开发者工具和应用。
+**核心领域**：聚焦大语言模型、生成式 AI、提示工程、AI 编程代理及开发者生态。
+
+---
+
+### ✨ agent-substrate/substrate (2736★)
+
+> **一句话**：它把大量长期闲置的有状态 Agent 运行实例，动态调度到较少的 Kubernetes Worker 上，在需要访问时快速恢复并接收流量。
+
+- **它是什么**：Agent Substrate 是面向大规模 Agent 工作负载的安全执行运行时，负责 Actor 的创建、销毁、挂起、恢复、调度和网络路由。它以 Kubernetes Pod 管理基础设施和 Worker，同时支持 microVM、gVisor 等沙箱技术，通过保存内存与文件系统快照，让 Agent 在不同 Worker 之间迁移后仍能保留工作状态。
+
+- **能解决什么痛点**：大量 Agent、代码环境或 MCP 服务大部分时间处于空闲状态，却仍持续占用独立容器或虚拟机资源，导致集群密度低、成本高。传统容器启动和恢复速度也难以满足交互式调用需求，而 Substrate 试图通过 Actor 多路复用和亚秒级恢复降低等待时间。
+
+- **适合谁用**：需要在 Kubernetes 上运行大量有状态 Agent、代码执行环境或 MCP 服务的平台工程团队。使用 ADK、LangChain、Claude Code、Codex 等 Agent 或开发环境，并且需要跨会话保留内存和文件系统状态的开发者也适合评估。
+
+- **怎么上手**：本地开发环境可先创建 kind 集群并部署系统：`hack/create-kind-cluster.sh && hack/install-ate-kind.sh --deploy-ate-system`；随后可安装并创建示例 Actor：`go install ./cmd/kubectl-ate && kubectl ate create actor my-counter-1 -a ate-demo-counter --template counter`。
+
+- **可以用在哪些场景**：
+  - 搭建支持大量并发会话的 Agent 执行平台，让闲置 Agent 挂起、活跃时恢复到共享 Worker。
+  - 部署 Claude Code、Codex 或 Antigravity 类沙箱，保留用户的工作目录和运行时状态。
+  - 将 MCP Server 作为隔离的 Substrate Actor 部署，在不同模型或 Agent 会话之间提供持久化工具服务。
+
+- **技术看点**：项目采用 Kubernetes 作为基础设施和 Worker 生命周期管理层，在其上增加面向 Agent 的 Actor 调度、状态快照、网络路由和生命周期控制。它同时兼容 gVisor 与 microVM，并以零信任内核和网络隔离为安全边界，目标是在单个 Worker 池中实现高倍数的有状态工作负载复用。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 Worker 部署策略、egress 凭据读取、网络与 PEP/隧道契约、Actor 生命周期 RPC、OTLP 事件、OpenFGA 初始化和资源默认值等核心能力，说明项目正从基础运行时继续补齐生产化控制面与可观测性。同期也有拆分资源代码、调整工作流、修复测试稳定性和降低 E2E 资源规格等工程治理工作；提交在 2026-09-18 至 2026-09-22 期间持续产生，95 位贡献者显示社区参与度不低，但当前仍处于快速演进阶段。
+
+- **同类对比**：README 未明确列出竞品。项目本身不是 Agent SDK，而是运行 Agent 的底层基础设施；与普通 Kubernetes Deployment 或单纯容器运行时相比，它重点增加了 Actor 级挂起/恢复、跨 Worker 调度、状态持久化和高密度复用能力。
+
+- **注意事项**：README 明确说明项目尚未达到生产可用状态，API 几乎肯定会变化，不能假设向后兼容。上手需要 Go、kubectl、Docker 和 Kubernetes 集群，完整部署还涉及 kind、PostgreSQL、RustFS 或 GKE、GCS、IAM 等组件，基础设施门槛较高。项目创建时间较新，当前有 512 个 Open Issues；虽然最近更新频繁，但仍应重点评估 API 稳定性、快照恢复可靠性、网络隔离边界和大规模 Worker 调度行为。
+
+- **GitHub**：[agent-substrate/substrate](https://github.com/agent-substrate/substrate)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：专注智能体基础设施的早期技术组织，凭借核心仓库获得一定社区关注度。
+**技术栈偏好**：以 Go 构建高性能智能体运行时与环境组件，辅以 TypeScript 开发智能体应用。
+**核心领域**：聚焦 AI Agent 的底层运行时、执行环境与持续运行平台。
+
+---
+
+### ✨ dream-num/univer (14980★)
+
+> **一句话**：Univer 把表格、文档、演示文稿、画布、关系表和 PDF 能力放进同一个可嵌入运行时，让 SaaS 或 AI Agent 可以直接创建、编辑和处理 Office 内容。
+
+- **它是什么**：Univer 是基于 TypeScript 的开源 Office SDK，不提供固定的在线办公产品，而是提供可嵌入应用的表格、文档和演示文稿编辑能力。它通过插件架构、Canvas 渲染、公式引擎和统一 Facade API，支持在浏览器中交互编辑，也支持在 Node.js 中进行无界面处理。
+
+- **能解决什么痛点**：开发者无需从零实现单元格编辑、公式计算、格式刷、粘贴特殊处理、绘图对象和文档布局等复杂 Office 功能。对于 AI 应用，还可以让 Agent 通过结构化 API 修改文件，并结合内容检查、截图和布局诊断验证生成结果。
+
+- **适合谁用**：需要在 SaaS、BI 平台、内部系统中嵌入表格或文档编辑器的前端团队；需要让 AI Agent 在服务端创建、读取、修改和交付 Office 文件的应用开发者。
+
+- **怎么上手**：使用预设模式安装 Sheets 核心能力：`pnpm add @univerjs/presets @univerjs/preset-sheets-core`，然后通过 `createUniver` 和 `UniverSheetsCorePreset` 创建工作簿。
+
+- **可以用在哪些场景**：在企业 SaaS 中嵌入可编辑的预算表、报价单或运营报表；为 AI Agent 提供生成并修改 Excel、文档和演示内容的工作区；在 Node.js 服务中批量处理工作簿、执行公式计算并生成供人工审核的文档草稿。
+
+- **技术看点**：项目采用插件优先架构，功能可以按需组合、替换或懒加载，并提供 Preset Mode 和 Plugin Mode 两种集成方式。浏览器与 Node.js 共用同一套核心架构和 Facade API，适合同时覆盖交互式编辑与服务端自动化。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 20 日至 22 日，项目保持高频维护，且新增功能与缺陷修复并行推进。近期重点包括文档格式刷和粘贴特殊、表格切片器与背景图片、绘图和嵌入对象处理、运行时菜单配置，以及布局和剪贴板兼容性；提交者既有 Univer 官方账号，也有多名社区贡献者，显示项目正持续完善 Office 细节和 AI/嵌入式工作流基础设施。
+
+- **同类对比**：README 未明确列出竞品。相较于只提供现成在线编辑器或文件预览能力的方案，Univer 更强调作为 SDK 嵌入宿主产品，并通过插件和无头 Node.js 运行时支持定制化及 Agent 自动化。
+
+- **注意事项**：项目功能范围较大，完整集成需要理解插件注册、Facade API、样式与本地化资源，直接使用 Plugin Mode 的配置成本不低。项目创建于 2022 年 9 月，已有 14980 个 Stars、77 位贡献者和 1354 个 Forks，近期更新非常活跃；同时仍有 137 个 Open Issues，复杂编辑器场景的边界问题和升级兼容性需要纳入评估。README 提供了较完整的安装、架构和 API 入口，但不同能力的可用范围及部分协作、AI 功能涉及 Web SDK 或额外授权，正式采用前应核对许可证和商业功能边界。
+
+- **GitHub**：[dream-num/univer](https://github.com/dream-num/univer)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：专注在线表格与办公技术，凭借 Luckysheet 和 Univer 等高星开源项目在开发者社区具有较强影响力。
+**技术栈偏好**：以 TypeScript、JavaScript 和 HTML 为主，聚焦 Web 端组件化、表格引擎与办公应用开发。
+**核心领域**：主要聚焦在线协同办公、电子表格与生产力工具。
+
+---
+
+### ✨ davila7/claude-code-templates (30947★)
+
+> **一句话**：把 Claude Code 的 Agents、Skills、Commands、Hooks、MCP 集成和运行监控能力整理成可直接浏览、安装和管理的组件目录。
+
+- **它是什么**：项目通过 `npx` CLI 和 [aitmpl.com](https://aitmpl.com) 提供 Claude Code 配置生态，开发者可以按需安装代码审查 Agent、测试命令、数据库 MCP、Git Hooks、项目设置和可复用 Skills。除了模板目录，还包含 Claude Code Analytics、会话监控、Health Check 和 Plugin Dashboard 等配套功能，用于查看运行状态、诊断配置和管理插件。
+
+- **能解决什么痛点**：开发者不必从零编写 Claude Code 的 Agent、Slash Command、Hook 和 MCP 配置，也不需要手动整理不同来源的组件。面对多个 Claude Code 会话时，可以通过 Analytics 或 Conversation Monitor 查看实时状态，并用 Health Check 排查安装和配置问题。
+
+- **适合谁用**：使用 Claude Code 进行日常开发、代码审查、测试生成或项目自动化的个人开发者和团队。需要把 GitHub、PostgreSQL、Stripe、AWS 等外部服务接入 Claude Code，或希望统一维护团队 AI 开发配置的工程团队也适合使用。
+
+- **怎么上手**：直接运行交互式安装命令：
+
+  也可以按组件类型安装，例如：
+
+- **可以用在哪些场景**：
+  - 在前端项目中安装代码审查 Agent、测试生成命令和性能优化命令，形成固定的提交前检查流程。
+  - 在需要访问数据库或第三方 API 的项目中，通过 PostgreSQL、GitHub、Stripe 等 MCP 组件连接外部服务。
+  - 在团队共享的 Claude Code 环境中使用 Hooks、Settings 和 Skills 统一超时、提交校验、文档处理等行为，并通过 Dashboard 管理已安装插件。
+
+- **技术看点**：项目采用 CLI 加在线目录的分发方式，使用 `npx` 即可按需拉取组件，降低了配置复制和手工安装成本。组件覆盖 Agents、Commands、MCPs、Settings、Hooks、Skills，并配套 Analytics、远程会话查看和诊断能力，形成了从安装到运行监控的完整工具链。
+
+- **近期动向与发展方向**：项目近期保持高频更新，最近 20 条提交主要集中在组件内容同步、趋势数据和下载统计修正，同时持续新增和改进 Mods、Skills，例如 `jev-guardrails`、`workspace-orchestration`、Pudu 本地任务遥测和 `jev-skill-suggestion`。开发重点正从单纯扩充模板目录，逐步转向 Mods/Skills 生态、内容自动生成、下载统计和运行遥测；提交中既有项目作者和社区贡献者，也有 GitHub Actions 与 Claude 自动化流程参与，整体活跃度较高。
+
+- **同类对比**：README 未明确列出竞品。与单纯收集 Claude Code 配置文件的资源库相比，本项目同时提供在线浏览、CLI 安装、组件分类、运行监控、健康检查和插件管理，但其核心定位仍是 Claude Code 组件目录与配套工具集。
+
+- **注意事项**：项目创建于 2025 年 7 月，当前已有 30947 个 Stars、3528 个 Forks 和 133 位贡献者，且近期几乎每日更新，说明生态增长很快；同时开放 Issue 达 264 个，使用时应关注具体组件的兼容性和维护状态。项目虽然元数据标注为 Python，但 README 的主要安装方式是 npm 包 `claude-code-templates` 和 `npx`，实际使用前应确认 Node.js/npm 环境及 Claude Code 版本。组件来自多个社区和官方来源，许可证各不相同，尤其是在团队或商业项目中引入 Skills、Agents 和 MCP 时，需要逐项核对原始许可与外部服务权限。
+
+- **GitHub**：[davila7/claude-code-templates](https://github.com/davila7/claude-code-templates)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：专注 AI 开发工具的活跃独立开发者，凭借高星级 Claude 生态项目在开发者社区具有较强影响力。
+**技术栈偏好**：以 Python 为主，辅以 CSS，重点采用 LLM、GPT 与 Claude 相关技术构建开发者工具。
+**核心领域**：主要聚焦大语言模型应用、AI 编程助手、智能代理与开发工作流自动化。
+
+---
+
+### ✨ google/ax (6894★)
+
+> **一句话**：用类似 Kubernetes 的 YAML 声明任务、工作区、模型和网络规则，把自主 Agent 放进隔离沙箱中运行、暂停、恢复并集中管理。
+
+- **它是什么**：AX 是 Google 用 Go 编写的 Agent 编排运行时，用户通过 `Task`、`Workspace`、`Gateway` 和 `Model` 等 `ax.io/v1alpha1` 资源描述 Agent 任务。它负责准备 Git 仓库、MCP 服务和技能包，限制任务的 CPU、内存与出站网络，并通过控制平面在集群中调度和管理任务。
+
+- **能解决什么痛点**：运行不受信任或行为不可预测的 Agent 时，开发者不必手工拼接容器、工作目录、网络白名单和模型凭据。对于需要长时间运行的 Agent，AX 还提供 `suspend`/`resume` 进行状态暂停与恢复，并支持通过 `ax ssh` 进入沙箱排查实际执行情况。
+
+- **适合谁用**：需要在 Kubernetes 集群中批量运行编码 Agent、自动化运维 Agent 或数据处理 Agent 的平台工程师和 SRE。也适合正在搭建内部 Agent 平台、需要统一管理模型访问、工具服务、代码仓库和沙箱隔离的基础设施团队。
+
+- **怎么上手**：先安装 CLI：`go install github.com/google/ax/cmd/ax@latest`；部署控制平面需要 Kubernetes、`ko`、可供集群拉取镜像的容器仓库，以及可访问的 Agent Substrate Control API，然后执行 `make deploy AX_IMAGE_REPO=`，再用 `ax apply -f examples/task.yaml` 创建示例任务。
+
+- **可以用在哪些场景**：
+  - 在内部 Kubernetes 集群中运行自动修复代码、执行测试并提交补丁的编码 Agent，同时限制其只能访问指定 Git 仓库和模型 API。
+  - 为多个团队提供预配置的 Agent 工作区，启动时自动挂载代码仓库、MCP 服务和技能包，避免每个任务重复安装依赖。
+  - 运行需要人工观察和干预的长任务，通过 `ax watch` 查看状态、`ax ssh` 调试沙箱，并在空闲时暂停任务以减少资源和模型调用消耗。
+
+- **技术看点**：项目采用声明式资源模型和 Kubernetes 风格 CLI，通过 Agent Substrate 提供沙箱执行能力，并使用 Gateway 对出站主机进行显式控制。控制平面通过 gRPC 与 CLI 通信，设计目标是面向集群规模运行大量 Agent，而不是只管理单机脚本。
+
+- **近期动向与发展方向**：最近的开发重点明显从早期实现细节转向通用编排层重构，已提交“将 AX 重构为通用 Agent 任务编排层”的改动，并持续调整 `ExecutionService`、Agent 配置和技能来源。项目也在补充运行诊断能力，包括 `doctor` 命令、sidecar PID 跟踪和依赖修复；最近 20 条提交主要由 JBD 和 Jaana Dogan 推进，提交较集中但更新活跃，方向仍处于快速迭代阶段。
+
+- **同类对比**：README 没有明确列出直接竞品；其交互方式明显借鉴 Kubernetes 和 `kubectl`，但目标对象从常规工作负载转向需要状态、工具调用、网络隔离和人工干预的 Agent 任务。
+
+- **注意事项**：项目创建于 2026-03-30，当前仅有 10 位贡献者、21 个 Open Issues，且 README 明确警告核心概念、协议和规范仍在调整，稳定版前可能出现重大破坏性变更。上手不属于本地 CLI 级别的轻量体验，需要准备 Kubernetes、镜像仓库、`ko`、Redis 和 Agent Substrate；文档覆盖概念、清单、沙箱、运行器、网络和开发流程，但实际部署链路仍较长，生产采用前应重点验证任务恢复、网络隔离和运行时兼容性。
+
+- **GitHub**：[google/ax](https://github.com/google/ax)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：全球顶级开源技术组织，拥有庞大关注者群体和广泛生态影响力。
+**技术栈偏好**：以 Java、JavaScript 和 HTML 为主，覆盖基础库、开发工具、前端规范与跨语言工程实践。
+**核心领域**：主要聚焦开发者基础设施、软件工程工具、设计规范及通用开源组件。
+
+---
+
+### ✨ mvt-project/mvt (13423★)
+
+> **一句话**：MVT 用命令行读取 Android、iOS 设备采集数据和备份文件，查找可能由 Pegasus 等移动间谍软件留下的取证痕迹。
+
+- **它是什么**：MVT，全称 Mobile Verification Toolkit，是一组面向移动设备取证分析的 Python 命令行工具。它可以分析 iOS 备份、sysdiagnose、Android bugreport 等采集结果，并结合公开 IOC（Indicators of Compromise，失陷指标）扫描是否存在已知攻击活动的痕迹。项目由 Amnesty International Security Lab 在 Pegasus Project 背景下发布，并持续维护。
+
+- **能解决什么痛点**：移动设备取证通常需要手动解析备份、系统诊断包、日志和配置记录，流程复杂且容易遗漏；MVT 将这些检查流程模块化、命令行化，降低重复分析成本。对于需要核查已知间谍软件攻击痕迹的团队，它能直接接入公开 IOC 数据，而不是从零整理匹配逻辑。
+
+- **适合谁用**：适合数字取证研究员、安全实验室、新闻机构或民间组织中的技术调查人员使用。它不适合普通用户自行判断手机是否“安全”，README 也明确提示这需要数字取证和命令行经验。
+
+- **怎么上手**：`pip3 install mvt`
+
+- **可以用在哪些场景**：用于分析高风险人士的 iPhone 备份，排查是否存在公开 IOC 能匹配到的可疑访问、进程或配置痕迹；用于处理 Android bugreport，辅助安全团队做移动端入侵排查；用于批量下载和管理 IOC，再对已有取证采集结果进行复查。
+
+- **技术看点**：项目以 Python 实现，并拆分为 `mvt-ios`、`mvt-android` 和通用 `mvt` 命令，平台相关能力边界清晰。README 提到支持插件包扩展取证模块和顶层命令，说明它不是单一脚本，而是可扩展的取证分析框架。
+
+- **近期动向与发展方向**：最近提交非常活跃，9 月多次合并修复和增强，重点集中在 iOS 版本与 build number 更新、sysdiagnose 解析、bugreport 时间戳处理、settings 记录解析、挂载信息读写判断等细节。近期还合并了 v3 分支并引入破坏性变更，说明项目仍在持续演进底层结构和输出格式，不只是维护 IOC 列表。
+
+- **同类对比**：暂无明显同类对标。README 更强调它和 Amnesty International 的取证方法论、公开 IOC 仓库配套使用，而不是替代某个具体商业或开源产品。
+
+- **注意事项**：这是专业取证工具，不是面向普通用户的一键安全检测软件；公开 IOC 只能发现已知攻击痕迹，不能证明设备“干净”。项目创建于 2021 年，Stars 超过 1.3 万、贡献者 79 人、近期提交密集，成熟度和维护活跃度较好；但 README 明确提示 v3 合并带来破坏性变更，如果已有脚本依赖 MVT 输出，需要检查兼容性。当前还有 52 个 open issues，落地使用前应仔细阅读文档和已知问题。
+
+- **GitHub**：[mvt-project/mvt](https://github.com/mvt-project/mvt)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：专注移动设备取证与安全分析，在开源移动安全社区具有较高专业影响力。
+**技术栈偏好**：以 Python 为主、Go 为辅，偏好开发移动取证工具、分析框架与威胁指标组件。
+**核心领域**：移动设备安全取证、入侵痕迹发现与移动恶意软件分析。
+
+---
+
+### ✨ superdesigndev/treg (2007★)
+
+> **一句话**：把 60 多家服务商的 3000 多个 API、CLI 和 Agent Skill 收进一个统一入口，让智能体只带一个 Token 就能按任务发现并调用工具。
+
+- **它是什么**：Treg 是面向 Agent 工具的“OpenRouter”，通过统一代理转发外部 API 请求，并在服务端注入凭证，调用方无需持有各家服务商的密钥。它同时支持工具目录搜索、团队共享 API、CLI 和 `SKILL.md`，可通过 CLI、MCP 或 Web 服务使用。
+
+- **能解决什么痛点**：
+  - Agent 需要调用 Semrush、Crunchbase、Apollo、Tavily 等服务时，开发者不必分别注册账号、维护多套密钥和适配不同 API。
+  - 团队成员共享 API Key、OAuth 凭证或 CLI 登录态时，凭证保存在服务端，不会随着 Skill、脚本或 Agent 配置分发到每台开发机。
+
+- **适合谁用**：需要让 Claude Code、MCP 客户端或自建 Agent 调用大量第三方数据与自动化服务的开发团队；以及希望集中管理 API 密钥、OAuth 连接、CLI 和团队 Skill 的平台工程师。
+
+- **怎么上手**：`curl -fsSL https://treg.to/install.sh | sh && treg login && treg catalog search "backlinks for a domain"`
+
+- **可以用在哪些场景**：
+  - 搭建 SEO 或增长 Agent，通过统一接口调用反向链接、关键词排名、社交趋势和公司信息服务。
+  - 在团队内部共享 Stripe、GitHub、Vercel 等 CLI，让 Agent 通过 `treg run` 执行操作而不暴露凭证。
+  - 为 Claude.ai 或其他 MCP 客户端提供统一工具入口，并按团队、成员和工具权限控制访问。
+
+- **技术看点**：项目采用“忠实中继”设计，代理层不重新建模上游 API，而是保留请求并在服务端注入认证信息，以降低上游接口变化带来的维护成本。它还通过 MCP、CLI、OAuth、团队组织权限、调用审计和按次计费组合成一套 Agent 工具基础设施，并支持自托管。
+
+- **近期动向与发展方向**：项目近期更新非常活跃，最近 20 条提交集中在 2026 年 9 月 21—22 日，既有 Tavily 工具接入、Influencers.club 数据缓存、MCP 搜索相关性评估等新功能，也有 SQLModel 版本锁定、部署使用 `uv.lock`、目录文档整理等稳定性工作。最新提交还涉及隔离固定 Agent 历史和共享 Provider 的异步读取，说明项目正从工具目录扩展到多租户数据隔离、搜索质量、部署可靠性和认证架构。
+
+- **同类对比**：README 明确将 Treg 对标为“面向 Agent 工具的 OpenRouter”，但它不只做第三方 API 路由，还覆盖团队自有工具、CLI、Skill、MCP 和服务端凭证管理；与模型路由平台相比，核心对象从模型切换成了可执行工具和外部服务端点。
+
+- **注意事项**：项目创建于 2026 年 7 月 15 日，当前已有 2007 个 Stars、206 个 Forks，但仍有 81 个 Open Issues，整体更像快速演进中的早期项目。使用托管服务时需要理解按调用计费、余额不足返回 HTTP 402、Provider 凭证优先级和团队权限模型；自托管或接入生产环境前，还应重点评估密钥存储、CLI 服务端执行、OAuth 生命周期和上游 API 变化带来的兼容性风险。文档内容较完整，但命令、MCP、Skill、组织权限和计费规则较多，上手前需要先区分目录工具与团队自有工具两套使用路径。
+
+- **GitHub**：[superdesigndev/treg](https://github.com/superdesigndev/treg)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：成立时间较短但核心项目已获得较高关注，在智能体开发工具领域具备快速增长的社区影响力
+**技术栈偏好**：以 TypeScript 和 JavaScript 构建工具与平台，结合 Python 支撑智能体及相关开发流程
+**核心领域**：主要聚焦 AI Agent 工具、智能体开发基础设施与面向设计和平台协作的开发产品
+
+---
+
+### ✨ browser-use/video-use (25549★)
+
+> **一句话**：把一文件夹的原始视频交给 Claude Code 等编码代理，由代理根据转写文本完成剪辑、字幕、调色和渲染，最后输出 `final.mp4`。
+
+- **它是什么**：`video-use` 是一个基于 Python、FFmpeg 和 AI 编码代理的视频后期工作流。代理先通过 ElevenLabs Scribe 获取逐词时间戳、说话人和音频事件，再结合按需生成的胶片条、波形与字幕时间线图，生成剪辑决策并执行渲染。它支持删掉口头禅和停顿、自动调色、烧录字幕、生成动画叠加，并在输出前对每个剪辑边界进行自检。
+
+- **能解决什么痛点**：面对多段访谈、口播或产品演示素材时，不必手动逐段寻找停顿、重复表达和错误起始点，代理可以按词级时间戳生成剪辑结果。对于竖屏素材、不同帧率、HDR/HLG 源视频以及字幕安全区等容易出错的细节，项目也提供了相应的渲染处理，减少成片后返工。
+
+- **适合谁用**：
+  - 使用 Claude Code、Codex、Hermes 或 OpenClaw，并希望通过自然语言剪辑视频的开发者和独立创作者。
+  - 需要批量处理口播、访谈、教程、旅行视频或产品发布素材的内容团队。
+
+- **怎么上手**：最小安装流程可从克隆项目并同步依赖开始：`git clone https://github.com/browser-use/video-use ~/Developer/video-use && cd ~/Developer/video-use && uv sync`；随后安装 FFmpeg、配置 `ELEVENLABS_API_KEY`，在素材目录运行 `claude`，输入 `edit these into a launch video`。
+
+- **可以用在哪些场景**：
+  - 将多段产品发布会或创始人口播素材自动整理成带字幕、调色和节奏控制的宣传片。
+  - 把技术教程的长录屏剪成去除停顿和重复表达的短视频，并叠加 Remotion、Manim 或 PIL 制作的解释动画。
+  - 在 VPS 或 Telegram 工作流中接收原始视频，自动生成适合社交媒体发布的成片。
+
+- **技术看点**：项目没有让模型直接读取大量视频帧，而是以约 12KB 的打包转写文本作为主要输入，仅在剪辑决策点生成包含胶片条、波形和词级标签的视觉合成图，降低上下文噪声。工作流采用“转写—打包—LLM 决策—EDL—渲染—自评”的闭环，并将会话记忆写入 `project.md`，方便后续继续编辑。
+
+- **近期动向与发展方向**：最近提交主要集中在渲染和转写可靠性修复，包括选择正确音轨并拒绝无声上传、识别旋转元数据、默认保留源视频帧率，以及此前对竖屏方向、HDR/HLG 转 SDR、字幕安全区和 UTF-8 输出的修正。提交在 2026 年 4 月项目创建后较为密集，但最近一批集中提交出现在 8 月 30 日，说明当前重点仍是补齐生产环境边界情况，而非大规模重构；8 位贡献者和 114 个开放 Issue 也表明项目仍处于快速完善阶段。
+
+- **同类对比**：暂无明显同类对标。README 提到的 HyperFrames、Remotion、Manim 和 PIL 主要用于生成动画叠加，并不是完整的视频剪辑代理；项目的主要差异在于让编码代理通过结构化转写和按需视觉信息完成剪辑，而不是依赖传统时间线编辑器或预设模板。
+
+- **注意事项**：
+  - 需要安装 FFmpeg，并依赖 ElevenLabs API 进行转写，API 密钥和相关费用是运行前提；在线素材下载还需要额外安装 `yt-dlp`。
+  - 项目需要 Claude Code 等具备 Shell 访问能力的代理来执行技能目录中的脚本，普通视频编辑软件用户不能直接按 GUI 方式使用。
+  - 项目创建时间较新，虽然已获得较高关注度，但贡献者仅 8 人、开放 Issue 达 114 个，成熟度仍需观察；近期提交以修复渲染兼容性和媒体边界问题为主。
+  - README 对安装、工作流和设计原则说明较完整，但实际使用效果仍取决于转写质量、代理的剪辑判断以及素材类型；动画工具、云端服务和 API 的具体限制暂未提供。
+
+- **GitHub**：[browser-use/video-use](https://github.com/browser-use/video-use)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：成立时间较短但增长迅速，在浏览器自动化与 AI Agent 社区具有较高关注度和影响力
+**技术栈偏好**：以 Python 为核心，偏好结合大语言模型、浏览器控制与自动化工具链
+**核心领域**：聚焦基于 AI Agent 的浏览器操作、网页自动化及相关视频与测试基础设施
