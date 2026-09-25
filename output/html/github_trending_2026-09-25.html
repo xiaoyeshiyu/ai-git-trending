@@ -101,48 +101,31 @@
 <body>
     <div class="main-container">
         <h1>GitHub 热点日报 (2026-09-25)</h1>
-<h2>今日热点：AI 智能体从能力构建走向工作落地</h2>
-<p>今日热门项目集中体现了 AI 智能体生态的扩展：从技能框架、插件、记忆与编排运行时，到面向团队协作的管理工具、桌面工作台及办公应用；同时覆盖模型优化、设计体验、密钥管理、工程学习、Kubernetes 实践，以及量化选股和无线网络工具等方向，展现出智能体与基础设施、专业工作流持续融合的趋势，具体项目摘要如下：</p>
-<h3>✨ paperclipai/paperclip (76312★)</h3>
+<h2>今日热点：AI 智能体从开发工具走向完整工作平台</h2>
+<p>今日项目热度集中在 AI 智能体生态建设，覆盖团队协作与本地运行、插件和技能框架、记忆管理与编排，以及表格文档等办公能力和界面设计；同时也涉及 AI 工程学习、模型压缩与推理优化，并延伸至 Kubernetes 实践、密钥管理、无线网络工具和量化选股工作台，呈现出智能体应用与基础设施并进的趋势，具体项目摘要如下：</p>
+<h3>✨ paperclipai/paperclip (84496★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：Paperclip 把 Claude Code、Codex、Cursor 等 AI Agent 组织成可分工、可审批、可追踪成本的“虚拟公司”，团队可以在一个 React 仪表盘里给 Agent 分配目标、监督执行和查看审计记录。</p>
+<p><strong>一句话</strong>：Paperclip 把多个 AI 智能体组织进一家公司式的工作台，统一分配任务、审批执行、追踪进度与成本。</p>
 </blockquote>
 <ul>
-<li>
-<p><strong>它是什么</strong>：Paperclip 是一个基于 Node.js Server 和 React UI 的开源 Agent 编排控制台，定位不是单个聊天机器人，而是管理一组面向业务目标工作的 AI Agent。它把任务系统、组织架构、预算控制、心跳调度、审批治理、运行时接入和审计日志放在同一套界面里，支持接入 OpenClaw、Claude Code、Codex、Cursor、Bash、HTTP 等不同 Agent 或运行环境。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：当你同时开着多个 Claude Code / Codex 会话时，很容易忘记每个 Agent 在做什么、上下文在哪里、结果是否可追溯；Paperclip 用 ticket、线程会话、持久化工作区和目标继承来管理这些执行过程。另一个痛点是 Agent 长时间运行可能烧掉大量 token 或重复执行任务，Paperclip 提供预算、审批、心跳和任务 checkout 机制来降低失控风险。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合正在尝试多 Agent 协作的 AI 产品团队、平台工程团队和内部自动化团队，尤其是已经在使用 Claude Code、Codex、Cursor 等编码 Agent 的开发者。也适合需要把 Agent 纳入权限、预算、审计和组织流程管理的技术负责人或工程管理者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：文档未提供快速上手示例。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：可以用来搭建内部 AI Agent 工作台，让多个编码 Agent 分别处理 issue、改代码、跑测试并提交可审查结果。可以用于管理长期运行的自动化业务任务，例如客服整理、市场内容、报表生成或例行巡检，并通过心跳定时触发。也可以用于多团队或多项目的 Agent 治理，把不同“公司”或项目的数据、权限、预算和审计记录隔离开。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用 TypeScript，核心形态是 Node.js 服务端加 React 前端，重点不在模型推理本身，而在 Agent 控制平面：任务 checkout、心跳执行、预算约束、运行时适配、多公司隔离和审计追踪。README 特别强调 atomic execution、persistent agent state、runtime skill injection 和 governance rollback，这些设计对生产环境管理 Agent 比单纯封装 LLM API 更关键。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交非常活跃，既有功能开发也有稳定性修复。近期重点包括多 provider connection、MCP 集成准备、Daytona sandbox 输出流式化、任务聊天草稿持久化、恢复提示优化、onboarding 流程调整，以及 worktree/runtime/heartbeat 相关 bug 修复；同时还有 a11y 改进和文档补充。整体看项目正在快速补齐企业化 Agent 管理所需的连接、运行时、可用性和治理能力。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确提到“如果 OpenClaw 是 employee，Paperclip 是 company”，也就是说它更像 Agent 组织与治理层，而不是单个 Agent 执行器。它与 Claude Code、Codex、Cursor 的关系也不是替代，而是把这些 Agent 纳入统一任务、预算、审计和组织结构中管理。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026-03-02，虽然 Star 数和贡献者数量很高，近期提交也很密集，但仍属于快速演进阶段；5080 个 open issues 说明需求和问题积压都不小，生产采用前需要评估稳定性和升级成本。近期提交中出现了 onboarding 回滚、worktree/runtime 修复、checkout conflict 处理等内容，说明核心流程仍在打磨。README 提供了较完整的产品定位和架构说明，但当前素材里没有直接可复制的安装命令，首次上手可能需要依赖官方文档。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/paperclipai/paperclip">paperclipai/paperclip</a></p>
-</li>
+<li><strong>它是什么</strong>：这是一个开源的 AI 智能体编排控制台，由 Node.js 服务端和 React 界面组成。用户可以设定业务目标、配置组织架构和智能体，再通过任务、定时心跳、审批与预算管理协同它们；项目宣称支持 OpenClaw、Claude Code、Codex、Cursor、Bash 和 HTTP 等运行方式。</li>
+<li><strong>能解决什么痛点</strong>：同时运行多个编程智能体时，任务、会话和上下文容易散落在不同终端，重启后也难以追踪；Paperclip 用工单和持久化任务上下文集中管理。对于长期运行的智能体，它还能通过预算限制、审批和审计记录减少失控执行与费用超支。</li>
+<li><strong>适合谁用</strong>：需要协调多个不同厂商或运行时智能体的开发团队；希望让智能体定时处理客服、报告、营销等重复工作，同时保留人工审核和费用管控的团队。</li>
+<li><strong>怎么上手</strong>：README 提供 Quickstart 入口，但所给素材没有展示安装命令或具体操作步骤；可从 <a href="https://github.com/paperclipai/paperclip#quickstart">Quickstart</a> 或 <a href="https://docs.paperclip.ing">官方文档</a> 开始。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>把多个编码智能体分配到不同任务，由负责人审核产出并查看执行记录。</li>
+<li>按计划运行客服回复、社交内容发布或定期报告任务，并设置每个智能体的预算。</li>
+<li>为多家公司或业务团队部署隔离的智能体组织，分别管理角色、权限和审计记录。</li>
+<li><strong>技术看点</strong>：项目重点不只是调用模型，而是提供任务认领、预算约束、持久化执行状态、审批回滚和多组织隔离等控制面能力。通过兼容不同智能体运行时和 MCP 连接，试图把编排与具体模型、代理实现解耦。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常密集，主要是修复心跳任务调度、任务所有权、恢复失败处理和沙箱清理等执行可靠性问题，同时持续增加连接能力，包括 MCP 聚合器、远程 MCP、实验性记忆提供方及 Slack 对话与定时消息集成。提交也涉及移动端交互、启动恢复和评测事件记录；219 位贡献者显示社区参与较广，但近期记录主要反映持续迭代与稳定性打磨，未见明确的大规模重构信号。</li>
+<li><strong>同类对比</strong>：README 将 OpenClaw 比作“员工”、Paperclip 比作“公司”：前者侧重智能体本身，Paperclip 侧重组织架构、目标、任务、预算和治理；它也强调可接入 Claude Code、Codex、Cursor 等多种代理。</li>
+<li><strong>注意事项</strong>：项目面向多智能体组织编排，配置组织、权限、运行时与预算的工作量高于单个编码助手，初次部署和运维需要一定投入。项目创建于 2026-03-02，数据截至 2026-09-25，已有 84,496 Stars、219 位贡献者且仍在频繁更新；同时有 5,672 个开放 Issue，说明使用热度高但待处理事项也不少，生产部署前宜核对文档、权限与隔离配置，并关注版本变更。README 素材未提供具体安装步骤及部署要求。</li>
+<li><strong>GitHub</strong>：<a href="https://github.com/paperclipai/paperclip">paperclipai/paperclip</a></li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Paperclip 是一个新兴但增长极快的开源组织，核心项目已获得极高关注，具备较强的社区扩散能力。
-<strong>技术栈偏好</strong>：其技术栈明显偏向 TypeScript，主要围绕 Web 应用、工具链与 AI Agent 管理相关产品构建。
-<strong>核心领域</strong>：主要聚焦企业工作场景中的 AI Agent 管理、协作基础设施与配套生态工具。</p>
+<p><strong>技术影响力</strong>：以超高关注度开源主仓库为核心，已在智能体工作管理领域形成显著社区影响力。
+<strong>技术栈偏好</strong>：以 TypeScript 为主，偏好构建开源应用、工具链及智能体集成适配器。
+<strong>核心领域</strong>：聚焦企业级 AI 智能体管理、协作与应用生态。</p>
 <hr />
 <h3>✨ anthropics/claude-plugins-official (36768★)</h3>
 <blockquote>
@@ -445,26 +428,29 @@
 <strong>技术栈偏好</strong>：主要使用 JavaScript、Python 和 TypeScript，关注 AI 工程与智能体开发。
 <strong>核心领域</strong>：聚焦 AI 应用与智能体，同时覆盖 DevOps、云原生和开发者工具。</p>
 <hr />
-<h3>✨ shy3130/tick-stock-panel (5049★)</h3>
+<h3>✨ shy3130/tick-stock-panel (5110★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+<p><strong>一句话</strong>：把 A 股数据接入、本地选股、策略回测和盘中监控放进一个可用 Docker 自托管的量化工作台。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：TSP自托管、零运维的 A 股「选股 + 监控 + 回测」量化工作台  | LLM能力驱使策略定制+个股分析+复盘 | 自由接入第三方数据源与个性化扩展数据 | 个人开源</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/shy3130/tick-stock-panel">shy3130/tick-stock-panel</a></p>
-</li>
+<li><strong>它是什么</strong>：TSP 是面向 A 股研究的自托管平台，提供多数据源接入、全市场策略筛选、因子研究与回测、个股分析及异动监控。数据落在本地 Parquet 等存储中，并通过 AI 助手对话查询和分析行情；项目明确不提供 AI 荐股或涨停预测。</li>
+<li><strong>能解决什么痛点</strong>：不同数据源切换时，常要重写采集逻辑，导致指标与回测口径不一致；TSP 以能力路由和统一数据口径处理这一问题。选股、回测和监控分散在多套脚本或工具中，也容易造成数据断层，TSP 将这些环节串在同一工作流里。</li>
+<li><strong>适合谁用</strong>：希望在个人设备或自有服务器上搭建 A 股研究环境的量化爱好者；需要 Python 策略、因子回测和自定义数据源扩展能力的开发者。</li>
+<li><strong>怎么上手</strong>：README 标注支持 Docker 部署，但所给材料未包含具体安装命令或环境变量配置，最简启动命令暂未提供。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>将日线或分钟策略应用于全 A 股筛选，并用 T+1、费用和滑点等条件开展历史回测。</li>
+<li>盘中监控自选股、策略信号和价格异动，通过弹窗、语音或飞书接收提醒。</li>
+<li>汇总本地行情与财务数据，进行个股分析、因子检验和盘后复盘。</li>
+<li><strong>技术看点</strong>：使用 Polars 处理指标与扫描任务，数据通过能力路由矩阵按数据集选择来源，并以 enriched 数据口径衔接选股、回测和监控。支持 Parquet、DuckDB 等本地存储，以及后端、前端可独立发现和挂载的扩展模块。</li>
+<li><strong>近期动向与发展方向</strong>：2026-09-24 至 25 的提交重点集中在模拟盘功能及其交易规则完善：新增虚拟账户、自动跟单、成交事件推送、导出与账户对比，并修复 T+1 可卖数量和次日开盘成交等问题；同时还在修复行情刷新和数据发布幂等性。近两日有多项提交与合并记录，33 位贡献者参与，演进方向明显偏向完善模拟交易闭环与分析数据链路。</li>
+<li><strong>同类对比</strong>：README 明确表示不对标同花顺、通达信；项目侧重本地自托管的策略研究、回测与监控，不定位为传统看盘软件。</li>
+<li><strong>注意事项</strong>：项目面向学习研究，README 明确说明不作为投资或看盘软件；数据源覆盖和 AI 能力取决于所接入的服务与配置。功能较多，部署及策略使用有一定学习成本。项目创建时间标注为 2026-06-18，近期更新至 2026-09-25；有 15 个 Open Issues，维护仍较活跃，但模拟盘近期快速迭代，使用前应核对成交、结算等规则是否符合自己的研究口径。README 内容较完整，但给定材料未包含具体快速安装步骤。</li>
+<li><strong>GitHub</strong>：<a href="https://github.com/shy3130/tick-stock-panel">shy3130/tick-stock-panel</a></li>
 </ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：个人开发者，凭借一款获得较多关注的项目在细分社区具有一定影响力。
+<strong>技术栈偏好</strong>：主要使用 Python 和 JavaScript，偏好轻量级工具与应用开发。
+<strong>核心领域</strong>：聚焦股票行情展示与监控工具开发。</p>
 <hr />
 <h3>✨ google/ax (6894★)</h3>
 <blockquote>
