@@ -1,5 +1,5 @@
-## 今日热点：AI智能体工程化与底层基础设施协同演进
-热门项目聚焦智能体的工作管理、记忆与办公能力，同时覆盖模型压缩优化、机器学习框架、开发工具链、密钥管理、自动化执行、安全研究、移动端控制与 Web 框架，呈现从模型部署到应用落地的完整技术生态，具体项目摘要如下：
+## 今日热点：AI 智能体基础设施与本地化技术生态持续升温
+今日技术热点聚焦于 AI 智能体的工作管理、长期记忆、多智能体协同与办公运行时，同时延伸至语音克隆和转录、AI 工程学习、TypeScript 原生编译、开放式内容浏览以及 iOS 本地运行 Windows 游戏等方向，覆盖从开发工具、生产力平台到端侧应用和跨平台兼容的完整技术链路，具体项目摘要如下：
 
 ### ✨ paperclipai/paperclip (84496★)
 
@@ -58,38 +58,168 @@
 
 ---
 
-### ✨ NVIDIA/Model-Optimizer (3904★)
+### ✨ debpalash/VoiceStudio (38812★)
 
-> **一句话**：把 Hugging Face、PyTorch 或 ONNX 模型经过量化、剪枝、蒸馏等压缩处理，导出为可直接交给 TensorRT-LLM、TensorRT、vLLM 或 SGLang 部署的高性能检查点。
+> **一句话**：在本地电脑上完成声音克隆、声音设计、视频配音、语音转写和有声书制作，把原本依赖在线语音服务的整套音频工作流集中到一个桌面应用中。
 
-- **它是什么**：NVIDIA Model Optimizer 是面向深度学习推理优化的统一 Python 库，集成了量化、剪枝、知识蒸馏、神经架构搜索、稀疏化和推测解码等技术。它既支持 PTQ、QAT 等量化流程，也能与 Megatron-Bridge、Megatron-LM、Hugging Face Accelerate 等训练和转换链路配合使用，最终生成适配 NVIDIA 推理软件栈的优化模型。
+- **它是什么**：VoiceStudio 是一款基于 Electron 的本地语音工作台，默认使用 `k2-fsa/OmniVoice`，支持声音克隆、文本转语音、视频配音、听写、转录、批量任务和有声书生成。项目覆盖 646 种语言，支持本地模型管理，并通过 Local API 和 MCP 接入其他应用或 AI Agent；远程服务属于可选项。
 
-- **能解决什么痛点**：大语言模型或扩散模型在部署时显存占用过高、吞吐不足，Model Optimizer 可以通过 FP8、NVFP4、IQ 等低精度格式和结构化压缩降低模型大小、提升推理速度。激进量化可能造成精度下降，它还提供量化感知蒸馏、敏感度分析和自动混合精度分配，用于定位并修复关键层的精度损失。
+- **能解决什么痛点**：需要处理敏感录音、内部会议或未公开内容时，可以把推理和音频数据留在本机，减少上传第三方服务的依赖。面对视频配音、长文本有声书和批量语音生成等任务，也不必分别拼接克隆、转写、时间轴和音频导出工具。
 
-- **适合谁用**：使用 TensorRT-LLM、TensorRT、vLLM 或 SGLang 部署 LLM、VLM、扩散模型的推理工程师。需要在 Megatron 训练流程中完成量化、剪枝、蒸馏，并导出生产检查点的模型训练与平台团队。
+- **适合谁用**：适合需要本地语音合成和声音克隆的内容创作者、播客制作人、配音团队及有声书制作者。也适合希望通过 Python 后端、Local API 或 MCP，把语音能力接入内部工具和 AI Agent 的开发者。
 
-- **怎么上手**：安装包含全部组件的稳定版：
+- **怎么上手**：macOS/Linux 可直接执行 `curl -fsSL https://voicestudio.sh/install | sh` 安装最新 Electron 版本；从源码运行则执行 `git clone https://github.com/debpalash/VoiceStudio.git && cd VoiceStudio && bun install && bun run setup:api && bun run dev`。
 
-- **可以用在哪些场景**：
-  - 将 Qwen、Llama、Nemotron 等大模型转换为 FP8、NVFP4 或其他低精度格式，部署到 TensorRT-LLM 或 vLLM 服务中。
-  - 对 Megatron 训练出的模型执行剪枝、两阶段蒸馏和量化，减少模型规模后再导出为 Hugging Face 或推理框架可用的检查点。
-  - 为 Stable Diffusion 等扩散模型执行 PTQ，降低 NVIDIA GPU 上的图像生成延迟和显存占用。
+- **可以用在哪些场景**：为教育课程、产品演示或短视频批量制作多语言配音；把内部会议、访谈录音转成文字并生成可检索的语音资料；在本地写作或出版流程中，将长篇文本转换为有声书，并通过 MCP 交给 Agent 自动编排任务。
 
-- **技术看点**：项目将多种模型压缩方法统一在 Python API 和 recipe 体系中，并提供 Hugging Face、PyTorch、ONNX 等多种输入路径。它重点围绕 NVIDIA 硬件和 TensorRT 生态演进，近期加入 IQ2_XXS、NVFP4、自动量化敏感度评分以及量化感知蒸馏等能力，强调压缩结果能够直接进入实际推理运行时。
+- **技术看点**：采用 Electron 作为唯一桌面和 Web UI 外壳，Python 负责语音后端，同时支持本地模型、可选远程 Worker、Local API 和 MCP 集成。项目对硬件差异和运行稳定性投入较多，近期提交涉及 CUDA GPU 选择、Windows NVSMI 探测、端口恢复、可终止的 ASR sidecar 以及本地健康探测安全控制。
 
-- **近期动向与发展方向**：最近提交非常密集，20 条记录覆盖 2026 年 9 月 19 日至 24 日，且有 92 名贡献者参与，说明项目处于高频迭代阶段。近期重点集中在低精度量化和自动化量化流程，包括新增 IQ 格式、IQ PTQ recipe、Aumann-Shapley 敏感度评分、动态量化导出和 GGML 格式分发；同时持续修复专家权重卸载、推测解码、校准、检查点加载和 HF 导出问题，并发布 0.47.0 版本。整体方向是扩展低精度格式覆盖范围、提高大模型导出链路的可靠性，并加强与 Megatron-Bridge 及下游推理框架的衔接。
+- **近期动向与发展方向**：最近 20 条提交几乎全部集中在 2026-09-27 的后端稳定性、ASR 行为和 Electron 运行时修复，包括限制参考识别仅使用已安装模型、保留明确的远程 Provider 选择、修复端口被系统拒绝后的回退与恢复，以及隔离 sidecar 生命周期。近期重点明显是收敛桌面端和本地推理链路的边界、提升异常恢复能力，而不是扩展新的面向用户功能；项目当前有 79 位贡献者，更新活跃，但这批提交主要由核心维护者完成。
 
-- **同类对比**：README 未明确列出直接竞品。它与 TensorRT-LLM、TensorRT、vLLM、SGLang 的关系主要是“模型优化与检查点生成”对接“推理执行框架”，而不是完全替代这些运行时；相较只提供单一量化方案的项目，Model Optimizer 覆盖量化、剪枝、蒸馏、NAS 和推测解码等组合式优化流程。
+- **同类对比**：项目明确将自己定位为开源、完全本地化的 ElevenLabs 替代方案，核心差异是本地运行和可控的模型、API、MCP 集成，而不是主要依赖云端语音服务。README 未提供与其他开源语音项目的系统性对比。
 
-- **注意事项**：项目更适合熟悉 PyTorch、Hugging Face、Megatron 或 NVIDIA 推理栈的工程团队，完整流程通常涉及校准数据、GPU 环境、模型格式和下游运行时兼容性，初学者上手成本较高。项目创建于 2024 年 4 月，当前有 417 个开放 Issue，虽然更新频率和贡献者数量都很高，但也意味着接口、recipe、量化格式和导出行为仍在快速演进，升级版本前应核对 0.47.0 及相关下游框架的兼容性。README、文档、示例和公告较为完整，但不同模型架构与精度格式的支持范围仍需查阅具体 support matrix；Apache 2.0 之外，安装时还会引入其他第三方项目，应单独确认其许可证条款。
+- **注意事项**：首次使用需要下载语音模型，实际速度和显存、CPU、操作系统及所选引擎有关；从源码构建还需要 Node.js 22+、Bun、Rust/Cargo 和平台构建工具。项目采用 AGPL-3.0，模型另有各自许可证，商用前需要分别确认；克隆他人声音必须获得授权。项目创建于 2026-04-09、最近更新于 2026-09-27，拥有较高关注度但项目历史相对较短；README 文档覆盖安装、平台配置、引擎、性能和迁移，但 Electron 已取代旧版 Tauri，旧用户存在迁移成本。当前仅有 12 个开放 Issue，不能据此判断所有边缘平台和模型组合都已充分验证。
 
-- **GitHub**：[NVIDIA/Model-Optimizer](https://github.com/NVIDIA/Model-Optimizer)
+- **GitHub**：[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：AI 基础设施与开发者生态的重要引领者，在 GitHub 上拥有高关注度和广泛技术影响力
-**技术栈偏好**：以 Python、TypeScript 和 Jupyter Notebook 为主，侧重深度学习、生成式 AI 与高性能推理开发
-**核心领域**：聚焦人工智能基础设施、大语言模型、深度学习工程及 GPU 加速计算
+**技术影响力**：以开源个人开发者身份获得较高社区关注，代表项目 VoiceStudio 具备显著传播力。
+**技术栈偏好**：以 Python 为主，兼顾 Zig 与 Rust，偏好跨语言探索和高性能工具开发。
+**核心领域**：主要聚焦语音技术、人工智能应用及开发者工具。
+
+---
+
+### ✨ rohitg00/ai-engineering-from-scratch (56705★)
+
+> **一句话**：这是一套从线性代数、反向传播和 Transformer 原理一路学到 LLM、MCP 与智能体工程的开源实战课程，每节课都要求读者写代码并留下可验证的产物。
+
+- **它是什么**：项目提供 20 个阶段、523 节课程，覆盖 Python、TypeScript、Rust 和 Julia，从开发环境、数学基础、机器学习一直延伸到 LLM、工具协议、Agent Skills 和自主智能体。课程强调“先理解原理，再亲手实现”，每节课包含概念、数学、代码、测试和可复用产物，也提供网站、电子书、多语言入口及面向编码代理的学习技能。
+- **能解决什么痛点**：许多 AI 学习资料只展示调用模型 API 或复制部署示例，读者难以理解损失函数、注意力机制和 Agent Loop 的底层工作方式；该项目把数学基础、模型原理和生产工程串成连续路径。面对 523 节内容不知从哪里开始的问题，项目还提供十题定位测验和 MCP、Agent Skills 等专项学习路线。
+- **适合谁用**：希望系统掌握 AI 原理并能独立实现算法的 Python 开发者、机器学习初学者和软件工程师；需要学习 LLM 应用、MCP、Agent Skills 或编码代理工作流的开发者。
+- **怎么上手**：最小上手方式是克隆仓库并运行环境检查与第一节数学代码：`git clone https://github.com/rohitg00/ai-engineering-from-scratch.git && cd ai-engineering-from-scratch && python3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner && python3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py`。已有 Node.js、`npx` 和兼容编码代理的用户，也可以运行 `npx skills add rohitg00/ai-engineering-from-scratch` 安装课程技能。
+- **可以用在哪些场景**：
+  - 为团队搭建从数学基础到 LLM 应用开发的内部训练路线，并要求学员提交运行命令、输出和代码产物作为学习证据。
+  - 在构建 RAG、工具调用或 Agent 系统前，用课程中的 Transformer、提示工程、Agent Loop 和工具协议内容补齐原理与工程基础。
+  - 为需要接入 MCP 或 Agent Skills 的编码代理建立统一学习路径，练习沙箱边界、审计记录、可靠性和发布评估。
+- **技术看点**：课程不依赖单一框架，强调从原始数学和基础代码实现算法，再逐步过渡到 PyTorch、LLM、MCP 与多语言工程。仓库同时提供静态课程内容、网站生成数据、PDF/EPUB 构建、多语言入口，以及可被 Codex、Claude Code 等宿主调用的 `SKILL.md` 技能体系。
+- **近期动向与发展方向**：项目近期明显处于高频维护阶段，最近提交集中在修复课程内容、加固沙箱路径安全、修正测验偏差、稳定 perplexity 结果、补齐 ACP 审计记录，以及改善 PDF/EPUB、暗色模式、Apple Silicon Docker 构建等发布质量问题。`site/data.js` 由 GitHub Actions 多次自动重建，说明网站内容与仓库课程保持自动同步；同时多个外部贡献者参与修复，项目演进重点偏向课程可靠性、可复现性、安全性和跨平台交付，而非单纯扩充功能。
+- **同类对比**：README 未明确列出具体竞品或同类项目；其主要差异在于把数学推导、手写实现、测试证据和 AI 工程实践放进一条连续课程，并额外覆盖 MCP、Agent Skills 和编码代理使用方式。
+- **注意事项**：课程规模达到约 342 小时，适合长期系统学习，不适合只想快速调用一个 LLM API 的读者。项目创建于 2026-03-18，但已经拥有 56705 个 Stars、9945 个 Forks 和 21 位贡献者，关注度很高；同时仍有 43 个开放 Issue，且近期大量提交集中在修复和内容校准，说明项目活跃但仍在快速迭代。README 文档较完整，提供网站、学习路径和多语言入口，不过真正运行课程还需要按阶段准备 Python、Node.js、相关宿主或其他工具，环境依赖会随课程深入而增加。
+
+- **GitHub**：[rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：活跃的开发者与技术布道者，拥有较强社区号召力，项目广受关注。
+**技术栈偏好**：主要使用 JavaScript、Python 和 TypeScript，关注 AI 工程与智能体开发。
+**核心领域**：聚焦 AI 应用与智能体，同时覆盖 DevOps、云原生和开发者工具。
+
+---
+
+### ✨ InfinityLoop1308/PipePipe (6408★)
+
+> **一句话**：PipePipe 是一款面向 Android 的开源视频客户端，让用户在不依赖官方应用的情况下浏览 YouTube 等服务，并获得后台播放、广告片段跳过、弹幕式直播聊天和批量下载等能力。
+
+- **它是什么**：PipePipe 基于 NewPipe 分叉开发，但已独立维护，提供 YouTube 及其他服务的浏览、播放和下载功能。它在基础播放之外加入了 SponsorBlock、恢复 YouTube 不喜欢数、原始标题、登录访问受限内容、AV1/VP9 播放、播放列表搜索排序等增强功能。
+
+- **能解决什么痛点**：官方客户端通常包含广告、Shorts 和付费内容等干扰，PipePipe 可以按关键词或频道过滤内容，也能屏蔽 Shorts 和付费视频。对于需要后台听视频、批量下载播放列表、跳过赞助片段或在受限网络环境下访问内容的用户，它提供了更灵活的替代方案。
+
+- **适合谁用**：适合希望使用开源 Android 客户端浏览 YouTube、BiliBili 等服务的用户；也适合重视后台播放、内容过滤、下载管理和隐私控制，不想依赖官方客户端的影音用户。
+
+- **怎么上手**：可通过 [F-Droid](https://f-droid.org/packages/InfinityLoop1309.NewPipeEnhanced/) 或 [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/InfinityLoop1309.NewPipeEnhanced) 安装；README 未提供命令行或代码形式的快速上手示例。
+
+- **可以用在哪些场景**：
+  - 在 Android 手机上后台收听 YouTube 音乐、播客或长视频，并通过睡眠定时器控制播放。
+  - 观看 YouTube 或 BiliBili 直播时使用弹幕式聊天，并跳过 SponsorBlock 标记的赞助内容。
+  - 将完整播放列表批量下载到本地，之后在无网络环境下观看或整理本地播放列表与历史记录。
+
+- **技术看点**：项目采用硬分叉模式独立于 NewPipe 演进，重点放在快速修复服务变化和持续加入用户功能；README 还特别提到对 AV1、VP9 和 SABR 的支持，以及通过 SponsorBlock、ReturnYouTubeDislike 等外部服务增强播放体验。
+
+- **近期动向与发展方向**：近期开发非常活跃，2026 年 7 月至 9 月持续发布 `v5.2.4`、`v5.2.5`、`v5.3.x` 和 `v5.4.0`，每个正式版本前通常有多轮 Beta。最近的提交几乎全部由 `NullPointerException` 完成，重点表现为版本迭代、发布流程和客户端更新维护，暂未从提交摘要中看到大型重构或明确的新功能模块；8 名贡献者与 153 个开放 Issue 也说明项目主要由核心维护者驱动。
+
+- **同类对比**：README 明确将 PipePipe 与 NewPipe 区分开来：PipePipe 是独立维护的硬分叉，不跟随 NewPipe 的更新，也不会向 NewPipe 回推代码；相比继续追踪 NewPipe 上游的 Tubular，PipePipe 更强调独立决策、快速修复和额外功能扩展。
+
+- **注意事项**：项目创建于 2022 年，拥有 6408 个 Stars，但开放 Issue 达 153 个，问题积压和服务适配压力需要关注。README 明确说明登录功能只在用户配置的特定场景使用 Cookie，YouTube 场景主要用于获取播放流，使用时应理解相关账号与 Cookie 风险。近期版本发布频繁且包含多轮 Beta，升级前应留意兼容性；项目文档主要集中在功能说明，未提供明确的快速上手教程。GitHub 显示语言为 Shell，但这不代表 Android 应用的完整实现语言构成，具体代码技术栈暂未提供。
+
+- **GitHub**：[InfinityLoop1308/PipePipe](https://github.com/InfinityLoop1308/PipePipe)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：以 PipePipe 项目为核心，在开源社区具备一定知名度和持续影响力。
+**技术栈偏好**：偏好 Shell、Java 与 Kotlin，侧重 Android 应用及数据提取相关开发。
+**核心领域**：主要聚焦开源视频客户端、内容解析与跨平台应用生态。
+
+---
+
+### ✨ vercel-labs/scriptc (5235★)
+
+> **一句话**：把 TypeScript/JavaScript 源码编译成不依赖 Node.js 的原生可执行文件、WebAssembly 模块或底层编译产物。
+
+- **它是什么**：scriptc 使用 TypeScript 编译器完成解析和类型检查，再将代码转换为类型化 IR、C、LLVM IR、汇编、目标文件、原生可执行文件或 WASI WebAssembly。静态编译结果内置小型运行时，不包含 Node.js 或完整 JavaScript 引擎；无法静态编译的代码会给出诊断，也可以通过 `--dynamic` 嵌入 QuickJS 支持 npm 包和 `any` 类型代码。
+
+- **能解决什么痛点**：将 CLI、脚本或服务交付为单个原生二进制，目标机器无需安装 Node.js，也不会在运行时读取 `node_modules`。通过 `scriptc coverage` 可以提前定位动态或不受支持的代码，减少“开发环境能运行、编译后才发现不兼容”的排查成本。
+
+- **适合谁用**：需要把 TypeScript CLI、内部工具或服务打包成独立原生程序的 Node.js 开发者；希望将部分 JavaScript/TypeScript 代码部署到资源受限环境或 WASI 沙箱的工程师。
+
+- **怎么上手**：先安装 Node.js 24 或更高版本，再执行：
+  随后创建 `hello.ts` 并运行 `scriptc run hello.ts`，也可以用 `scriptc build hello.ts -o hello` 生成独立可执行文件。
+
+- **可以用在哪些场景**：
+  - 将团队内部的 TypeScript 发布脚本、代码生成器或运维 CLI 编译成不依赖 Node.js 的单文件程序。
+  - 把使用 `node:http` 等受支持 Node API 的轻量服务编译后部署，减少目标主机上的运行时依赖。
+  - 将可静态编译的 TypeScript 逻辑构建为 WASI Preview 1 模块，运行在受限的 WebAssembly 沙箱中。
+
+- **技术看点**：项目复用 TypeScript 编译器做类型分析，并设计了从源码级 IR 到 C、LLVM 和原生目标文件的完整编译链，同时提供静态覆盖率诊断。对无法静态化的 npm 依赖和动态代码，采用显式 `--dynamic` 嵌入 quickjs-ng，清晰区分原生静态路径与 JavaScript 兼容路径。
+
+- **近期动向与发展方向**：近期开发非常活跃，最近 20 条提交集中在 2026 年 9 月 26日至27日，全部由 Chris Tate 提交，重点是修复编译器边界行为和运行时问题，包括 LLVM 开发构建中的源码变量与断点、CommonJS 导出、静态 import、可选链数组回调、Node 类型定义、动态全局对象以及 fiber 栈处理。同时项目已准备发布 `v0.1.6`，并持续优化终端启动速度、内存占用和静态 `Array`、`Math` 操作，说明当前阶段仍以稳定编译覆盖面和运行时可靠性为主，而不是快速扩展表面功能。
+
+- **同类对比**：README 未明确提及竞品或直接对标项目；其定位区别于传统仅运行 JavaScript 的 Node.js 工具链，重点在于将 TypeScript/JavaScript 转换为原生代码或 WASM 产物。
+
+- **注意事项**：项目明确标注为实验性项目，创建于 2026 年 7 月 22 日，当前仅有 4 位贡献者、54 个 Open Issues，成熟度和 API 稳定性仍需观察。静态编译存在明确覆盖边界，npm 包、`any` 类型和动态代码通常需要 `--dynamic`；WASI 环境不支持网络、子进程、操作系统信号和文件监听等能力。生成普通原生可执行文件仍需要平台链接器和 SDK/sysroot，WASI 构建需要 Zig，跨平台部署前应结合 `scriptc coverage` 和平台支持文档验证。
+
+- **GitHub**：[vercel-labs/scriptc](https://github.com/vercel-labs/scriptc)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Vercel Labs 是 Vercel 生态的重要技术创新组织，凭借多个高星开源项目在开发者工具与 AI 社区具有显著影响力
+**技术栈偏好**：以 TypeScript 和 JavaScript 为主，辅以 Rust，偏好现代 Web、AI Agent 与高性能开发工具技术
+**核心领域**：主要聚焦 AI Agent、开发者工具、Web 应用基础设施及 Next.js 生态创新
+
+---
+
+### ✨ mvschwarz/openrig (646★)
+
+> **一句话**：把 Claude Code 和 Codex 组织成一支可持久运行的本地开发团队，用 YAML 定义席位和协作关系，再通过 tmux 与 TUI 统一启动、查看、通信和恢复。
+
+- **它是什么**：OpenRig 是运行在本地的多智能体编排层，不负责训练或替代 Claude Code、Codex，而是管理它们组成的团队。开发者可以用 YAML 描述不同代理的角色、连接关系和恢复策略，通过 `rig up` 启动多个 tmux 会话，再用共享 TUI 查看每个代理的模型、上下文、运行状态和任务进展。项目还提供消息发送、广播、队列、会话发现、拓扑快照与恢复等能力。
+
+- **能解决什么痛点**：同时运行多个编码代理时，终端会话、工作目录、任务交接和运行状态很快失控，OpenRig 将这些会话纳入统一的 rig 和 seat 管理。代理重启或机器重启后，开发者也可以按名称恢复拓扑和上下文，而不是重新手动启动并解释整个团队结构。
+
+- **适合谁用**：需要让多个 Claude Code、Codex 代理协作完成开发、测试和审查的个人开发者或小型工程团队。也适合希望在本地仓库中搭建“主代理分派任务、实现代理改代码、审查代理复核”的工程自动化流程的用户。
+
+- **怎么上手**：环境需要 Node.js 20、22 或 24、tmux，以及已登录的 Codex；最小流程是 `npm install -g @openrig/cli && rig setup --dry-run`，确认配置后在仓库中执行 `rig up first-project --cwd .` 和 `rig tui --shared`。
+
+- **可以用在哪些场景**：
+  - 在一个已有 TypeScript 或其他语言仓库中，让一个代理负责实现需求，另一个代理检查候选改动并记录审查结果。
+  - 搭建包含规划、编码、QA 和独立审查席位的本地产品开发小组，持续处理多个迭代任务。
+  - 在需要恢复开发现场的长任务中保存 rig 拓扑，机器重启后重新拉起代理、队列和项目上下文。
+
+- **技术看点**：项目用 YAML `RigSpec` 描述 pods、edges 和 continuity policies，再通过 tmux 承载各个代理会话，并用守护进程、共享队列和 TUI 维护运行状态。它还通过 Claude Code 与 Codex 的 hooks、信任配置、上下文采集和活动中继，将原生代理接入统一的本地运行模型。
+
+- **近期动向与发展方向**：项目近期更新非常密集，20 条提交集中在 2026 年 9 月 25 至 27 日，已连续发布 0.5.15、0.5.16 和 0.5.17。最近重点主要是完善安装与发布流程、支持 Bun 全局安装、修复未发布 `@openrig/daemon` 导致的安装问题、调整 Claude 的 `CLAUDE.local.md` 管理方式，以及补充 Context7 配置、可移植性报告和 README 演示；暂未看到大规模架构重构，演进方向更偏向首批用户落地、发布稳定性和生态集成。
+
+- **同类对比**：README 未明确列出竞品。与单独使用 tmux、脚本或终端管理器相比，OpenRig 的差异在于它额外管理代理拓扑、席位身份、任务通信、上下文状态和恢复流程，而不是只负责打开多个终端窗口。
+
+- **注意事项**：项目创建于 2026 年 4 月，当前已有 646 个 Stars、80 个 Forks 和 12 位贡献者，但仍处于快速迭代阶段，39 个 Open Issues 也说明功能和边界尚在完善。安装和运行会修改 tmux 配置、Claude/Codex 信任设置、hooks、工作区文件及 `~/.openrig` 状态目录，部分配置写入不提供完整回滚保证，首次使用前应阅读 README 的影响说明并备份相关文件。上手还依赖 Node.js、tmux、Codex 登录和权限配置；`YOLO` 默认关闭，但用户显式启用后会放宽代理权限，需谨慎评估仓库和凭据风险。
+
+- **GitHub**：[mvschwarz/openrig](https://github.com/mvschwarz/openrig)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：小众但具备一定开源影响力的独立开发者，代表项目获得有限社区关注。
+**技术栈偏好**：偏好 JavaScript/TypeScript，主要围绕 Web 应用与插件生态进行开发。
+**核心领域**：聚焦 AI 产品工程、OpenRig 开源工具及应用集成。
 
 ---
 
@@ -125,301 +255,35 @@
 
 ---
 
-### ✨ tensorflow/tensorflow (200348★)
+### ✨ willfaust/Madeira (699★)
 
-> **一句话**：TensorFlow 为开发者提供从训练机器学习模型到将模型部署进应用的完整框架，覆盖 Python、C++ 及多种计算设备。
+> **一句话**：让一台未越狱的 iPhone 通过 x86-64 转 ARM64、Wine 和 Metal 图形转换，在手机上启动并运行原本面向 Windows PC 的游戏。
 
-- **它是什么**：TensorFlow 是端到端的开源机器学习平台，包含框架、库和开发工具，可用于构建、训练和部署机器学习模型。项目提供稳定的 Python 与 C++ API，并支持 GPU 等设备；README 还列出了 Lite 转换器等面向模型部署的组件。
-- **能解决什么痛点**：开发者无需从零实现张量运算、自动微分和设备调度等基础能力，就能训练神经网络；同一套生态也能帮助团队把模型从开发环境带到 GPU 服务器或应用端。
-- **适合谁用**：使用 Python 开展机器学习研究或开发模型的工程师；需要通过 C++ 集成模型，或关注 GPU、移动端等部署环境的开发团队。
-- **怎么上手**：安装当前版本：`pip install tensorflow`。最小示例：`import tensorflow as tf; print(tf.add(1, 2).numpy())`
-- **可以用在哪些场景**：
-  - 用 GPU 训练图像分类、文本处理等机器学习模型。
-  - 将训练好的模型集成到 Python 服务或 C++ 应用中。
-  - 使用 TensorFlow Lite 转换模型，面向资源受限设备进行部署。
-- **技术看点**：项目同时维护 Python 与 C++ API，并围绕 XLA、HLO、PJRT 等组件持续优化编译和设备执行路径。近期提交涉及 CPU 线程池、GPU 内核缓存、TPU 转换规则及 Lite 转换器，反映出其重点不仅在模型 API，也在底层编译与多设备支持。
-- **近期动向与发展方向**：最近 20 条提交主要聚焦 XLA/HLO 优化、GPU 与 TPU 后端、IFRT/PJRT 执行能力，以及 Lite 转换器和测试基准维护；既有性能和正确性修复，也有新增 `kShuffle` 指令等功能。提交集中在 2026 年 9 月 24—25 日，且涉及多位贡献者，显示仓库近期开发活跃；所列记录未体现大型整体重构。
-- **同类对比**：README 未明确列出竞品，暂无明显同类对标。
-- **注意事项**：项目创建于 2015 年，拥有 5,345 位贡献者，成熟度和生态规模较高；但当前有 3,333 个开放 Issue，实际处理情况需结合具体问题判断。README 提供安装指南、API 文档和教程，日常使用可从 Python 包入手；从源码构建、适配特定设备或修改 XLA 等底层模块则需要较强的构建和系统知识。底层仍在持续演进，升级或维护私有补丁时应按目标版本验证兼容性。
+- **它是什么**：Madeira 把 ARM64EC 版 Wine、FEX-Emu 和 DXMT 组合进 iOS 上的单个 Mach 进程，将 Windows x86-64 游戏翻译到 ARM64，并把 D3D11 图形调用转换为 Metal。当前 Thumper 和 ULTRAKILL 已可游玩，Marvel Cosmic Invasion 也能进入实际游戏，但不同游戏仍可能遇到低帧率、控制异常或意外终止。
 
-- **GitHub**：[tensorflow/tensorflow](https://github.com/tensorflow/tensorflow)
+- **能解决什么痛点**：它解决了 iPhone 无法直接运行 Windows PC 游戏，以及 iOS 缺少传统 Windows 运行环境和 DirectX 图形栈的问题。对希望在不越狱的 iPhone 上测试 PC 游戏兼容性的人来说，也提供了一条可以自行构建和调试的路径。
 
-#### 开发者 / 组织速览
+- **适合谁用**：适合熟悉 iOS 签名、Xcode 和命令行构建的开发者，以及研究 Wine、FEX-Emu、Windows 游戏兼容层或 Metal 图形转换的工程师。普通玩家不太适合作为即装即用的软件使用，因为需要自行处理 JIT、签名、构建和游戏兼容性问题。
 
-**技术影响力**：全球领先的人工智能与机器学习开源组织，拥有极高的社区关注度和行业影响力。
-**技术栈偏好**：以 Python、C++ 和 TypeScript 为主，重点覆盖深度学习框架、模型开发及 Web/JavaScript 机器学习。
-**核心领域**：主要聚焦人工智能、深度学习、机器学习模型与端到端开发生态。
-
----
-
-### ✨ rohitg00/ai-engineering-from-scratch (56705★)
-
-> **一句话**：这是一套从线性代数、反向传播和 Transformer 原理一路学到 LLM、MCP 与智能体工程的开源实战课程，每节课都要求读者写代码并留下可验证的产物。
-
-- **它是什么**：项目提供 20 个阶段、523 节课程，覆盖 Python、TypeScript、Rust 和 Julia，从开发环境、数学基础、机器学习一直延伸到 LLM、工具协议、Agent Skills 和自主智能体。课程强调“先理解原理，再亲手实现”，每节课包含概念、数学、代码、测试和可复用产物，也提供网站、电子书、多语言入口及面向编码代理的学习技能。
-- **能解决什么痛点**：许多 AI 学习资料只展示调用模型 API 或复制部署示例，读者难以理解损失函数、注意力机制和 Agent Loop 的底层工作方式；该项目把数学基础、模型原理和生产工程串成连续路径。面对 523 节内容不知从哪里开始的问题，项目还提供十题定位测验和 MCP、Agent Skills 等专项学习路线。
-- **适合谁用**：希望系统掌握 AI 原理并能独立实现算法的 Python 开发者、机器学习初学者和软件工程师；需要学习 LLM 应用、MCP、Agent Skills 或编码代理工作流的开发者。
-- **怎么上手**：最小上手方式是克隆仓库并运行环境检查与第一节数学代码：`git clone https://github.com/rohitg00/ai-engineering-from-scratch.git && cd ai-engineering-from-scratch && python3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner && python3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py`。已有 Node.js、`npx` 和兼容编码代理的用户，也可以运行 `npx skills add rohitg00/ai-engineering-from-scratch` 安装课程技能。
-- **可以用在哪些场景**：
-  - 为团队搭建从数学基础到 LLM 应用开发的内部训练路线，并要求学员提交运行命令、输出和代码产物作为学习证据。
-  - 在构建 RAG、工具调用或 Agent 系统前，用课程中的 Transformer、提示工程、Agent Loop 和工具协议内容补齐原理与工程基础。
-  - 为需要接入 MCP 或 Agent Skills 的编码代理建立统一学习路径，练习沙箱边界、审计记录、可靠性和发布评估。
-- **技术看点**：课程不依赖单一框架，强调从原始数学和基础代码实现算法，再逐步过渡到 PyTorch、LLM、MCP 与多语言工程。仓库同时提供静态课程内容、网站生成数据、PDF/EPUB 构建、多语言入口，以及可被 Codex、Claude Code 等宿主调用的 `SKILL.md` 技能体系。
-- **近期动向与发展方向**：项目近期明显处于高频维护阶段，最近提交集中在修复课程内容、加固沙箱路径安全、修正测验偏差、稳定 perplexity 结果、补齐 ACP 审计记录，以及改善 PDF/EPUB、暗色模式、Apple Silicon Docker 构建等发布质量问题。`site/data.js` 由 GitHub Actions 多次自动重建，说明网站内容与仓库课程保持自动同步；同时多个外部贡献者参与修复，项目演进重点偏向课程可靠性、可复现性、安全性和跨平台交付，而非单纯扩充功能。
-- **同类对比**：README 未明确列出具体竞品或同类项目；其主要差异在于把数学推导、手写实现、测试证据和 AI 工程实践放进一条连续课程，并额外覆盖 MCP、Agent Skills 和编码代理使用方式。
-- **注意事项**：课程规模达到约 342 小时，适合长期系统学习，不适合只想快速调用一个 LLM API 的读者。项目创建于 2026-03-18，但已经拥有 56705 个 Stars、9945 个 Forks 和 21 位贡献者，关注度很高；同时仍有 43 个开放 Issue，且近期大量提交集中在修复和内容校准，说明项目活跃但仍在快速迭代。README 文档较完整，提供网站、学习路径和多语言入口，不过真正运行课程还需要按阶段准备 Python、Node.js、相关宿主或其他工具，环境依赖会随课程深入而增加。
-
-- **GitHub**：[rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：活跃的开发者与技术布道者，拥有较强社区号召力，项目广受关注。
-**技术栈偏好**：主要使用 JavaScript、Python 和 TypeScript，关注 AI 工程与智能体开发。
-**核心领域**：聚焦 AI 应用与智能体，同时覆盖 DevOps、云原生和开发者工具。
-
----
-
-### ✨ openbao/openbao (7540★)
-
-> **一句话**：OpenBao 集中保管数据库凭据、API 密钥和证书，并按需生成、续期或撤销它们，让应用无需把长期有效的敏感信息写进配置文件。
-
-- **它是什么**：OpenBao 是用 Go 开发的敏感数据管理服务，可保存密钥与任意键值数据，并在写入持久化存储前加密。它还支持为部分系统动态生成凭据、设置租约与自动撤销，并提供数据加解密能力。
-- **能解决什么痛点**：应用配置文件、镜像或代码仓库里散落长期有效的数据库密码和 API 密钥，泄露后难以追踪与轮换；不同系统各自管理密钥，也会让凭据的访问审计和统一撤销变得困难。
-- **适合谁用**：需要集中管理应用凭据与密钥的运维、安全团队；希望让服务按需获取、到期自动失效的数据库管理员和后端开发团队。
-- **怎么上手**：安装 Go 后可直接启动开发服务器：`go run . server -dev`。
-- **可以用在哪些场景**：
-  - 应用连接数据库时，按需获取有期限的数据库凭据，并在租约到期后自动撤销。
-  - 将云服务访问密钥从应用配置中移出，由 OpenBao 按请求生成并在权限期限结束后回收。
-  - 在应用侧调用加解密能力，为需要存入 SQL 数据库的数据加密，而不自行设计加密流程。
-- **技术看点**：服务端采用 Go 和 Go Modules，支持将加密后的密钥数据写入磁盘或 PostgreSQL 等存储。租约、续期和撤销机制覆盖凭据生命周期，而不只是静态存储。
-- **近期动向与发展方向**：最近提交显示项目持续活跃，既有 `v2.6.3`、`v2.7.0` 的变更日志更新，也有依赖和测试代码维护。近期安全修复较集中，涉及代理请求校验、ACME 证书 SAN 校验、插件执行路径、OIDC 重定向及访问控制；可见项目当前重点包括加固安全边界与持续维护基础设施。
-- **同类对比**：README 未明确列出竞品，暂无明显同类对标。
-- **注意事项**：这是面向服务端部署和凭据生命周期管理的安全基础设施，配置、权限与运维要求高于普通应用库，上手前应阅读官方文档。项目创建于 2023-11-09，当前有 320 个开放 Issue，近期提交活跃；但 Issue 数量本身不能说明问题严重程度。近期提交未提供破坏性变更的明确说明，升级时仍应核对对应版本变更日志。安全问题需按项目指引负责任披露。
-
-- **GitHub**：[openbao/openbao](https://github.com/openbao/openbao)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：云原生安全领域的活跃开源组织，核心项目具备较高社区关注度和一定生态影响力
-**技术栈偏好**：以 Go 为主、Shell 为辅，偏好云原生基础设施、插件化架构与 Kubernetes 集成
-**核心领域**：聚焦开源密钥管理、机密存储、安全基础设施及 Kubernetes 云原生安全场景
-
----
-
-### ✨ block/buzz (34788★)
-
-> **一句话**：Buzz 把团队聊天、代码协作和 AI Agent 放进同一个可自托管工作区，让人和 Agent 在共享频道里交流、提交补丁并留下可检索的审计记录。
-
-- **它是什么**：Buzz 是基于 Nostr relay 的协作平台，消息、评论、工作流步骤和 Git 事件都以签名事件写入同一事件日志。团队可以在频道中讨论和搜索，也可以让拥有独立身份与频道权限的 Agent 参与代码评审、运行工作流、编辑画布或协助处理问题；项目提供桌面端、命令行工具和自托管 relay。
-- **能解决什么痛点**：代码讨论、CI 结果、补丁和审批分散在聊天软件、代码托管平台及自动化工具里，事后难以还原决策过程；Agent 往往只能通过单独的机器人接口参与，权限边界和操作记录不够清晰。Buzz 试图把这些活动收拢到同一频道和事件记录中。
-- **适合谁用**：希望自行托管协作平台、并让 AI Agent 参与日常开发流程的工程团队；需要以命令行或 ACP harness 接入 Goose、Codex、Claude Code 等 Agent 的开发者。
-- **怎么上手**：安装 Docker 和 Hermit 后执行：`git clone https://github.com/block/buzz.git && cd buzz && . ./bin/activate-hermit && just setup && just build`；之后运行 `just dev` 启动 relay 和桌面端。
-- **可以用在哪些场景**：
-  - 为团队自托管一个协作工作区，让开发讨论、补丁、CI 结果和评审审批集中在项目频道。
-  - 将 Bug 排查交给有独立密钥和频道权限的 Agent，并把检索到的历史讨论与处理过程留在频道中。
-  - 通过 YAML 工作流响应消息、表情反应、定时任务或 webhook，自动发布通知或启动协作流程。
-- **技术看点**：Rust workspace 将 relay、数据库、认证等能力拆分为多个 crate，客户端通过 WebSocket 与 REST 接入。以 Nostr 签名事件作为统一数据模型，并结合 PostgreSQL 全文搜索、Redis 发布订阅及 S3/MinIO 对象存储，减少聊天、工作流和 Git 活动之间的数据割裂。
-- **近期动向与发展方向**：最近 20 条提交覆盖 9 月 24 日至 26 日，开发持续活跃。近期既在扩展 relay 管理控制台、可配置 HTTP(S) 推送地址和 HTTP 入口认证，也在修复移动端状态同步、管理操作并发及 CI 问题；同时持续补充协议与数据回填文档，显示项目正推进服务端能力、客户端可靠性和协议边界的完善。仅凭这些提交记录，无法判断是否存在重大重构。
-- **同类对比**：README 未点名明确竞品；项目主张用统一事件日志和身份模型连接团队协作、代码活动与 Agent，暂无明确同类对标。
-- **注意事项**：自托管路径需要 Docker，并涉及 relay、PostgreSQL、Redis 和对象存储等组件，开发环境搭建不算轻量。项目创建于 2026-03-06，最近更新时间为 2026-09-26；当前有 3660 个开放 Issue，说明仍需关注未解决问题和功能稳定性。README 将移动端及部分工作流能力列为仍在接入，Windows 构建也未签名；协议和管理能力仍在演进，生产部署前宜核对对应版本文档与发布说明。
-- **GitHub**：[block/buzz](https://github.com/block/buzz)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Block 旗下高活跃度开源组织，凭借 `buzz` 等代表项目在开发者工具与工程社区具备较强影响力
-**技术栈偏好**：偏好 Kotlin、Rust 与 TypeScript，覆盖类型安全后端、基础设施及现代开发工具链
-**核心领域**：主要聚焦支付与金融科技基础设施、开发者工具及企业级工程效率平台
-
----
-
-### ✨ microsoft/vscode (193093★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Visual Studio Code
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[microsoft/vscode](https://github.com/microsoft/vscode)
-
-
----
-
-### ✨ zhaoxuya520/reverse-skill (37736★)
-
-> **一句话**：把 APK、二进制、前端加密、CTF 和渗透测试任务交给 AI 后，由路由规则自动判断分析方法、检查工具链并组织成可复现的安全研究流程。
-
-- **它是什么**：这是一个面向 Claude Code、Codex、Cursor、Cline 等 AI 编程客户端的逆向与安全技能路由包。它通过 `RULES.md`、主路由配置和场景技能模块，将任务分流到 jadx、Frida、IDA、Ghidra、radare2、BurpSuite、pwntools 等工具，并配套案例初始化、时间线、证据链和报告交接流程。
-
-- **能解决什么痛点**：面对 APK、ELF、前端 JS 加密或网络抓包任务时，AI 容易选错工具、直接猜命令，项目用结构化路由规则约束分析入口。不同机器上的工具、MCP 服务和脚本状态不一致时，它还会刷新工具索引并执行预检，减少“工具未安装或版本不兼容导致流程中断”的问题。
-
-- **适合谁用**：使用 Claude Code、Codex、Cursor 等 AI 客户端开展逆向分析、漏洞验证或授权渗透测试的安全研究人员。也适合维护 Kali、Ubuntu、Windows 等多平台安全实验环境，并希望把个人经验沉淀为可复用技能模块的团队。
-
-- **怎么上手**：先克隆仓库，再按平台刷新工具索引，例如 Windows 使用 `git clone https://github.com/zhaoxuya520/reverse-skill.git`，随后执行 `powershell -File skills/scripts/refresh-tool-index.ps1`。
+- **怎么上手**：先递归克隆仓库：`git clone --recurse-submodules https://github.com/willfaust/Madeira`；之后需要按 `build/*/build.sh` 构建原生组件，并使用 `xcodebuild` 构建 iOS 应用，JIT 调试则依赖 StikDebug。README 未提供一条命令完成全部构建和安装的快速上手示例。
 
 - **可以用在哪些场景**：
-  - 对 Android APK 进行 jadx/apktool 静态分析，并结合 Frida 做运行时验证。
-  - 对 ELF、DLL、SO 或 EXE 进行 IDA、Ghidra、radare2 或 Binary Ninja 逆向。
-  - 分析前端 JS 加密参数、HTTP 请求重放、CTF 题目，以及在授权范围内执行漏洞扫描和 Pwn 开发。
+  - 在 A15 等级的非越狱 iPhone 上运行已验证兼容的 Windows 独立游戏，例如 Thumper 或 ULTRAKILL。
+  - 为 Wine、FEX-Emu、DXMT 的 iOS 移植工作测试具体游戏的启动、输入、D3D11/D3D12 渲染和性能表现。
+  - 研究移动端 Windows 游戏兼容层，包括触控映射、物理手柄输入、Metal 后端和远程图形服务等实现方式。
 
-- **技术看点**：项目将任务路由集中到结构化配置中，并用 175 个回归案例、Windows 与 Ubuntu CI 检查路由结果和结构一致性。核心流程强调先完成授权范围、网络配置和案例目录初始化，再执行目标操作，同时保留时间线及 Evidence→Finding→Path 证据链。
+- **技术看点**：项目将 x86-64 到 ARM64 的指令翻译、ARM64EC Wine 和 D3D11/D3D12 到 Metal 的转换整合到 iOS 单进程模型中，并将 wineserver 作为线程运行。近期还加入了原生 D3D12 的资源、栅格化相关能力，以及通过 host XInput 暴露实体手柄和触控控制映射，技术栈耦合度较高但针对性很强。
 
-- **近期动向与发展方向**：最近 20 条提交全部围绕 Kali 环境下的 pwntools 发现、版本探测和自举预检展开，连续补充回归测试、隔离环境和输出契约，说明当前重点是提升工具探测的准确性、跨环境稳定性与测试完备度，而非扩展新的大类功能。单日集中提交显示维护者近期活跃，但贡献主要仍由核心作者完成，项目共有 16 名贡献者。
+- **近期动向与发展方向**：项目近期开发非常集中，最近 20 条提交主要由 Will Faust 完成，并有 125hz 参与 XInput 控制器功能，显示核心开发仍以小规模协作为主。9 月的重点包括原生 D3D12 能力扩展、GPU 地址查找和编码器同步优化、性能与 JIT 诊断、Metal Shader Converter 集成，以及实体手柄和触控输入支持；同时连续处理 Wine 分支、第三方库和转换器例外条款的许可证与构建记录。整体方向是从“能启动少数游戏”继续推进到更完整的图形、输入、性能诊断和可复现构建。
 
-- **同类对比**：暂无明显同类对标。它与单一逆向工具或单个 AI 客户端插件的定位不同，重点是跨场景路由、工具链自检和安全研究过程管理。
+- **同类对比**：README 未明确列出竞品或同类项目。Madeira 的明显特点是专门面向非越狱 iOS，并将 Wine、FEX-Emu、DXMT 和 iOS JIT 调试流程整合在一起，而不是只提供单独的 Windows 兼容层或指令翻译器。
 
-- **注意事项**：项目覆盖面较广，但上手前需要 Java/JDK、Node.js 22.12+、Python 3.x 以及具体逆向工具，实际使用成本高于普通 AI 技能包。README 文档较完整，提供平台安装、场景入口和回归测试脚本，但不同工具的安装与授权配置仍需自行处理。项目创建于 2026-05-13，最近更新于 2026-09-26，拥有 37736 个 Stars 和 5247 个 Forks，但仍有 22 个 Open Issues；近期频繁修改 pwntools 探测逻辑，使用时应关注路由配置、工具索引和脚本行为的兼容性。所有渗透、漏洞验证和攻击链功能都应限定在明确授权范围内。
+- **注意事项**：项目创建于 2026 年 3 月，当前只有 2 名贡献者、28 个 Open Issues，且 README 明确定位为研究项目，成熟度和游戏覆盖范围有限。运行需要非越狱 iPhone、JIT 调试、Apple ID 签名和侧载；免费 Apple ID 的 provisioning profile 只有 7 天有效期，应用需要定期重建和重装。构建链横跨 Wine、FEX、DXMT、Metal Shader Converter 和 Xcode，不能直接使用上游子模块替代项目指定的 fork；游戏还可能出现低帧率、控制不可靠和未解释的终止。项目采用 GPL-3.0-or-later，同时各 fork 的许可证和 Madeira Converter Exception 需要仔细阅读，且 Microsoft Visual C++ 运行库 DLL 不随项目分发。
 
-- **GitHub**：[zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：凭借高星级代表项目在相关开发者圈层具有较强关注度，但整体社区影响力主要集中于个人项目。
-**技术栈偏好**：主要使用 PowerShell、Go 和 JavaScript，覆盖自动化脚本、网络工具与 AI 应用开发。
-**核心领域**：聚焦逆向工程、AI 开发工作流及相关工具构建。
-
----
-
-### ✨ llvm/llvm-project (40723★)
-
-> **一句话**：LLVM 提供从中间表示、优化器、后端代码生成到 Clang、libc++、LLD 等组件的一整套编译器基础设施，支撑 C/C++ 等语言生成高性能目标代码。
-
-- **它是什么**：LLVM 是一个模块化、可复用的编译器与工具链技术集合，核心部分包含处理中间表示、执行优化、生成目标文件所需的库、头文件和命令行工具。项目内还包含 Clang 前端，可将 C、C++、Objective-C、Objective-C++ 编译为 LLVM bitcode，再进一步生成目标文件。除此之外，它还维护 libc++ 标准库、LLD 链接器、MLIR 等多个编译器生态组件。
-- **能解决什么痛点**：对于需要开发新语言、编译器后端或代码优化器的团队，LLVM 避免了从零实现 IR、优化管线、汇编器、反汇编器和目标平台代码生成。对于 C/C++ 工具链使用者，它提供 Clang、libc++、LLD 等成熟组件，可用于替代或补充传统编译、标准库和链接流程。
-- **适合谁用**：适合做编译器、编程语言、静态分析、代码生成、运行时优化的系统软件工程师；也适合需要深度定制 C/C++ 工具链的基础设施团队、芯片厂商、操作系统和嵌入式开发者。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：
-  - 为自研编程语言接入 LLVM IR 和后端，生成 x86、ARM、AArch64 等平台的机器代码。
-  - 在大型 C/C++ 项目中使用 Clang、libc++、LLD 构建可控的编译和链接工具链。
-  - 开发静态分析器、代码检查器或编译期优化 pass，例如围绕 Clang AST、LLVM IR 或 MLIR 做专用分析。
-- **技术看点**：LLVM 的核心价值在于模块化编译器架构：前端、IR、优化、后端、运行时库和链接器可以独立使用，也可以组合成完整工具链。项目覆盖多架构后端和多个子项目，适合需要长期维护、跨平台、可扩展编译基础设施的场景。
-- **近期动向与发展方向**：最近提交非常密集，涉及 Windows CMake 构建、ARM/AArch64/X86/AMDGPU/AVR 后端、libc++、Clang OpenMP、MLIR、CIR/CUDA、SLP/VPlan 向量化等多个方向，说明项目仍处于高强度演进状态。近期重点既有测试补充、NFC 重构和注释清理，也有 libc++ 诊断、OpenMP 表达式优化、MLIR assembly properties 默认行为调整、CIR CUDA fat binary 处理等功能性改进；社区贡献者分布广，维护活动非常活跃。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：LLVM 是成熟但复杂度很高的基础设施项目，Star 和贡献者数量都很高，说明生态影响力强；同时 Open Issues 接近 4 万，反映出项目规模巨大、问题面广，使用者需要有较强的编译原理和系统工程背景。近期提交中包含大量后端、优化器和 MLIR/CIR 相关变更，深度集成时要关注版本升级带来的行为变化、API 变动和构建系统差异。
-
-- **GitHub**：[llvm/llvm-project](https://github.com/llvm/llvm-project)
+- **GitHub**：[willfaust/Madeira](https://github.com/willfaust/Madeira)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：LLVM 项目核心组织，拥有广泛的开发者关注度，在编译器与工具链社区具有重要影响力。
-**技术栈偏好**：以 C++ 和 LLVM 为主，侧重模块化编译基础设施及相关工具链技术。
-**核心领域**：聚焦编译器、语言基础设施与面向机器学习等领域的编译技术。
-
----
-
-### ✨ anthropics/claude-code-action (8975★)
-
-> **一句话**：它把 Claude Code 接入 GitHub Actions，让 Claude 直接在 Issue 和 Pull Request 中回答问题、审查代码，并按指令提交修改。
-
-- **它是什么**：这是一个基于 TypeScript 的 GitHub Action，能够根据 `@claude` 提及、Issue 分配或工作流中的明确提示词自动选择执行模式。它支持代码问答、PR Review、代码修改、GitHub API 与文件操作，并可通过结构化 JSON 输出结果供后续自动化步骤使用。
-
-- **能解决什么痛点**：团队不需要手动复制 PR diff 或 Issue 内容给 AI，Claude 可以在 GitHub 的评论和审查流程中直接读取上下文并反馈。对于重复性的代码审查、Issue 分类、文档同步和仓库维护任务，也不必为每种流程单独编写一套 AI 集成。
-
-- **适合谁用**：使用 GitHub Actions 管理 CI/CD、希望把 AI 接入 PR 和 Issue 流程的软件团队；需要自动进行代码审查、Issue 分诊、定期维护或代码修改的开发者和 SRE 团队。
-
-- **怎么上手**：在 Claude Code 终端中执行 `/install-github-app`，按向导安装 GitHub App 并配置必要的 Secrets；该快捷方式目前适用于 Anthropic 直连 API，Bedrock、Vertex AI 和 Microsoft Foundry 需要按照云厂商文档手动配置。
-
-- **可以用在哪些场景**：
-  - 为每个新建或更新的 Pull Request 自动执行代码审查，并按团队检查清单评论问题。
-  - 对外部贡献者提交的 PR 进行特殊审查，降低权限风险并统一反馈格式。
-  - 定时检查仓库健康状况、同步文档，或根据 Issue 内容自动分类和添加标签。
-
-- **技术看点**：项目将 Claude Code SDK 能力封装为统一的 GitHub Action，通过 `prompt` 和 `claude_args` 配置交互与执行参数，并支持 Anthropic API、Amazon Bedrock、Google Vertex AI 和 Microsoft Foundry。Action 在用户自己的 GitHub Runner 上运行，模型请求则发送到所选的模型服务商，部署边界相对清晰。
-
-- **近期动向与发展方向**：最近 20 条提交几乎全部围绕 Claude Code 与 Agent SDK 的连续版本升级，更新频率接近每日一次，说明项目重点是跟进底层代理能力和版本兼容性。近期还将集成测试固定到 `claude-opus-5`，更关注测试结果稳定性；当前未看到近期重大功能重构或明显的功能扩展提交。
-
-- **同类对比**：暂无明显同类对标。README 主要强调与 Claude Code、GitHub Actions 及多种云端模型托管服务的集成方式，没有列出直接竞品。
-
-- **注意事项**：项目创建于 2025 年 5 月，已获得 8975 个 Stars 和 2156 个 Forks，并有 141 位贡献者，且近期更新非常活跃；但同时有 805 个 Open Issues，使用时应关注具体版本的已知问题。首次配置需要仓库管理员安装 GitHub App、添加 Secrets 并正确设置权限，涉及自动改代码和提交变更时还应重点审查 Token 权限、触发条件、外部贡献者访问范围及提交签名策略。项目提供了安装、迁移、云厂商、安全和限制说明，但从 v0.x 升级到 v1.0 可能涉及配置调整，建议先阅读 Migration Guide。
-
-- **GitHub**：[anthropics/claude-code-action](https://github.com/anthropics/claude-code-action)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有大量关注者与高星仓库，是 AI 开发工具与实践生态中影响力突出的组织。
-**技术栈偏好**：主要使用 Python、Jupyter Notebook 和 TypeScript，覆盖 AI 实践、交互式教程与开发工具。
-**核心领域**：聚焦生成式 AI、Claude 开发工具、提示工程及行业应用。
-
----
-
-### ✨ actions/runner-images (13218★)
-
-> **一句话**：这个仓库维护 GitHub Actions 托管运行器和 Azure Pipelines 托管代理所用虚拟机镜像的构建定义，覆盖 Linux、Windows 与 macOS。
-
-- **它是什么**：仓库提供生成托管运行器镜像的源代码和镜像内预装软件清单，支持 Ubuntu、Windows Server、Windows 11 及 macOS 等系统，并提供 x64 和部分 Arm64 镜像。镜像通常按周更新，用户可在工作流中通过 YAML 标签选择操作系统版本。
-- **能解决什么痛点**：团队不必自行维护构建用虚拟机，也不必逐台安装编译器、SDK 和测试工具；固定具体系统版本标签，还能减少 `-latest` 迁移导致的构建环境变化。
-- **适合谁用**：使用 GitHub Actions 构建、测试和发布软件的开发团队；使用 Azure Pipelines 托管代理，或需要依据镜像定义自建构建虚拟机的工程团队。
-- **怎么上手**：在 GitHub Actions 工作流中选择镜像，例如 `runs-on: ubuntu-24.04`；如需从仓库源码构建虚拟机，可参考 README 所链接的镜像构建说明。
-- **可以用在哪些场景**：
-  - 在 Ubuntu、Windows 和 macOS 环境中分别运行项目的构建与自动化测试。
-  - 为 Apple 平台应用配置 macOS 运行器，并使用预装的 Xcode 镜像进行编译。
-  - 在 Arm64 运行器上验证软件兼容性，或为 Azure Pipelines 选择托管代理镜像。
-- **技术看点**：通过版本化的虚拟机镜像定义统一托管构建环境，并按操作系统、架构和镜像版本维护软件清单。`-latest` 标签指向最新稳定系统版本，但迁移会逐步进行；需要固定环境时可指定具体版本标签。
-- **近期动向与发展方向**：近 20 条提交多数是自动更新不同平台镜像的 README 版本信息，显示镜像发布和维护仍在持续进行。近期还加入 Xcode 27 测试版、调整 Ubuntu Azure 资源磁盘挂载超时，并跟进 Android Emulator 安装命令；整体重点是镜像版本迭代与环境维护，未见所给记录中出现重大重构。
-- **同类对比**：README 将其定位为 GitHub Actions 托管运行器和 Azure Pipelines 托管代理的镜像源；暂未提供明确竞品对比。
-- **注意事项**：直接在工作流中选用托管镜像较简单，但自行构建镜像需要按文档配置虚拟机和 Azure 资源。项目创建于 2019 年，拥有 369 位贡献者，近期提交频繁；当前有 132 个开放议题。镜像会按周更新，`-latest` 可能随迁移改变系统版本，重要工作流宜使用固定版本标签并关注弃用公告；Beta 镜像不在 Actions 客户 SLA 范围内。
-
-- **GitHub**：[actions/runner-images](https://github.com/actions/runner-images)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：GitHub Actions 是 GitHub 自动化生态的核心组织，拥有较高社区关注度与广泛影响力。
-**技术栈偏好**：以 TypeScript、PowerShell 和 Go 为主，覆盖工作流工具、运行环境与基础设施控制器开发。
-**核心领域**：聚焦 GitHub 工作流自动化及其运行器、镜像和 CI/CD 基础设施。
-
----
-
-### ✨ mobile-next/mobile-mcp (7077★)
-
-> **一句话**：让 AI Agent 通过同一套 MCP 接口操作 iOS 和 Android 设备，从读取屏幕元素、点击输入到安装应用和收集日志都能执行。
-
-- **它是什么**：这是一个以 TypeScript 编写的 MCP Server，连接 AI 客户端与 iOS、Android 模拟器、模拟机及真实设备。它优先读取原生无障碍树来获取结构化界面信息，也支持截图坐标交互，并提供应用管理、设备控制、录屏、日志和崩溃报告等工具。
-- **能解决什么痛点**：跨 iOS 和 Android 编写或维护两套自动化脚本，需要分别处理 XCUITest、Espresso 等平台方案；这个项目用统一接口覆盖两类设备。对于依赖截图的自动化流程，它还能读取界面元素和属性，减少仅凭图像判断控件位置带来的不确定性。
-- **适合谁用**：需要让 Claude Code、Codex、Gemini、GitHub Copilot 等 MCP 客户端执行移动端操作的开发者；需要在模拟器、模拟机或真机上自动跑表单、用户旅程和数据采集流程的测试或自动化团队。
-- **怎么上手**：安装 Node.js 20+、Xcode 命令行工具和 Android Platform Tools 后，在支持 MCP 的客户端配置 `npx -y @mobilenext/mobile-mcp@latest`；例如 Claude Code 可运行 `claude mcp add mobile-mcp -- npx -y @mobilenext/mobile-mcp@latest`。
-- **可以用在哪些场景**：
-  - 让 Agent 在 iOS 模拟器和 Android 模拟机上执行注册、登录、表单填写等回归流程。
-  - 在连接的真机上安装应用、操作指定页面，并采集设备日志或崩溃报告，辅助定位问题。
-  - 自动完成多步骤的移动端数据录入或信息提取，并在操作后读取界面元素核对结果。
-- **技术看点**：通过 MCP 将移动设备能力暴露为结构化工具接口，同一套工具面向 iOS 与 Android。交互设计以原生无障碍树为先，必要时再使用截图和坐标；近期也已提供 `--listen /mcp` 的 Streamable HTTP 服务方式。
-- **近期动向与发展方向**：最近提交主要集中在迁移至 MCP TypeScript SDK v2、更新底层 `mobilecli`、完善设备工作流说明，以及修复截图坐标映射并增加启动版本日志。9 月提交显示项目仍在持续维护，既有协议与依赖升级，也有功能和文档更新；提交记录以核心维护者为主，另有其他贡献者参与。
-- **同类对比**：README 未点名直接竞品；项目强调跨 iOS、Android 的统一 MCP 接口，并以无障碍树读取作为主要交互方式。
-- **注意事项**：项目创建于 2025-03-28，当前有 7077 Stars、31 位贡献者和 43 个未关闭 Issue，更新频率较高，但仍需关注 Issue 中尚未解决的问题。使用前需准备对应平台的开发工具和设备连接环境；9 月提交包含 MCP SDK v2 迁移，升级时应留意客户端兼容性。README 提供多客户端配置示例和 Wiki，但真实设备需要 USB 信任或启用并授权 ADB 调试。
-
-- **GitHub**：[mobile-next/mobile-mcp](https://github.com/mobile-next/mobile-mcp)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：成立较新的移动开发组织，社区规模有限，但 mobile-mcp 已获得较高关注度。
-**技术栈偏好**：以 TypeScript 为主，结合 Go 与 Swift，覆盖开发工具、命令行及 iOS 应用。
-**核心领域**：聚焦跨设备移动应用的构建、测试、部署与管理，并探索 AI 辅助开发工具。
-
----
-
-### ✨ vercel/next.js (142567★)
-
-> **一句话**：Next.js 让开发者用 React 构建既能在服务器渲染、又能在浏览器交互的完整 Web 应用。
-
-- **它是什么**：Next.js 是一个 React 框架，整合了服务端渲染、路由和构建工具，让开发者可以在同一项目中实现前端页面与服务端功能。README 提到它支持最新的 React 特性，并集成基于 Rust 的 JavaScript 工具链。
-- **能解决什么痛点**：纯客户端渲染的应用可能需要等 JavaScript 加载后才能呈现主要内容；Next.js 可通过服务端渲染改善页面首次呈现。它也把页面路由、构建和服务端能力放进同一框架，减少开发者自行拼接多套工具的工作。
-- **适合谁用**：使用 React 开发网站或 Web 应用的前端团队；需要在同一代码库中处理页面渲染与服务端逻辑的全栈开发者。
-- **怎么上手**：`npx create-next-app@latest`
-- **可以用在哪些场景**：构建需要服务端渲染的内容型网站；开发包含用户交互和服务端逻辑的 SaaS 应用；为已有 React 项目搭建带路由和构建流程的应用框架。
-- **技术看点**：围绕 React 提供全栈开发能力，并集成基于 Rust 的 JavaScript 工具链。近期提交也显示项目持续维护 Turbopack、Edge SSR 和部分预取等相关能力。
-- **近期动向与发展方向**：最近 20 条提交集中在测试与部署覆盖、Turbopack 文件系统依赖读取、服务端动作导航问题、Edge SSR 元数据策略及 Bundle Analyzer 改进；同时发布了 `v16.4.0-canary.48`。提交横跨多位贡献者，体现出持续活跃的维护节奏，近期重点偏向稳定性、工具链和开发体验改进。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：项目始于 2016 年，拥有 14 万余 Stars 和 4156 位贡献者，成熟度较高；但 3498 个 Open Issues 说明仍有大量问题待处理。框架涵盖路由、渲染和服务端能力，上手需要熟悉 React 及其约定；提交记录显示持续发布 canary 版本，采用预发布版本时应留意行为变化。README 提供文档、学习课程和贡献指南，但具体功能的学习成本取决于使用范围。
-
-- **GitHub**：[vercel/next.js](https://github.com/vercel/next.js)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有 3.1 万关注者及多个高星开源项目，是 Web 开发与前端生态中的重要技术组织。
-**技术栈偏好**：以 TypeScript 和 JavaScript 为主，兼顾 Rust，偏好现代 Web 框架、开发工具与 AI 应用技术。
-**核心领域**：聚焦 Web 应用与 AI 应用的开发、部署及基础设施。
+**技术影响力**：小众但具备一定影响力的独立开发者，代表项目在 C 语言社区获得关注。
+**技术栈偏好**：偏好 C/C++ 系统级开发，并使用 Swift 进行 Apple 平台相关开发。
+**核心领域**：主要聚焦底层系统、编程语言工具链与音频合成技术。
