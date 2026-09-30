@@ -1,5 +1,5 @@
-## 今日热点：AI 智能体基础设施与多模态生产工具加速落地
-今日技术热点聚焦于安全与私有化 AI 智能体运行环境、上下文优化、多智能体协作、MCP 生态与 Claude 技能扩展，同时延伸至本地语音克隆与转写、自动化短视频和视频渲染、代码知识图谱、数据库管理、文档 RAG、Firebase 开发工具及开源雷达硬件，呈现出从模型调用、开发协作到内容生产和专业应用全面融合的趋势，具体项目摘要如下：
+## 今日热点：AI 智能体基础设施与本地化生产力工具加速演进
+今日技术热点聚焦于 AI 智能体的安全运行、上下文优化、多智能体协作与技能生态建设，同时延伸至本地语音克隆与音视频生成、面向代理的视频渲染、代码知识图谱、向量无关的推理型 RAG、MCP 服务、跨平台数据库工具、Firebase 移动开发及开源雷达系统，呈现出从模型调用到开发基础设施、内容生产和专业硬件应用的全面扩展，具体项目摘要如下：
 
 ### ✨ NVIDIA/OpenShell (10136★)
 
@@ -119,42 +119,40 @@
 
 ---
 
-### ✨ DietrichGebert/ponytail (110613★)
+### ✨ DietrichGebert/ponytail (149049★)
 
-> **一句话**：它把“老练但懒”的资深工程师思路塞进 AI 编程代理里，逼着模型先复用、先用原生能力、先写最短可行代码，再决定要不要真正动手实现。
+> **一句话**：Ponytail 把“先复用原有能力、能用原生 HTML 就不引入组件、只写完成任务所需代码”的资深开发者习惯，注入 Claude Code、Codex、Cursor 等 AI 编程代理。
 
-- **它是什么**：这是一个面向 AI 编程代理的规则集/插件体系，核心目标不是让模型“写得更多”，而是让它像一个会偷懒但不乱来的 senior dev：先判断需求是否真的存在，再看现有代码、标准库、平台原生能力和已有依赖，最后才补最小实现。README 里给了多种接入方式，包括 Claude Code、Codex、GitHub Copilot CLI、OpenCode、Gemini CLI、Qoder 等，说明它本质上是跨代理的行为约束层，而不是单一 IDE 插件。
+- **它是什么**：这是一个面向 AI coding agent 的规则集、技能和生命周期钩子集合，而不是传统代码库或独立模型。它要求代理先判断需求是否必要，再依次尝试复用现有代码、标准库、平台原生能力和已安装依赖，最后才编写最小实现；同时明确不牺牲校验、错误处理、安全性和无障碍支持。
 
 - **能解决什么痛点**：
-  1. AI 代理常见的“过度设计”问题，比如明明一个原生 `` 就够了，却自己拉依赖、包组件、补样式、再绕一圈。
-  2. 代理写出来的代码经常又长又散，带来更高的 token、成本和调试负担，而 ponytail 的目标就是把“能复用就不重写、能一行就不展开”变成默认行为。
+  - AI 代理处理简单需求时容易过度设计，例如为了日期选择器引入 flatpickr、包装组件和额外样式，而 Ponytail 会优先生成原生的 ``。
+  - 代理经常重复实现已有功能、堆叠依赖或留下大量无必要代码，增加审查、维护、Token 消耗和运行成本。
 
-- **适合谁用**：
-  1. 已经在用 Claude Code、Codex、Copilot CLI、OpenCode 这类代理式开发工具的前端/全栈开发者。
-  2. 想把 AI 产出控制在“可维护、可审查、不过度膨胀”范围内的团队，尤其是对代码体积、可读性和安全边界比较敏感的工程组。
+- **适合谁用**：经常使用 Claude Code、Codex、Cursor、GitHub Copilot CLI、Gemini CLI、OpenCode 等代理开发真实项目的前后端开发者；尤其适合希望控制 AI 生成代码规模、依赖数量和变更范围的团队。
 
-- **怎么上手**：Claude Code 里先执行 `/plugin marketplace add DietrichGebert/ponytail`，再执行 `/plugin install ponytail@ponytail`；README 也给出了 Codex、Copilot CLI、OpenCode 等对应安装方式。
+- **怎么上手**：Claude Code 可直接执行 `/plugin marketplace add DietrichGebert/ponytail`，再执行 `/plugin install ponytail@ponytail`；Codex 可使用 `codex plugin marketplace add DietrichGebert/ponytail` 和 `codex plugin add ponytail@ponytail`。
 
 - **可以用在哪些场景**：
-  1. 让 AI 代理在做页面功能时优先使用原生表单控件、现成组件和已有工具，而不是新造一套抽象层。
-  2. 在维护中小型开源项目时，约束代理不要因为“想得太多”而引入多余依赖、包装层和样板代码。
-  3. 团队希望把“代码越少越好，但不能牺牲安全、校验、可访问性”固化成统一代理规则时。
+  - 在 FastAPI + React 等已有全栈项目中，让代理优先复用现有组件和接口，避免为小功能引入新的库或抽象层。
+  - 让 AI 为表单、日期选择、颜色选择等浏览器已有能力的需求直接使用原生 HTML，而不是生成一套定制组件。
+  - 在多种 AI 编程客户端之间统一“最小实现但不跳过安全检查”的开发规范，并通过 hooks 在每轮交互中自动注入规则。
 
-- **技术看点**：它不是单纯靠一句提示词，而是通过 hooks、skills、插件 manifest、AGENTS.md 等机制，把规则注入到不同代理的运行时。README 里还给了 benchmark，对比了无技能基线、caveman 和 “YAGNI + one-liners”，强调它在 LOC、tokens、cost、time 上都能下降，同时保持安全性。
+- **技术看点**：项目采用跨代理适配器设计，通过插件、扩展、`AGENTS.md`、技能目录和生命周期 hooks 接入不同客户端，目前 README 标注支持 20 个 agents。其核心不是简单追加“少写代码”的提示词，而是用 YAGNI、复用、标准库、原生能力、依赖和最小实现组成决策阶梯，并保留安全、数据丢失处理、输入校验和无障碍等保护项。
 
-- **近期动向与发展方向**：最近提交非常活跃，重点集中在兼容性修复和接入面扩展：新增 Grok Build native skills adapter，修复 VS Code Copilot 识别、Claude.ai marketplace 校验、PowerShell 下 hook 兼容、Codex/Qwen/OpenCode 相关输出与上下文结构问题，还更新了插件安装说明并发布 v4.9.0。整体看，项目正从“能用”走向“多平台代理稳定可用”，同时继续打磨规则注入和子代理场景。
+- **近期动向与发展方向**：近期开发重点从核心规则扩展到客户端生态和发布维护。2026 年 9 月发布 v4.10.0，并新增 Cursor 原生 `hooks.json` 支持；此前还加入 Grok Build 适配、修复 VS Code Copilot 检测和 Claude Marketplace 校验问题。最近 20 条提交中多数为 README、Logo 和 Trendshift 徽章调整，功能提交相对集中在适配器与 hooks；66 名贡献者说明已有一定社区参与，但近期提交仍主要由项目作者完成。
 
-- **同类对比**：README 明确提到了 `caveman` 和 “YAGNI + one-liners” 这类对照思路；ponytail 的差异在于它不是一次性 prompt，而是可挂到多个代理里的常驻规则、技能和 hook 组合，并且 README 里专门强调了安全边界不被削掉。
+- **同类对比**：README 将 `caveman` 和“YAGNI + one-liners”提示词作为对照组。Ponytail 强调先理解代码和真实流程，再选择最小实现，并宣称在其基准测试中相比无技能基线平均减少 54% 代码、22% Token、20% 成本和 27% 时间，同时保持 100% 安全通过率；这些数据来自项目自测，使用时仍应结合自身模型和代码库复验。
 
-- **注意事项**：这个项目对代理生态依赖很强，上手时要处理插件安装、信任 hooks、Node.js 在非交互 shell 的 PATH 等问题；另外它的 benchmark 主要基于 Claude Code 和特定开源仓库，效果不一定能原样迁移到所有模型和代码库。项目更新时间很近、提交密集、贡献者也不少，但 open issues 仍有 164 个，说明它还在快速演进，文档和兼容性细节需要跟着版本走。
+- **注意事项**：项目创建和更新时间元数据分别为 2026-06-12 与 2026-09-30，版本演进较快，跨客户端安装方式和 hooks 行为可能随代理平台变化。当前有 319 个开放 Issue，虽然更新活跃，但也意味着兼容性和边缘场景仍在持续处理；某些集成要求 Node.js 位于非交互 shell 的 `PATH` 中。项目规则会直接影响代理的代码生成策略，启用前应在团队项目中验证其对复杂需求、必要抽象和架构性改动的判断，不能把“少写代码”理解成无条件压缩实现。
 
 - **GitHub**：[DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：凭借 ponytail 获得超高关注度，属于以单一爆款项目形成显著社区影响力的个人开发者。
-**技术栈偏好**：主要使用 JavaScript，辅以少量 Python，偏向前端或轻量级开源工具开发。
-**核心领域**：主要聚焦于 JavaScript 生态下的实用型开源项目与个人技术实验。
+**技术影响力**：拥有较高关注度，代表仓库获得广泛社区关注，具备一定技术传播影响力
+**技术栈偏好**：以 JavaScript 为主，辅以 Python，偏好 Web 开发与轻量级项目实践
+**核心领域**：主要聚焦开源软件、Web 技术与个人开发者项目生态
 
 ---
 
@@ -200,66 +198,111 @@
 
 ---
 
-### ✨ openclaw/openclaw (387359★)
+### ✨ openclaw/openclaw (390949★)
 
-> **一句话**：OpenClaw 把大模型、工具、消息渠道和本地设备接到同一个 Gateway 中，让用户通过聊天软件、网页控制台或命令行使用属于自己的 AI 助手。
+> **一句话**：OpenClaw 把 AI 助手部署在你的电脑上，通过 WhatsApp、Telegram、Discord、Slack、iMessage 等聊天渠道接收消息，并调用本机工具和设备能力执行任务。
 
-- **它是什么**：OpenClaw 是面向单个操作者的个人 AI 助手，可运行在 macOS、Linux、Windows 等系统上。它以 Gateway 作为本地控制平面，统一管理会话、模型、工具和消息连接，并通过 WhatsApp、Telegram、Slack、Discord、Signal、iMessage 等渠道与用户交互，还能调用语音、摄像头、屏幕和设备本地操作等能力。
-- **能解决什么痛点**：用户不必为不同聊天平台分别搭建机器人和模型接入逻辑，可以通过一个 Gateway 统一管理多种渠道与会话。对于需要执行本机命令、访问本地文件或调用设备能力的场景，它也减少了云端助手与本地环境之间的割裂，但同时需要自行处理权限和暴露面风险。
-- **适合谁用**：希望把 AI 助手接入日常聊天工具的个人开发者和技术爱好者；需要在本地运行模型、工具、自动化任务，并通过 CLI、网页或多种消息渠道操作的工程师和运维人员。
-- **怎么上手**：macOS、Linux 或 WSL2 可执行 `curl -fsSL https://openclaw.ai/install.sh | bash`，安装完成后运行 `openclaw onboard --install-daemon` 完成模型、工作区和 Gateway 配置。
+- **它是什么**：OpenClaw 是一个开源、可自托管的个人或团队 AI 助手，核心由本地 Gateway 负责管理会话、工具、事件和多平台连接。它支持 Claude、Codex 及本地模型等可插拔模型提供商，并通过插件、技能和设备节点扩展能力，可运行在 macOS、iOS、Android、Windows 和 Linux 上。
+- **能解决什么痛点**：它将分散在多个聊天应用中的 AI 入口统一到一个 Gateway 中，避免为 WhatsApp、Telegram、Discord 等平台分别维护机器人。状态、记忆和凭据默认保存在自己的设备上，也减少了把个人上下文交给第三方托管服务的需要。
+- **适合谁用**：适合希望自托管 AI 助手、需要接入多个聊天渠道的个人开发者和技术团队；也适合想把模型、工具、自动化流程和本地设备操作组合起来的 AI 工程师与内部平台团队。
+- **怎么上手**：macOS、Linux 或 WSL2 可直接执行 `curl -fsSL https://openclaw.ai/install.sh | bash`，安装后运行 `openclaw onboard --install-daemon` 完成初始化，再用 `openclaw dashboard` 打开控制界面。
 - **可以用在哪些场景**：
-  - 在 Telegram、Slack 或 Discord 中搭建个人工作助手，统一处理问答、工具调用和会话状态。
-  - 在本地运行代码、文件处理或定时自动化任务，并通过网页控制台或聊天渠道触发。
-  - 将语音、摄像头、屏幕和设备本地操作接入 AI 工作流，用于个人设备控制或家庭实验环境。
-- **技术看点**：项目采用 TypeScript 和 pnpm workspace，围绕本地 Gateway 组织会话、事件、工具及渠道连接，并通过模型提供商、插件、技能和 ClawHub 扩展能力。它同时提供 CLI、TUI、Control UI、消息渠道和 companion apps，形成较完整的跨平台客户端体系。
-- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-24，开发非常活跃，重点以稳定性、状态一致性和生命周期治理为主。近期修复了 transcript 投影过期发布、`agent.wait` 返回状态异常、Gateway 云节点归属和 teardown replay 等问题，同时持续重构 Gateway 维护生命周期、并行搜索请求、插件渠道渲染和测试辅助代码；此外也在推进会话显示语义持久化、有限 transcript 行持久化及 UI 交互细节改进，说明项目正从快速扩展转向大规模系统的可靠性与可维护性建设。
-- **同类对比**：README 未明确列出竞品或直接对标项目，暂无明显同类对标。
-- **注意事项**：项目创建于 2025-11-24，但已拥有 387359 个 Stars、81330 个 Forks 和 3139 位贡献者，增长与协作规模极大；同时有 5859 个开放 Issue，意味着功能范围广、变更频繁，排查问题和跟进版本可能需要较高成本。Gateway 默认会在主机上执行工具，接入陌生消息来源或远程暴露前必须配置配对、沙箱和安全策略；跨平台、渠道、模型和插件组合较多，上手前需要阅读安装、Gateway 安全、沙箱及配置文档。项目近期大量提交涉及状态、生命周期和协议行为，升级时应关注配置兼容性及潜在破坏性变更。
+  - 搭建个人电脑上的跨平台消息助手，在 Telegram 或 WhatsApp 中查询资料、调用工具并维护长期记忆。
+  - 为团队部署共享 AI 助手，通过统一 Gateway 接入 Slack、Discord 或 Microsoft Teams。
+  - 连接手机、桌面和其他设备节点，实现语音、相机、屏幕或设备本地操作等自动化。
+- **技术看点**：项目采用“本地 Gateway + 多渠道连接器 + 可插拔模型和插件”的架构，将会话、工具调用、设备节点和控制界面集中管理。安全设计上将外部消息视为不可信输入，并提供配对、沙箱和确定性策略，但主会话工具默认可在宿主机上运行。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-09-30，显示项目处于高强度持续开发状态。近期重点明显偏向大规模重构和工程质量治理，包括简化配置、Agent 工具、补丁去重及 Android 状态处理，优化 UI 渲染和类型声明性能，同时持续修复测试夹具、进程清理、插件兼容性等问题；此外新增了按实用模型分类的 Sessions 工作板，说明项目正在从核心能力扩展到更完整的操作界面和工作流管理。
+- **同类对比**：README 未明确列出竞品。相较于只提供云端对话界面的 AI 产品，OpenClaw 的差异在于本地 Gateway、自托管数据、跨聊天平台接入，以及对本机工具和设备节点的直接编排。
+- **注意事项**：项目创建于 2025-11-24，却已达到 390949 Stars、82215 Forks 和 3444 位贡献者，增长和社区规模非常突出，但 9151 个开放 Issue 也说明维护压力和问题分流规模较大。项目更新频率极高，近期大量提交属于持续重构，升级时应关注配置、插件接口和模型兼容性变化。接入陌生消息来源或远程暴露 Gateway 前，必须先配置配对、访问控制和沙箱；否则工具可能在宿主机权限范围内执行操作。README 和文档较完整，但首次配置涉及模型、渠道、权限和设备节点，上手复杂度高于普通聊天机器人。
+
+- **GitHub**：[openclaw/openclaw](https://github.com/openclaw/openclaw)### ✨ openclaw/openclaw (390949★)
+
+> **一句话**：OpenClaw 把 AI 助手部署在你的电脑上，通过 WhatsApp、Telegram、Discord、Slack、iMessage 等聊天渠道接收消息，并调用本机工具和设备能力执行任务。
+
+- **它是什么**：OpenClaw 是一个开源、可自托管的个人或团队 AI 助手，核心由本地 Gateway 负责管理会话、工具、事件和多平台连接。它支持 Claude、Codex 及本地模型等可插拔模型提供商，并通过插件、技能和设备节点扩展能力，可运行在 macOS、iOS、Android、Windows 和 Linux 上。
+- **能解决什么痛点**：它将分散在多个聊天应用中的 AI 入口统一到一个 Gateway 中，避免为 WhatsApp、Telegram、Discord 等平台分别维护机器人。状态、记忆和凭据默认保存在自己的设备上，也减少了把个人上下文交给第三方托管服务的需要。
+- **适合谁用**：适合希望自托管 AI 助手、需要接入多个聊天渠道的个人开发者和技术团队；也适合想把模型、工具、自动化流程和本地设备操作组合起来的 AI 工程师与内部平台团队。
+- **怎么上手**：macOS、Linux 或 WSL2 可直接执行 `curl -fsSL https://openclaw.ai/install.sh | bash`，安装后运行 `openclaw onboard --install-daemon` 完成初始化，再用 `openclaw dashboard` 打开控制界面。
+- **可以用在哪些场景**：
+  - 搭建个人电脑上的跨平台消息助手，在 Telegram 或 WhatsApp 中查询资料、调用工具并维护长期记忆。
+  - 为团队部署共享 AI 助手，通过统一 Gateway 接入 Slack、Discord 或 Microsoft Teams。
+  - 连接手机、桌面和其他设备节点，实现语音、相机、屏幕或设备本地操作等自动化。
+- **技术看点**：项目采用“本地 Gateway + 多渠道连接器 + 可插拔模型和插件”的架构，将会话、工具调用、设备节点和控制界面集中管理。安全设计上将外部消息视为不可信输入，并提供配对、沙箱和确定性策略，但主会话工具默认可在宿主机上运行。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-09-30，显示项目处于高强度持续开发状态。近期重点明显偏向大规模重构和工程质量治理，包括简化配置、Agent 工具、补丁去重及 Android 状态处理，优化 UI 渲染和类型声明性能，同时持续修复测试夹具、进程清理、插件兼容性等问题；此外新增了按实用模型分类的 Sessions 工作板，说明项目正在从核心能力扩展到更完整的操作界面和工作流管理。
+- **同类对比**：README 未明确列出竞品。相较于只提供云端对话界面的 AI 产品，OpenClaw 的差异在于本地 Gateway、自托管数据、跨聊天平台接入，以及对本机工具和设备节点的直接编排。
+- **注意事项**：项目创建于 2025-11-24，却已达到 390949 Stars、82215 Forks 和 3444 位贡献者，增长和社区规模非常突出，但 9151 个开放 Issue 也说明维护压力和问题分流规模较大。项目更新频率极高，近期大量提交属于持续重构，升级时应关注配置、插件接口和模型兼容性变化。接入陌生消息来源或远程暴露 Gateway 前，必须先配置配对、访问控制和沙箱；否则工具可能在宿主机权限范围内执行操作。README 和文档较完整，但首次配置涉及模型、渠道、权限和设备节点，上手复杂度高于普通聊天机器人。
 
 - **GitHub**：[openclaw/openclaw](https://github.com/openclaw/openclaw)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：openclaw 依托高星仓库与高关注度，在开源 AI 助手与开发者工具社区中具备显著的行业影响力。
-**技术栈偏好**：以 TypeScript 为主，辅以 Go 和 Swift，整体偏向跨平台产品、终端工具与工程化 AI 应用。
-**核心领域**：主要聚焦个人 AI 助手、开发者效率工具和开源生产力平台。
+**技术影响力**：以高星级开源项目为核心，已在 AI 开发者社区形成较强影响力。
+**技术栈偏好**：偏好 TypeScript、Go 与 Swift，覆盖跨平台应用、命令行工具及 AI 助手生态。
+**核心领域**：主要聚焦个人 AI 助手、智能代理与开源开发者工具链。**技术影响力**：以高星级开源项目为核心，已在 AI 开发者社区形成较强影响力。
 
 ---
 
-### ✨ ComposioHQ/awesome-claude-skills (73611★)
+### ✨ ComposioHQ/awesome-claude-skills (76086★)
 
-> **一句话**：这是一个把文档处理、代码开发、数据分析、内容创作和应用自动化等 1000 多种 Claude Skills 与插件集中整理到一起的目录，用户可以按场景为 Claude、Codex、Cursor 等智能编码代理补充具体工作流。
+> **一句话**：这是一个收录 1000+ 个 Claude Skills、插件和相关资源的目录，让 Claude Code、Claude.ai、Codex、Cursor、Gemini CLI 等代理按预设工作流处理文档、代码、数据分析和应用自动化任务。
 
-- **它是什么**：项目以分类清单的形式收录 1000 多个生产可用的 Claude Skills 和插件，每个 Skill 通常由带 YAML 元数据的 `SKILL.md`、可选脚本、参考资料和资源文件组成。README 还提供了 `connect-apps` 插件示例，让 Claude 通过 Composio 连接 Gmail、Slack、GitHub、Notion 等 1000 多个应用，执行发邮件、建 Issue、发消息等实际操作。
+- **它是什么**：项目以分类清单的形式整理可直接复用的 Claude Skills，每个 Skill 通常由带 YAML frontmatter 的 `SKILL.md`、脚本、参考资料和资源文件组成。内容覆盖文档处理、开发工具、数据分析、营销写作、生产力、安全系统等领域，并提供 `connect-apps` 插件，让 Claude 通过 Composio MCP Gateway 连接 Gmail、Slack、GitHub、Notion 等 1000+ 个应用。
 
-- **能解决什么痛点**：开发者不必从零编写提示词和操作流程，就能找到文档转换、浏览器自动化、移动端测试、代码审查等现成 Skill。它也区分了 Skill、工具和 MCP：Skill 描述任务应该如何完成，MCP 和工具负责认证、连接外部系统及执行具体动作，减少了把“工作流指令”和“外部能力接入”混在一起的问题。
+- **能解决什么痛点**：开发者不需要从零编写复杂的提示词和代理工作流，可以直接找到用于生成文档、构建博客、调试 LangChain、运行 Web 模糊测试或操作 iOS Simulator 的现成 Skill。对于需要让 Claude 执行真实外部操作的场景，项目也提供了认证、应用连接和具体动作之间的组合方式，避免只停留在文本生成。
 
-- **适合谁用**：使用 Claude Code、Codex、Cursor、Gemini CLI、Windsurf 等代理的开发者和技术团队。需要批量处理 Office/PDF 文件、调试 AI Agent、接入 SaaS 应用，或希望沉淀团队开发流程的工程师也适合使用。
+- **适合谁用**：使用 Claude Code、Codex、Cursor 或 Gemini CLI 的开发者，以及希望标准化代码开发、测试、文档处理流程的工程团队。需要让 AI 操作办公应用、项目管理系统、通信平台或其他 SaaS 的自动化开发者也适合使用。
 
-- **怎么上手**：使用仓库中的 `connect-apps` 插件连接外部应用：
-  然后在 Claude Code 中运行 `/connect-apps:setup`，按提示填入 Composio API Key 并重启 Claude。
+- **怎么上手**：安装仓库内的连接插件并运行初始化命令：
+  `claude --plugin-dir ./connect-apps-plugin`，随后在 Claude Code 中执行 `/connect-apps:setup`，填入 Composio API Key 后即可连接外部应用。
 
 - **可以用在哪些场景**：
-  - 在 GitHub、Slack、Gmail 和 Notion 之间自动同步项目进展，例如根据 Issue 更新发送团队通知。
-  - 让 Claude 生成或修改 DOCX、PDF、PPTX 和 XLSX 文件，处理合同、报告、演示文稿及数据表格。
-  - 在 Next.js + Sanity 项目中按既定问卷和规范生成 SEO、多语言博客，或使用浏览器、iOS Simulator 和 LangSmith Skill 辅助测试与 Agent 调试。
+  - 在 Next.js + Sanity 项目中，通过 `building-blog` Skill 生成带 SEO、国际化和内容规划的博客模块。
+  - 在团队研发流程中使用 `great_cto` 的多个子代理执行架构分析、代码审查、测试、安全审计和部署检查。
+  - 让 Claude 读取 LangSmith traces、分析代理执行异常，或通过 `Connect` 插件发送邮件、创建 GitHub Issue、发布 Slack 消息。
+  - 处理 PDF、Word、PPT 和 Excel 文件，包括提取内容、生成文档、调整幻灯片和执行表格转换。
 
-- **技术看点**：Skill 采用 `SKILL.md` 加 YAML frontmatter 的标准化目录结构，并通过“先加载名称和描述、任务相关时再加载正文与辅助文件”的渐进式加载方式控制上下文占用。项目明确区分 Skill 工作流层与 MCP 连接层，同时覆盖 Claude Code、Claude.ai、Claude API、Codex、Cursor 等多个代理环境，迁移价值较高。
+- **技术看点**：项目采用渐进式加载设计，代理启动时只读取 Skill 名称和描述，具体的 `SKILL.md`、脚本和参考文件在任务相关时再加载，有助于控制上下文消耗。它还明确区分了 Skill、工具和 MCP：Skill 定义工作流与约束，工具负责具体函数调用，MCP 负责外部系统连接和认证。
 
-- **近期动向与发展方向**：最近 20 条提交主要集中在 2026 年 4 月至 5 月新增 Skill，覆盖递归研究、SDLC 多代理编排、网页访问、截图、上下文压缩、SwiftUI 设计和媒体生成等方向，7 月则主要更新 README。提交内容以社区扩展和目录维护为主，未看到重大重构或核心架构变更；29 名贡献者与 1336 个开放 Issue 表明项目关注度高，但收录审核、重复条目和 Issue 管理可能已成为持续维护重点。
+- **近期动向与发展方向**：近期提交主要集中在持续扩充 Skill 分类和更新 README，新增了 `overkill`、`building-blog`、`anydesign`、`recursive-research`、`great_cto`、`OpenWeb`、`lean-ctx`、`full-page-screenshot`、`swiftui-design-skill` 等项目，说明发展重点仍是扩大覆盖面和引入更多垂直工作流。5 月 1 日还更新了 README 并加入 PR 校验 GitHub Actions；最近 20 条提交来自多位贡献者，但后续记录以目录维护和条目补充为主，暂未看到重大架构重构。
 
-- **同类对比**：暂无明显同类对标。它的定位更接近面向多种 AI Agent 的 Skills 目录与社区索引，而不是单一的 MCP 服务、Agent 框架或某个具体 Skill 的实现仓库。
+- **同类对比**：README 明确提到 Anthropic 官方 `skills` 仓库，并将自身定位为更广泛的社区精选目录；相较官方基础 Skill 集合，本项目收录的第三方 Skill、插件和跨代理工具更多，同时增加了 Composio 应用自动化入口。除此之外，README 未明确列出其他直接竞品。
 
-- **注意事项**：项目创建时间较新，但已达到 73611 Stars 和 8438 Forks，开放 Issue 数量相对贡献者规模偏高，使用前应逐项检查外部 Skill 的维护状态、许可证、依赖和权限范围。部分条目会调用浏览器、代码执行环境或第三方 SaaS，尤其是 `connect-apps` 需要 API Key 和外部应用授权；README 信息量较大，但收录项目质量、安装方式和兼容性并不完全统一，不能把目录中的所有条目都视为同等成熟。项目元数据标注语言为 Python，但仓库本质上是跨语言资源目录，单一语言标签不能代表全部 Skill 的实现技术。
+- **注意事项**：这是一个规模很大的社区资源目录，不是单一运行时或完整应用；不同 Skill 的维护质量、依赖、权限要求和兼容性可能差异明显，需要逐项审查来源与代码。项目创建于 2025 年 10 月，已达到 76086★ 和 8876 forks，但同时有 1584 个 Open Issues，说明关注度高、社区反馈量大，也意味着条目验证、兼容性和问题响应可能存在积压。使用 `connect-apps` 或其他能执行外部操作的 Skill 时，应重点检查 API Key、OAuth 权限、审计日志和数据访问范围。
+
+- **GitHub**：[ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)### ✨ ComposioHQ/awesome-claude-skills (76086★)
+
+> **一句话**：这是一个收录 1000+ 个 Claude Skills、插件和相关资源的目录，让 Claude Code、Claude.ai、Codex、Cursor、Gemini CLI 等代理按预设工作流处理文档、代码、数据分析和应用自动化任务。
+
+- **它是什么**：项目以分类清单的形式整理可直接复用的 Claude Skills，每个 Skill 通常由带 YAML frontmatter 的 `SKILL.md`、脚本、参考资料和资源文件组成。内容覆盖文档处理、开发工具、数据分析、营销写作、生产力、安全系统等领域，并提供 `connect-apps` 插件，让 Claude 通过 Composio MCP Gateway 连接 Gmail、Slack、GitHub、Notion 等 1000+ 个应用。
+
+- **能解决什么痛点**：开发者不需要从零编写复杂的提示词和代理工作流，可以直接找到用于生成文档、构建博客、调试 LangChain、运行 Web 模糊测试或操作 iOS Simulator 的现成 Skill。对于需要让 Claude 执行真实外部操作的场景，项目也提供了认证、应用连接和具体动作之间的组合方式，避免只停留在文本生成。
+
+- **适合谁用**：使用 Claude Code、Codex、Cursor 或 Gemini CLI 的开发者，以及希望标准化代码开发、测试、文档处理流程的工程团队。需要让 AI 操作办公应用、项目管理系统、通信平台或其他 SaaS 的自动化开发者也适合使用。
+
+- **怎么上手**：安装仓库内的连接插件并运行初始化命令：
+  `claude --plugin-dir ./connect-apps-plugin`，随后在 Claude Code 中执行 `/connect-apps:setup`，填入 Composio API Key 后即可连接外部应用。
+
+- **可以用在哪些场景**：
+  - 在 Next.js + Sanity 项目中，通过 `building-blog` Skill 生成带 SEO、国际化和内容规划的博客模块。
+  - 在团队研发流程中使用 `great_cto` 的多个子代理执行架构分析、代码审查、测试、安全审计和部署检查。
+  - 让 Claude 读取 LangSmith traces、分析代理执行异常，或通过 `Connect` 插件发送邮件、创建 GitHub Issue、发布 Slack 消息。
+  - 处理 PDF、Word、PPT 和 Excel 文件，包括提取内容、生成文档、调整幻灯片和执行表格转换。
+
+- **技术看点**：项目采用渐进式加载设计，代理启动时只读取 Skill 名称和描述，具体的 `SKILL.md`、脚本和参考文件在任务相关时再加载，有助于控制上下文消耗。它还明确区分了 Skill、工具和 MCP：Skill 定义工作流与约束，工具负责具体函数调用，MCP 负责外部系统连接和认证。
+
+- **近期动向与发展方向**：近期提交主要集中在持续扩充 Skill 分类和更新 README，新增了 `overkill`、`building-blog`、`anydesign`、`recursive-research`、`great_cto`、`OpenWeb`、`lean-ctx`、`full-page-screenshot`、`swiftui-design-skill` 等项目，说明发展重点仍是扩大覆盖面和引入更多垂直工作流。5 月 1 日还更新了 README 并加入 PR 校验 GitHub Actions；最近 20 条提交来自多位贡献者，但后续记录以目录维护和条目补充为主，暂未看到重大架构重构。
+
+- **同类对比**：README 明确提到 Anthropic 官方 `skills` 仓库，并将自身定位为更广泛的社区精选目录；相较官方基础 Skill 集合，本项目收录的第三方 Skill、插件和跨代理工具更多，同时增加了 Composio 应用自动化入口。除此之外，README 未明确列出其他直接竞品。
+
+- **注意事项**：这是一个规模很大的社区资源目录，不是单一运行时或完整应用；不同 Skill 的维护质量、依赖、权限要求和兼容性可能差异明显，需要逐项审查来源与代码。项目创建于 2025 年 10 月，已达到 76086★ 和 8876 forks，但同时有 1584 个 Open Issues，说明关注度高、社区反馈量大，也意味着条目验证、兼容性和问题响应可能存在积压。使用 `connect-apps` 或其他能执行外部操作的 Skill 时，应重点检查 API Key、OAuth 权限、审计日志和数据访问范围。
 
 - **GitHub**：[ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Composio 是一个快速崛起的 AI Agent 工具生态组织，凭借高星仓库在开发者社区具备较强可见度和影响力。
-**技术栈偏好**：其技术栈以 Python 和 TypeScript 为主，偏向 AI 工具链、Agent 框架集成与开发者平台工程。
-**核心领域**：主要聚焦于为 AI Agent 提供可组合工具、外部系统集成与任务执行能力。
+**技术影响力**：聚焦 AI Agent 工具生态，在开发者社区拥有较高关注度和显著开源影响力
+**技术栈偏好**：以 Python 和 TypeScript 为主，偏好 Agent 工具集成、MCP 与开发者平台技术
+**核心领域**：主要聚焦 AI Agent、工具调用编排及大模型应用开发生态
 
 ---
 
@@ -327,22 +370,38 @@
 
 ---
 
-### ✨ firebase/firebase-ios-sdk (6720★)
+### ✨ firebase/firebase-ios-sdk (6745★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：它把认证、Firestore、消息推送、崩溃监控、远程配置和 AI 能力等 Firebase 服务打包成可直接接入 iOS、macOS、tvOS 等 Apple 应用的 SDK。
 
-- **它是什么**：Firebase SDK for Apple App Development
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是 Firebase 面向 Apple 平台的开源 SDK 集合，覆盖 `FirebaseAuth`、`FirebaseFirestore`、`FirebaseMessaging`、`FirebaseCrashlytics`、`FirebaseRemoteConfig` 和 `FirebaseAI` 等多个模块。仓库包含除 `FirebaseAnalytics` 外的大多数 Apple 平台 Firebase 库，Analytics 仅以预编译二进制形式随安装包提供。
+
+- **能解决什么痛点**：开发者无需分别实现用户登录、云端数据同步、推送通知、崩溃收集和远程参数下发等基础能力，也能避免自行维护这些功能在多种 Apple 平台和 Swift/Objective-C 环境下的兼容问题。
+
+- **适合谁用**：使用 Swift 或 Objective-C 开发 iOS、macOS、tvOS 应用，并需要接入 Firebase 后端服务的移动端团队。也适合需要在 Apple 客户端中集成 Firestore、App Check、Firebase AI Logic 或 Crashlytics 的跨平台产品团队。
+
+- **怎么上手**：README 推荐通过 Swift Package Manager 安装，具体依赖配置需参考 Firebase 官方安装文档；仓库未提供可直接复制的一行命令或最小代码示例。
+
+- **可以用在哪些场景**：
+  - 在 iOS 应用中接入邮箱、OAuth 或其他 Firebase Authentication 登录方式，并用 Firestore 保存用户数据。
+  - 为电商或内容应用发送订单状态、内容更新等 APNs 推送，并通过 Crashlytics 收集线上崩溃。
+  - 使用 Remote Config 调整功能开关，或在客户端接入 Firebase AI Logic 的 Gemini 能力和提示模板 API。
+
+- **技术看点**：项目同时维护 Swift、Objective-C 及底层 C++ 相关实现，并通过 Swift Package Manager、CocoaPods、Carthage 和源码分发适配不同集成方式。近期开始强化 Swift/C++17 现代化、SPM trait 配置、AI Logic API 以及安全编码约束，体现出对模块化构建和新 Apple 开发栈的持续调整。
+
+- **近期动向与发展方向**：最近 20 条提交显示项目保持高频维护，短期重点集中在 Firebase AI Logic 的能力演进，包括提示模板 API 进入公开预览、支持聊天与函数调用，以及移除旧版 Foundation Models 集成。同时，Firestore 正迁移到 C++17 标准库，SPM 新增可选择排除 Firestore 的 trait，Messaging 和 Auth 继续修复安全存储、APNs 并发等待等问题。仓库还明确宣布 2026 年 10 月后不再发布新的 CocoaPods 版本，后续集成方向将更偏向 Swift Package Manager 和其他分发方式。
+
+- **同类对比**：暂无明显同类对标。该项目不是单一功能库，而是 Firebase 多项移动端服务在 Apple 平台上的官方 SDK 集合。
+
+- **注意事项**：项目创建于 2017 年，拥有 292 名贡献者、439 个 Open Issues，且近期提交密集，整体成熟度和维护活跃度较高，但模块规模大、依赖链复杂，上手需要理解 Firebase 控制台配置、Apple 平台签名及各产品的独立文档。CocoaPods 将在 2026 年 10 月停止发布新版本，新增项目应优先评估 Swift Package Manager。`refactor(ai)!` 等提交表明 AI API 存在破坏性调整风险；visionOS、watchOS 仍有支持边界，其中 watchOS 属于社区支持，Combine 扩展也尚未达到生产支持状态。
 
 - **GitHub**：[firebase/firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：Firebase 是 Google 旗下具有广泛开发者影响力的云端应用开发平台与开源生态组织。
+**技术栈偏好**：主要使用 JavaScript、Kotlin 和 Dart，覆盖 Web、Android、iOS 及 Flutter 多端开发。
+**核心领域**：聚焦移动与 Web 应用开发基础设施、云服务集成及跨平台开发。
 
 ---
 
@@ -408,38 +467,30 @@
 
 ---
 
-### ✨ colbymchenry/codegraph (45535★)
+### ✨ colbymchenry/codegraph (72553★)
 
-> **一句话**：CodeGraph 先把本地代码库索引成语义知识图谱，让 Claude Code、Cursor、Codex、Gemini 等 AI 编程助手少翻文件、少调用工具，直接按符号关系理解代码。
+> **一句话**：CodeGraph 会把整个代码库预先解析成可持续同步的语义知识图谱，让 Claude Code、Cursor、Codex 等 AI 编程代理直接定位跨文件的定义、调用关系和受影响代码，而不是反复搜索源码。
 
-- **它是什么**：CodeGraph 是一个本地运行的代码语义索引与 MCP 集成项目，会为每个项目生成 `.codegraph/` 索引目录，记录符号、调用关系、文件依赖和代码结构。它可以接入 Claude Code、Cursor、Codex CLI、OpenCode、Hermes Agent、Gemini CLI、Antigravity、Kiro 等代理，让它们通过知识图谱查询代码，而不是反复 grep、glob、Read 扫描文件。README 中的基准测试显示，在 7 个真实开源项目上，平均可减少 47% token、58% 工具调用，并让成本约降低 16%。
-
-- **能解决什么痛点**：当 AI 编程助手分析大型代码库时，经常要多轮搜索、读取文件、追踪调用链，既慢又消耗大量 token；CodeGraph 把这部分“探索成本”前置到本地索引中。对于需要回答“某个功能从入口到执行链路怎么走”“改这个方法会影响哪些调用方”这类问题的场景，它能直接返回相关符号和代码片段，减少无关文件读取。
-
-- **适合谁用**：适合日常使用 Claude Code、Cursor、Codex、Gemini CLI 等 AI 编程代理的开发者，尤其是维护中大型 TypeScript、Python、Go、Rust、Java、Swift、C#、PHP、C++ 等多语言仓库的团队。也适合需要做代码影响分析、架构梳理、老项目接手和重构评估的工程师。
-
-- **怎么上手**：macOS / Linux 可执行：`curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh`；已有 Node 环境也可用：`npm i -g @colbymchenry/codegraph`。安装后运行 `codegraph install` 接入代理，在项目目录执行 `codegraph init -i` 创建并构建索引。
-
+- **它是什么**：它在项目本地生成 `.codegraph/` 索引，提取多种语言的结构信息并进行跨文件符号解析；文件发生变化时会自动更新图谱。项目通过 MCP 接入 Claude Code、Cursor、Codex CLI、Gemini CLI、GitHub Copilot 等代理，为它们提供更精确的代码上下文，且索引和运行过程均在本地完成。
+- **能解决什么痛点**：AI 代理面对大型代码库时，常需要多次全文搜索才能找到真正的实现、继承关系或调用方，既消耗上下文 token，也容易遗漏跨文件影响。开发者修改函数、路由或公共类后，传统静态索引还可能过期，而 CodeGraph 会随文件变更自动同步。
+- **适合谁用**：需要让 AI 代理理解大型、多语言仓库的团队，例如同时维护 TypeScript/React、Python、Go 或 Java 服务的开发者；也适合频繁进行跨模块重构、代码定位和影响分析的个人开发者。
+- **怎么上手**：安装并自动配置代理后，在项目目录初始化索引：`curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh && codegraph install && cd your-project && codegraph init`
 - **可以用在哪些场景**：
-  1. 在 VS Code、Django、Tokio 这类大仓库中，向 AI 询问“某个子系统如何通信 / 调度 / 执行查询”，减少反复 grep 和文件读取。
-  2. 修改核心业务逻辑前，追踪某个函数、类或模块的调用方和被调用方，评估影响半径。
-  3. 给团队内部 AI 编码工作流接入本地代码索引，让代码问答、重构建议、PR 风险分析更多基于真实符号关系而不是纯文本搜索。
-
-- **技术看点**：项目以 TypeScript 为主，提供自带运行时的 CLI，并通过 MCP Server 接入多个 AI 编程代理；索引侧强调 100% 本地运行，不依赖云端上传代码。搜索部分使用类似 FTS5 的全文检索能力，同时结合符号图、调用图、文件依赖边来构建上下文。
-
-- **近期动向与发展方向**：最近提交非常密集，6 月 8 日到 9 日连续合入了多项解析和解析精度修复，重点集中在多语言链式调用解析，例如 Java/Kotlin/C#/Swift/Rust/C++/PHP 中的静态工厂、单例、伴生对象、链式 getter 等调用关系识别。近期也在优化搜索排序、MCP 文件读取行为、索引容错和环境变量配置，说明项目当前主要方向是提升跨语言代码图谱的准确性、代理集成稳定性和实际使用体验。提交多由核心作者完成，也有社区贡献者参与 PHP include/require 依赖边修复。
-
-- **同类对比**：README 没有直接点名对标具体竞品，但明确对比的是“没有 CodeGraph 时，AI 代理依赖 grep/find/Read 自行探索代码库”的默认工作方式。它的差异点在于提前构建本地知识图谱，并通过 MCP 让代理直接查询结构化代码上下文，而不是每次从零扫描文件。
-
-- **注意事项**：项目创建于 2026 年 1 月，增长很快且更新频繁，但仍处于快速迭代阶段；当前有 202 个 open issues，说明真实使用中的边界语言特性、索引解析和代理接入问题还不少。近期大量提交都在修复多语言解析细节，适合愿意跟进版本升级的团队先在本地或非关键流程中试用。README 文档和安装路径较完整，但如果你的仓库语言特性复杂，建议先验证索引准确性和 AI 回答质量。
+  - 让 AI 代理修改 React/React Native 项目时，沿着路由、组件、服务调用关系定位完整改动范围。
+  - 在 Java、Kotlin、Scala 等大型后端仓库中追踪类继承、import、方法重载和跨模块调用。
+  - 对 C/C++、Rust、Swift 等底层或多语言项目进行重构前的调用链检索，减少遗漏受影响代码的风险。
+- **技术看点**：项目采用 Rust 内核构建本地代码图谱，并通过 MCP 对接多个 AI 编程客户端；设计重点是预索引、跨文件语义解析和文件变更后的增量同步，而不是把源码上传到远程服务。README 宣称支持从 TypeScript、Python、Go 到 C/C++、Java、Kotlin、Solidity 等多种语言及部分框架。
+- **近期动向与发展方向**：近期开发非常活跃，最近 20 条提交全部集中在 2026-09-30，主要是修复解析和符号解析边界问题，而非新增表层功能。修复覆盖 C++ 宏与重载、Java/Kotlin import、Python 局部绑定、Scala package、TypeScript 导出、CommonJS、Lua、React Router、Objective-C、Solidity 和 Erlang 等，说明项目正持续扩大多语言和复杂语法场景的解析准确性；同时还有解析性能优化和 UI 服务行数上限测试。当前提交几乎都由 Colby Mchenry 完成，50 名贡献者参与，社区协作仍以核心维护者为主。
+- **同类对比**：README 未明确列出竞品；其差异化定位主要是本地运行、预构建代码知识图谱、自动同步，以及通过 MCP 同时服务多个 AI 编程代理。
+- **注意事项**：项目创建于 2026-01-18，却已达到 72553 个 Star，且有 514 个开放 Issue，说明关注度很高但问题跟踪规模也不小；近期提交密集且大量修复解析边界，复杂语言或特殊宏、框架语法的结果仍应人工核验。README 文档覆盖安装、MCP、配置、语言支持和故障排查，内容较完整，但首次使用仍需分别执行 CLI 安装、代理配置和项目初始化。项目元数据标注主语言为 C，而 README 说明核心内核由 Rust 驱动，语言统计与实际架构可能存在差异；使用前还应确认目标代理版本、支持范围及索引目录的磁盘占用。
 
 - **GitHub**：[colbymchenry/codegraph](https://github.com/colbymchenry/codegraph)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有单个高星 TypeScript 项目与稳定关注者基础，属于在开发者工具方向具备显著社区影响力的独立开发者。
-**技术栈偏好**：主要偏好 TypeScript，辅以 Go、JavaScript，技术方向集中在工程化工具、AI 辅助开发与前端相关自动化。
-**核心领域**：主要聚焦代码理解、开发者效率工具、AI/MCP 集成与前端质量审计等开发基础设施领域。
+**技术影响力**：资深软件开发者，凭借高星代码分析工具在开发者社区具备较强影响力
+**技术栈偏好**：偏好 C、Go 与 TypeScript，兼顾底层工具、后端服务及 AI 开发工具集成
+**核心领域**：主要聚焦代码分析、开发者工具、软件工程自动化与 AI 辅助开发**技术影响力**：资深软件开发者，凭借高星代码分析工具在开发者社区具备较强影响力
 
 ---
 
