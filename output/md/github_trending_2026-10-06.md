@@ -248,41 +248,92 @@
 
 ---
 
-### ✨ morluto/rea (7434★)
+### ✨ morluto/rea (8642★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：让 AI Agent 连接 Hopper、Ghidra、IDA 及浏览器等分析工具，从应用运行行为一路追踪到 JavaScript、.NET 和原生二进制实现，并返回带证据的逆向结论。
 
-- **它是什么**：Reverse engineer anything with agents, from app behavior down to native binaries.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：REA 是面向逆向工程的 MCP 工具和工作流集合，Agent 可以通过它检查没有源代码的桌面应用、Electron 应用、网站、固件、APK 及原生二进制。它既支持静态 JavaScript 分析，也能接入 Hopper、Ghidra、IDA Pro 等外部分析引擎，结果会同时给出分析证据、已知限制和未解决的问题。
+
+- **能解决什么痛点**：面对闭源应用中的某个功能，开发者不必只依赖黑盒试错，可以让 Agent 结合运行时行为、网络内容和二进制分析定位实现路径。对于 Electron 应用、NativeAOT 程序或原生 PE 文件，REA 还可以整理函数、调用关系、提取内容和生命周期证据，减少在多个逆向工具之间手工切换的成本。
+
+- **适合谁用**：适合需要复刻闭源软件功能、分析第三方桌面应用或排查兼容性问题的开发者；也适合安全研究员、逆向工程师，以及希望通过 Claude Code、Codex、Cursor 等 Agent 辅助分析二进制和运行时行为的技术团队。
+
+- **怎么上手**：安装并注册到支持的 Agent：`npx rea-agents setup`；也可以直接分析已提取的 JavaScript/Electron 应用：`npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json`。
+
+- **可以用在哪些场景**：
+  - 分析 Electron 客户端的功能实现、资源加载和网络请求，复刻其中的业务流程。
+  - 使用 Ghidra、Hopper 或 IDA Pro 检查闭源原生程序的函数、内存、加载镜像和调用关系。
+  - 对 APK、固件或 NativeAOT 程序做静态分析和内容提取，定位文件格式、依赖组件或关键处理逻辑。
+
+- **技术看点**：项目以 MCP 作为 Agent 与逆向工具之间的统一接口，同时覆盖浏览器行为、JavaScript 语义、原生二进制、.NET、固件和 Android 等不同分析边界。分析运行在本地，输出不仅包含结论，还保留 Evidence、限制和 unknowns，强调结果的可核查性；Windows 侧还加入了原生 Ghidra 支持、Job Object、私有 DACL 和路径准入控制。
+
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-10-06，开发明显处于高频迭代阶段。近期重点一方面是扩展能力，包括浏览器网络内容与生命周期证据采集、IDA 只读 GUI/无头 MCP provider、Ghidra NativeAOT 元数据恢复；另一方面是补齐工程可靠性，持续修复 Windows 路径与捕获恢复、语义边界、历史导入、固件可执行文件校验和提取目录等问题。提交者包括项目维护者、核心贡献者和外部贡献者，但当前 Contributor Count 为 10，社区规模仍相对集中；8642 Stars、937 Forks 与 97 个 Open Issues 说明关注度较高，同时也意味着功能快速扩张带来的兼容性和维护压力值得关注。
+
+- **同类对比**：README 未列出直接竞品。Hopper、Ghidra 和 IDA Pro 在项目中被定位为可选的分析 provider，REA 的差异在于通过 MCP 把这些工具与 Agent 工作流、浏览器行为分析及证据输出整合起来，而不是替代底层逆向引擎。
+
+- **注意事项**：上手门槛取决于分析类型：静态 JavaScript 分析只需要 Node.js 22.x 或更高版本，而深度原生分析需要自行准备 Hopper、Ghidra 或 IDA Pro；固件和 APK 分析还分别依赖 Binwalk、Unblob、JADX 及 Java。项目创建于 2026-04-14，当前更新频率很高但仍属快速发展阶段，97 个开放 Issue 反映出待处理问题较多。Windows Ghidra、NativeAOT、IDA provider 等能力带有明确的支持范围或实验性质，升级 npm 包前应核对 release boundary 和各 provider 的平台、版本要求。
+
+- **GitHub**：[morluto/rea](https://github.com/morluto/rea)### ✨ morluto/rea (8642★)
+
+> **一句话**：让 AI Agent 连接 Hopper、Ghidra、IDA 及浏览器等分析工具，从应用运行行为一路追踪到 JavaScript、.NET 和原生二进制实现，并返回带证据的逆向结论。
+
+- **它是什么**：REA 是面向逆向工程的 MCP 工具和工作流集合，Agent 可以通过它检查没有源代码的桌面应用、Electron 应用、网站、固件、APK 及原生二进制。它既支持静态 JavaScript 分析，也能接入 Hopper、Ghidra、IDA Pro 等外部分析引擎，结果会同时给出分析证据、已知限制和未解决的问题。
+
+- **能解决什么痛点**：面对闭源应用中的某个功能，开发者不必只依赖黑盒试错，可以让 Agent 结合运行时行为、网络内容和二进制分析定位实现路径。对于 Electron 应用、NativeAOT 程序或原生 PE 文件，REA 还可以整理函数、调用关系、提取内容和生命周期证据，减少在多个逆向工具之间手工切换的成本。
+
+- **适合谁用**：适合需要复刻闭源软件功能、分析第三方桌面应用或排查兼容性问题的开发者；也适合安全研究员、逆向工程师，以及希望通过 Claude Code、Codex、Cursor 等 Agent 辅助分析二进制和运行时行为的技术团队。
+
+- **怎么上手**：安装并注册到支持的 Agent：`npx rea-agents setup`；也可以直接分析已提取的 JavaScript/Electron 应用：`npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json`。
+
+- **可以用在哪些场景**：
+  - 分析 Electron 客户端的功能实现、资源加载和网络请求，复刻其中的业务流程。
+  - 使用 Ghidra、Hopper 或 IDA Pro 检查闭源原生程序的函数、内存、加载镜像和调用关系。
+  - 对 APK、固件或 NativeAOT 程序做静态分析和内容提取，定位文件格式、依赖组件或关键处理逻辑。
+
+- **技术看点**：项目以 MCP 作为 Agent 与逆向工具之间的统一接口，同时覆盖浏览器行为、JavaScript 语义、原生二进制、.NET、固件和 Android 等不同分析边界。分析运行在本地，输出不仅包含结论，还保留 Evidence、限制和 unknowns，强调结果的可核查性；Windows 侧还加入了原生 Ghidra 支持、Job Object、私有 DACL 和路径准入控制。
+
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-10-06，开发明显处于高频迭代阶段。近期重点一方面是扩展能力，包括浏览器网络内容与生命周期证据采集、IDA 只读 GUI/无头 MCP provider、Ghidra NativeAOT 元数据恢复；另一方面是补齐工程可靠性，持续修复 Windows 路径与捕获恢复、语义边界、历史导入、固件可执行文件校验和提取目录等问题。提交者包括项目维护者、核心贡献者和外部贡献者，但当前 Contributor Count 为 10，社区规模仍相对集中；8642 Stars、937 Forks 与 97 个 Open Issues 说明关注度较高，同时也意味着功能快速扩张带来的兼容性和维护压力值得关注。
+
+- **同类对比**：README 未列出直接竞品。Hopper、Ghidra 和 IDA Pro 在项目中被定位为可选的分析 provider，REA 的差异在于通过 MCP 把这些工具与 Agent 工作流、浏览器行为分析及证据输出整合起来，而不是替代底层逆向引擎。
+
+- **注意事项**：上手门槛取决于分析类型：静态 JavaScript 分析只需要 Node.js 22.x 或更高版本，而深度原生分析需要自行准备 Hopper、Ghidra 或 IDA Pro；固件和 APK 分析还分别依赖 Binwalk、Unblob、JADX 及 Java。项目创建于 2026-04-14，当前更新频率很高但仍属快速发展阶段，97 个开放 Issue 反映出待处理问题较多。Windows Ghidra、NativeAOT、IDA provider 等能力带有明确的支持范围或实验性质，升级 npm 包前应核对 release boundary 和各 provider 的平台、版本要求。
 
 - **GitHub**：[morluto/rea](https://github.com/morluto/rea)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有一个高关注度代表项目，属于在特定技术方向具备较强开源影响力的独立开发者。
+**技术栈偏好**：以 TypeScript 和 Python 为主，辅以 Rust，偏好构建跨语言的工程化与实验性项目。
+**核心领域**：主要聚焦人工智能、机器学习及大模型相关工具与基础设施。
 
 ---
 
-### ✨ deepseek-ai/DeepGEMM (8592★)
+### ✨ deepseek-ai/DeepGEMM (8657★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：DeepGEMM 把大语言模型中的 FP8、FP4、BF16 矩阵乘、MoE 路由计算和注意力索引打分，集中实现成一套面向 NVIDIA GPU Tensor Core 的高性能 CUDA 内核。
 
-- **它是什么**：DeepGEMM: clean and efficient BLAS kernel library on GPU
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是 DeepSeek 开源的 GPU BLAS 内核库，覆盖普通 GEMM、按专家分组的 MoE GEMM、FP8/FP4 混合计算，以及用于 Lightning Indexer 的 MQA scoring。它还提供 Mega MoE 融合内核，将专家分发、两层线性计算、SwiGLU 和结果合并放进同一个内核，并通过重叠 NVLink 通信与 Tensor Core 计算减少端到端开销。
+- **能解决什么痛点**：
+  - LLM 推理和训练中，FP8/FP4 缩放因子布局、TMA 对齐、不同 GPU 架构适配等细节复杂，手写 CUDA 内核容易出现性能和正确性问题。
+  - MoE 推理涉及专家 dispatch、计算和 combine，多次 kernel launch 及通信会带来额外延迟，Mega MoE 可将这些环节融合并重叠执行。
+- **适合谁用**：使用 PyTorch 构建大语言模型训练或推理系统、且部署在 NVIDIA SM90/SM100 GPU 上的开发者；需要为 DeepSeek 类 MoE、FP8/FP4 GEMM 或 Lightning Indexer 编写高性能 CUDA 内核的 GPU 工程师。
+- **怎么上手**：满足 CUDA 12.9+、PyTorch 2.3+、CUTLASS 4.0+ 等依赖后，执行 `./install.sh`，然后在 Python 中使用 `import deep_gemm`。
+- **可以用在哪些场景**：
+  - 在 H800 等 NVIDIA GPU 上为 FP8/FP4 大模型训练或推理替换通用矩阵乘实现。
+  - 在 MoE 解码阶段处理专家 token 数量动态变化，并配合 CUDA Graph 使用 masked grouped GEMM。
+  - 在 DeepSeek v3.2 类模型中执行 Lightning Indexer 的 paged/non-paged MQA logits 计算，或通过 Mega MoE 融合专家通信与计算。
+- **技术看点**：项目采用运行时编译的 DeepJIT，安装阶段不需要提前完成 CUDA 编译，同时通过较少的核心内核函数降低模板和抽象层复杂度。它借鉴 CUTLASS/CuTe 的部分思路，但重点放在可读性、GPU 架构适配和针对实际模型形状的性能优化上。
+- **近期动向与发展方向**：最近的提交以持续发布、性能优化和并发/同步问题修复为主，涉及 Mega MoE 任务信息释放顺序、in-flight tensormap 竞态、TMEM 分配回收同步，以及 H100 特定形状崩溃修复。2026 年的演进重点明显集中在 Mega MoE、FP4 Indexer、稀疏 Indexer、Mega Gate、Mega mHC、DeepJIT 和 locality domain 等面向大规模 MoE 与新一代 GPU 的能力；最近 20 条提交由多位贡献者完成，项目仍处于高频迭代状态。
+- **同类对比**：README 明确提到 CUTLASS 和 CuTe。相比更通用、模板体系更重的 CUTLASS，DeepGEMM 聚焦 LLM 常用的 GEMM、MoE 和索引计算，并针对固定数据布局、缩放格式及 NVIDIA SM90/SM100 做了更直接的优化；它不是通用 GPU 算子库的完整替代品。
+- **注意事项**：上手门槛较高，需要 NVIDIA SM90 或 SM100 GPU、CUDA Toolkit 12.9+、C++20 `` 支持、PyTorch 2.3+ 和 CUTLASS 4.0+，部分 Mega MoE 功能还要求 PyTorch 2.9+、多进程启动及对称内存。项目创建于 2025 年 2 月，已有 8657 个 Star、1368 个 Fork 和 44 位贡献者，但同时存在 149 个 Open Issues；近期仍在快速增加功能并修复架构相关问题，接口、编译配置和硬件支持范围可能发生变化。README 对接口、布局和环境变量说明较完整，但用户需要理解 CUDA 内存布局、TMA 对齐、量化缩放格式及多 GPU 通信，不能按普通 Python 库的方式直接使用。
 
 - **GitHub**：[deepseek-ai/DeepGEMM](https://github.com/deepseek-ai/DeepGEMM)
 
+#### 开发者 / 组织速览
+
+**技术影响力**：成立时间较短但社区关注度极高，是全球生成式人工智能领域最具影响力的开发者组织之一
+**技术栈偏好**：以 Python 和 TypeScript 为主，侧重模型开发、推理工具链与生态集成
+**核心领域**：聚焦大语言模型、代码智能、模型推理及开放式 AI 生态建设**技术影响力**：成立时间较短但社区关注度极高，是全球生成式人工智能领域最具影响力的开发者组织之一
 
 ---
 
