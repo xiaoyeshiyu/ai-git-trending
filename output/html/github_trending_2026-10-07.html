@@ -103,309 +103,6 @@
         <h1>GitHub 热点日报 (2026-10-07)</h1>
 <h2>今日热点：GitHub 热门趋势</h2>
 <p>今天的热门项目覆盖了多个技术方向，具体项目摘要如下：</p>
-<h3>✨ tester-army/e2e (2508★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：让测试脚本用自然语言驱动浏览器或手机完成操作，再用传统定位器和断言核验最终结果。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：<code>e2e</code> 是一个面向 Web 和移动应用的端到端测试框架，测试者可以让 AI agent 执行“升级到 Pro 套餐”这类自然语言步骤，并继续用 locator 和 assertion 检查页面状态。它支持 Chromium、Firefox、WebKit，以及 iOS 模拟器和 Android 模拟器；AI 步骤还会记录操作轨迹，后续运行优先回放，减少重复模型调用。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：传统 E2E 测试需要为复杂交互编写大量脆弱的点击、等待和元素定位逻辑，面对页面结构变化时维护成本高。对于跨 Web、iOS、Android 的流程，团队还需要分别维护不同测试栈；该项目试图用统一的自然语言操作接口覆盖这些场景。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：需要测试真实用户流程的 Web 前端、全栈和 QA 工程师，尤其适合使用 TypeScript、Playwright 或 React Native/移动模拟器的团队。也适合希望在测试中接入自有 API Key、订阅模型或本地模型的 AI 工程团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：运行 <code>npx e2e init</code>，按提示选择 Web 或 Mobile 引擎及模型提供商；最小测试可以写成 <code>await agent.act('upgrade the workspace to the Pro plan'); await expect(screen.getByRole('status')).toContainText('Pro');</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>测试 SaaS 产品的登录、订阅升级、账单预览和权限变更流程。</li>
-<li>在电商 Web 和移动端回归商品搜索、下单、支付前确认等跨页面流程。</li>
-<li>
-<p>在每次 Pull Request 中运行自然语言验收测试，并通过 GitHub reporter 自动回传结果。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用 TypeScript，并将 AI agent 操作与传统 locator/assertion 组合在同一测试文件中；Web 端基于 Playwright，移动端通过 agent-device 对接模拟器和仿真器。它还通过录制、轨迹回放、缓存和受限失败证据采集，降低重复模型调用和调试成本。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：项目在 2026 年 10 月 3-4 日集中提交了 20 条更新，说明当前处于高频迭代阶段。近期重点以稳定性和工程化修复为主，包括下载与 trace 统一 ledger、串行测试失败状态传播、敏感信息脱敏、失败证据限制、缓存一致性、Playwright 安装流程和 pnpm 兼容性；同时新增了通过 AI SDK 决策模型执行动作与断言、OAuth 接入 OpenCode Console，以及 Web 初始化脚本等能力，整体方向是继续强化 AI 测试执行、回放缓存和 Web/Mobile 双引擎基础设施。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品。可以确认的差异是，它没有只做传统脚本式 E2E 测试，而是把自然语言 agent 操作、轨迹回放和传统断言放在同一套 TypeScript 测试模型中。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 7 月 22 日，README 明确说明仍在迈向 1.0，API 和配置可能在小版本间变化，存在破坏性变更风险。当前有 40 个 Open Issues、20 位贡献者，最近两天提交密集，说明维护活跃但仍处于快速演进期；上手还需要配置模型提供商、浏览器或移动模拟器环境，并理解 agent 步骤与缓存回放的行为。README 提供了快速启动、包划分、遥测和安全说明，但复杂场景仍需结合在线文档进一步确认。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/tester-army/e2e">tester-army/e2e</a> ### ✨ tester-army/e2e (2508★)</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>一句话</strong>：让测试脚本用自然语言驱动浏览器或手机完成操作，再用传统定位器和断言核验最终结果。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：<code>e2e</code> 是一个面向 Web 和移动应用的端到端测试框架，测试者可以让 AI agent 执行“升级到 Pro 套餐”这类自然语言步骤，并继续用 locator 和 assertion 检查页面状态。它支持 Chromium、Firefox、WebKit，以及 iOS 模拟器和 Android 模拟器；AI 步骤还会记录操作轨迹，后续运行优先回放，减少重复模型调用。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：传统 E2E 测试需要为复杂交互编写大量脆弱的点击、等待和元素定位逻辑，面对页面结构变化时维护成本高。对于跨 Web、iOS、Android 的流程，团队还需要分别维护不同测试栈；该项目试图用统一的自然语言操作接口覆盖这些场景。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：需要测试真实用户流程的 Web 前端、全栈和 QA 工程师，尤其适合使用 TypeScript、Playwright 或 React Native/移动模拟器的团队。也适合希望在测试中接入自有 API Key、订阅模型或本地模型的 AI 工程团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：运行 <code>npx e2e init</code>，按提示选择 Web 或 Mobile 引擎及模型提供商；最小测试可以写成 <code>await agent.act('upgrade the workspace to the Pro plan'); await expect(screen.getByRole('status')).toContainText('Pro');</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>测试 SaaS 产品的登录、订阅升级、账单预览和权限变更流程。</li>
-<li>在电商 Web 和移动端回归商品搜索、下单、支付前确认等跨页面流程。</li>
-<li>
-<p>在每次 Pull Request 中运行自然语言验收测试，并通过 GitHub reporter 自动回传结果。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用 TypeScript，并将 AI agent 操作与传统 locator/assertion 组合在同一测试文件中；Web 端基于 Playwright，移动端通过 agent-device 对接模拟器和仿真器。它还通过录制、轨迹回放、缓存和受限失败证据采集，降低重复模型调用和调试成本。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：项目在 2026 年 10 月 3-4 日集中提交了 20 条更新，说明当前处于高频迭代阶段。近期重点以稳定性和工程化修复为主，包括下载与 trace 统一 ledger、串行测试失败状态传播、敏感信息脱敏、失败证据限制、缓存一致性、Playwright 安装流程和 pnpm 兼容性；同时新增了通过 AI SDK 决策模型执行动作与断言、OAuth 接入 OpenCode Console，以及 Web 初始化脚本等能力，整体方向是继续强化 AI 测试执行、回放缓存和 Web/Mobile 双引擎基础设施。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品。可以确认的差异是，它没有只做传统脚本式 E2E 测试，而是把自然语言 agent 操作、轨迹回放和传统断言放在同一套 TypeScript 测试模型中。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 7 月 22 日，README 明确说明仍在迈向 1.0，API 和配置可能在小版本间变化，存在破坏性变更风险。当前有 40 个 Open Issues、20 位贡献者，最近两天提交密集，说明维护活跃但仍处于快速演进期；上手还需要配置模型提供商、浏览器或移动模拟器环境，并理解 agent 步骤与缓存回放的行为。README 提供了快速启动、包划分、遥测和安全说明，但复杂场景仍需结合在线文档进一步确认。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/tester-army/e2e">tester-army/e2e</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以 <code>e2e</code> 仓库为核心，已在自动化测试开发者群体中形成初步影响力。
-<strong>技术栈偏好</strong>：偏好 TypeScript 与 Shell，聚焦端到端测试、CLI 工具及 AI 辅助开发。
-<strong>核心领域</strong>：主要聚焦软件质量保障、自动化测试与跨端应用测试。</p>
-<hr />
-<h3>✨ mattpocock/skills (269436★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。</li>
-<li><strong>能解决什么痛点</strong>：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。</li>
-<li><strong>适合谁用</strong>：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。</li>
-<li><strong>怎么上手</strong>：用 skills.sh 安装并选择需要的技能，例如：</li>
-</ul>
-<p>安装时记得选上 <code>setup-matt-pocock-skills</code>，随后在代理中运行 <code>/setup-matt-pocock-skills</code> 完成项目配置。
-- <strong>可以用在哪些场景</strong>：
-  - 开始一个新功能前，用 <code>/grill-with-docs</code> 澄清需求、统一项目术语，并整理 <code>CONTEXT.md</code> 和 ADR。
-  - 将已有讨论整理成规格或可执行工单，再用 <code>/implement</code> 按测试驱动流程实现。
-  - 定期运行 <code>/improve-codebase-architecture</code> 寻找可拆分、加深模块边界的候选位置，或用 <code>/diagnosing-bugs</code> 按阶段排查问题。
-- <strong>技术看点</strong>：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
-- <strong>近期动向与发展方向</strong>：近期提交主要在完善 <code>/pr</code> 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
-- <strong>同类对比</strong>：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
-- <strong>注意事项</strong>：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。</p>
-<ul>
-<li><strong>GitHub</strong>：<a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
-<strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
-<strong>核心领域</strong>：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。</p>
-<hr />
-<h3>✨ earthtojake/text-to-cad (16686★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：让 AI 助手在本地创建、编辑和检查三维 CAD 模型，并继续处理工程图、切片和机器人描述文件。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是面向 AI 编程助手的技能库和 CAD 工作流，能根据文字或图片生成模型，以 STEP 为主要输出格式，也支持 STL、3MF 和 GLB。它还覆盖 STEP 零件检索、工程图与 DXF 制作、URDF/SRDF/SDF 文件生成、可制造性检查、G-code 切片和打印交接。</li>
-<li><strong>能解决什么痛点</strong>：不必手工在 CAD 软件里逐项建模，或在自然语言需求和可编辑的几何模型之间反复转换。也能减少制作机器人描述文件、检查零件打印或加工限制、准备打印机切片文件时的格式与流程切换。</li>
-<li><strong>适合谁用</strong>：希望通过 Codex、Claude、Cursor 等 AI 助手生成或修改 CAD 文件的工程师；需要处理 3D 打印、数控加工、机器人模型或相关工程文件的开发者与制造从业者。</li>
-<li><strong>怎么上手</strong>：通过 Skills CLI 安装：<code>npx skills add earthtojake/text-to-cad</code>。README 也提供 Codex、Claude Code、Cursor 等平台的插件安装方式。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>根据自然语言或图片生成零件，导出 STEP 交给后续 CAD 或制造流程使用。</li>
-<li>为机器人项目生成 URDF、SRDF，并准备仿真所需的 SDF 模型与场景文件。</li>
-<li>检查零件的打印或加工约束、生成工程图，或用 OrcaSlicer 制作 G-code。</li>
-<li><strong>技术看点</strong>：CAD 内核基于 OpenCascade 的 Python 绑定 OCP，并通过 build123d 提供建模基础；主要运行环境要求 Python 3.11+。项目将 CAD 能力拆成可独立安装的 agent skills，也提供 MCP 服务、插件和本地查看器入口。</li>
-<li><strong>近期动向与发展方向</strong>：最近的提交集中在 2026 年 10 月 1 日至 4 日，期间连续发布 0.7.6 至 0.7.11。开发重点是扩展 Codex、Claude、Cursor、Grok 等宿主集成和 MCP 支持，同时改进 CAD 查看器、打印工作流，并修复 STEP 导入问题；提交由核心维护者主导，也有其他贡献者参与修复和集成。</li>
-<li><strong>同类对比</strong>：README 未列出直接竞品。项目的特点是把建模与零件检索、工程图、机器人描述文件、制造检查和切片等工作流放在同一套 agent skills 中。</li>
-<li><strong>注意事项</strong>：CAD 内核依赖 OCP 等本地原生组件，安装和运行环境比普通 Python 库复杂；Windows 11 开启 Smart App Control 时可能阻止 OCP 模块加载，README 建议改用 WSL 或关闭该功能。项目更新频繁，近期连续发布多个版本，但提供的元数据标注创建于 2026 年 4 月，距当前更新记录仅数月；27 个开放 Issue 需要结合具体问题评估。README 安装说明较详细，但不同宿主的插件配置和更新方式各异；匿名使用统计需在应用中选择开启。</li>
-<li><strong>GitHub</strong>：<a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a></li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：聚焦 CAD 与生成式设计，在开源技术社区具备较高关注度和一定影响力
-<strong>技术栈偏好</strong>：偏好 Python、JavaScript 与 TypeScript，结合 AI、几何建模及 Web 可视化技术
-<strong>核心领域</strong>：主要聚焦文本生成 CAD、参数化建模、STEP 数据处理与 CAD 浏览器工具</p>
-<hr />
-<h3>✨ boykopovar/AnyPS5 (4683★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 PS5 可执行文件重新链接为 Linux 或 Windows 原生格式，并通过本地系统库实现运行，而不是依赖模拟器或独立运行时进程。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：AnyPS5 面向 PS5 程序移植，核心包含一个 relinker，可将目标可执行文件转换为 Linux 或 Windows 使用的原生格式。项目同时实现了适合动态链接的 PS5 系统 PRX 库，并提供着色器重编译、手柄输入映射等运行所需能力；目前已有经过验证的游戏兼容性列表。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：PS5 程序通常依赖专有系统库、特定可执行文件格式和主机 GPU 接口，直接在桌面系统上运行会遇到链接、系统调用和着色器不兼容问题。AnyPS5 试图在不启动独立模拟器进程的前提下补齐这些依赖，并将着色器转换为可验证的 SPIR-V。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：适合研究主机软件兼容性、游戏保存与互操作性的开发者，以及熟悉 C++、链接器、系统库和 GPU 着色器管线的底层开发者。普通用户需要先确认目标游戏是否在兼容性列表中，并具备自行构建和排查运行时错误的能力。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：README 仅提供了 <a href="https://github.com/boykopovar/AnyPS5/blob/main/docs/user/USAGE.md">使用文档</a> 和 <a href="https://github.com/boykopovar/AnyPS5/blob/main/docs/dev/BUILD.md">构建说明</a> 的入口，当前提供的信息中未包含可直接复制的安装命令或最小运行示例。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>在 Linux 或 Windows 上验证经过移植的 PS5 游戏兼容性，例如 README 提到的 Dreaming Sarah 已可在 GTX 1050 Ti 和 i5-7500 上稳定运行 60 FPS。</li>
-<li>为游戏保存和互操作性研究提供实验平台，分析 PS5 可执行文件、系统 PRX 库和 GPU 着色器在桌面环境中的替代实现。</li>
-<li>
-<p>针对特定游戏补充缺失的系统库函数、输入映射或着色器支持，逐步扩大兼容性列表，而不是为每个游戏单独维护一套模拟运行时。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用“可执行文件重链接加系统库实现”的路线，运行时不依赖模拟器进程；同时通过 shader recompiler 生成并校验 SPIR-V，并以 C++ 实现大量 PS5 系统模块。对需要兼顾二进制格式转换、系统 API 兼容和 GPU 管线适配的项目，这种架构具有参考价值。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-10-05，既有 <code>libSceUsbd</code>、<code>NpCppWebApi</code>、<code>libcinternal</code> 等系统库功能补齐，也有 MFSR 1100 调用、VOP3 着色器指令和工具链统计修复，说明项目当前重点是持续扩大系统 API 覆盖面、改善 GPU 兼容性并修复底层边界行为。提交中多次出现 Celegans12、DotDebian、Adrià Franch 和 Dean 等贡献者，社区协作较活跃；但 138 个开放 Issue 也表明仍处在快速完善阶段。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确提到竞品或具体对标项目。其明显路线差异是将目标可执行文件转换为桌面系统原生格式，并通过动态链接的系统库实现运行，而不是依赖独立模拟器或单独运行时进程。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026-08-03，最近更新于 2026-10-05，按提供的数据看仍处于早期快速演进阶段；4683 个 Stars、357 个 Forks 与 138 个开放 Issue 说明关注度较高，但功能覆盖和兼容性仍可能变化。README 要求用户自行准备并合法使用相关二进制文件，项目不提供受版权保护的软件、固件、密钥或专有库；对未支持或异常状态，程序会抛出 <code>std::runtime_error</code>、打印错误并终止，因此上手门槛和排错成本都不低。项目采用 GPL-2.0，集成或再分发时需要评估许可证义务。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/boykopovar/AnyPS5">boykopovar/AnyPS5</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以 AnyPS5 获得 4683 Stars，成长为聚焦 PS5 逆向与协议分析领域的头部开源开发者。
-<strong>技术栈偏好</strong>：偏好使用 C++ 进行底层逆向与性能敏感型开发，并以 Python 构建 API 与 AI 工具。
-<strong>核心领域</strong>：主要聚焦主机协议分析、PS5 逆向工程、API 代理及 AI 应用开发。</p>
-<hr />
-<h3>✨ pbakaus/impeccable (70114★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把设计规范、页面审查和浏览器迭代流程装进 AI 编程助手，让它从“能写出页面”进一步变成“能持续改好页面”。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：Impeccable 是面向 AI coding agent 的前端设计语言和工作流，安装后通过 <code>/impeccable</code> 执行页面设计与审查任务。它提供 <code>init</code>、<code>shape</code>、<code>critique</code>、<code>audit</code>、<code>polish</code>、<code>live</code>、<code>generate</code> 等命令，能写入 <code>PRODUCT.md</code> 保存产品背景，并结合 <code>DESIGN.md</code>、浏览器实时迭代和 61 条确定性检测规则约束生成结果。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：AI 经常生成结构相似的 SaaS 页面，例如大量使用 Inter、紫蓝渐变、层层嵌套的卡片和圆角图标块，导致界面缺乏辨识度。它还可以检查无障碍、响应式、性能、文本溢出、错误状态等容易被一次性代码生成遗漏的问题，并通过 live 模式在浏览器中迭代视觉方案。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：使用 Claude Code、Cursor、Codex CLI、GitHub Copilot、Gemini CLI、Grok Build 等 AI 编程工具开发 React、Vue 或其他前端项目的开发者。尤其适合需要让 AI 持续维护设计系统、统一页面风格，或在交付前进行前端质量审查的个人和团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：在项目根目录运行 <code>npx impeccable install</code>，然后在 AI 编程工具中执行 <code>/impeccable init</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>为内部管理后台、设置页和数据工作台统一排版、颜色、间距和组件使用规则。</li>
-<li>对营销落地页、博客首页或产品详情页执行 <code>critique</code>、<code>polish</code> 和 <code>adapt</code>，检查视觉层级与移动端适配。</li>
-<li>
-<p>在结账、注册、表单等关键流程中使用 <code>harden</code> 和 <code>audit</code>，补齐错误处理、空状态、国际化和可访问性问题。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目将产品事实、视觉方向和可复用设计系统分别沉淀到 <code>PRODUCT.md</code> 与 <code>DESIGN.md</code>，减少 AI 把业务约束误当成视觉偏好的问题。CLI 和浏览器扩展中的确定性检测不依赖 LLM 或 API Key，并支持多种 AI harness 的原生 hooks、项目级安装和全局安装。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：项目近期活跃度很高，最近 20 条提交主要集中在 2026 年 9 月的 bug 修复、测试增强和 live/generate/bake 流程完善，而不是大规模新增功能。重点包括修复嵌套 <code>.gitignore</code>、当前用户误报更新、Tailwind spinner 规则误判、CSS 选择器锚定、开发服务器退出与 HTTPS 响应，以及让规则记录实际触发宽度；这表明项目正在从设计指导集合，继续演进为带浏览器执行、规则检测和可回滚变体生成的工程化质量工具。54 名贡献者、41 个开放 issue 和持续的 Dependabot 更新也说明社区已有一定规模，但仍处于快速打磨阶段。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确提到 Anthropic 的 <code>frontend-design</code> skill，Impeccable 是在其基础上发展起来的。相比主要提供设计指导的 <code>frontend-design</code>，Impeccable 增加了 <code>PRODUCT.md</code> 初始化流程、较完整的设计操作命令、61 条无需 LLM 的检测规则，以及 live 浏览器迭代和生成变体能力。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2025 年 11 月，虽然已获得 7 万以上 Stars，但发展时间较短，命令、hooks、各 AI 工具的安装方式仍可能快速变化。首次使用需要处理不同 harness 的项目信任、hook 审批和技能目录配置；Codex、Grok Build、Hermes 等工具还分别有额外的信任或启用步骤。README 覆盖的安装渠道和平台较多，文档信息量大，但实际落地前仍应确认目标工具的版本要求、项目级与全局安装范围，以及是否会与现有 skill 或 hook 重复。提交记录主要是修复和兼容性工作，暂未看到会改变核心使用方式的重大重构，但更新频繁意味着应在团队中固定版本或定期验证升级影响。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：长期活跃的创意技术开发者，曾创建 jQuery UI，代表项目在 GitHub 获得广泛关注。
-<strong>技术栈偏好</strong>：以 JavaScript 为主、HTML 为辅，偏好 Web 前端与浏览器交互技术。
-<strong>核心领域</strong>：聚焦 Web 创意开发、用户界面与网页交互体验。</p>
-<hr />
-<h3>✨ thedotmack/claude-mem (95456★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：执行 <code>npx claude-mem install</code>，完成安装和提供商选择后重启 Claude Code；也可以使用 <code>npx claude-mem install --ide opencode</code> 为 OpenCode 安装。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。</li>
-<li>在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。</li>
-<li>
-<p>为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 <code>--provider</code> 或 <code>CLAUDE_MEM_ONLINE_OPTIN=false</code> 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
-<strong>技术栈偏好</strong>：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
-<strong>核心领域</strong>：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。</p>
-<hr />
-<h3>✨ ayghri/i-have-adhd (28244★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把编码助手的回答风格强行拉回“先给结论、再给步骤”，避免它长篇铺垫后把真正可执行的信息埋在最后。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个面向代码助手的 <code>skill/plugin</code>，目标很明确：让模型输出更像可执行的操作指令，而不是先讲一堆背景再迟迟不给答案。README 里直接给出了对比示例，核心改造点包括“先行动作”“多步任务编号”“每轮重申状态”“最后给出一个明确下一步”。</li>
-<li><strong>能解决什么痛点</strong>：一是开发者在排查问题时，经常被助手的长段解释拖慢节奏，真正要改哪一行、先跑哪个命令反而要翻半天。二是在多人协作或复杂排障里，助手如果一直发散讨论，会让下一步操作不清晰，容易造成重复沟通和执行偏差。</li>
-<li><strong>适合谁用</strong>：适合日常大量依赖 Claude Code、类 Copilot 工作流或其他编码代理的开发者；也适合经常要处理调试、改配置、跑测试这类“要直接给步骤”的工程师。</li>
-<li><strong>怎么上手</strong>：README 给出的最简方式是直接在 CLI 里安装：<code>Install the i-have-adhd skill/plugin from https://github.com/ayghri/i-have-adhd, refer to the repo's AGENTS.md for instructions.</code></li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>让代码助手在修复报错时直接输出“改哪份文件、执行哪条测试命令”。</li>
-<li>在重构 API、更新依赖、修正配置时，把助手回答收敛成步骤清单，避免讨论跑偏。</li>
-<li>在团队统一 AI 输出风格时，作为约束模板减少“看起来很认真但不可执行”的回复。</li>
-<li><strong>技术看点</strong>：项目本质上不是业务库，而是对 LLM 输出行为的提示词/技能约束层，重点在规则设计而不是复杂运行时。README 明确强调了 10 条输出规则，并提供多语言文档，说明它更像一个可移植的交互规范。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交主要集中在文档对齐、翻译同步、安装说明收紧，以及 <code>eval</code> 相关测试和隔离修正，说明项目当前重点是稳定规则、统一多语言文档、提升评测可靠性，而不是大规模扩功能。提交里还能看到 <code>alwaysOn</code>、Pi 配置、会话启动超时等适配修补，表明它在向更广的客户端/环境兼容。社区贡献者有 36 人，最近仍有持续合并 PR，活跃度不低。</li>
-<li><strong>同类对比</strong>：README 没有明确点名竞品；从定位看，它更像是针对编码助手输出风格的行为规范插件，而不是通用提示词合集。</li>
-<li>
-<p><strong>注意事项</strong>：它依赖具体 AI 客户端的 skill/plugin 机制，落地效果取决于你用的工具是否支持这套接入方式。项目星标很多，但问题数也不低，说明关注度高、使用面广，同时也意味着规则在不同环境下可能还会有适配和打磨成本。文档有多语言版本，但真正的行为边界还是要看 <code>SKILL.md</code>，上手前最好先确认你当前的代理工具是否按这个约束生效。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：具备中等规模的开发者影响力，凭借高关注度的开源项目在细分社区获得较强曝光。
-<strong>技术栈偏好</strong>：以 Python 为主，偏好机器学习、强化学习、自然语言处理及算法工程。
-<strong>核心领域</strong>：主要聚焦人工智能研究与应用，尤其是机器学习、智能算法和生产力工具。</p>
-<hr />
 <h3>✨ morluto/rea (8642★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：让 AI Agent 连接 Hopper、Ghidra、IDA 及浏览器等分析工具，从应用运行行为一路追踪到 JavaScript、.NET 和原生二进制实现，并返回带证据的逆向结论。</p>
@@ -492,85 +189,477 @@
 <strong>技术栈偏好</strong>：以 TypeScript 和 Python 为主，辅以 Rust，偏好构建跨语言的工程化与实验性项目。
 <strong>核心领域</strong>：主要聚焦人工智能、机器学习及大模型相关工具与基础设施。</p>
 <hr />
-<h3>✨ deepseek-ai/DeepGEMM (8657★)</h3>
+<h3>✨ mattpocock/skills (269436★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：DeepGEMM 把大语言模型中的 FP8、FP4、BF16 矩阵乘、MoE 路由计算和注意力索引打分，集中实现成一套面向 NVIDIA GPU Tensor Core 的高性能 CUDA 内核。</p>
+<p><strong>一句话</strong>：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是 DeepSeek 开源的 GPU BLAS 内核库，覆盖普通 GEMM、按专家分组的 MoE GEMM、FP8/FP4 混合计算，以及用于 Lightning Indexer 的 MQA scoring。它还提供 Mega MoE 融合内核，将专家分发、两层线性计算、SwiGLU 和结果合并放进同一个内核，并通过重叠 NVLink 通信与 Tensor Core 计算减少端到端开销。</li>
-<li><strong>能解决什么痛点</strong>：</li>
-<li>LLM 推理和训练中，FP8/FP4 缩放因子布局、TMA 对齐、不同 GPU 架构适配等细节复杂，手写 CUDA 内核容易出现性能和正确性问题。</li>
-<li>MoE 推理涉及专家 dispatch、计算和 combine，多次 kernel launch 及通信会带来额外延迟，Mega MoE 可将这些环节融合并重叠执行。</li>
-<li><strong>适合谁用</strong>：使用 PyTorch 构建大语言模型训练或推理系统、且部署在 NVIDIA SM90/SM100 GPU 上的开发者；需要为 DeepSeek 类 MoE、FP8/FP4 GEMM 或 Lightning Indexer 编写高性能 CUDA 内核的 GPU 工程师。</li>
-<li><strong>怎么上手</strong>：满足 CUDA 12.9+、PyTorch 2.3+、CUTLASS 4.0+ 等依赖后，执行 <code>./install.sh</code>，然后在 Python 中使用 <code>import deep_gemm</code>。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>在 H800 等 NVIDIA GPU 上为 FP8/FP4 大模型训练或推理替换通用矩阵乘实现。</li>
-<li>在 MoE 解码阶段处理专家 token 数量动态变化，并配合 CUDA Graph 使用 masked grouped GEMM。</li>
-<li>在 DeepSeek v3.2 类模型中执行 Lightning Indexer 的 paged/non-paged MQA logits 计算，或通过 Mega MoE 融合专家通信与计算。</li>
-<li><strong>技术看点</strong>：项目采用运行时编译的 DeepJIT，安装阶段不需要提前完成 CUDA 编译，同时通过较少的核心内核函数降低模板和抽象层复杂度。它借鉴 CUTLASS/CuTe 的部分思路，但重点放在可读性、GPU 架构适配和针对实际模型形状的性能优化上。</li>
-<li><strong>近期动向与发展方向</strong>：最近的提交以持续发布、性能优化和并发/同步问题修复为主，涉及 Mega MoE 任务信息释放顺序、in-flight tensormap 竞态、TMEM 分配回收同步，以及 H100 特定形状崩溃修复。2026 年的演进重点明显集中在 Mega MoE、FP4 Indexer、稀疏 Indexer、Mega Gate、Mega mHC、DeepJIT 和 locality domain 等面向大规模 MoE 与新一代 GPU 的能力；最近 20 条提交由多位贡献者完成，项目仍处于高频迭代状态。</li>
-<li><strong>同类对比</strong>：README 明确提到 CUTLASS 和 CuTe。相比更通用、模板体系更重的 CUTLASS，DeepGEMM 聚焦 LLM 常用的 GEMM、MoE 和索引计算，并针对固定数据布局、缩放格式及 NVIDIA SM90/SM100 做了更直接的优化；它不是通用 GPU 算子库的完整替代品。</li>
-<li>
-<p><strong>注意事项</strong>：上手门槛较高，需要 NVIDIA SM90 或 SM100 GPU、CUDA Toolkit 12.9+、C++20 `` 支持、PyTorch 2.3+ 和 CUTLASS 4.0+，部分 Mega MoE 功能还要求 PyTorch 2.9+、多进程启动及对称内存。项目创建于 2025 年 2 月，已有 8657 个 Star、1368 个 Fork 和 44 位贡献者，但同时存在 149 个 Open Issues；近期仍在快速增加功能并修复架构相关问题，接口、编译配置和硬件支持范围可能发生变化。README 对接口、布局和环境变量说明较完整，但用户需要理解 CUDA 内存布局、TMA 对齐、量化缩放格式及多 GPU 通信，不能按普通 Python 库的方式直接使用。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/deepseek-ai/DeepGEMM">deepseek-ai/DeepGEMM</a></p>
-</li>
+<li><strong>它是什么</strong>：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。</li>
+<li><strong>能解决什么痛点</strong>：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。</li>
+<li><strong>适合谁用</strong>：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。</li>
+<li><strong>怎么上手</strong>：用 skills.sh 安装并选择需要的技能，例如：</li>
+</ul>
+<p>安装时记得选上 <code>setup-matt-pocock-skills</code>，随后在代理中运行 <code>/setup-matt-pocock-skills</code> 完成项目配置。
+- <strong>可以用在哪些场景</strong>：
+  - 开始一个新功能前，用 <code>/grill-with-docs</code> 澄清需求、统一项目术语，并整理 <code>CONTEXT.md</code> 和 ADR。
+  - 将已有讨论整理成规格或可执行工单，再用 <code>/implement</code> 按测试驱动流程实现。
+  - 定期运行 <code>/improve-codebase-architecture</code> 寻找可拆分、加深模块边界的候选位置，或用 <code>/diagnosing-bugs</code> 按阶段排查问题。
+- <strong>技术看点</strong>：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
+- <strong>近期动向与发展方向</strong>：近期提交主要在完善 <code>/pr</code> 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
+- <strong>同类对比</strong>：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
+- <strong>注意事项</strong>：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。</p>
+<ul>
+<li><strong>GitHub</strong>：<a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：成立时间较短但社区关注度极高，是全球生成式人工智能领域最具影响力的开发者组织之一
-<strong>技术栈偏好</strong>：以 Python 和 TypeScript 为主，侧重模型开发、推理工具链与生态集成
-<strong>核心领域</strong>：聚焦大语言模型、代码智能、模型推理及开放式 AI 生态建设<strong>技术影响力</strong>：成立时间较短但社区关注度极高，是全球生成式人工智能领域最具影响力的开发者组织之一</p>
+<p><strong>技术影响力</strong>：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
+<strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
+<strong>核心领域</strong>：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。</p>
 <hr />
-<h3>✨ msitarzewski/agency-agents (157382★)</h3>
+<h3>✨ boykopovar/AnyPS5 (4683★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把前端、后端、DevOps、安全、数据、产品和社区运营等岗位整理成一套带有明确人格、工作流程、交付物和验收标准的 AI 专家角色，可直接安装到多种编码助手中使用。</p>
+<p><strong>一句话</strong>：把 PS5 可执行文件重新链接为 Linux 或 Windows 原生格式，并通过本地系统库实现运行，而不是依赖模拟器或独立运行时进程。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：这是一个以 Markdown 为主的 AI Agent 角色库，每个 Agent 都描述了自己的专业范围、沟通方式、执行流程、代码或文档交付物以及成功指标。项目提供脚本和桌面应用，可将这些角色安装或转换到 Claude Code、Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot 等工具中，也可以直接阅读文件并复制到自己的工作流里。</li>
-<li><strong>能解决什么痛点</strong>：面对“帮我做个前端页面”这类宽泛任务时，通用模型容易遗漏性能、可维护性、测试或验收标准；使用专门的 Frontend Developer、Code Reviewer、SRE 等角色，可以预先约束任务视角和输出方式。团队还可以按工程、安全等部门批量安装角色，避免每次在不同 AI 工具中手动维护提示词和配置。</li>
-<li><strong>适合谁用</strong>：使用 Claude Code、Cursor、Codex、Gemini CLI 等 AI 编程工具的个人开发者和小型团队；需要把代码审查、数据库优化、事件响应、技术写作等岗位流程沉淀为可复用 AI 角色的工程团队。</li>
-<li><strong>怎么上手</strong>：克隆仓库后，直接将工程团队 Agent 安装到 Claude Code：</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>搭建 React、Vue 或 Angular 页面时调用 Frontend Developer，结合性能指标和组件实现要求完成页面开发。</li>
-<li>线上故障发生后调用 Incident Response Commander，按事件管理、值班响应和复盘流程组织处理。</li>
-<li>在 PostgreSQL 或 MySQL 查询变慢时调用 Database Optimizer，围绕索引、查询计划和迁移方案定位问题。</li>
-<li><strong>技术看点</strong>：项目将 Agent 定义为可读、可版本控制的 Markdown 文件，并通过 <code>install.sh</code>、<code>convert.sh</code> 和运行手册实现多工具分发，而不是把角色逻辑锁定在单一平台。近期还在持续完善转换产物、运行手册和测试校验，说明它在尝试把提示词集合维护成可验证、可批量安装的内容基础设施。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交高度集中在 2026 年 10 月 4 日，短时间内合并了 49 个 PR，并修复了 Markdown 代码围栏解析、主题保持、混合搜索绑定、转录说话人标签、低动态效果适配、日志凭据脱敏和 JWT 校验等问题。提交内容以内容批处理、兼容性修复、测试校验和示例质量修正为主，暂未看到大型架构重构；106 名贡献者和连续合并的大量 PR 表明社区参与活跃，项目方向正在从扩充 Agent 数量转向提升内容质量、工具兼容性和安装可靠性。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。项目 README 明确强调的是跨 Claude Code、Cursor、Codex、Gemini CLI 等工具安装和转换，这些工具属于承载 Agent 的平台，并非项目直接声称的竞品。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间为 2025-10-13，但目前已达到 157382 Stars、25382 Forks，规模增长很快；同时有 183 个 Open Issues，角色内容和多工具转换结果仍需要持续维护。上手依赖 Shell 脚本、目标工具目录结构及本地环境，批量安装前应先用 <code>--dry-run</code> 或限制团队范围；OpenCode 当前约只能注册 119 个 Agent，超过限制时会静默丢弃部分角色，README 已提供相应警告。由于 Agent 行为主要由角色定义和示例约束，实际输出仍受底层模型、平台能力和版本变化影响，不应把“Production-Ready”直接等同于无需人工审查。</p>
+<p><strong>它是什么</strong>：AnyPS5 面向 PS5 程序移植，核心包含一个 relinker，可将目标可执行文件转换为 Linux 或 Windows 使用的原生格式。项目同时实现了适合动态链接的 PS5 系统 PRX 库，并提供着色器重编译、手柄输入映射等运行所需能力；目前已有经过验证的游戏兼容性列表。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/msitarzewski/agency-agents">msitarzewski/agency-agents</a>### ✨ msitarzewski/agency-agents (157382★)</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>一句话</strong>：它把前端、后端、DevOps、安全、数据、产品和社区运营等岗位整理成一套带有明确人格、工作流程、交付物和验收标准的 AI 专家角色，可直接安装到多种编码助手中使用。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个以 Markdown 为主的 AI Agent 角色库，每个 Agent 都描述了自己的专业范围、沟通方式、执行流程、代码或文档交付物以及成功指标。项目提供脚本和桌面应用，可将这些角色安装或转换到 Claude Code、Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot 等工具中，也可以直接阅读文件并复制到自己的工作流里。</li>
-<li><strong>能解决什么痛点</strong>：面对“帮我做个前端页面”这类宽泛任务时，通用模型容易遗漏性能、可维护性、测试或验收标准；使用专门的 Frontend Developer、Code Reviewer、SRE 等角色，可以预先约束任务视角和输出方式。团队还可以按工程、安全等部门批量安装角色，避免每次在不同 AI 工具中手动维护提示词和配置。</li>
-<li><strong>适合谁用</strong>：使用 Claude Code、Cursor、Codex、Gemini CLI 等 AI 编程工具的个人开发者和小型团队；需要把代码审查、数据库优化、事件响应、技术写作等岗位流程沉淀为可复用 AI 角色的工程团队。</li>
-<li><strong>怎么上手</strong>：克隆仓库后，直接将工程团队 Agent 安装到 Claude Code：</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>搭建 React、Vue 或 Angular 页面时调用 Frontend Developer，结合性能指标和组件实现要求完成页面开发。</li>
-<li>线上故障发生后调用 Incident Response Commander，按事件管理、值班响应和复盘流程组织处理。</li>
-<li>在 PostgreSQL 或 MySQL 查询变慢时调用 Database Optimizer，围绕索引、查询计划和迁移方案定位问题。</li>
-<li><strong>技术看点</strong>：项目将 Agent 定义为可读、可版本控制的 Markdown 文件，并通过 <code>install.sh</code>、<code>convert.sh</code> 和运行手册实现多工具分发，而不是把角色逻辑锁定在单一平台。近期还在持续完善转换产物、运行手册和测试校验，说明它在尝试把提示词集合维护成可验证、可批量安装的内容基础设施。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交高度集中在 2026 年 10 月 4 日，短时间内合并了 49 个 PR，并修复了 Markdown 代码围栏解析、主题保持、混合搜索绑定、转录说话人标签、低动态效果适配、日志凭据脱敏和 JWT 校验等问题。提交内容以内容批处理、兼容性修复、测试校验和示例质量修正为主，暂未看到大型架构重构；106 名贡献者和连续合并的大量 PR 表明社区参与活跃，项目方向正在从扩充 Agent 数量转向提升内容质量、工具兼容性和安装可靠性。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。项目 README 明确强调的是跨 Claude Code、Cursor、Codex、Gemini CLI 等工具安装和转换，这些工具属于承载 Agent 的平台，并非项目直接声称的竞品。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间为 2025-10-13，但目前已达到 157382 Stars、25382 Forks，规模增长很快；同时有 183 个 Open Issues，角色内容和多工具转换结果仍需要持续维护。上手依赖 Shell 脚本、目标工具目录结构及本地环境，批量安装前应先用 <code>--dry-run</code> 或限制团队范围；OpenCode 当前约只能注册 119 个 Agent，超过限制时会静默丢弃部分角色，README 已提供相应警告。由于 Agent 行为主要由角色定义和示例约束，实际输出仍受底层模型、平台能力和版本变化影响，不应把“Production-Ready”直接等同于无需人工审查。</p>
+<p><strong>能解决什么痛点</strong>：PS5 程序通常依赖专有系统库、特定可执行文件格式和主机 GPU 接口，直接在桌面系统上运行会遇到链接、系统调用和着色器不兼容问题。AnyPS5 试图在不启动独立模拟器进程的前提下补齐这些依赖，并将着色器转换为可验证的 SPIR-V。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/msitarzewski/agency-agents">msitarzewski/agency-agents</a></p>
+<p><strong>适合谁用</strong>：适合研究主机软件兼容性、游戏保存与互操作性的开发者，以及熟悉 C++、链接器、系统库和 GPU 着色器管线的底层开发者。普通用户需要先确认目标游戏是否在兼容性列表中，并具备自行构建和排查运行时错误的能力。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 仅提供了 <a href="https://github.com/boykopovar/AnyPS5/blob/main/docs/user/USAGE.md">使用文档</a> 和 <a href="https://github.com/boykopovar/AnyPS5/blob/main/docs/dev/BUILD.md">构建说明</a> 的入口，当前提供的信息中未包含可直接复制的安装命令或最小运行示例。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在 Linux 或 Windows 上验证经过移植的 PS5 游戏兼容性，例如 README 提到的 Dreaming Sarah 已可在 GTX 1050 Ti 和 i5-7500 上稳定运行 60 FPS。</li>
+<li>为游戏保存和互操作性研究提供实验平台，分析 PS5 可执行文件、系统 PRX 库和 GPU 着色器在桌面环境中的替代实现。</li>
+<li>
+<p>针对特定游戏补充缺失的系统库函数、输入映射或着色器支持，逐步扩大兼容性列表，而不是为每个游戏单独维护一套模拟运行时。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用“可执行文件重链接加系统库实现”的路线，运行时不依赖模拟器进程；同时通过 shader recompiler 生成并校验 SPIR-V，并以 C++ 实现大量 PS5 系统模块。对需要兼顾二进制格式转换、系统 API 兼容和 GPU 管线适配的项目，这种架构具有参考价值。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-10-05，既有 <code>libSceUsbd</code>、<code>NpCppWebApi</code>、<code>libcinternal</code> 等系统库功能补齐，也有 MFSR 1100 调用、VOP3 着色器指令和工具链统计修复，说明项目当前重点是持续扩大系统 API 覆盖面、改善 GPU 兼容性并修复底层边界行为。提交中多次出现 Celegans12、DotDebian、Adrià Franch 和 Dean 等贡献者，社区协作较活跃；但 138 个开放 Issue 也表明仍处在快速完善阶段。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确提到竞品或具体对标项目。其明显路线差异是将目标可执行文件转换为桌面系统原生格式，并通过动态链接的系统库实现运行，而不是依赖独立模拟器或单独运行时进程。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026-08-03，最近更新于 2026-10-05，按提供的数据看仍处于早期快速演进阶段；4683 个 Stars、357 个 Forks 与 138 个开放 Issue 说明关注度较高，但功能覆盖和兼容性仍可能变化。README 要求用户自行准备并合法使用相关二进制文件，项目不提供受版权保护的软件、固件、密钥或专有库；对未支持或异常状态，程序会抛出 <code>std::runtime_error</code>、打印错误并终止，因此上手门槛和排错成本都不低。项目采用 GPL-2.0，集成或再分发时需要评估许可证义务。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/boykopovar/AnyPS5">boykopovar/AnyPS5</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：资深创业型开发者与 Techstars 校友，凭借高星级开源项目在开发者社区具备较强影响力
-<strong>技术栈偏好</strong>：偏好 Shell、Rust 与 TypeScript，重视自动化、工具构建及跨平台应用开发
-<strong>核心领域</strong>：主要聚焦 AI Agent、开发者工具、浏览器应用与快速产品原型构建</p>
+<p><strong>技术影响力</strong>：以 AnyPS5 获得 4683 Stars，成长为聚焦 PS5 逆向与协议分析领域的头部开源开发者。
+<strong>技术栈偏好</strong>：偏好使用 C++ 进行底层逆向与性能敏感型开发，并以 Python 构建 API 与 AI 工具。
+<strong>核心领域</strong>：主要聚焦主机协议分析、PS5 逆向工程、API 代理及 AI 应用开发。</p>
+<hr />
+<h3>✨ ayghri/i-have-adhd (28244★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把编码助手的回答风格强行拉回“先给结论、再给步骤”，避免它长篇铺垫后把真正可执行的信息埋在最后。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个面向代码助手的 <code>skill/plugin</code>，目标很明确：让模型输出更像可执行的操作指令，而不是先讲一堆背景再迟迟不给答案。README 里直接给出了对比示例，核心改造点包括“先行动作”“多步任务编号”“每轮重申状态”“最后给出一个明确下一步”。</li>
+<li><strong>能解决什么痛点</strong>：一是开发者在排查问题时，经常被助手的长段解释拖慢节奏，真正要改哪一行、先跑哪个命令反而要翻半天。二是在多人协作或复杂排障里，助手如果一直发散讨论，会让下一步操作不清晰，容易造成重复沟通和执行偏差。</li>
+<li><strong>适合谁用</strong>：适合日常大量依赖 Claude Code、类 Copilot 工作流或其他编码代理的开发者；也适合经常要处理调试、改配置、跑测试这类“要直接给步骤”的工程师。</li>
+<li><strong>怎么上手</strong>：README 给出的最简方式是直接在 CLI 里安装：<code>Install the i-have-adhd skill/plugin from https://github.com/ayghri/i-have-adhd, refer to the repo's AGENTS.md for instructions.</code></li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>让代码助手在修复报错时直接输出“改哪份文件、执行哪条测试命令”。</li>
+<li>在重构 API、更新依赖、修正配置时，把助手回答收敛成步骤清单，避免讨论跑偏。</li>
+<li>在团队统一 AI 输出风格时，作为约束模板减少“看起来很认真但不可执行”的回复。</li>
+<li><strong>技术看点</strong>：项目本质上不是业务库，而是对 LLM 输出行为的提示词/技能约束层，重点在规则设计而不是复杂运行时。README 明确强调了 10 条输出规则，并提供多语言文档，说明它更像一个可移植的交互规范。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交主要集中在文档对齐、翻译同步、安装说明收紧，以及 <code>eval</code> 相关测试和隔离修正，说明项目当前重点是稳定规则、统一多语言文档、提升评测可靠性，而不是大规模扩功能。提交里还能看到 <code>alwaysOn</code>、Pi 配置、会话启动超时等适配修补，表明它在向更广的客户端/环境兼容。社区贡献者有 36 人，最近仍有持续合并 PR，活跃度不低。</li>
+<li><strong>同类对比</strong>：README 没有明确点名竞品；从定位看，它更像是针对编码助手输出风格的行为规范插件，而不是通用提示词合集。</li>
+<li>
+<p><strong>注意事项</strong>：它依赖具体 AI 客户端的 skill/plugin 机制，落地效果取决于你用的工具是否支持这套接入方式。项目星标很多，但问题数也不低，说明关注度高、使用面广，同时也意味着规则在不同环境下可能还会有适配和打磨成本。文档有多语言版本，但真正的行为边界还是要看 <code>SKILL.md</code>，上手前最好先确认你当前的代理工具是否按这个约束生效。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：具备中等规模的开发者影响力，凭借高关注度的开源项目在细分社区获得较强曝光。
+<strong>技术栈偏好</strong>：以 Python 为主，偏好机器学习、强化学习、自然语言处理及算法工程。
+<strong>核心领域</strong>：主要聚焦人工智能研究与应用，尤其是机器学习、智能算法和生产力工具。</p>
+<hr />
+<h3>✨ cathrynlavery/diagram-design (30544★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把架构图、流程图、数据图表和用户旅程等 39 类信息，直接生成带有编辑感的静态 HTML + SVG 图示，供 Claude Code、Codex 等 AI 编程工具调用。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个面向 AI 编程助手的 Diagram Design 技能与插件集合，内置架构、时序、状态机、桑基图、鱼骨图、部署图、数据库模型等 39 种图示类型。每种图示都提供浅色、深色和完整编辑风格的静态变体，生成结果不依赖 JavaScript、构建步骤或外部图片资源，也支持重绘 draw.io 和 Mermaid 图表。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：AI 生成的图表容易退化成大量通用圆角框和 Mermaid 风格，难以匹配产品或技术文档的视觉规范；项目通过固定布局语法、颜色使用规则和信息密度约束，减少开发者反复在 Figma 中调整图形的工作。对于已有 Mermaid 或 draw.io 资料，也可以在指定尺寸、格式和细节级别下重新绘制。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：使用 Claude Code、Codex、Factory Droid、Pi 等 AI 编程助手生成技术文档的开发者；需要制作架构图、数据流图、部署图、产品流程图或汇报图表，但不希望手工维护 Figma 文件的工程师和技术写作者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：Claude Code 中执行 <code>/plugin marketplace add cathrynlavery/diagram-design</code>，随后执行 <code>/plugin install diagram-design@diagram-design</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>为内部服务或数据平台绘制包含区域、主机和制品的部署图，放入架构设计文档。</li>
+<li>将数据仓库的来源、核心处理层、消费者及角色权限整理成数据流图或安全矩阵。</li>
+<li>
+<p>把产品需求中的用户阶段、操作、情绪变化和发布切片制作成用户旅程图或故事地图。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用自包含 HTML + SVG 输出，静态结果可直接在浏览器打开，无构建和外部资源依赖，适合提交到文档仓库或直接发布。它将“语义模式”和“视觉布局类型”分离，使队列、策略追踪、信任边界等语义可以复用已有图表类型，并通过 SVG <code>viewBox</code>、标题规则、数据校验和对抗性测试加强输出可靠性与可访问性。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：近期提交非常活跃，重点从新增图表类型转向质量加固和发布工程治理，包括合并已审核修正、加固桑基图和 treemap 校验、修复 YAML 与插件打包问题、完善图库同步验证，并加入针对语义动画和 OAuth 序列验证器的对抗性测试。同时仍在扩展 scatter bubble、ridgeline 等图表变体，并持续维护 Claude Code、Codex、Droid 等插件分发渠道，方向是把图表覆盖面、生成正确性和多平台安装体验一起做稳。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确将其定位为避免通用 Mermaid 图表风格的方案；相比 Mermaid 主要通过文本描述生成通用图形，diagram-design 更强调固定的编辑式视觉规范、品牌匹配、静态 HTML + SVG 交付和多种版式变体。但它仍支持导入并重绘 Mermaid，因此更像是视觉输出层和 AI 技能层的补充，而不是完全替代 Mermaid 的通用语法生态。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 4 月，当前已获得 30544 个 Stars、1964 个 Forks，但仍处于快速演进阶段，公开 Issue 有 38 个，插件版本、图表规范和校验规则可能持续调整。README 对支持平台和图表类型说明较完整，并提供在线图库，但不同宿主的安装命令和自动更新机制不同，需要按平台配置；另外项目元数据描述写的是 38 种图表，而 README 当前列出 39 种，采用前应以仓库实际版本和图库内容为准。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以创业者和独立开发者身份形成较高社区影响力，代表性设计仓库获广泛关注，并持续输出 AI 实践经验。
+<strong>技术栈偏好</strong>：偏好 Shell、Python 与 HTML，聚焦 Codex、智能代理、自动化运维及开发流程工具。
+<strong>核心领域</strong>：主要聚焦 AI 原生创业、智能代理工作流与开发者效率工具。</p>
+<hr />
+<h3>✨ addyosmani/agent-skills (100692★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把从需求澄清、写规格、拆任务、编码、测试、审查到上线的工程流程，整理成 AI 编程代理可以直接执行的 25 组技能和 9 个斜杠命令。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个面向 AI 编程代理的工程技能包，包含 <code>spec</code>、<code>plan</code>、<code>build</code>、<code>test</code>、<code>review</code>、<code>ship</code> 等生命周期命令，以及前端、API 设计、性能优化、测试驱动开发等具体技能。技能以 Markdown 工作流、检查清单和验证门槛的形式组织，可通过 <code>skills</code> CLI 或各类代理的原生插件机制接入 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 等工具。</li>
+<li><strong>能解决什么痛点</strong>：AI 代理经常直接开始写代码，遗漏需求澄清、任务拆分、测试和代码审查；该项目把这些步骤固化成可复用的工作流。不同代理的安装方式和指令格式不一致，也会导致团队难以统一实践；项目提供跨 70 多种代理的安装入口和对应配置文档。</li>
+<li><strong>适合谁用</strong>：希望在 Claude Code、Codex、Cursor 等 AI 编程工具中统一研发流程的个人开发者和工程团队。尤其适合需要强制执行规格说明、测试驱动开发、代码审查和上线检查的中大型项目。</li>
+<li><strong>怎么上手</strong>：执行 <code>npx skills add addyosmani/agent-skills</code> 安装全部技能，再按需使用 <code>/spec</code>、<code>/plan</code>、<code>/build</code> 或 <code>/test</code> 等命令。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>新建一个 Web 或 API 项目时，先用 <code>/spec</code> 形成 PRD，再用 <code>/plan</code> 拆成可独立验证的任务。</li>
+<li>在已有业务系统中让 AI 修改支付、认证或数据库代码时，通过测试、约束和审查技能减少回归风险。</li>
+<li>团队使用不同 AI 客户端协作时，将相同的编码规范、性能检查和发布流程同步到 Claude Code、Cursor、Codex 等环境。</li>
+<li><strong>技术看点</strong>：核心技能采用普通 Markdown 和 <code>SKILL.md</code> 文件组织，降低了跨代理移植成本，并通过描述触发相关技能的自动发现机制减少手动选择。项目同时提供仓库级插件、单技能安装和多客户端原生集成，但单独安装技能时不会自动带上仓库级 <code>references/</code> 目录，存在已记录的可移植性限制。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 10 月 2日至 3 日，包含 <code>0.6.12</code> 插件清单发布、Dojo Workspace 和 Oh My Pi 安装文档，以及 Prisma 回滚示例、异常抛出、规格流程、性能优化内容和锚点校验等修复，说明项目当前仍处于高频维护和兼容性扩展阶段。近期既有 Addy Osmani 的发布与合并，也有 Val Neekman、Joan Leon、Jakub Synowiec、Andre Brait 等贡献者参与；结合 87 位贡献者、10582 个 Fork 和 112 个开放 Issue，项目的重点正从基础技能建设转向多代理适配、文档完善和工作流可靠性。</li>
+<li><strong>同类对比</strong>：暂无 README 明确列出的同类竞品。它的明显特点不是提供模型或 IDE，而是把资深工程师的研发阶段、质量门槛和反合理化检查整理为可安装的代理工作流，并覆盖多个 AI 编程客户端。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 2 月 15 日，但截至 2026 年 10 月 3 日已达到 100692 Stars，增长和迭代速度都很快，生态兼容性仍需关注。README 内容较完整，但不同代理的安装入口、命令格式和版本要求并不统一，例如 Codex 原生插件要求 CLI v0.122 以上；单独安装技能还可能缺少共享引用文件。112 个开放 Issue 反映出项目仍在持续处理兼容性和文档边界问题，升级插件或切换代理版本前应在团队工作流中验证命令、技能发现和引用路径是否正常。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a>### ✨ addyosmani/agent-skills (100692★)</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>一句话</strong>：把从需求澄清、写规格、拆任务、编码、测试、审查到上线的工程流程，整理成 AI 编程代理可以直接执行的 25 组技能和 9 个斜杠命令。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个面向 AI 编程代理的工程技能包，包含 <code>spec</code>、<code>plan</code>、<code>build</code>、<code>test</code>、<code>review</code>、<code>ship</code> 等生命周期命令，以及前端、API 设计、性能优化、测试驱动开发等具体技能。技能以 Markdown 工作流、检查清单和验证门槛的形式组织，可通过 <code>skills</code> CLI 或各类代理的原生插件机制接入 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 等工具。</li>
+<li><strong>能解决什么痛点</strong>：AI 代理经常直接开始写代码，遗漏需求澄清、任务拆分、测试和代码审查；该项目把这些步骤固化成可复用的工作流。不同代理的安装方式和指令格式不一致，也会导致团队难以统一实践；项目提供跨 70 多种代理的安装入口和对应配置文档。</li>
+<li><strong>适合谁用</strong>：希望在 Claude Code、Codex、Cursor 等 AI 编程工具中统一研发流程的个人开发者和工程团队。尤其适合需要强制执行规格说明、测试驱动开发、代码审查和上线检查的中大型项目。</li>
+<li><strong>怎么上手</strong>：执行 <code>npx skills add addyosmani/agent-skills</code> 安装全部技能，再按需使用 <code>/spec</code>、<code>/plan</code>、<code>/build</code> 或 <code>/test</code> 等命令。</li>
+<li><strong>可以用在哪些场景</strong>：</li>
+<li>新建一个 Web 或 API 项目时，先用 <code>/spec</code> 形成 PRD，再用 <code>/plan</code> 拆成可独立验证的任务。</li>
+<li>在已有业务系统中让 AI 修改支付、认证或数据库代码时，通过测试、约束和审查技能减少回归风险。</li>
+<li>团队使用不同 AI 客户端协作时，将相同的编码规范、性能检查和发布流程同步到 Claude Code、Cursor、Codex 等环境。</li>
+<li><strong>技术看点</strong>：核心技能采用普通 Markdown 和 <code>SKILL.md</code> 文件组织，降低了跨代理移植成本，并通过描述触发相关技能的自动发现机制减少手动选择。项目同时提供仓库级插件、单技能安装和多客户端原生集成，但单独安装技能时不会自动带上仓库级 <code>references/</code> 目录，存在已记录的可移植性限制。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在 2026 年 10 月 2日至 3 日，包含 <code>0.6.12</code> 插件清单发布、Dojo Workspace 和 Oh My Pi 安装文档，以及 Prisma 回滚示例、异常抛出、规格流程、性能优化内容和锚点校验等修复，说明项目当前仍处于高频维护和兼容性扩展阶段。近期既有 Addy Osmani 的发布与合并，也有 Val Neekman、Joan Leon、Jakub Synowiec、Andre Brait 等贡献者参与；结合 87 位贡献者、10582 个 Fork 和 112 个开放 Issue，项目的重点正从基础技能建设转向多代理适配、文档完善和工作流可靠性。</li>
+<li><strong>同类对比</strong>：暂无 README 明确列出的同类竞品。它的明显特点不是提供模型或 IDE，而是把资深工程师的研发阶段、质量门槛和反合理化检查整理为可安装的代理工作流，并覆盖多个 AI 编程客户端。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 2 月 15 日，但截至 2026 年 10 月 3 日已达到 100692 Stars，增长和迭代速度都很快，生态兼容性仍需关注。README 内容较完整，但不同代理的安装入口、命令格式和版本要求并不统一，例如 Codex 原生插件要求 CLI v0.122 以上；单独安装技能还可能缺少共享引用文件。112 个开放 Issue 反映出项目仍在持续处理兼容性和文档边界问题，升级插件或切换代理版本前应在团队工作流中验证命令、技能发现和引用路径是否正常。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：资深 Google 技术领导者与开源作者，在 JavaScript 生态及开发者社区拥有广泛影响力。
+<strong>技术栈偏好</strong>：以 JavaScript 为核心，兼顾 HTML，并关注现代前端工具、设计模式与 AI Agent 技能。
+<strong>核心领域</strong>：主要聚焦前端工程、JavaScript 生态、Web 性能优化与开发者工具。</p>
+<hr />
+<h3>✨ EpicGames/raddebugger (7753★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：A native, user-mode, multi-process, graphical debugger.</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/EpicGames/raddebugger">EpicGames/raddebugger</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ thedotmack/claude-mem (95456★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：执行 <code>npx claude-mem install</code>，完成安装和提供商选择后重启 Claude Code；也可以使用 <code>npx claude-mem install --ide opencode</code> 为 OpenCode 安装。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。</li>
+<li>在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。</li>
+<li>
+<p>为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 <code>--provider</code> 或 <code>CLAUDE_MEM_ONLINE_OPTIN=false</code> 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
+<strong>技术栈偏好</strong>：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
+<strong>核心领域</strong>：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。</p>
+<hr />
+<h3>✨ manaflow-ai/cmux (21533★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：cmux 把 Ghostty 终端、纵向标签页、分屏浏览器和 AI 编程代理通知放进一个原生 macOS 应用里，让你同时盯住多个 Claude Code、Codex 等会话。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：cmux 是基于 libghostty 的原生 macOS 终端应用，用 Swift/AppKit 构建，不是 Electron/Tauri。它在传统终端基础上加入工作区、纵向/横向标签、分屏、通知面板、内置浏览器、CLI 与 socket API，重点服务同时运行多个 AI coding agent 的开发工作流。</li>
+<li><strong>能解决什么痛点</strong>：当开发者同时开很多 Claude Code、Codex 或 OpenCode 会话时，普通终端标签标题很快看不清，也难判断哪个 agent 正在等待输入。cmux 通过侧边栏显示分支、PR、目录、端口和最新通知，并用蓝色提示环/未读跳转定位需要处理的 pane。</li>
+<li><strong>适合谁用</strong>：适合长期在 macOS 上使用 Claude Code、Codex、OpenCode 等 AI 编程代理的开发者；也适合喜欢 Ghostty/终端工作流、但需要多工作区、分屏浏览器和脚本化控制能力的工程师。</li>
+<li><strong>怎么上手</strong>：<code>brew tap manaflow-ai/cmux &amp;&amp; brew install --cask cmux</code></li>
+<li><strong>可以用在哪些场景</strong>：同时跑多个 AI agent 处理不同代码分支，并通过通知面板快速回到等待输入的会话；在终端旁边分屏打开内置浏览器，让 agent 操作本地 dev server、点击页面或填写表单；通过 <code>cmux ssh user@remote</code> 为远程机器创建工作区，并让浏览器 pane 访问远端 localhost。</li>
+<li><strong>技术看点</strong>：核心是 Swift/AppKit 原生 macOS 应用加 libghostty 渲染，能复用 <code>~/.config/ghostty/config</code> 的主题、字体和颜色。内置浏览器提供从 agent-browser 移植的脚本化 API，可让代理读取 accessibility tree、点击元素、执行 JS。</li>
+<li><strong>近期动向与发展方向</strong>：最近提交非常密集，6 月 8-9 日连续合入 UI 冻结修复、事件驱动的 agent 索引、WebSocket 启动修复、Sentry 隐私脱敏、iOS 终端选择器、设备自动配对和 webview bundle 拆分。整体看，项目正处在高频迭代期，近期重点是稳定性、性能、测试防回归、隐私安全和跨设备/移动端配套能力。</li>
+<li><strong>同类对比</strong>：README 明确提到作者不喜欢一些 Electron/Tauri 编程编排器的性能和工作流锁定，cmux 的差异是保留终端作为核心入口，用原生 macOS、Ghostty 兼容和可组合 CLI/API 来承载 agent 工作流。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较新但 Star 很高、提交活跃，说明关注度和迭代速度都很强；同时 Open Issues 达到 2551，可能意味着功能面广、反馈量大，也可能存在不少待修问题。它目前定位明显偏 macOS 原生用户，非 macOS 环境暂未提供等价使用路径；快速迭代期也要留意 nightly/stable 版本差异和潜在行为变更。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/manaflow-ai/cmux">manaflow-ai/cmux</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：manaflow-ai 是一个成立较新的 AI 工具型组织，凭借 cmux 获得显著社区关注，已具备较强的早期开源影响力。
+<strong>技术栈偏好</strong>：技术栈以 Swift、TypeScript 和 Zig 为主，偏向构建桌面端、开发者工具与高性能底层组件。
+<strong>核心领域</strong>：主要聚焦 AI 辅助开发、智能工作流编排和面向开发者的生产力工具。</p>
+<hr />
+<h3>✨ trycua/cua (23887★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Cua 给 AI Agent 分配可操作的桌面环境，让它们能在 macOS、Windows、Linux 或云端沙箱里看屏幕、点应用、跑命令并生成评测轨迹。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：Cua 是围绕 “computer-use agent” 构建的一套开源基础设施，包含桌面自动化驱动 Cua Driver、云端隔离桌面 Cua Fleets、本地 Apple Silicon 虚拟机管理工具 Lume，以及用于构建和评估任务的 Cua Bench。它的目标不是只提供一个浏览器自动化库，而是让 AI Agent 可以在真实桌面应用、终端、浏览器和图形界面之间切换执行任务。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：</p>
+</li>
+<li>训练或评测能操作电脑的 Agent 时，开发者通常需要自己拼接虚拟机、远程桌面、截图、鼠标键盘输入、任务评分和轨迹导出，Cua 把这些环节拆成了可复用的组件。</li>
+<li>
+<p>Agent 操作本机桌面时容易抢占鼠标焦点、平台差异大、权限配置复杂，Cua Driver 提供跨 macOS / Windows / Linux 的操作接口，并在支持的平台上提供后台交互能力。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：做 computer-use / GUI Agent 训练与评测的研究团队；需要让 Claude Code、Codex、Cursor、OpenClaw 等 Agent 操作真实桌面应用的工程师；在 Apple Silicon 上需要批量创建本地 macOS / Linux VM 的开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装 Cua Driver 可直接运行：<code>/bin/bash -c "$(curl -fsSL https://cua.ai/driver/install.sh)"</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>给 Agent 接入本地 Calculator、LibreOffice、Inkscape 等原生桌面应用，验证它是否能按任务目标完成 GUI 操作。</li>
+<li>在云端 Fleet 中领取隔离 Linux 桌面，运行命令、截图、操作应用，并在任务结束后释放资源。</li>
+<li>
+<p>用 Cua Bench 构造 computer-use 任务，运行参考解法，导出轨迹用于评测或训练数据生成。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目按 Driver、Fleet、Sandbox SDK、Lume、Bench 拆分能力边界，既支持本地桌面，也支持云端沙箱和 Apple Virtualization.Framework 管理的本地虚拟机。README 明确区分了本地沙箱与云端 Fleet 的凭据、镜像、运行时要求，说明它更像一套 Agent 操作系统基础设施，而不是单点自动化脚本库。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交非常活跃，9 月中旬连续围绕 <code>cua-driver</code> 修复 Hyprland、X11、UIA 点击、后台文本输入等跨平台输入稳定性问题，同时发布了 <code>cua-driver-rs 0.28.2</code> 和 <code>sandbox 0.8.0</code>。新功能方面，<code>cyclops-sdk</code> 增加 Fleet 分组、WebSocket service target 和 claim labels，说明云端桌面集群调度仍在增强；另有 billing dry-run、Stripe usage ledger 等提交，显示商业化 Fleet 用量计费也在推进。文档侧也在补充 agent recipe、OSWorld on Fleet、perception extension 边界，项目正在从“可用工具链”向“规模化训练、评测和云端运行平台”演进。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 没有直接列出竞品或对标项目。它与常见浏览器自动化或 RPA 工具的明显差异在于：Cua 面向 AI Agent 的完整桌面使用场景，覆盖原生应用、云端隔离桌面、本地 VM 和 benchmark，而不只是在网页里执行脚本。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年初，但 Star 已接近 2.4 万、贡献者 114 人、近期提交密集，热度和迭代速度都很高；同时 Open Issues 超过 1000，说明需求和问题反馈量很大，生产使用前需要评估稳定性。项目覆盖 macOS、Windows、Linux、云端 Fleet、Apple Silicon VM 等多个环境，上手时要仔细对照平台支持和权限配置；近期频繁发布 driver 与 sandbox 版本，也意味着接口或运行行为仍可能较快变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/trycua/cua">trycua/cua</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：聚焦 Computer-Use Agent 基础设施，核心仓库获得较高关注，已具备显著开源社区影响力。
+<strong>技术栈偏好</strong>：以 TypeScript、Python 和 Go 为主，侧重 SDK、沙箱、虚拟化及智能体评测工具链。
+<strong>核心领域</strong>：主要聚焦可控制完整桌面的 AI Agent 训练、运行与评测基础设施。</p>
+<hr />
+<h3>✨ cloudflare/security-audit-skill (5695★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把编码代理组织成一支分阶段协作的安全审计队伍，从代码侦察、覆盖率驱动的漏洞挖掘，到独立复核和结构化报告，最终产出可机器验证的安全结论。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个面向 coding agent 的安全审计技能，按六个阶段处理目标代码库：建立架构与覆盖台账、分配隔离的漏洞猎手、让独立验证者尝试推翻候选问题，并生成 <code>findings.json</code>、<code>REPORT.md</code> 等结果。项目内置针对 AI/LLM、Web 协议与认证、客户端、供应链、云部署、原生二进制等多类攻击面的方法文件，并通过零依赖 Node.js 校验器验证覆盖台账和发现记录。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：普通 AI 代码审查容易重复检查热门文件、遗漏未覆盖的攻击面，也难以说明“哪些地方已经检查过”。该项目用 <code>coverage-ledger.json</code> 记录检查范围，并把发现明确区分为 <code>confirmed</code>、<code>needs_validation</code> 和 <code>rejected</code>，减少未经证实的漏洞结论直接进入报告。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合希望让 AI coding agent 执行系统化安全审计的安全工程师、产品安全团队和漏洞研究人员；也适合维护 Web 服务、LLM 应用、云基础设施或原生程序，并需要保留可复核审计记录的开发团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装技能后，在目标代码库中直接发起审计：
+  然后输入：<code>security audit this codebase</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>对接入大模型、插件或工具调用的应用，检查提示注入、代理权限和输出处理问题。</li>
+<li>发布 HTTP API、认证服务或反向代理前，检查请求解析、缓存、认证协议和边界处理缺陷。</li>
+<li>
+<p>审计包含 CI/CD、容器、依赖更新、签名发布流程的供应链，核对构建与部署环节的安全风险。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目没有只依赖模型自由发挥，而是用多阶段代理编排、覆盖台账、独立验证者和 JSON Schema 约束形成可追溯流程。它还要求在操作系统强制沙箱中执行目标代码，并在缺少网络隔离、资源限制和路径控制时将结论保留为 <code>needs_validation</code>，体现了对 AI 驱动动态审计风险的明确边界。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：项目近期明显处于快速完善工作流阶段，9 月重点重做了审计流程、发现记录契约和校验器，并进一步澄清完整审计模式与指导模式的使用边界。7 月连续扩展了 AI/LLM、Web 协议认证、客户端、内存安全、二进制和内核等攻击类别，同时修复技能目录兼容性和 trace 步骤顺序问题；14 条提交中包含多个外部贡献者，说明项目正在通过贡献补充攻击面，但核心维护者仍较集中。整体方向是从单一审计提示集合演进为带验证、记录和报告约束的审计框架。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。相较于普通安全审查提示词，该项目更强调覆盖范围记录、独立反证、机器可读发现和多次运行之间的证据继承。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较近，虽然已有 5695 个 Stars，但 Contributor Count 仅 4，不能仅凭关注度判断其长期成熟度。完整审计依赖支持工具调用和并行子代理的 coding agent，并要求 Node.js 运行校验器；目标代码执行还必须配置具备网络禁用、环境清理、资源限制和写入路径控制能力的操作系统级沙箱。攻击类别、发现格式和审计工作流仍在快速演进，升级时应重点检查 <code>SKILL.md</code>、<code>report-schema.json</code> 及校验器是否带来流程或输出格式变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：全球领先的互联网基础设施组织，在网络性能、安全与边缘计算领域具有广泛社区影响力。
+<strong>技术栈偏好</strong>：偏好 Rust、Go 与 TypeScript，重视高性能网络、云原生服务及边缘应用开发。
+<strong>核心领域</strong>：主要聚焦网络基础设施、边缘计算、Web 安全与开发者平台。</p>
+<hr />
+<h3>✨ tester-army/e2e (2508★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：让测试脚本用自然语言驱动浏览器或手机完成操作，再用传统定位器和断言核验最终结果。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：<code>e2e</code> 是一个面向 Web 和移动应用的端到端测试框架，测试者可以让 AI agent 执行“升级到 Pro 套餐”这类自然语言步骤，并继续用 locator 和 assertion 检查页面状态。它支持 Chromium、Firefox、WebKit，以及 iOS 模拟器和 Android 模拟器；AI 步骤还会记录操作轨迹，后续运行优先回放，减少重复模型调用。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：传统 E2E 测试需要为复杂交互编写大量脆弱的点击、等待和元素定位逻辑，面对页面结构变化时维护成本高。对于跨 Web、iOS、Android 的流程，团队还需要分别维护不同测试栈；该项目试图用统一的自然语言操作接口覆盖这些场景。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：需要测试真实用户流程的 Web 前端、全栈和 QA 工程师，尤其适合使用 TypeScript、Playwright 或 React Native/移动模拟器的团队。也适合希望在测试中接入自有 API Key、订阅模型或本地模型的 AI 工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：运行 <code>npx e2e init</code>，按提示选择 Web 或 Mobile 引擎及模型提供商；最小测试可以写成 <code>await agent.act('upgrade the workspace to the Pro plan'); await expect(screen.getByRole('status')).toContainText('Pro');</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>测试 SaaS 产品的登录、订阅升级、账单预览和权限变更流程。</li>
+<li>在电商 Web 和移动端回归商品搜索、下单、支付前确认等跨页面流程。</li>
+<li>
+<p>在每次 Pull Request 中运行自然语言验收测试，并通过 GitHub reporter 自动回传结果。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 TypeScript，并将 AI agent 操作与传统 locator/assertion 组合在同一测试文件中；Web 端基于 Playwright，移动端通过 agent-device 对接模拟器和仿真器。它还通过录制、轨迹回放、缓存和受限失败证据采集，降低重复模型调用和调试成本。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：项目在 2026 年 10 月 3-4 日集中提交了 20 条更新，说明当前处于高频迭代阶段。近期重点以稳定性和工程化修复为主，包括下载与 trace 统一 ledger、串行测试失败状态传播、敏感信息脱敏、失败证据限制、缓存一致性、Playwright 安装流程和 pnpm 兼容性；同时新增了通过 AI SDK 决策模型执行动作与断言、OAuth 接入 OpenCode Console，以及 Web 初始化脚本等能力，整体方向是继续强化 AI 测试执行、回放缓存和 Web/Mobile 双引擎基础设施。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品。可以确认的差异是，它没有只做传统脚本式 E2E 测试，而是把自然语言 agent 操作、轨迹回放和传统断言放在同一套 TypeScript 测试模型中。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 7 月 22 日，README 明确说明仍在迈向 1.0，API 和配置可能在小版本间变化，存在破坏性变更风险。当前有 40 个 Open Issues、20 位贡献者，最近两天提交密集，说明维护活跃但仍处于快速演进期；上手还需要配置模型提供商、浏览器或移动模拟器环境，并理解 agent 步骤与缓存回放的行为。README 提供了快速启动、包划分、遥测和安全说明，但复杂场景仍需结合在线文档进一步确认。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/tester-army/e2e">tester-army/e2e</a> ### ✨ tester-army/e2e (2508★)</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>一句话</strong>：让测试脚本用自然语言驱动浏览器或手机完成操作，再用传统定位器和断言核验最终结果。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：<code>e2e</code> 是一个面向 Web 和移动应用的端到端测试框架，测试者可以让 AI agent 执行“升级到 Pro 套餐”这类自然语言步骤，并继续用 locator 和 assertion 检查页面状态。它支持 Chromium、Firefox、WebKit，以及 iOS 模拟器和 Android 模拟器；AI 步骤还会记录操作轨迹，后续运行优先回放，减少重复模型调用。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：传统 E2E 测试需要为复杂交互编写大量脆弱的点击、等待和元素定位逻辑，面对页面结构变化时维护成本高。对于跨 Web、iOS、Android 的流程，团队还需要分别维护不同测试栈；该项目试图用统一的自然语言操作接口覆盖这些场景。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：需要测试真实用户流程的 Web 前端、全栈和 QA 工程师，尤其适合使用 TypeScript、Playwright 或 React Native/移动模拟器的团队。也适合希望在测试中接入自有 API Key、订阅模型或本地模型的 AI 工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：运行 <code>npx e2e init</code>，按提示选择 Web 或 Mobile 引擎及模型提供商；最小测试可以写成 <code>await agent.act('upgrade the workspace to the Pro plan'); await expect(screen.getByRole('status')).toContainText('Pro');</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>测试 SaaS 产品的登录、订阅升级、账单预览和权限变更流程。</li>
+<li>在电商 Web 和移动端回归商品搜索、下单、支付前确认等跨页面流程。</li>
+<li>
+<p>在每次 Pull Request 中运行自然语言验收测试，并通过 GitHub reporter 自动回传结果。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 TypeScript，并将 AI agent 操作与传统 locator/assertion 组合在同一测试文件中；Web 端基于 Playwright，移动端通过 agent-device 对接模拟器和仿真器。它还通过录制、轨迹回放、缓存和受限失败证据采集，降低重复模型调用和调试成本。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：项目在 2026 年 10 月 3-4 日集中提交了 20 条更新，说明当前处于高频迭代阶段。近期重点以稳定性和工程化修复为主，包括下载与 trace 统一 ledger、串行测试失败状态传播、敏感信息脱敏、失败证据限制、缓存一致性、Playwright 安装流程和 pnpm 兼容性；同时新增了通过 AI SDK 决策模型执行动作与断言、OAuth 接入 OpenCode Console，以及 Web 初始化脚本等能力，整体方向是继续强化 AI 测试执行、回放缓存和 Web/Mobile 双引擎基础设施。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品。可以确认的差异是，它没有只做传统脚本式 E2E 测试，而是把自然语言 agent 操作、轨迹回放和传统断言放在同一套 TypeScript 测试模型中。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026 年 7 月 22 日，README 明确说明仍在迈向 1.0，API 和配置可能在小版本间变化，存在破坏性变更风险。当前有 40 个 Open Issues、20 位贡献者，最近两天提交密集，说明维护活跃但仍处于快速演进期；上手还需要配置模型提供商、浏览器或移动模拟器环境，并理解 agent 步骤与缓存回放的行为。README 提供了快速启动、包划分、遥测和安全说明，但复杂场景仍需结合在线文档进一步确认。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/tester-army/e2e">tester-army/e2e</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 <code>e2e</code> 仓库为核心，已在自动化测试开发者群体中形成初步影响力。
+<strong>技术栈偏好</strong>：偏好 TypeScript 与 Shell，聚焦端到端测试、CLI 工具及 AI 辅助开发。
+<strong>核心领域</strong>：主要聚焦软件质量保障、自动化测试与跨端应用测试。</p>
 <hr />
 <h3>✨ DuarteSantos8/openGym (3817★)</h3>
 <blockquote>
@@ -657,52 +746,6 @@
 <p><strong>技术影响力</strong>：以个人开源项目为主，凭借 <code>openGym</code> 获得一定社区关注，整体属于具备早期影响力的独立开发者。
 <strong>技术栈偏好</strong>：主要使用 JavaScript，兼顾 Java，偏好 Web 应用与快速项目开发。
 <strong>核心领域</strong>：聚焦开发者工具、Web 项目及实验性应用，涉及 AI Agent 与游戏测试等方向。<strong>技术影响力</strong>：以个人开源项目为主，凭借 <code>openGym</code> 获得一定社区关注，整体属于具备早期影响力的独立开发者。</p>
-<hr />
-<h3>✨ cathrynlavery/diagram-design (30544★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它把架构图、流程图、数据图表和用户旅程等 39 类信息，直接生成带有编辑感的静态 HTML + SVG 图示，供 Claude Code、Codex 等 AI 编程工具调用。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：这是一个面向 AI 编程助手的 Diagram Design 技能与插件集合，内置架构、时序、状态机、桑基图、鱼骨图、部署图、数据库模型等 39 种图示类型。每种图示都提供浅色、深色和完整编辑风格的静态变体，生成结果不依赖 JavaScript、构建步骤或外部图片资源，也支持重绘 draw.io 和 Mermaid 图表。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：AI 生成的图表容易退化成大量通用圆角框和 Mermaid 风格，难以匹配产品或技术文档的视觉规范；项目通过固定布局语法、颜色使用规则和信息密度约束，减少开发者反复在 Figma 中调整图形的工作。对于已有 Mermaid 或 draw.io 资料，也可以在指定尺寸、格式和细节级别下重新绘制。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：使用 Claude Code、Codex、Factory Droid、Pi 等 AI 编程助手生成技术文档的开发者；需要制作架构图、数据流图、部署图、产品流程图或汇报图表，但不希望手工维护 Figma 文件的工程师和技术写作者。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：Claude Code 中执行 <code>/plugin marketplace add cathrynlavery/diagram-design</code>，随后执行 <code>/plugin install diagram-design@diagram-design</code>。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>为内部服务或数据平台绘制包含区域、主机和制品的部署图，放入架构设计文档。</li>
-<li>将数据仓库的来源、核心处理层、消费者及角色权限整理成数据流图或安全矩阵。</li>
-<li>
-<p>把产品需求中的用户阶段、操作、情绪变化和发布切片制作成用户旅程图或故事地图。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用自包含 HTML + SVG 输出，静态结果可直接在浏览器打开，无构建和外部资源依赖，适合提交到文档仓库或直接发布。它将“语义模式”和“视觉布局类型”分离，使队列、策略追踪、信任边界等语义可以复用已有图表类型，并通过 SVG <code>viewBox</code>、标题规则、数据校验和对抗性测试加强输出可靠性与可访问性。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：近期提交非常活跃，重点从新增图表类型转向质量加固和发布工程治理，包括合并已审核修正、加固桑基图和 treemap 校验、修复 YAML 与插件打包问题、完善图库同步验证，并加入针对语义动画和 OAuth 序列验证器的对抗性测试。同时仍在扩展 scatter bubble、ridgeline 等图表变体，并持续维护 Claude Code、Codex、Droid 等插件分发渠道，方向是把图表覆盖面、生成正确性和多平台安装体验一起做稳。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 明确将其定位为避免通用 Mermaid 图表风格的方案；相比 Mermaid 主要通过文本描述生成通用图形，diagram-design 更强调固定的编辑式视觉规范、品牌匹配、静态 HTML + SVG 交付和多种版式变体。但它仍支持导入并重绘 Mermaid，因此更像是视觉输出层和 AI 技能层的补充，而不是完全替代 Mermaid 的通用语法生态。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：项目创建于 2026 年 4 月，当前已获得 30544 个 Stars、1964 个 Forks，但仍处于快速演进阶段，公开 Issue 有 38 个，插件版本、图表规范和校验规则可能持续调整。README 对支持平台和图表类型说明较完整，并提供在线图库，但不同宿主的安装命令和自动更新机制不同，需要按平台配置；另外项目元数据描述写的是 38 种图表，而 README 当前列出 39 种，采用前应以仓库实际版本和图库内容为准。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以创业者和独立开发者身份形成较高社区影响力，代表性设计仓库获广泛关注，并持续输出 AI 实践经验。
-<strong>技术栈偏好</strong>：偏好 Shell、Python 与 HTML，聚焦 Codex、智能代理、自动化运维及开发流程工具。
-<strong>核心领域</strong>：主要聚焦 AI 原生创业、智能代理工作流与开发者效率工具。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
