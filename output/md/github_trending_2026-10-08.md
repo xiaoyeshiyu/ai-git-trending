@@ -195,7 +195,7 @@
 
 ---
 
-### ✨ EpicGames/raddebugger (8013★)
+### ✨ EpicGames/raddebugger (8082★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -255,7 +255,7 @@
 
 ---
 
-### ✨ storytold/artcraft (6586★)
+### ✨ storytold/artcraft (7479★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
