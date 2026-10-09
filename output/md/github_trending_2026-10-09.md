@@ -236,7 +236,7 @@
 
 ---
 
-### ✨ BerriAI/litellm (60501★)
+### ✨ BerriAI/litellm (60590★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -299,7 +299,7 @@
 
 ---
 
-### ✨ storytold/artcraft (10259★)
+### ✨ storytold/artcraft (11038★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -350,7 +350,7 @@
 
 ---
 
-### ✨ twostraws/SwiftUI-Agent-Skill (5277★)
+### ✨ twostraws/SwiftUI-Agent-Skill (5367★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
