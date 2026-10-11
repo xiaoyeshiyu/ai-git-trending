@@ -96,7 +96,7 @@
 
 ---
 
-### ✨ storytold/artcraft (16350★)
+### ✨ storytold/artcraft (17256★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
