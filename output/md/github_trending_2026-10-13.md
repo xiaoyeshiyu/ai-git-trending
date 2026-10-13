@@ -246,7 +246,7 @@
 
 ---
 
-### ✨ storytold/artcraft (24611★)
+### ✨ storytold/artcraft (25305★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -265,7 +265,7 @@
 
 ---
 
-### ✨ xtool-org/xtool (8837★)
+### ✨ xtool-org/xtool (9171★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
