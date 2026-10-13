@@ -96,6 +96,38 @@
 
 ---
 
+### ✨ debpalash/VoiceStudio (38812★)
+
+> **一句话**：在本地电脑上完成声音克隆、声音设计、视频配音、语音转写和有声书制作，把原本依赖在线语音服务的整套音频工作流集中到一个桌面应用中。
+
+- **它是什么**：VoiceStudio 是一款基于 Electron 的本地语音工作台，默认使用 `k2-fsa/OmniVoice`，支持声音克隆、文本转语音、视频配音、听写、转录、批量任务和有声书生成。项目覆盖 646 种语言，支持本地模型管理，并通过 Local API 和 MCP 接入其他应用或 AI Agent；远程服务属于可选项。
+
+- **能解决什么痛点**：需要处理敏感录音、内部会议或未公开内容时，可以把推理和音频数据留在本机，减少上传第三方服务的依赖。面对视频配音、长文本有声书和批量语音生成等任务，也不必分别拼接克隆、转写、时间轴和音频导出工具。
+
+- **适合谁用**：适合需要本地语音合成和声音克隆的内容创作者、播客制作人、配音团队及有声书制作者。也适合希望通过 Python 后端、Local API 或 MCP，把语音能力接入内部工具和 AI Agent 的开发者。
+
+- **怎么上手**：macOS/Linux 可直接执行 `curl -fsSL https://voicestudio.sh/install | sh` 安装最新 Electron 版本；从源码运行则执行 `git clone https://github.com/debpalash/VoiceStudio.git && cd VoiceStudio && bun install && bun run setup:api && bun run dev`。
+
+- **可以用在哪些场景**：为教育课程、产品演示或短视频批量制作多语言配音；把内部会议、访谈录音转成文字并生成可检索的语音资料；在本地写作或出版流程中，将长篇文本转换为有声书，并通过 MCP 交给 Agent 自动编排任务。
+
+- **技术看点**：采用 Electron 作为唯一桌面和 Web UI 外壳，Python 负责语音后端，同时支持本地模型、可选远程 Worker、Local API 和 MCP 集成。项目对硬件差异和运行稳定性投入较多，近期提交涉及 CUDA GPU 选择、Windows NVSMI 探测、端口恢复、可终止的 ASR sidecar 以及本地健康探测安全控制。
+
+- **近期动向与发展方向**：最近 20 条提交几乎全部集中在 2026-09-27 的后端稳定性、ASR 行为和 Electron 运行时修复，包括限制参考识别仅使用已安装模型、保留明确的远程 Provider 选择、修复端口被系统拒绝后的回退与恢复，以及隔离 sidecar 生命周期。近期重点明显是收敛桌面端和本地推理链路的边界、提升异常恢复能力，而不是扩展新的面向用户功能；项目当前有 79 位贡献者，更新活跃，但这批提交主要由核心维护者完成。
+
+- **同类对比**：项目明确将自己定位为开源、完全本地化的 ElevenLabs 替代方案，核心差异是本地运行和可控的模型、API、MCP 集成，而不是主要依赖云端语音服务。README 未提供与其他开源语音项目的系统性对比。
+
+- **注意事项**：首次使用需要下载语音模型，实际速度和显存、CPU、操作系统及所选引擎有关；从源码构建还需要 Node.js 22+、Bun、Rust/Cargo 和平台构建工具。项目采用 AGPL-3.0，模型另有各自许可证，商用前需要分别确认；克隆他人声音必须获得授权。项目创建于 2026-04-09、最近更新于 2026-09-27，拥有较高关注度但项目历史相对较短；README 文档覆盖安装、平台配置、引擎、性能和迁移，但 Electron 已取代旧版 Tauri，旧用户存在迁移成本。当前仅有 12 个开放 Issue，不能据此判断所有边缘平台和模型组合都已充分验证。
+
+- **GitHub**：[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：以开源个人开发者身份获得较高社区关注，代表项目 VoiceStudio 具备显著传播力。
+**技术栈偏好**：以 Python 为主，兼顾 Zig 与 Rust，偏好跨语言探索和高性能工具开发。
+**核心领域**：主要聚焦语音技术、人工智能应用及开发者工具。
+
+---
+
 ### ✨ mksglu/context-mode (24343★)
 
 > **一句话**：把 AI 编程助手读取的大段工具输出留在沙箱和索引库中，只把检索结果或计算结果送进上下文，并在会话压缩后恢复任务线索。
@@ -120,44 +152,6 @@
 **技术影响力**：Mert Köseoğlu 是一位具有较高社区可见度的独立开发者，代表项目 `context-mode` 获得大量关注，显示出较强的开源传播力。
 **技术栈偏好**：技术栈明显偏向 TypeScript，项目形态集中在现代 Web、开发者工具与 AI 相关应用方向。
 **核心领域**：主要聚焦于 AI 辅助开发、浏览器智能化工具、上下文工程与 TypeScript 生态工具建设。
-
----
-
-### ✨ storytold/artcraft (22946★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：ArtCraft is an intentional crafting engine for artists, designers, and filmmakers
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[storytold/artcraft](https://github.com/storytold/artcraft)
-
-
----
-
-### ✨ open-webui/open-webui (155285★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[open-webui/open-webui](https://github.com/open-webui/open-webui)
-
 
 ---
 
@@ -196,6 +190,30 @@
 
 ---
 
+### ✨ vercel-labs/skills (31035★)
+
+> **一句话**：用 `npx skills` 在 OpenCode、Claude Code、Codex、Cursor 等几十种编码代理之间发现、安装、复用同一套 `SKILL.md` 能力包。
+
+- **它是什么**：这是面向“agent skills”生态的 TypeScript CLI，核心是把可复用的代理指令集安装到不同编码代理的本地目录中。它支持从 GitHub、GitLab、任意 Git URL、本地路径、直接下载链接或私有仓库安装技能，也能执行 `list`、`find`、`update`、`remove`、`init` 等管理命令。
+- **能解决什么痛点**：开发者同时使用 Claude Code、Codex、Cursor、OpenCode 等代理时，技能文件路径和安装方式各不相同，容易重复维护；`skills` 把安装、更新、移除和跨代理分发统一成一套命令。另一个场景是临时使用某个技能时，可以通过 `skills use` 生成提示词或直接启动指定代理，不必先把技能永久装进本地环境。
+- **适合谁用**：适合同时使用多个编码代理的开发者和团队，尤其是需要共享代码规范、发布流程、PR 规范、设计指南等 agent 指令集的工程团队。也适合维护 `SKILL.md` 能力包的开源作者或平台方。
+- **怎么上手**：`npx skills add vercel-labs/agent-skills`
+- **可以用在哪些场景**：把团队的前端设计规范安装到 Claude Code 和 Cursor；在 CI/CD 或脚本环境里用 `-y`、`--skill`、`--agent` 非交互式分发指定技能；临时调用某个技能生成提示词，例如 `npx skills use vercel-labs/agent-skills --skill web-design-guidelines --agent claude-code`。
+- **技术看点**：项目把技能抽象为带 YAML frontmatter 的 `SKILL.md`，再通过 CLI 适配不同代理的项目级和全局目录。安装源覆盖 GitHub shorthand、完整 URL、GitLab、SSH、私有仓库、本地路径和归档下载，对团队内部私有技能库比较友好。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-09-06 到 2026-09-08，说明维护频率很高；内容包括 v1.5.24、v1.5.25 发布、支持按 commit SHA 固定安装技能、迁移已移动的技能路径，以及修复无 TTY 安装、重复技能定义、非技能目录扫描等问题。近期还合入了 fx agent、Sarvam Code agent、Droid、Kilo Code 等代理适配，发展方向明显是扩大支持的 agent 覆盖面，同时补齐安装稳定性和边界场景。
+- **同类对比**：README 未明确提到竞品或直接对标项目；从定位看，它更像 agent skills 生态的统一包管理入口，而不是某个单一编码代理的插件系统。
+- **注意事项**：项目创建于 2026-01-14，更新到 2026-09-10，增长和迭代都很快，但 1189 个 open issues 也意味着仍有不少兼容性、需求或 bug 待处理。支持 75+ 代理带来覆盖面优势，也会增加路径适配和行为一致性的维护成本；如果用于团队规范分发，建议固定版本或 commit SHA，并先在目标代理组合上验证安装路径和更新流程。
+
+- **GitHub**：[vercel-labs/skills](https://github.com/vercel-labs/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Vercel Labs 依托 Next.js 生态和多个高星项目，在前端与开发者工具社区具备显著影响力。
+**技术栈偏好**：以 TypeScript 为主，结合 Rust 与 JavaScript，偏向高性能 Web 工具、自动化与 AI Agent 方向。
+**核心领域**：主要聚焦现代 Web 开发、AI Agent 能力、预览部署与开发者体验优化。
+
+---
+
 ### ✨ lyogavin/airllm (25425★)
 
 > **一句话**：AirLLM 通过按层/按专家流式加载模型，让 70B 甚至更大参数规模的开源大模型能在低显存单卡上完成推理。
@@ -228,11 +246,11 @@
 
 ---
 
-### ✨ microsoft/BitNet (41008★)
+### ✨ storytold/artcraft (24611★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Official inference framework for 1-bit LLMs
+- **它是什么**：ArtCraft is an intentional crafting engine for artists, designers, and filmmakers
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -242,29 +260,23 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[microsoft/BitNet](https://github.com/microsoft/BitNet)
+- **GitHub**：[storytold/artcraft](https://github.com/storytold/artcraft)
 
 
 ---
 
-### ✨ Alishahryar1/free-claude-code (47739★)
+### ✨ xtool-org/xtool (8837★)
 
-> **一句话**：它把 Claude Code、Codex、OpenCode 等一堆编程代理统一接到同一套本地代理和管理界面里，让你在终端、桌面、IDE 甚至手机上，直接切换可用模型和提供商继续写代码。
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：这是一个用 Python 写的开源项目，核心目标是把多个大模型提供商和多个 coding agent 统一到 Free Claude Code（FCC）这层中间件里。它提供安装器、桌面/服务端启动器和 Admin UI，用户可以在里面配置 API key、选择模型、设置回退模型，然后把 Claude Code、Codex、Pi、OpenCode、Cline、Hermes、DeepSeek Harness、Grok Build、Muse Code 等客户端接到同一套后端。
-- **能解决什么痛点**：一是不同工具各自绑定不同模型和账号，切换时要重复配置，FCC 把这些入口收拢到一个地方；二是某个提供商限流、宕机或不可用时，项目会自动尝试下一个配置好的模型，减少中断后的手工重启和反复改配置。
-- **适合谁用**：经常在 Claude Code、Codex、OpenCode 之间切换的全栈开发者；需要同时管理多家模型供应商、又想保留本地终端工作流的工程师；以及希望在 VS Code、JetBrains、桌面端或手机上统一调用 coding agent 的个人开发者和小团队。
-- **怎么上手**：README 给出的最小安装方式是 `curl -fsSL "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.sh" | sh`，安装后 Linux 直接运行 `fcc-server`，再按需要启动对应客户端，例如 `fcc-claude` 或 `fcc-codex`。
-- **可以用在哪些场景**：在公司内同时使用多个模型供应商时，集中管理 API key 和模型白名单；当主供应商偶发故障时，自动切到备用模型继续完成一次长对话或代码生成；在终端、桌面和远程协作工具之间共享同一套代理配置，减少重复登录和复制粘贴。
-- **技术看点**：项目不只是“包一层接口”，而是把 provider、客户端、流式响应、回退策略、安装器和 Admin UI 都做成完整链路；从最近提交看，它在持续打磨流式生命周期、提供商执行与 transport 清理，说明核心关注点是稳定性和多供应商路由的一致性。
-- **近期动向与发展方向**：最近 20 条提交非常活跃，重点集中在修复和重构底层执行链路，比如流式恢复、attempt 生命周期、transport cleanup、日志抑制、安装器校验、自动模式请求控制等，同时新增了 Muse Code、DeepSeek 视觉附件转发、Poolside 支持和更多模型/提供商适配。整体看，项目正从“能连很多模型”走向“更稳地接入更多客户端和更复杂的能力”。
-- **同类对比**：README 明确提到它常被拿来和 Claude Code、Codex、OpenCode、Cline 等客户端配合使用，但没有给出正式竞品对照表；就定位看，它更像是多模型路由层和统一管理入口，而不是单一 coding agent 本身。
-- **注意事项**：项目当前 issue 数量较多（344），说明使用面广，但也意味着边界情况和兼容性问题仍在持续修；仓库更新非常频繁，功能迭代快，配置项和启动器行为可能有变化，升级前最好先看安装脚本和最近提交。README 信息很全，但涉及 provider、模型名和支持范围的内容较多，上手时仍需要按 Admin UI 逐项验证。
+- **它是什么**：Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, macOS.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以高关注度开源项目为代表，在 AI 开发者工具社区具备较强影响力。
-**技术栈偏好**：主要使用 Python 和 Go，偏好 AI 工具、机器学习及云原生基础设施开发。
-**核心领域**：聚焦 AI 编程工具、机器学习工程与 GPU 运维平台。
+- **GitHub**：[xtool-org/xtool](https://github.com/xtool-org/xtool)
