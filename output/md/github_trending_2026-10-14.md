@@ -195,7 +195,7 @@
 
 ---
 
-### ✨ ifixai-ai/iFixAi (26693★)
+### ✨ ifixai-ai/iFixAi (27178★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -249,7 +249,7 @@
 
 ---
 
-### ✨ rust-lang/rust (120026★)
+### ✨ rust-lang/rust (119917★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -268,7 +268,7 @@
 
 ---
 
-### ✨ xtool-org/xtool (10142★)
+### ✨ xtool-org/xtool (10559★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -287,7 +287,7 @@
 
 ---
 
-### ✨ ntdevlabs/tiny11builder (20051★)
+### ✨ ntdevlabs/tiny11builder (20157★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
