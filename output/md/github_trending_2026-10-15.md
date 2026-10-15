@@ -316,7 +316,7 @@
 
 ---
 
-### ✨ lightseekorg/tokenspeed (2316★)
+### ✨ lightseekorg/tokenspeed (2425★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -335,7 +335,7 @@
 
 ---
 
-### ✨ xerj-org/xerj (4849★)
+### ✨ xerj-org/xerj (5477★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
