@@ -182,33 +182,6 @@
 
 ---
 
-### ✨ akitaonrails/ai-memory (7487★)
-
-> **一句话**：把不同 AI 编程代理的工作记录、项目知识和任务交接保存为可编辑的 Markdown，让你可以在 Claude Code、Codex、Cursor 等工具之间无缝接着做。
-
-- **它是什么**：`ai-memory` 是一个用 Rust 编写的长期记忆服务，通过生命周期钩子自动记录提示词、工具调用和会话边界，并将内容整理为项目级 Markdown Wiki。它通过 MCP、全文搜索、实体与关系索引以及可选向量检索，为多个代理、设备和团队成员提供共享记忆；任务交接还采用带所有者和一次性认领语义的协议。
-- **能解决什么痛点**：开发者中断 Claude Code 后切换到 Codex 或其他代理时，不必重新解释项目架构、失败尝试和未解决问题。团队成员或另一台设备接手同一项目时，也能读取共享的项目知识，而不是依赖某个代理本地的 `MEMORY.md`。
-- **适合谁用**：经常在 Claude Code、Codex、Cursor、Gemini CLI、OpenCode 等多个代理之间切换的个人开发者；需要让多人或多台机器共享项目上下文，并希望保留 Markdown、Git 和自托管控制权的开发团队。
-- **怎么上手**：Docker 用户可直接启动本地服务：`docker run -d --name ai-memory -p 127.0.0.1:49374:49374 -v ai-memory-data:/data docker.io/akitaonrails/ai-memory:latest`，之后再用 `ai-memory install-mcp --client claude-code --apply` 接入代理。
-- **可以用在哪些场景**：
-  - 在同一个代码仓库中先用 Claude Code 分析问题，再用 Codex 继续实现，自动传递已尝试方案和待办事项。
-  - 为远程或跨设备开发环境部署一个共享服务，让办公室电脑和家用电脑恢复同一项目的上下文。
-  - 在团队内部维护项目知识库，让个人会话交接保持私有，同时将项目级架构决策、故障记录和文档共享给其他成员。
-- **技术看点**：项目采用“Git-backed Markdown 为事实来源、数据库索引为派生结果”的设计，支持手工编辑、版本管理和从文件重建索引，避免依赖不可读的二进制记忆库。默认捕获、搜索和交接均不需要 LLM，LLM 总结和向量检索作为可选能力，并提供 MCP、多用户认证、审计日志和跨平台适配。
-- **近期动向与发展方向**：最近提交高度集中在稳定性、安全性和跨平台兼容性修复，包括 JSON 密钥、Basic Auth、Windows 凭据路径脱敏，大小写不敏感文件系统处理，PowerShell 环境变量转发，以及中断时取消会话选择；同时升级 `rmcp` 至 2.2.0 以处理 MCP 传输安全公告，并补充 OpenCode 支持和文档链接。最近 20 条提交中既有维护者提交，也有多个外部贡献者参与，说明项目迭代活跃，当前重点是扩大代理覆盖面、完善 Windows 支持和收紧安全边界，而不是进行大规模架构重构。
-- **同类对比**：README 明确对比了 Mem0、LangMem、Zep、Graphiti、`mcp-memory-service`、basic-memory、Claude Code 内置记忆、Hindsight、OpenViking、Supermemory 和 LiquidLM。它的主要差异是以可编辑的 Git-backed Markdown Wiki 为源数据，默认零 LLM 调用，同时提供生命周期自动采集、跨代理交接、项目级团队共享和派生检索索引，而不是只保存事实条目、依赖向量数据库或使用托管 API。
-- **注意事项**：项目创建于 2026-05-21，但截至 2026-09-21 已有 7487 个 Stars、516 个 Forks、103 名贡献者和 17 个开放 Issue，关注度与迭代速度较高，但项目本身仍处于快速演进阶段。原生 Windows 标为 Experimental，部分代理只有 MCP-only 或社区支持；部署到局域网或团队环境时需要额外配置 Bearer Token 和用户认证。默认模式不需要 API Key，但启用 LLM 总结或向量检索会引入外部服务、凭据管理和成本；近期 `rmcp` 主版本升级也提示 MCP 集成可能存在兼容性调整风险。
-
-- **GitHub**：[akitaonrails/ai-memory](https://github.com/akitaonrails/ai-memory)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：资深开发者与技术内容创作者，在 GitHub 和开发者社区拥有较高知名度与影响力
-**技术栈偏好**：偏好 Rust、JavaScript 和 Python，重点关注 AI 工具、开发者效率与实验性项目
-**核心领域**：主要聚焦人工智能应用、AI 辅助编程、开发者工具与软件工程实践
-
----
-
 ### ✨ stablyai/orca (42457★)
 
 > **一句话**：Orca 把 Codex、Claude Code、OpenCode 等 CLI 编码代理放进同一个桌面工作台，让它们在各自独立的 Git worktree 里并行跑任务、对比结果、审查 diff 并合并代码。
@@ -292,7 +265,7 @@
 
 ---
 
-### ✨ android/skills (8610★)
+### ✨ android/skills (8695★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -311,7 +284,7 @@
 
 ---
 
-### ✨ mlabonne/llm-course (83784★)
+### ✨ mlabonne/llm-course (83916★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -330,7 +303,7 @@
 
 ---
 
-### ✨ Kruk2/jasna (2207★)
+### ✨ Kruk2/jasna (2329★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
