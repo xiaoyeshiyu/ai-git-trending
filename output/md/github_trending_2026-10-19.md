@@ -170,7 +170,7 @@
 
 ---
 
-### ✨ headroomlabs-ai/headroom (76069★)
+### ✨ headroomlabs-ai/headroom (76173★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -189,7 +189,7 @@
 
 ---
 
-### ✨ withmarbleapp/os-taxonomy (5940★)
+### ✨ withmarbleapp/os-taxonomy (6061★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -208,7 +208,7 @@
 
 ---
 
-### ✨ Kruk2/jasna (2775★)
+### ✨ Kruk2/jasna (2848★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
