@@ -205,25 +205,6 @@
 
 ---
 
-### ✨ YuJunZhiXue/dsh-purge (10592★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：DeepSeek Harness 破甲：让所有模型都能破甲，不同模型可换不同提示词；默认提示词面向国模「小码酱」。Jailbreak for every model — swap prompts per model. 求 Star 收藏 ⭐ 如要二开，请查看署名要求部分
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[YuJunZhiXue/dsh-purge](https://github.com/YuJunZhiXue/dsh-purge)
-
-
----
-
 ### ✨ anomalyco/opencode (203963★)
 
 > **一句话**：OpenCode 是一个可在终端或桌面应用中运行的开源 AI 编程代理，能够读取代码库、执行开发任务，并在 `build` 与只读 `plan` 模式之间切换。
@@ -303,7 +284,7 @@
 
 ---
 
-### ✨ headroomlabs-ai/headroom (76544★)
+### ✨ headroomlabs-ai/headroom (76673★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -363,25 +344,6 @@
 
 ---
 
-### ✨ sickn33/agentic-awesome-skills (48027★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：AAS Core is the local, agent-first control plane for complete catalog discovery, agent-owned selection, stack validation, and planning, backed by 2,600+ agentic skills. Includes CLI, local MCP, catalog, plugins, and Workbench.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills)
-
-
----
-
 ### ✨ shiyu-coder/Kronos (36887★)
 
 > **一句话**：把来自 45+ 全球交易所的 OHLCV K 线序列编码成离散 token，再由 Transformer 自回归生成未来行情路径的金融时序基础模型。
@@ -406,7 +368,7 @@
 
 ---
 
-### ✨ vllm-project/vllm (94263★)
+### ✨ vllm-project/vllm (94384★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
