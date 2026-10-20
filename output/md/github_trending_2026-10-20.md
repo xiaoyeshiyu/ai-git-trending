@@ -25,65 +25,100 @@
 
 ---
 
-### ✨ anomalyco/opencode (203963★)
+### ✨ cloudflare/security-audit-skill (5695★)
 
-> **一句话**：OpenCode 是一个可在终端或桌面应用中运行的开源 AI 编程代理，能够读取代码库、执行开发任务，并在 `build` 与只读 `plan` 模式之间切换。
+> **一句话**：它把编码代理组织成一支分阶段协作的安全审计队伍，从代码侦察、覆盖率驱动的漏洞挖掘，到独立复核和结构化报告，最终产出可机器验证的安全结论。
 
-- **它是什么**：项目以 TypeScript 编写，核心定位是开源 AI coding agent，提供终端界面、桌面应用（BETA）以及多平台安装方式。它内置 `build`、`plan` 两种代理模式，并支持通过 `Tab` 切换，同时提供 `general` 子代理处理复杂搜索和多步骤任务。
+- **它是什么**：这是一个面向 coding agent 的安全审计技能，按六个阶段处理目标代码库：建立架构与覆盖台账、分配隔离的漏洞猎手、让独立验证者尝试推翻候选问题，并生成 `findings.json`、`REPORT.md` 等结果。项目内置针对 AI/LLM、Web 协议与认证、客户端、供应链、云部署、原生二进制等多类攻击面的方法文件，并通过零依赖 Node.js 校验器验证覆盖台账和发现记录。
 
-- **能解决什么痛点**：开发者不必反复在编辑器、终端和文档之间切换，就能让代理直接围绕现有代码库进行分析和开发。对于需要限制修改权限的代码审查、问题定位或方案设计，`plan` 模式可以降低代理误改文件的风险。
+- **能解决什么痛点**：普通 AI 代码审查容易重复检查热门文件、遗漏未覆盖的攻击面，也难以说明“哪些地方已经检查过”。该项目用 `coverage-ledger.json` 记录检查范围，并把发现明确区分为 `confirmed`、`needs_validation` 和 `rejected`，减少未经证实的漏洞结论直接进入报告。
 
-- **适合谁用**：希望在终端中使用 AI 辅助开发、又不想被单一闭源 IDE 绑定的程序员。也适合需要在本地代码库中进行探索、重构、调试和自动化修改的个人开发者与团队。
+- **适合谁用**：适合希望让 AI coding agent 执行系统化安全审计的安全工程师、产品安全团队和漏洞研究人员；也适合维护 Web 服务、LLM 应用、云基础设施或原生程序，并需要保留可复核审计记录的开发团队。
 
-- **怎么上手**：macOS 和 Linux 推荐使用 Homebrew 安装：`brew install anomalyco/tap/opencode`，也可以直接执行：`curl -fsSL https://opencode.ai/install | bash`。
+- **怎么上手**：安装技能后，在目标代码库中直接发起审计：
+  然后输入：`security audit this codebase`
 
 - **可以用在哪些场景**：
-  - 在大型 TypeScript 项目中让代理先用 `plan` 模式梳理模块依赖，再切换到 `build` 模式实施修改。
-  - 为遗留代码补充功能或修复缺陷，让代理结合代码库上下文搜索相关实现并完成多文件改动。
-  - 在终端服务器或开发容器中运行 AI 编程代理，避免依赖完整图形化 IDE；桌面版则适合本地开发工作流。
+  - 对接入大模型、插件或工具调用的应用，检查提示注入、代理权限和输出处理问题。
+  - 发布 HTTP API、认证服务或反向代理前，检查请求解析、缓存、认证协议和边界处理缺陷。
+  - 审计包含 CI/CD、容器、依赖更新、签名发布流程的供应链，核对构建与部署环节的安全风险。
 
-- **技术看点**：项目采用 TypeScript，并同时覆盖 TUI、Web/Console 和桌面应用，安装渠道包括 npm、Homebrew、Scoop、Chocolatey、AUR、Nix 等，跨平台分发较完整。代理权限被明确拆分为可写的 `build` 模式和默认只读的 `plan` 模式，近期提交还显示其持续完善多模型供应商、BYOK、用量统计和配额管理能力。
+- **技术看点**：项目没有只依赖模型自由发挥，而是用多阶段代理编排、覆盖台账、独立验证者和 JSON Schema 约束形成可追溯流程。它还要求在操作系统强制沙箱中执行目标代码，并在缺少网络隔离、资源限制和路径控制时将结论保留为 `needs_validation`，体现了对 AI 驱动动态审计风险的明确边界。
 
-- **近期动向与发展方向**：项目近期保持高强度开发，最近 20 条提交几乎全部集中在 2026 年 9 月 3 至 4 日，既有配额重置、BYOK 路由、Copilot 会话标识等新功能，也有统计查询性能、模型供应商识别、用量边界和 TUI 文本显示等修复。提交中多次出现 `opencode-agent[bot]` 的生成任务，同时有多位社区贡献者参与，说明项目正在从核心代理能力扩展到模型接入、控制台运营和产品化基础设施。
+- **近期动向与发展方向**：项目近期明显处于快速完善工作流阶段，9 月重点重做了审计流程、发现记录契约和校验器，并进一步澄清完整审计模式与指导模式的使用边界。7 月连续扩展了 AI/LLM、Web 协议认证、客户端、内存安全、二进制和内核等攻击类别，同时修复技能目录兼容性和 trace 步骤顺序问题；14 条提交中包含多个外部贡献者，说明项目正在通过贡献补充攻击面，但核心维护者仍较集中。整体方向是从单一审计提示集合演进为带验证、记录和报告约束的审计框架。
 
-- **同类对比**：README 未明确提及竞品或直接对标项目，暂无明显同类对标。
+- **同类对比**：README 未明确列出竞品或直接对标项目。相较于普通安全审查提示词，该项目更强调覆盖范围记录、独立反证、机器可读发现和多次运行之间的证据继承。
 
-- **注意事项**：项目创建于 2025 年 4 月 30 日，但已经达到 203,963 Stars、26,621 Forks 和 1,010 位贡献者，热度与社区规模很高；同时存在 5,705 个 Open Issues，说明功能迭代范围大、问题积累也较多。桌面应用仍标注为 BETA，且近期版本、模型供应商、统计接口和配额逻辑变化频繁，生产环境使用时应锁定版本并关注发布说明；README 提供了丰富的安装入口和多语言链接，但具体配置与高级用法仍需进一步查阅官方文档。
+- **注意事项**：项目创建时间较近，虽然已有 5695 个 Stars，但 Contributor Count 仅 4，不能仅凭关注度判断其长期成熟度。完整审计依赖支持工具调用和并行子代理的 coding agent，并要求 Node.js 运行校验器；目标代码执行还必须配置具备网络禁用、环境清理、资源限制和写入路径控制能力的操作系统级沙箱。攻击类别、发现格式和审计工作流仍在快速演进，升级时应重点检查 `SKILL.md`、`report-schema.json` 及校验器是否带来流程或输出格式变化。
 
-- **GitHub**：[anomalyco/opencode](https://github.com/anomalyco/opencode)
+- **GitHub**：[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：以 OpenCode、SST 等高关注度项目为代表，在 TypeScript 和开发者工具社区具有较强影响力。
-**技术栈偏好**：高度偏好 TypeScript，聚焦云基础设施、开发工具、终端界面与身份认证等现代 JavaScript 生态技术。
-**核心领域**：主要聚焦开发者基础设施与云原生应用开发工具。
+**技术影响力**：全球领先的互联网基础设施组织，在网络性能、安全与边缘计算领域具有广泛社区影响力。
+**技术栈偏好**：偏好 Rust、Go 与 TypeScript，重视高性能网络、云原生服务及边缘应用开发。
+**核心领域**：主要聚焦网络基础设施、边缘计算、Web 安全与开发者平台。
 
 ---
 
-### ✨ akitaonrails/ai-memory (7487★)
+### ✨ stablyai/orca (42457★)
 
-> **一句话**：把不同 AI 编程代理的工作记录、项目知识和任务交接保存为可编辑的 Markdown，让你可以在 Claude Code、Codex、Cursor 等工具之间无缝接着做。
+> **一句话**：Orca 把 Codex、Claude Code、OpenCode 等 CLI 编码代理放进同一个桌面工作台，让它们在各自独立的 Git worktree 里并行跑任务、对比结果、审查 diff 并合并代码。
 
-- **它是什么**：`ai-memory` 是一个用 Rust 编写的长期记忆服务，通过生命周期钩子自动记录提示词、工具调用和会话边界，并将内容整理为项目级 Markdown Wiki。它通过 MCP、全文搜索、实体与关系索引以及可选向量检索，为多个代理、设备和团队成员提供共享记忆；任务交接还采用带所有者和一次性认领语义的协议。
-- **能解决什么痛点**：开发者中断 Claude Code 后切换到 Codex 或其他代理时，不必重新解释项目架构、失败尝试和未解决问题。团队成员或另一台设备接手同一项目时，也能读取共享的项目知识，而不是依赖某个代理本地的 `MEMORY.md`。
-- **适合谁用**：经常在 Claude Code、Codex、Cursor、Gemini CLI、OpenCode 等多个代理之间切换的个人开发者；需要让多人或多台机器共享项目上下文，并希望保留 Markdown、Git 和自托管控制权的开发团队。
-- **怎么上手**：Docker 用户可直接启动本地服务：`docker run -d --name ai-memory -p 127.0.0.1:49374:49374 -v ai-memory-data:/data docker.io/akitaonrails/ai-memory:latest`，之后再用 `ai-memory install-mcp --client claude-code --apply` 接入代理。
-- **可以用在哪些场景**：
-  - 在同一个代码仓库中先用 Claude Code 分析问题，再用 Codex 继续实现，自动传递已尝试方案和待办事项。
-  - 为远程或跨设备开发环境部署一个共享服务，让办公室电脑和家用电脑恢复同一项目的上下文。
-  - 在团队内部维护项目知识库，让个人会话交接保持私有，同时将项目级架构决策、故障记录和文档共享给其他成员。
-- **技术看点**：项目采用“Git-backed Markdown 为事实来源、数据库索引为派生结果”的设计，支持手工编辑、版本管理和从文件重建索引，避免依赖不可读的二进制记忆库。默认捕获、搜索和交接均不需要 LLM，LLM 总结和向量检索作为可选能力，并提供 MCP、多用户认证、审计日志和跨平台适配。
-- **近期动向与发展方向**：最近提交高度集中在稳定性、安全性和跨平台兼容性修复，包括 JSON 密钥、Basic Auth、Windows 凭据路径脱敏，大小写不敏感文件系统处理，PowerShell 环境变量转发，以及中断时取消会话选择；同时升级 `rmcp` 至 2.2.0 以处理 MCP 传输安全公告，并补充 OpenCode 支持和文档链接。最近 20 条提交中既有维护者提交，也有多个外部贡献者参与，说明项目迭代活跃，当前重点是扩大代理覆盖面、完善 Windows 支持和收紧安全边界，而不是进行大规模架构重构。
-- **同类对比**：README 明确对比了 Mem0、LangMem、Zep、Graphiti、`mcp-memory-service`、basic-memory、Claude Code 内置记忆、Hindsight、OpenViking、Supermemory 和 LiquidLM。它的主要差异是以可编辑的 Git-backed Markdown Wiki 为源数据，默认零 LLM 调用，同时提供生命周期自动采集、跨代理交接、项目级团队共享和派生检索索引，而不是只保存事实条目、依赖向量数据库或使用托管 API。
-- **注意事项**：项目创建于 2026-05-21，但截至 2026-09-21 已有 7487 个 Stars、516 个 Forks、103 名贡献者和 17 个开放 Issue，关注度与迭代速度较高，但项目本身仍处于快速演进阶段。原生 Windows 标为 Experimental，部分代理只有 MCP-only 或社区支持；部署到局域网或团队环境时需要额外配置 Bearer Token 和用户认证。默认模式不需要 API Key，但启用 LLM 总结或向量检索会引入外部服务、凭据管理和成本；近期 `rmcp` 主版本升级也提示 MCP 集成可能存在兼容性调整风险。
+- **它是什么**：Orca 是一个面向多代理编码流程的 AI 开发环境，核心不是替代某个模型，而是把多个可在终端运行的编码代理统一编排起来。它支持并行 worktree、内置终端分屏、GitHub/Linear 任务流、远程 SSH worktree、AI diff 批注、移动端伴随应用和 CLI 自动化，覆盖从派发任务到审查提交的完整链路。
+- **能解决什么痛点**：当开发者同时试跑多个代理方案时，常见问题是终端窗口、Git 分支、diff 审查和上下文分散在不同地方，最后很难判断哪份结果可合并。Orca 的价值在于把每个代理隔离到独立 worktree，并把运行状态、文件变更、任务来源和审查动作集中到一个界面里。
+- **适合谁用**：适合已经在重度使用 Claude Code、Codex、OpenCode、Cursor CLI 等代理的全栈或前端工程师；也适合需要在远程机器上跑多路编码任务、并统一查看结果的团队开发者和工程负责人。
+- **怎么上手**：[Download Orca](https://onorca.dev/download)。README 未提供命令行安装示例，主要入口是桌面端下载；移动端可通过 iOS App Store、TestFlight 或 Android APK 使用伴随应用。
+- **可以用在哪些场景**：同一个需求同时交给 3-5 个编码代理实现，然后在独立 worktree 中比较 diff 并选择合并；在远程高性能服务器上通过 SSH worktree 跑长任务，同时在本机编辑和审查；从 GitHub PR、Issue 或 Linear 任务直接打开对应工作区，让代理处理修复、补测试或改 UI。
+- **技术看点**：项目使用 TypeScript 构建跨平台桌面/移动/远程协同体验，README 明确支持 macOS、Windows、Linux，并集成 WebGL 终端渲染、Chromium 设计模式、Git worktree 隔离和 CLI 自动化。它的设计重点在“代理编排层”，兼容任何能在终端运行的 CLI agent，而不是绑定单一模型供应商。
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-11，说明维护节奏非常高频。提交内容以性能优化和稳定性修复为主，包括远程会话挂起、隐藏面板减少重复刷新、SQLite prepared statement 缓存、SSH diff 复用 OID、renderer 状态缓存、e2e 修复和输入校验；新增功能较小，如 quick command 复制按钮、远程 workspace 按创建设备过滤。整体方向是在已有功能面较宽的基础上，持续打磨远程、多窗口、多 worktree 场景下的性能和可靠性。
+- **同类对比**：README 明确提到它可运行 Claude Code、Codex、OpenCode、Grok、Cursor、GitHub Copilot CLI 等代理；差异点不是提供单一编码代理能力，而是把这些 CLI agent 并排编排、隔离执行并集中审查。
+- **注意事项**：项目创建时间为 2026-03-17，时间较新但增长很快，已有 42457 stars、325 位贡献者，同时 open issues 达 3529，说明需求和反馈量很大，使用时要预期较高的迭代频率和潜在行为变化。近期提交中大量修复 e2e、renderer、remote、UTF-8、worktree poller 等细节，也侧面说明复杂场景仍在快速稳定中；适合愿意跟随日更节奏的团队先在非关键流程中试用。
 
-- **GitHub**：[akitaonrails/ai-memory](https://github.com/akitaonrails/ai-memory)
+- **GitHub**：[stablyai/orca](https://github.com/stablyai/orca)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：资深开发者与技术内容创作者，在 GitHub 和开发者社区拥有较高知名度与影响力
-**技术栈偏好**：偏好 Rust、JavaScript 和 Python，重点关注 AI 工具、开发者效率与实验性项目
-**核心领域**：主要聚焦人工智能应用、AI 辅助编程、开发者工具与软件工程实践
+**技术影响力**：Stably 凭借高星 TypeScript 项目 `orca` 在开源社区具备显著可见度，但整体组织规模仍偏中小型。
+**技术栈偏好**：主要使用 TypeScript 与 JavaScript，技术方向偏向前端/Node.js 生态及自动化工具链。
+**核心领域**：核心聚焦 AI Agent、协作工具集成与开发者自动化基础设施。
+
+---
+
+### ✨ DietrichGebert/ponytail (149049★)
+
+> **一句话**：Ponytail 把“先复用原有能力、能用原生 HTML 就不引入组件、只写完成任务所需代码”的资深开发者习惯，注入 Claude Code、Codex、Cursor 等 AI 编程代理。
+
+- **它是什么**：这是一个面向 AI coding agent 的规则集、技能和生命周期钩子集合，而不是传统代码库或独立模型。它要求代理先判断需求是否必要，再依次尝试复用现有代码、标准库、平台原生能力和已安装依赖，最后才编写最小实现；同时明确不牺牲校验、错误处理、安全性和无障碍支持。
+
+- **能解决什么痛点**：
+  - AI 代理处理简单需求时容易过度设计，例如为了日期选择器引入 flatpickr、包装组件和额外样式，而 Ponytail 会优先生成原生的 ``。
+  - 代理经常重复实现已有功能、堆叠依赖或留下大量无必要代码，增加审查、维护、Token 消耗和运行成本。
+
+- **适合谁用**：经常使用 Claude Code、Codex、Cursor、GitHub Copilot CLI、Gemini CLI、OpenCode 等代理开发真实项目的前后端开发者；尤其适合希望控制 AI 生成代码规模、依赖数量和变更范围的团队。
+
+- **怎么上手**：Claude Code 可直接执行 `/plugin marketplace add DietrichGebert/ponytail`，再执行 `/plugin install ponytail@ponytail`；Codex 可使用 `codex plugin marketplace add DietrichGebert/ponytail` 和 `codex plugin add ponytail@ponytail`。
+
+- **可以用在哪些场景**：
+  - 在 FastAPI + React 等已有全栈项目中，让代理优先复用现有组件和接口，避免为小功能引入新的库或抽象层。
+  - 让 AI 为表单、日期选择、颜色选择等浏览器已有能力的需求直接使用原生 HTML，而不是生成一套定制组件。
+  - 在多种 AI 编程客户端之间统一“最小实现但不跳过安全检查”的开发规范，并通过 hooks 在每轮交互中自动注入规则。
+
+- **技术看点**：项目采用跨代理适配器设计，通过插件、扩展、`AGENTS.md`、技能目录和生命周期 hooks 接入不同客户端，目前 README 标注支持 20 个 agents。其核心不是简单追加“少写代码”的提示词，而是用 YAGNI、复用、标准库、原生能力、依赖和最小实现组成决策阶梯，并保留安全、数据丢失处理、输入校验和无障碍等保护项。
+
+- **近期动向与发展方向**：近期开发重点从核心规则扩展到客户端生态和发布维护。2026 年 9 月发布 v4.10.0，并新增 Cursor 原生 `hooks.json` 支持；此前还加入 Grok Build 适配、修复 VS Code Copilot 检测和 Claude Marketplace 校验问题。最近 20 条提交中多数为 README、Logo 和 Trendshift 徽章调整，功能提交相对集中在适配器与 hooks；66 名贡献者说明已有一定社区参与，但近期提交仍主要由项目作者完成。
+
+- **同类对比**：README 将 `caveman` 和“YAGNI + one-liners”提示词作为对照组。Ponytail 强调先理解代码和真实流程，再选择最小实现，并宣称在其基准测试中相比无技能基线平均减少 54% 代码、22% Token、20% 成本和 27% 时间，同时保持 100% 安全通过率；这些数据来自项目自测，使用时仍应结合自身模型和代码库复验。
+
+- **注意事项**：项目创建和更新时间元数据分别为 2026-06-12 与 2026-09-30，版本演进较快，跨客户端安装方式和 hooks 行为可能随代理平台变化。当前有 319 个开放 Issue，虽然更新活跃，但也意味着兼容性和边缘场景仍在持续处理；某些集成要求 Node.js 位于非交互 shell 的 `PATH` 中。项目规则会直接影响代理的代码生成策略，启用前应在团队项目中验证其对复杂需求、必要抽象和架构性改动的判断，不能把“少写代码”理解成无条件压缩实现。
+
+- **GitHub**：[DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有较高关注度，代表仓库获得广泛社区关注，具备一定技术传播影响力
+**技术栈偏好**：以 JavaScript 为主，辅以 Python，偏好 Web 开发与轻量级项目实践
+**核心领域**：主要聚焦开源软件、Web 技术与个人开发者项目生态
 
 ---
 
@@ -146,31 +181,129 @@
 
 ---
 
-### ✨ stablyai/orca (42457★)
+### ✨ Graphify-Labs/graphify (83730★)
 
-> **一句话**：Orca 把 Codex、Claude Code、OpenCode 等 CLI 编码代理放进同一个桌面工作台，让它们在各自独立的 Git worktree 里并行跑任务、对比结果、审查 diff 并合并代码。
+> **一句话**：在 AI 编程助手里输入 `/graphify`，它会把代码、数据库 schema、脚本、文档、图片和视频映射成可点击、可查询的知识图谱，让你按关系追踪项目而不是逐文件 grep。
 
-- **它是什么**：Orca 是一个面向多代理编码流程的 AI 开发环境，核心不是替代某个模型，而是把多个可在终端运行的编码代理统一编排起来。它支持并行 worktree、内置终端分屏、GitHub/Linear 任务流、远程 SSH worktree、AI diff 批注、移动端伴随应用和 CLI 自动化，覆盖从派发任务到审查提交的完整链路。
-- **能解决什么痛点**：当开发者同时试跑多个代理方案时，常见问题是终端窗口、Git 分支、diff 审查和上下文分散在不同地方，最后很难判断哪份结果可合并。Orca 的价值在于把每个代理隔离到独立 worktree，并把运行状态、文件变更、任务来源和审查动作集中到一个界面里。
-- **适合谁用**：适合已经在重度使用 Claude Code、Codex、OpenCode、Cursor CLI 等代理的全栈或前端工程师；也适合需要在远程机器上跑多路编码任务、并统一查看结果的团队开发者和工程负责人。
-- **怎么上手**：[Download Orca](https://onorca.dev/download)。README 未提供命令行安装示例，主要入口是桌面端下载；移动端可通过 iOS App Store、TestFlight 或 Android APK 使用伴随应用。
-- **可以用在哪些场景**：同一个需求同时交给 3-5 个编码代理实现，然后在独立 worktree 中比较 diff 并选择合并；在远程高性能服务器上通过 SSH worktree 跑长任务，同时在本机编辑和审查；从 GitHub PR、Issue 或 Linear 任务直接打开对应工作区，让代理处理修复、补测试或改 UI。
-- **技术看点**：项目使用 TypeScript 构建跨平台桌面/移动/远程协同体验，README 明确支持 macOS、Windows、Linux，并集成 WebGL 终端渲染、Chromium 设计模式、Git worktree 隔离和 CLI 自动化。它的设计重点在“代理编排层”，兼容任何能在终端运行的 CLI agent，而不是绑定单一模型供应商。
-- **近期动向与发展方向**：最近 20 条提交全部集中在 2026-08-11，说明维护节奏非常高频。提交内容以性能优化和稳定性修复为主，包括远程会话挂起、隐藏面板减少重复刷新、SQLite prepared statement 缓存、SSH diff 复用 OID、renderer 状态缓存、e2e 修复和输入校验；新增功能较小，如 quick command 复制按钮、远程 workspace 按创建设备过滤。整体方向是在已有功能面较宽的基础上，持续打磨远程、多窗口、多 worktree 场景下的性能和可靠性。
-- **同类对比**：README 明确提到它可运行 Claude Code、Codex、OpenCode、Grok、Cursor、GitHub Copilot CLI 等代理；差异点不是提供单一编码代理能力，而是把这些 CLI agent 并排编排、隔离执行并集中审查。
-- **注意事项**：项目创建时间为 2026-03-17，时间较新但增长很快，已有 42457 stars、325 位贡献者，同时 open issues 达 3529，说明需求和反馈量很大，使用时要预期较高的迭代频率和潜在行为变化。近期提交中大量修复 e2e、renderer、remote、UTF-8、worktree poller 等细节，也侧面说明复杂场景仍在快速稳定中；适合愿意跟随日更节奏的团队先在非关键流程中试用。
+- **它是什么**：Graphify 是一个面向 Claude Code、Codex、Cursor、Gemini CLI 等 AI 编程助手的技能和 Python CLI。它会扫描项目目录，把源码 AST、跨文件调用、导入、继承关系、文档引用、注释 rationale 以及多媒体语义信息汇总到同一张图里，并输出 `graph.html`、`GRAPH_REPORT.md` 和 `graph.json`。生成后的图可以搜索节点、解释概念、查询问题，也可以追踪两个概念之间的最短路径。
+- **能解决什么痛点**：大型代码库里，开发者常常不知道某个类、接口、SQL 表或脚本到底和哪些模块相互依赖，纯文本搜索只能找到关键词，难以看清调用链和跨文件关系。对包含代码、数据库 schema、Shell/R 脚本、设计文档甚至图片视频资料的项目，它把分散信息统一成图，适合做接手项目、排查影响范围和梳理系统边界。
+- **适合谁用**：适合经常接手陌生或大型仓库的后端、全栈、平台工程师，也适合维护多语言项目、数据管道、内部工具链的团队。已经在使用 Claude Code、Cursor、Codex、Gemini CLI 或 GitHub Copilot 的开发者，上手路径会更短。
+- **怎么上手**：`uv tool install graphifyy && graphify install`，然后在 AI 编程助手里运行 `/graphify .`。
+- **可以用在哪些场景**：接手 FastAPI、Rails、Node 等大型服务时，先生成交互式 `graph.html` 查看核心节点和子系统社区；重构某个类、API 或数据库表前，用 `graphify path A B` 和 `graphify explain "概念名"` 查影响链路；给内部项目补文档时，用 `GRAPH_REPORT.md` 快速整理关键概念、异常连接和后续可追问的问题。
+- **技术看点**：代码解析主要基于 tree-sitter AST，本地完成、无需 LLM，关系边会标注 `EXTRACTED` 或 `INFERRED`，便于区分源码显式关系和解析推断关系。它明确不是向量索引，不依赖 embedding 或 vector store，而是输出可遍历的图结构，并支持 Leiden 社区发现、路径查询和节点解释。
+- **近期动向与发展方向**：最近 20 条提交几乎都集中在稳定性和边界条件修复，包括缓存写入作用域、AST cache 路径、GraphML 导出、worktree 与 `.git/info/exclude` 处理、管道提前关闭、查询日志默认关闭、跨文件脚本链接和 Ruby `.rake` 提取等。项目更新非常密集，且提交作者不止一人，说明社区维护活跃；当前阶段更像是在快速扩大适配面后，对路径解析、缓存一致性、导出兼容性和 CLI 可靠性做集中打磨。
+- **同类对比**：README 明确强调它不是 mem0、supermemory 或 dense RAG 这类记忆/检索系统：Graphify 不走向量库路线，而是构建可解释、可遍历的知识图谱。README 中的基准显示它在 LOCOMO recall@10、LongMemEval-S QA accuracy 等指标上与这些系统做了对比，但具体效果仍应以自己的代码库复测为准。
+- **注意事项**：项目创建于 2026-04-03，但已经有 83730 stars、146 位贡献者和 488 个 open issues，热度很高、迭代很快，也意味着接口和行为仍可能频繁调整。PyPI 包名是 `graphifyy` 而不是 `graphify`，安装时容易踩坑；代码解析本地完成，但文档、PDF、图片和视频的语义处理会使用助手模型或配置的 API key，需要注意隐私和成本边界。近期提交大量修复缓存、路径和导出问题，生产环境接入前建议锁定版本并先在代表性仓库上验证输出质量。
 
-- **GitHub**：[stablyai/orca](https://github.com/stablyai/orca)
+- **GitHub**：[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Stably 凭借高星 TypeScript 项目 `orca` 在开源社区具备显著可见度，但整体组织规模仍偏中小型。
-**技术栈偏好**：主要使用 TypeScript 与 JavaScript，技术方向偏向前端/Node.js 生态及自动化工具链。
-**核心领域**：核心聚焦 AI Agent、协作工具集成与开发者自动化基础设施。
+**技术影响力**：Graphify Labs 虽成立时间很短、仓库数量有限，但凭借 graphify 项目的高星标已在开源社区获得显著关注。
+**技术栈偏好**：其技术栈明显偏向 Python，可能聚焦于数据处理、图谱建模或开发者工具类方向。
+**核心领域**：主要聚焦于以 Graphify 为核心的图数据、知识图谱或可视化相关技术领域。
 
 ---
 
-### ✨ headroomlabs-ai/headroom (76338★)
+### ✨ YuJunZhiXue/dsh-purge (10592★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：DeepSeek Harness 破甲：让所有模型都能破甲，不同模型可换不同提示词；默认提示词面向国模「小码酱」。Jailbreak for every model — swap prompts per model. 求 Star 收藏 ⭐ 如要二开，请查看署名要求部分
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[YuJunZhiXue/dsh-purge](https://github.com/YuJunZhiXue/dsh-purge)
+
+
+---
+
+### ✨ anomalyco/opencode (203963★)
+
+> **一句话**：OpenCode 是一个可在终端或桌面应用中运行的开源 AI 编程代理，能够读取代码库、执行开发任务，并在 `build` 与只读 `plan` 模式之间切换。
+
+- **它是什么**：项目以 TypeScript 编写，核心定位是开源 AI coding agent，提供终端界面、桌面应用（BETA）以及多平台安装方式。它内置 `build`、`plan` 两种代理模式，并支持通过 `Tab` 切换，同时提供 `general` 子代理处理复杂搜索和多步骤任务。
+
+- **能解决什么痛点**：开发者不必反复在编辑器、终端和文档之间切换，就能让代理直接围绕现有代码库进行分析和开发。对于需要限制修改权限的代码审查、问题定位或方案设计，`plan` 模式可以降低代理误改文件的风险。
+
+- **适合谁用**：希望在终端中使用 AI 辅助开发、又不想被单一闭源 IDE 绑定的程序员。也适合需要在本地代码库中进行探索、重构、调试和自动化修改的个人开发者与团队。
+
+- **怎么上手**：macOS 和 Linux 推荐使用 Homebrew 安装：`brew install anomalyco/tap/opencode`，也可以直接执行：`curl -fsSL https://opencode.ai/install | bash`。
+
+- **可以用在哪些场景**：
+  - 在大型 TypeScript 项目中让代理先用 `plan` 模式梳理模块依赖，再切换到 `build` 模式实施修改。
+  - 为遗留代码补充功能或修复缺陷，让代理结合代码库上下文搜索相关实现并完成多文件改动。
+  - 在终端服务器或开发容器中运行 AI 编程代理，避免依赖完整图形化 IDE；桌面版则适合本地开发工作流。
+
+- **技术看点**：项目采用 TypeScript，并同时覆盖 TUI、Web/Console 和桌面应用，安装渠道包括 npm、Homebrew、Scoop、Chocolatey、AUR、Nix 等，跨平台分发较完整。代理权限被明确拆分为可写的 `build` 模式和默认只读的 `plan` 模式，近期提交还显示其持续完善多模型供应商、BYOK、用量统计和配额管理能力。
+
+- **近期动向与发展方向**：项目近期保持高强度开发，最近 20 条提交几乎全部集中在 2026 年 9 月 3 至 4 日，既有配额重置、BYOK 路由、Copilot 会话标识等新功能，也有统计查询性能、模型供应商识别、用量边界和 TUI 文本显示等修复。提交中多次出现 `opencode-agent[bot]` 的生成任务，同时有多位社区贡献者参与，说明项目正在从核心代理能力扩展到模型接入、控制台运营和产品化基础设施。
+
+- **同类对比**：README 未明确提及竞品或直接对标项目，暂无明显同类对标。
+
+- **注意事项**：项目创建于 2025 年 4 月 30 日，但已经达到 203,963 Stars、26,621 Forks 和 1,010 位贡献者，热度与社区规模很高；同时存在 5,705 个 Open Issues，说明功能迭代范围大、问题积累也较多。桌面应用仍标注为 BETA，且近期版本、模型供应商、统计接口和配额逻辑变化频繁，生产环境使用时应锁定版本并关注发布说明；README 提供了丰富的安装入口和多语言链接，但具体配置与高级用法仍需进一步查阅官方文档。
+
+- **GitHub**：[anomalyco/opencode](https://github.com/anomalyco/opencode)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：以 OpenCode、SST 等高关注度项目为代表，在 TypeScript 和开发者工具社区具有较强影响力。
+**技术栈偏好**：高度偏好 TypeScript，聚焦云基础设施、开发工具、终端界面与身份认证等现代 JavaScript 生态技术。
+**核心领域**：主要聚焦开发者基础设施与云原生应用开发工具。
+
+---
+
+### ✨ msitarzewski/agency-agents (157382★)
+
+> **一句话**：它把前端、后端、DevOps、安全、数据、产品和社区运营等岗位整理成一套带有明确人格、工作流程、交付物和验收标准的 AI 专家角色，可直接安装到多种编码助手中使用。
+
+- **它是什么**：这是一个以 Markdown 为主的 AI Agent 角色库，每个 Agent 都描述了自己的专业范围、沟通方式、执行流程、代码或文档交付物以及成功指标。项目提供脚本和桌面应用，可将这些角色安装或转换到 Claude Code、Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot 等工具中，也可以直接阅读文件并复制到自己的工作流里。
+- **能解决什么痛点**：面对“帮我做个前端页面”这类宽泛任务时，通用模型容易遗漏性能、可维护性、测试或验收标准；使用专门的 Frontend Developer、Code Reviewer、SRE 等角色，可以预先约束任务视角和输出方式。团队还可以按工程、安全等部门批量安装角色，避免每次在不同 AI 工具中手动维护提示词和配置。
+- **适合谁用**：使用 Claude Code、Cursor、Codex、Gemini CLI 等 AI 编程工具的个人开发者和小型团队；需要把代码审查、数据库优化、事件响应、技术写作等岗位流程沉淀为可复用 AI 角色的工程团队。
+- **怎么上手**：克隆仓库后，直接将工程团队 Agent 安装到 Claude Code：
+- **可以用在哪些场景**：
+  - 搭建 React、Vue 或 Angular 页面时调用 Frontend Developer，结合性能指标和组件实现要求完成页面开发。
+  - 线上故障发生后调用 Incident Response Commander，按事件管理、值班响应和复盘流程组织处理。
+  - 在 PostgreSQL 或 MySQL 查询变慢时调用 Database Optimizer，围绕索引、查询计划和迁移方案定位问题。
+- **技术看点**：项目将 Agent 定义为可读、可版本控制的 Markdown 文件，并通过 `install.sh`、`convert.sh` 和运行手册实现多工具分发，而不是把角色逻辑锁定在单一平台。近期还在持续完善转换产物、运行手册和测试校验，说明它在尝试把提示词集合维护成可验证、可批量安装的内容基础设施。
+- **近期动向与发展方向**：最近提交高度集中在 2026 年 10 月 4 日，短时间内合并了 49 个 PR，并修复了 Markdown 代码围栏解析、主题保持、混合搜索绑定、转录说话人标签、低动态效果适配、日志凭据脱敏和 JWT 校验等问题。提交内容以内容批处理、兼容性修复、测试校验和示例质量修正为主，暂未看到大型架构重构；106 名贡献者和连续合并的大量 PR 表明社区参与活跃，项目方向正在从扩充 Agent 数量转向提升内容质量、工具兼容性和安装可靠性。
+- **同类对比**：暂无明显同类对标。项目 README 明确强调的是跨 Claude Code、Cursor、Codex、Gemini CLI 等工具安装和转换，这些工具属于承载 Agent 的平台，并非项目直接声称的竞品。
+- **注意事项**：项目创建时间为 2025-10-13，但目前已达到 157382 Stars、25382 Forks，规模增长很快；同时有 183 个 Open Issues，角色内容和多工具转换结果仍需要持续维护。上手依赖 Shell 脚本、目标工具目录结构及本地环境，批量安装前应先用 `--dry-run` 或限制团队范围；OpenCode 当前约只能注册 119 个 Agent，超过限制时会静默丢弃部分角色，README 已提供相应警告。由于 Agent 行为主要由角色定义和示例约束，实际输出仍受底层模型、平台能力和版本变化影响，不应把“Production-Ready”直接等同于无需人工审查。
+
+- **GitHub**：[msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)### ✨ msitarzewski/agency-agents (157382★)
+
+> **一句话**：它把前端、后端、DevOps、安全、数据、产品和社区运营等岗位整理成一套带有明确人格、工作流程、交付物和验收标准的 AI 专家角色，可直接安装到多种编码助手中使用。
+
+- **它是什么**：这是一个以 Markdown 为主的 AI Agent 角色库，每个 Agent 都描述了自己的专业范围、沟通方式、执行流程、代码或文档交付物以及成功指标。项目提供脚本和桌面应用，可将这些角色安装或转换到 Claude Code、Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot 等工具中，也可以直接阅读文件并复制到自己的工作流里。
+- **能解决什么痛点**：面对“帮我做个前端页面”这类宽泛任务时，通用模型容易遗漏性能、可维护性、测试或验收标准；使用专门的 Frontend Developer、Code Reviewer、SRE 等角色，可以预先约束任务视角和输出方式。团队还可以按工程、安全等部门批量安装角色，避免每次在不同 AI 工具中手动维护提示词和配置。
+- **适合谁用**：使用 Claude Code、Cursor、Codex、Gemini CLI 等 AI 编程工具的个人开发者和小型团队；需要把代码审查、数据库优化、事件响应、技术写作等岗位流程沉淀为可复用 AI 角色的工程团队。
+- **怎么上手**：克隆仓库后，直接将工程团队 Agent 安装到 Claude Code：
+- **可以用在哪些场景**：
+  - 搭建 React、Vue 或 Angular 页面时调用 Frontend Developer，结合性能指标和组件实现要求完成页面开发。
+  - 线上故障发生后调用 Incident Response Commander，按事件管理、值班响应和复盘流程组织处理。
+  - 在 PostgreSQL 或 MySQL 查询变慢时调用 Database Optimizer，围绕索引、查询计划和迁移方案定位问题。
+- **技术看点**：项目将 Agent 定义为可读、可版本控制的 Markdown 文件，并通过 `install.sh`、`convert.sh` 和运行手册实现多工具分发，而不是把角色逻辑锁定在单一平台。近期还在持续完善转换产物、运行手册和测试校验，说明它在尝试把提示词集合维护成可验证、可批量安装的内容基础设施。
+- **近期动向与发展方向**：最近提交高度集中在 2026 年 10 月 4 日，短时间内合并了 49 个 PR，并修复了 Markdown 代码围栏解析、主题保持、混合搜索绑定、转录说话人标签、低动态效果适配、日志凭据脱敏和 JWT 校验等问题。提交内容以内容批处理、兼容性修复、测试校验和示例质量修正为主，暂未看到大型架构重构；106 名贡献者和连续合并的大量 PR 表明社区参与活跃，项目方向正在从扩充 Agent 数量转向提升内容质量、工具兼容性和安装可靠性。
+- **同类对比**：暂无明显同类对标。项目 README 明确强调的是跨 Claude Code、Cursor、Codex、Gemini CLI 等工具安装和转换，这些工具属于承载 Agent 的平台，并非项目直接声称的竞品。
+- **注意事项**：项目创建时间为 2025-10-13，但目前已达到 157382 Stars、25382 Forks，规模增长很快；同时有 183 个 Open Issues，角色内容和多工具转换结果仍需要持续维护。上手依赖 Shell 脚本、目标工具目录结构及本地环境，批量安装前应先用 `--dry-run` 或限制团队范围；OpenCode 当前约只能注册 119 个 Agent，超过限制时会静默丢弃部分角色，README 已提供相应警告。由于 Agent 行为主要由角色定义和示例约束，实际输出仍受底层模型、平台能力和版本变化影响，不应把“Production-Ready”直接等同于无需人工审查。
+
+- **GitHub**：[msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：资深创业型开发者与 Techstars 校友，凭借高星级开源项目在开发者社区具备较强影响力
+**技术栈偏好**：偏好 Shell、Rust 与 TypeScript，重视自动化、工具构建及跨平台应用开发
+**核心领域**：主要聚焦 AI Agent、开发者工具、浏览器应用与快速产品原型构建
+
+---
+
+### ✨ headroomlabs-ai/headroom (76544★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -189,92 +322,63 @@
 
 ---
 
-### ✨ withmarbleapp/os-taxonomy (6239★)
+### ✨ anthropics/knowledge-work-plugins (24155★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：它把销售、数据、法务、客服等岗位的工作流程打包成可安装的 Claude 插件，让 Claude 能按团队的工具、术语和操作规范完成具体任务。
 
-- **它是什么**：No description provided.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是 Anthropic 开源的知识工作插件集合，面向 Claude Cowork，也兼容 Claude Code。每个插件由领域技能、斜杠命令、MCP 连接器和子代理组成，例如销售插件可以做客户研究、通话准备、管道复盘和外联草稿，数据插件可以写 SQL、分析数据并生成可视化结果。
+  插件采用 `.claude-plugin/plugin.json`、`.mcp.json`、`commands/` 和 `skills/` 的文件结构，主要通过 Markdown 与 JSON 描述工作流程，不需要额外构建基础设施。
 
-- **GitHub**：[withmarbleapp/os-taxonomy](https://github.com/withmarbleapp/os-taxonomy)
+- **能解决什么痛点**：团队通常需要反复把公司术语、审批流程、工具位置和交付格式解释给 AI；插件可以把这些规则固化到技能文件中，减少每次对话重新补充上下文。
+  另一个痛点是工作信息分散在 Slack、Notion、Jira、CRM、数据仓库等系统中，插件通过 MCP 连接器把岗位任务与这些工具串起来，避免人工复制粘贴和跨系统查找。
 
+- **适合谁用**：需要让 Claude 参与日常流程的销售、产品、市场、客服、法务、财务和数据团队。
+  也适合希望在 Claude Code 中安装现成岗位能力，或为公司内部工具和流程定制专属插件的开发者、技术负责人和平台管理员。
 
----
+- **怎么上手**：先添加插件市场，再安装具体插件：
 
-### ✨ Kruk2/jasna (2993★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Video restoration tool
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[Kruk2/jasna](https://github.com/Kruk2/jasna)
-
-
----
-
-### ✨ HKUDS/CLI-Anything (49764★)
-
-> **一句话**：把桌面软件、开发工具和在线服务包装成可由 AI Agent 调用的命令行接口，让 Agent 能执行操作并产出真实文件。
-
-- **它是什么**：CLI-Anything 为各类软件提供或生成命令行 harness，将原本依赖图形界面的功能整理成 Agent 可调用的命令，并支持人类可读与 JSON 输出。项目还提供 CLI-Hub，用于浏览、安装和管理社区贡献的 CLI；README 展示的覆盖领域包括 CAD、3D 场景、视频编辑、绘图、办公和知识管理等。
-- **能解决什么痛点**：Agent 通常难以稳定操作依赖鼠标和窗口状态的桌面软件；CLI-Anything 将操作转成明确的命令，便于自动化执行和解析结果。开发者也不必每次从零编写安装说明、命令文档和 Agent 技能文件，可通过社区仓库复用现成 harness。
-- **适合谁用**：希望让 Claude Code、Cursor 等编码或自动化 Agent 操作桌面软件、开发工具和在线服务的开发者；需要为特定软件编写 CLI harness，并希望将其发布到公共注册表的贡献者。
-- **怎么上手**：安装 Hub 并安装一个已收录的 CLI：`pip install cli-anything-hub && cli-hub install `。具体可安装名称和对应软件要求可在 CLI-Hub 查询。
 - **可以用在哪些场景**：
-  - 让 Agent 批量创建或修改 Inkscape SVG、LibreOffice 文档等文件，再通过命令输出检查结果。
-  - 自动化视频制作流程，例如调用编辑器处理素材、生成字幕或导出成片。
-  - 在 Obsidian、Zotero 等知识管理工具中搜索和管理笔记、文献，再将结果交给后续 Agent 工作流。
-- **技术看点**：核心设计是把软件能力封装成命令行接口，并提供 JSON 与人类可读输出，方便 Agent 调用和消费结果。项目同时维护 CLI-Hub 注册表与技能文档，尝试把 CLI 的发现、安装和 Agent 使用说明纳入同一套流程。
-- **近期动向与发展方向**：近期提交体现出社区持续扩充和维护 CLI 注册表：新增 X/Twitter Scraper、Vivideo 等条目，并修复 Inkscape、Audacity 等 harness 的具体行为问题，也改进了 JSON 输出和 Windows 控制台兼容性。9 月 22 日的多次提交主要更新 README；给出的记录覆盖至 9 月 22 日，更新日期为 9 月 23 日。145 位贡献者和大量跨软件修复显示项目以社区扩展、兼容性和可靠性维护为主要演进方向。
-- **同类对比**：README 未明确列出竞品；项目特点是同时提供软件 CLI harness、公共注册表和安装管理入口，暂不据此推断与其他 Agent 工具的优劣。
-- **注意事项**：不同 harness 依赖对应软件、系统环境或服务接口，安装 Hub 不代表所有 CLI 都能在当前环境直接运行，使用前应查看各条目的要求。项目创建于 2026-03-08，当前有 107 个开放 Issue；虽然 Star 数和贡献者数量较高，但项目仍较新，软件覆盖范围与各 harness 的成熟度可能不一致。README 提供快速安装入口、演示和测试信息，但具体命令能力及风险仍需按目标软件逐项核验。
+  - 销售团队连接 Slack、HubSpot、Clay 和 ZoomInfo，自动汇总潜客背景、准备客户会议材料并生成竞争对手战卡。
+  - 产品团队结合 Linear、Figma、Amplitude 和用户反馈，撰写产品规格、规划路线图并整理研究结论。
+  - 数据或财务团队连接 Snowflake、Databricks、BigQuery 等数据源，执行 SQL 查询、核对财务数据、分析差异并准备审计材料。
 
-- **GitHub**：[HKUDS/CLI-Anything](https://github.com/HKUDS/CLI-Anything)
+- **技术看点**：项目将岗位知识、显式命令和外部工具连接拆分为可编辑的 Markdown/JSON 文件，降低了定制和审查成本；外部系统通过 MCP 接入，连接器边界相对清晰。
+  同一套插件既面向 Cowork，也兼容 Claude Code，并支持通过修改 `.mcp.json`、技能文件和命令文件适配企业内部工具链。
+
+- **近期动向与发展方向**：项目近期更新非常活跃，2026 年 9 月 15 至 16 日连续合并多个插件版本更新，并新增 Informatica 插件，同时将销售插件重构为 2.0.0，扩展到 36 个技能。
+  提交内容显示项目重点已从维护基础插件逐步转向扩大企业工具覆盖、持续同步外部插件仓库，以及面向小型企业发布使用场景；目前有 31 位贡献者、86 个开放 Issue，整体仍处于快速扩展和频繁迭代阶段。
+
+- **同类对比**：README 未明确提及竞品或其他同类项目。其明显定位差异是：它不是通用提示词集合，而是围绕具体岗位、企业连接器和可执行工作流程组织的 Claude 插件市场。
+
+- **注意事项**：项目创建时间为 2026 年 1 月，虽然已有 24155 个 Stars 和 2914 个 Forks，但仍属于较新的快速演进项目；近期频繁出现插件重构、版本 bump 和连接器扩展，安装后的命令、技能内容或外部服务配置可能发生变化。
+  使用效果依赖 Claude Cowork/Claude Code 以及对应 MCP 连接器的可用性，企业还需要自行补充术语、权限和流程规则。README 提供了安装、目录结构和定制方式，但各插件的具体权限配置、数据安全边界和生产部署规范暂未提供完整说明；提交 PR 前也应关注外部系统访问权限和敏感业务数据暴露风险。
+
+- **GitHub**：[anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：香港大学数据智能实验室旗下高影响力开源组织，在 GitHub AI 开源社区拥有显著关注度和传播力。
-**技术栈偏好**：以 Python 为核心，偏好大语言模型、智能体、检索增强生成与 AI 应用工程技术。
-**核心领域**：主要聚焦人工智能研究与应用，涵盖 AI 智能体、教育辅导、知识检索和量化交易等方向。
+**技术影响力**：领先的生成式人工智能组织，在开发者社区拥有广泛关注度和显著开源影响力
+**技术栈偏好**：以 Python、Jupyter Notebook 和 TypeScript 为主，侧重人工智能应用、开发者工具与提示工程
+**核心领域**：聚焦大语言模型、Claude 生态、人工智能编程工具及生成式 AI 开发实践
 
 ---
 
-### ✨ anthropics/claude-code (149055★)
+### ✨ sickn33/agentic-awesome-skills (48027★)
 
-> **一句话**：在终端里用自然语言指挥 Claude 阅读代码库、修改文件、解释代码，并处理 Git 工作流。
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Claude Code 是面向代码库的代理式编程工具，可在终端、IDE 中使用，也支持在 GitHub 上通过 `@claude` 触发。它能执行日常编码任务、解释复杂代码，并协助处理 Git 操作；项目还提供扩展功能的插件。
-- **能解决什么痛点**：接手陌生项目时，可让它结合代码库解释模块和调用关系，减少逐个翻文件的成本。处理重复修改或 Git 操作时，也可以直接描述目标，让它执行，而不必手动拆成一连串命令和文件编辑。
-- **适合谁用**：经常在终端中工作的软件开发者；需要让 Claude 参与代码审查、问题处理或日常仓库维护的 GitHub 项目团队。
-- **怎么上手**：macOS/Linux 执行 `curl -fsSL https://claude.ai/install.sh | bash`，进入项目目录后运行 `claude`。README 标注 npm 安装方式已弃用。
-- **可以用在哪些场景**：进入陌生仓库后，让它梳理代码结构并解释关键模块；对多处文件提出一致修改需求并让它执行；在 GitHub 中通过 `@claude` 参与仓库任务。
-- **技术看点**：项目使用 TypeScript，产品设计围绕能理解代码库并执行任务的代理式交互，而非只提供代码补全。安装路径覆盖 macOS、Linux 和 Windows，也支持终端、IDE 与 GitHub 工作流。
-- **近期动向与发展方向**：最近提交集中在 diff 面板行为与性能、合并和 rebase 后刷新、权限及设置安全检查等方面，也持续更新变更日志。提交记录显示近期维护活跃，方向偏向打磨 Git 工作流、强化默认安全边界；未见重大重构信息。
-- **同类对比**：README 未提及明确竞品，暂无明显同类对标。
-- **注意事项**：项目自 2025-02-22 创建，已有 149055 Stars、25291 Forks 和 59 位贡献者，更新频繁；同时有 14097 个 Open Issues，不能据此判断所有问题均未处理。使用前需了解其数据收集与使用政策；README 指向官方文档获取完整的数据使用说明。安装方式已有变化，npm 安装已弃用，应优先使用官方安装脚本或系统包管理器。
+- **它是什么**：AAS Core is the local, agent-first control plane for complete catalog discovery, agent-owned selection, stack validation, and planning, backed by 2,600+ agentic skills. Includes CLI, local MCP, catalog, plugins, and Workbench.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[anthropics/claude-code](https://github.com/anthropics/claude-code)
+- **GitHub**：[sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills)
 
-#### 开发者 / 组织速览
-
-**技术影响力**：全球领先的生成式人工智能组织之一，在开发者工具、模型应用与 AI 社区中具有极高影响力。
-**技术栈偏好**：以 Python 和 Jupyter Notebook 为主，结合 TypeScript，聚焦大语言模型应用、智能体与开发者工具。
-**核心领域**：主要聚焦生成式人工智能、Claude 生态、提示工程、AI 编程及企业级行业应用。
 
 ---
 
@@ -299,3 +403,21 @@
 **技术影响力**：以高星开源项目为核心，在人工智能与量化技术社区具有较高知名度和影响力
 **技术栈偏好**：主要使用 Python，辅以 C++，偏好机器学习、金融建模与数据分析技术
 **核心领域**：聚焦人工智能驱动的金融时间序列预测、量化研究与大模型应用
+
+---
+
+### ✨ vllm-project/vllm (94263★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：A high-throughput and memory-efficient inference and serving engine for LLMs
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[vllm-project/vllm](https://github.com/vllm-project/vllm)
