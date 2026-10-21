@@ -103,31 +103,6 @@
         <h1>GitHub 热点日报 (2026-10-21)</h1>
 <h2>今日热点：GitHub 热门趋势</h2>
 <p>今天的热门项目覆盖了多个技术方向，具体项目摘要如下：</p>
-<h3>✨ MadsLorentzen/ai-job-search (33689★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把 Claude Code 变成一条在本机运行的求职流水线，自动筛岗位、评估匹配度、改简历、写求职信，还能继续准备面试。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：这是一个围绕 Claude Code 设计的求职应用框架，核心不是单次生成文案，而是把 <code>/setup</code>、<code>/scrape</code>、<code>/apply</code>、<code>/interview</code> 这些步骤串成完整流程。它会读取你的个人资料和文档，抓取多个招聘平台的岗位，按 fit 评分排序，再为选中的岗位生成定制化简历、求职信和面试准备材料。</li>
-<li><strong>能解决什么痛点</strong>：一是重复性投递太耗时，尤其是每个岗位都要重新匹配经历、改简历、写 cover letter。二是不同招聘网站信息杂乱、字段不一致，手工筛选和比对很容易漏掉合适岗位或看错截止时间、地点、薪资等关键信息。</li>
-<li><strong>适合谁用</strong>：适合正在高频投递的求职者，尤其是愿意把材料整理成结构化文件的人。也适合做跨平台岗位聚合、简历定制和面试准备自动化的 Python 用户，或者想把 Claude Code 接进自己工作流的高级使用者。</li>
-<li><strong>怎么上手</strong>：README 给出的最小路径是先装好 Claude Code、Python 3.10+、Bun 和 LaTeX，然后在仓库里运行 <code>claude</code> 再执行 <code>/setup</code>，之后用 <code>/scrape</code> 搜索岗位、用 <code>/apply</code> 处理具体职位。</li>
-<li><strong>可以用在哪些场景</strong>：适合批量浏览多个招聘站点，先做初筛再人工确认重点岗位。适合把同一份基础履历按不同岗位方向生成定制申请材料。也适合在面试前自动整理岗位、公司和历史申请记录，准备针对性的复盘材料。</li>
-<li><strong>技术看点</strong>：项目把求职流程拆成多个 Claude Code 命令，外层是 Python 工作流，岗位搜索又依赖 Bun 生态里的独立 CLI 工具。README 里能看出它对招聘站点解析、职位去重、fit 评分、LaTeX 简历生成、ATS 可读性检查这些环节都做了工程化处理。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交明显偏活跃，重点集中在修复各招聘站点解析兼容性、缓存公司调研结果、处理门户 CLI 参数校验、调整排名字段和 HTML 报告逻辑。近期还合入了 v1.6.0 发布与 CI/LaTeX 冒烟测试，说明项目正从“能用”继续往“更稳、更可维护”演进。</li>
-<li><strong>同类对比</strong>：README 没有给出明确竞品。它更像是把“求职自动化”做成可执行工作流，而不是单纯的简历生成器或职位爬虫。</li>
-<li>
-<p><strong>注意事项</strong>：上手门槛不低，依赖 Claude Code、Bun 和完整 LaTeX 环境，安装链路比普通 Python 项目长。项目更新很活跃，说明维护跟得上，但也意味着命令、门户适配和工作流细节可能会继续变化；另外 README 明确提到公共 fork 会暴露个人资料，私用场景要特别注意仓库可见性和数据落盘位置。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/MadsLorentzen/ai-job-search">MadsLorentzen/ai-job-search</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有较高社区关注度，代表项目具备显著传播力和开发者影响力。
-<strong>技术栈偏好</strong>：偏好 Python 与 Jupyter Notebook，重视数据分析、自动化和科研计算。
-<strong>核心领域</strong>：聚焦地球物理科研，同时拓展人工智能与求职自动化应用。</p>
-<hr />
 <h3>✨ cloudflare/security-audit-skill (5695★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：它把编码代理组织成一支分阶段协作的安全审计队伍，从代码侦察、覆盖率驱动的漏洞挖掘，到独立复核和结构化报告，最终产出可机器验证的安全结论。</p>
@@ -175,7 +150,7 @@
 <strong>技术栈偏好</strong>：偏好 Rust、Go 与 TypeScript，重视高性能网络、云原生服务及边缘应用开发。
 <strong>核心领域</strong>：主要聚焦网络基础设施、边缘计算、Web 安全与开发者平台。</p>
 <hr />
-<h3>✨ vllm-project/vllm (94694★)</h3>
+<h3>✨ vllm-project/vllm (94801★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
@@ -221,7 +196,7 @@
 <strong>技术栈偏好</strong>：主要使用 TypeScript 与 JavaScript，技术方向偏向前端/Node.js 生态及自动化工具链。
 <strong>核心领域</strong>：核心聚焦 AI Agent、协作工具集成与开发者自动化基础设施。</p>
 <hr />
-<h3>✨ headroomlabs-ai/headroom (77018★)</h3>
+<h3>✨ headroomlabs-ai/headroom (77173★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
@@ -392,7 +367,7 @@
 <strong>技术栈偏好</strong>：主要使用 Python，辅以 C++，偏好机器学习、金融建模与数据分析技术
 <strong>核心领域</strong>：聚焦人工智能驱动的金融时间序列预测、量化研究与大模型应用</p>
 <hr />
-<h3>✨ strelov1/freehire (2053★)</h3>
+<h3>✨ strelov1/freehire (2281★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
