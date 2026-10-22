@@ -103,119 +103,78 @@
         <h1>GitHub 热点日报 (2026-10-22)</h1>
 <h2>今日热点：GitHub 热门趋势</h2>
 <p>今天的热门项目覆盖了多个技术方向，具体项目摘要如下：</p>
-<h3>✨ cloudflare/security-audit-skill (5695★)</h3>
+<h3>✨ php/php-src (40846★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它把编码代理组织成一支分阶段协作的安全审计队伍，从代码侦察、覆盖率驱动的漏洞挖掘，到独立复核和结构化报告，最终产出可机器验证的安全结论。</p>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：The PHP Interpreter</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/php/php-src">php/php-src</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ anthropics/knowledge-work-plugins (24155★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把销售、数据、法务、客服等岗位的工作流程打包成可安装的 Claude 插件，让 Claude 能按团队的工具、术语和操作规范完成具体任务。</p>
 </blockquote>
 <ul>
 <li>
-<p><strong>它是什么</strong>：这是一个面向 coding agent 的安全审计技能，按六个阶段处理目标代码库：建立架构与覆盖台账、分配隔离的漏洞猎手、让独立验证者尝试推翻候选问题，并生成 <code>findings.json</code>、<code>REPORT.md</code> 等结果。项目内置针对 AI/LLM、Web 协议与认证、客户端、供应链、云部署、原生二进制等多类攻击面的方法文件，并通过零依赖 Node.js 校验器验证覆盖台账和发现记录。</p>
+<p><strong>它是什么</strong>：这是 Anthropic 开源的知识工作插件集合，面向 Claude Cowork，也兼容 Claude Code。每个插件由领域技能、斜杠命令、MCP 连接器和子代理组成，例如销售插件可以做客户研究、通话准备、管道复盘和外联草稿，数据插件可以写 SQL、分析数据并生成可视化结果。
+  插件采用 <code>.claude-plugin/plugin.json</code>、<code>.mcp.json</code>、<code>commands/</code> 和 <code>skills/</code> 的文件结构，主要通过 Markdown 与 JSON 描述工作流程，不需要额外构建基础设施。</p>
 </li>
 <li>
-<p><strong>能解决什么痛点</strong>：普通 AI 代码审查容易重复检查热门文件、遗漏未覆盖的攻击面，也难以说明“哪些地方已经检查过”。该项目用 <code>coverage-ledger.json</code> 记录检查范围，并把发现明确区分为 <code>confirmed</code>、<code>needs_validation</code> 和 <code>rejected</code>，减少未经证实的漏洞结论直接进入报告。</p>
+<p><strong>能解决什么痛点</strong>：团队通常需要反复把公司术语、审批流程、工具位置和交付格式解释给 AI；插件可以把这些规则固化到技能文件中，减少每次对话重新补充上下文。
+  另一个痛点是工作信息分散在 Slack、Notion、Jira、CRM、数据仓库等系统中，插件通过 MCP 连接器把岗位任务与这些工具串起来，避免人工复制粘贴和跨系统查找。</p>
 </li>
 <li>
-<p><strong>适合谁用</strong>：适合希望让 AI coding agent 执行系统化安全审计的安全工程师、产品安全团队和漏洞研究人员；也适合维护 Web 服务、LLM 应用、云基础设施或原生程序，并需要保留可复核审计记录的开发团队。</p>
+<p><strong>适合谁用</strong>：需要让 Claude 参与日常流程的销售、产品、市场、客服、法务、财务和数据团队。
+  也适合希望在 Claude Code 中安装现成岗位能力，或为公司内部工具和流程定制专属插件的开发者、技术负责人和平台管理员。</p>
 </li>
 <li>
-<p><strong>怎么上手</strong>：安装技能后，在目标代码库中直接发起审计：
-  然后输入：<code>security audit this codebase</code></p>
+<p><strong>怎么上手</strong>：先添加插件市场，再安装具体插件：</p>
 </li>
 <li>
 <p><strong>可以用在哪些场景</strong>：</p>
 </li>
-<li>对接入大模型、插件或工具调用的应用，检查提示注入、代理权限和输出处理问题。</li>
-<li>发布 HTTP API、认证服务或反向代理前，检查请求解析、缓存、认证协议和边界处理缺陷。</li>
+<li>销售团队连接 Slack、HubSpot、Clay 和 ZoomInfo，自动汇总潜客背景、准备客户会议材料并生成竞争对手战卡。</li>
+<li>产品团队结合 Linear、Figma、Amplitude 和用户反馈，撰写产品规格、规划路线图并整理研究结论。</li>
 <li>
-<p>审计包含 CI/CD、容器、依赖更新、签名发布流程的供应链，核对构建与部署环节的安全风险。</p>
+<p>数据或财务团队连接 Snowflake、Databricks、BigQuery 等数据源，执行 SQL 查询、核对财务数据、分析差异并准备审计材料。</p>
 </li>
 <li>
-<p><strong>技术看点</strong>：项目没有只依赖模型自由发挥，而是用多阶段代理编排、覆盖台账、独立验证者和 JSON Schema 约束形成可追溯流程。它还要求在操作系统强制沙箱中执行目标代码，并在缺少网络隔离、资源限制和路径控制时将结论保留为 <code>needs_validation</code>，体现了对 AI 驱动动态审计风险的明确边界。</p>
+<p><strong>技术看点</strong>：项目将岗位知识、显式命令和外部工具连接拆分为可编辑的 Markdown/JSON 文件，降低了定制和审查成本；外部系统通过 MCP 接入，连接器边界相对清晰。
+  同一套插件既面向 Cowork，也兼容 Claude Code，并支持通过修改 <code>.mcp.json</code>、技能文件和命令文件适配企业内部工具链。</p>
 </li>
 <li>
-<p><strong>近期动向与发展方向</strong>：项目近期明显处于快速完善工作流阶段，9 月重点重做了审计流程、发现记录契约和校验器，并进一步澄清完整审计模式与指导模式的使用边界。7 月连续扩展了 AI/LLM、Web 协议认证、客户端、内存安全、二进制和内核等攻击类别，同时修复技能目录兼容性和 trace 步骤顺序问题；14 条提交中包含多个外部贡献者，说明项目正在通过贡献补充攻击面，但核心维护者仍较集中。整体方向是从单一审计提示集合演进为带验证、记录和报告约束的审计框架。</p>
+<p><strong>近期动向与发展方向</strong>：项目近期更新非常活跃，2026 年 9 月 15 至 16 日连续合并多个插件版本更新，并新增 Informatica 插件，同时将销售插件重构为 2.0.0，扩展到 36 个技能。
+  提交内容显示项目重点已从维护基础插件逐步转向扩大企业工具覆盖、持续同步外部插件仓库，以及面向小型企业发布使用场景；目前有 31 位贡献者、86 个开放 Issue，整体仍处于快速扩展和频繁迭代阶段。</p>
 </li>
 <li>
-<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。相较于普通安全审查提示词，该项目更强调覆盖范围记录、独立反证、机器可读发现和多次运行之间的证据继承。</p>
+<p><strong>同类对比</strong>：README 未明确提及竞品或其他同类项目。其明显定位差异是：它不是通用提示词集合，而是围绕具体岗位、企业连接器和可执行工作流程组织的 Claude 插件市场。</p>
 </li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间较近，虽然已有 5695 个 Stars，但 Contributor Count 仅 4，不能仅凭关注度判断其长期成熟度。完整审计依赖支持工具调用和并行子代理的 coding agent，并要求 Node.js 运行校验器；目标代码执行还必须配置具备网络禁用、环境清理、资源限制和写入路径控制能力的操作系统级沙箱。攻击类别、发现格式和审计工作流仍在快速演进，升级时应重点检查 <code>SKILL.md</code>、<code>report-schema.json</code> 及校验器是否带来流程或输出格式变化。</p>
+<p><strong>注意事项</strong>：项目创建时间为 2026 年 1 月，虽然已有 24155 个 Stars 和 2914 个 Forks，但仍属于较新的快速演进项目；近期频繁出现插件重构、版本 bump 和连接器扩展，安装后的命令、技能内容或外部服务配置可能发生变化。
+  使用效果依赖 Claude Cowork/Claude Code 以及对应 MCP 连接器的可用性，企业还需要自行补充术语、权限和流程规则。README 提供了安装、目录结构和定制方式，但各插件的具体权限配置、数据安全边界和生产部署规范暂未提供完整说明；提交 PR 前也应关注外部系统访问权限和敏感业务数据暴露风险。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：全球领先的互联网基础设施组织，在网络性能、安全与边缘计算领域具有广泛社区影响力。
-<strong>技术栈偏好</strong>：偏好 Rust、Go 与 TypeScript，重视高性能网络、云原生服务及边缘应用开发。
-<strong>核心领域</strong>：主要聚焦网络基础设施、边缘计算、Web 安全与开发者平台。</p>
-<hr />
-<h3>✨ vllm-project/vllm (94953★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：A high-throughput and memory-efficient inference and serving engine for LLMs</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></p>
-</li>
-</ul>
-<hr />
-<h3>✨ stablyai/orca (42457★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Orca 把 Codex、Claude Code、OpenCode 等 CLI 编码代理放进同一个桌面工作台，让它们在各自独立的 Git worktree 里并行跑任务、对比结果、审查 diff 并合并代码。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Orca 是一个面向多代理编码流程的 AI 开发环境，核心不是替代某个模型，而是把多个可在终端运行的编码代理统一编排起来。它支持并行 worktree、内置终端分屏、GitHub/Linear 任务流、远程 SSH worktree、AI diff 批注、移动端伴随应用和 CLI 自动化，覆盖从派发任务到审查提交的完整链路。</li>
-<li><strong>能解决什么痛点</strong>：当开发者同时试跑多个代理方案时，常见问题是终端窗口、Git 分支、diff 审查和上下文分散在不同地方，最后很难判断哪份结果可合并。Orca 的价值在于把每个代理隔离到独立 worktree，并把运行状态、文件变更、任务来源和审查动作集中到一个界面里。</li>
-<li><strong>适合谁用</strong>：适合已经在重度使用 Claude Code、Codex、OpenCode、Cursor CLI 等代理的全栈或前端工程师；也适合需要在远程机器上跑多路编码任务、并统一查看结果的团队开发者和工程负责人。</li>
-<li><strong>怎么上手</strong>：<a href="https://onorca.dev/download">Download Orca</a>。README 未提供命令行安装示例，主要入口是桌面端下载；移动端可通过 iOS App Store、TestFlight 或 Android APK 使用伴随应用。</li>
-<li><strong>可以用在哪些场景</strong>：同一个需求同时交给 3-5 个编码代理实现，然后在独立 worktree 中比较 diff 并选择合并；在远程高性能服务器上通过 SSH worktree 跑长任务，同时在本机编辑和审查；从 GitHub PR、Issue 或 Linear 任务直接打开对应工作区，让代理处理修复、补测试或改 UI。</li>
-<li><strong>技术看点</strong>：项目使用 TypeScript 构建跨平台桌面/移动/远程协同体验，README 明确支持 macOS、Windows、Linux，并集成 WebGL 终端渲染、Chromium 设计模式、Git worktree 隔离和 CLI 自动化。它的设计重点在“代理编排层”，兼容任何能在终端运行的 CLI agent，而不是绑定单一模型供应商。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交全部集中在 2026-08-11，说明维护节奏非常高频。提交内容以性能优化和稳定性修复为主，包括远程会话挂起、隐藏面板减少重复刷新、SQLite prepared statement 缓存、SSH diff 复用 OID、renderer 状态缓存、e2e 修复和输入校验；新增功能较小，如 quick command 复制按钮、远程 workspace 按创建设备过滤。整体方向是在已有功能面较宽的基础上，持续打磨远程、多窗口、多 worktree 场景下的性能和可靠性。</li>
-<li><strong>同类对比</strong>：README 明确提到它可运行 Claude Code、Codex、OpenCode、Grok、Cursor、GitHub Copilot CLI 等代理；差异点不是提供单一编码代理能力，而是把这些 CLI agent 并排编排、隔离执行并集中审查。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间为 2026-03-17，时间较新但增长很快，已有 42457 stars、325 位贡献者，同时 open issues 达 3529，说明需求和反馈量很大，使用时要预期较高的迭代频率和潜在行为变化。近期提交中大量修复 e2e、renderer、remote、UTF-8、worktree poller 等细节，也侧面说明复杂场景仍在快速稳定中；适合愿意跟随日更节奏的团队先在非关键流程中试用。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/stablyai/orca">stablyai/orca</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/knowledge-work-plugins">anthropics/knowledge-work-plugins</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Stably 凭借高星 TypeScript 项目 <code>orca</code> 在开源社区具备显著可见度，但整体组织规模仍偏中小型。
-<strong>技术栈偏好</strong>：主要使用 TypeScript 与 JavaScript，技术方向偏向前端/Node.js 生态及自动化工具链。
-<strong>核心领域</strong>：核心聚焦 AI Agent、协作工具集成与开发者自动化基础设施。</p>
-<hr />
-<h3>✨ headroomlabs-ai/headroom (77333★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/headroomlabs-ai/headroom">headroomlabs-ai/headroom</a></p>
-</li>
-</ul>
+<p><strong>技术影响力</strong>：领先的生成式人工智能组织，在开发者社区拥有广泛关注度和显著开源影响力
+<strong>技术栈偏好</strong>：以 Python、Jupyter Notebook 和 TypeScript 为主，侧重人工智能应用、开发者工具与提示工程
+<strong>核心领域</strong>：聚焦大语言模型、Claude 生态、人工智能编程工具及生成式 AI 开发实践</p>
 <hr />
 <h3>✨ DietrichGebert/ponytail (149049★)</h3>
 <blockquote>
@@ -267,30 +226,77 @@
 <strong>技术栈偏好</strong>：以 JavaScript 为主，辅以 Python，偏好 Web 开发与轻量级项目实践
 <strong>核心领域</strong>：主要聚焦开源软件、Web 技术与个人开发者项目生态</p>
 <hr />
-<h3>✨ Comfy-Org/ComfyUI (129406★)</h3>
+<h3>✨ cloudflare/security-audit-skill (5695★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把图像、视频、音频和 3D 生成流程拆成可连线的节点，用户可以像搭建流程图一样组合模型、参数和后处理步骤，并在本地或云端执行。</p>
+<p><strong>一句话</strong>：它把编码代理组织成一支分阶段协作的安全审计队伍，从代码侦察、覆盖率驱动的漏洞挖掘，到独立复核和结构化报告，最终产出可机器验证的安全结论。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：ComfyUI 是面向内容创作的扩散模型引擎、图形界面和后端，核心界面是一张可保存为 JSON 的节点工作流图。它支持加载模型、VAE、文本编码器、LoRA、ControlNet 等组件，覆盖图像生成与编辑、视频、音频、3D、视觉和文本生成，并提供本地 API 与自定义节点扩展能力。</li>
-<li><strong>能解决什么痛点</strong>：复杂生成流程通常需要反复组合模型、条件控制、遮罩、放大和视频处理步骤，传统单页面工具难以复用和定位问题；ComfyUI 将每一步显式化，便于保存、修改、复现和批量执行。它还通过显存管理、模型卸载、量化模型和局部图重执行，缓解本地 GPU 显存不足或重复计算的问题。</li>
-<li><strong>适合谁用</strong>：需要精细控制生成参数和模型链路的 AI 艺术家、设计师、视频创作者；需要把生成工作流接入产品或生产流水线的 Python/AI 工程师。</li>
-<li><strong>怎么上手</strong>：README 提供桌面应用、Windows 便携包、手动安装和 Comfy Cloud 等入口，但当前素材未包含具体安装命令或最小代码示例；文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：搭建包含文生图、局部重绘、参考图控制和超分辨率的品牌素材生产流程；将视频生成、帧插值、HDR 编码和格式转换串成可复用的视频处理管线；通过本地 API 把固定的生成工作流接入内部内容生产系统或批量任务平台。</li>
-<li><strong>技术看点</strong>：以节点图和可序列化 JSON 工作流表达生成逻辑，既适合非程序用户编排，也方便通过 API 集成；异步队列、部分图重执行、智能 VRAM/RAM 管理、模型卸载和量化支持，体现了对本地高负载推理场景的重点优化。</li>
-<li><strong>近期动向与发展方向</strong>：项目近期提交非常密集，20 条记录覆盖 2026 年 8 月 19 日至 23 日，显示核心仓库仍在高频演进。开发重点明显偏向扩展多模态能力和模型生态，包括 Sam3D、Pixal3D、TRELLIS2、MiniMax-H3，以及 ByteDance、BFL、Gemini 等 Partner Nodes；同时持续完善视频方向的 HDR、AV1、MKV/WebM、色彩空间和编码选项，并修复 Windows 多 GPU、CUDA 默认设备、显存加载和 CI 问题。338 名贡献者和持续合并的外部功能表明社区参与度较高，但近期变化也意味着主分支和自定义节点生态可能存在兼容性波动。</li>
-<li><strong>同类对比</strong>：README 未明确提到竞品或直接对标项目。与强调固定参数面板的生成式 AI 应用相比，ComfyUI 的主要差异在于节点图编排、工作流复用、底层参数控制和 API/自定义节点扩展。</li>
 <li>
-<p><strong>注意事项</strong>：节点式工作流的自由度较高，初学者需要理解模型、采样器、条件控制、显存和节点连接关系，上手成本高于单一提示词界面。项目创建于 2023 年 1 月，已经积累较大社区规模，但仍有 4674 个开放 Issue，且 README 明确提示稳定版本之外的提交可能不稳定并破坏自定义节点；升级核心版本、前端或模型节点前应固定版本并验证现有工作流。运行大型视频和 3D 模型仍依赖较强的 GPU、显存和相关 Python/媒体依赖，近期还发生了提高 PyAV 最低版本等依赖调整。</p>
+<p><strong>它是什么</strong>：这是一个面向 coding agent 的安全审计技能，按六个阶段处理目标代码库：建立架构与覆盖台账、分配隔离的漏洞猎手、让独立验证者尝试推翻候选问题，并生成 <code>findings.json</code>、<code>REPORT.md</code> 等结果。项目内置针对 AI/LLM、Web 协议与认证、客户端、供应链、云部署、原生二进制等多类攻击面的方法文件，并通过零依赖 Node.js 校验器验证覆盖台账和发现记录。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Comfy-Org/ComfyUI">Comfy-Org/ComfyUI</a></p>
+<p><strong>能解决什么痛点</strong>：普通 AI 代码审查容易重复检查热门文件、遗漏未覆盖的攻击面，也难以说明“哪些地方已经检查过”。该项目用 <code>coverage-ledger.json</code> 记录检查范围，并把发现明确区分为 <code>confirmed</code>、<code>needs_validation</code> 和 <code>rejected</code>，减少未经证实的漏洞结论直接进入报告。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合希望让 AI coding agent 执行系统化安全审计的安全工程师、产品安全团队和漏洞研究人员；也适合维护 Web 服务、LLM 应用、云基础设施或原生程序，并需要保留可复核审计记录的开发团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装技能后，在目标代码库中直接发起审计：
+  然后输入：<code>security audit this codebase</code></p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>对接入大模型、插件或工具调用的应用，检查提示注入、代理权限和输出处理问题。</li>
+<li>发布 HTTP API、认证服务或反向代理前，检查请求解析、缓存、认证协议和边界处理缺陷。</li>
+<li>
+<p>审计包含 CI/CD、容器、依赖更新、签名发布流程的供应链，核对构建与部署环节的安全风险。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目没有只依赖模型自由发挥，而是用多阶段代理编排、覆盖台账、独立验证者和 JSON Schema 约束形成可追溯流程。它还要求在操作系统强制沙箱中执行目标代码，并在缺少网络隔离、资源限制和路径控制时将结论保留为 <code>needs_validation</code>，体现了对 AI 驱动动态审计风险的明确边界。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：项目近期明显处于快速完善工作流阶段，9 月重点重做了审计流程、发现记录契约和校验器，并进一步澄清完整审计模式与指导模式的使用边界。7 月连续扩展了 AI/LLM、Web 协议认证、客户端、内存安全、二进制和内核等攻击类别，同时修复技能目录兼容性和 trace 步骤顺序问题；14 条提交中包含多个外部贡献者，说明项目正在通过贡献补充攻击面，但核心维护者仍较集中。整体方向是从单一审计提示集合演进为带验证、记录和报告约束的审计框架。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目。相较于普通安全审查提示词，该项目更强调覆盖范围记录、独立反证、机器可读发现和多次运行之间的证据继承。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间较近，虽然已有 5695 个 Stars，但 Contributor Count 仅 4，不能仅凭关注度判断其长期成熟度。完整审计依赖支持工具调用和并行子代理的 coding agent，并要求 Node.js 运行校验器；目标代码执行还必须配置具备网络禁用、环境清理、资源限制和写入路径控制能力的操作系统级沙箱。攻击类别、发现格式和审计工作流仍在快速演进，升级时应重点检查 <code>SKILL.md</code>、<code>report-schema.json</code> 及校验器是否带来流程或输出格式变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Comfy Org 是生成式 AI 开源社区中具有较高影响力的组织，核心项目 ComfyUI 拥有广泛开发者关注与使用基础
-<strong>技术栈偏好</strong>：以 Python 为核心，结合 TypeScript 构建 AI 工作流引擎、前端界面、桌面应用及开发者工具
-<strong>核心领域</strong>：主要聚焦生成式 AI、扩散模型工作流编排与 ComfyUI 生态建设</p>
+<p><strong>技术影响力</strong>：全球领先的互联网基础设施组织，在网络性能、安全与边缘计算领域具有广泛社区影响力。
+<strong>技术栈偏好</strong>：偏好 Rust、Go 与 TypeScript，重视高性能网络、云原生服务及边缘应用开发。
+<strong>核心领域</strong>：主要聚焦网络基础设施、边缘计算、Web 安全与开发者平台。</p>
+<hr />
+<h3>✨ Graphify-Labs/graphify (83730★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：在 AI 编程助手里输入 <code>/graphify</code>，它会把代码、数据库 schema、脚本、文档、图片和视频映射成可点击、可查询的知识图谱，让你按关系追踪项目而不是逐文件 grep。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Graphify 是一个面向 Claude Code、Codex、Cursor、Gemini CLI 等 AI 编程助手的技能和 Python CLI。它会扫描项目目录，把源码 AST、跨文件调用、导入、继承关系、文档引用、注释 rationale 以及多媒体语义信息汇总到同一张图里，并输出 <code>graph.html</code>、<code>GRAPH_REPORT.md</code> 和 <code>graph.json</code>。生成后的图可以搜索节点、解释概念、查询问题，也可以追踪两个概念之间的最短路径。</li>
+<li><strong>能解决什么痛点</strong>：大型代码库里，开发者常常不知道某个类、接口、SQL 表或脚本到底和哪些模块相互依赖，纯文本搜索只能找到关键词，难以看清调用链和跨文件关系。对包含代码、数据库 schema、Shell/R 脚本、设计文档甚至图片视频资料的项目，它把分散信息统一成图，适合做接手项目、排查影响范围和梳理系统边界。</li>
+<li><strong>适合谁用</strong>：适合经常接手陌生或大型仓库的后端、全栈、平台工程师，也适合维护多语言项目、数据管道、内部工具链的团队。已经在使用 Claude Code、Cursor、Codex、Gemini CLI 或 GitHub Copilot 的开发者，上手路径会更短。</li>
+<li><strong>怎么上手</strong>：<code>uv tool install graphifyy &amp;&amp; graphify install</code>，然后在 AI 编程助手里运行 <code>/graphify .</code>。</li>
+<li><strong>可以用在哪些场景</strong>：接手 FastAPI、Rails、Node 等大型服务时，先生成交互式 <code>graph.html</code> 查看核心节点和子系统社区；重构某个类、API 或数据库表前，用 <code>graphify path A B</code> 和 <code>graphify explain "概念名"</code> 查影响链路；给内部项目补文档时，用 <code>GRAPH_REPORT.md</code> 快速整理关键概念、异常连接和后续可追问的问题。</li>
+<li><strong>技术看点</strong>：代码解析主要基于 tree-sitter AST，本地完成、无需 LLM，关系边会标注 <code>EXTRACTED</code> 或 <code>INFERRED</code>，便于区分源码显式关系和解析推断关系。它明确不是向量索引，不依赖 embedding 或 vector store，而是输出可遍历的图结构，并支持 Leiden 社区发现、路径查询和节点解释。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在稳定性和边界条件修复，包括缓存写入作用域、AST cache 路径、GraphML 导出、worktree 与 <code>.git/info/exclude</code> 处理、管道提前关闭、查询日志默认关闭、跨文件脚本链接和 Ruby <code>.rake</code> 提取等。项目更新非常密集，且提交作者不止一人，说明社区维护活跃；当前阶段更像是在快速扩大适配面后，对路径解析、缓存一致性、导出兼容性和 CLI 可靠性做集中打磨。</li>
+<li><strong>同类对比</strong>：README 明确强调它不是 mem0、supermemory 或 dense RAG 这类记忆/检索系统：Graphify 不走向量库路线，而是构建可解释、可遍历的知识图谱。README 中的基准显示它在 LOCOMO recall@10、LongMemEval-S QA accuracy 等指标上与这些系统做了对比，但具体效果仍应以自己的代码库复测为准。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026-04-03，但已经有 83730 stars、146 位贡献者和 488 个 open issues，热度很高、迭代很快，也意味着接口和行为仍可能频繁调整。PyPI 包名是 <code>graphifyy</code> 而不是 <code>graphify</code>，安装时容易踩坑；代码解析本地完成，但文档、PDF、图片和视频的语义处理会使用助手模型或配置的 API key，需要注意隐私和成本边界。近期提交大量修复缓存、路径和导出问题，生产环境接入前建议锁定版本并先在代表性仓库上验证输出质量。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Graphify Labs 虽成立时间很短、仓库数量有限，但凭借 graphify 项目的高星标已在开源社区获得显著关注。
+<strong>技术栈偏好</strong>：其技术栈明显偏向 Python，可能聚焦于数据处理、图谱建模或开发者工具类方向。
+<strong>核心领域</strong>：主要聚焦于以 Graphify 为核心的图数据、知识图谱或可视化相关技术领域。</p>
 <hr />
 <h3>✨ supabase/supabase (109419★)</h3>
 <blockquote>
@@ -317,62 +323,12 @@
 <strong>技术栈偏好</strong>：以 TypeScript 为主，结合 Elixir、Rust，偏好构建高性能、实时化的现代数据基础设施。
 <strong>核心领域</strong>：聚焦 Postgres 云平台、实时数据、数据库 API、GraphQL 与 AI/开发者工具。</p>
 <hr />
-<h3>✨ twentyhq/twenty (50756★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：Twenty 把 CRM 做成可自托管、可按代码扩展的业务系统，让团队能像维护应用代码一样定义客户、商机、视图、工作流和 AI Agent。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Twenty 是一个开源 CRM，定位为 Salesforce 的开放替代方案，面向需要高度定制客户关系管理系统的团队。它提供对象、字段、视图、布局、工作流、AI Agent 等 CRM 构建块，既可以直接使用云服务，也可以通过 Docker Compose 自托管。README 还强调可以用 Twenty CLI 创建应用，把 CRM 对象和配置作为代码发布到工作区。</li>
-<li><strong>能解决什么痛点</strong>：一类痛点是传统 CRM 定制成本高、配置难以版本管理，业务规则变更后很难像代码一样审查、发布和回滚。另一类痛点是企业想自托管客户数据，但又不想从零开发联系人、商机、视图、导入、权限和自动化等基础 CRM 能力。</li>
-<li><strong>适合谁用</strong>：适合需要可控数据和深度定制 CRM 的技术团队、创业公司内部工具团队，以及希望替代 Salesforce / HubSpot 但保留二次开发能力的工程团队。也适合熟悉 TypeScript、React、NestJS、PostgreSQL 的开发者参与二次开发或贡献。</li>
-<li><strong>怎么上手</strong>：最快可以注册 <code>twenty.com</code> 云服务；开发自定义应用可运行：<code>npx create-twenty-app my-app</code></li>
-<li><strong>可以用在哪些场景</strong>：搭建销售团队使用的客户、联系人、商机和跟进记录系统；为内部运营团队定制审批、视图和自动化工作流；在需要数据留在自有基础设施的场景中自托管 CRM，并接入企业已有业务系统。</li>
-<li><strong>技术看点</strong>：技术栈以 TypeScript 为主，采用 Nx 管理 monorepo，后端使用 NestJS、BullMQ、PostgreSQL、Redis，前端使用 React、Jotai、Linaria 和 Lingui。设计上强调“CRM as code”，支持通过 SDK 定义对象、字段、视图和逻辑，再发布到工作区，适合需要版本控制和工程化交付的团队。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交显示项目非常活跃，6 月 19–20 日连续合入测试自种子数据、前端数字格式修复、CSV 导入布局修复、跨对象导航过滤清理、表格 footer 展示修复等质量改进。同时也在推进会议相关能力，包括 Recall webhook、会议机器人变量命名、日历记录页 transcript tab 和标准记录页布局；多条安全依赖升级和 i18n 自动翻译提交说明项目在安全维护和国际化上也有持续投入。</li>
-<li><strong>同类对比</strong>：项目描述明确对标 Salesforce，差异在于 Twenty 是开源方案，支持自托管，并更强调通过代码扩展和版本化 CRM 配置，而不是完全依赖封闭平台内的图形化配置。</li>
-<li>
-<p><strong>注意事项</strong>：项目 Star 超过 5 万、贡献者 665 人、更新频繁，社区活跃度较高；同时仍有 114 个 open issues，且近期提交中包含较多修复、安全依赖升级和布局问题，说明快速迭代下仍需要关注版本稳定性。自托管和二次开发会涉及 PostgreSQL、Redis、NestJS、Nx 等完整应用栈，对非工程团队来说上手成本不低，但 README 提供了云服务、CLI、Docker Compose 和文档入口，资料相对完整。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/twentyhq/twenty">twentyhq/twenty</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Twenty 是近年快速崛起的开源 CRM 组织，凭借 5 万星级核心项目在开发者社区具备较强关注度和产品影响力。
-<strong>技术栈偏好</strong>：其技术栈明显偏向 TypeScript，聚焦现代 Web 应用、前端工程化与 SaaS 产品架构。
-<strong>核心领域</strong>：主要聚焦开源 CRM、客户关系管理系统以及可替代传统商业 CRM 的现代化企业软件。</p>
-<hr />
-<h3>✨ shiyu-coder/Kronos (36887★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：把来自 45+ 全球交易所的 OHLCV K 线序列编码成离散 token，再由 Transformer 自回归生成未来行情路径的金融时序基础模型。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Kronos 是面向金融市场 K 线数据预训练的 decoder-only 模型家族，输入包含开、高、低、收、成交量和成交额等维度。它先通过专用 Tokenizer 将连续的多维行情数据量化为分层离散 token，再使用自回归 Transformer 统一完成预测等量化任务。项目提供 mini、small、base 三个可下载的预训练模型，以及批量预测、微调和可视化示例。</li>
-<li><strong>能解决什么痛点</strong>：量化研究者通常需要分别为不同标的、市场和预测任务训练时序模型，Kronos 可直接作为预训练起点，减少从零建模的成本。面对股票、加密资产等多条行情序列时，<code>predict_batch</code> 支持 GPU 并行预测，并分别处理每条序列的归一化与反归一化。</li>
-<li><strong>适合谁用</strong>：使用 Python、PyTorch 和 pandas 开发行情预测或量化研究原型的数据科学家。需要在中国 A 股数据上微调模型、并借助 Qlib 完成基础回测的量化开发者。</li>
-<li><strong>怎么上手</strong>：<code>pip install -r requirements.txt</code>；随后可通过 <code>KronosTokenizer.from_pretrained("NeoQuasar/Kronos-Tokenizer-base")</code> 和 <code>Kronos.from_pretrained("NeoQuasar/Kronos-small")</code> 加载模型。</li>
-<li><strong>可以用在哪些场景</strong>：对 BTC/USDT 等加密货币的未来 24 小时 K 线进行多步预测；为内部投研平台批量生成多个股票或期货合约的 OHLCV 预测结果；使用 Qlib 准备 A 股日频数据后，对预训练模型微调并进行策略回测验证。</li>
-<li><strong>技术看点</strong>：项目没有直接把连续数值送入通用时序模型，而是将 OHLCV 行情离散化为分层 token，按“金融市场语言”训练自回归 Transformer。已公开模型覆盖 4.1M、24.7M 和 102.3M 参数规模；<code>small</code>、<code>base</code> 的最大上下文长度为 512，<code>mini</code> 为 2048。</li>
-<li><strong>近期动向与发展方向</strong>：2026 年 4 月集中合并了多个社区 PR，修复批量训练时 batch 维度丢失、归一化窗口数据泄漏、<code>top_k</code> 采样调用错误和 Python 3.12 依赖兼容问题，维护活跃度较高。2025 年下半年新增 A 股市场微调支持，并持续优化自回归推理中的内存分配和 CPU-GPU 同步，当前重点明显偏向训练与推理正确性、性能及易用性。</li>
-<li><strong>同类对比</strong>：README 将 Kronos 与通用时序基础模型区分开来：其设计目标是处理金融数据的高噪声特征，并针对 K 线 OHLCV 数据构建专用 Tokenizer；暂无明确点名的同类项目对标。</li>
-<li>
-<p><strong>注意事项</strong>：项目创建时间较短，但已获得较高关注度；19 位贡献者和近期 PR 合并表明社区参与度较好。当前仍有 259 个开放 Issue，且近期连续修复训练维度、数据泄漏和采样逻辑等正确性问题，接入真实交易或研究流程前应自行完成样本外验证、回测和风险控制。README 已提供预测与微调流程，但 A 股微调依赖本地 Qlib 数据准备，且说明明确指出示例不是生产级量化交易系统。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/shiyu-coder/Kronos">shiyu-coder/Kronos</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：以高星开源项目为核心，在人工智能与量化技术社区具有较高知名度和影响力
-<strong>技术栈偏好</strong>：主要使用 Python，辅以 C++，偏好机器学习、金融建模与数据分析技术
-<strong>核心领域</strong>：聚焦人工智能驱动的金融时间序列预测、量化研究与大模型应用</p>
-<hr />
-<h3>✨ strelov1/freehire (2503★)</h3>
+<h3>✨ fastapi/fastapi (103466★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：freehire — the open-source search engine for job seekers</li>
+<li><strong>它是什么</strong>：FastAPI framework, high performance, easy to learn, fast to code, ready for production</li>
 <li><strong>能解决什么痛点</strong>：暂未提供。</li>
 <li><strong>适合谁用</strong>：暂未提供。</li>
 <li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
@@ -384,62 +340,55 @@
 <p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/strelov1/freehire">strelov1/freehire</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/fastapi/fastapi">fastapi/fastapi</a></p>
 </li>
 </ul>
 <hr />
-<h3>✨ akitaonrails/ai-memory (7487★)</h3>
+<h3>✨ <code>luongnv89/claude-howto</code> (38532★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：把不同 AI 编程代理的工作记录、项目知识和任务交接保存为可编辑的 Markdown，让你可以在 Claude Code、Codex、Cursor 等工具之间无缝接着做。</p>
+<p><strong>一句话</strong>：它把 Claude Code 的零散功能整理成一条能照着走的实战路线，让你不是“知道有这些能力”，而是能直接复制命令、模板和配置，把它们塞进自己的项目里马上用起来。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：<code>ai-memory</code> 是一个用 Rust 编写的长期记忆服务，通过生命周期钩子自动记录提示词、工具调用和会话边界，并将内容整理为项目级 Markdown Wiki。它通过 MCP、全文搜索、实体与关系索引以及可选向量检索，为多个代理、设备和团队成员提供共享记忆；任务交接还采用带所有者和一次性认领语义的协议。</li>
-<li><strong>能解决什么痛点</strong>：开发者中断 Claude Code 后切换到 Codex 或其他代理时，不必重新解释项目架构、失败尝试和未解决问题。团队成员或另一台设备接手同一项目时，也能读取共享的项目知识，而不是依赖某个代理本地的 <code>MEMORY.md</code>。</li>
-<li><strong>适合谁用</strong>：经常在 Claude Code、Codex、Cursor、Gemini CLI、OpenCode 等多个代理之间切换的个人开发者；需要让多人或多台机器共享项目上下文，并希望保留 Markdown、Git 和自托管控制权的开发团队。</li>
-<li><strong>怎么上手</strong>：Docker 用户可直接启动本地服务：<code>docker run -d --name ai-memory -p 127.0.0.1:49374:49374 -v ai-memory-data:/data docker.io/akitaonrails/ai-memory:latest</code>，之后再用 <code>ai-memory install-mcp --client claude-code --apply</code> 接入代理。</li>
-<li><strong>可以用在哪些场景</strong>：</li>
-<li>在同一个代码仓库中先用 Claude Code 分析问题，再用 Codex 继续实现，自动传递已尝试方案和待办事项。</li>
-<li>为远程或跨设备开发环境部署一个共享服务，让办公室电脑和家用电脑恢复同一项目的上下文。</li>
-<li>在团队内部维护项目知识库，让个人会话交接保持私有，同时将项目级架构决策、故障记录和文档共享给其他成员。</li>
-<li><strong>技术看点</strong>：项目采用“Git-backed Markdown 为事实来源、数据库索引为派生结果”的设计，支持手工编辑、版本管理和从文件重建索引，避免依赖不可读的二进制记忆库。默认捕获、搜索和交接均不需要 LLM，LLM 总结和向量检索作为可选能力，并提供 MCP、多用户认证、审计日志和跨平台适配。</li>
-<li><strong>近期动向与发展方向</strong>：最近提交高度集中在稳定性、安全性和跨平台兼容性修复，包括 JSON 密钥、Basic Auth、Windows 凭据路径脱敏，大小写不敏感文件系统处理，PowerShell 环境变量转发，以及中断时取消会话选择；同时升级 <code>rmcp</code> 至 2.2.0 以处理 MCP 传输安全公告，并补充 OpenCode 支持和文档链接。最近 20 条提交中既有维护者提交，也有多个外部贡献者参与，说明项目迭代活跃，当前重点是扩大代理覆盖面、完善 Windows 支持和收紧安全边界，而不是进行大规模架构重构。</li>
-<li><strong>同类对比</strong>：README 明确对比了 Mem0、LangMem、Zep、Graphiti、<code>mcp-memory-service</code>、basic-memory、Claude Code 内置记忆、Hindsight、OpenViking、Supermemory 和 LiquidLM。它的主要差异是以可编辑的 Git-backed Markdown Wiki 为源数据，默认零 LLM 调用，同时提供生命周期自动采集、跨代理交接、项目级团队共享和派生检索索引，而不是只保存事实条目、依赖向量数据库或使用托管 API。</li>
+<li><strong>它是什么</strong>：这是一个面向 Claude Code 的图文教程仓库，内容从基础概念一路覆盖到 hooks、MCP、subagents、plugins 等高级能力。README 里强调它不是功能索引，而是带 Mermaid 图示、复制即用模板和学习路径的“上手指南”，目标是让用户按模块逐步掌握整套工作流。</li>
+<li><strong>能解决什么痛点</strong>：一是官方文档通常只讲单个特性，缺少“怎么组合起来解决真实问题”的路径，导致用户知道命令却不会串联成流程。二是很多示例过于基础，无法直接拿来搭建代码审查、自动化检查、文档生成这类可落地工作流。</li>
+<li><strong>适合谁用</strong>：适合已经开始用 Claude Code、但还停留在基础聊天阶段的开发者；也适合想把 Claude Code 接入团队规范、代码审查、CI/CD 或内部知识库的工程师、技术团队负责人。</li>
+<li><strong>怎么上手</strong>：README 给出的最小用法是先克隆仓库，再把示例命令或记忆文件复制到自己的项目里，例如：<code>git clone https://github.com/luongnv89/claude-howto.git &amp;&amp; cd claude-howto &amp;&amp; cp 01-slash-commands/optimize.md /path/to/your-project/.claude/commands/</code>。</li>
+<li><strong>可以用在哪些场景</strong>：比如给团队项目快速补一套 Claude Code 自定义 slash command，减少重复提示词；比如把 <code>CLAUDE.md</code> 作为项目记忆，统一代码风格和上下文；比如结合 hooks、subagents 和 MCP 做自动化代码审查或文档生成流程。</li>
+<li><strong>技术看点</strong>：项目的核心价值不在复杂算法，而在“教程 + 模板 + 结构化学习路径”的产品化设计，README 里还明确给出 Mermaid 图示、测验、模块化目录和版本同步机制。仓库近期还加入了静态网站生成、Markdown 校验和构建缓存，说明维护重点已经从单纯写文档扩展到提升分发和发布效率。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交里，绝大多数都是 <code>docs: sync to Claude Code v2.1.xxx</code> 这类同步更新，说明项目在紧跟 Claude Code 版本迭代，维护节奏很密集；同时穿插了 <code>fix(memory)</code>、<code>fix(i18n)</code>、<code>feat(scripts)</code>、<code>perf(scripts)</code> 等提交，表明团队一边修正翻译和路径问题，一边强化静态站点构建、缓存和文档校验，整体方向是“持续跟版本、持续补质量、持续增强可发布性”。贡献者有 21 人，说明不是单人孤立维护，但提交仍高度集中在主维护者手里。</li>
+<li><strong>同类对比</strong>：README 没有明确对标某个竞品；它主要是对官方 Claude Code 文档的补充，差异点在于更强调实战模板、学习路径和可复制配置，而不是功能参考手册。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026-05-21，但截至 2026-09-21 已有 7487 个 Stars、516 个 Forks、103 名贡献者和 17 个开放 Issue，关注度与迭代速度较高，但项目本身仍处于快速演进阶段。原生 Windows 标为 Experimental，部分代理只有 MCP-only 或社区支持；部署到局域网或团队环境时需要额外配置 Bearer Token 和用户认证。默认模式不需要 API Key，但启用 LLM 总结或向量检索会引入外部服务、凭据管理和成本；近期 <code>rmcp</code> 主版本升级也提示 MCP 集成可能存在兼容性调整风险。</p>
+<p><strong>注意事项</strong>：这个仓库更新很勤，但创建时间标注为 2025-11-07、当前已积累 3.8 万星，说明热度高、传播快，适合做入门和实践参考；不过内容强依赖 Claude Code 版本，学习时要注意版本同步带来的路径或配置变化。仓库有 23 个 open issues，说明还有持续演进中的边角问题，适合跟着官方版本看，不建议把其中配置当成一劳永逸的长期标准答案。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/akitaonrails/ai-memory">akitaonrails/ai-memory</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/luongnv89/claude-howto">luongnv89/claude-howto</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：资深开发者与技术内容创作者，在 GitHub 和开发者社区拥有较高知名度与影响力
-<strong>技术栈偏好</strong>：偏好 Rust、JavaScript 和 Python，重点关注 AI 工具、开发者效率与实验性项目
-<strong>核心领域</strong>：主要聚焦人工智能应用、AI 辅助编程、开发者工具与软件工程实践</p>
+<p><strong>技术影响力</strong>：拥有高星代表项目和较高关注度，是 AI 工具与开发者效率方向具有一定社区影响力的个人开发者。
+<strong>技术栈偏好</strong>：主要使用 Python 与 TypeScript，偏好构建 AI 辅助工具、前端/开发者工具和实用型开源项目。
+<strong>核心领域</strong>：主要聚焦人工智能应用、网络安全背景下的工程实践，以及知识分享型开发者工具生态。</p>
 <hr />
-<h3>✨ Graphify-Labs/graphify (83730★)</h3>
+<h3>✨ Meloong-Git/PCL (8573★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：在 AI 编程助手里输入 <code>/graphify</code>，它会把代码、数据库 schema、脚本、文档、图片和视频映射成可点击、可查询的知识图谱，让你按关系追踪项目而不是逐文件 grep。</p>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：Graphify 是一个面向 Claude Code、Codex、Cursor、Gemini CLI 等 AI 编程助手的技能和 Python CLI。它会扫描项目目录，把源码 AST、跨文件调用、导入、继承关系、文档引用、注释 rationale 以及多媒体语义信息汇总到同一张图里，并输出 <code>graph.html</code>、<code>GRAPH_REPORT.md</code> 和 <code>graph.json</code>。生成后的图可以搜索节点、解释概念、查询问题，也可以追踪两个概念之间的最短路径。</li>
-<li><strong>能解决什么痛点</strong>：大型代码库里，开发者常常不知道某个类、接口、SQL 表或脚本到底和哪些模块相互依赖，纯文本搜索只能找到关键词，难以看清调用链和跨文件关系。对包含代码、数据库 schema、Shell/R 脚本、设计文档甚至图片视频资料的项目，它把分散信息统一成图，适合做接手项目、排查影响范围和梳理系统边界。</li>
-<li><strong>适合谁用</strong>：适合经常接手陌生或大型仓库的后端、全栈、平台工程师，也适合维护多语言项目、数据管道、内部工具链的团队。已经在使用 Claude Code、Cursor、Codex、Gemini CLI 或 GitHub Copilot 的开发者，上手路径会更短。</li>
-<li><strong>怎么上手</strong>：<code>uv tool install graphifyy &amp;&amp; graphify install</code>，然后在 AI 编程助手里运行 <code>/graphify .</code>。</li>
-<li><strong>可以用在哪些场景</strong>：接手 FastAPI、Rails、Node 等大型服务时，先生成交互式 <code>graph.html</code> 查看核心节点和子系统社区；重构某个类、API 或数据库表前，用 <code>graphify path A B</code> 和 <code>graphify explain "概念名"</code> 查影响链路；给内部项目补文档时，用 <code>GRAPH_REPORT.md</code> 快速整理关键概念、异常连接和后续可追问的问题。</li>
-<li><strong>技术看点</strong>：代码解析主要基于 tree-sitter AST，本地完成、无需 LLM，关系边会标注 <code>EXTRACTED</code> 或 <code>INFERRED</code>，便于区分源码显式关系和解析推断关系。它明确不是向量索引，不依赖 embedding 或 vector store，而是输出可遍历的图结构，并支持 Leiden 社区发现、路径查询和节点解释。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交几乎都集中在稳定性和边界条件修复，包括缓存写入作用域、AST cache 路径、GraphML 导出、worktree 与 <code>.git/info/exclude</code> 处理、管道提前关闭、查询日志默认关闭、跨文件脚本链接和 Ruby <code>.rake</code> 提取等。项目更新非常密集，且提交作者不止一人，说明社区维护活跃；当前阶段更像是在快速扩大适配面后，对路径解析、缓存一致性、导出兼容性和 CLI 可靠性做集中打磨。</li>
-<li><strong>同类对比</strong>：README 明确强调它不是 mem0、supermemory 或 dense RAG 这类记忆/检索系统：Graphify 不走向量库路线，而是构建可解释、可遍历的知识图谱。README 中的基准显示它在 LOCOMO recall@10、LongMemEval-S QA accuracy 等指标上与这些系统做了对比，但具体效果仍应以自己的代码库复测为准。</li>
+<li><strong>它是什么</strong>：Minecraft 启动器 Plain Craft Launcher（PCL）。</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建于 2026-04-03，但已经有 83730 stars、146 位贡献者和 488 个 open issues，热度很高、迭代很快，也意味着接口和行为仍可能频繁调整。PyPI 包名是 <code>graphifyy</code> 而不是 <code>graphify</code>，安装时容易踩坑；代码解析本地完成，但文档、PDF、图片和视频的语义处理会使用助手模型或配置的 API key，需要注意隐私和成本边界。近期提交大量修复缓存、路径和导出问题，生产环境接入前建议锁定版本并先在代表性仓库上验证输出质量。</p>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/Meloong-Git/PCL">Meloong-Git/PCL</a></p>
 </li>
 </ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：Graphify Labs 虽成立时间很短、仓库数量有限，但凭借 graphify 项目的高星标已在开源社区获得显著关注。
-<strong>技术栈偏好</strong>：其技术栈明显偏向 Python，可能聚焦于数据处理、图谱建模或开发者工具类方向。
-<strong>核心领域</strong>：主要聚焦于以 Graphify 为核心的图数据、知识图谱或可视化相关技术领域。</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
