@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ php/php-src (40846★)
+### ✨ php/php-src (41052★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -182,7 +182,7 @@
 
 ---
 
-### ✨ fastapi/fastapi (103466★)
+### ✨ fastapi/fastapi (103628★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -225,7 +225,7 @@
 
 ---
 
-### ✨ Meloong-Git/PCL (8573★)
+### ✨ Meloong-Git/PCL (8650★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
