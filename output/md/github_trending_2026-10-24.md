@@ -176,7 +176,7 @@
 
 ---
 
-### ✨ pollen-robotics/microduck (10639★)
+### ✨ pollen-robotics/microduck (10835★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -195,7 +195,7 @@
 
 ---
 
-### ✨ google-gemini/gemini-cli (107606★)
+### ✨ google-gemini/gemini-cli (107872★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -214,7 +214,7 @@
 
 ---
 
-### ✨ jbiaojerry/ebook-treasure-chest (22295★)
+### ✨ jbiaojerry/ebook-treasure-chest (22514★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -233,7 +233,7 @@
 
 ---
 
-### ✨ makecindy/cindy (3769★)
+### ✨ makecindy/cindy (3971★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
