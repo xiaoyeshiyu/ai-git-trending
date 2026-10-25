@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ makecindy/cindy (4466★)
+### ✨ makecindy/cindy (4705★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -119,7 +119,7 @@
 
 ---
 
-### ✨ pollen-robotics/microduck (11334★)
+### ✨ pollen-robotics/microduck (11510★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -162,7 +162,7 @@
 
 ---
 
-### ✨ Renhuai123/ziwei-doushu (7391★)
+### ✨ Renhuai123/ziwei-doushu (7501★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -181,7 +181,7 @@
 
 ---
 
-### ✨ JetBrains/thinkrail (1151★)
+### ✨ JetBrains/thinkrail (1294★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -200,7 +200,7 @@
 
 ---
 
-### ✨ coollabsio/coolify (63882★)
+### ✨ coollabsio/coolify (64139★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -255,7 +255,7 @@
 
 ---
 
-### ✨ AgriciDaniel/claude-seo (20260★)
+### ✨ AgriciDaniel/claude-seo (20587★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
