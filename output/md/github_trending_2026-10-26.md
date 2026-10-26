@@ -1,25 +1,6 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ makecindy/cindy (5117★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[makecindy/cindy](https://github.com/makecindy/cindy)
-
-
----
-
 ### ✨ Nutlope/hallmark (4080★)
 
 > **一句话**：Hallmark 给 Claude Code、Cursor 和 Codex 加上一套“反 AI 味”设计规则，让生成的网页不再像换色模板，而是按不同 brief 产出不同结构、字体、配色和视觉节奏。
@@ -52,35 +33,92 @@
 
 ---
 
-### ✨ debpalash/VoiceStudio (38812★)
+### ✨ TauricResearch/TradingAgents (103806★)
 
-> **一句话**：在本地电脑上完成声音克隆、声音设计、视频配音、语音转写和有声书制作，把原本依赖在线语音服务的整套音频工作流集中到一个桌面应用中。
+> **一句话**：TradingAgents 把一家交易公司的分析、辩论、交易、风控和组合经理流程拆成多个 LLM Agent，让它们围绕股票、加密货币等标的协作生成交易决策。
 
-- **它是什么**：VoiceStudio 是一款基于 Electron 的本地语音工作台，默认使用 `k2-fsa/OmniVoice`，支持声音克隆、文本转语音、视频配音、听写、转录、批量任务和有声书生成。项目覆盖 646 种语言，支持本地模型管理，并通过 Local API 和 MCP 接入其他应用或 AI Agent；远程服务属于可选项。
+- **它是什么**：这是一个用 Python 编写的多智能体金融交易研究框架。它内置基本面分析师、情绪分析师、新闻分析师、技术分析师、看多/看空研究员、Trader、风控团队和 Portfolio Manager，模拟真实交易团队从信息收集、观点辩论到下单审批的流程。README 明确说明它面向研究用途，不构成投资或交易建议。
+- **能解决什么痛点**：一是减少开发者手工拼接财务数据、新闻、社媒情绪、技术指标和宏观数据后再喂给 LLM 的流程成本；二是帮助做交易研究的人处理回测中常见的 look-ahead bias、历史数据时间点一致性和决策日志可追踪问题。
+- **适合谁用**：适合做 LLM Agent、量化研究、金融 NLP 或交易策略原型的 Python 开发者；也适合需要评估不同大模型在金融分析任务中表现的研究团队。
+- **怎么上手**：`git clone https://github.com/TauricResearch/TradingAgents.git && cd TradingAgents && pip install . && tradingagents`
+- **可以用在哪些场景**：可用于搭建股票或加密货币的多 Agent 交易研究原型；用于比较 GPT、Claude、Gemini、Qwen、GLM、Ollama 等不同模型在同一交易流程中的输出差异；用于教学或论文实验中复现“分析师—研究员—交易员—风控”的决策链路。
+- **技术看点**：项目基于 LangGraph 组织多 Agent 工作流，并支持大量 LLM Provider，包括 OpenAI、Google、Anthropic、xAI、DeepSeek、Qwen、GLM、MiniMax、OpenRouter、Ollama、Azure OpenAI、AWS Bedrock 和 OpenAI-compatible endpoint。近期版本持续强化 point-in-time 数据保护、FRED/Alpha Vantage/Reddit 等数据流稳定性，这对金融回测比单纯堆 Agent 更关键。
+- **近期动向与发展方向**：最近 20 条提交集中在 v0.4.0、v0.4.1、v0.4.2 发布线上，重点不是大规模重构，而是修复交易研究中容易出错的细节：Alpha Vantage 日期裁剪、FRED vintage 时间钉住、Reddit 429/Retry-After、历史基本面避免混入实时 profile、Trader 必须给出绝对价格水平、辩论管理器在不确定时不强行给方向。同时也在更新模型目录，例如加入 Kimi、GPT-5.6、GLM-5.3，说明项目仍在快速跟进模型生态。
+- **同类对比**：README 没有明确点名竞品或对标项目；更准确地说，它不是单一回测框架或单一聊天机器人，而是偏“多角色 LLM 交易决策实验框架”。
+- **注意事项**：项目创建于 2024-12-28，但 Star 已超过 10 万、Fork 接近 2 万，热度很高；同时 open issues 有 365 个，说明真实使用中的边界问题不少。近期提交大量围绕数据正确性、网络请求、历史时间点和 Agent 决策约束做修补，金融场景使用时应先验证数据源、回测逻辑和提示词输出稳定性，不宜直接用于真实资金交易。
 
-- **能解决什么痛点**：需要处理敏感录音、内部会议或未公开内容时，可以把推理和音频数据留在本机，减少上传第三方服务的依赖。面对视频配音、长文本有声书和批量语音生成等任务，也不必分别拼接克隆、转写、时间轴和音频导出工具。
-
-- **适合谁用**：适合需要本地语音合成和声音克隆的内容创作者、播客制作人、配音团队及有声书制作者。也适合希望通过 Python 后端、Local API 或 MCP，把语音能力接入内部工具和 AI Agent 的开发者。
-
-- **怎么上手**：macOS/Linux 可直接执行 `curl -fsSL https://voicestudio.sh/install | sh` 安装最新 Electron 版本；从源码运行则执行 `git clone https://github.com/debpalash/VoiceStudio.git && cd VoiceStudio && bun install && bun run setup:api && bun run dev`。
-
-- **可以用在哪些场景**：为教育课程、产品演示或短视频批量制作多语言配音；把内部会议、访谈录音转成文字并生成可检索的语音资料；在本地写作或出版流程中，将长篇文本转换为有声书，并通过 MCP 交给 Agent 自动编排任务。
-
-- **技术看点**：采用 Electron 作为唯一桌面和 Web UI 外壳，Python 负责语音后端，同时支持本地模型、可选远程 Worker、Local API 和 MCP 集成。项目对硬件差异和运行稳定性投入较多，近期提交涉及 CUDA GPU 选择、Windows NVSMI 探测、端口恢复、可终止的 ASR sidecar 以及本地健康探测安全控制。
-
-- **近期动向与发展方向**：最近 20 条提交几乎全部集中在 2026-09-27 的后端稳定性、ASR 行为和 Electron 运行时修复，包括限制参考识别仅使用已安装模型、保留明确的远程 Provider 选择、修复端口被系统拒绝后的回退与恢复，以及隔离 sidecar 生命周期。近期重点明显是收敛桌面端和本地推理链路的边界、提升异常恢复能力，而不是扩展新的面向用户功能；项目当前有 79 位贡献者，更新活跃，但这批提交主要由核心维护者完成。
-
-- **同类对比**：项目明确将自己定位为开源、完全本地化的 ElevenLabs 替代方案，核心差异是本地运行和可控的模型、API、MCP 集成，而不是主要依赖云端语音服务。README 未提供与其他开源语音项目的系统性对比。
-
-- **注意事项**：首次使用需要下载语音模型，实际速度和显存、CPU、操作系统及所选引擎有关；从源码构建还需要 Node.js 22+、Bun、Rust/Cargo 和平台构建工具。项目采用 AGPL-3.0，模型另有各自许可证，商用前需要分别确认；克隆他人声音必须获得授权。项目创建于 2026-04-09、最近更新于 2026-09-27，拥有较高关注度但项目历史相对较短；README 文档覆盖安装、平台配置、引擎、性能和迁移，但 Electron 已取代旧版 Tauri，旧用户存在迁移成本。当前仅有 12 个开放 Issue，不能据此判断所有边缘平台和模型组合都已充分验证。
-
-- **GitHub**：[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)
+- **GitHub**：[TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：以开源个人开发者身份获得较高社区关注，代表项目 VoiceStudio 具备显著传播力。
-**技术栈偏好**：以 Python 为主，兼顾 Zig 与 Rust，偏好跨语言探索和高性能工具开发。
-**核心领域**：主要聚焦语音技术、人工智能应用及开发者工具。
+**技术影响力**：以 TradingAgents 等高关注度开源项目建立了较强的社区影响力，是新兴 AI 交易智能领域的活跃组织。
+**技术栈偏好**：以 Python 为主，偏好结合大语言模型、多智能体协作与量化交易系统进行研发。
+**核心领域**：主要聚焦 AI 驱动的金融交易分析、量化研究与交易决策智能化。
+
+---
+
+### ✨ JetBrains/thinkrail (2441★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[JetBrains/thinkrail](https://github.com/JetBrains/thinkrail)
+
+
+---
+
+### ✨ makecindy/cindy (5910★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[makecindy/cindy](https://github.com/makecindy/cindy)
+
+
+---
+
+### ✨ affaan-m/ECC (263904★)
+
+> **一句话**：ECC 把 Claude Code、Codex、Cursor 等 AI 编程助手接入一套可复用的工程流程，让代理按“规划、测试、实现、审查、验证、记忆、改进”的方式持续工作。
+
+- **它是什么**：ECC 是面向 AI 编程代理的工程化运行框架，提供 68 个专用代理、292 个技能、94 个命令，以及 hooks、规则、记忆和持续学习机制。它还能通过 AgentShield 扫描提示词、hooks、MCP 配置、权限、密钥和代理相关文件，并为 Claude Code 提供完整支持，为 Codex、Cursor、OpenCode、Gemini、Zed、GitHub Copilot 等提供不同程度的适配。
+- **能解决什么痛点**：开发者不必在每次对话中重复描述“先规划、写测试、实现、审查、验证”的流程，代理可以通过预设技能和 hooks 固化这些步骤。跨项目或跨会话工作时，ECC 的 memory、session summary 和 instincts 机制也能减少上下文丢失，以及代理反复犯同类错误的问题。
+- **适合谁用**：长期使用 Claude Code、Codex 等 AI 编程代理进行实际项目开发的个人开发者和团队。尤其适合需要代码审查、安全检查、测试驱动开发、跨语言规范或统一代理工作流的工程团队。
+- **怎么上手**：Node.js 18 及以上环境执行 `npx ecc-universal@2.2.2 setup`，按向导完成 Claude Code、Codex 或 Kimi Code 的配置；Claude Code 插件安装还需要 Git 和 Claude Code 2.1 或更高版本。
+- **可以用在哪些场景**：
+  - 在大型 JavaScript、Python 或 Go 项目中，让 AI 代理按统一的测试、审查和安全检查流程提交改动。
+  - 为多个仓库配置共享的编码规则、项目记忆和专用技能，避免每个项目重复维护提示词。
+  - 在引入第三方 MCP、hooks 或代理配置前，使用 AgentShield 检查潜在的提示注入、密钥泄露和权限风险。
+- **技术看点**：项目没有把能力局限在单一提示词，而是组合了 skills、agents、hooks、rules 和持久化 memory，形成可执行的代理工作流。它采用 MIT 开源许可，并通过 `ecc-universal`、Claude 插件和多个 harness 适配层覆盖不同 AI 编程环境，但各平台之间存在功能差异。
+- **近期动向与发展方向**：项目近期非常活跃，最近 20 条提交集中在安全加固、错误处理、跨平台启动、Claude hooks 与 ESM 兼容、控制面板可访问性和性能优化等方向，同时持续合并 Codex 配置保留、OpenCode 输出契约、SDK 版本审计、Cursor 仪表盘和指标读取优化。9 月 19 至 20 日连续合并大量社区贡献，说明项目正从功能扩张转向多平台稳定性、安全性和运维细节打磨；近期还发布了 `ecc-universal 2.2.2`。
+- **同类对比**：README 未明确列出直接竞品；ECC 的差异点在于它同时覆盖代理技能库、工程流程、记忆机制、安全扫描和多种 AI 编程 harness，而不是只提供单一 CLI、提示词集合或某个编辑器插件。
+- **注意事项**：项目创建于 2026 年 1 月，但目前已达到 263904 个 Stars、39479 个 Forks 和 377 位贡献者，发展速度很快；同时有 209 个 Open Issues，使用时应关注版本说明和已知问题。README 明确提醒只从官方仓库、npm 包、GitHub App、插件 `ecc@ecc` 或 `ecc.tools` 获取安装源，第三方镜像可能包含恶意代码；此外，不同平台存在能力限制，不能默认 Claude Code 上可用的功能在 Cursor、OpenCode 或其他适配器中完全一致。
+
+- **GitHub**：[affaan-m/ECC](https://github.com/affaan-m/ECC)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：高影响力 AI 开源开发者，凭借 ECC 等热门项目在开发者社区拥有广泛关注。
+**技术栈偏好**：以 Python、JavaScript 和 TypeScript 为主，偏好构建 AI Agent、自动化工具与安全基础设施。
+**核心领域**：聚焦 Agentic AI、智能体编排、AI 开发工具链及智能体安全。
 
 ---
 
@@ -119,7 +157,31 @@
 
 ---
 
-### ✨ pollen-robotics/microduck (11805★)
+### ✨ NVIDIA/SkillSpector (2280★)
+
+> **一句话**：SkillSpector 会在安装 AI Agent Skill 前扫描仓库、压缩包或本地目录，找出提示词注入、数据外泄、危险代码和 MCP 权限滥用等安全风险。
+
+- **它是什么**：这是 NVIDIA 开源的 Python 安全扫描器，面向 Claude Code、Codex CLI、Gemini CLI 等 AI Agent 使用的 skills。它支持扫描 Git 仓库、URL、zip、目录或单个 `SKILL.md` 文件，并输出终端、JSON、Markdown、SARIF 等格式的报告。核心能力包括 64 类漏洞模式检测、静态分析、可选 LLM 语义评估和 OSV.dev 实时 CVE 查询。
+- **能解决什么痛点**：开发者安装第三方 agent skill 时，很难判断其中是否藏有读取密钥、外传上下文、调用危险命令或诱导模型越权执行的内容。团队把 skill 接入 CI/CD 或内部工具链前，也需要可机器读取的安全报告，而不是靠人工逐行审查。
+- **适合谁用**：适合在团队内引入 AI Agent skills 的平台工程师、安全工程师和 DevSecOps；也适合维护 Claude Code、Codex CLI、Gemini CLI 扩展生态的开发者，用来审查外部贡献或内部发布的 skill。
+- **怎么上手**：`git clone https://github.com/NVIDIA/skillspector.git && cd skillspector && uv venv .venv && source .venv/bin/activate && make install && skillspector scan ./my-skill/`
+- **可以用在哪些场景**：在安装第三方 agent skill 前做本地安全体检；在企业内部 skill 仓库的 PR 流程中输出 SARIF 报告接入代码扫描；在安全团队巡检 MCP tool 或 agent skill 时批量发现隐藏指令、过宽权限和危险执行链。
+- **技术看点**：它采用“快速静态分析 + 可选 LLM 语义评估”的两阶段设计，既能覆盖 AST、污点追踪、YARA、依赖漏洞等确定性规则，也能通过 OpenAI 兼容接口接入 OpenAI、Anthropic、NVIDIA build.nvidia.com 或本地 Ollama/vLLM 做语义判断。SARIF 输出对接 CI/CD 和 IDE 安全工作流比较直接。
+- **近期动向与发展方向**：项目在 2026-05-12 首次发布后，6 月初连续同步 OSS release，并在 6 月 10 日密集合并 PR、约束 Python 版本、修复 MCP TP3 及参数级 TP1/TP2 在真实扫描中的可达性问题，同时 bump 到 2.1.3。近期重点更像是发布稳定化、兼容性约束和真实扫描场景下的规则修正；已有外部贡献者提交修复，但贡献者总数 4 人，核心维护仍较集中。
+- **同类对比**：README 未明确提到直接竞品；从定位看，它不是通用 SAST，而是专门面向 AI agent skills / MCP tool 的安装前安全扫描。
+- **注意事项**：项目创建时间较短，Stars 增长很快但成熟度仍需观察；当前有 18 个 open issues，说明真实使用反馈正在积累。README 给出了较完整的安装、扫描、输出和 LLM 配置示例，但使用 LLM 语义分析需要额外配置 API key 或本地 OpenAI 兼容服务；近期版本迭代频繁，接入生产 CI 前建议锁定版本并关注规则变更。
+
+- **GitHub**：[NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：NVIDIA 是 GitHub 上影响力极高的企业级开源组织，凭借 GPU、AI 与基础设施项目在开发者社区具备强技术号召力。
+**技术栈偏好**：技术栈以 Python、C 和 TypeScript 为主，偏向 AI 模型训练推理、底层 GPU 驱动与开发工具生态。
+**核心领域**：主要聚焦人工智能、高性能计算、GPU 系统软件、容器化部署与大模型训练推理基础设施。
+
+---
+
+### ✨ pollen-robotics/microduck (12204★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -138,128 +200,94 @@
 
 ---
 
-### ✨ TauricResearch/TradingAgents (103806★)
+### ✨ nightly-labs/openbot (1190★)
 
-> **一句话**：TradingAgents 把一家交易公司的分析、辩论、交易、风控和组合经理流程拆成多个 LLM Agent，让它们围绕股票、加密货币等标的协作生成交易决策。
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：这是一个用 Python 编写的多智能体金融交易研究框架。它内置基本面分析师、情绪分析师、新闻分析师、技术分析师、看多/看空研究员、Trader、风控团队和 Portfolio Manager，模拟真实交易团队从信息收集、观点辩论到下单审批的流程。README 明确说明它面向研究用途，不构成投资或交易建议。
-- **能解决什么痛点**：一是减少开发者手工拼接财务数据、新闻、社媒情绪、技术指标和宏观数据后再喂给 LLM 的流程成本；二是帮助做交易研究的人处理回测中常见的 look-ahead bias、历史数据时间点一致性和决策日志可追踪问题。
-- **适合谁用**：适合做 LLM Agent、量化研究、金融 NLP 或交易策略原型的 Python 开发者；也适合需要评估不同大模型在金融分析任务中表现的研究团队。
-- **怎么上手**：`git clone https://github.com/TauricResearch/TradingAgents.git && cd TradingAgents && pip install . && tradingagents`
-- **可以用在哪些场景**：可用于搭建股票或加密货币的多 Agent 交易研究原型；用于比较 GPT、Claude、Gemini、Qwen、GLM、Ollama 等不同模型在同一交易流程中的输出差异；用于教学或论文实验中复现“分析师—研究员—交易员—风控”的决策链路。
-- **技术看点**：项目基于 LangGraph 组织多 Agent 工作流，并支持大量 LLM Provider，包括 OpenAI、Google、Anthropic、xAI、DeepSeek、Qwen、GLM、MiniMax、OpenRouter、Ollama、Azure OpenAI、AWS Bedrock 和 OpenAI-compatible endpoint。近期版本持续强化 point-in-time 数据保护、FRED/Alpha Vantage/Reddit 等数据流稳定性，这对金融回测比单纯堆 Agent 更关键。
-- **近期动向与发展方向**：最近 20 条提交集中在 v0.4.0、v0.4.1、v0.4.2 发布线上，重点不是大规模重构，而是修复交易研究中容易出错的细节：Alpha Vantage 日期裁剪、FRED vintage 时间钉住、Reddit 429/Retry-After、历史基本面避免混入实时 profile、Trader 必须给出绝对价格水平、辩论管理器在不确定时不强行给方向。同时也在更新模型目录，例如加入 Kimi、GPT-5.6、GLM-5.3，说明项目仍在快速跟进模型生态。
-- **同类对比**：README 没有明确点名竞品或对标项目；更准确地说，它不是单一回测框架或单一聊天机器人，而是偏“多角色 LLM 交易决策实验框架”。
-- **注意事项**：项目创建于 2024-12-28，但 Star 已超过 10 万、Fork 接近 2 万，热度很高；同时 open issues 有 365 个，说明真实使用中的边界问题不少。近期提交大量围绕数据正确性、网络请求、历史时间点和 Agent 决策约束做修补，金融场景使用时应先验证数据源、回测逻辑和提示词输出稳定性，不宜直接用于真实资金交易。
+- **它是什么**：A local-first desktop workspace for persistent AI teammates. Run Codex, Claude, and Grok with dedicated workspaces, task queues, file sharing, browser control, and agent-to-agent collaboration.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)
+- **GitHub**：[nightly-labs/openbot](https://github.com/nightly-labs/openbot)
+
+
+---
+
+### ✨ Panniantong/Agent-Reach (88026★)
+
+> **一句话**：把 Twitter、Reddit、YouTube、GitHub、B站、小红书等站点的读取和搜索能力打包成一套 CLI，让 AI Agent 能按需访问互联网内容。
+
+- **它是什么**：Agent Reach 是一个面向 AI Agent 的互联网访问能力层，重点不是重写各平台客户端，而是帮 Agent 选择、安装、检测和切换可用的上游工具。它通过 `agent-reach doctor` 检查各平台通道状态，并为网页、YouTube、RSS、GitHub、B站、Twitter、小红书、Reddit 等渠道提供不同的接入路径。
+
+- **能解决什么痛点**：开发者让 Agent 查资料时，经常卡在平台 API 收费、匿名访问被封、Cookie 配置复杂、抓回 HTML 不可读等问题上。Agent Reach 把这些平台的安装、登录态配置、后端选择和健康检查集中处理，减少为每个站点单独踩坑的成本。
+
+- **适合谁用**：适合经常使用 Claude Code、Cursor、Windsurf、OpenClaw 等命令行 Agent 的开发者。也适合需要让 Agent 批量读取社交平台、视频字幕、GitHub 仓库、RSS 信息源的研究员、运营分析人员和 Python 工程师。
+
+- **怎么上手**：把这句话发给你的 AI Agent：`帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md`
+
+- **可以用在哪些场景**：让 Agent 总结 YouTube 或 B站技术视频内容；让 Agent 搜索 Reddit、Twitter/X、小红书上的产品反馈和问题讨论；让 Agent 读取 GitHub 仓库、Issue、RSS 源并整理成调研报告。
+
+- **技术看点**：项目采用“每个平台 = 首选后端 + 备选后端”的有序路由设计，例如 B站优先走 `bili-cli`，小红书走 OpenCLI / MCP / CLI 组合，网页走 Jina Reader。它强调真实探测可用性，而不是只检查命令是否存在，这对长期维护多平台抓取能力比较关键。
+
+- **近期动向与发展方向**：最近提交显示项目仍在扩展平台覆盖，9 月新增了 Boss直聘 channel，支持岗位搜索和 JD 全文读取。8 月集中处理了 Windows CI、Git Bash 兼容、URL 编码、子进程 UTF-8 解码、小红书容器失败处理、雪球热帖限制等问题，说明维护重点包括跨平台稳定性、渠道可用性和社区 PR 合并。
+
+- **同类对比**：README 没有直接对标某个完整竞品。它与单个平台 CLI 的差异在于不绑定某一个站点或某一种抓取实现，而是把多个上游工具组织成 Agent 可用的能力层，并通过 doctor 和路由机制处理后端失效问题。
+
+- **注意事项**：项目创建时间为 2026-02-24，增长很快，但仍属于较新的项目；当前有 174 个 open issues，需要关注平台风控变化带来的维护压力。涉及 Twitter、小红书、Reddit、Facebook、Instagram 等登录态或 Cookie 的功能时，存在账号限制或封禁风险，README 也建议使用专用小号。部分能力依赖外部 CLI、浏览器登录态、MCP 或本地环境配置，上手体验会比纯 Python 包更依赖机器环境。
+
+- **GitHub**：[Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：以 TradingAgents 等高关注度开源项目建立了较强的社区影响力，是新兴 AI 交易智能领域的活跃组织。
-**技术栈偏好**：以 Python 为主，偏好结合大语言模型、多智能体协作与量化交易系统进行研发。
-**核心领域**：主要聚焦 AI 驱动的金融交易分析、量化研究与交易决策智能化。
+**技术影响力**：以个人开发者身份在 AI Agent 开源社区具备较高影响力，代表项目获得显著关注。
+**技术栈偏好**：以 Python 为主，辅以 TypeScript 和 Shell，偏好自动化工具、开发者工具与 Agent 生态技术。
+**核心领域**：主要聚焦 AI Agent、Claude Code 生态及智能开发与信息获取工具。
 
 ---
 
-### ✨ Renhuai123/ziwei-doushu (7815★)
+### ✨ debpalash/VoiceStudio (38812★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：在本地电脑上完成声音克隆、声音设计、视频配音、语音转写和有声书制作，把原本依赖在线语音服务的整套音频工作流集中到一个桌面应用中。
 
-- **它是什么**：紫微斗数开源排盘引擎 — 基于倪海厦《天纪》体系，含完整排盘算法、四化系统、格局知识库、古籍原文数据
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：VoiceStudio 是一款基于 Electron 的本地语音工作台，默认使用 `k2-fsa/OmniVoice`，支持声音克隆、文本转语音、视频配音、听写、转录、批量任务和有声书生成。项目覆盖 646 种语言，支持本地模型管理，并通过 Local API 和 MCP 接入其他应用或 AI Agent；远程服务属于可选项。
 
-- **GitHub**：[Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu)
+- **能解决什么痛点**：需要处理敏感录音、内部会议或未公开内容时，可以把推理和音频数据留在本机，减少上传第三方服务的依赖。面对视频配音、长文本有声书和批量语音生成等任务，也不必分别拼接克隆、转写、时间轴和音频导出工具。
 
+- **适合谁用**：适合需要本地语音合成和声音克隆的内容创作者、播客制作人、配音团队及有声书制作者。也适合希望通过 Python 后端、Local API 或 MCP，把语音能力接入内部工具和 AI Agent 的开发者。
 
----
+- **怎么上手**：macOS/Linux 可直接执行 `curl -fsSL https://voicestudio.sh/install | sh` 安装最新 Electron 版本；从源码运行则执行 `git clone https://github.com/debpalash/VoiceStudio.git && cd VoiceStudio && bun install && bun run setup:api && bun run dev`。
 
-### ✨ JetBrains/thinkrail (1944★)
+- **可以用在哪些场景**：为教育课程、产品演示或短视频批量制作多语言配音；把内部会议、访谈录音转成文字并生成可检索的语音资料；在本地写作或出版流程中，将长篇文本转换为有声书，并通过 MCP 交给 Agent 自动编排任务。
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+- **技术看点**：采用 Electron 作为唯一桌面和 Web UI 外壳，Python 负责语音后端，同时支持本地模型、可选远程 Worker、Local API 和 MCP 集成。项目对硬件差异和运行稳定性投入较多，近期提交涉及 CUDA GPU 选择、Windows NVSMI 探测、端口恢复、可终止的 ASR sidecar 以及本地健康探测安全控制。
 
-- **它是什么**：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **近期动向与发展方向**：最近 20 条提交几乎全部集中在 2026-09-27 的后端稳定性、ASR 行为和 Electron 运行时修复，包括限制参考识别仅使用已安装模型、保留明确的远程 Provider 选择、修复端口被系统拒绝后的回退与恢复，以及隔离 sidecar 生命周期。近期重点明显是收敛桌面端和本地推理链路的边界、提升异常恢复能力，而不是扩展新的面向用户功能；项目当前有 79 位贡献者，更新活跃，但这批提交主要由核心维护者完成。
 
-- **GitHub**：[JetBrains/thinkrail](https://github.com/JetBrains/thinkrail)
+- **同类对比**：项目明确将自己定位为开源、完全本地化的 ElevenLabs 替代方案，核心差异是本地运行和可控的模型、API、MCP 集成，而不是主要依赖云端语音服务。README 未提供与其他开源语音项目的系统性对比。
 
+- **注意事项**：首次使用需要下载语音模型，实际速度和显存、CPU、操作系统及所选引擎有关；从源码构建还需要 Node.js 22+、Bun、Rust/Cargo 和平台构建工具。项目采用 AGPL-3.0，模型另有各自许可证，商用前需要分别确认；克隆他人声音必须获得授权。项目创建于 2026-04-09、最近更新于 2026-09-27，拥有较高关注度但项目历史相对较短；README 文档覆盖安装、平台配置、引擎、性能和迁移，但 Electron 已取代旧版 Tauri，旧用户存在迁移成本。当前仅有 12 个开放 Issue，不能据此判断所有边缘平台和模型组合都已充分验证。
 
----
-
-### ✨ coollabsio/coolify (64539★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 360+ one-click services on your own servers.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[coollabsio/coolify](https://github.com/coollabsio/coolify)
-
-
----
-
-### ✨ cloudflare/security-audit-skill (5695★)
-
-> **一句话**：它把编码代理组织成一支分阶段协作的安全审计队伍，从代码侦察、覆盖率驱动的漏洞挖掘，到独立复核和结构化报告，最终产出可机器验证的安全结论。
-
-- **它是什么**：这是一个面向 coding agent 的安全审计技能，按六个阶段处理目标代码库：建立架构与覆盖台账、分配隔离的漏洞猎手、让独立验证者尝试推翻候选问题，并生成 `findings.json`、`REPORT.md` 等结果。项目内置针对 AI/LLM、Web 协议与认证、客户端、供应链、云部署、原生二进制等多类攻击面的方法文件，并通过零依赖 Node.js 校验器验证覆盖台账和发现记录。
-
-- **能解决什么痛点**：普通 AI 代码审查容易重复检查热门文件、遗漏未覆盖的攻击面，也难以说明“哪些地方已经检查过”。该项目用 `coverage-ledger.json` 记录检查范围，并把发现明确区分为 `confirmed`、`needs_validation` 和 `rejected`，减少未经证实的漏洞结论直接进入报告。
-
-- **适合谁用**：适合希望让 AI coding agent 执行系统化安全审计的安全工程师、产品安全团队和漏洞研究人员；也适合维护 Web 服务、LLM 应用、云基础设施或原生程序，并需要保留可复核审计记录的开发团队。
-
-- **怎么上手**：安装技能后，在目标代码库中直接发起审计：
-  然后输入：`security audit this codebase`
-
-- **可以用在哪些场景**：
-  - 对接入大模型、插件或工具调用的应用，检查提示注入、代理权限和输出处理问题。
-  - 发布 HTTP API、认证服务或反向代理前，检查请求解析、缓存、认证协议和边界处理缺陷。
-  - 审计包含 CI/CD、容器、依赖更新、签名发布流程的供应链，核对构建与部署环节的安全风险。
-
-- **技术看点**：项目没有只依赖模型自由发挥，而是用多阶段代理编排、覆盖台账、独立验证者和 JSON Schema 约束形成可追溯流程。它还要求在操作系统强制沙箱中执行目标代码，并在缺少网络隔离、资源限制和路径控制时将结论保留为 `needs_validation`，体现了对 AI 驱动动态审计风险的明确边界。
-
-- **近期动向与发展方向**：项目近期明显处于快速完善工作流阶段，9 月重点重做了审计流程、发现记录契约和校验器，并进一步澄清完整审计模式与指导模式的使用边界。7 月连续扩展了 AI/LLM、Web 协议认证、客户端、内存安全、二进制和内核等攻击类别，同时修复技能目录兼容性和 trace 步骤顺序问题；14 条提交中包含多个外部贡献者，说明项目正在通过贡献补充攻击面，但核心维护者仍较集中。整体方向是从单一审计提示集合演进为带验证、记录和报告约束的审计框架。
-
-- **同类对比**：README 未明确列出竞品或直接对标项目。相较于普通安全审查提示词，该项目更强调覆盖范围记录、独立反证、机器可读发现和多次运行之间的证据继承。
-
-- **注意事项**：项目创建时间较近，虽然已有 5695 个 Stars，但 Contributor Count 仅 4，不能仅凭关注度判断其长期成熟度。完整审计依赖支持工具调用和并行子代理的 coding agent，并要求 Node.js 运行校验器；目标代码执行还必须配置具备网络禁用、环境清理、资源限制和写入路径控制能力的操作系统级沙箱。攻击类别、发现格式和审计工作流仍在快速演进，升级时应重点检查 `SKILL.md`、`report-schema.json` 及校验器是否带来流程或输出格式变化。
-
-- **GitHub**：[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)
+- **GitHub**：[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：全球领先的互联网基础设施组织，在网络性能、安全与边缘计算领域具有广泛社区影响力。
-**技术栈偏好**：偏好 Rust、Go 与 TypeScript，重视高性能网络、云原生服务及边缘应用开发。
-**核心领域**：主要聚焦网络基础设施、边缘计算、Web 安全与开发者平台。
+**技术影响力**：以开源个人开发者身份获得较高社区关注，代表项目 VoiceStudio 具备显著传播力。
+**技术栈偏好**：以 Python 为主，兼顾 Zig 与 Rust，偏好跨语言探索和高性能工具开发。
+**核心领域**：主要聚焦语音技术、人工智能应用及开发者工具。
 
 ---
 
-### ✨ AgriciDaniel/claude-seo (21122★)
+### ✨ gitroomhq/postiz-app (38089★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.
+- **它是什么**：📨 The ultimate agentic social media scheduling tool 🤖
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -269,4 +297,52 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo)
+- **GitHub**：[gitroomhq/postiz-app](https://github.com/gitroomhq/postiz-app)
+
+
+---
+
+### ✨ alchaincyf/huashu-design (26567★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Huashu Design 3.0 · 在 agent 里打一句话，拿回能交付的设计：网页 / App 原型 / 可编辑 PPTX / 动画 / 信息图 · 六个候选挑三个方向 · 84 种带样张的风格库 · 越用越懂你的外观账本与设计体检 · HTML-native design skill for Claude Code, Codex, Cursor & any agent
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)
+
+
+---
+
+### ✨ multica-ai/andrej-karpathy-skills (211100★)
+
+> **一句话**：把 Karpathy 对 LLM 写代码常见失误的观察，整理成一份可直接塞进 `CLAUDE.md` 的协作规则，让 Claude Code 更少乱猜、少写废代码、少碰不该碰的地方。
+
+- **它是什么**：这是一个面向 Claude Code 的行为指南仓库，核心产物是一份 `CLAUDE.md`，把“先想清楚再写、保持简单、只改必要部分、用可验证目标推进”四条原则固化下来。README 里还提供了 Claude Code 插件安装方式，以及把同一套规则带到 Cursor 的项目规则文件，说明它不是单纯的说明文档，而是可落地的代理提示词/工作流配置。
+- **能解决什么痛点**：一类典型问题是模型在需求不明确时直接按自己的理解开写，最后做出偏题实现；另一类是改代码时顺手重构、改注释、动到无关模块，导致 diff 变大、回归风险上升。它试图把这些问题前置成显式提问、最小改动和验收导向。
+- **适合谁用**：经常用 Claude Code、Cursor 或类似 coding agent 写代码的开发者；以及希望把 AI 编码行为约束到团队规范里的项目维护者、技术负责人。
+- **怎么上手**：最小方式是直接把 `CLAUDE.md` 拉到项目里，或通过 Claude Code 插件安装：
+  ```bash
+  /plugin marketplace add forrestchang/andrej-karpathy-skills
+  /plugin install andrej-karpathy-skills@karpathy-skills
+  新项目也可以直接下载 `CLAUDE.md`。
+- **可以用在哪些场景**：给多成员协作的代码库统一 AI 编码规则，减少不同人用代理工具时产出的风格漂移；在需要频繁小步提交的功能开发里，限制 AI 乱改周边代码；在接入 Cursor 或 Claude Code 的团队里，把“先验证、再扩展”的流程固定下来。
+- **技术看点**：项目的设计重点不是复杂实现，而是把高频编码失误抽象成四条可执行原则，并分别对应到安装、插件、项目规则三个分发形态。它还提供英文和简体中文 README，同步维护 Cursor 支持，说明目标是跨工具复用，而不是绑定单一客户端。
+- **近期动向与发展方向**：最近提交主要集中在文档同步、中文 README 补充、Cursor 支持加入、插件结构修复和安装说明更新，说明项目近期重点是扩展兼容性和降低接入门槛，而不是继续重写核心内容。提交者里既有维护者也有外部贡献者，贡献来源不算单一，但当前打开的 issue 也不少，说明仍在快速迭代期。
+- **同类对比**：README 没有明确对标竞品；从内容看，它更像是面向 Claude Code 的项目级行为规范模板，而不是通用知识库或完整插件框架。
+- **注意事项**：这个仓库更偏“规则与约定”，不是独立运行的软件，价值取决于你是否真的把它接入日常工作流。当前 open issues 较多，配合最近一轮频繁修文档和结构问题的提交来看，项目成熟度还在继续打磨中，接入时要留意插件结构、路径和版本兼容性细节。文档已经给出安装路径，但对“接入后具体会如何影响代理行为”的边界说明还不算非常完整。
+
+- **GitHub**：[multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：新兴但增长迅速的开发者工具组织，凭借高星项目已获得较强社区关注度。
+**技术栈偏好**：以 Go 为核心，结合 TypeScript 与 Python，偏好构建高性能运行时、命令行工具及开发者基础设施。
+**核心领域**：聚焦 AI 开发者工具、技能扩展、运行时与多智能体基础设施。
