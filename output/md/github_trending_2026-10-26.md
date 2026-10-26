@@ -57,7 +57,7 @@
 
 ---
 
-### ✨ JetBrains/thinkrail (2441★)
+### ✨ JetBrains/thinkrail (2751★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -76,7 +76,7 @@
 
 ---
 
-### ✨ makecindy/cindy (5910★)
+### ✨ makecindy/cindy (6314★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -181,7 +181,7 @@
 
 ---
 
-### ✨ pollen-robotics/microduck (12204★)
+### ✨ pollen-robotics/microduck (12337★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -200,7 +200,7 @@
 
 ---
 
-### ✨ nightly-labs/openbot (1190★)
+### ✨ nightly-labs/openbot (1379★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -283,7 +283,7 @@
 
 ---
 
-### ✨ gitroomhq/postiz-app (38089★)
+### ✨ gitroomhq/postiz-app (38336★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -302,7 +302,7 @@
 
 ---
 
-### ✨ alchaincyf/huashu-design (26567★)
+### ✨ alchaincyf/huashu-design (26674★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
