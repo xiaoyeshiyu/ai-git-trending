@@ -33,7 +33,7 @@
 
 ---
 
-### ✨ nightly-labs/openbot (1979★)
+### ✨ nightly-labs/openbot (2301★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -111,7 +111,7 @@
 
 ---
 
-### ✨ makecindy/cindy (7203★)
+### ✨ makecindy/cindy (7384★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -130,7 +130,7 @@
 
 ---
 
-### ✨ gitroomhq/postiz-app (38971★)
+### ✨ gitroomhq/postiz-app (39216★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -200,7 +200,7 @@
 
 ---
 
-### ✨ JetBrains/thinkrail (3620★)
+### ✨ JetBrains/thinkrail (3852★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -219,7 +219,7 @@
 
 ---
 
-### ✨ togg53192-cmd/jailbreaks (5004★)
+### ✨ togg53192-cmd/jailbreaks (5351★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
