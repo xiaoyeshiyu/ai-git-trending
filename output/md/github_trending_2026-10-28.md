@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ JetBrains/thinkrail (4686★)
+### ✨ JetBrains/thinkrail (4936★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -20,7 +20,7 @@
 
 ---
 
-### ✨ elayadesign/ai-design-skills (10725★)
+### ✨ elayadesign/ai-design-skills (10979★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -178,7 +178,7 @@
 
 ---
 
-### ✨ makecindy/cindy (7886★)
+### ✨ makecindy/cindy (8004★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -197,7 +197,7 @@
 
 ---
 
-### ✨ nightly-labs/openbot (2991★)
+### ✨ nightly-labs/openbot (3151★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -216,7 +216,7 @@
 
 ---
 
-### ✨ togg53192-cmd/jailbreaks (6589★)
+### ✨ togg53192-cmd/jailbreaks (6947★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -235,7 +235,7 @@
 
 ---
 
-### ✨ hmjz100/LinkSwift (33976★)
+### ✨ hmjz100/LinkSwift (34328★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -254,7 +254,7 @@
 
 ---
 
-### ✨ expo/skills (3407★)
+### ✨ expo/skills (3520★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -308,7 +308,7 @@
 
 ---
 
-### ✨ xiaolai/the-craft-of-selfteaching (18352★)
+### ✨ xiaolai/the-craft-of-selfteaching (18451★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
