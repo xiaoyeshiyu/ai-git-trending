@@ -84,7 +84,7 @@
 
 ---
 
-### ✨ JetBrains/thinkrail (5762★)
+### ✨ JetBrains/thinkrail (5933★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -103,7 +103,7 @@
 
 ---
 
-### ✨ milind-soni/OpenMausBot (7165★)
+### ✨ milind-soni/OpenMausBot (7372★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -122,7 +122,7 @@
 
 ---
 
-### ✨ nightly-labs/openbot (3657★)
+### ✨ nightly-labs/openbot (3805★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -141,7 +141,7 @@
 
 ---
 
-### ✨ elayadesign/ai-design-skills (11824★)
+### ✨ elayadesign/ai-design-skills (12029★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -195,7 +195,7 @@
 
 ---
 
-### ✨ CopilotKit/OpenBot (7862★)
+### ✨ CopilotKit/OpenBot (8031★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -214,7 +214,7 @@
 
 ---
 
-### ✨ togg53192-cmd/jailbreaks (8231★)
+### ✨ togg53192-cmd/jailbreaks (8784★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -233,7 +233,7 @@
 
 ---
 
-### ✨ Donchitos/Claude-Code-Game-Studios (28772★)
+### ✨ Donchitos/Claude-Code-Game-Studios (29022★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
