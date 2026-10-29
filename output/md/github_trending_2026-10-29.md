@@ -1,68 +1,6 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ JetBrains/thinkrail (5282★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[JetBrains/thinkrail](https://github.com/JetBrains/thinkrail)
-
-
----
-
-### ✨ elayadesign/ai-design-skills (11339★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：No description provided.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[elayadesign/ai-design-skills](https://github.com/elayadesign/ai-design-skills)
-
-
----
-
-### ✨ obra/superpowers (290463★)
-
-> **一句话**：它让编码代理先和开发者敲定需求与设计，再按计划、测试和代码审查流程逐步实现软件。
-
-- **它是什么**：Superpowers 是一套面向编码代理的开发方法与可组合技能库，会在开发流程的不同阶段触发相应技能。从需求梳理、设计确认和任务拆分，到测试驱动开发、子代理协作、代码审查与分支收尾，都有明确的流程约束。
-- **能解决什么痛点**：代理容易在需求还没讲清楚时就开始写代码，或偏离计划、跳过测试；Superpowers 用设计确认、细化任务和 RED-GREEN-REFACTOR 流程减少这类问题。任务执行中出现重复劳动或修复循环难以推进时，也提供了诊断与分轮复审流程。
-- **适合谁用**：使用 Claude Code、Codex、Cursor、OpenCode 等编码代理进行日常开发的个人开发者与团队；需要让多个代理按任务分工、同时保持计划和审查流程一致的工程团队。
-- **怎么上手**：以 Claude Code 为例，运行 `/plugin install superpowers@claude-plugins-official`；其他编码代理有各自的安装方式，需按 README 分别配置。
-- **可以用在哪些场景**：从模糊需求出发开发一个新功能，先形成并确认设计再拆解实现任务；让子代理按计划并行完成多个工程任务，同时逐项审查；在代理行为异常、重复修改或忽略计划时，分析会话记录并定位问题。
-- **技术看点**：核心设计是把开发方法拆成可组合技能，并通过启动指令让代理按任务自动检查并触发相关流程。它覆盖多个编码代理平台，但安装与钩子机制依赖各平台自身能力，需要分别适配。
-- **近期动向与发展方向**：提交记录显示项目持续发布版本并扩展平台支持，近期覆盖 Devin CLI、Hermes Agent、OpenCode 2.0 和 Muse。开发重点还包括 SDD（规范驱动开发）的计划级工作区、可恢复修复循环，以及 Windows 钩子兼容和跨平台脚本修复；近 20 条记录以 Jesse Vincent 的工作为主，也有少量社区贡献。
-- **同类对比**：README 未明确列出竞品或直接对标项目；其定位区别于单一代码生成插件，重点是把需求设计、实施、测试和审查组织成完整工作流。
-- **注意事项**：需要接受较强的流程约束，特别是需求澄清、设计确认和测试步骤；习惯直接让代理改代码的用户可能觉得流程较重。项目支持多种代理平台，但各平台的安装和钩子行为并不完全相同。项目于 2025-10-09 创建，最近更新日期为 2026-09-23；398 个开放 Issue 说明维护者仍需处理不少反馈，但仅凭数量无法判断问题严重程度。
-
-- **GitHub**：[obra/superpowers](https://github.com/obra/superpowers)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有较高社区影响力，代表作在 GitHub 获得大规模关注，具备开源生态号召力
-**技术栈偏好**：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、开发工具和可扩展技能生态
-**核心领域**：主要聚焦 AI 辅助软件开发、开发者生产力工具与内容处理自动化
-
----
-
 ### ✨ HKUDS/DeepTutor (34555★)
 
 > **一句话**：DeepTutor 把聊天式 AI 导师、个人知识库、学习路径、题库与多智能体协作放在同一个学习工作台里，用来长期跟踪和陪伴个人学习。
@@ -87,59 +25,27 @@
 
 ---
 
-### ✨ macro-inc/macro (1453★)
+### ✨ obra/superpowers (290463★)
 
-> **一句话**：Macro 把团队邮件、聊天、文档、任务、会议、CRM 和 AI Agent 放进同一个工作区，并用 @链接和共享记忆把所有上下文串起来。
+> **一句话**：它让编码代理先和开发者敲定需求与设计，再按计划、测试和代码审查流程逐步实现软件。
 
-- **它是什么**：Macro 是面向团队的一体化工作空间，核心界面覆盖统一邮箱、频道消息、任务、Markdown 文档、Canvas、文件、会议记录、CRM 和 Agent。它强调所有内容都能被 @mention、搜索和双向关联，例如从客户邮件创建任务、在文档里引用邮件、把 PR 关联到任务，并让 Agent 读取同一套团队上下文。
-- **能解决什么痛点**：适合解决小团队同时使用 Slack、Linear、Notion、HubSpot、Superhuman 等工具时上下文分散的问题，尤其是“任务为什么产生”“客户最近说了什么”“这封邮件和哪个项目相关”需要跨系统追溯的场景。另一个痛点是 CRM 和任务系统容易过期，Macro 通过把它们放在聊天、邮件、文档的原始协作流里，减少手动同步和重复录入。
-- **适合谁用**：适合想把邮件、团队沟通、任务跟踪、客户信息和 AI Agent 收到同一工作区的创业团队或小型技术团队。也适合需要从客户邮件、技术讨论、PR 和文档之间频繁建立上下文关系的产品、工程、销售协作团队。
-- **怎么上手**：README 未提供本地安装命令或最小运行示例，可通过官网入口注册使用：`https://macro.com/app`。
-- **可以用在哪些场景**：从客户邮件直接创建带上下文的工程任务，并关联到后续 PR 和频道讨论；用统一 inbox 同时处理 Gmail、团队消息、@mentions 和待办事项；在销售或客户成功流程中，通过联系人、公司记录聚合团队邮件、文件和内部讨论，替代单独维护一套容易失真的 CRM。
-- **技术看点**：项目使用 Rust 和 SolidJS 构建，README 明确提到文档协作基于 CRDT，并通过 Cloudflare Durable Objects 支撑接近实时的多人编辑。其关键设计是把邮件、消息、任务、文档、CRM 等对象存成双向图，而不是只做多个工具的浅层聚合。
-- **近期动向与发展方向**：最近 20 条提交集中在邮箱、日历、任务视图、Markdown、AI、频道、iOS 和桌面 CI 上，既有功能增强也有大量修复，说明项目仍在快速迭代。近期新增了 Google 风格日历提醒、任务视图合并、Markdown checklist 进度插件、split 位置交换等功能，同时修复 Google Calendar 权限申请、邮箱回填、AI tool_use 输入兼容、macOS 打包链路等问题，开发重点明显围绕核心协作体验、邮箱/日历集成和跨平台稳定性展开。
-- **同类对比**：README 明确对标 Slack、Linear、Notion、HubSpot、Superhuman 等产品，差异在于 Macro 不是单点替代其中某一个工具，而是尝试把团队沟通、任务、文档、邮箱、CRM 和 Agent 作为同一套可链接、可搜索、可被 AI 使用的系统来设计。
-- **注意事项**：项目创建时间为 2025-11-08，当前 Stars 1453、Open Issues 56，更新非常频繁，说明关注度和开发活跃度不错，但成熟度仍需要谨慎评估。README 偏产品说明和理念介绍，本地部署、架构细节、最小开发运行路径在提供素材中未看到；近期提交里也有多条修复和临时处理，使用时要预期接口、权限、桌面/iOS 和协作编辑相关行为仍可能快速变化。
+- **它是什么**：Superpowers 是一套面向编码代理的开发方法与可组合技能库，会在开发流程的不同阶段触发相应技能。从需求梳理、设计确认和任务拆分，到测试驱动开发、子代理协作、代码审查与分支收尾，都有明确的流程约束。
+- **能解决什么痛点**：代理容易在需求还没讲清楚时就开始写代码，或偏离计划、跳过测试；Superpowers 用设计确认、细化任务和 RED-GREEN-REFACTOR 流程减少这类问题。任务执行中出现重复劳动或修复循环难以推进时，也提供了诊断与分轮复审流程。
+- **适合谁用**：使用 Claude Code、Codex、Cursor、OpenCode 等编码代理进行日常开发的个人开发者与团队；需要让多个代理按任务分工、同时保持计划和审查流程一致的工程团队。
+- **怎么上手**：以 Claude Code 为例，运行 `/plugin install superpowers@claude-plugins-official`；其他编码代理有各自的安装方式，需按 README 分别配置。
+- **可以用在哪些场景**：从模糊需求出发开发一个新功能，先形成并确认设计再拆解实现任务；让子代理按计划并行完成多个工程任务，同时逐项审查；在代理行为异常、重复修改或忽略计划时，分析会话记录并定位问题。
+- **技术看点**：核心设计是把开发方法拆成可组合技能，并通过启动指令让代理按任务自动检查并触发相关流程。它覆盖多个编码代理平台，但安装与钩子机制依赖各平台自身能力，需要分别适配。
+- **近期动向与发展方向**：提交记录显示项目持续发布版本并扩展平台支持，近期覆盖 Devin CLI、Hermes Agent、OpenCode 2.0 和 Muse。开发重点还包括 SDD（规范驱动开发）的计划级工作区、可恢复修复循环，以及 Windows 钩子兼容和跨平台脚本修复；近 20 条记录以 Jesse Vincent 的工作为主，也有少量社区贡献。
+- **同类对比**：README 未明确列出竞品或直接对标项目；其定位区别于单一代码生成插件，重点是把需求设计、实施、测试和审查组织成完整工作流。
+- **注意事项**：需要接受较强的流程约束，特别是需求澄清、设计确认和测试步骤；习惯直接让代理改代码的用户可能觉得流程较重。项目支持多种代理平台，但各平台的安装和钩子行为并不完全相同。项目于 2025-10-09 创建，最近更新日期为 2026-09-23；398 个开放 Issue 说明维护者仍需处理不少反馈，但仅凭数量无法判断问题严重程度。
 
-- **GitHub**：[macro-inc/macro](https://github.com/macro-inc/macro)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Macro 在开源社区影响力中等偏小，但核心 Rust 仓库获得较高关注，显示其在 AI 原生协作工作空间方向具备一定技术辨识度。
-**技术栈偏好**：其技术栈以 Rust 为核心，结合 JavaScript、C++ 与 Electron/LibreOffice 相关能力，偏向高性能桌面端与文档处理基础设施。
-**核心领域**：主要聚焦于融合邮件、消息、文档、任务、文件与 CRM 的 AI 原生团队协作工作空间。
-
----
-
-### ✨ Nutlope/hallmark (4080★)
-
-> **一句话**：Hallmark 给 Claude Code、Cursor 和 Codex 加上一套“反 AI 味”设计规则，让生成的网页不再像换色模板，而是按不同 brief 产出不同结构、字体、配色和视觉节奏。
-
-- **它是什么**：Hallmark 是一套面向 AI 编程工具的设计 skill，核心是把页面生成过程约束在一套明确的设计协议里。它会根据需求选择宏观页面结构，套用二十个主题之一，或在需求有明确创意方向时进入 Custom 模式从头设计。生成前还会跑 57 个“slop-test”检查点和一次自我审查，避免常见的 AI 生成网页套路。
-
-- **能解决什么痛点**：它主要解决 AI 生成前端页面时常见的“同质化”：大渐变、居中 hero、卡片堆叠、换个颜色就像同一个模板。另一个痛点是设计审查困难，`hallmark audit ` 可以对现有页面按反模式打分并给出修改清单，不直接改代码。
-
-- **适合谁用**：适合经常用 Claude Code、Cursor、Codex 生成落地页、产品页、活动页原型的前端开发者和独立开发者。也适合需要快速把品牌、文案和信息架构转成有辨识度网页的设计工程师或产品团队。
-
-- **怎么上手**：`npx skills add nutlope/hallmark`
-
-- **可以用在哪些场景**：可以用于让 AI 生成 SaaS 产品首页时避免默认模板感，按产品气质选择更合适的结构和视觉主题。也可以用于改造已有落地页，通过 `hallmark redesign ` 保留文案、信息架构和品牌，但重做页面结构。还可以用 `hallmark study ` 分析参考设计的宏观结构、字体搭配和色彩锚点，沉淀成可交给其他 AI 工具使用的 `design.md`。
-
-- **技术看点**：项目不是传统运行时库，而是以 `SKILL.md` 和 references 规则集的形式接入 AI 编程工具，重点在“设计决策协议”而不是组件封装。README 中强调每个示例都是自包含 HTML + CSS，并在 CSS 注释中标记宏观结构，便于回溯页面生成策略。
-
-- **近期动向与发展方向**：最近提交集中在 v1.1：新增四个主题、Custom 路由、示例图库和文案重写，同时把 slop-test 检查从 70 项合并到 57 项并同步文档引用。6 月初还有多次 README 展示、主题对比度、现有全局样式追加而非覆盖等修复，说明项目近期重点是完善规则体系、增强示例说服力，并降低安装和集成时的破坏性。贡献者数量为 4，近期提交主要由核心维护者推动，社区参与规模还不大。
-
-- **同类对比**：暂无明显同类对标。README 没有直接比较竞品，项目更像是 AI 编程工具的设计规则包，而不是常规 UI 框架或模板库。
-
-- **注意事项**：项目创建时间较新，虽然 Stars 增长很快、Open Issues 只有 5 个，但成熟度仍需要结合实际项目试用判断。它更适合生成营销页、品牌页、产品展示页等视觉表达强的页面，不等同于完整设计系统或组件库。文档和示例较丰富，但规则型项目可能会随着版本更新调整检查项和主题策略，团队接入前应固定版本或在项目内保留本地副本。
-
-- **GitHub**：[Nutlope/hallmark](https://github.com/Nutlope/hallmark)
+- **GitHub**：[obra/superpowers](https://github.com/obra/superpowers)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：拥有多个高星开源项目和较高关注度，是 AI 应用原型与开发者工具方向颇具影响力的独立开发者。
-**技术栈偏好**：明显偏好 TypeScript 生态，倾向于用现代 Web 技术快速构建面向用户的 AI 产品。
-**核心领域**：主要聚焦生成式 AI 应用、AI 辅助开发工具、图像处理与轻量级 SaaS 产品原型。
+**技术影响力**：拥有较高社区影响力，代表作在 GitHub 获得大规模关注，具备开源生态号召力
+**技术栈偏好**：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、开发工具和可扩展技能生态
+**核心领域**：主要聚焦 AI 辅助软件开发、开发者生产力工具与内容处理自动化
 
 ---
 
@@ -178,11 +84,11 @@
 
 ---
 
-### ✨ makecindy/cindy (8246★)
+### ✨ JetBrains/thinkrail (5762★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
+- **它是什么**：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -192,12 +98,31 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[makecindy/cindy](https://github.com/makecindy/cindy)
+- **GitHub**：[JetBrains/thinkrail](https://github.com/JetBrains/thinkrail)
 
 
 ---
 
-### ✨ nightly-labs/openbot (3393★)
+### ✨ milind-soni/OpenMausBot (7165★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Open-source Grok Bot alternative with a virtual machine that bots can use
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[milind-soni/OpenMausBot](https://github.com/milind-soni/OpenMausBot)
+
+
+---
+
+### ✨ nightly-labs/openbot (3657★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -216,7 +141,80 @@
 
 ---
 
-### ✨ togg53192-cmd/jailbreaks (7421★)
+### ✨ elayadesign/ai-design-skills (11824★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：No description provided.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[elayadesign/ai-design-skills](https://github.com/elayadesign/ai-design-skills)
+
+
+---
+
+### ✨ thedotmack/claude-mem (95456★)
+
+> **一句话**：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。
+
+- **它是什么**：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。
+
+- **能解决什么痛点**：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。
+
+- **适合谁用**：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。
+
+- **怎么上手**：执行 `npx claude-mem install`，完成安装和提供商选择后重启 Claude Code；也可以使用 `npx claude-mem install --ide opencode` 为 OpenCode 安装。
+
+- **可以用在哪些场景**：
+  - 让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。
+  - 在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。
+  - 为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。
+
+- **技术看点**：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。
+
+- **近期动向与发展方向**：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。
+
+- **同类对比**：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。
+
+- **注意事项**：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 `--provider` 或 `CLAUDE_MEM_ONLINE_OPTIN=false` 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。
+
+- **GitHub**：[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
+**技术栈偏好**：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
+**核心领域**：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。
+
+---
+
+### ✨ CopilotKit/OpenBot (7862★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[CopilotKit/OpenBot](https://github.com/CopilotKit/OpenBot)
+
+
+---
+
+### ✨ togg53192-cmd/jailbreaks (8231★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -235,11 +233,11 @@
 
 ---
 
-### ✨ hmjz100/LinkSwift (35325★)
+### ✨ Donchitos/Claude-Code-Game-Studios (28772★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：一个基于 JavaScript 的网盘文件下载地址获取工具。基于【网盘直链下载助手】修改 ，支持 百度网盘 / 阿里云盘 / 中国移动云盘 / 天翼云盘 / 迅雷云盘 / 夸克网盘 / UC网盘 / 123云盘 八大网盘
+- **它是什么**：Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -249,77 +247,4 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[hmjz100/LinkSwift](https://github.com/hmjz100/LinkSwift)
-
-
----
-
-### ✨ expo/skills (3641★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：A collection of AI agent skills for working with Expo projects and Expo Application Services
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[expo/skills](https://github.com/expo/skills)
-
-
----
-
-### ✨ ruvnet/RuView (93692★)
-
-> **一句话**：RuView 让 ESP32 读取 WiFi 信号反射变化，在不使用摄像头或穿戴设备的情况下，实时判断房间里是否有人、如何移动以及呼吸和心率趋势。
-
-- **它是什么**：这是一个基于 Rust 的 WiFi CSI 感知平台，将低成本 ESP32 节点采集到的信道状态信息转换为存在检测、人数统计、活动识别、跌倒检测、呼吸和心率监测等结果。它支持边缘侧运行、局部环境校准，并可通过 MQTT、Matter、Apple Home、Google Home 和 Alexa 接入智能家居。
-
-- **能解决什么痛点**：在卧室、养老房间或卫生间等不适合安装摄像头的区域，仍需要持续判断有人活动、离床、跌倒或长时间不动。对不愿佩戴手环、胸带等设备的人，RuView提供了非接触式的呼吸、心率和睡眠监测方案。
-
-- **适合谁用**：适合使用 ESP32、Raspberry Pi 和 Home Assistant 搭建隐私敏感型智能家居或边缘感知系统的开发者。也适合研究 WiFi CSI、无线感知、无摄像头姿态估计和时序信号模型的工程团队。
-
-- **怎么上手**：README 提供的 MetaHarness 最小入口是 `npx @ruvnet/ruview@0.4.0 doctor`；接入 Home Assistant 可直接运行带 `--mqtt` 参数的 RuView 服务，具体启动命令需结合部署方式查看项目文档。
-
-- **可以用在哪些场景**：
-  - 在 Home Assistant 中发布房间有人、睡眠、离床、跌倒风险和活动状态，联动灯光、空调或告警。
-  - 在养老院或家庭卧室中进行夜间呼吸、心率趋势和异常静止监测，减少摄像头带来的隐私问题。
-  - 在办公室、商店或工业区域部署多个 ESP32 节点，统计占用人数、进出流动和跨房间移动，不要求人员携带标签。
-
-- **技术看点**：项目采用 Rust 构建从 CSI 采集、信号处理、推理到边缘服务的完整链路，支持 ESP32 Mesh、多频段信道跳转、TDM 调度和本地模型推理。其设计还引入了不确定性、来源、隐私策略和 Ed25519 witness chain 等治理信息，但 README 同时注明统一 RF 世界模型在真实数据验证前仍属于合成精度阶段。
-
-- **近期动向与发展方向**：最近提交高度集中在固件和边缘节点可靠性建设，包括 ESP32-C6 的 USB onboarding、macOS RSSI 感知、节点持久化日志、Flash coredump、16MB Flash 配置和天线选择。服务端与推理链路也在持续修复 RSSI 哨兵污染、节点位置融合、训练损失导出和 CSI 指标问题，说明项目当前重点是扩展硬件部署能力、提高采集稳定性并校正模型训练与评测结果；近期开提交密集，且有 `rUv`、`clonea1`、`Faizan` 等贡献者参与，但整体贡献者数量为 39 人。
-
-- **同类对比**：README 未明确列出直接竞品；项目明显区别于摄像头姿态估计、毫米波雷达和可穿戴设备方案，核心卖点是利用普通 WiFi 与低成本 ESP32 进行非视觉、非接触式感知，同时也预留 WiFi CSI、雷达、UWB 和蜂窝感知的统一融合模型。
-
-- **注意事项**：项目创建于 2025 年 6 月，却已达到 93692 Stars、12421 Forks 和 708 个 Open Issues，功能范围很大，实际成熟度不能只按热度判断。README 对部分能力有明确限制：已提交的 `pose_v1` 模型 PCK@20 仅为 3.0%，运行路径仍是 `confidence=0` 的桩实现；82.3% 和 82.69% 等指标对应特定数据集或独立模型，不能直接等同于真实家庭环境效果。部署还涉及 ESP32 硬件、CSI 采集、环境校准和模型选择，文档内容较多，上手成本高于普通 Home Assistant 插件；医疗监测、跌倒告警等场景应进行现场验证，不能将输出直接当作诊断结论。
-
-- **GitHub**：[ruvnet/RuView](https://github.com/ruvnet/RuView)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：高影响力开源开发者，凭借多个高星项目在 GitHub 技术社区具备较强关注度。
-**技术栈偏好**：偏好 TypeScript 与 Rust，重视高性能系统、开发工具及现代应用架构。
-**核心领域**：主要聚焦 AI Agent、智能工作流、向量计算与相关基础设施。
-
----
-
-### ✨ xiaolai/the-craft-of-selfteaching (18636★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：One has no future if one couldn't teach themself.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[xiaolai/the-craft-of-selfteaching](https://github.com/xiaolai/the-craft-of-selfteaching)
+- **GitHub**：[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
