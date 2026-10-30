@@ -36,7 +36,7 @@
 
 ---
 
-### ✨ milind-soni/OpenMausBot (8117★)
+### ✨ milind-soni/OpenMausBot (8454★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -90,7 +90,7 @@
 
 ---
 
-### ✨ CopilotKit/OpenBot (8532★)
+### ✨ CopilotKit/OpenBot (8686★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -109,7 +109,7 @@
 
 ---
 
-### ✨ Renhuai123/ziwei-doushu (10931★)
+### ✨ Renhuai123/ziwei-doushu (11143★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -128,7 +128,7 @@
 
 ---
 
-### ✨ expo/skills (3810★)
+### ✨ expo/skills (3854★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -295,7 +295,7 @@
 
 ---
 
-### ✨ JetBrains/thinkrail (6413★)
+### ✨ JetBrains/thinkrail (6504★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -314,7 +314,7 @@
 
 ---
 
-### ✨ togg53192-cmd/jailbreaks (10211★)
+### ✨ togg53192-cmd/jailbreaks (10751★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
