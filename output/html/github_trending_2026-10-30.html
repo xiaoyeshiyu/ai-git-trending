@@ -103,55 +103,72 @@
         <h1>GitHub 热点日报 (2026-10-30)</h1>
 <h2>今日热点：GitHub 热门趋势</h2>
 <p>今天的热门项目覆盖了多个技术方向，具体项目摘要如下：</p>
-<h3>✨ HKUDS/DeepTutor (34555★)</h3>
+<h3>✨ thedotmack/claude-mem (95456★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：DeepTutor 把聊天式 AI 导师、个人知识库、学习路径、题库与多智能体协作放在同一个学习工作台里，用来长期跟踪和陪伴个人学习。</p>
+<p><strong>一句话</strong>：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：DeepTutor 是一个面向“长期个性化辅导”的开源学习系统，后端以 Python 为主，前端使用 Next.js 16。README 展示的能力不只是普通聊天，还包括 Guided Learning、Mastery Path、Question Bank、Knowledge Center、Partners、多模型接入、RAG/GraphRAG/PageIndex/LightRAG 检索，以及通过 CLI 和外部 Agent 扩展学习与研究流程。</li>
-<li><strong>能解决什么痛点</strong>：一类痛点是学习资料分散在文档、知识库、笔记和聊天记录里，难以持续追踪掌握情况；DeepTutor 试图把知识库检索、练习题、学习路径和对话记忆串起来。另一类痛点是单一聊天机器人很难适配不同任务，它通过 Partners、My Agents、MCP Services、Codex/Claude Code 等集成，让不同代理参与学习、研究、代码或资料处理。</li>
-<li><strong>适合谁用</strong>：适合想自建 AI 学习平台的教育技术团队、研究型学习者和需要私有知识库问答的高校/实验室用户。也适合愿意折腾 Python + Next.js + 多模型配置的开发者，用来搭建个人学习助手或内部知识辅导系统。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：可以用于把课程讲义、论文、Obsidian 笔记接入知识库后做问答和测验；可以用于搭建团队内部的学习辅导平台，让不同用户拥有独立账号、记忆和模型设置；也可以用于研究助理场景，通过 Deep Research、PageIndex、LightRAG 等能力对大量资料做检索、引用和报告生成。</li>
-<li><strong>技术看点</strong>：项目采用 Python 3.11+ 与 Next.js 16，围绕多模型、多检索引擎和多 Agent 扩展做系统集成，近期版本还在持续增强 MCP、Codex OAuth、知识库索引、IM 管道和 per-user 隔离。RAG 层同时覆盖 GraphRAG、PageIndex、LightRAG、FAISS、Obsidian 等路径，说明它更像完整学习平台，而不是单点聊天 Demo。</li>
-<li><strong>近期动向与发展方向</strong>：最近 20 条提交非常密集，8 月 6 日到 9 日连续发布 v1.5.10、v1.5.11，说明维护活跃度很高。近期重点集中在流式响应稳定性、内存可观测性、知识库上传不阻塞事件循环、多用户 Codex 登录、语言设置拆分、视觉模型能力识别和前端代理 IPv4 修复；整体方向是在补齐生产可用性、多用户隔离和多模型兼容性，而不是只堆新功能。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。README 没有直接声明与某个竞品对比，但从功能形态看，它更接近“AI 学习平台 + 知识库 + 多 Agent 工作台”的组合，而不是单纯的聊天客户端或 RAG 问答工具。</li>
 <li>
-<p><strong>注意事项</strong>：项目创建时间显示为 2025-12-28，迭代很快且功能面很宽，34555 Stars、4412 Forks 和 127 位贡献者说明关注度高，但 99 个 Open Issues 也意味着仍有不少待处理问题。近期 release 频繁修复事件循环、工具调用、模型能力识别、前端竞态和内存问题，生产部署前需要认真阅读版本说明并做好升级验证；另外 README 素材中没有给出最小安装命令，初次上手可能需要依赖官网文档。</p>
+<p><strong>它是什么</strong>：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></p>
+<p><strong>能解决什么痛点</strong>：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：执行 <code>npx claude-mem install</code>，完成安装和提供商选择后重启 Claude Code；也可以使用 <code>npx claude-mem install --ide opencode</code> 为 OpenCode 安装。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。</li>
+<li>在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。</li>
+<li>
+<p>为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 <code>--provider</code> 或 <code>CLAUDE_MEM_ONLINE_OPTIN=false</code> 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></p>
 </li>
 </ul>
 <h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：作为 HKU 背景的数据智能实验室组织，其多个仓库获得数万 stars，已在开源 AI 工具与智能体社区形成显著影响力。
-<strong>技术栈偏好</strong>：高度偏好 Python，技术方向集中在大模型应用、RAG、智能体、自动化工具与 AI 原生应用开发。
-<strong>核心领域</strong>：主要聚焦数据智能、生成式 AI、轻量级 RAG、多智能体系统与面向实际场景的 AI 应用落地。</p>
+<p><strong>技术影响力</strong>：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
+<strong>技术栈偏好</strong>：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
+<strong>核心领域</strong>：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。</p>
 <hr />
-<h3>✨ obra/superpowers (290463★)</h3>
+<h3>✨ milind-soni/OpenMausBot (8117★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：它让编码代理先和开发者敲定需求与设计，再按计划、测试和代码审查流程逐步实现软件。</p>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：Superpowers 是一套面向编码代理的开发方法与可组合技能库，会在开发流程的不同阶段触发相应技能。从需求梳理、设计确认和任务拆分，到测试驱动开发、子代理协作、代码审查与分支收尾，都有明确的流程约束。</li>
-<li><strong>能解决什么痛点</strong>：代理容易在需求还没讲清楚时就开始写代码，或偏离计划、跳过测试；Superpowers 用设计确认、细化任务和 RED-GREEN-REFACTOR 流程减少这类问题。任务执行中出现重复劳动或修复循环难以推进时，也提供了诊断与分轮复审流程。</li>
-<li><strong>适合谁用</strong>：使用 Claude Code、Codex、Cursor、OpenCode 等编码代理进行日常开发的个人开发者与团队；需要让多个代理按任务分工、同时保持计划和审查流程一致的工程团队。</li>
-<li><strong>怎么上手</strong>：以 Claude Code 为例，运行 <code>/plugin install superpowers@claude-plugins-official</code>；其他编码代理有各自的安装方式，需按 README 分别配置。</li>
-<li><strong>可以用在哪些场景</strong>：从模糊需求出发开发一个新功能，先形成并确认设计再拆解实现任务；让子代理按计划并行完成多个工程任务，同时逐项审查；在代理行为异常、重复修改或忽略计划时，分析会话记录并定位问题。</li>
-<li><strong>技术看点</strong>：核心设计是把开发方法拆成可组合技能，并通过启动指令让代理按任务自动检查并触发相关流程。它覆盖多个编码代理平台，但安装与钩子机制依赖各平台自身能力，需要分别适配。</li>
-<li><strong>近期动向与发展方向</strong>：提交记录显示项目持续发布版本并扩展平台支持，近期覆盖 Devin CLI、Hermes Agent、OpenCode 2.0 和 Muse。开发重点还包括 SDD（规范驱动开发）的计划级工作区、可恢复修复循环，以及 Windows 钩子兼容和跨平台脚本修复；近 20 条记录以 Jesse Vincent 的工作为主，也有少量社区贡献。</li>
-<li><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目；其定位区别于单一代码生成插件，重点是把需求设计、实施、测试和审查组织成完整工作流。</li>
+<li><strong>它是什么</strong>：Open-source Grok Bot alternative with a virtual machine that bots can use</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
 <li>
-<p><strong>注意事项</strong>：需要接受较强的流程约束，特别是需求澄清、设计确认和测试步骤；习惯直接让代理改代码的用户可能觉得流程较重。项目支持多种代理平台，但各平台的安装和钩子行为并不完全相同。项目于 2025-10-09 创建，最近更新日期为 2026-09-23；398 个开放 Issue 说明维护者仍需处理不少反馈，但仅凭数量无法判断问题严重程度。</p>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></p>
 </li>
 </ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：拥有较高社区影响力，代表作在 GitHub 获得大规模关注，具备开源生态号召力
-<strong>技术栈偏好</strong>：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、开发工具和可扩展技能生态
-<strong>核心领域</strong>：主要聚焦 AI 辅助软件开发、开发者生产力工具与内容处理自动化</p>
 <hr />
 <h3>✨ pbakaus/impeccable (70114★)</h3>
 <blockquote>
@@ -199,137 +216,7 @@
 <strong>技术栈偏好</strong>：以 JavaScript 为主、HTML 为辅，偏好 Web 前端与浏览器交互技术。
 <strong>核心领域</strong>：聚焦 Web 创意开发、用户界面与网页交互体验。</p>
 <hr />
-<h3>✨ JetBrains/thinkrail (6130★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/JetBrains/thinkrail">JetBrains/thinkrail</a></p>
-</li>
-</ul>
-<hr />
-<h3>✨ milind-soni/OpenMausBot (7621★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：Open-source Grok Bot alternative with a virtual machine that bots can use</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></p>
-</li>
-</ul>
-<hr />
-<h3>✨ nightly-labs/openbot (3982★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：A local-first desktop workspace for persistent AI teammates. Run Codex, Claude, and Grok with dedicated workspaces, task queues, file sharing, browser control, and agent-to-agent collaboration.</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/nightly-labs/openbot">nightly-labs/openbot</a></p>
-</li>
-</ul>
-<hr />
-<h3>✨ elayadesign/ai-design-skills (12367★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
-</blockquote>
-<ul>
-<li><strong>它是什么</strong>：No description provided.</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
-<li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/elayadesign/ai-design-skills">elayadesign/ai-design-skills</a></p>
-</li>
-</ul>
-<hr />
-<h3>✨ thedotmack/claude-mem (95456★)</h3>
-<blockquote>
-<p><strong>一句话</strong>：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>它是什么</strong>：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。</p>
-</li>
-<li>
-<p><strong>能解决什么痛点</strong>：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。</p>
-</li>
-<li>
-<p><strong>适合谁用</strong>：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。</p>
-</li>
-<li>
-<p><strong>怎么上手</strong>：执行 <code>npx claude-mem install</code>，完成安装和提供商选择后重启 Claude Code；也可以使用 <code>npx claude-mem install --ide opencode</code> 为 OpenCode 安装。</p>
-</li>
-<li>
-<p><strong>可以用在哪些场景</strong>：</p>
-</li>
-<li>让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。</li>
-<li>在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。</li>
-<li>
-<p>为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。</p>
-</li>
-<li>
-<p><strong>技术看点</strong>：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。</p>
-</li>
-<li>
-<p><strong>近期动向与发展方向</strong>：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。</p>
-</li>
-<li>
-<p><strong>同类对比</strong>：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。</p>
-</li>
-<li>
-<p><strong>注意事项</strong>：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 <code>--provider</code> 或 <code>CLAUDE_MEM_ONLINE_OPTIN=false</code> 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。</p>
-</li>
-<li>
-<p><strong>GitHub</strong>：<a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></p>
-</li>
-</ul>
-<h4>开发者 / 组织速览</h4>
-<p><strong>技术影响力</strong>：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
-<strong>技术栈偏好</strong>：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
-<strong>核心领域</strong>：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。</p>
-<hr />
-<h3>✨ CopilotKit/OpenBot (8261★)</h3>
+<h3>✨ CopilotKit/OpenBot (8532★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
@@ -350,7 +237,240 @@
 </li>
 </ul>
 <hr />
-<h3>✨ togg53192-cmd/jailbreaks (9382★)</h3>
+<h3>✨ Renhuai123/ziwei-doushu (10931★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：紫微斗数开源排盘引擎 — 基于倪海厦《天纪》体系，含完整排盘算法、四化系统、格局知识库、古籍原文数据</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/Renhuai123/ziwei-doushu">Renhuai123/ziwei-doushu</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ expo/skills (3810★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：A collection of AI agent skills for working with Expo projects and Expo Application Services</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/expo/skills">expo/skills</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ macro-inc/macro (1453★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Macro 把团队邮件、聊天、文档、任务、会议、CRM 和 AI Agent 放进同一个工作区，并用 @链接和共享记忆把所有上下文串起来。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Macro 是面向团队的一体化工作空间，核心界面覆盖统一邮箱、频道消息、任务、Markdown 文档、Canvas、文件、会议记录、CRM 和 Agent。它强调所有内容都能被 @mention、搜索和双向关联，例如从客户邮件创建任务、在文档里引用邮件、把 PR 关联到任务，并让 Agent 读取同一套团队上下文。</li>
+<li><strong>能解决什么痛点</strong>：适合解决小团队同时使用 Slack、Linear、Notion、HubSpot、Superhuman 等工具时上下文分散的问题，尤其是“任务为什么产生”“客户最近说了什么”“这封邮件和哪个项目相关”需要跨系统追溯的场景。另一个痛点是 CRM 和任务系统容易过期，Macro 通过把它们放在聊天、邮件、文档的原始协作流里，减少手动同步和重复录入。</li>
+<li><strong>适合谁用</strong>：适合想把邮件、团队沟通、任务跟踪、客户信息和 AI Agent 收到同一工作区的创业团队或小型技术团队。也适合需要从客户邮件、技术讨论、PR 和文档之间频繁建立上下文关系的产品、工程、销售协作团队。</li>
+<li><strong>怎么上手</strong>：README 未提供本地安装命令或最小运行示例，可通过官网入口注册使用：<code>https://macro.com/app</code>。</li>
+<li><strong>可以用在哪些场景</strong>：从客户邮件直接创建带上下文的工程任务，并关联到后续 PR 和频道讨论；用统一 inbox 同时处理 Gmail、团队消息、@mentions 和待办事项；在销售或客户成功流程中，通过联系人、公司记录聚合团队邮件、文件和内部讨论，替代单独维护一套容易失真的 CRM。</li>
+<li><strong>技术看点</strong>：项目使用 Rust 和 SolidJS 构建，README 明确提到文档协作基于 CRDT，并通过 Cloudflare Durable Objects 支撑接近实时的多人编辑。其关键设计是把邮件、消息、任务、文档、CRM 等对象存成双向图，而不是只做多个工具的浅层聚合。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交集中在邮箱、日历、任务视图、Markdown、AI、频道、iOS 和桌面 CI 上，既有功能增强也有大量修复，说明项目仍在快速迭代。近期新增了 Google 风格日历提醒、任务视图合并、Markdown checklist 进度插件、split 位置交换等功能，同时修复 Google Calendar 权限申请、邮箱回填、AI tool_use 输入兼容、macOS 打包链路等问题，开发重点明显围绕核心协作体验、邮箱/日历集成和跨平台稳定性展开。</li>
+<li><strong>同类对比</strong>：README 明确对标 Slack、Linear、Notion、HubSpot、Superhuman 等产品，差异在于 Macro 不是单点替代其中某一个工具，而是尝试把团队沟通、任务、文档、邮箱、CRM 和 Agent 作为同一套可链接、可搜索、可被 AI 使用的系统来设计。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间为 2025-11-08，当前 Stars 1453、Open Issues 56，更新非常频繁，说明关注度和开发活跃度不错，但成熟度仍需要谨慎评估。README 偏产品说明和理念介绍，本地部署、架构细节、最小开发运行路径在提供素材中未看到；近期提交里也有多条修复和临时处理，使用时要预期接口、权限、桌面/iOS 和协作编辑相关行为仍可能快速变化。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/macro-inc/macro">macro-inc/macro</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：Macro 在开源社区影响力中等偏小，但核心 Rust 仓库获得较高关注，显示其在 AI 原生协作工作空间方向具备一定技术辨识度。
+<strong>技术栈偏好</strong>：其技术栈以 Rust 为核心，结合 JavaScript、C++ 与 Electron/LibreOffice 相关能力，偏向高性能桌面端与文档处理基础设施。
+<strong>核心领域</strong>：主要聚焦于融合邮件、消息、文档、任务、文件与 CRM 的 AI 原生团队协作工作空间。</p>
+<hr />
+<h3>✨ mattpocock/skills (269436★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。</li>
+<li><strong>能解决什么痛点</strong>：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。</li>
+<li><strong>适合谁用</strong>：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。</li>
+<li><strong>怎么上手</strong>：用 skills.sh 安装并选择需要的技能，例如：</li>
+</ul>
+<p>安装时记得选上 <code>setup-matt-pocock-skills</code>，随后在代理中运行 <code>/setup-matt-pocock-skills</code> 完成项目配置。
+- <strong>可以用在哪些场景</strong>：
+  - 开始一个新功能前，用 <code>/grill-with-docs</code> 澄清需求、统一项目术语，并整理 <code>CONTEXT.md</code> 和 ADR。
+  - 将已有讨论整理成规格或可执行工单，再用 <code>/implement</code> 按测试驱动流程实现。
+  - 定期运行 <code>/improve-codebase-architecture</code> 寻找可拆分、加深模块边界的候选位置，或用 <code>/diagnosing-bugs</code> 按阶段排查问题。
+- <strong>技术看点</strong>：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
+- <strong>近期动向与发展方向</strong>：近期提交主要在完善 <code>/pr</code> 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
+- <strong>同类对比</strong>：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
+- <strong>注意事项</strong>：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。</p>
+<ul>
+<li><strong>GitHub</strong>：<a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
+<strong>技术栈偏好</strong>：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
+<strong>核心领域</strong>：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。</p>
+<hr />
+<h3>✨ pingdotgg/t3code (24570★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：T3 Code 把电脑上的 Claude Code、Codex、Cursor 等智能编程代理集中到一个界面里，并通过 Web、iOS、Android 或桌面应用远程查看和控制它们。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：T3 Code 是一个面向本地开发代理的控制中枢，能够连接已安装并完成认证的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Google Antigravity。它同时提供 Web、Electron 桌面端以及 iOS、Android 客户端，可查看线程、任务、终端和开发服务器状态，并在手机或其他设备上继续操作。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者需要在多个 AI 编程代理之间切换时，不必分别打开各自的命令行或桌面界面。长时间运行的代理任务、开发服务器和代码审查任务可以在离开电脑后通过手机或 Web 端跟进，避免任务完成后无人处理。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：经常使用 Claude Code、Codex、Cursor 等 CLI 或代理工具的全栈开发者、独立开发者和小型团队。需要同时管理多个项目、远程查看开发任务，或希望把 AI 编程代理作为后台服务运行的人也适合使用。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：安装并认证至少一个代理后执行：
+  Windows PowerShell 可使用 <code>irm https://t3.codes/install.ps1 | iex</code>，也可以直接运行 <code>npx t3@latest</code> 临时体验。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在本地启动多个 Claude Code 或 Codex 任务，通过手机查看任务进度并处理需要确认的操作。</li>
+<li>将 T3 Code 作为后台服务运行，在通勤或离开工位时远程查看开发服务器、Shell 命令和代理输出。</li>
+<li>
+<p>让代理持续关注 GitHub Pull Request 的检查、评审和冲突状态，并在需要处理时唤醒代理。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目使用 TypeScript，采用本地服务加 Web、Electron、移动端客户端的多端架构，并围绕多个代理供应商做统一控制。README 强调远程访问、后台服务、权限模式、源码管理和多账号支持，近期提交也显示其在持续完善任务状态同步和代理运行控制。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：项目近期非常活跃，最近 20 条提交全部集中在 2026-10-03，主体是移动端、Web 端、服务端和共享层的状态同步与边界问题修复，例如修复任务卡片残留、线程卡住、开发服务器状态误判、Shell 完成通知丢失等。同时新增了代理关注 Pull Request 状态、按 Token 类型和模型展示成本等功能，发展重点明显集中在多端一致性、长任务可靠性、代理协作和用量分析。虽然已有 394 位贡献者，但 README 仍称项目处于早期阶段，且目前主要不接受大型功能贡献。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确提到 Codex Desktop、Conductor、Claude Desktop 和 Cursor Glass 等产品。T3 Code 的差异在于不绑定单一代理，能够统一控制 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity，并同时覆盖 Web、移动端和 Electron 桌面端。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2026-02-08，当前已有 24570 个 Star、6412 个 Fork，但同时存在 1913 个开放 Issue，且 README 明确提示项目仍“非常早期”、可能存在不少 Bug。使用前需要先单独安装并登录至少一个代理，部分功能还依赖本机服务、网络和移动端连接；多代理兼容、远程控制和频繁更新也意味着配置与版本同步可能带来额外排查成本。文档覆盖安装、权限、快捷键、远程访问和后台服务等主题，但目前没有独立文档站。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/pingdotgg/t3code">pingdotgg/t3code</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：聚焦现代开发者工具，在 TypeScript 社区具备较高知名度和显著开源影响力。
+<strong>技术栈偏好</strong>：高度偏好 TypeScript，主要围绕全栈 Web、开发者工具与类型安全方案构建产品。
+<strong>核心领域</strong>：主要聚焦开发者基础设施、文件上传、代码工具及现代 Web 应用开发。</p>
+<hr />
+<h3>✨ HKUDS/DeepTutor (34555★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：DeepTutor 把聊天式 AI 导师、个人知识库、学习路径、题库与多智能体协作放在同一个学习工作台里，用来长期跟踪和陪伴个人学习。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：DeepTutor 是一个面向“长期个性化辅导”的开源学习系统，后端以 Python 为主，前端使用 Next.js 16。README 展示的能力不只是普通聊天，还包括 Guided Learning、Mastery Path、Question Bank、Knowledge Center、Partners、多模型接入、RAG/GraphRAG/PageIndex/LightRAG 检索，以及通过 CLI 和外部 Agent 扩展学习与研究流程。</li>
+<li><strong>能解决什么痛点</strong>：一类痛点是学习资料分散在文档、知识库、笔记和聊天记录里，难以持续追踪掌握情况；DeepTutor 试图把知识库检索、练习题、学习路径和对话记忆串起来。另一类痛点是单一聊天机器人很难适配不同任务，它通过 Partners、My Agents、MCP Services、Codex/Claude Code 等集成，让不同代理参与学习、研究、代码或资料处理。</li>
+<li><strong>适合谁用</strong>：适合想自建 AI 学习平台的教育技术团队、研究型学习者和需要私有知识库问答的高校/实验室用户。也适合愿意折腾 Python + Next.js + 多模型配置的开发者，用来搭建个人学习助手或内部知识辅导系统。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：可以用于把课程讲义、论文、Obsidian 笔记接入知识库后做问答和测验；可以用于搭建团队内部的学习辅导平台，让不同用户拥有独立账号、记忆和模型设置；也可以用于研究助理场景，通过 Deep Research、PageIndex、LightRAG 等能力对大量资料做检索、引用和报告生成。</li>
+<li><strong>技术看点</strong>：项目采用 Python 3.11+ 与 Next.js 16，围绕多模型、多检索引擎和多 Agent 扩展做系统集成，近期版本还在持续增强 MCP、Codex OAuth、知识库索引、IM 管道和 per-user 隔离。RAG 层同时覆盖 GraphRAG、PageIndex、LightRAG、FAISS、Obsidian 等路径，说明它更像完整学习平台，而不是单点聊天 Demo。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交非常密集，8 月 6 日到 9 日连续发布 v1.5.10、v1.5.11，说明维护活跃度很高。近期重点集中在流式响应稳定性、内存可观测性、知识库上传不阻塞事件循环、多用户 Codex 登录、语言设置拆分、视觉模型能力识别和前端代理 IPv4 修复；整体方向是在补齐生产可用性、多用户隔离和多模型兼容性，而不是只堆新功能。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。README 没有直接声明与某个竞品对比，但从功能形态看，它更接近“AI 学习平台 + 知识库 + 多 Agent 工作台”的组合，而不是单纯的聊天客户端或 RAG 问答工具。</li>
+<li>
+<p><strong>注意事项</strong>：项目创建时间显示为 2025-12-28，迭代很快且功能面很宽，34555 Stars、4412 Forks 和 127 位贡献者说明关注度高，但 99 个 Open Issues 也意味着仍有不少待处理问题。近期 release 频繁修复事件循环、工具调用、模型能力识别、前端竞态和内存问题，生产部署前需要认真阅读版本说明并做好升级验证；另外 README 素材中没有给出最小安装命令，初次上手可能需要依赖官网文档。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：作为 HKU 背景的数据智能实验室组织，其多个仓库获得数万 stars，已在开源 AI 工具与智能体社区形成显著影响力。
+<strong>技术栈偏好</strong>：高度偏好 Python，技术方向集中在大模型应用、RAG、智能体、自动化工具与 AI 原生应用开发。
+<strong>核心领域</strong>：主要聚焦数据智能、生成式 AI、轻量级 RAG、多智能体系统与面向实际场景的 AI 应用落地。</p>
+<hr />
+<h3>✨ anthropics/skills (178096★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：这是 Anthropic 为 Claude 提供的一组可直接参考和安装的 Agent Skills 示例，把文档处理、设计开发、API 使用等复杂任务整理成 Claude 能动态加载的指令、脚本与资源。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：项目以独立文件夹组织每个 Skill，每个 Skill 通过 <code>SKILL.md</code> 描述元数据、使用条件和执行指令，Claude 可在需要时加载它们来完成特定任务。仓库覆盖创意与设计、开发技术、企业沟通以及 DOCX、PDF、PPTX、XLSX 文档处理，并同时提供 Agent Skills 规范和模板。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者不必每次都从头编写复杂的提示词、操作步骤和领域约束，可以把一套重复工作的流程固化为可复用 Skill。对于文档生成、表格处理、前端设计或 Claude API 集成等任务，它还提供了接近真实生产场景的参考实现，降低自行摸索格式和调用方式的成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：使用 Claude Code、Claude.ai 或 Claude API 构建智能代理的开发者；希望把企业品牌规范、文档处理流程、测试流程或内部工作流封装成可复用能力的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：在 Claude Code 中执行 <code>/plugin marketplace add anthropics/skills</code>，随后安装 <code>document-skills</code> 或 <code>example-skills</code> 插件；也可以直接执行 <code>/plugin install document-skills@anthropic-agent-skills</code>。创建自定义 Skill 时，可按 README 提供的模板建立目录，并在 <code>SKILL.md</code> 中填写 <code>name</code> 和 <code>description</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>让 Claude 按公司品牌规范生成演示文稿、报告、表格和 PDF 文档。</li>
+<li>将 Claude API 的 SDK 升级、模型更新、Managed Agents 配置等开发流程整理为可查询和执行的 Skill。</li>
+<li>
+<p>为内部数据分析、网页测试、MCP Server 生成或企业沟通流程提供固定的操作指令和示例资源。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：Skill 采用“目录 + <code>SKILL.md</code> + 可选脚本和资源”的轻量结构，通过 YAML frontmatter 声明名称与适用描述，便于 Claude 按任务动态加载。仓库同时维护示例实现、Skill 规范和模板，既能直接安装，也能作为构建自定义 Agent 能力的参考基线。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：近期提交明显集中在 <code>claude-api</code> Skill，持续跟进 SDK 1.x 升级、模型版本、Managed Agents、权限策略、成本优化和 API 文档变化，说明项目重点是同步 Anthropic 平台的快速演进。与此同时，项目还更新了 <code>frontend-design</code>、文档类 Skills，并新增 <code>academy-guide</code> 和 <code>discernment-nudge</code>；近 20 条提交覆盖 2026 年 5 月至 9 月，维护节奏较活跃，但提交主要由少数核心贡献者推动，16 名贡献者的规模仍偏小。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。README 明确区分了本仓库的 Anthropic 实现与 <a href="http://agentskills.io">Agent Skills 标准</a>，前者更偏向 Claude 的示例、插件和生产参考实现，后者是可供其他实现遵循的规范。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 9 月，已经积累 17.8 万 Stars，但同时有 1293 个开放 Issue，需求和反馈规模较大。部分 Skill，尤其是文档创建与编辑相关实现，是 source-available 而非 Apache 2.0 开源；仓库也声明内容主要用于演示和教育，实际行为可能随 Claude 或 API 版本变化。近期频繁跟进模型、SDK 和平台功能，上手时应核对对应文档与版本，避免因 API 或 Skill 内容更新产生兼容性问题。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：拥有近 8.8 万关注者，多个仓库获数万至十余万星，是 AI 开发者生态中的高影响力组织。
+<strong>技术栈偏好</strong>：以 Python、Jupyter Notebook 和 TypeScript 为主，覆盖 AI 工具开发、交互式教程与应用示例。
+<strong>核心领域</strong>：聚焦 Claude 相关开发工具、技能与提示工程，并拓展至金融等行业应用。</p>
+<hr />
+<h3>✨ JetBrains/thinkrail (6413★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/JetBrains/thinkrail">JetBrains/thinkrail</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ togg53192-cmd/jailbreaks (10211★)</h3>
 <blockquote>
 <p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
 </blockquote>
@@ -371,26 +491,76 @@
 </li>
 </ul>
 <hr />
-<h3>✨ Donchitos/Claude-Code-Game-Studios (29473★)</h3>
+<h3>✨ obra/superpowers (290463★)</h3>
 <blockquote>
-<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+<p><strong>一句话</strong>：它让编码代理先和开发者敲定需求与设计，再按计划、测试和代码审查流程逐步实现软件。</p>
 </blockquote>
 <ul>
-<li><strong>它是什么</strong>：Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.</li>
-<li><strong>能解决什么痛点</strong>：暂未提供。</li>
-<li><strong>适合谁用</strong>：暂未提供。</li>
-<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
-<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
-<li><strong>技术看点</strong>：暂未提供。</li>
-<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
-<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li><strong>它是什么</strong>：Superpowers 是一套面向编码代理的开发方法与可组合技能库，会在开发流程的不同阶段触发相应技能。从需求梳理、设计确认和任务拆分，到测试驱动开发、子代理协作、代码审查与分支收尾，都有明确的流程约束。</li>
+<li><strong>能解决什么痛点</strong>：代理容易在需求还没讲清楚时就开始写代码，或偏离计划、跳过测试；Superpowers 用设计确认、细化任务和 RED-GREEN-REFACTOR 流程减少这类问题。任务执行中出现重复劳动或修复循环难以推进时，也提供了诊断与分轮复审流程。</li>
+<li><strong>适合谁用</strong>：使用 Claude Code、Codex、Cursor、OpenCode 等编码代理进行日常开发的个人开发者与团队；需要让多个代理按任务分工、同时保持计划和审查流程一致的工程团队。</li>
+<li><strong>怎么上手</strong>：以 Claude Code 为例，运行 <code>/plugin install superpowers@claude-plugins-official</code>；其他编码代理有各自的安装方式，需按 README 分别配置。</li>
+<li><strong>可以用在哪些场景</strong>：从模糊需求出发开发一个新功能，先形成并确认设计再拆解实现任务；让子代理按计划并行完成多个工程任务，同时逐项审查；在代理行为异常、重复修改或忽略计划时，分析会话记录并定位问题。</li>
+<li><strong>技术看点</strong>：核心设计是把开发方法拆成可组合技能，并通过启动指令让代理按任务自动检查并触发相关流程。它覆盖多个编码代理平台，但安装与钩子机制依赖各平台自身能力，需要分别适配。</li>
+<li><strong>近期动向与发展方向</strong>：提交记录显示项目持续发布版本并扩展平台支持，近期覆盖 Devin CLI、Hermes Agent、OpenCode 2.0 和 Muse。开发重点还包括 SDD（规范驱动开发）的计划级工作区、可恢复修复循环，以及 Windows 钩子兼容和跨平台脚本修复；近 20 条记录以 Jesse Vincent 的工作为主，也有少量社区贡献。</li>
+<li><strong>同类对比</strong>：README 未明确列出竞品或直接对标项目；其定位区别于单一代码生成插件，重点是把需求设计、实施、测试和审查组织成完整工作流。</li>
 <li>
-<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+<p><strong>注意事项</strong>：需要接受较强的流程约束，特别是需求澄清、设计确认和测试步骤；习惯直接让代理改代码的用户可能觉得流程较重。项目支持多种代理平台，但各平台的安装和钩子行为并不完全相同。项目于 2025-10-09 创建，最近更新日期为 2026-09-23；398 个开放 Issue 说明维护者仍需处理不少反馈，但仅凭数量无法判断问题严重程度。</p>
 </li>
 <li>
-<p><strong>GitHub</strong>：<a href="https://github.com/Donchitos/Claude-Code-Game-Studios">Donchitos/Claude-Code-Game-Studios</a></p>
+<p><strong>GitHub</strong>：<a href="https://github.com/obra/superpowers">obra/superpowers</a></p>
 </li>
 </ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：拥有较高社区影响力，代表作在 GitHub 获得大规模关注，具备开源生态号召力
+<strong>技术栈偏好</strong>：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、开发工具和可扩展技能生态
+<strong>核心领域</strong>：主要聚焦 AI 辅助软件开发、开发者生产力工具与内容处理自动化</p>
+<hr />
+<h3>✨ lightpanda-io/browser (34664★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：Lightpanda 是一款用 Zig 从零实现的无头浏览器，面向 AI Agent、爬虫和自动化任务，以更低内存占用运行网页加载、脚本执行和数据提取。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：它不是 Chromium 或 WebKit 的改版，而是自研的无头浏览器，内置 HTML 解析、DOM、V8 JavaScript、Fetch/XHR、Cookie、网络拦截和代理支持。项目提供 CDP、WebDriver BiDi、原生 Agent、MCP，以及 HTML、Markdown、PNG 和 PDF 等页面输出能力，可直接接入 Puppeteer、Playwright 等自动化客户端。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：批量打开真实网页时，Headless Chrome 的内存开销较高，容易导致爬虫或数据采集任务需要配置更多机器资源；README 基准测试中，100 个页面的峰值内存为 123MB，而 Headless Chrome 为 2GB。对于 AI Agent 操作网页的场景，它还可以在浏览器进程内执行导航、点击、填表和结构化提取，减少额外的浏览器控制层和进程开销。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：需要用 Puppeteer、Playwright 或 WebDriver 批量抓取页面的爬虫、数据清洗和自动化测试开发者；需要让 AI Agent 浏览网页、操作表单、提取信息，并通过 MCP 接入模型工作流的 AI 应用开发者。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：Linux 可直接下载 nightly 二进制并启动 CDP 服务：</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>批量抓取新闻、电商或内部业务页面，并通过 <code>--dump markdown</code> 直接生成适合后续处理的 Markdown。</li>
+<li>用 Puppeteer 或 Playwright 执行登录、点击、填写表单和页面数据提取，替代资源消耗较高的 Chromium 实例。</li>
+<li>
+<p>为多个 AI Agent 提供独立浏览会话，通过 MCP HTTP 服务隔离各自的页面、Cookie 和内存，执行网页调研或业务流程操作。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目使用 Zig 自研浏览器核心，同时组合 html5ever、V8 和 libcurl，覆盖从 HTML 解析、JavaScript 执行到网络加载的关键链路。它同时支持 CDP、WebDriver BiDi 和 MCP，并提供 Agent 会话录制为可重复执行的 PandaScript，兼顾自动化兼容性与 AI 操作场景。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交高度集中在 2026 年 9 月 2日至 7 日，说明主线开发仍然活跃。近期重点包括基于 uBlock Origin 语义完善广告拦截器、增加拦截判定指标、调整请求构造和 Token 化逻辑，同时持续修正 CORS、HTTP 超时、Worker 取消语义、自定义元素、CSS 伪类解析和上下文处理；此外还移除了 beta 标识、更新 Bidi 能力并接入 WPT 结果链接。整体方向是完善浏览器标准兼容性、网络控制能力和生产可用性，而不只是增加表面 API。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 明确将 Headless Chrome 作为对比对象，并声称在其基准测试中，Lightpanda 处理 100 个页面约需 5 秒、峰值内存 123MB，Headless Chrome 约需 46 秒、峰值内存 2GB。不过 Lightpanda 是全新浏览器实现，网页兼容性和自动化行为不能简单等同于 Chromium，实际替代前应结合目标站点进行 WPT 和业务流程测试。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2023 年 2 月，当前有 87 个 Open Issues，虽然最近提交密集、已拥有 34664 个 Stars 和 1642 个 Forks，但整体仍应视为快速演进中的浏览器项目。源码构建要求 Zig <code>0.15.2</code>，并涉及 V8、libcurl、Rust 等依赖，构建复杂度明显高于直接使用成熟浏览器；Linux 官方二进制依赖 glibc，Alpine 等 musl 环境不能直接运行。Windows 没有原生二进制，需要通过 WSL2 使用；README 主要提供 nightly 安装方式，升级时需留意协议、网页兼容性和命令行参数变化。默认会收集并发送使用遥测，需要通过 <code>LIGHTPANDA_DISABLE_TELEMETRY=true</code> 关闭。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/lightpanda-io/browser">lightpanda-io/browser</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：以 Lightpanda 浏览器项目为核心，在 Zig 与无头浏览器社区具备较高关注度和一定技术影响力
+<strong>技术栈偏好</strong>：偏好 Zig 构建浏览器与 JavaScript 运行时，辅以 Go 和 Shell 开发工具及生态组件
+<strong>核心领域</strong>：主要聚焦轻量级无头浏览器、浏览器自动化、JavaScript 运行时与开发者工具生态</p>
         <div class="footer">
             <p>❤️ Generated by GitHub Trending Reporter</p>
         </div>
