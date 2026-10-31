@@ -36,7 +36,110 @@
 
 ---
 
-### ✨ milind-soni/OpenMausBot (8838★)
+### ✨ mattpocock/skills (269436★)
+
+> **一句话**：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。
+
+- **它是什么**：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。
+- **能解决什么痛点**：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。
+- **适合谁用**：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。
+- **怎么上手**：用 skills.sh 安装并选择需要的技能，例如：
+
+  安装时记得选上 `setup-matt-pocock-skills`，随后在代理中运行 `/setup-matt-pocock-skills` 完成项目配置。
+- **可以用在哪些场景**：
+  - 开始一个新功能前，用 `/grill-with-docs` 澄清需求、统一项目术语，并整理 `CONTEXT.md` 和 ADR。
+  - 将已有讨论整理成规格或可执行工单，再用 `/implement` 按测试驱动流程实现。
+  - 定期运行 `/improve-codebase-architecture` 寻找可拆分、加深模块边界的候选位置，或用 `/diagnosing-bugs` 按阶段排查问题。
+- **技术看点**：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
+- **近期动向与发展方向**：近期提交主要在完善 `/pr` 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
+- **同类对比**：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
+- **注意事项**：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。
+
+- **GitHub**：[mattpocock/skills](https://github.com/mattpocock/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
+**技术栈偏好**：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
+**核心领域**：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。
+
+---
+
+### ✨ Donchitos/Claude-Code-Game-Studios (30778★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
+
+
+---
+
+### ✨ pingdotgg/t3code (24570★)
+
+> **一句话**：T3 Code 把电脑上的 Claude Code、Codex、Cursor 等智能编程代理集中到一个界面里，并通过 Web、iOS、Android 或桌面应用远程查看和控制它们。
+
+- **它是什么**：T3 Code 是一个面向本地开发代理的控制中枢，能够连接已安装并完成认证的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Google Antigravity。它同时提供 Web、Electron 桌面端以及 iOS、Android 客户端，可查看线程、任务、终端和开发服务器状态，并在手机或其他设备上继续操作。
+
+- **能解决什么痛点**：开发者需要在多个 AI 编程代理之间切换时，不必分别打开各自的命令行或桌面界面。长时间运行的代理任务、开发服务器和代码审查任务可以在离开电脑后通过手机或 Web 端跟进，避免任务完成后无人处理。
+
+- **适合谁用**：经常使用 Claude Code、Codex、Cursor 等 CLI 或代理工具的全栈开发者、独立开发者和小型团队。需要同时管理多个项目、远程查看开发任务，或希望把 AI 编程代理作为后台服务运行的人也适合使用。
+
+- **怎么上手**：安装并认证至少一个代理后执行：
+  Windows PowerShell 可使用 `irm https://t3.codes/install.ps1 | iex`，也可以直接运行 `npx t3@latest` 临时体验。
+
+- **可以用在哪些场景**：
+  - 在本地启动多个 Claude Code 或 Codex 任务，通过手机查看任务进度并处理需要确认的操作。
+  - 将 T3 Code 作为后台服务运行，在通勤或离开工位时远程查看开发服务器、Shell 命令和代理输出。
+  - 让代理持续关注 GitHub Pull Request 的检查、评审和冲突状态，并在需要处理时唤醒代理。
+
+- **技术看点**：项目使用 TypeScript，采用本地服务加 Web、Electron、移动端客户端的多端架构，并围绕多个代理供应商做统一控制。README 强调远程访问、后台服务、权限模式、源码管理和多账号支持，近期提交也显示其在持续完善任务状态同步和代理运行控制。
+
+- **近期动向与发展方向**：项目近期非常活跃，最近 20 条提交全部集中在 2026-10-03，主体是移动端、Web 端、服务端和共享层的状态同步与边界问题修复，例如修复任务卡片残留、线程卡住、开发服务器状态误判、Shell 完成通知丢失等。同时新增了代理关注 Pull Request 状态、按 Token 类型和模型展示成本等功能，发展重点明显集中在多端一致性、长任务可靠性、代理协作和用量分析。虽然已有 394 位贡献者，但 README 仍称项目处于早期阶段，且目前主要不接受大型功能贡献。
+
+- **同类对比**：README 明确提到 Codex Desktop、Conductor、Claude Desktop 和 Cursor Glass 等产品。T3 Code 的差异在于不绑定单一代理，能够统一控制 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity，并同时覆盖 Web、移动端和 Electron 桌面端。
+
+- **注意事项**：项目创建于 2026-02-08，当前已有 24570 个 Star、6412 个 Fork，但同时存在 1913 个开放 Issue，且 README 明确提示项目仍“非常早期”、可能存在不少 Bug。使用前需要先单独安装并登录至少一个代理，部分功能还依赖本机服务、网络和移动端连接；多代理兼容、远程控制和频繁更新也意味着配置与版本同步可能带来额外排查成本。文档覆盖安装、权限、快捷键、远程访问和后台服务等主题，但目前没有独立文档站。
+
+- **GitHub**：[pingdotgg/t3code](https://github.com/pingdotgg/t3code)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：聚焦现代开发者工具，在 TypeScript 社区具备较高知名度和显著开源影响力。
+**技术栈偏好**：高度偏好 TypeScript，主要围绕全栈 Web、开发者工具与类型安全方案构建产品。
+**核心领域**：主要聚焦开发者基础设施、文件上传、代码工具及现代 Web 应用开发。
+
+---
+
+### ✨ Renhuai123/ziwei-doushu (12005★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：紫微斗数开源排盘引擎 — 基于倪海厦《天纪》体系，含完整排盘算法、四化系统、格局知识库、古籍原文数据
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu)
+
+
+---
+
+### ✨ milind-soni/OpenMausBot (9274★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -87,249 +190,6 @@
 **技术影响力**：长期活跃的创意技术开发者，曾创建 jQuery UI，代表项目在 GitHub 获得广泛关注。
 **技术栈偏好**：以 JavaScript 为主、HTML 为辅，偏好 Web 前端与浏览器交互技术。
 **核心领域**：聚焦 Web 创意开发、用户界面与网页交互体验。
-
----
-
-### ✨ CopilotKit/OpenBot (8893★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[CopilotKit/OpenBot](https://github.com/CopilotKit/OpenBot)
-
-
----
-
-### ✨ Renhuai123/ziwei-doushu (11439★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：紫微斗数开源排盘引擎 — 基于倪海厦《天纪》体系，含完整排盘算法、四化系统、格局知识库、古籍原文数据
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu)
-
-
----
-
-### ✨ expo/skills (3918★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：A collection of AI agent skills for working with Expo projects and Expo Application Services
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[expo/skills](https://github.com/expo/skills)
-
-
----
-
-### ✨ macro-inc/macro (1453★)
-
-> **一句话**：Macro 把团队邮件、聊天、文档、任务、会议、CRM 和 AI Agent 放进同一个工作区，并用 @链接和共享记忆把所有上下文串起来。
-
-- **它是什么**：Macro 是面向团队的一体化工作空间，核心界面覆盖统一邮箱、频道消息、任务、Markdown 文档、Canvas、文件、会议记录、CRM 和 Agent。它强调所有内容都能被 @mention、搜索和双向关联，例如从客户邮件创建任务、在文档里引用邮件、把 PR 关联到任务，并让 Agent 读取同一套团队上下文。
-- **能解决什么痛点**：适合解决小团队同时使用 Slack、Linear、Notion、HubSpot、Superhuman 等工具时上下文分散的问题，尤其是“任务为什么产生”“客户最近说了什么”“这封邮件和哪个项目相关”需要跨系统追溯的场景。另一个痛点是 CRM 和任务系统容易过期，Macro 通过把它们放在聊天、邮件、文档的原始协作流里，减少手动同步和重复录入。
-- **适合谁用**：适合想把邮件、团队沟通、任务跟踪、客户信息和 AI Agent 收到同一工作区的创业团队或小型技术团队。也适合需要从客户邮件、技术讨论、PR 和文档之间频繁建立上下文关系的产品、工程、销售协作团队。
-- **怎么上手**：README 未提供本地安装命令或最小运行示例，可通过官网入口注册使用：`https://macro.com/app`。
-- **可以用在哪些场景**：从客户邮件直接创建带上下文的工程任务，并关联到后续 PR 和频道讨论；用统一 inbox 同时处理 Gmail、团队消息、@mentions 和待办事项；在销售或客户成功流程中，通过联系人、公司记录聚合团队邮件、文件和内部讨论，替代单独维护一套容易失真的 CRM。
-- **技术看点**：项目使用 Rust 和 SolidJS 构建，README 明确提到文档协作基于 CRDT，并通过 Cloudflare Durable Objects 支撑接近实时的多人编辑。其关键设计是把邮件、消息、任务、文档、CRM 等对象存成双向图，而不是只做多个工具的浅层聚合。
-- **近期动向与发展方向**：最近 20 条提交集中在邮箱、日历、任务视图、Markdown、AI、频道、iOS 和桌面 CI 上，既有功能增强也有大量修复，说明项目仍在快速迭代。近期新增了 Google 风格日历提醒、任务视图合并、Markdown checklist 进度插件、split 位置交换等功能，同时修复 Google Calendar 权限申请、邮箱回填、AI tool_use 输入兼容、macOS 打包链路等问题，开发重点明显围绕核心协作体验、邮箱/日历集成和跨平台稳定性展开。
-- **同类对比**：README 明确对标 Slack、Linear、Notion、HubSpot、Superhuman 等产品，差异在于 Macro 不是单点替代其中某一个工具，而是尝试把团队沟通、任务、文档、邮箱、CRM 和 Agent 作为同一套可链接、可搜索、可被 AI 使用的系统来设计。
-- **注意事项**：项目创建时间为 2025-11-08，当前 Stars 1453、Open Issues 56，更新非常频繁，说明关注度和开发活跃度不错，但成熟度仍需要谨慎评估。README 偏产品说明和理念介绍，本地部署、架构细节、最小开发运行路径在提供素材中未看到；近期提交里也有多条修复和临时处理，使用时要预期接口、权限、桌面/iOS 和协作编辑相关行为仍可能快速变化。
-
-- **GitHub**：[macro-inc/macro](https://github.com/macro-inc/macro)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Macro 在开源社区影响力中等偏小，但核心 Rust 仓库获得较高关注，显示其在 AI 原生协作工作空间方向具备一定技术辨识度。
-**技术栈偏好**：其技术栈以 Rust 为核心，结合 JavaScript、C++ 与 Electron/LibreOffice 相关能力，偏向高性能桌面端与文档处理基础设施。
-**核心领域**：主要聚焦于融合邮件、消息、文档、任务、文件与 CRM 的 AI 原生团队协作工作空间。
-
----
-
-### ✨ mattpocock/skills (269436★)
-
-> **一句话**：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。
-
-- **它是什么**：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。
-- **能解决什么痛点**：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。
-- **适合谁用**：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。
-- **怎么上手**：用 skills.sh 安装并选择需要的技能，例如：
-
-  安装时记得选上 `setup-matt-pocock-skills`，随后在代理中运行 `/setup-matt-pocock-skills` 完成项目配置。
-- **可以用在哪些场景**：
-  - 开始一个新功能前，用 `/grill-with-docs` 澄清需求、统一项目术语，并整理 `CONTEXT.md` 和 ADR。
-  - 将已有讨论整理成规格或可执行工单，再用 `/implement` 按测试驱动流程实现。
-  - 定期运行 `/improve-codebase-architecture` 寻找可拆分、加深模块边界的候选位置，或用 `/diagnosing-bugs` 按阶段排查问题。
-- **技术看点**：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
-- **近期动向与发展方向**：近期提交主要在完善 `/pr` 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
-- **同类对比**：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
-- **注意事项**：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。
-
-- **GitHub**：[mattpocock/skills](https://github.com/mattpocock/skills)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
-**技术栈偏好**：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
-**核心领域**：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。
-
----
-
-### ✨ pingdotgg/t3code (24570★)
-
-> **一句话**：T3 Code 把电脑上的 Claude Code、Codex、Cursor 等智能编程代理集中到一个界面里，并通过 Web、iOS、Android 或桌面应用远程查看和控制它们。
-
-- **它是什么**：T3 Code 是一个面向本地开发代理的控制中枢，能够连接已安装并完成认证的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Google Antigravity。它同时提供 Web、Electron 桌面端以及 iOS、Android 客户端，可查看线程、任务、终端和开发服务器状态，并在手机或其他设备上继续操作。
-
-- **能解决什么痛点**：开发者需要在多个 AI 编程代理之间切换时，不必分别打开各自的命令行或桌面界面。长时间运行的代理任务、开发服务器和代码审查任务可以在离开电脑后通过手机或 Web 端跟进，避免任务完成后无人处理。
-
-- **适合谁用**：经常使用 Claude Code、Codex、Cursor 等 CLI 或代理工具的全栈开发者、独立开发者和小型团队。需要同时管理多个项目、远程查看开发任务，或希望把 AI 编程代理作为后台服务运行的人也适合使用。
-
-- **怎么上手**：安装并认证至少一个代理后执行：
-  Windows PowerShell 可使用 `irm https://t3.codes/install.ps1 | iex`，也可以直接运行 `npx t3@latest` 临时体验。
-
-- **可以用在哪些场景**：
-  - 在本地启动多个 Claude Code 或 Codex 任务，通过手机查看任务进度并处理需要确认的操作。
-  - 将 T3 Code 作为后台服务运行，在通勤或离开工位时远程查看开发服务器、Shell 命令和代理输出。
-  - 让代理持续关注 GitHub Pull Request 的检查、评审和冲突状态，并在需要处理时唤醒代理。
-
-- **技术看点**：项目使用 TypeScript，采用本地服务加 Web、Electron、移动端客户端的多端架构，并围绕多个代理供应商做统一控制。README 强调远程访问、后台服务、权限模式、源码管理和多账号支持，近期提交也显示其在持续完善任务状态同步和代理运行控制。
-
-- **近期动向与发展方向**：项目近期非常活跃，最近 20 条提交全部集中在 2026-10-03，主体是移动端、Web 端、服务端和共享层的状态同步与边界问题修复，例如修复任务卡片残留、线程卡住、开发服务器状态误判、Shell 完成通知丢失等。同时新增了代理关注 Pull Request 状态、按 Token 类型和模型展示成本等功能，发展重点明显集中在多端一致性、长任务可靠性、代理协作和用量分析。虽然已有 394 位贡献者，但 README 仍称项目处于早期阶段，且目前主要不接受大型功能贡献。
-
-- **同类对比**：README 明确提到 Codex Desktop、Conductor、Claude Desktop 和 Cursor Glass 等产品。T3 Code 的差异在于不绑定单一代理，能够统一控制 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity，并同时覆盖 Web、移动端和 Electron 桌面端。
-
-- **注意事项**：项目创建于 2026-02-08，当前已有 24570 个 Star、6412 个 Fork，但同时存在 1913 个开放 Issue，且 README 明确提示项目仍“非常早期”、可能存在不少 Bug。使用前需要先单独安装并登录至少一个代理，部分功能还依赖本机服务、网络和移动端连接；多代理兼容、远程控制和频繁更新也意味着配置与版本同步可能带来额外排查成本。文档覆盖安装、权限、快捷键、远程访问和后台服务等主题，但目前没有独立文档站。
-
-- **GitHub**：[pingdotgg/t3code](https://github.com/pingdotgg/t3code)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：聚焦现代开发者工具，在 TypeScript 社区具备较高知名度和显著开源影响力。
-**技术栈偏好**：高度偏好 TypeScript，主要围绕全栈 Web、开发者工具与类型安全方案构建产品。
-**核心领域**：主要聚焦开发者基础设施、文件上传、代码工具及现代 Web 应用开发。
-
----
-
-### ✨ HKUDS/DeepTutor (34555★)
-
-> **一句话**：DeepTutor 把聊天式 AI 导师、个人知识库、学习路径、题库与多智能体协作放在同一个学习工作台里，用来长期跟踪和陪伴个人学习。
-
-- **它是什么**：DeepTutor 是一个面向“长期个性化辅导”的开源学习系统，后端以 Python 为主，前端使用 Next.js 16。README 展示的能力不只是普通聊天，还包括 Guided Learning、Mastery Path、Question Bank、Knowledge Center、Partners、多模型接入、RAG/GraphRAG/PageIndex/LightRAG 检索，以及通过 CLI 和外部 Agent 扩展学习与研究流程。
-- **能解决什么痛点**：一类痛点是学习资料分散在文档、知识库、笔记和聊天记录里，难以持续追踪掌握情况；DeepTutor 试图把知识库检索、练习题、学习路径和对话记忆串起来。另一类痛点是单一聊天机器人很难适配不同任务，它通过 Partners、My Agents、MCP Services、Codex/Claude Code 等集成，让不同代理参与学习、研究、代码或资料处理。
-- **适合谁用**：适合想自建 AI 学习平台的教育技术团队、研究型学习者和需要私有知识库问答的高校/实验室用户。也适合愿意折腾 Python + Next.js + 多模型配置的开发者，用来搭建个人学习助手或内部知识辅导系统。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：可以用于把课程讲义、论文、Obsidian 笔记接入知识库后做问答和测验；可以用于搭建团队内部的学习辅导平台，让不同用户拥有独立账号、记忆和模型设置；也可以用于研究助理场景，通过 Deep Research、PageIndex、LightRAG 等能力对大量资料做检索、引用和报告生成。
-- **技术看点**：项目采用 Python 3.11+ 与 Next.js 16，围绕多模型、多检索引擎和多 Agent 扩展做系统集成，近期版本还在持续增强 MCP、Codex OAuth、知识库索引、IM 管道和 per-user 隔离。RAG 层同时覆盖 GraphRAG、PageIndex、LightRAG、FAISS、Obsidian 等路径，说明它更像完整学习平台，而不是单点聊天 Demo。
-- **近期动向与发展方向**：最近 20 条提交非常密集，8 月 6 日到 9 日连续发布 v1.5.10、v1.5.11，说明维护活跃度很高。近期重点集中在流式响应稳定性、内存可观测性、知识库上传不阻塞事件循环、多用户 Codex 登录、语言设置拆分、视觉模型能力识别和前端代理 IPv4 修复；整体方向是在补齐生产可用性、多用户隔离和多模型兼容性，而不是只堆新功能。
-- **同类对比**：暂无明显同类对标。README 没有直接声明与某个竞品对比，但从功能形态看，它更接近“AI 学习平台 + 知识库 + 多 Agent 工作台”的组合，而不是单纯的聊天客户端或 RAG 问答工具。
-- **注意事项**：项目创建时间显示为 2025-12-28，迭代很快且功能面很宽，34555 Stars、4412 Forks 和 127 位贡献者说明关注度高，但 99 个 Open Issues 也意味着仍有不少待处理问题。近期 release 频繁修复事件循环、工具调用、模型能力识别、前端竞态和内存问题，生产部署前需要认真阅读版本说明并做好升级验证；另外 README 素材中没有给出最小安装命令，初次上手可能需要依赖官网文档。
-
-- **GitHub**：[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：作为 HKU 背景的数据智能实验室组织，其多个仓库获得数万 stars，已在开源 AI 工具与智能体社区形成显著影响力。
-**技术栈偏好**：高度偏好 Python，技术方向集中在大模型应用、RAG、智能体、自动化工具与 AI 原生应用开发。
-**核心领域**：主要聚焦数据智能、生成式 AI、轻量级 RAG、多智能体系统与面向实际场景的 AI 应用落地。
-
----
-
-### ✨ anthropics/skills (178096★)
-
-> **一句话**：这是 Anthropic 为 Claude 提供的一组可直接参考和安装的 Agent Skills 示例，把文档处理、设计开发、API 使用等复杂任务整理成 Claude 能动态加载的指令、脚本与资源。
-
-- **它是什么**：项目以独立文件夹组织每个 Skill，每个 Skill 通过 `SKILL.md` 描述元数据、使用条件和执行指令，Claude 可在需要时加载它们来完成特定任务。仓库覆盖创意与设计、开发技术、企业沟通以及 DOCX、PDF、PPTX、XLSX 文档处理，并同时提供 Agent Skills 规范和模板。
-
-- **能解决什么痛点**：开发者不必每次都从头编写复杂的提示词、操作步骤和领域约束，可以把一套重复工作的流程固化为可复用 Skill。对于文档生成、表格处理、前端设计或 Claude API 集成等任务，它还提供了接近真实生产场景的参考实现，降低自行摸索格式和调用方式的成本。
-
-- **适合谁用**：使用 Claude Code、Claude.ai 或 Claude API 构建智能代理的开发者；希望把企业品牌规范、文档处理流程、测试流程或内部工作流封装成可复用能力的团队。
-
-- **怎么上手**：在 Claude Code 中执行 `/plugin marketplace add anthropics/skills`，随后安装 `document-skills` 或 `example-skills` 插件；也可以直接执行 `/plugin install document-skills@anthropic-agent-skills`。创建自定义 Skill 时，可按 README 提供的模板建立目录，并在 `SKILL.md` 中填写 `name` 和 `description`。
-
-- **可以用在哪些场景**：
-  - 让 Claude 按公司品牌规范生成演示文稿、报告、表格和 PDF 文档。
-  - 将 Claude API 的 SDK 升级、模型更新、Managed Agents 配置等开发流程整理为可查询和执行的 Skill。
-  - 为内部数据分析、网页测试、MCP Server 生成或企业沟通流程提供固定的操作指令和示例资源。
-
-- **技术看点**：Skill 采用“目录 + `SKILL.md` + 可选脚本和资源”的轻量结构，通过 YAML frontmatter 声明名称与适用描述，便于 Claude 按任务动态加载。仓库同时维护示例实现、Skill 规范和模板，既能直接安装，也能作为构建自定义 Agent 能力的参考基线。
-
-- **近期动向与发展方向**：近期提交明显集中在 `claude-api` Skill，持续跟进 SDK 1.x 升级、模型版本、Managed Agents、权限策略、成本优化和 API 文档变化，说明项目重点是同步 Anthropic 平台的快速演进。与此同时，项目还更新了 `frontend-design`、文档类 Skills，并新增 `academy-guide` 和 `discernment-nudge`；近 20 条提交覆盖 2026 年 5 月至 9 月，维护节奏较活跃，但提交主要由少数核心贡献者推动，16 名贡献者的规模仍偏小。
-
-- **同类对比**：暂无明显同类对标。README 明确区分了本仓库的 Anthropic 实现与 [Agent Skills 标准](http://agentskills.io)，前者更偏向 Claude 的示例、插件和生产参考实现，后者是可供其他实现遵循的规范。
-
-- **注意事项**：项目创建于 2025 年 9 月，已经积累 17.8 万 Stars，但同时有 1293 个开放 Issue，需求和反馈规模较大。部分 Skill，尤其是文档创建与编辑相关实现，是 source-available 而非 Apache 2.0 开源；仓库也声明内容主要用于演示和教育，实际行为可能随 Claude 或 API 版本变化。近期频繁跟进模型、SDK 和平台功能，上手时应核对对应文档与版本，避免因 API 或 Skill 内容更新产生兼容性问题。
-
-- **GitHub**：[anthropics/skills](https://github.com/anthropics/skills)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有近 8.8 万关注者，多个仓库获数万至十余万星，是 AI 开发者生态中的高影响力组织。
-**技术栈偏好**：以 Python、Jupyter Notebook 和 TypeScript 为主，覆盖 AI 工具开发、交互式教程与应用示例。
-**核心领域**：聚焦 Claude 相关开发工具、技能与提示工程，并拓展至金融等行业应用。
-
----
-
-### ✨ JetBrains/thinkrail (6650★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[JetBrains/thinkrail](https://github.com/JetBrains/thinkrail)
-
-
----
-
-### ✨ togg53192-cmd/jailbreaks (11372★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：LIST OF ALL MY JAILBREAKS
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[togg53192-cmd/jailbreaks](https://github.com/togg53192-cmd/jailbreaks)
-
 
 ---
 
@@ -389,3 +249,107 @@
 **技术影响力**：以 Lightpanda 浏览器项目为核心，在 Zig 与无头浏览器社区具备较高关注度和一定技术影响力
 **技术栈偏好**：偏好 Zig 构建浏览器与 JavaScript 运行时，辅以 Go 和 Shell 开发工具及生态组件
 **核心领域**：主要聚焦轻量级无头浏览器、浏览器自动化、JavaScript 运行时与开发者工具生态
+
+---
+
+### ✨ HKUDS/DeepTutor (34555★)
+
+> **一句话**：DeepTutor 把聊天式 AI 导师、个人知识库、学习路径、题库与多智能体协作放在同一个学习工作台里，用来长期跟踪和陪伴个人学习。
+
+- **它是什么**：DeepTutor 是一个面向“长期个性化辅导”的开源学习系统，后端以 Python 为主，前端使用 Next.js 16。README 展示的能力不只是普通聊天，还包括 Guided Learning、Mastery Path、Question Bank、Knowledge Center、Partners、多模型接入、RAG/GraphRAG/PageIndex/LightRAG 检索，以及通过 CLI 和外部 Agent 扩展学习与研究流程。
+- **能解决什么痛点**：一类痛点是学习资料分散在文档、知识库、笔记和聊天记录里，难以持续追踪掌握情况；DeepTutor 试图把知识库检索、练习题、学习路径和对话记忆串起来。另一类痛点是单一聊天机器人很难适配不同任务，它通过 Partners、My Agents、MCP Services、Codex/Claude Code 等集成，让不同代理参与学习、研究、代码或资料处理。
+- **适合谁用**：适合想自建 AI 学习平台的教育技术团队、研究型学习者和需要私有知识库问答的高校/实验室用户。也适合愿意折腾 Python + Next.js + 多模型配置的开发者，用来搭建个人学习助手或内部知识辅导系统。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：可以用于把课程讲义、论文、Obsidian 笔记接入知识库后做问答和测验；可以用于搭建团队内部的学习辅导平台，让不同用户拥有独立账号、记忆和模型设置；也可以用于研究助理场景，通过 Deep Research、PageIndex、LightRAG 等能力对大量资料做检索、引用和报告生成。
+- **技术看点**：项目采用 Python 3.11+ 与 Next.js 16，围绕多模型、多检索引擎和多 Agent 扩展做系统集成，近期版本还在持续增强 MCP、Codex OAuth、知识库索引、IM 管道和 per-user 隔离。RAG 层同时覆盖 GraphRAG、PageIndex、LightRAG、FAISS、Obsidian 等路径，说明它更像完整学习平台，而不是单点聊天 Demo。
+- **近期动向与发展方向**：最近 20 条提交非常密集，8 月 6 日到 9 日连续发布 v1.5.10、v1.5.11，说明维护活跃度很高。近期重点集中在流式响应稳定性、内存可观测性、知识库上传不阻塞事件循环、多用户 Codex 登录、语言设置拆分、视觉模型能力识别和前端代理 IPv4 修复；整体方向是在补齐生产可用性、多用户隔离和多模型兼容性，而不是只堆新功能。
+- **同类对比**：暂无明显同类对标。README 没有直接声明与某个竞品对比，但从功能形态看，它更接近“AI 学习平台 + 知识库 + 多 Agent 工作台”的组合，而不是单纯的聊天客户端或 RAG 问答工具。
+- **注意事项**：项目创建时间显示为 2025-12-28，迭代很快且功能面很宽，34555 Stars、4412 Forks 和 127 位贡献者说明关注度高，但 99 个 Open Issues 也意味着仍有不少待处理问题。近期 release 频繁修复事件循环、工具调用、模型能力识别、前端竞态和内存问题，生产部署前需要认真阅读版本说明并做好升级验证；另外 README 素材中没有给出最小安装命令，初次上手可能需要依赖官网文档。
+
+- **GitHub**：[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：作为 HKU 背景的数据智能实验室组织，其多个仓库获得数万 stars，已在开源 AI 工具与智能体社区形成显著影响力。
+**技术栈偏好**：高度偏好 Python，技术方向集中在大模型应用、RAG、智能体、自动化工具与 AI 原生应用开发。
+**核心领域**：主要聚焦数据智能、生成式 AI、轻量级 RAG、多智能体系统与面向实际场景的 AI 应用落地。
+
+---
+
+### ✨ Orkas-AI/Orkas (5917★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Orkas is an open-source (MIT), local-first AI team for your desktop: a Commander turns your goal into to-dos and coordinates 16 built-in specialist agents plus Claude Code, Codex, OpenCode, OpenClaw and Hermes, with projects, scheduled automations and connectors. Free app for macOS & Windows; built-in models or your own keys.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[Orkas-AI/Orkas](https://github.com/Orkas-AI/Orkas)
+
+
+---
+
+### ✨ THU-MAIC/OpenMAIC (22476★)
+
+> **一句话**：它把“输入一个主题/资料，几分钟内生成一整套可互动课堂”这件事做成了可部署的产品，产出的不只是课件，还包括 AI 老师、AI 同学、白板讲解、测验和交互式演示。
+
+- **它是什么**：OpenMAIC 全称是 Open Multi-Agent Interactive Classroom，核心是把文档、音频、视频或一个话题，交给多智能体协作生成一套完整课堂。它不是单纯的 PPT 生成器，而是同时覆盖幻灯片、测验、互动 HTML、PBL、白板、语音讲解和实时讨论的课堂工作台。README 里也明确提到支持从 Feishu、Slack、Telegram 等消息应用直接触发生成。
+- **能解决什么痛点**：一是把“先搜资料、再写提纲、再做课件、再补互动题”的重复工作压缩到一次输入；二是让课程内容不只停留在静态幻灯片，减少教师或培训人员手工拼装测验、演示和讲解环节的负担。
+- **适合谁用**：高校教师、培训讲师、教研人员，以及需要把资料快速整理成课堂内容的教育产品团队；也适合做内部知识培训、技术分享、入职培训的内容团队。
+- **怎么上手**：README 给出的最小方式是 `git clone https://github.com/THU-MAIC/OpenMAIC.git && cd OpenMAIC && pnpm install`，然后复制 `.env.example` 为 `.env.local`，至少配置一个 LLM provider 的 API Key。
+- **可以用在哪些场景**：把一篇技术文档快速改造成带讲解、测验和白板演示的内部培训课；把课程大纲连同参考材料直接生成可交互的课堂页面；通过 OpenClaw 在飞书、Slack、Telegram 里直接发起课程生成任务。
+- **技术看点**：项目采用 Next.js、React、TypeScript、LangGraph 和 Tailwind CSS，路线是明显的 Web 应用 + 多智能体编排。近期还强化了 provider-neutral 设计、服务端持久化和可插拔存储，说明它在向可部署、可维护的生产形态推进。
+- **近期动向与发展方向**：最近 20 条提交里，大头集中在稳定性、性能和运行时修复，例如课堂加载加速、存储帧裁剪、工作区恢复内存、PostgreSQL 死锁修复、导入 `.pptx` 的大小和超时限制、以及 provider 兼容性和模型路由校验。与此同时也在继续加功能，比如事实核查技能、单页 PPT 引用、白板破坏性操作、以及 1.0.0 发布，整体看是“边补强底座，边扩展课堂能力”的阶段，活跃度很高。
+- **同类对比**：README 没有直接拿它对标某个具体竞品；从定位上看，它更像“多智能体课堂生成器”，而不是传统课件工具或单纯的聊天式教学助手。
+- **注意事项**：项目已经很活跃，但 open issues 还有 207 个，说明功能推进快，边界和细节还在持续打磨。上手门槛不低，至少要配置一个模型供应商，若要本地化或多 provider 组合，还要处理环境变量、服务端配置和存储后端；另外 1.0.0 刚发布不久，版本演进和兼容性仍有一定变动风险。
+
+- **GitHub**：[THU-MAIC/OpenMAIC](https://github.com/THU-MAIC/OpenMAIC)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：MAIC 是一个成立时间较短但凭借 OpenMAIC 获得高关注度的新兴技术组织，已在 AI 教育与智能体相关开源社区形成显著影响力。
+**技术栈偏好**：其技术栈以 Python、TypeScript 和 JavaScript 为主，兼顾后端智能能力、前端交互界面与 Web 应用开发。
+**核心领域**：主要聚焦 AI 时代教育、智能体平台与相关开源基础设施建设。
+
+---
+
+### ✨ bregman-arie/devops-exercises (85630★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[bregman-arie/devops-exercises](https://github.com/bregman-arie/devops-exercises)
+
+
+---
+
+### ✨ vorssaint/vorssaint-utils (31595★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Free and open-source macOS menu bar toolkit.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[vorssaint/vorssaint-utils](https://github.com/vorssaint/vorssaint-utils)
