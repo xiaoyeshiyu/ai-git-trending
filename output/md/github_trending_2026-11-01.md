@@ -131,7 +131,7 @@
 
 ---
 
-### ✨ milind-soni/OpenMausBot (10234★)
+### ✨ milind-soni/OpenMausBot (10409★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -185,7 +185,7 @@
 
 ---
 
-### ✨ cjpais/Handy (36167★)
+### ✨ cjpais/Handy (36406★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -204,7 +204,7 @@
 
 ---
 
-### ✨ Donchitos/Claude-Code-Game-Studios (31799★)
+### ✨ Donchitos/Claude-Code-Game-Studios (32085★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -223,7 +223,7 @@
 
 ---
 
-### ✨ kornia/kornia (11627★)
+### ✨ kornia/kornia (11734★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -242,7 +242,7 @@
 
 ---
 
-### ✨ beenuar/AiSOC (5942★)
+### ✨ beenuar/AiSOC (6112★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -261,7 +261,7 @@
 
 ---
 
-### ✨ Renhuai123/ziwei-doushu (12870★)
+### ✨ Renhuai123/ziwei-doushu (13026★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -280,11 +280,11 @@
 
 ---
 
-### ✨ anomalyco/hex (2746★)
+### ✨ anomalyco/hex (3093★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Local-first voice dictation for macOS. Hold a shortcut, speak, and paste into any app. Native Rust, on-device speech recognition, and a Linux beta.
+- **它是什么**：Local voice dictation for mac, windows and linux
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -299,7 +299,7 @@
 
 ---
 
-### ✨ CopilotKit/OpenBot (9295★)
+### ✨ CopilotKit/OpenBot (9441★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -318,7 +318,7 @@
 
 ---
 
-### ✨ togg53192-cmd/jailbreaks (12647★)
+### ✨ togg53192-cmd/jailbreaks (12839★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -337,7 +337,7 @@
 
 ---
 
-### ✨ patchy631/ai-engineering-hub (39918★)
+### ✨ patchy631/ai-engineering-hub (40119★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -356,7 +356,7 @@
 
 ---
 
-### ✨ FlashML-org/FreeToken (15167★)
+### ✨ FlashML-org/FreeToken (15308★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
