@@ -36,7 +36,7 @@
 
 ---
 
-### ✨ vercel-labs/agent-desktop (11993★)
+### ✨ vercel-labs/agent-desktop (12485★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -167,7 +167,7 @@
 
 ---
 
-### ✨ spotify/portal-ai-plugins (2952★)
+### ✨ spotify/portal-ai-plugins (3009★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -186,7 +186,7 @@
 
 ---
 
-### ✨ floci-io/floci (28392★)
+### ✨ floci-io/floci (28650★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -205,7 +205,7 @@
 
 ---
 
-### ✨ Usagi-org/ai-goofish-monitor (16245★)
+### ✨ Usagi-org/ai-goofish-monitor (16321★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -224,7 +224,7 @@
 
 ---
 
-### ✨ anomalyco/hex (4347★)
+### ✨ anomalyco/hex (4499★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -291,7 +291,7 @@
 
 ---
 
-### ✨ Donchitos/Claude-Code-Game-Studios (34360★)
+### ✨ Donchitos/Claude-Code-Game-Studios (34563★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
