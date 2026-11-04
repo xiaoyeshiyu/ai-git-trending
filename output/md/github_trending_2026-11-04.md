@@ -1,46 +1,11 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ thedotmack/claude-mem (95456★)
-
-> **一句话**：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。
-
-- **它是什么**：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。
-
-- **能解决什么痛点**：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。
-
-- **适合谁用**：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。
-
-- **怎么上手**：执行 `npx claude-mem install`，完成安装和提供商选择后重启 Claude Code；也可以使用 `npx claude-mem install --ide opencode` 为 OpenCode 安装。
-
-- **可以用在哪些场景**：
-  - 让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。
-  - 在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。
-  - 为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。
-
-- **技术看点**：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。
-
-- **近期动向与发展方向**：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。
-
-- **同类对比**：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。
-
-- **注意事项**：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 `--provider` 或 `CLAUDE_MEM_ONLINE_OPTIN=false` 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。
-
-- **GitHub**：[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
-**技术栈偏好**：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
-**核心领域**：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。
-
----
-
-### ✨ vercel-labs/agent-desktop (13269★)
+### ✨ NVIDIA/auto-ontology (4230★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Computer use CLI for AI agents
+- **它是什么**：Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -50,7 +15,7 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop)
+- **GitHub**：[NVIDIA/auto-ontology](https://github.com/NVIDIA/auto-ontology)
 
 
 ---
@@ -90,30 +55,6 @@
 
 ---
 
-### ✨ JustVugg/colibri (27386★)
-
-> **一句话**：把 744B 到 2.8T 参数级别的 MoE 大模型拆成“按需搬运的专家”，在本地消费级硬件上用 C 程序从磁盘、内存、显存分层流式推理。
-
-- **它是什么**：colibri 是一个纯 C、零运行时依赖的 MoE 推理引擎，核心思路不是把整个模型塞进显存，而是把 VRAM、RAM、NVMe 存储当成统一的推理层级。README 中展示它已支持 GLM、Kimi K3、DeepSeek V4 Flash、Qwen、OLMoE 等多个模型家族，并提供 `coli chat`、`coli serve`、`coli web` 作为统一入口。
-- **能解决什么痛点**：第一，开发者想在本地跑超大 MoE 模型时，常被“显存装不下整个模型”卡住，colibri 通过磁盘流式加载专家来降低对高端集群的依赖。第二，做推理系统研究的人通常很难观察专家路由、缓存命中、分层放置等细节，它提供 Web Dashboard、Brain、Atlas 等页面来观察每轮 token 的专家调度和硬件层级状态。
-- **适合谁用**：适合研究本地大模型推理、MoE 路由、KV 缓存、CPU/GPU/存储协同的系统工程师；也适合有多 GPU、NVMe、大内存工作站，想尝试私有化运行超大 MoE 模型的高级玩家和实验室团队。
-- **怎么上手**：README 展示的最小交互入口是：`./coli chat`
-- **可以用在哪些场景**：本地运行 744B 级 MoE 模型做私有问答或实验；搭建 `coli serve` 作为内部推理服务，测试不同硬件配置下的吞吐和 TTFT；用 Brain / Atlas 页面观察专家路由热度，研究不同 prompt、语言、任务对 MoE 专家的调用模式。
-- **技术看点**：核心设计是“AI memory multitiering”：把显存、内存、NVMe 统一成权重放置层级，并通过 LRU、热专家固定、提前一层预取来减少磁盘访问。它强调语义不被悄悄改变，即优化不应默认改变模型精度或 router 语义，而要通过端到端测量证明收益。
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-09-06，包含 1.10.2 发布、KV slots 修复、image_url 安全加固、Windows launcher 文档、Qwen3.6 tier 修复、DeepSeek V4 Flash REAP-150B 文档更新和模型转换路径修复。整体看，项目近期不只是加新模型说明，也在补安全、兼容性、转换流程和不同模型族的边界问题，说明维护活跃且正在快速工程化。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：项目创建于 2026-07-01，时间很新但 Star 增长很快，当前仍有 110 个 open issues，属于高速迭代期，接口和行为可能继续变化。README 也明确没有速度 SLA，很多优化仍以实验假设和端到端 A/B 为准；此外运行 744B 级模型仍需要较大的本地存储和一定硬件调优能力，不适合期待“下载即稳定生产部署”的用户。
-
-- **GitHub**：[JustVugg/colibri](https://github.com/JustVugg/colibri)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：专注高性价比硬件与 AI 推理基础设施，在 GitHub 具备较高关注度和开源影响力
-**技术栈偏好**：以 C/CUDA 为核心，辅以 Rust 和 Go，偏好底层系统、GPU 加速与高性能工程
-**核心领域**：聚焦面向廉价硬件的轻量级 AI 模型运行时、推理引擎与系统软件 beve
-
----
-
 ### ✨ mattpocock/skills (269436★)
 
 > **一句话**：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。
@@ -143,50 +84,7 @@
 
 ---
 
-### ✨ p-e-w/heretic (28761★)
-
-> **一句话**：它把“给大模型去安全对齐/去拒答”这件原本要靠人工调参和模型内部知识的活，做成了能直接跑命令自动完成的流程。
-
-- **它是什么**：Heretic 面向 transformer 系语言模型，核心任务是通过 directional ablation（也叫 abliteration）把模型的 censorship / safety alignment 去掉。它不是单纯做一次固定处理，而是结合 Optuna 的 TPE 优化器自动搜索参数，同时尽量压低拒答率和与原模型的 KL divergence，让“去对齐”后模型尽量少伤能力。README 里明确写到它支持多数 dense 模型，也覆盖不少多模态、MoE 和部分混合架构。
-- **能解决什么痛点**：第一，手工做 abliteration 需要理解模型内部并反复试参数，门槛高且耗时；Heretic 直接把这一步自动化。第二，只追求少拒答很容易把模型“改坏”，它把“少拒答”和“保留原能力”同时纳入优化目标，减少盲调带来的损失。
-- **适合谁用**：做本地大模型处理、模型编辑或 interpretability 研究的 Python / PyTorch 工程师；以及在 Hugging Face 上发布、评估和复现 abliterated 模型的开源模型维护者。
-- **怎么上手**：`pip install -U heretic-llm`，然后直接运行 `heretic Qwen/Qwen3-4B-Instruct-2507`。
-- **可以用在哪些场景**：批量生成可本地部署的“去拒答”版本模型；对比不同模型在拒答率和能力保持上的差异；研究 residual vectors、层间几何结构等模型内部机制。
-- **技术看点**：核心选型是“方向性消融 + Optuna TPE 自动搜索”，这比固定规则式处理更适合跨模型自动化。仓库还提供 `headless` 运行、`reproducible` 插件属性、端到端测试和 `uv.lock` 锁定依赖，说明它不是只停留在研究脚本层面。
-- **近期动向与发展方向**：最近 20 条提交里，功能与工程化并进：一边补 `generic plugin system`、`headless operation`、测试结束汇总、配置校验等能力，一边修 Windows Unicode、计数逻辑、评估路径等细节；同时还有较密集的依赖升级和版本号推进到 `2.0.0.dev0`。整体看，项目仍在积极演进，重点放在更通用的插件化、更稳定的自动化流程和更完整的测试覆盖。
-- **同类对比**：README 直接对比了人工或其他工具生成的 abliterated 模型，示例里 Heretic 在相同拒答压制水平下把 KL divergence 做得更低。它的差异点不在“能不能去拒答”，而在“能否自动找到更少破坏原能力的参数组合”。
-- **注意事项**：这是一个研究和模型编辑工具，不是开箱即用的消费级应用；实际效果依赖模型架构、PyTorch 版本、硬件和数据集，README 也提到不同平台上的结果会变化。项目当前 issue 数量为 81，说明仍有一定活跃维护压力；虽然 README 很详细，但涉及多步骤处理、GPU 资源和模型下载，初次上手门槛不低。另需注意，它面向的是“去安全对齐/去拒答”这类高敏感能力，使用场景和合规边界要自己把握。
-
-- **GitHub**：[p-e-w/heretic](https://github.com/p-e-w/heretic)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：在开源社区具备明显的高影响力，少量项目即可获得大规模关注，说明其作品兼具创意性与传播力。
-**技术栈偏好**：以 Python 为主，兼顾 Vala、JavaScript 与 Rust，整体偏向跨语言实现、工具型开发和系统交互。
-**核心领域**：主要聚焦于开发者工具、终端增强和轻量级效率类软件。
-
----
-
-### ✨ spotify/portal-ai-plugins (3088★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：No description provided.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[spotify/portal-ai-plugins](https://github.com/spotify/portal-ai-plugins)
-
-
----
-
-### ✨ floci-io/floci (28992★)
+### ✨ floci-io/floci (29366★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -205,11 +103,46 @@
 
 ---
 
-### ✨ Usagi-org/ai-goofish-monitor (16709★)
+### ✨ thedotmack/claude-mem (95456★)
+
+> **一句话**：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。
+
+- **它是什么**：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。
+
+- **能解决什么痛点**：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。
+
+- **适合谁用**：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。
+
+- **怎么上手**：执行 `npx claude-mem install`，完成安装和提供商选择后重启 Claude Code；也可以使用 `npx claude-mem install --ide opencode` 为 OpenCode 安装。
+
+- **可以用在哪些场景**：
+  - 让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。
+  - 在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。
+  - 为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。
+
+- **技术看点**：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。
+
+- **近期动向与发展方向**：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。
+
+- **同类对比**：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。
+
+- **注意事项**：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 `--provider` 或 `CLAUDE_MEM_ONLINE_OPTIN=false` 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。
+
+- **GitHub**：[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
+**技术栈偏好**：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
+**核心领域**：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。
+
+---
+
+### ✨ vercel-labs/agent-desktop (14405★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：基于 Playwright 和AI实现的闲鱼多任务实时/定时监控与智能分析系统，配备了功能完善的后台管理UI。帮助用户从闲鱼海量商品中，找到心仪产品。
+- **它是什么**：Computer use CLI for AI agents
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -219,16 +152,51 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[Usagi-org/ai-goofish-monitor](https://github.com/Usagi-org/ai-goofish-monitor)
+- **GitHub**：[vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop)
 
 
 ---
 
-### ✨ anomalyco/hex (4720★)
+### ✨ github/spec-kit (135515★)
+
+> **一句话**：把“想做什么”依次整理成项目原则、功能规格、技术方案和任务清单，再交给 AI 编程代理按步骤实现并持续对照验证。
+
+- **它是什么**：Spec Kit 是 GitHub 发布的规范驱动开发工具包，提供 `constitution`、`specify`、`plan`、`tasks`、`implement`、`converge` 等命令，将需求从描述阶段逐步转化为可执行任务。它支持 GitHub Copilot、Claude 等多种 AI coding agent，并通过扩展、预设和社区目录加入 Bug 修复、产品想法评估等工作流。
+
+- **能解决什么痛点**：AI 编程代理直接根据一句需求生成代码时，容易遗漏边界条件、技术约束和验收标准，后续也难以判断实现是否仍符合原始意图。Spec Kit 把需求、方案、任务和实现结果保存为连续的规范产物，减少“代码写出来了但方向错了”的返工；Bug 扩展还提供“评估根因、修复、测试”的固定流程，避免只根据错误描述盲目改代码。
+
+- **适合谁用**：使用 GitHub Copilot、Claude、Codex 等 AI 编程代理开发应用的个人开发者和团队。需要统一需求规格、架构决策、任务拆分和代码审查流程的产品研发团队也适合采用，尤其是希望让不同成员或不同 AI 代理遵循同一套项目原则的组织。
+
+- **怎么上手**：先安装 CLI，再初始化项目：
+
+- **可以用在哪些场景**：
+  - 为内部管理系统或 SaaS 功能建立从需求到实现的完整记录，先用 `/speckit.specify` 明确用户流程和验收条件，再让 AI 按任务实现。
+  - 修复登录崩溃、数据丢失等高风险缺陷时，安装 `bug` 扩展，依次执行 `/speckit-bug-assess`、`/speckit-bug-fix` 和 `/speckit-bug-test`。
+  - 在决定开发离线模式、批量导入等较大功能前，使用 `assess` 扩展完成调研、目标定义、方案权衡和 go / needs-clarification / kill 决策。
+
+- **技术看点**：项目以 Python CLI 和 `uv` 安装链路为核心，通过 AI agent 命令、扩展、预设、Bundle 和社区目录构成可组合的工作流，而不是把开发流程硬编码成单一模板。近期还加入 JSON 格式的 preset 和 extension 列表、按步骤配置集成等能力，便于自动化脚本和组织级工具链接入。
+
+- **近期动向与发展方向**：最近两天持续有提交，开发重点集中在稳定性、安全性和生态扩展：修复目录下载 URL 必须绑定 tag 的问题、限制生成 dispatcher 的 stdin、修正扩展作者信息保留，并刷新工作流依赖。与此同时，项目持续增加 Secure Development Assurance Governance、Product Definition as Code、ProductShape 等 preset 或 extension，并在 2026-09-10 发布 1.0.6、开始 1.0.7.dev0 开发，说明项目已进入版本化迭代和社区生态扩张阶段。20 条提交中既有核心维护者，也有外部贡献者和自动化机器人，292 名贡献者显示社区参与度较高。
+
+- **同类对比**：暂无 README 明确列出的同类竞品。项目的差异点在于它不绑定某一个 AI 编程代理，而是围绕“规范先行、任务拆解、实现后收敛”提供跨代理流程，并允许通过扩展和预设改造方法论。
+
+- **注意事项**：项目创建于 2025-08-21，但已积累 135515 个 Star、12182 个 Fork 和 299 个 Open Issues，热度与迭代速度都很高，同时也意味着功能和文档仍可能快速变化。上手前需要安装 `uv` 并理解 AI agent 的命令或 skills 集成方式；扩展、预设和社区目录较多，团队需要先确定自己的规范模板，避免生成大量难以维护的流程文件。项目近期仍在频繁修复安全、工作流和 CLI 行为，升级时应固定 release tag，并在 CI 中验证初始化、扩展安装及生成结果，降低版本变更带来的风险。
+
+- **GitHub**：[github/spec-kit](https://github.com/github/spec-kit)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：全球领先的软件开发平台与开源协作生态组织，社区影响力极强。
+**技术栈偏好**：以 Python、JavaScript、Go 为主，聚焦开发者工具、自动化与 AI 辅助编程。
+**核心领域**：软件工程协作、代码托管、开发者生产力与生成式 AI。
+
+---
+
+### ✨ The-PR-Agent/pr-agent (14603★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Local voice dictation for mac, windows and linux
+- **它是什么**：🚀 PR Agent: The Original Open-Source PR Reviewer. This project is not the Qodo free tier.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -238,7 +206,133 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[anomalyco/hex](https://github.com/anomalyco/hex)
+- **GitHub**：[The-PR-Agent/pr-agent](https://github.com/The-PR-Agent/pr-agent)
+
+
+---
+
+### ✨ harry0703/MoneyPrinterTurbo (127322★)
+
+> **一句话**：输入一个主题或关键词，它会自动写脚本、找视频素材、生成配音和字幕，最后合成一条高清短视频。
+
+- **它是什么**：MoneyPrinterTurbo 是一套基于 Python 的 AI 短视频生产工作流，能够从主题出发完成脚本生成、素材匹配、配音、字幕、背景音乐和视频合成。项目同时提供 AI Agent、WebUI、API 和 CLI 入口，支持批量生成、多语言脚本、自定义素材及多家大模型服务。
+
+- **能解决什么痛点**：短视频制作中，脚本、素材搜索、配音、字幕和剪辑通常需要在多个工具之间反复切换；它把这些环节串成一条自动化流水线。对于需要批量制作知识科普、营销或账号内容的团队，也可以减少逐条手工剪辑和重复配置。
+
+- **适合谁用**：
+  1. 需要批量产出短视频的自媒体、内容运营和营销团队。
+  2. 希望通过 API 或 CLI 将 AI 文案、素材下载和视频渲染接入内部内容生产系统的 Python 开发者。
+
+- **怎么上手**：README 标注需要 Python 3.11+，但提供的 README 素材中未包含完整安装命令或最小运行示例；文档未提供快速上手示例。
+
+- **可以用在哪些场景**：
+  1. 根据产品关键词批量生成带配音、字幕和素材的电商宣传短视频。
+  2. 为知识科普或新闻类账号自动生成脚本、匹配画面并输出竖屏成片。
+  3. 通过 API 接入内容管理后台，让运营人员提交主题后自动创建视频生成任务并查看处理进度。
+
+- **技术看点**：项目将 AI Agent、WebUI、API 和 CLI 统一到同一套视频生产流程中，并兼容 Kimi、OpenAI、Claude、Gemini、DeepSeek、通义千问、Azure OpenAI 等多类模型服务。近期提交还集中处理 Redis 队列并发、FFmpeg 合成隔离、MoviePy 输出、字幕原子发布和多阶段进度上报，说明其重点已从单机生成扩展到更可靠的任务调度与并发渲染。
+
+- **近期动向与发展方向**：最近 20 条提交全部集中在 2026 年 9 月 30 日，项目处于高频维护状态。开发重点以稳定性和任务可观测性为主，包括避免重复提交 TTS、保证视频和字幕只在成功后发布、修复并发队列、保留上传跟踪 ID，以及展示素材下载、片段处理和最终渲染进度；暂未看到明显的大规模架构重构迹象。项目已有 130 位贡献者，社区参与度较高。
+
+- **同类对比**：README 未明确列出竞品或直接对标项目。与单一的 AI 文案生成器或视频剪辑工具相比，它更强调从主题到成片的端到端自动化，并同时提供本地 WebUI、API、CLI 和多模型服务接入。
+
+- **注意事项**：
+  - 需要准备大模型、TTS、素材平台等外部服务的 API Key，实际使用成本和生成质量会受所选服务影响。
+  - 视频生成涉及素材下载、音频处理、字幕生成和 FFmpeg/MoviePy 渲染，部署和排查难度高于普通 Python Web 项目。
+  - 项目创建于 2024 年 3 月，已获得 127322 个 Stars、19916 个 Forks，但近期仍有大量并发、导出和任务状态相关修复，说明功能活跃且仍在快速演进。
+  - 当前开放 Issue 为 40 个，整体维护活跃；不过频繁修复核心流水线也意味着升级时应重点验证 TTS、字幕、视频导出、队列和多平台上传流程。
+  - README 内容覆盖多语言、界面截图和大量模型服务，但提供的材料中缺少完整安装与最小运行步骤，新用户可能需要结合发布页或项目文档完成部署。
+
+- **GitHub**：[harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有较高社区影响力，代表项目累计获得超过 13 万 Stars。
+**技术栈偏好**：以 Python 为主，兼顾 Rust、Vue 与 TypeScript，偏好 AI 应用与效率工具开发。
+**核心领域**：主要聚焦 AI 内容生成、语音音频处理与个人数据存储工具。
+
+---
+
+### ✨ garrytan/gstack (135101★)
+
+> **一句话**：gstack 把 Claude Code 组织成一支可直接调用的虚拟研发团队，用 `/plan-ceo-review` 做产品判断、用 `/review` 查代码、用 `/qa` 操作真实浏览器测试，再用 `/ship` 推进发布。
+
+- **它是什么**：这是安装在 Claude Code 中的一套 Markdown 技能和命令集合，包含 CEO、设计师、工程经理、代码审查、QA、安全审计、发布管理等 23 个角色，以及浏览器、调试、部署等工具。开发者通过 `/office-hours`、`/autoplan`、`/review`、`/qa`、`/cso`、`/ship` 等斜杠命令，依次完成需求澄清、方案设计、实现审查、浏览器验证和发布；项目也已提供 Codex CLI、OpenCode、Cursor 等宿主的实验性安装支持。
+- **能解决什么痛点**：AI 生成代码往往缺少产品边界、架构约束和发布检查，容易出现“功能写完但方向错了”或“代码能跑但线上有问题”；gstack 将 CEO 评审、工程评审、设计审查、QA、安全审计等步骤固化为可重复的工作流。对于单人开发者或小团队，还能减少在需求分析、代码审查、测试、文档和发布之间反复切换的成本。
+- **适合谁用**：使用 Claude Code 进行持续开发的创业者、技术型 CEO 和独立开发者；需要在每个 PR 中执行架构评审、浏览器 QA、安全检查和发布流程的技术负责人、Staff Engineer 或小型研发团队。
+- **怎么上手**：在 Claude Code 中执行 `git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`，安装后先运行 `/office-hours` 描述项目，再对功能方案运行 `/plan-ceo-review`，对代码运行 `/review`。
+- **可以用在哪些场景**：
+  - 独立开发 SaaS 或内部工具时，用 `/office-hours`、`/autoplan` 从需求澄清一路推进到实现和发布。
+  - Web 应用上线前，用 `/qa` 驱动真实浏览器检查页面交互，再用 `/design-review` 发现 AI 生成界面的视觉和可用性问题。
+  - 团队合并重要 PR 前，用 `/review`、`/test-audit` 和 `/cso` 分别检查生产缺陷、测试覆盖质量以及 OWASP/STRIDE 安全风险。
+- **技术看点**：核心实现采用 TypeScript，并把大量研发方法论封装为 Markdown 技能和 CLI/脚本工作流，便于直接复用、审阅和迭代。项目还提供团队模式 `./setup --team`、多宿主安装、自动更新、浏览器自动化、付费评测分片和行为级技能测试，重点解决 AI 工作流中的可重复性、安装可靠性和结果验证问题。
+- **近期动向与发展方向**：最近 20 条提交几乎连续覆盖 2026-09-24 至 2026-10-04，更新频率很高，且全部由 Garry Tan 提交。近期重点明显偏向可靠性和质量控制：包括安全安装升级、安装状态一致性、真实完成门禁、浏览器 Cookie 导入、插件发现、自动规划保护、发布 CI 门禁、测试价值评估、QA 与文档检查，以及更快但不削弱覆盖率的测试分片；同时加入了 Opus 5.5 提示词清理、会话转录授权和多宿主支持。整体演进方向是从“提供一组 AI 角色”转向“让 AI 研发流程可审计、可测试、可安全发布”。
+- **同类对比**：README 将 gstack 定位为 Garry Tan 的 Claude Code 工作流，并提到 OpenClaw 作为 AI Agent 协作背景；它与 OpenClaw 的关系更接近互补，OpenClaw 负责调度 Claude Code 会话，gstack 负责会话内的产品、工程、QA 和发布方法。除此之外，README 未明确列出直接竞品。
+- **注意事项**：项目依赖 Claude Code、Git、Bun 1.0+，Windows 还需要 Node.js；`/cso` 需要特定 Bun 构建参数和本地 C/C++ 工具链，浏览器相关能力还涉及 Chromium、macOS Aside 或登录态 Cookie，完整安装并不等同于单条命令即可用。项目创建于 2026-03-11，却已达到 135101 个 Stars、20089 个 Forks，同时有 448 个 Open Issues，说明关注度和迭代速度都很高，但也意味着版本变化快、兼容性和安装行为仍可能调整；目前仅有 14 位贡献者，核心维护仍明显集中在项目作者。团队模式会把 gstack 配置写入仓库并要求或提示队友安装，升级前应评估命令行为、权限边界和可能的工作流变更。
+
+- **GitHub**：[garrytan/gstack](https://github.com/garrytan/gstack)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：在 GitHub 具有较高技术影响力，代表项目获得广泛关注。
+**技术栈偏好**：偏好 TypeScript 和 JavaScript，重视现代 Web、工具链与智能应用开发。
+**核心领域**：主要聚焦 AI 软件工程、开发者工具及智能代理应用。
+
+---
+
+### ✨ FareedKhan-dev/kimi-k3-in-c (10084★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：A 2.78-trillion-parameter Kimi K3 running inference on a single CPU in 8.24 GB of RAM. Portable C99: no BLAS, no framework, no GPU.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[FareedKhan-dev/kimi-k3-in-c](https://github.com/FareedKhan-dev/kimi-k3-in-c)
+
+
+---
+
+### ✨ JiaFeiMiao-K-Cat/DiscImageStudio (6197★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：No description provided.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[JiaFeiMiao-K-Cat/DiscImageStudio](https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio)
+
+
+---
+
+### ✨ MichaelCade/90DaysOfDevOps (30238★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：This repository started out as a learning in public project for myself and has now become a structured learning map for many in the community. We have 3 years under our belt covering all things DevOps, including Principles, Processes, Tooling and Use Cases surrounding this vast topic. 
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[MichaelCade/90DaysOfDevOps](https://github.com/MichaelCade/90DaysOfDevOps)
 
 
 ---
@@ -267,35 +361,11 @@
 
 ---
 
-### ✨ shiyu-coder/Kronos (36887★)
-
-> **一句话**：把来自 45+ 全球交易所的 OHLCV K 线序列编码成离散 token，再由 Transformer 自回归生成未来行情路径的金融时序基础模型。
-
-- **它是什么**：Kronos 是面向金融市场 K 线数据预训练的 decoder-only 模型家族，输入包含开、高、低、收、成交量和成交额等维度。它先通过专用 Tokenizer 将连续的多维行情数据量化为分层离散 token，再使用自回归 Transformer 统一完成预测等量化任务。项目提供 mini、small、base 三个可下载的预训练模型，以及批量预测、微调和可视化示例。
-- **能解决什么痛点**：量化研究者通常需要分别为不同标的、市场和预测任务训练时序模型，Kronos 可直接作为预训练起点，减少从零建模的成本。面对股票、加密资产等多条行情序列时，`predict_batch` 支持 GPU 并行预测，并分别处理每条序列的归一化与反归一化。
-- **适合谁用**：使用 Python、PyTorch 和 pandas 开发行情预测或量化研究原型的数据科学家。需要在中国 A 股数据上微调模型、并借助 Qlib 完成基础回测的量化开发者。
-- **怎么上手**：`pip install -r requirements.txt`；随后可通过 `KronosTokenizer.from_pretrained("NeoQuasar/Kronos-Tokenizer-base")` 和 `Kronos.from_pretrained("NeoQuasar/Kronos-small")` 加载模型。
-- **可以用在哪些场景**：对 BTC/USDT 等加密货币的未来 24 小时 K 线进行多步预测；为内部投研平台批量生成多个股票或期货合约的 OHLCV 预测结果；使用 Qlib 准备 A 股日频数据后，对预训练模型微调并进行策略回测验证。
-- **技术看点**：项目没有直接把连续数值送入通用时序模型，而是将 OHLCV 行情离散化为分层 token，按“金融市场语言”训练自回归 Transformer。已公开模型覆盖 4.1M、24.7M 和 102.3M 参数规模；`small`、`base` 的最大上下文长度为 512，`mini` 为 2048。
-- **近期动向与发展方向**：2026 年 4 月集中合并了多个社区 PR，修复批量训练时 batch 维度丢失、归一化窗口数据泄漏、`top_k` 采样调用错误和 Python 3.12 依赖兼容问题，维护活跃度较高。2025 年下半年新增 A 股市场微调支持，并持续优化自回归推理中的内存分配和 CPU-GPU 同步，当前重点明显偏向训练与推理正确性、性能及易用性。
-- **同类对比**：README 将 Kronos 与通用时序基础模型区分开来：其设计目标是处理金融数据的高噪声特征，并针对 K 线 OHLCV 数据构建专用 Tokenizer；暂无明确点名的同类项目对标。
-- **注意事项**：项目创建时间较短，但已获得较高关注度；19 位贡献者和近期 PR 合并表明社区参与度较好。当前仍有 259 个开放 Issue，且近期连续修复训练维度、数据泄漏和采样逻辑等正确性问题，接入真实交易或研究流程前应自行完成样本外验证、回测和风险控制。README 已提供预测与微调流程，但 A 股微调依赖本地 Qlib 数据准备，且说明明确指出示例不是生产级量化交易系统。
-
-- **GitHub**：[shiyu-coder/Kronos](https://github.com/shiyu-coder/Kronos)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以高星开源项目为核心，在人工智能与量化技术社区具有较高知名度和影响力
-**技术栈偏好**：主要使用 Python，辅以 C++，偏好机器学习、金融建模与数据分析技术
-**核心领域**：聚焦人工智能驱动的金融时间序列预测、量化研究与大模型应用
-
----
-
-### ✨ Donchitos/Claude-Code-Game-Studios (34839★)
+### ✨ Thysrael/Horizon (12368★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.
+- **它是什么**：📡 Your own AI-powered news radar. Generates daily briefings in English & Chinese. | 用 AI 构建你专属的新闻雷达
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -305,4 +375,23 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
+- **GitHub**：[Thysrael/Horizon](https://github.com/Thysrael/Horizon)
+
+
+---
+
+### ✨ scenario-labs/skills (2212★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Get production-ready images, video, audio, and 3D from any AI agent: skills that pick the right model, price before spending, and keep characters and brands consistent through the Scenario MCP, plus expert teams that drive Blender, Maya, ZBrush, Unreal, and Unity.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[scenario-labs/skills](https://github.com/scenario-labs/skills)
