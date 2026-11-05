@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ NVIDIA/auto-ontology (5612★)
+### ✨ NVIDIA/auto-ontology (6744★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -16,6 +16,124 @@
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
 - **GitHub**：[NVIDIA/auto-ontology](https://github.com/NVIDIA/auto-ontology)
+
+
+---
+
+### ✨ mattpocock/skills (269436★)
+
+> **一句话**：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。
+
+- **它是什么**：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。
+- **能解决什么痛点**：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。
+- **适合谁用**：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。
+- **怎么上手**：用 skills.sh 安装并选择需要的技能，例如：
+
+  安装时记得选上 `setup-matt-pocock-skills`，随后在代理中运行 `/setup-matt-pocock-skills` 完成项目配置。
+- **可以用在哪些场景**：
+  - 开始一个新功能前，用 `/grill-with-docs` 澄清需求、统一项目术语，并整理 `CONTEXT.md` 和 ADR。
+  - 将已有讨论整理成规格或可执行工单，再用 `/implement` 按测试驱动流程实现。
+  - 定期运行 `/improve-codebase-architecture` 寻找可拆分、加深模块边界的候选位置，或用 `/diagnosing-bugs` 按阶段排查问题。
+- **技术看点**：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
+- **近期动向与发展方向**：近期提交主要在完善 `/pr` 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
+- **同类对比**：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
+- **注意事项**：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。
+
+- **GitHub**：[mattpocock/skills](https://github.com/mattpocock/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
+**技术栈偏好**：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
+**核心领域**：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。
+
+---
+
+### ✨ garrytan/gstack (135101★)
+
+> **一句话**：gstack 把 Claude Code 组织成一支可直接调用的虚拟研发团队，用 `/plan-ceo-review` 做产品判断、用 `/review` 查代码、用 `/qa` 操作真实浏览器测试，再用 `/ship` 推进发布。
+
+- **它是什么**：这是安装在 Claude Code 中的一套 Markdown 技能和命令集合，包含 CEO、设计师、工程经理、代码审查、QA、安全审计、发布管理等 23 个角色，以及浏览器、调试、部署等工具。开发者通过 `/office-hours`、`/autoplan`、`/review`、`/qa`、`/cso`、`/ship` 等斜杠命令，依次完成需求澄清、方案设计、实现审查、浏览器验证和发布；项目也已提供 Codex CLI、OpenCode、Cursor 等宿主的实验性安装支持。
+- **能解决什么痛点**：AI 生成代码往往缺少产品边界、架构约束和发布检查，容易出现“功能写完但方向错了”或“代码能跑但线上有问题”；gstack 将 CEO 评审、工程评审、设计审查、QA、安全审计等步骤固化为可重复的工作流。对于单人开发者或小团队，还能减少在需求分析、代码审查、测试、文档和发布之间反复切换的成本。
+- **适合谁用**：使用 Claude Code 进行持续开发的创业者、技术型 CEO 和独立开发者；需要在每个 PR 中执行架构评审、浏览器 QA、安全检查和发布流程的技术负责人、Staff Engineer 或小型研发团队。
+- **怎么上手**：在 Claude Code 中执行 `git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`，安装后先运行 `/office-hours` 描述项目，再对功能方案运行 `/plan-ceo-review`，对代码运行 `/review`。
+- **可以用在哪些场景**：
+  - 独立开发 SaaS 或内部工具时，用 `/office-hours`、`/autoplan` 从需求澄清一路推进到实现和发布。
+  - Web 应用上线前，用 `/qa` 驱动真实浏览器检查页面交互，再用 `/design-review` 发现 AI 生成界面的视觉和可用性问题。
+  - 团队合并重要 PR 前，用 `/review`、`/test-audit` 和 `/cso` 分别检查生产缺陷、测试覆盖质量以及 OWASP/STRIDE 安全风险。
+- **技术看点**：核心实现采用 TypeScript，并把大量研发方法论封装为 Markdown 技能和 CLI/脚本工作流，便于直接复用、审阅和迭代。项目还提供团队模式 `./setup --team`、多宿主安装、自动更新、浏览器自动化、付费评测分片和行为级技能测试，重点解决 AI 工作流中的可重复性、安装可靠性和结果验证问题。
+- **近期动向与发展方向**：最近 20 条提交几乎连续覆盖 2026-09-24 至 2026-10-04，更新频率很高，且全部由 Garry Tan 提交。近期重点明显偏向可靠性和质量控制：包括安全安装升级、安装状态一致性、真实完成门禁、浏览器 Cookie 导入、插件发现、自动规划保护、发布 CI 门禁、测试价值评估、QA 与文档检查，以及更快但不削弱覆盖率的测试分片；同时加入了 Opus 5.5 提示词清理、会话转录授权和多宿主支持。整体演进方向是从“提供一组 AI 角色”转向“让 AI 研发流程可审计、可测试、可安全发布”。
+- **同类对比**：README 将 gstack 定位为 Garry Tan 的 Claude Code 工作流，并提到 OpenClaw 作为 AI Agent 协作背景；它与 OpenClaw 的关系更接近互补，OpenClaw 负责调度 Claude Code 会话，gstack 负责会话内的产品、工程、QA 和发布方法。除此之外，README 未明确列出直接竞品。
+- **注意事项**：项目依赖 Claude Code、Git、Bun 1.0+，Windows 还需要 Node.js；`/cso` 需要特定 Bun 构建参数和本地 C/C++ 工具链，浏览器相关能力还涉及 Chromium、macOS Aside 或登录态 Cookie，完整安装并不等同于单条命令即可用。项目创建于 2026-03-11，却已达到 135101 个 Stars、20089 个 Forks，同时有 448 个 Open Issues，说明关注度和迭代速度都很高，但也意味着版本变化快、兼容性和安装行为仍可能调整；目前仅有 14 位贡献者，核心维护仍明显集中在项目作者。团队模式会把 gstack 配置写入仓库并要求或提示队友安装，升级前应评估命令行为、权限边界和可能的工作流变更。
+
+- **GitHub**：[garrytan/gstack](https://github.com/garrytan/gstack)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：在 GitHub 具有较高技术影响力，代表项目获得广泛关注。
+**技术栈偏好**：偏好 TypeScript 和 JavaScript，重视现代 Web、工具链与智能应用开发。
+**核心领域**：主要聚焦 AI 软件工程、开发者工具及智能代理应用。
+
+---
+
+### ✨ Usagi-org/ai-goofish-monitor (17424★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：基于 Playwright 和AI实现的闲鱼多任务实时/定时监控与智能分析系统，配备了功能完善的后台管理UI。帮助用户从闲鱼海量商品中，找到心仪产品。
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[Usagi-org/ai-goofish-monitor](https://github.com/Usagi-org/ai-goofish-monitor)
+
+
+---
+
+### ✨ D4Vinci/Scrapling (62462★)
+
+> **一句话**：Scrapling 让 Python 爬虫在页面结构变化、反爬拦截和大规模并发抓取面前，仍能自动定位元素、伪装请求并持续跑完整个采集任务。
+
+- **它是什么**：Scrapling 是一个 Python Web Scraping 框架，覆盖从单次请求到完整爬虫任务的抓取流程。它内置解析器、Fetchers、Spider 框架、代理轮换、暂停/恢复、实时统计和 CLI，并强调对现代网站反爬环境的适配。README 中重点提到，它的解析器可以学习页面变化，在 DOM 结构调整后自动重新定位目标元素。
+- **能解决什么痛点**：第一类痛点是网页改版后 CSS 选择器失效，Scrapling 通过 `auto_save` 和 `adaptive=True` 尝试让已保存的元素定位在后续页面变化中继续可用。第二类痛点是抓取 Cloudflare Turnstile 等反机器人保护页面时，普通 `requests`/`httpx` 容易被拦截，Scrapling 提供 `StealthyFetcher`、`DynamicFetcher` 等抓取方式来处理这类场景。
+- **适合谁用**：适合需要长期维护采集脚本的 Python 数据工程师、爬虫工程师，以及要从单页面采集逐步扩展到并发、多会话爬取任务的团队。也适合希望把代理轮换、断点续跑、缓存和请求伪装交给框架处理的开发者。
+- **怎么上手**：README 未给出安装命令；最小使用示例是 `from scrapling.fetchers import StealthyFetcher; p = StealthyFetcher.fetch('https://example.com', headless=True, network_idle=True); products = p.css('.product', auto_save=True)`。
+- **可以用在哪些场景**：可用于电商商品列表和价格数据的持续采集，尤其是页面样式经常调整的站点；可用于需要浏览器伪装和反爬绕过的公开网页数据抓取；可用于构建可暂停、可恢复、带代理轮换的长期运行爬虫任务。
+- **技术看点**：核心看点是“自适应解析”：选择器不仅按当前 DOM 查找，还能保存上下文并在页面结构变化后重新定位元素。抓取层同时提供普通、异步、隐身和动态 Fetcher，并向上封装 Spider 框架，适合从脚本式抓取演进到任务化爬取。
+- **近期动向与发展方向**：最近 20 条提交集中在 2026-06-07，发布了 `v0.4.9`，开发重点明显偏向稳定性修复和工程完善，包括 session 级代理继承、quoted charset 解析、adaptive relocation 的 `IndexError`、Windows 下 checkpoint/cache 原子写入，以及 CLI `--version`。提交主要由 Karim shoair 维护，也有社区贡献合入，说明项目近期活跃度高，但当前迭代更像是打磨可用性而非大规模重构。
+- **同类对比**：README 未明确点名 Scrapy、Playwright、BeautifulSoup 等竞品，因此暂无明显同类对标。仅从功能定位看，Scrapling 更强调“解析自适应 + 反爬抓取 + Spider 编排”放在同一个 Python 框架里。
+- **注意事项**：项目创建于 2024-10-13，时间不算长，但 Stars 和更新频率很高，Open Issues 仅 1 个，说明维护响应较积极；不过热度增长很快的项目仍需要关注 API 稳定性和版本升级风险。README 明确提醒默认安装不包含 fetchers，实际接入前需要仔细看安装文档，避免装完后发现隐身抓取或动态抓取能力不可用。
+
+- **GitHub**：[D4Vinci/Scrapling](https://github.com/D4Vinci/Scrapling)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Karim shoair 是 GitHub 上具有显著影响力的个人开发者，凭借 Scrapling 等高星项目在开源社区获得广泛关注。
+**技术栈偏好**：技术栈明显偏向 Python，主要围绕自动化、安全工具、命令行工具与 Web Scraping 方向构建项目。
+**核心领域**：核心聚焦于 Web Scraping、信息安全、渗透测试辅助工具与实用型 Python 开源工具开发。
+
+---
+
+### ✨ vercel-labs/agent-desktop (16404★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Computer use CLI for AI agents
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop)
 
 
 ---
@@ -55,36 +173,158 @@
 
 ---
 
-### ✨ mattpocock/skills (269436★)
+### ✨ lz4/lz4 (12281★)
 
-> **一句话**：把需求澄清、规格拆解、测试驱动开发和代码审查等工程习惯，整理成可安装到 AI 编程代理中的一组技能。
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：这是 Matt Pocock 日常使用的 AI 编程代理技能集，覆盖从需求访谈、领域术语整理，到规格和工单生成、实现、测试与代码审查的开发流程。技能以小而可组合的文件形式提供，可安装为托管插件，也可复制到项目中自行修改，并支持 Claude Code、Codex 等代理。
-- **能解决什么痛点**：需求没对齐时，代理可能按错误理解直接写代码；项目术语不统一时，它又容易输出冗长描述、给代码和文件起不一致的名字。项目还提供 TDD、调试和架构改进流程，针对代理写完代码却缺少有效验证、代码库逐渐变得难以维护的问题。
-- **适合谁用**：日常使用 Claude Code、Codex 等 AI 编程代理的开发者；希望把需求澄清、测试和代码审查流程固定下来，但不想采用一套全包式开发框架的个人或团队。
-- **怎么上手**：用 skills.sh 安装并选择需要的技能，例如：
+- **它是什么**：Extremely Fast Compression algorithm
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-  安装时记得选上 `setup-matt-pocock-skills`，随后在代理中运行 `/setup-matt-pocock-skills` 完成项目配置。
-- **可以用在哪些场景**：
-  - 开始一个新功能前，用 `/grill-with-docs` 澄清需求、统一项目术语，并整理 `CONTEXT.md` 和 ADR。
-  - 将已有讨论整理成规格或可执行工单，再用 `/implement` 按测试驱动流程实现。
-  - 定期运行 `/improve-codebase-architecture` 寻找可拆分、加深模块边界的候选位置，或用 `/diagnosing-bugs` 按阶段排查问题。
-- **技术看点**：技能分为用户主动调用的流程编排技能和代理可按任务自动调用的技能，二者可以组合，但用户调用技能不会再调用另一个用户调用技能。项目提供托管且只读的 Claude Code 插件安装方式，也支持通过 skills.sh 将普通文件复制进仓库，便于自行修改。
-- **近期动向与发展方向**：近期提交主要在完善 `/pr` 技能的 PR 正文模板，重点包括提升可扫描性、补充执行证据和领域语言指导；同时调整回顾技能，让机械化代码规范问题更多转向确定性检查，并新增回顾相关配置。最近 20 条提交覆盖 2026 年 8—9 月，显示项目仍在持续迭代；贡献者数量为 8，提交记录中以作者本人和自动化代理贡献为主。
-- **同类对比**：README 提到 GSD、BMAD 和 Spec-Kit，认为这类方案倾向于接管完整开发流程；本项目则强调技能体积小、可组合、易修改，开发者可自行决定采用哪些实践。
-- **注意事项**：安装本身只需一条命令，但要先运行配置技能，指定 issue tracker、标签和文档位置；技能是否适用仍需结合团队流程调整。README 和提交记录较具体，但项目当前有 529 个开放 Issue，建议采用前先检查相关技能的状态与讨论。所给元数据标注创建于 2026-02-03、更新于 2026-09-25，配合近期提交显示持续维护；仅凭提交记录无法判断这些改动是否会造成破坏性变更。
+- **GitHub**：[lz4/lz4](https://github.com/lz4/lz4)
 
-- **GitHub**：[mattpocock/skills](https://github.com/mattpocock/skills)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：知名 TypeScript 教育者与开源作者，在 TypeScript 社区拥有广泛影响力。
-**技术栈偏好**：以 TypeScript 为核心，辅以 Shell，聚焦类型系统、开发者工具与 AI 编程工作流。
-**核心领域**：主要聚焦 TypeScript 工程实践、类型安全、开发者体验与 AI 辅助编程。
 
 ---
 
-### ✨ floci-io/floci (29782★)
+### ✨ google/skills (20636★)
+
+> **一句话**：把 Google Cloud、Gemini、GKE、BigQuery 等产品的操作知识封装成可被 AI Agent 按需安装和调用的技能集合。
+
+- **它是什么**：这是 Google 官方维护的 Agent Skills 仓库，覆盖 Google Cloud 入门、AI/ML、GKE 基础设施、数据库分析、开发者工具、监控、安全和 Well-Architected Framework 等方向。使用者可以通过 `skills.sh` 选择性安装具体技能，让 Agent 按照预置的产品知识、排障流程和操作规范完成任务。
+
+- **能解决什么痛点**：开发者不必每次都从大量 Google Cloud 文档中检索 GKE 网络、BigQuery 成本、IAM 权限或 Vertex AI 部署步骤。对于复杂排障场景，技能中还提供了流日志分析、节点故障、负载均衡、TPU/GPU 中断等针对性分析路径，减少 Agent 输出泛化建议的问题。
+
+- **适合谁用**：使用 Gemini、Google Cloud 或 GKE 的 AI Agent 开发者；负责云平台运维、数据分析、云安全和成本优化的 SRE、平台工程师及数据工程师。
+
+- **怎么上手**：运行 `npx skills add google/skills`，随后在交互式安装流程中选择需要的技能。
+
+- **可以用在哪些场景**：
+  - 为团队内部的 Google Cloud 运维 Agent 增加 GKE 集群升级、节点 `NotReady`、存储和网络故障排查能力。
+  - 让数据工程 Agent 执行 BigQuery 查询优化、槽位估算、账单模型选择和数据血缘影响分析。
+  - 在部署 Gemini 或其他 AI 工作负载时，辅助完成 Agent Platform 模型部署、RAG Engine 管理、模型调优和生产化检查。
+
+- **技术看点**：项目采用 Agent Skills 这一可组合、可选择安装的知识封装方式，并按 Google Cloud 产品和实际任务拆分技能边界。它同时提供基础操作、故障排查、成本优化和架构设计等工作流，重点不只是 API 调用，还包括命令归并、日志分析和决策指导。
+
+- **近期动向与发展方向**：项目近期更新非常密集，最近 20 条提交集中在 2026 年 9 月 29 日至 10 月 2 日，主要由 Cloud IX Team 推进。开发重点是持续扩充技能覆盖面和实战排障深度，例如新增 BigQuery 优化、Spanner Queues、GKE Ingress/LB 排障、网络可观测性分析、Genkit 技能导入，并修复开发者知识查询限流、文档链接和技能路由边界等问题；整体方向是从产品知识目录扩展为面向生产运维和架构决策的 Agent 工作流集合。
+
+- **同类对比**：README 未明确提到竞品或同类项目。与通用 Agent 工具库相比，该项目的边界更聚焦于 Google 产品知识、`gcloud` 操作流程和 Google Cloud 生产场景。
+
+- **注意事项**：技能数量较多，实际使用时需要根据任务选择安装，不能把它当作一个安装后自动覆盖所有产品的单一运行时。项目创建于 2026 年 3 月 31 日，当前有 20636 个 Stars、1714 个 Forks、8 位贡献者和 18 个 Open Issues，更新频率高但仍处于快速扩展阶段；近期提交中存在持续修正文档链接、技能边界和工具行为的记录，生产环境使用前应固定版本并验证相关技能与当前 Google Cloud API、CLI 文档的一致性。
+
+- **GitHub**：[google/skills](https://github.com/google/skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：全球顶尖技术组织之一，凭借高关注度开源项目和庞大社区影响力引领开发者生态。
+**技术栈偏好**：以 Java、JavaScript 和 HTML 为主，覆盖通用库、前端规范、开发工具与测试框架。
+**核心领域**：主要聚焦开发者工具、软件工程基础设施、设计规范、通用组件与开源生态建设。
+
+---
+
+### ✨ vercel-labs/agent-browser (45706★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Browser automation CLI for AI agents
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser)
+
+
+---
+
+### ✨ scenario-labs/skills (2867★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Get production-ready images, video, audio, and 3D from any AI agent: skills that pick the right model, price before spending, and keep characters and brands consistent through the Scenario MCP, plus expert teams that drive Blender, Maya, ZBrush, Unreal, and Unity.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[scenario-labs/skills](https://github.com/scenario-labs/skills)
+
+
+---
+
+### ✨ ConardLi/garden-skills (10835★)
+
+> **一句话**：把网页设计、视频演示、文章排版、知识库检索和图像生成等工作流程整理成可直接交给 Claude Code、Cursor、Codex 等 AI 编程代理执行的 Skills 集合。
+
+- **它是什么**：这是一个遵循 `SKILL.md` 规范的 AI Agent Skills 仓库，目前 README 展示了网页视频演示、网页设计工程、GPT 图像生成、文章美化等技能。每个 Skill 不只是提示词，还包含工作流程、设计约束、实现建议和部分可复用的工程模式，例如 Vite + React + TypeScript 演示项目脚手架、主题系统和 TTS 接口约定。
+
+- **能解决什么痛点**：AI 生成网页时容易出现结构能用但视觉同质化、缺少设计系统和响应式细节的问题，`web-design-engineer` 提供设计方向、风格配方、反套路约束和验证流程。把文章或演讲稿制作成可录屏演示时，开发者也不必从头设计章节、画面步骤、主题和旁白流程，`web-video-presentation` 已经定义了这些环节。
+
+- **适合谁用**：使用 Claude Code、Cursor、Codex 等 AI 编程代理制作前端页面、数据可视化、交互原型或演示文稿的前端开发者。需要批量生成图文内容、将资料整理成视觉化文章，或希望规范 AI 输出流程的独立开发者和内容团队也适合使用。
+
+- **怎么上手**：README 列出了 `skills` CLI、Claude Code 插件市场、Releases 压缩包、手动复制和 Git submodule 等安装方式，但所提供的 README 片段未包含具体安装命令或最小调用示例；文档未提供快速上手示例。
+
+- **可以用在哪些场景**：
+  - 根据产品需求快速制作带响应式布局、动效和设计系统的营销页、后台仪表盘或交互原型。
+  - 将技术文章、课程内容或产品发布稿转换为带章节、逐步播放和旁白节拍的 16:9 网页演示，并用于录屏。
+  - 把零散资料转换成带排版、插图和组件化结构的文章，或通过 GPT 图像技能生成配套视觉素材。
+
+- **技术看点**：项目以标准化 `SKILL.md` 作为跨 Agent 的交付载体，并通过插件市场、CLI、压缩包和手动复制等方式适配不同宿主。部分技能采用明确的工程约束，例如固定 `1920×1080` 舞台、`(chapter, step)` 播放游标、主题 Token、可插拔 TTS，以及面向 HTML/CSS/JavaScript/React 的实现规范。
+
+- **近期动向与发展方向**：最近的提交主要集中在技能发布和文档同步，而不是底层架构重构。2026 年 6 月新增 `beautiful-article`，并发布 `beautiful-article@0.1.0`、`gpt-image-2@1.0.4`、`kb-retriever@1.0.1`、`web-design-engineer@1.2.2` 和 `web-video-presentation@1.2.2`；7 月又更新了多个 Skill 的来源路径和网页设计技能文档。提交主要由 `lishiqi.conard` 完成，部分下载链接由 GitHub Actions 自动同步，说明项目当前仍以核心维护者驱动，方向是持续扩充技能、案例和多语言文档。
+
+- **同类对比**：暂无明显同类对标。项目并非单一的前端组件库或模型 SDK，而是面向多个 AI 编程代理的垂直工作流与提示规范集合。
+
+- **注意事项**：项目创建时间为 2026-04-21，当前数据显示仅有 3 位贡献者、16 个开放 Issue，虽然已有 10835 个 Star 和 1384 个 Fork，但维护和审查能力相对集中，项目成熟度不能只按 Star 数判断。README 内容较丰富，提供中英文、日文文档、案例画廊和多个安装入口，但不同 Skill 依赖的宿主环境、CLI、模型服务和 TTS provider 可能不同，实际使用前需要逐项查看对应的 `README.md` 与 `SKILL.md`。近期存在版本发布和 source path 调整，自动化集成时应固定 Skill 版本，避免下载链接或行为变化带来兼容性问题。
+
+- **GitHub**：[ConardLi/garden-skills](https://github.com/ConardLi/garden-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：ConardLi 是高关注度的个人开发者，凭借多个万星级开源项目在前端与 AI 工具社区具备较强影响力。
+**技术栈偏好**：技术栈明显偏向 JavaScript/CSS/HTML 及 TypeScript，侧重 Web 前端、工程化与轻量工具构建。
+**核心领域**：主要聚焦前端知识体系、开发者学习资源、AI/LLM 工具与数据集相关开源项目。
+
+---
+
+### ✨ microsoft/VibeVoice (51167★)
+
+> **一句话**：VibeVoice 把长音频识别、说话人区分、时间戳生成和长篇多角色语音合成放到同一套开源语音 AI 模型家族里，面向播客、会议、长对话等真实语音场景。
+
+- **它是什么**：VibeVoice 是微软开源的前沿语音 AI 模型家族，覆盖 ASR、TTS 和实时流式 TTS。当前 README 重点展示的是 VibeVoice-ASR：可一次处理最长 60 分钟音频，并输出包含说话人、时间戳和文本内容的结构化转写；同时也提供 0.5B 规模的实时 TTS 模型和已发布权重的长篇多说话人 TTS 模型。
+- **能解决什么痛点**：它主要解决长音频被切成短片段后上下文断裂、说话人跟踪不稳定、时间戳和转写结果需要后处理拼接的问题。对含专有名词、人名、业务术语的录音，还支持自定义 hotwords，用来改善领域词识别。
+- **适合谁用**：适合做会议纪要、播客转写、访谈归档、语音数据处理的 Python / AI 工程师；也适合需要评估长音频 ASR、说话人分离、流式 TTS 能力的语音算法研究者和应用开发团队。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：可用于把 1 小时会议录音直接转成带说话人和时间戳的结构化文本；可用于播客、访谈、课堂录音的长音频转写和检索；可用于评估边缘 CPU 上的 ASR 推理能力，结合 VibeVoice-ASR-BitNet 在无 GPU 环境中做实时识别实验。
+- **技术看点**：项目使用 7.5 Hz 超低帧率的连续语音 tokenizer 来降低长序列音频处理成本，并结合 LLM 理解文本上下文与对话流。ASR 方向支持 64K token 长上下文、长音频单次处理、说话人/时间戳/内容联合输出；最新 BitNet 版本通过 I8_S + I2_S 异构量化将模型从 4.62GB 压缩到 1.58GB，并宣称 3 个以上 CPU 线程可达到实时推理。
+- **近期动向与发展方向**：最近提交集中在 VibeVoice-ASR 生态扩展和工程稳定性上：7 月新增 VibeVoice-ASR-BitNet CPU 推理发布信息，3-4 月加入 Hugging Face Transformers、Azure AI Foundry Labs、vLLM 推理、Apple Silicon/MPS demo 支持，并修复 Windows、音频发现、超长音频 OOM 等问题。提交记录也包含两次 CWE-502 相关安全修复，说明维护者在补齐安全和部署细节；整体看，项目重心已从最初 TTS 展示转向 ASR、低成本推理和平台集成。
+- **同类对比**：README 没有直接点名 Whisper、NVIDIA NeMo 等同类项目作为对标。它强调的差异点是长达 60 分钟的单次 ASR、结构化输出 Who/When/What、自定义 hotwords，以及 CPU 量化推理版本。
+- **注意事项**：项目创建于 2025-08-25，增长很快但仍偏新，当前有 178 个 open issues，需要评估稳定性和未解决问题。README 明确说明不建议未经充分测试就用于商业或真实生产环境；同时，2025-09 曾因不符合研究用途的使用方式移除 VibeVoice-TTS 代码，说明功能边界和可用代码范围可能发生变化。文档信息较丰富，但快速命令式上手示例不明显，初次部署可能需要阅读各子模块文档和 Hugging Face 页面。
+
+- **GitHub**：[microsoft/VibeVoice](https://github.com/microsoft/VibeVoice)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Microsoft 是 GitHub 上影响力极高的头部开源组织，凭借 VS Code、TypeScript、PowerToys 等项目深度影响全球开发者工具链与工程实践。
+**技术栈偏好**：技术栈以 TypeScript、Python、C 为主，覆盖前端工程、开发者工具、系统工具与 AI 教育/应用方向。
+**核心领域**：主要聚焦开发者工具、编程语言生态、桌面效率工具、AI 学习资源与开源工程基础设施。
+
+---
+
+### ✨ floci-io/floci (30147★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -103,203 +343,7 @@
 
 ---
 
-### ✨ thedotmack/claude-mem (95456★)
-
-> **一句话**：它把 AI 编程代理在一次会话中看到、执行和决定过的内容持续保存下来，压缩成可检索记忆，并在后续会话开始时自动恢复相关上下文。
-
-- **它是什么**：claude-mem 面向 Claude Code、OpenClaw、Codex、Gemini、Copilot、OpenCode 等代理，通过生命周期钩子记录工具调用、用户提示和会话结束信息，再由 AI 生成摘要。它使用本地 Worker、SQLite、FTS5 和 Chroma 混合检索，将历史观察按需注入新会话，并提供 Web Viewer 和 MCP 搜索工具。
-
-- **能解决什么痛点**：开发者重新打开代理会话后，代理通常不知道之前已经排查过哪些问题、改过哪些文件，导致重复分析；claude-mem 会保留这些决策和操作记录。对于持续数天的项目，还可以通过工作状态和待办记录，让代理接着未完成的任务继续工作，而不必依赖一段很长的手工上下文。
-
-- **适合谁用**：长期使用 Claude Code 或其他 AI 编程代理维护代码库的开发者；需要在多个会话、多个代理或多台设备之间保留项目历史的个人开发者和小型团队。
-
-- **怎么上手**：执行 `npx claude-mem install`，完成安装和提供商选择后重启 Claude Code；也可以使用 `npx claude-mem install --ide opencode` 为 OpenCode 安装。
-
-- **可以用在哪些场景**：
-  - 让代理持续跟进跨多个会话的功能开发、Bug 修复和代码审查任务。
-  - 在大型代码库中检索过去的架构决策、修改原因和已验证方案，避免重复调查。
-  - 为 OpenClaw 等长期运行的代理网关保存对话和操作记忆，并通过 Telegram、Discord 或 Slack 等渠道接收实时观察信息。
-
-- **技术看点**：项目采用生命周期 Hooks 加本地 Worker 的架构，将会话采集、AI 压缩、存储和上下文注入拆开；SQLite/FTS5 负责结构化和关键词检索，Chroma 负责语义检索，并通过渐进式披露控制注入上下文的范围和 Token 成本。TypeScript 项目要求 Node.js 20 以上，Worker 由 Bun 管理。
-
-- **近期动向与发展方向**：最近 20 条提交集中发生在 2026 年 10 月 1 日至 3 日，说明维护非常活跃。近期重点一方面是修复同步链路问题，包括慢查询、锁竞争、请求超时、失败操作阻塞拉取和后台重试；另一方面在增加工作状态、待办列表，以及 Opper 和 API Route 等 OpenAI 兼容提供商。提交还覆盖 Codex 适配、Hook 归因、主题界面和上下文压缩边界，整体方向是扩大代理兼容范围并提升同步可靠性。
-
-- **同类对比**：README 未明确列出竞品；从定位上看，它区别于只提供单次会话上下文的代理插件，重点是跨会话持久记忆、自动观察采集和可检索的项目历史。
-
-- **注意事项**：首次安装可能涉及浏览器登录、记忆提供商和在线服务选择，也可以通过 `--provider` 或 `CLAUDE_MEM_ONLINE_OPTIN=false` 跳过账户交互；敏感信息需要主动使用 `` 标签排除。项目创建于 2025 年 8 月 31 日，已有 95456 个 Stars、8452 个 Forks 和 237 位贡献者，但同时有 123 个开放 Issue，快速迭代意味着适配和同步逻辑仍在持续调整。使用前还需确认 Node.js 20+、Bun、AI 提供商配置以及本地记忆数据的隐私和备份策略。
-
-- **GitHub**：[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：资深 GitHub 开发者，在 AI 开发工具与 Claude 生态领域具有较高社区影响力。
-**技术栈偏好**：以 TypeScript 为主、Python 为辅，偏好构建 CLI、MCP 及智能开发工具。
-**核心领域**：主要聚焦 AI 编程助手、代理记忆、Claude Code 技能与开发者生产力工具。
-
----
-
-### ✨ vercel-labs/agent-desktop (15609★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Computer use CLI for AI agents
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop)
-
-
----
-
-### ✨ github/spec-kit (135515★)
-
-> **一句话**：把“想做什么”依次整理成项目原则、功能规格、技术方案和任务清单，再交给 AI 编程代理按步骤实现并持续对照验证。
-
-- **它是什么**：Spec Kit 是 GitHub 发布的规范驱动开发工具包，提供 `constitution`、`specify`、`plan`、`tasks`、`implement`、`converge` 等命令，将需求从描述阶段逐步转化为可执行任务。它支持 GitHub Copilot、Claude 等多种 AI coding agent，并通过扩展、预设和社区目录加入 Bug 修复、产品想法评估等工作流。
-
-- **能解决什么痛点**：AI 编程代理直接根据一句需求生成代码时，容易遗漏边界条件、技术约束和验收标准，后续也难以判断实现是否仍符合原始意图。Spec Kit 把需求、方案、任务和实现结果保存为连续的规范产物，减少“代码写出来了但方向错了”的返工；Bug 扩展还提供“评估根因、修复、测试”的固定流程，避免只根据错误描述盲目改代码。
-
-- **适合谁用**：使用 GitHub Copilot、Claude、Codex 等 AI 编程代理开发应用的个人开发者和团队。需要统一需求规格、架构决策、任务拆分和代码审查流程的产品研发团队也适合采用，尤其是希望让不同成员或不同 AI 代理遵循同一套项目原则的组织。
-
-- **怎么上手**：先安装 CLI，再初始化项目：
-
-- **可以用在哪些场景**：
-  - 为内部管理系统或 SaaS 功能建立从需求到实现的完整记录，先用 `/speckit.specify` 明确用户流程和验收条件，再让 AI 按任务实现。
-  - 修复登录崩溃、数据丢失等高风险缺陷时，安装 `bug` 扩展，依次执行 `/speckit-bug-assess`、`/speckit-bug-fix` 和 `/speckit-bug-test`。
-  - 在决定开发离线模式、批量导入等较大功能前，使用 `assess` 扩展完成调研、目标定义、方案权衡和 go / needs-clarification / kill 决策。
-
-- **技术看点**：项目以 Python CLI 和 `uv` 安装链路为核心，通过 AI agent 命令、扩展、预设、Bundle 和社区目录构成可组合的工作流，而不是把开发流程硬编码成单一模板。近期还加入 JSON 格式的 preset 和 extension 列表、按步骤配置集成等能力，便于自动化脚本和组织级工具链接入。
-
-- **近期动向与发展方向**：最近两天持续有提交，开发重点集中在稳定性、安全性和生态扩展：修复目录下载 URL 必须绑定 tag 的问题、限制生成 dispatcher 的 stdin、修正扩展作者信息保留，并刷新工作流依赖。与此同时，项目持续增加 Secure Development Assurance Governance、Product Definition as Code、ProductShape 等 preset 或 extension，并在 2026-09-10 发布 1.0.6、开始 1.0.7.dev0 开发，说明项目已进入版本化迭代和社区生态扩张阶段。20 条提交中既有核心维护者，也有外部贡献者和自动化机器人，292 名贡献者显示社区参与度较高。
-
-- **同类对比**：暂无 README 明确列出的同类竞品。项目的差异点在于它不绑定某一个 AI 编程代理，而是围绕“规范先行、任务拆解、实现后收敛”提供跨代理流程，并允许通过扩展和预设改造方法论。
-
-- **注意事项**：项目创建于 2025-08-21，但已积累 135515 个 Star、12182 个 Fork 和 299 个 Open Issues，热度与迭代速度都很高，同时也意味着功能和文档仍可能快速变化。上手前需要安装 `uv` 并理解 AI agent 的命令或 skills 集成方式；扩展、预设和社区目录较多，团队需要先确定自己的规范模板，避免生成大量难以维护的流程文件。项目近期仍在频繁修复安全、工作流和 CLI 行为，升级时应固定 release tag，并在 CI 中验证初始化、扩展安装及生成结果，降低版本变更带来的风险。
-
-- **GitHub**：[github/spec-kit](https://github.com/github/spec-kit)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：全球领先的软件开发平台与开源协作生态组织，社区影响力极强。
-**技术栈偏好**：以 Python、JavaScript、Go 为主，聚焦开发者工具、自动化与 AI 辅助编程。
-**核心领域**：软件工程协作、代码托管、开发者生产力与生成式 AI。
-
----
-
-### ✨ The-PR-Agent/pr-agent (14885★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：🚀 PR Agent: The Original Open-Source PR Reviewer. This project is not the Qodo free tier.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[The-PR-Agent/pr-agent](https://github.com/The-PR-Agent/pr-agent)
-
-
----
-
-### ✨ harry0703/MoneyPrinterTurbo (127322★)
-
-> **一句话**：输入一个主题或关键词，它会自动写脚本、找视频素材、生成配音和字幕，最后合成一条高清短视频。
-
-- **它是什么**：MoneyPrinterTurbo 是一套基于 Python 的 AI 短视频生产工作流，能够从主题出发完成脚本生成、素材匹配、配音、字幕、背景音乐和视频合成。项目同时提供 AI Agent、WebUI、API 和 CLI 入口，支持批量生成、多语言脚本、自定义素材及多家大模型服务。
-
-- **能解决什么痛点**：短视频制作中，脚本、素材搜索、配音、字幕和剪辑通常需要在多个工具之间反复切换；它把这些环节串成一条自动化流水线。对于需要批量制作知识科普、营销或账号内容的团队，也可以减少逐条手工剪辑和重复配置。
-
-- **适合谁用**：
-  1. 需要批量产出短视频的自媒体、内容运营和营销团队。
-  2. 希望通过 API 或 CLI 将 AI 文案、素材下载和视频渲染接入内部内容生产系统的 Python 开发者。
-
-- **怎么上手**：README 标注需要 Python 3.11+，但提供的 README 素材中未包含完整安装命令或最小运行示例；文档未提供快速上手示例。
-
-- **可以用在哪些场景**：
-  1. 根据产品关键词批量生成带配音、字幕和素材的电商宣传短视频。
-  2. 为知识科普或新闻类账号自动生成脚本、匹配画面并输出竖屏成片。
-  3. 通过 API 接入内容管理后台，让运营人员提交主题后自动创建视频生成任务并查看处理进度。
-
-- **技术看点**：项目将 AI Agent、WebUI、API 和 CLI 统一到同一套视频生产流程中，并兼容 Kimi、OpenAI、Claude、Gemini、DeepSeek、通义千问、Azure OpenAI 等多类模型服务。近期提交还集中处理 Redis 队列并发、FFmpeg 合成隔离、MoviePy 输出、字幕原子发布和多阶段进度上报，说明其重点已从单机生成扩展到更可靠的任务调度与并发渲染。
-
-- **近期动向与发展方向**：最近 20 条提交全部集中在 2026 年 9 月 30 日，项目处于高频维护状态。开发重点以稳定性和任务可观测性为主，包括避免重复提交 TTS、保证视频和字幕只在成功后发布、修复并发队列、保留上传跟踪 ID，以及展示素材下载、片段处理和最终渲染进度；暂未看到明显的大规模架构重构迹象。项目已有 130 位贡献者，社区参与度较高。
-
-- **同类对比**：README 未明确列出竞品或直接对标项目。与单一的 AI 文案生成器或视频剪辑工具相比，它更强调从主题到成片的端到端自动化，并同时提供本地 WebUI、API、CLI 和多模型服务接入。
-
-- **注意事项**：
-  - 需要准备大模型、TTS、素材平台等外部服务的 API Key，实际使用成本和生成质量会受所选服务影响。
-  - 视频生成涉及素材下载、音频处理、字幕生成和 FFmpeg/MoviePy 渲染，部署和排查难度高于普通 Python Web 项目。
-  - 项目创建于 2024 年 3 月，已获得 127322 个 Stars、19916 个 Forks，但近期仍有大量并发、导出和任务状态相关修复，说明功能活跃且仍在快速演进。
-  - 当前开放 Issue 为 40 个，整体维护活跃；不过频繁修复核心流水线也意味着升级时应重点验证 TTS、字幕、视频导出、队列和多平台上传流程。
-  - README 内容覆盖多语言、界面截图和大量模型服务，但提供的材料中缺少完整安装与最小运行步骤，新用户可能需要结合发布页或项目文档完成部署。
-
-- **GitHub**：[harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：拥有较高社区影响力，代表项目累计获得超过 13 万 Stars。
-**技术栈偏好**：以 Python 为主，兼顾 Rust、Vue 与 TypeScript，偏好 AI 应用与效率工具开发。
-**核心领域**：主要聚焦 AI 内容生成、语音音频处理与个人数据存储工具。
-
----
-
-### ✨ garrytan/gstack (135101★)
-
-> **一句话**：gstack 把 Claude Code 组织成一支可直接调用的虚拟研发团队，用 `/plan-ceo-review` 做产品判断、用 `/review` 查代码、用 `/qa` 操作真实浏览器测试，再用 `/ship` 推进发布。
-
-- **它是什么**：这是安装在 Claude Code 中的一套 Markdown 技能和命令集合，包含 CEO、设计师、工程经理、代码审查、QA、安全审计、发布管理等 23 个角色，以及浏览器、调试、部署等工具。开发者通过 `/office-hours`、`/autoplan`、`/review`、`/qa`、`/cso`、`/ship` 等斜杠命令，依次完成需求澄清、方案设计、实现审查、浏览器验证和发布；项目也已提供 Codex CLI、OpenCode、Cursor 等宿主的实验性安装支持。
-- **能解决什么痛点**：AI 生成代码往往缺少产品边界、架构约束和发布检查，容易出现“功能写完但方向错了”或“代码能跑但线上有问题”；gstack 将 CEO 评审、工程评审、设计审查、QA、安全审计等步骤固化为可重复的工作流。对于单人开发者或小团队，还能减少在需求分析、代码审查、测试、文档和发布之间反复切换的成本。
-- **适合谁用**：使用 Claude Code 进行持续开发的创业者、技术型 CEO 和独立开发者；需要在每个 PR 中执行架构评审、浏览器 QA、安全检查和发布流程的技术负责人、Staff Engineer 或小型研发团队。
-- **怎么上手**：在 Claude Code 中执行 `git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`，安装后先运行 `/office-hours` 描述项目，再对功能方案运行 `/plan-ceo-review`，对代码运行 `/review`。
-- **可以用在哪些场景**：
-  - 独立开发 SaaS 或内部工具时，用 `/office-hours`、`/autoplan` 从需求澄清一路推进到实现和发布。
-  - Web 应用上线前，用 `/qa` 驱动真实浏览器检查页面交互，再用 `/design-review` 发现 AI 生成界面的视觉和可用性问题。
-  - 团队合并重要 PR 前，用 `/review`、`/test-audit` 和 `/cso` 分别检查生产缺陷、测试覆盖质量以及 OWASP/STRIDE 安全风险。
-- **技术看点**：核心实现采用 TypeScript，并把大量研发方法论封装为 Markdown 技能和 CLI/脚本工作流，便于直接复用、审阅和迭代。项目还提供团队模式 `./setup --team`、多宿主安装、自动更新、浏览器自动化、付费评测分片和行为级技能测试，重点解决 AI 工作流中的可重复性、安装可靠性和结果验证问题。
-- **近期动向与发展方向**：最近 20 条提交几乎连续覆盖 2026-09-24 至 2026-10-04，更新频率很高，且全部由 Garry Tan 提交。近期重点明显偏向可靠性和质量控制：包括安全安装升级、安装状态一致性、真实完成门禁、浏览器 Cookie 导入、插件发现、自动规划保护、发布 CI 门禁、测试价值评估、QA 与文档检查，以及更快但不削弱覆盖率的测试分片；同时加入了 Opus 5.5 提示词清理、会话转录授权和多宿主支持。整体演进方向是从“提供一组 AI 角色”转向“让 AI 研发流程可审计、可测试、可安全发布”。
-- **同类对比**：README 将 gstack 定位为 Garry Tan 的 Claude Code 工作流，并提到 OpenClaw 作为 AI Agent 协作背景；它与 OpenClaw 的关系更接近互补，OpenClaw 负责调度 Claude Code 会话，gstack 负责会话内的产品、工程、QA 和发布方法。除此之外，README 未明确列出直接竞品。
-- **注意事项**：项目依赖 Claude Code、Git、Bun 1.0+，Windows 还需要 Node.js；`/cso` 需要特定 Bun 构建参数和本地 C/C++ 工具链，浏览器相关能力还涉及 Chromium、macOS Aside 或登录态 Cookie，完整安装并不等同于单条命令即可用。项目创建于 2026-03-11，却已达到 135101 个 Stars、20089 个 Forks，同时有 448 个 Open Issues，说明关注度和迭代速度都很高，但也意味着版本变化快、兼容性和安装行为仍可能调整；目前仅有 14 位贡献者，核心维护仍明显集中在项目作者。团队模式会把 gstack 配置写入仓库并要求或提示队友安装，升级前应评估命令行为、权限边界和可能的工作流变更。
-
-- **GitHub**：[garrytan/gstack](https://github.com/garrytan/gstack)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：在 GitHub 具有较高技术影响力，代表项目获得广泛关注。
-**技术栈偏好**：偏好 TypeScript 和 JavaScript，重视现代 Web、工具链与智能应用开发。
-**核心领域**：主要聚焦 AI 软件工程、开发者工具及智能代理应用。
-
----
-
-### ✨ FareedKhan-dev/kimi-k3-in-c (10471★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：A 2.78-trillion-parameter Kimi K3 running inference on a single CPU in 8.24 GB of RAM. Portable C99: no BLAS, no framework, no GPU.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[FareedKhan-dev/kimi-k3-in-c](https://github.com/FareedKhan-dev/kimi-k3-in-c)
-
-
----
-
-### ✨ JiaFeiMiao-K-Cat/DiscImageStudio (6784★)
+### ✨ JiaFeiMiao-K-Cat/DiscImageStudio (7102★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -314,84 +358,3 @@
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
 - **GitHub**：[JiaFeiMiao-K-Cat/DiscImageStudio](https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio)
-
-
----
-
-### ✨ MichaelCade/90DaysOfDevOps (30562★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：This repository started out as a learning in public project for myself and has now become a structured learning map for many in the community. We have 3 years under our belt covering all things DevOps, including Principles, Processes, Tooling and Use Cases surrounding this vast topic. 
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[MichaelCade/90DaysOfDevOps](https://github.com/MichaelCade/90DaysOfDevOps)
-
-
----
-
-### ✨ D4Vinci/Scrapling (62462★)
-
-> **一句话**：Scrapling 让 Python 爬虫在页面结构变化、反爬拦截和大规模并发抓取面前，仍能自动定位元素、伪装请求并持续跑完整个采集任务。
-
-- **它是什么**：Scrapling 是一个 Python Web Scraping 框架，覆盖从单次请求到完整爬虫任务的抓取流程。它内置解析器、Fetchers、Spider 框架、代理轮换、暂停/恢复、实时统计和 CLI，并强调对现代网站反爬环境的适配。README 中重点提到，它的解析器可以学习页面变化，在 DOM 结构调整后自动重新定位目标元素。
-- **能解决什么痛点**：第一类痛点是网页改版后 CSS 选择器失效，Scrapling 通过 `auto_save` 和 `adaptive=True` 尝试让已保存的元素定位在后续页面变化中继续可用。第二类痛点是抓取 Cloudflare Turnstile 等反机器人保护页面时，普通 `requests`/`httpx` 容易被拦截，Scrapling 提供 `StealthyFetcher`、`DynamicFetcher` 等抓取方式来处理这类场景。
-- **适合谁用**：适合需要长期维护采集脚本的 Python 数据工程师、爬虫工程师，以及要从单页面采集逐步扩展到并发、多会话爬取任务的团队。也适合希望把代理轮换、断点续跑、缓存和请求伪装交给框架处理的开发者。
-- **怎么上手**：README 未给出安装命令；最小使用示例是 `from scrapling.fetchers import StealthyFetcher; p = StealthyFetcher.fetch('https://example.com', headless=True, network_idle=True); products = p.css('.product', auto_save=True)`。
-- **可以用在哪些场景**：可用于电商商品列表和价格数据的持续采集，尤其是页面样式经常调整的站点；可用于需要浏览器伪装和反爬绕过的公开网页数据抓取；可用于构建可暂停、可恢复、带代理轮换的长期运行爬虫任务。
-- **技术看点**：核心看点是“自适应解析”：选择器不仅按当前 DOM 查找，还能保存上下文并在页面结构变化后重新定位元素。抓取层同时提供普通、异步、隐身和动态 Fetcher，并向上封装 Spider 框架，适合从脚本式抓取演进到任务化爬取。
-- **近期动向与发展方向**：最近 20 条提交集中在 2026-06-07，发布了 `v0.4.9`，开发重点明显偏向稳定性修复和工程完善，包括 session 级代理继承、quoted charset 解析、adaptive relocation 的 `IndexError`、Windows 下 checkpoint/cache 原子写入，以及 CLI `--version`。提交主要由 Karim shoair 维护，也有社区贡献合入，说明项目近期活跃度高，但当前迭代更像是打磨可用性而非大规模重构。
-- **同类对比**：README 未明确点名 Scrapy、Playwright、BeautifulSoup 等竞品，因此暂无明显同类对标。仅从功能定位看，Scrapling 更强调“解析自适应 + 反爬抓取 + Spider 编排”放在同一个 Python 框架里。
-- **注意事项**：项目创建于 2024-10-13，时间不算长，但 Stars 和更新频率很高，Open Issues 仅 1 个，说明维护响应较积极；不过热度增长很快的项目仍需要关注 API 稳定性和版本升级风险。README 明确提醒默认安装不包含 fetchers，实际接入前需要仔细看安装文档，避免装完后发现隐身抓取或动态抓取能力不可用。
-
-- **GitHub**：[D4Vinci/Scrapling](https://github.com/D4Vinci/Scrapling)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Karim shoair 是 GitHub 上具有显著影响力的个人开发者，凭借 Scrapling 等高星项目在开源社区获得广泛关注。
-**技术栈偏好**：技术栈明显偏向 Python，主要围绕自动化、安全工具、命令行工具与 Web Scraping 方向构建项目。
-**核心领域**：核心聚焦于 Web Scraping、信息安全、渗透测试辅助工具与实用型 Python 开源工具开发。
-
----
-
-### ✨ Thysrael/Horizon (12663★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：📡 Your own AI-powered news radar. Generates daily briefings in English & Chinese. | 用 AI 构建你专属的新闻雷达
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[Thysrael/Horizon](https://github.com/Thysrael/Horizon)
-
-
----
-
-### ✨ scenario-labs/skills (2578★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Get production-ready images, video, audio, and 3D from any AI agent: skills that pick the right model, price before spending, and keep characters and brands consistent through the Scenario MCP, plus expert teams that drive Blender, Maya, ZBrush, Unreal, and Unity.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[scenario-labs/skills](https://github.com/scenario-labs/skills)
