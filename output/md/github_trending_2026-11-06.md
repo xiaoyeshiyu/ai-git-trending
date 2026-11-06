@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ zed-industries/zed (93219★)
+### ✨ zed-industries/zed (93492★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -20,7 +20,7 @@
 
 ---
 
-### ✨ NVIDIA/auto-ontology (8551★)
+### ✨ NVIDIA/auto-ontology (8869★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -39,7 +39,7 @@
 
 ---
 
-### ✨ rails/rails (58926★)
+### ✨ rails/rails (58984★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -58,7 +58,7 @@
 
 ---
 
-### ✨ mpv-player/mpv (37799★)
+### ✨ mpv-player/mpv (37850★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -77,7 +77,7 @@
 
 ---
 
-### ✨ rust-lang/rust (121265★)
+### ✨ rust-lang/rust (121370★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -96,7 +96,7 @@
 
 ---
 
-### ✨ react/react (252121★)
+### ✨ react/react (252208★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -147,7 +147,7 @@
 
 ---
 
-### ✨ symfony/symfony (31292★)
+### ✨ symfony/symfony (31383★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -166,7 +166,7 @@
 
 ---
 
-### ✨ prometheus/prometheus (67037★)
+### ✨ prometheus/prometheus (67120★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -220,7 +220,7 @@
 
 ---
 
-### ✨ microsoft/vscode (194878★)
+### ✨ microsoft/vscode (194960★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -239,7 +239,7 @@
 
 ---
 
-### ✨ lz4/lz4 (12579★)
+### ✨ lz4/lz4 (12626★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -258,7 +258,7 @@
 
 ---
 
-### ✨ nushell/nushell (40840★)
+### ✨ nushell/nushell (40924★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -277,7 +277,7 @@
 
 ---
 
-### ✨ etcd-io/etcd (52521★)
+### ✨ etcd-io/etcd (52574★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -296,7 +296,7 @@
 
 ---
 
-### ✨ openssl/openssl (31229★)
+### ✨ openssl/openssl (31267★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -380,7 +380,7 @@
 
 ---
 
-### ✨ astral-sh/ruff (50540★)
+### ✨ astral-sh/ruff (50621★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
