@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ vercel-labs/agent-browser (46508★)
+### ✨ vercel-labs/agent-browser (46702★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -155,7 +155,7 @@
 
 ---
 
-### ✨ meta/astryx (14195★)
+### ✨ meta/astryx (14352★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -174,7 +174,7 @@
 
 ---
 
-### ✨ prometheus/prometheus (67329★)
+### ✨ prometheus/prometheus (67392★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -193,7 +193,7 @@
 
 ---
 
-### ✨ sherlock-project/sherlock (99714★)
+### ✨ sherlock-project/sherlock (100204★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -212,7 +212,7 @@
 
 ---
 
-### ✨ milind-soni/OpenMausBot (16436★)
+### ✨ milind-soni/OpenMausBot (16809★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -231,7 +231,7 @@
 
 ---
 
-### ✨ astral-sh/ruff (50845★)
+### ✨ astral-sh/ruff (50929★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -282,7 +282,7 @@
 
 ---
 
-### ✨ mbillow/localthings (966★)
+### ✨ mbillow/localthings (1015★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -301,7 +301,7 @@
 
 ---
 
-### ✨ zed-industries/zed (94095★)
+### ✨ zed-industries/zed (94208★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -320,7 +320,7 @@
 
 ---
 
-### ✨ ranxianglei/billion-context (4457★)
+### ✨ ranxianglei/billion-context (4550★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -339,7 +339,7 @@
 
 ---
 
-### ✨ dsx-ai-factory/nvke (388★)
+### ✨ dsx-ai-factory/nvke (499★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
