@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ sherlock-project/sherlock (102231★)
+### ✨ sherlock-project/sherlock (103054★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -20,7 +20,7 @@
 
 ---
 
-### ✨ dsx-ai-factory/nvke (721★)
+### ✨ dsx-ai-factory/nvke (790★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -39,7 +39,7 @@
 
 ---
 
-### ✨ milind-soni/OpenMausBot (17799★)
+### ✨ milind-soni/OpenMausBot (18080★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -58,7 +58,7 @@
 
 ---
 
-### ✨ anthropics/claude-quickstarts (19231★)
+### ✨ anthropics/claude-quickstarts (19344★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -77,7 +77,7 @@
 
 ---
 
-### ✨ vercel-labs/agent-browser (47311★)
+### ✨ vercel-labs/agent-browser (47480★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -96,7 +96,7 @@
 
 ---
 
-### ✨ meta/astryx (15410★)
+### ✨ meta/astryx (16266★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -150,7 +150,7 @@
 
 ---
 
-### ✨ google-deepmind/mujoco (16208★)
+### ✨ google-deepmind/mujoco (16324★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -169,7 +169,7 @@
 
 ---
 
-### ✨ ranxianglei/billion-context (4912★)
+### ✨ ranxianglei/billion-context (5053★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
