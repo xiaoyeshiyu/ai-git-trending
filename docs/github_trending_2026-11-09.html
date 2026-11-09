@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 热点日报 (2026-11-09)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.8;
+            color: #34495e;
+            background: linear-gradient(to right bottom, #fdfbfb, #ebedee);
+            margin: 0;
+            padding: 20px;
+        }
+        .main-container {
+            max-width: 850px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: none;
+        }
+        h2 {
+            font-size: 1.6em;
+            margin-top: 50px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        .card {
+            background: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: #e8f6ff;
+            color: #2980b9;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>GitHub 热点日报 (2026-11-09)</h1>
+<h2>今日热点：GitHub 热门趋势</h2>
+<p>今天的热门项目覆盖了多个技术方向，具体项目摘要如下：</p>
+<h3>✨ anthropics/skills (178096★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：这是 Anthropic 为 Claude 提供的一组可直接参考和安装的 Agent Skills 示例，把文档处理、设计开发、API 使用等复杂任务整理成 Claude 能动态加载的指令、脚本与资源。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：项目以独立文件夹组织每个 Skill，每个 Skill 通过 <code>SKILL.md</code> 描述元数据、使用条件和执行指令，Claude 可在需要时加载它们来完成特定任务。仓库覆盖创意与设计、开发技术、企业沟通以及 DOCX、PDF、PPTX、XLSX 文档处理，并同时提供 Agent Skills 规范和模板。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：开发者不必每次都从头编写复杂的提示词、操作步骤和领域约束，可以把一套重复工作的流程固化为可复用 Skill。对于文档生成、表格处理、前端设计或 Claude API 集成等任务，它还提供了接近真实生产场景的参考实现，降低自行摸索格式和调用方式的成本。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：使用 Claude Code、Claude.ai 或 Claude API 构建智能代理的开发者；希望把企业品牌规范、文档处理流程、测试流程或内部工作流封装成可复用能力的团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：在 Claude Code 中执行 <code>/plugin marketplace add anthropics/skills</code>，随后安装 <code>document-skills</code> 或 <code>example-skills</code> 插件；也可以直接执行 <code>/plugin install document-skills@anthropic-agent-skills</code>。创建自定义 Skill 时，可按 README 提供的模板建立目录，并在 <code>SKILL.md</code> 中填写 <code>name</code> 和 <code>description</code>。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>让 Claude 按公司品牌规范生成演示文稿、报告、表格和 PDF 文档。</li>
+<li>将 Claude API 的 SDK 升级、模型更新、Managed Agents 配置等开发流程整理为可查询和执行的 Skill。</li>
+<li>
+<p>为内部数据分析、网页测试、MCP Server 生成或企业沟通流程提供固定的操作指令和示例资源。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：Skill 采用“目录 + <code>SKILL.md</code> + 可选脚本和资源”的轻量结构，通过 YAML frontmatter 声明名称与适用描述，便于 Claude 按任务动态加载。仓库同时维护示例实现、Skill 规范和模板，既能直接安装，也能作为构建自定义 Agent 能力的参考基线。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：近期提交明显集中在 <code>claude-api</code> Skill，持续跟进 SDK 1.x 升级、模型版本、Managed Agents、权限策略、成本优化和 API 文档变化，说明项目重点是同步 Anthropic 平台的快速演进。与此同时，项目还更新了 <code>frontend-design</code>、文档类 Skills，并新增 <code>academy-guide</code> 和 <code>discernment-nudge</code>；近 20 条提交覆盖 2026 年 5 月至 9 月，维护节奏较活跃，但提交主要由少数核心贡献者推动，16 名贡献者的规模仍偏小。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：暂无明显同类对标。README 明确区分了本仓库的 Anthropic 实现与 <a href="http://agentskills.io">Agent Skills 标准</a>，前者更偏向 Claude 的示例、插件和生产参考实现，后者是可供其他实现遵循的规范。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 9 月，已经积累 17.8 万 Stars，但同时有 1293 个开放 Issue，需求和反馈规模较大。部分 Skill，尤其是文档创建与编辑相关实现，是 source-available 而非 Apache 2.0 开源；仓库也声明内容主要用于演示和教育，实际行为可能随 Claude 或 API 版本变化。近期频繁跟进模型、SDK 和平台功能，上手时应核对对应文档与版本，避免因 API 或 Skill 内容更新产生兼容性问题。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：拥有近 8.8 万关注者，多个仓库获数万至十余万星，是 AI 开发者生态中的高影响力组织。
+<strong>技术栈偏好</strong>：以 Python、Jupyter Notebook 和 TypeScript 为主，覆盖 AI 工具开发、交互式教程与应用示例。
+<strong>核心领域</strong>：聚焦 Claude 相关开发工具、技能与提示工程，并拓展至金融等行业应用。</p>
+<hr />
+<h3>✨ meta/astryx (19368★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：An open source design system that's fully customizable and agent ready</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/meta/astryx">meta/astryx</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ sherlock-project/sherlock (106637★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Hunt down social media accounts by username across social networks</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/sherlock-project/sherlock">sherlock-project/sherlock</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ google-deepmind/mujoco (16824★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Multi-Joint dynamics with Contact. A general purpose physics simulator.</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/google-deepmind/mujoco">google-deepmind/mujoco</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ anthropics/claude-quickstarts (19895★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/anthropics/claude-quickstarts">anthropics/claude-quickstarts</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ garrytan/gbrain (32024★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Garry's Opinionated OpenClaw/Hermes Agent Brain</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/garrytan/gbrain">garrytan/gbrain</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ vercel-labs/agent-browser (48320★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Browser automation CLI for AI agents</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/vercel-labs/agent-browser">vercel-labs/agent-browser</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ ruvnet/RuView (93692★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：RuView 让 ESP32 读取 WiFi 信号反射变化，在不使用摄像头或穿戴设备的情况下，实时判断房间里是否有人、如何移动以及呼吸和心率趋势。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它是什么</strong>：这是一个基于 Rust 的 WiFi CSI 感知平台，将低成本 ESP32 节点采集到的信道状态信息转换为存在检测、人数统计、活动识别、跌倒检测、呼吸和心率监测等结果。它支持边缘侧运行、局部环境校准，并可通过 MQTT、Matter、Apple Home、Google Home 和 Alexa 接入智能家居。</p>
+</li>
+<li>
+<p><strong>能解决什么痛点</strong>：在卧室、养老房间或卫生间等不适合安装摄像头的区域，仍需要持续判断有人活动、离床、跌倒或长时间不动。对不愿佩戴手环、胸带等设备的人，RuView提供了非接触式的呼吸、心率和睡眠监测方案。</p>
+</li>
+<li>
+<p><strong>适合谁用</strong>：适合使用 ESP32、Raspberry Pi 和 Home Assistant 搭建隐私敏感型智能家居或边缘感知系统的开发者。也适合研究 WiFi CSI、无线感知、无摄像头姿态估计和时序信号模型的工程团队。</p>
+</li>
+<li>
+<p><strong>怎么上手</strong>：README 提供的 MetaHarness 最小入口是 <code>npx @ruvnet/ruview@0.4.0 doctor</code>；接入 Home Assistant 可直接运行带 <code>--mqtt</code> 参数的 RuView 服务，具体启动命令需结合部署方式查看项目文档。</p>
+</li>
+<li>
+<p><strong>可以用在哪些场景</strong>：</p>
+</li>
+<li>在 Home Assistant 中发布房间有人、睡眠、离床、跌倒风险和活动状态，联动灯光、空调或告警。</li>
+<li>在养老院或家庭卧室中进行夜间呼吸、心率趋势和异常静止监测，减少摄像头带来的隐私问题。</li>
+<li>
+<p>在办公室、商店或工业区域部署多个 ESP32 节点，统计占用人数、进出流动和跨房间移动，不要求人员携带标签。</p>
+</li>
+<li>
+<p><strong>技术看点</strong>：项目采用 Rust 构建从 CSI 采集、信号处理、推理到边缘服务的完整链路，支持 ESP32 Mesh、多频段信道跳转、TDM 调度和本地模型推理。其设计还引入了不确定性、来源、隐私策略和 Ed25519 witness chain 等治理信息，但 README 同时注明统一 RF 世界模型在真实数据验证前仍属于合成精度阶段。</p>
+</li>
+<li>
+<p><strong>近期动向与发展方向</strong>：最近提交高度集中在固件和边缘节点可靠性建设，包括 ESP32-C6 的 USB onboarding、macOS RSSI 感知、节点持久化日志、Flash coredump、16MB Flash 配置和天线选择。服务端与推理链路也在持续修复 RSSI 哨兵污染、节点位置融合、训练损失导出和 CSI 指标问题，说明项目当前重点是扩展硬件部署能力、提高采集稳定性并校正模型训练与评测结果；近期开提交密集，且有 <code>rUv</code>、<code>clonea1</code>、<code>Faizan</code> 等贡献者参与，但整体贡献者数量为 39 人。</p>
+</li>
+<li>
+<p><strong>同类对比</strong>：README 未明确列出直接竞品；项目明显区别于摄像头姿态估计、毫米波雷达和可穿戴设备方案，核心卖点是利用普通 WiFi 与低成本 ESP32 进行非视觉、非接触式感知，同时也预留 WiFi CSI、雷达、UWB 和蜂窝感知的统一融合模型。</p>
+</li>
+<li>
+<p><strong>注意事项</strong>：项目创建于 2025 年 6 月，却已达到 93692 Stars、12421 Forks 和 708 个 Open Issues，功能范围很大，实际成熟度不能只按热度判断。README 对部分能力有明确限制：已提交的 <code>pose_v1</code> 模型 PCK@20 仅为 3.0%，运行路径仍是 <code>confidence=0</code> 的桩实现；82.3% 和 82.69% 等指标对应特定数据集或独立模型，不能直接等同于真实家庭环境效果。部署还涉及 ESP32 硬件、CSI 采集、环境校准和模型选择，文档内容较多，上手成本高于普通 Home Assistant 插件；医疗监测、跌倒告警等场景应进行现场验证，不能将输出直接当作诊断结论。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/ruvnet/RuView">ruvnet/RuView</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：高影响力开源开发者，凭借多个高星项目在 GitHub 技术社区具备较强关注度。
+<strong>技术栈偏好</strong>：偏好 TypeScript 与 Rust，重视高性能系统、开发工具及现代应用架构。
+<strong>核心领域</strong>：主要聚焦 AI Agent、智能工作流、向量计算与相关基础设施。</p>
+<hr />
+<h3>✨ ZhuLinsen/daily_stock_analysis (61034★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：它把自选股票、行情、新闻、技术指标和大模型分析串成一条自动化流水线，每天生成一份可直接推送到企业微信、飞书、Telegram、Discord、Slack 或邮箱的“决策仪表盘”。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：这是一个用 Python 写的多市场股票智能分析系统，覆盖 A 股、港股、美股、日股、韩股、台股和 ETF。它会聚合多源行情、实时新闻、公告和基本面信息，再交给 LLM 生成分析结论、评分、风险提示和买卖点位，并能通过 Web 工作台、定时任务和自动通知跑起来。</li>
+<li><strong>能解决什么痛点</strong>：一是把原本分散在行情站、新闻搜索、研报和聊天记录里的信息整理成一份固定格式的日报，避免人工每天来回切换页面。二是把“看盘、搜新闻、写总结、发群里”这类重复工作自动化，尤其适合需要长期盯多个市场和多只标的的场景。</li>
+<li><strong>适合谁用</strong>：做量化研究、投研辅助、私募/散户自建盯盘系统的人；以及需要在 Python 生态里接入行情源、新闻源和 LLM 的开发者。对想用 GitHub Actions、Docker 或本地定时任务做自动报告推送的人也比较合适。</li>
+<li><strong>怎么上手</strong>：README 给出的最小本地运行方式是先安装依赖再启动主程序：<code>git clone https://github.com/ZhuLinsen/daily_stock_analysis.git &amp;&amp; cd daily_stock_analysis &amp;&amp; pip install -r requirements.txt &amp;&amp; python main.py</code>。</li>
+<li><strong>可以用在哪些场景</strong>：每天固定生成自选股晨报或收盘复盘，发到企业微信/飞书群里；把 A/H/美股的新闻、公告和行情合并后做跨市场对比分析；在 Web 工作台里人工发起一次分析，查看完整 Markdown 报告和历史记录。</li>
+<li><strong>技术看点</strong>：项目的核心不是单一策略，而是“数据源优先级 + LLM 分析 + 多渠道推送”的组合设计，支持免费行情源与 token 型数据源并存，也支持 OpenAI 兼容、DeepSeek、通义千问、Claude、Ollama 等多种模型后端。README 里还明确了 GitHub Actions、Docker、本地定时任务和 FastAPI/Web UI 这几条运行路径，部署弹性比较大。</li>
+<li><strong>近期动向与发展方向</strong>：最近 20 条提交里，主线非常清楚，集中在 v3.29.0 到 v3.30.0 的发布准备、分享图功能修复、移动端交互修复、前后端稳定性增强和 CI 加速。除了持续修 bug，还在补 <code>Responses API</code> 路由、会话级技能选择、Lark 国际域名、后台测试分片等能力，说明项目正沿着“更稳定的多端体验 + 更强的模型/通知编排 + 更成熟的测试与发布流程”推进，且贡献者不止一位，社区活跃度较高。</li>
+<li><strong>同类对比</strong>：README 里明确提到它聚焦“日常分析报告”，并与 <code>AlphaSift</code>、<code>AlphaEvo</code> 区分开来：前者更偏选股实现参考，后者偏策略回测与自我进化，而这个项目更像是面向日常使用的分析与推送工作台。</li>
+<li>
+<p><strong>注意事项</strong>：项目功能面很宽，上手前要先准备 LLM Key、通知渠道和至少一条自选股配置，否则只能跑到一半。它的 Stars 和 Forks 很高，说明关注度和传播度都不错，但 Open Issues 也有 40 个，配合近期持续修复和重构迹象来看，仍处在高活跃维护期，接口、数据源和推送链路都可能随着版本迭代出现行为变化；免费数据源虽然可零成本运行，但 README 也明确说了稳定性不保证。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/ZhuLinsen/daily_stock_analysis">ZhuLinsen/daily_stock_analysis</a></p>
+</li>
+</ul>
+<h4>开发者 / 组织速览</h4>
+<p><strong>技术影响力</strong>：具备较高社区影响力，拥有一个高关注度开源项目及一定开发者关注基础。
+<strong>技术栈偏好</strong>：以 Python 为主，偏好数据分析、智能代理与自动化工具开发。
+<strong>核心领域</strong>：主要聚焦 LLM、AIGC、量化分析与机器人智能化。</p>
+<hr />
+<h3>✨ homeassistant-ai/ha-mcp (5763★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/homeassistant-ai/ha-mcp">homeassistant-ai/ha-mcp</a></p>
+</li>
+</ul>
+<hr />
+<h3>✨ milind-soni/OpenMausBot (19494★)</h3>
+<blockquote>
+<p><strong>一句话</strong>：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。</p>
+</blockquote>
+<ul>
+<li><strong>它是什么</strong>：Open-source Grok Bot alternative with a virtual machine that bots can use</li>
+<li><strong>能解决什么痛点</strong>：暂未提供。</li>
+<li><strong>适合谁用</strong>：暂未提供。</li>
+<li><strong>怎么上手</strong>：文档未提供快速上手示例。</li>
+<li><strong>可以用在哪些场景</strong>：暂未提供。</li>
+<li><strong>技术看点</strong>：暂未提供。</li>
+<li><strong>近期动向与发展方向</strong>：暂无 commit 数据可用。</li>
+<li><strong>同类对比</strong>：暂无明显同类对标。</li>
+<li>
+<p><strong>注意事项</strong>：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。</p>
+</li>
+<li>
+<p><strong>GitHub</strong>：<a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></p>
+</li>
+</ul>
+        <div class="footer">
+            <p>❤️ Generated by GitHub Trending Reporter</p>
+        </div>
+    </div>
+</body>
+</html>
