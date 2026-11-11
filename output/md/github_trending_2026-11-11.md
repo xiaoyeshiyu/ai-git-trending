@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ meta/astryx (24459★)
+### ✨ meta/astryx (24836★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -44,7 +44,7 @@
 
 ---
 
-### ✨ GoogleChrome/modern-web-guidance-src (1530★)
+### ✨ GoogleChrome/modern-web-guidance-src (1695★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -63,7 +63,7 @@
 
 ---
 
-### ✨ shadcn/improve (10572★)
+### ✨ shadcn/improve (10797★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -126,7 +126,7 @@
 
 ---
 
-### ✨ vercel-labs/agent-browser (49688★)
+### ✨ vercel-labs/agent-browser (49818★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -145,7 +145,7 @@
 
 ---
 
-### ✨ we-promise/sure (12653★)
+### ✨ we-promise/sure (12883★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -164,7 +164,7 @@
 
 ---
 
-### ✨ homeassistant-ai/ha-mcp (7081★)
+### ✨ homeassistant-ai/ha-mcp (7301★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -183,7 +183,7 @@
 
 ---
 
-### ✨ openai/codex-security (11504★)
+### ✨ openai/codex-security (11665★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -202,7 +202,7 @@
 
 ---
 
-### ✨ TheAlgorithms/Java (66916★)
+### ✨ TheAlgorithms/Java (66987★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
