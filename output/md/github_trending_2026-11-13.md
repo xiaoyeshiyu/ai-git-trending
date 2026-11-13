@@ -36,7 +36,7 @@
 
 ---
 
-### ✨ GoogleChrome/modern-web-guidance-src (4413★)
+### ✨ GoogleChrome/modern-web-guidance-src (4703★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -55,7 +55,7 @@
 
 ---
 
-### ✨ openai/codex-security (12922★)
+### ✨ openai/codex-security (13075★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -98,7 +98,7 @@
 
 ---
 
-### ✨ we-promise/sure (14483★)
+### ✨ we-promise/sure (14666★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -117,7 +117,7 @@
 
 ---
 
-### ✨ backnotprop/plannotator (10327★)
+### ✨ backnotprop/plannotator (10403★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -136,7 +136,7 @@
 
 ---
 
-### ✨ louislam/uptime-kuma (93702★)
+### ✨ louislam/uptime-kuma (93810★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -181,7 +181,7 @@
 
 ---
 
-### ✨ tradermonty/claude-trading-skills (3973★)
+### ✨ tradermonty/claude-trading-skills (4114★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -241,7 +241,7 @@
 
 ---
 
-### ✨ Likely7/Veyra-NRVideo (1488★)
+### ✨ Likely7/Veyra-NRVideo (1586★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
