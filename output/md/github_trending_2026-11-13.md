@@ -1,7 +1,42 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ GoogleChrome/modern-web-guidance-src (3495★)
+### ✨ alibaba/open-code-review (22910★)
+
+> **一句话**：把 Git diff 或完整文件交给可配置的 LLM Agent，结合确定性的文件筛选、规则匹配和行号定位，输出可直接落到代码行上的审查意见。
+
+- **它是什么**：OpenCodeReview 是阿里巴巴开源的 AI 代码审查 CLI，能够审查暂存区、未提交改动、分支差异和单个提交，也支持对整个目录或文件做全量扫描。它会读取相关源码、搜索代码库上下文，并通过 OpenAI、Anthropic 等兼容接口生成结构化的行级评论，同时内置 NPE、线程安全、XSS、SQL 注入等多语言规则。
+
+- **能解决什么痛点**：大规模变更中，通用 Agent 可能只抽查部分文件，导致重要改动漏审；它通过确定性的文件选择、文件分组和规则匹配约束审查范围。AI 评论经常出现文件或行号漂移、误报过多时，它还通过独立的定位与反思模块提高评论落点准确性，并以较低 token 消耗换取更高 Precision。
+
+- **适合谁用**：需要在 GitHub Actions、GitLab CI、Gerrit 等流水线中执行自动审查的团队；维护 Java、Go、Python、JavaScript/TypeScript 等多语言代码库，并希望统一配置安全、并发和缺陷规则的研发组织。
+
+- **怎么上手**：先安装并配置模型，再在项目目录执行：
+
+- **可以用在哪些场景**：
+  - 在合并请求或分支合并前审查新增代码，自动输出带文件和行号的 JSON 报告供 CI 消费。
+  - 对接企业内部 OpenAI 兼容模型或 Anthropic API，在 Java 后端、Go 服务和前端项目中统一执行安全与可靠性审查。
+  - 接手缺少 Git 历史或审查规则不完整的遗留目录时，通过 `ocr scan --path` 对整个目录进行代码审计。
+
+- **技术看点**：项目采用“确定性流水线 + LLM Agent”的混合架构：文件选择、分组、规则匹配和评论定位由工程逻辑约束，Agent 负责动态读取上下文和分析问题。README 给出的基准测试覆盖 50 个开源仓库、200 个真实 PR 和 10 种语言，强调在降低 token 消耗的同时提升 Precision 和 F1，但 Recall 低于通用 Agent，明确选择了“少报误报、接受部分漏报”的取舍。
+
+- **近期动向与发展方向**：最近 20 条提交覆盖 2026-09-07 至 2026-09-12，提交频率高，153 名贡献者仍在持续参与。近期重点以稳定性和工程化修复为主，包括让预览与实际执行使用同一文件选择逻辑、原子写入报告、完善信号转发和超时处理、限制 MCP 关闭阶段；同时持续扩展能力，如加入 Rego 策略审查、OCaml/ReasonML 支持、会话对比页面，以及 effort、token 预算和推理强度等审查控制。整体方向是增强 CI 和多 Agent 集成能力，并提高大规模审查的可控性。
+
+- **同类对比**：README 明确将 Claude Code 等通用 Agent 作为对比对象。OpenCodeReview 更强调固定的审查流程、精确的评论定位和较低 token 消耗，适合批量、可重复的 CI 审查；通用 Agent 在 Recall 和开放式探索能力上可能更强，但审查范围、输出位置和质量稳定性更难约束。
+
+- **注意事项**：首次使用需要配置 LLM 提供商、API Key 和模型，并要求 Git `>= 2.41`，实际成本和效果仍取决于模型及上下文配置。项目近期更新活跃，但仍有 150 个 Open Issues，新增模型、规则、Agent 行为和 CLI 参数较多，接入生产流水线前应固定版本并验证输出格式。README 也明确承认其 Recall 低于通用 Agent，因此不应把自动审查结果视为完整缺陷证明；同时需要结合企业代码保密要求评估源码发送到外部模型的风险。
+
+- **GitHub**：[alibaba/open-code-review](https://github.com/alibaba/open-code-review)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：阿里巴巴是全球知名的开源技术组织，在 Java 生态与企业级软件领域拥有广泛影响力。
+**技术栈偏好**：以 Java 为核心，辅以 Kotlin，重点投入于高性能基础组件、开发工具与分布式技术。
+**核心领域**：主要聚焦云原生、微服务、中间件、数据集成及企业级应用开发。
+
+---
+
+### ✨ GoogleChrome/modern-web-guidance-src (4413★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -20,7 +55,7 @@
 
 ---
 
-### ✨ openai/codex-security (12611★)
+### ✨ openai/codex-security (12922★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -39,50 +74,31 @@
 
 ---
 
-### ✨ nvm-sh/nvm (94842★)
+### ✨ ZhuLinsen/daily_stock_analysis (61034★)
 
-> **一句话**：在终端里用 `nvm install 24`、`nvm use 22` 这类命令快速切换不同 Node.js 版本，避免为每个项目手动折腾运行环境。
+> **一句话**：它把自选股票、行情、新闻、技术指标和大模型分析串成一条自动化流水线，每天生成一份可直接推送到企业微信、飞书、Telegram、Discord、Slack 或邮箱的“决策仪表盘”。
 
-- **它是什么**：nvm 是用 POSIX-compliant shell 脚本实现的 Node.js 版本管理方案，按用户安装、按 shell 会话生效。它可以安装、列出、切换多个 Node.js 版本，并支持 `.nvmrc`、镜像源、全局包迁移、Docker / CI 环境等常见开发流程。
-- **能解决什么痛点**：不同项目依赖不同 Node.js 版本时，不必反复卸载重装本机 Node；团队项目通过 `.nvmrc` 约定版本后，新成员进入目录即可切到一致环境。CI、Docker 或 macOS / Linux shell 配置差异导致的安装加载问题，也有较完整的排障文档。
-- **适合谁用**：长期维护多个前端、Node.js 后端或全栈项目的开发者；需要在 macOS、Linux、WSL、Docker/CI 中稳定切换 Node 版本的工程团队。
-- **怎么上手**：安装：`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash`；安装 Node：`nvm install 24`
-- **可以用在哪些场景**：维护老项目时切回 Node 14/16，新项目使用 Node 20/22/24；在仓库中放置 `.nvmrc` 让团队统一 Node 版本；在 Dockerfile 或 CI Job 中安装指定 Node 版本并复现本地开发环境。
-- **技术看点**：核心实现是 Shell 脚本，不依赖复杂运行时，重点适配 bash、zsh、dash、ksh 等 POSIX shell。项目把 PATH、shell profile、镜像源、认证头、颜色输出等边界情况都纳入管理，属于“看似简单但兼容性很深”的基础设施工具。
-- **近期动向与发展方向**：最近 20 条提交集中在 bug 修复、shell 兼容性和安装鲁棒性上，例如修复 zsh 选项恢复、`hash -r` 兼容、alias 读取、stderr 关闭、镜像 URL 与认证头解析等问题。2026-08-18 发布 v0.40.7，7 月新增了并发安装同一版本的序列化处理和禁用源码 fallback 的环境变量，说明项目仍在围绕稳定性、CI/安装可靠性和边界场景继续演进。
-- **同类对比**：暂无明显同类对标；README 主要说明 nvm 自身在 POSIX shell、macOS、Linux、WSL、Docker、CI 等环境下的安装和使用方式，没有直接拿其他 Node 版本管理器做比较。
-- **注意事项**：项目创建于 2010 年、Star 接近 9.5 万，成熟度和社区覆盖面很高，但仍有 390 个 open issues，说明跨 shell、跨系统兼容问题长期存在。安装脚本会修改 shell 配置文件，macOS zsh、非交互式 Docker shell、WSL 等环境需要按文档处理 profile 加载；README 很详细，但新手第一次遇到 `nvm: command not found` 时仍可能需要排查 shell 配置。
+- **它是什么**：这是一个用 Python 写的多市场股票智能分析系统，覆盖 A 股、港股、美股、日股、韩股、台股和 ETF。它会聚合多源行情、实时新闻、公告和基本面信息，再交给 LLM 生成分析结论、评分、风险提示和买卖点位，并能通过 Web 工作台、定时任务和自动通知跑起来。
+- **能解决什么痛点**：一是把原本分散在行情站、新闻搜索、研报和聊天记录里的信息整理成一份固定格式的日报，避免人工每天来回切换页面。二是把“看盘、搜新闻、写总结、发群里”这类重复工作自动化，尤其适合需要长期盯多个市场和多只标的的场景。
+- **适合谁用**：做量化研究、投研辅助、私募/散户自建盯盘系统的人；以及需要在 Python 生态里接入行情源、新闻源和 LLM 的开发者。对想用 GitHub Actions、Docker 或本地定时任务做自动报告推送的人也比较合适。
+- **怎么上手**：README 给出的最小本地运行方式是先安装依赖再启动主程序：`git clone https://github.com/ZhuLinsen/daily_stock_analysis.git && cd daily_stock_analysis && pip install -r requirements.txt && python main.py`。
+- **可以用在哪些场景**：每天固定生成自选股晨报或收盘复盘，发到企业微信/飞书群里；把 A/H/美股的新闻、公告和行情合并后做跨市场对比分析；在 Web 工作台里人工发起一次分析，查看完整 Markdown 报告和历史记录。
+- **技术看点**：项目的核心不是单一策略，而是“数据源优先级 + LLM 分析 + 多渠道推送”的组合设计，支持免费行情源与 token 型数据源并存，也支持 OpenAI 兼容、DeepSeek、通义千问、Claude、Ollama 等多种模型后端。README 里还明确了 GitHub Actions、Docker、本地定时任务和 FastAPI/Web UI 这几条运行路径，部署弹性比较大。
+- **近期动向与发展方向**：最近 20 条提交里，主线非常清楚，集中在 v3.29.0 到 v3.30.0 的发布准备、分享图功能修复、移动端交互修复、前后端稳定性增强和 CI 加速。除了持续修 bug，还在补 `Responses API` 路由、会话级技能选择、Lark 国际域名、后台测试分片等能力，说明项目正沿着“更稳定的多端体验 + 更强的模型/通知编排 + 更成熟的测试与发布流程”推进，且贡献者不止一位，社区活跃度较高。
+- **同类对比**：README 里明确提到它聚焦“日常分析报告”，并与 `AlphaSift`、`AlphaEvo` 区分开来：前者更偏选股实现参考，后者偏策略回测与自我进化，而这个项目更像是面向日常使用的分析与推送工作台。
+- **注意事项**：项目功能面很宽，上手前要先准备 LLM Key、通知渠道和至少一条自选股配置，否则只能跑到一半。它的 Stars 和 Forks 很高，说明关注度和传播度都不错，但 Open Issues 也有 40 个，配合近期持续修复和重构迹象来看，仍处在高活跃维护期，接口、数据源和推送链路都可能随着版本迭代出现行为变化；免费数据源虽然可零成本运行，但 README 也明确说了稳定性不保证。
 
-- **GitHub**：[nvm-sh/nvm](https://github.com/nvm-sh/nvm)
+- **GitHub**：[ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Node.js 版本管理领域的代表性开源组织，核心项目拥有近十万 Star，社区认可度高。
-**技术栈偏好**：偏好以 Shell 构建轻量级开发工具，并辅以 JavaScript 支持 Node.js 生态配置与管理。
-**核心领域**：主要聚焦 Node.js 运行时版本管理、开发环境配置与相关开源生态维护。
+**技术影响力**：具备较高社区影响力，拥有一个高关注度开源项目及一定开发者关注基础。
+**技术栈偏好**：以 Python 为主，偏好数据分析、智能代理与自动化工具开发。
+**核心领域**：主要聚焦 LLM、AIGC、量化分析与机器人智能化。
 
 ---
 
-### ✨ pookjw/HermesEnabler (1622★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Enable Hermès Watch Faces on any Apple Watch devices
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[pookjw/HermesEnabler](https://github.com/pookjw/HermesEnabler)
-
-
----
-
-### ✨ we-promise/sure (14122★)
+### ✨ we-promise/sure (14483★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -101,11 +117,11 @@
 
 ---
 
-### ✨ QwenLM/qwen-code (29948★)
+### ✨ backnotprop/plannotator (10327★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：An open-source AI coding agent that lives in your terminal.
+- **它是什么**：The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click. 
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -115,16 +131,16 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)
+- **GitHub**：[backnotprop/plannotator](https://github.com/backnotprop/plannotator)
 
 
 ---
 
-### ✨ ashhart/TensorFold (1999★)
+### ✨ louislam/uptime-kuma (93702★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：LLM Inference Engine for Metal, CUDA and Vulkan.
+- **它是什么**：A fancy self-hosted monitoring tool
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -134,92 +150,102 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[ashhart/TensorFold](https://github.com/ashhart/TensorFold)
+- **GitHub**：[louislam/uptime-kuma](https://github.com/louislam/uptime-kuma)
 
 
 ---
 
-### ✨ nodejs/node (118419★)
+### ✨ block/buzz (34788★)
 
-> **一句话**：Node.js 让 JavaScript 脱离浏览器运行在服务器、命令行和本地系统上，是大量前端工具链与后端服务的运行底座。
+> **一句话**：Buzz 把团队聊天、代码协作和 AI Agent 放进同一个可自托管工作区，让人和 Agent 在共享频道里交流、提交补丁并留下可检索的审计记录。
 
-- **它是什么**：Node.js 是开源、跨平台的 JavaScript 运行时环境，开发者可以用 JavaScript 编写服务端程序、CLI 工具、构建脚本和网络应用。项目采用开放治理模式，由 OpenJS Foundation 提供支持，并维护 Current、LTS、Nightly 等不同发布线。
-
-- **能解决什么痛点**：它解决了前端团队在浏览器之外复用 JavaScript 语言和生态的问题，例如用同一套语言编写 Web 服务、构建工具和自动化脚本。对需要长期稳定运行的生产系统，LTS 发布线提供了明确的维护周期、安全更新和版本边界。
-
-- **适合谁用**：适合构建 Web API、实时服务、SSR 应用和内部工具的 JavaScript/TypeScript 开发者。也适合维护前端工程化链路的工程师，例如使用 npm、Vite、Webpack、ESLint、Playwright 等工具链的团队。
-
-- **怎么上手**：README 未提供快速上手代码示例；安装入口为：https://nodejs.org/en/download/
-
-- **可以用在哪些场景**：用于搭建 REST API、GraphQL 服务或 WebSocket 实时通信服务。用于运行前端构建、测试、Lint、代码生成等工程化脚本。用于开发跨平台命令行工具，例如内部发布工具、日志处理脚本或开发环境检查工具。
-
-- **技术看点**：Node.js 的核心价值在于把 JavaScript 运行时、模块系统、网络 I/O、文件系统、加密、流处理等能力整合成稳定的平台，并通过语义化版本和 LTS 策略管理兼容性。README 明确强调发布签名、校验和、Release Team 签署流程，说明项目对供应链安全和二进制分发可信度有较高要求。
-
-- **近期动向与发展方向**：最近提交非常活跃，7 月 24-26 日连续合入了 stream、sqlite、loader、buffer、crypto、debugger、test_runner 等模块的修复和改进，重点集中在崩溃修复、边界校验、错误处理和平台兼容性。也有新能力推进，例如 REPL 基础语法高亮、ModuleHooks 支持 `Symbol.dispose`、Windows TCP handle transfer、`net.BoundSocket` 支持 AF_UNIX 路径，说明项目仍在稳定性修补和运行时能力扩展之间并行推进。
-
-- **同类对比**：暂无明显同类对标。README 没有直接比较 Deno、Bun 或其他 JavaScript 运行时。
-
-- **注意事项**：这是成熟度很高但规模也很大的基础设施项目，已有 4405 位贡献者、2245 个 open issues，说明生态活跃，同时问题管理和变更跟踪成本不低。Node.js 每 6 个月发布一个新的 major 版本，Current 线可能包含破坏性变更；生产环境通常应优先选择 LTS。README 的安装、发布、治理和安全信息清晰，但具体 API 使用需要跳转到官网文档。
-
-- **GitHub**：[nodejs/node](https://github.com/nodejs/node)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Node.js 是全球 JavaScript 运行时生态的核心组织，拥有极高社区关注度和基础设施级影响力。
-**技术栈偏好**：技术栈以 JavaScript 为核心，同时覆盖 Python 原生构建工具链与 Docker 容器化分发。
-**核心领域**：主要聚焦服务端 JavaScript 运行时、包构建工具链、HTTP 客户端与运行环境交付生态。
-
----
-
-### ✨ addyosmani/agent-skills (100692★)
-
-> **一句话**：把从需求澄清、写规格、拆任务、编码、测试、审查到上线的工程流程，整理成 AI 编程代理可以直接执行的 25 组技能和 9 个斜杠命令。
-
-- **它是什么**：这是一个面向 AI 编程代理的工程技能包，包含 `spec`、`plan`、`build`、`test`、`review`、`ship` 等生命周期命令，以及前端、API 设计、性能优化、测试驱动开发等具体技能。技能以 Markdown 工作流、检查清单和验证门槛的形式组织，可通过 `skills` CLI 或各类代理的原生插件机制接入 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 等工具。
-- **能解决什么痛点**：AI 代理经常直接开始写代码，遗漏需求澄清、任务拆分、测试和代码审查；该项目把这些步骤固化成可复用的工作流。不同代理的安装方式和指令格式不一致，也会导致团队难以统一实践；项目提供跨 70 多种代理的安装入口和对应配置文档。
-- **适合谁用**：希望在 Claude Code、Codex、Cursor 等 AI 编程工具中统一研发流程的个人开发者和工程团队。尤其适合需要强制执行规格说明、测试驱动开发、代码审查和上线检查的中大型项目。
-- **怎么上手**：执行 `npx skills add addyosmani/agent-skills` 安装全部技能，再按需使用 `/spec`、`/plan`、`/build` 或 `/test` 等命令。
+- **它是什么**：Buzz 是基于 Nostr relay 的协作平台，消息、评论、工作流步骤和 Git 事件都以签名事件写入同一事件日志。团队可以在频道中讨论和搜索，也可以让拥有独立身份与频道权限的 Agent 参与代码评审、运行工作流、编辑画布或协助处理问题；项目提供桌面端、命令行工具和自托管 relay。
+- **能解决什么痛点**：代码讨论、CI 结果、补丁和审批分散在聊天软件、代码托管平台及自动化工具里，事后难以还原决策过程；Agent 往往只能通过单独的机器人接口参与，权限边界和操作记录不够清晰。Buzz 试图把这些活动收拢到同一频道和事件记录中。
+- **适合谁用**：希望自行托管协作平台、并让 AI Agent 参与日常开发流程的工程团队；需要以命令行或 ACP harness 接入 Goose、Codex、Claude Code 等 Agent 的开发者。
+- **怎么上手**：安装 Docker 和 Hermit 后执行：`git clone https://github.com/block/buzz.git && cd buzz && . ./bin/activate-hermit && just setup && just build`；之后运行 `just dev` 启动 relay 和桌面端。
 - **可以用在哪些场景**：
-  - 新建一个 Web 或 API 项目时，先用 `/spec` 形成 PRD，再用 `/plan` 拆成可独立验证的任务。
-  - 在已有业务系统中让 AI 修改支付、认证或数据库代码时，通过测试、约束和审查技能减少回归风险。
-  - 团队使用不同 AI 客户端协作时，将相同的编码规范、性能检查和发布流程同步到 Claude Code、Cursor、Codex 等环境。
-- **技术看点**：核心技能采用普通 Markdown 和 `SKILL.md` 文件组织，降低了跨代理移植成本，并通过描述触发相关技能的自动发现机制减少手动选择。项目同时提供仓库级插件、单技能安装和多客户端原生集成，但单独安装技能时不会自动带上仓库级 `references/` 目录，存在已记录的可移植性限制。
-- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 10 月 2日至 3 日，包含 `0.6.12` 插件清单发布、Dojo Workspace 和 Oh My Pi 安装文档，以及 Prisma 回滚示例、异常抛出、规格流程、性能优化内容和锚点校验等修复，说明项目当前仍处于高频维护和兼容性扩展阶段。近期既有 Addy Osmani 的发布与合并，也有 Val Neekman、Joan Leon、Jakub Synowiec、Andre Brait 等贡献者参与；结合 87 位贡献者、10582 个 Fork 和 112 个开放 Issue，项目的重点正从基础技能建设转向多代理适配、文档完善和工作流可靠性。
-- **同类对比**：暂无 README 明确列出的同类竞品。它的明显特点不是提供模型或 IDE，而是把资深工程师的研发阶段、质量门槛和反合理化检查整理为可安装的代理工作流，并覆盖多个 AI 编程客户端。
-- **注意事项**：项目创建于 2026 年 2 月 15 日，但截至 2026 年 10 月 3 日已达到 100692 Stars，增长和迭代速度都很快，生态兼容性仍需关注。README 内容较完整，但不同代理的安装入口、命令格式和版本要求并不统一，例如 Codex 原生插件要求 CLI v0.122 以上；单独安装技能还可能缺少共享引用文件。112 个开放 Issue 反映出项目仍在持续处理兼容性和文档边界问题，升级插件或切换代理版本前应在团队工作流中验证命令、技能发现和引用路径是否正常。
+  - 为团队自托管一个协作工作区，让开发讨论、补丁、CI 结果和评审审批集中在项目频道。
+  - 将 Bug 排查交给有独立密钥和频道权限的 Agent，并把检索到的历史讨论与处理过程留在频道中。
+  - 通过 YAML 工作流响应消息、表情反应、定时任务或 webhook，自动发布通知或启动协作流程。
+- **技术看点**：Rust workspace 将 relay、数据库、认证等能力拆分为多个 crate，客户端通过 WebSocket 与 REST 接入。以 Nostr 签名事件作为统一数据模型，并结合 PostgreSQL 全文搜索、Redis 发布订阅及 S3/MinIO 对象存储，减少聊天、工作流和 Git 活动之间的数据割裂。
+- **近期动向与发展方向**：最近 20 条提交覆盖 9 月 24 日至 26 日，开发持续活跃。近期既在扩展 relay 管理控制台、可配置 HTTP(S) 推送地址和 HTTP 入口认证，也在修复移动端状态同步、管理操作并发及 CI 问题；同时持续补充协议与数据回填文档，显示项目正推进服务端能力、客户端可靠性和协议边界的完善。仅凭这些提交记录，无法判断是否存在重大重构。
+- **同类对比**：README 未点名明确竞品；项目主张用统一事件日志和身份模型连接团队协作、代码活动与 Agent，暂无明确同类对标。
+- **注意事项**：自托管路径需要 Docker，并涉及 relay、PostgreSQL、Redis 和对象存储等组件，开发环境搭建不算轻量。项目创建于 2026-03-06，最近更新时间为 2026-09-26；当前有 3660 个开放 Issue，说明仍需关注未解决问题和功能稳定性。README 将移动端及部分工作流能力列为仍在接入，Windows 构建也未签名；协议和管理能力仍在演进，生产部署前宜核对对应版本文档与发布说明。
+- **GitHub**：[block/buzz](https://github.com/block/buzz)
 
-- **GitHub**：[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)### ✨ addyosmani/agent-skills (100692★)
+#### 开发者 / 组织速览
 
-> **一句话**：把从需求澄清、写规格、拆任务、编码、测试、审查到上线的工程流程，整理成 AI 编程代理可以直接执行的 25 组技能和 9 个斜杠命令。
+**技术影响力**：Block 旗下高活跃度开源组织，凭借 `buzz` 等代表项目在开发者工具与工程社区具备较强影响力
+**技术栈偏好**：偏好 Kotlin、Rust 与 TypeScript，覆盖类型安全后端、基础设施及现代开发工具链
+**核心领域**：主要聚焦支付与金融科技基础设施、开发者工具及企业级工程效率平台
 
-- **它是什么**：这是一个面向 AI 编程代理的工程技能包，包含 `spec`、`plan`、`build`、`test`、`review`、`ship` 等生命周期命令，以及前端、API 设计、性能优化、测试驱动开发等具体技能。技能以 Markdown 工作流、检查清单和验证门槛的形式组织，可通过 `skills` CLI 或各类代理的原生插件机制接入 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 等工具。
-- **能解决什么痛点**：AI 代理经常直接开始写代码，遗漏需求澄清、任务拆分、测试和代码审查；该项目把这些步骤固化成可复用的工作流。不同代理的安装方式和指令格式不一致，也会导致团队难以统一实践；项目提供跨 70 多种代理的安装入口和对应配置文档。
-- **适合谁用**：希望在 Claude Code、Codex、Cursor 等 AI 编程工具中统一研发流程的个人开发者和工程团队。尤其适合需要强制执行规格说明、测试驱动开发、代码审查和上线检查的中大型项目。
-- **怎么上手**：执行 `npx skills add addyosmani/agent-skills` 安装全部技能，再按需使用 `/spec`、`/plan`、`/build` 或 `/test` 等命令。
+---
+
+### ✨ tradermonty/claude-trading-skills (3973★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills)
+
+
+---
+
+### ✨ tailscale/tailcat (2556★)
+
+> **一句话**：在两台没有加入同一 Tailscale 网络、也不需要开放入站端口的机器之间，用一个短连接令牌建立端到端加密通道，像执行 `netcat` 一样传输数据、转发端口或连接 SSH。
+
+- **它是什么**：Tailcat 将 Tailscale 的 `magicsock`、WireGuard 加密隧道和 DERP 中继能力组合成独立 CLI 与 Go 库，但不依赖 Tailscale 控制平面或账号。服务端启动后生成连接令牌，客户端凭令牌连接；连接会优先尝试 NAT 穿透建立直连，失败时通过 DERP 中继转发。它支持标准输入输出转发、TCP 端口暴露、SOCKS5、SSH、退出节点以及浏览器 WebAssembly 演示。
+
+- **能解决什么痛点**：临时让外部机器访问内网服务时，不必配置公网 IP、端口转发、防火墙入站规则或 Tailscale 账号。需要长期暴露 SSH 或内部端口时，可以将固定令牌发布到 DNS TXT，并通过 `--allow` 限制客户端公钥，避免直接把服务暴露在公网端口上。
+
+- **适合谁用**：需要临时跨网络调试、传输数据或访问内网端口的开发者和运维人员。希望在自己的 Go 程序中嵌入点对点加密连接，或自行部署 DERP 中继以掌控网络路径和限流策略的团队。
+
+- **怎么上手**：安装并启动服务端，再把输出的令牌交给客户端：
+
+  客户端使用令牌传输数据：
+
+  也可以直接转发本地端口：
+  `tailcat --serve=8080`，客户端执行 `tailcat  8080`。
+
 - **可以用在哪些场景**：
-  - 新建一个 Web 或 API 项目时，先用 `/spec` 形成 PRD，再用 `/plan` 拆成可独立验证的任务。
-  - 在已有业务系统中让 AI 修改支付、认证或数据库代码时，通过测试、约束和审查技能减少回归风险。
-  - 团队使用不同 AI 客户端协作时，将相同的编码规范、性能检查和发布流程同步到 Claude Code、Cursor、Codex 等环境。
-- **技术看点**：核心技能采用普通 Markdown 和 `SKILL.md` 文件组织，降低了跨代理移植成本，并通过描述触发相关技能的自动发现机制减少手动选择。项目同时提供仓库级插件、单技能安装和多客户端原生集成，但单独安装技能时不会自动带上仓库级 `references/` 目录，存在已记录的可移植性限制。
-- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 10 月 2日至 3 日，包含 `0.6.12` 插件清单发布、Dojo Workspace 和 Oh My Pi 安装文档，以及 Prisma 回滚示例、异常抛出、规格流程、性能优化内容和锚点校验等修复，说明项目当前仍处于高频维护和兼容性扩展阶段。近期既有 Addy Osmani 的发布与合并，也有 Val Neekman、Joan Leon、Jakub Synowiec、Andre Brait 等贡献者参与；结合 87 位贡献者、10582 个 Fork 和 112 个开放 Issue，项目的重点正从基础技能建设转向多代理适配、文档完善和工作流可靠性。
-- **同类对比**：暂无 README 明确列出的同类竞品。它的明显特点不是提供模型或 IDE，而是把资深工程师的研发阶段、质量门槛和反合理化检查整理为可安装的代理工作流，并覆盖多个 AI 编程客户端。
-- **注意事项**：项目创建于 2026 年 2 月 15 日，但截至 2026 年 10 月 3 日已达到 100692 Stars，增长和迭代速度都很快，生态兼容性仍需关注。README 内容较完整，但不同代理的安装入口、命令格式和版本要求并不统一，例如 Codex 原生插件要求 CLI v0.122 以上；单独安装技能还可能缺少共享引用文件。112 个开放 Issue 反映出项目仍在持续处理兼容性和文档边界问题，升级插件或切换代理版本前应在团队工作流中验证命令、技能发现和引用路径是否正常。
+  - 临时把开发机上的 HTTP 服务或调试端口暴露给异地同事，而不改路由表、不申请 VPN 账号。
+  - 在没有公网入站端口的服务器上运行 `tailcat --serve=22`，通过 `tailcat ssh ` 进行临时 SSH 运维。
+  - 为内部工具增加点对点文件或文本传输能力，或通过 SOCKS5 让客户端访问服务端所在网络中的其他地址。
+  - 对网络基础设施有合规要求的团队，可运行自有 DERP 中继，避免依赖 Tailscale 默认中继地图和公共中继。
 
-- **GitHub**：[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
+- **技术看点**：项目复用了 Tailscale 的用户态 WireGuard 数据面和 DERP NAT 穿透机制，将连接元数据改为通过令牌带外交换，因此无需控制平面参与。令牌既可只包含 DERP 区域 ID，也可嵌入完整中继信息；近期还加入了磁盘缓存与 ETag 重新验证、Nix flake、Go 库示例和可复用的 Web 演示。
+
+- **近期动向与发展方向**：2026 年 8 月 26 至 28 日提交非常密集，重点从基础可用性扩展到产品化和部署便利性，包括 DERP map 缓存、固定区域密钥、自建 DERP 文档、Nix 安装方式、零值 `Client`/`Server` 可用性，以及 GitHub Pages 浏览器演示。浏览器端目前明确采用 DERP-only 传输，后续方向包括通过 WebRTC 支持直连；提交主要由 Tailscale 核心维护者推动，同时项目已有 331 位贡献者，当前公开 Issue 数量为 9。
+
+- **同类对比**：README 明确将 Tailcat 定位为“通过 Tailscale 数据面的 netcat”。与传统 `netcat` 依赖可达 IP 和开放端口不同，Tailcat 内置 WireGuard 端到端加密、DERP 中继和 NAT 穿透；与完整 Tailscale 网络方案相比，它不需要账号、控制平面、管理员权限或修改系统路由，代价是连接地址和授权管理需要由使用者自行传递或发布。
+
+- **注意事项**：项目创建于 2024 年 10 月，近期开发活跃，但仍带有实验性特征，尤其是浏览器 WebAssembly 演示暂时只能通过 DERP 中继通信。默认使用公共且有速率限制的 DERP relay；生产环境应评估可用性、隐私和流量成本，并考虑自建 DERP。固定密钥生成的令牌在后续重启中仍然有效，曾经拿到令牌的用户可能持续连接，需结合 `--allow` 和密钥生命周期管理。DNS TXT 发布令牌也会扩大可发现范围；README 还指出 DERP map 变化后的客户端健壮性仍有待改进。项目 API 和 CLI 仍在快速演进，集成 Go 库时应关注版本变更。
+
+- **GitHub**：[tailscale/tailcat](https://github.com/tailscale/tailcat)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：资深 Google 技术领导者与开源作者，在 JavaScript 生态及开发者社区拥有广泛影响力。
-**技术栈偏好**：以 JavaScript 为核心，兼顾 HTML，并关注现代前端工具、设计模式与 AI Agent 技能。
-**核心领域**：主要聚焦前端工程、JavaScript 生态、Web 性能优化与开发者工具。
+**技术影响力**：专注安全网络基础设施，在开发者社区具有较高知名度和持续影响力。
+**技术栈偏好**：以 Go 为核心，辅以 Kotlin 与 Rust，偏好构建跨平台、高性能、可靠的网络软件。
+**核心领域**：聚焦基于 WireGuard 的零信任网络、私有组网及团队安全连接。
 
 ---
 
-### ✨ meta/astryx (26822★)
+### ✨ Likely7/Veyra-NRVideo (1488★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：An open source design system that's fully customizable and agent ready
+- **它是什么**：Bring PS5 GTA6 to 120FPS with DLSS 5. An advanced Windows video player and capture enhancement tool featuring real-time preview for videos, images, and capture card sources. Combine AI-powered Super Resolution, DLSS5 image enhancement, and Frame Generation to deliver a next-generation visual experience.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -229,80 +255,32 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[meta/astryx](https://github.com/meta/astryx)
+- **GitHub**：[Likely7/Veyra-NRVideo](https://github.com/Likely7/Veyra-NRVideo)
 
 
 ---
 
-### ✨ CopilotKit/OpenBot (11792★)
+### ✨ ChromeDevTools/chrome-devtools-mcp (49940★)
 
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+> **一句话**：让 Claude、Cursor、Copilot 等编码代理直接连接并操作真实 Chrome 浏览器，同时调用 DevTools 完成页面调试、性能分析和自动化测试。
 
-- **它是什么**：Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+- **它是什么**：这是一个基于 Model Context Protocol（MCP）的 Chrome DevTools 服务端，编码代理可以通过它检查页面结构、网络请求、控制台消息并执行浏览器操作。项目底层结合 Chrome DevTools 和 Puppeteer，支持录制性能 Trace、分析性能瓶颈、截图以及等待操作结果；同时也提供不依赖 MCP 客户端的 CLI。
+- **能解决什么痛点**：编码代理无法直接观察真实浏览器中的控制台报错、网络失败和页面渲染结果时，它可以提供这些运行时信息，减少开发者在代理与浏览器开发者工具之间反复切换。对于性能问题，还能将实验室 Trace 分析与 CrUX 真实用户数据结合，避免只凭静态代码猜测页面瓶颈。
+- **适合谁用**：使用 Claude Code、Cursor、Copilot、Codex 等 AI 编码代理进行前端开发和调试的开发者。需要自动化回归、页面性能诊断或浏览器端问题排查的前端工程师和测试工程师也适合使用。
+- **怎么上手**：确保已安装 Node.js LTS、npm 和当前稳定版 Chrome，然后在 MCP 客户端配置中使用 `npx -y chrome-devtools-mcp@latest` 启动服务；例如 Claude Code 可执行 `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`。
+- **可以用在哪些场景**：
+  - 让 AI 代理打开本地前端项目，读取控制台异常、检查网络请求并定位源码映射后的报错位置。
+  - 对电商详情页、后台列表等真实页面录制 Trace，分析加载性能并结合 CrUX 数据评估用户体验。
+  - 在发布前自动执行页面点击、表单填写、截图和结果校验，用于浏览器端回归测试和问题复现。
+- **技术看点**：项目以 MCP 作为代理与浏览器之间的标准通信层，以 Puppeteer 负责可靠的浏览器动作执行，以 Chrome DevTools 能力提供网络、控制台、截图和性能 Trace 分析。支持完整模式与 `--slim` 模式，并通过 page ID 路由页面级工具，体现出对多页面控制和工具数量管理的针对性设计。
+- **近期动向与发展方向**：最近提交非常密集，20 条记录覆盖 2026 年 8 月 18 日至 28 日，当前主要在持续修复边界问题、同步 DevTools 依赖并完善 CLI 行为，而非进行大规模重构。近期重点包括将默认 Trace 缓冲区调整为 1.2GB、改进 HiDPI 截图和 Puppeteer 符号链接处理、强化 page ID 要求、调整启动参数与路径权限，并发布 1.8.0；同时还更新了安全文档、遥测匹配和测试，说明项目正处于快速迭代和稳定性加固阶段。118 位贡献者和 94 个开放 Issue 表明社区参与度较高，但也意味着版本行为仍可能快速变化。
+- **同类对比**：README 未明确列出竞品。与只提供通用浏览器自动化能力的方案相比，该项目的定位更偏向编码代理使用 Chrome DevTools 进行运行时调试和性能诊断，同时保留 Puppeteer 自动化能力。
+- **注意事项**：项目创建时间较新，但已达到 49,940 Stars，且近期更新频繁，成熟度和影响力增长很快，配置参数和页面级工具行为仍可能随版本调整。服务端会将浏览器内容暴露给 MCP 客户端，浏览器中的敏感数据可能被代理读取或修改；使用时应避免连接包含个人信息、登录凭据或生产数据的浏览器。使用统计默认开启，可通过 `--no-usage-statistics` 关闭；性能工具还可能向 Google CrUX API 发送 Trace URL。官方仅保证 Google Chrome 和 Chrome for Testing，其他 Chromium 浏览器不保证兼容，CLI 的 `--allow-unrestricted-paths` 等路径权限设置也应结合运行环境谨慎使用。
 
-- **GitHub**：[CopilotKit/OpenBot](https://github.com/CopilotKit/OpenBot)
-
-
----
-
-### ✨ Alishahryar1/free-claude-code (47739★)
-
-> **一句话**：它把 Claude Code、Codex、OpenCode 等一堆编程代理统一接到同一套本地代理和管理界面里，让你在终端、桌面、IDE 甚至手机上，直接切换可用模型和提供商继续写代码。
-
-- **它是什么**：这是一个用 Python 写的开源项目，核心目标是把多个大模型提供商和多个 coding agent 统一到 Free Claude Code（FCC）这层中间件里。它提供安装器、桌面/服务端启动器和 Admin UI，用户可以在里面配置 API key、选择模型、设置回退模型，然后把 Claude Code、Codex、Pi、OpenCode、Cline、Hermes、DeepSeek Harness、Grok Build、Muse Code 等客户端接到同一套后端。
-- **能解决什么痛点**：一是不同工具各自绑定不同模型和账号，切换时要重复配置，FCC 把这些入口收拢到一个地方；二是某个提供商限流、宕机或不可用时，项目会自动尝试下一个配置好的模型，减少中断后的手工重启和反复改配置。
-- **适合谁用**：经常在 Claude Code、Codex、OpenCode 之间切换的全栈开发者；需要同时管理多家模型供应商、又想保留本地终端工作流的工程师；以及希望在 VS Code、JetBrains、桌面端或手机上统一调用 coding agent 的个人开发者和小团队。
-- **怎么上手**：README 给出的最小安装方式是 `curl -fsSL "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.sh" | sh`，安装后 Linux 直接运行 `fcc-server`，再按需要启动对应客户端，例如 `fcc-claude` 或 `fcc-codex`。
-- **可以用在哪些场景**：在公司内同时使用多个模型供应商时，集中管理 API key 和模型白名单；当主供应商偶发故障时，自动切到备用模型继续完成一次长对话或代码生成；在终端、桌面和远程协作工具之间共享同一套代理配置，减少重复登录和复制粘贴。
-- **技术看点**：项目不只是“包一层接口”，而是把 provider、客户端、流式响应、回退策略、安装器和 Admin UI 都做成完整链路；从最近提交看，它在持续打磨流式生命周期、提供商执行与 transport 清理，说明核心关注点是稳定性和多供应商路由的一致性。
-- **近期动向与发展方向**：最近 20 条提交非常活跃，重点集中在修复和重构底层执行链路，比如流式恢复、attempt 生命周期、transport cleanup、日志抑制、安装器校验、自动模式请求控制等，同时新增了 Muse Code、DeepSeek 视觉附件转发、Poolside 支持和更多模型/提供商适配。整体看，项目正从“能连很多模型”走向“更稳地接入更多客户端和更复杂的能力”。
-- **同类对比**：README 明确提到它常被拿来和 Claude Code、Codex、OpenCode、Cline 等客户端配合使用，但没有给出正式竞品对照表；就定位看，它更像是多模型路由层和统一管理入口，而不是单一 coding agent 本身。
-- **注意事项**：项目当前 issue 数量较多（344），说明使用面广，但也意味着边界情况和兼容性问题仍在持续修；仓库更新非常频繁，功能迭代快，配置项和启动器行为可能有变化，升级前最好先看安装脚本和最近提交。README 信息很全，但涉及 provider、模型名和支持范围的内容较多，上手时仍需要按 Admin UI 逐项验证。
-
-- **GitHub**：[Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)
+- **GitHub**：[ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：以高关注度开源项目为代表，在 AI 开发者工具社区具备较强影响力。
-**技术栈偏好**：主要使用 Python 和 Go，偏好 AI 工具、机器学习及云原生基础设施开发。
-**核心领域**：聚焦 AI 编程工具、机器学习工程与 GPU 运维平台。
-
----
-
-### ✨ ggml-org/llama.cpp (115684★)
-
-> **一句话**：llama.cpp 让大语言模型以 GGUF 等本地模型文件的形式，直接在 C/C++ 程序、命令行或 OpenAI 兼容服务里运行，并尽量榨干 CPU、GPU 和移动芯片的推理性能。
-
-- **它是什么**：llama.cpp 是一个用 C/C++ 实现的大语言模型推理项目，目标是在本地和云端用尽量少的依赖运行 LLM。它支持命令行推理、OpenAI 兼容 API 服务、Docker、预编译二进制包，也能直接从 Hugging Face 下载 GGUF 模型运行。项目覆盖大量文本模型和多模态模型，并围绕 ggml 生态持续扩展算子、量化格式和硬件后端。
-
-- **能解决什么痛点**：开发者想在本机、边缘设备或私有服务器上跑 LLM 时，经常会遇到 Python 依赖重、部署链路复杂、显存不够的问题；llama.cpp 提供低依赖的 C/C++ 推理路径，并支持多种低比特量化来降低内存占用。另一个痛点是硬件差异大：Apple Silicon、x86、NVIDIA、AMD、Vulkan、SYCL、WebGPU 等环境各有坑，llama.cpp 把这些后端能力集中到同一个推理框架里。
-
-- **适合谁用**：适合需要把 LLM 嵌入桌面应用、CLI、边缘设备或私有后端服务的 C/C++、系统和后端开发者。也适合做本地 AI 助手、离线推理、模型量化验证、多硬件性能测试的 AI 工程师和独立开发者。
-
-- **怎么上手**：最小运行方式可以直接用 Hugging Face 模型启动命令行或服务：`llama-cli -hf ggml-org/gemma-3-1b-it-GGUF`；如果要启动 OpenAI 兼容 API 服务，可用：`llama-server -hf ggml-org/gemma-3-1b-it-GGUF`。
-
-- **可以用在哪些场景**：可以用来在公司内网部署私有 LLM API，避免把提示词和业务数据发到外部服务。也可以嵌入桌面端或开发者工具，实现本地代码补全、FIM 补全和离线问答。还适合在消费级 GPU、Apple Silicon、CPU-only 机器或浏览器 WebGPU 环境中测试不同量化模型的推理性能。
-
-- **技术看点**：项目核心是低依赖 C/C++ 推理栈，配合 ggml 张量计算库和 GGUF 模型格式，支持 1.5-bit 到 8-bit 等多种整数量化。硬件后端覆盖面很广，包括 ARM NEON、Accelerate、Metal、AVX/AVX512/AMX、CUDA、HIP、Vulkan、SYCL、MUSA、RISC-V，以及正在活跃推进的 WebGPU。
-
-- **近期动向与发展方向**：最近 20 条提交显示项目仍处于高频维护状态，单日内有大量来自不同贡献者的合并。近期重点集中在 WebGPU 后端性能和算子完善、CUDA/Vulkan/HIP/Metal/SYCL 等后端修复与适配、Gemma 4 助手支持、视频输入和多模态能力、Docker 镜像完善，以及服务端和 CLI 的细节修复。整体看，项目不只是修 bug，而是在继续扩大模型类型、输入模态和硬件覆盖范围。
-
-- **同类对比**：README 没有明确列出直接竞品。相较于常见 Python 推理框架，llama.cpp 的差异主要在于低依赖 C/C++ 实现、本地部署友好、量化格式成熟，以及对消费级和异构硬件的广泛适配。
-
-- **注意事项**：项目非常成熟且社区活跃，已有 11.5 万以上 Star、1700 多名贡献者，但同时 open issues 超过 1700，说明使用场景复杂、边界问题不少。README 明确列出 `libllama` API 和 `llama-server` REST API 的近期变更日志，集成到生产系统前需要关注 API 变更风险。文档和生态材料较丰富，但硬件后端、量化格式、模型转换和服务部署涉及较多概念，新手上手可能需要先理解 GGUF、模型下载、量化和构建选项。
-
-- **GitHub**：[ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：ggml 是边缘端 AI 推理生态的核心开源组织，凭借 llama.cpp、whisper.cpp 等高星项目在本地大模型社区具有极高影响力。
-**技术栈偏好**：技术栈明显偏向 C/C++ 高性能底层实现，并辅以 Vim Script、TypeScript 构建开发者工具与编辑器集成。
-**核心领域**：主要聚焦本地化、轻量化、跨平台的 AI 模型推理，尤其是大语言模型与语音模型在边缘设备上的运行。
+**技术影响力**：Chrome 开发者工具生态中的高影响力组织，围绕浏览器调试、协议与工具链建设，对前端和浏览器开发社区有明显带动作用。
+**技术栈偏好**：以 TypeScript 为主、JavaScript 为辅，技术方向集中在浏览器开发工具、调试协议和开发者自动化集成。
+**核心领域**：主要聚焦 Chrome DevTools 相关的前端调试、协议规范与开发者工具基础设施。
