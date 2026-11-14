@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ backnotprop/plannotator (10754★)
+### ✨ backnotprop/plannotator (10999★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -20,7 +20,7 @@
 
 ---
 
-### ✨ GoogleChrome/modern-web-guidance-src (5498★)
+### ✨ GoogleChrome/modern-web-guidance-src (5827★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -39,7 +39,7 @@
 
 ---
 
-### ✨ tradermonty/claude-trading-skills (4500★)
+### ✨ tradermonty/claude-trading-skills (4699★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -120,7 +120,7 @@
 
 ---
 
-### ✨ QwenLM/qwen-code (30176★)
+### ✨ QwenLM/qwen-code (30278★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -171,7 +171,7 @@
 
 ---
 
-### ✨ ag-ui-protocol/ag-ui (17210★)
+### ✨ ag-ui-protocol/ag-ui (17298★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -190,7 +190,7 @@
 
 ---
 
-### ✨ ashhart/TensorFold (2096★)
+### ✨ ashhart/TensorFold (2138★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -233,7 +233,7 @@
 
 ---
 
-### ✨ louislam/uptime-kuma (94089★)
+### ✨ louislam/uptime-kuma (94180★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -252,7 +252,7 @@
 
 ---
 
-### ✨ we-promise/sure (15077★)
+### ✨ we-promise/sure (15218★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -271,7 +271,7 @@
 
 ---
 
-### ✨ Tencent/LoopForge (728★)
+### ✨ Tencent/LoopForge (843★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -290,7 +290,7 @@
 
 ---
 
-### ✨ Likely7/Veyra-NRVideo (1890★)
+### ✨ Likely7/Veyra-NRVideo (2111★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -309,7 +309,7 @@
 
 ---
 
-### ✨ martin-olivier/airgorah (5540★)
+### ✨ martin-olivier/airgorah (5745★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
