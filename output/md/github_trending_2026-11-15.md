@@ -33,7 +33,7 @@
 
 ---
 
-### ✨ ag-ui-protocol/ag-ui (17626★)
+### ✨ ag-ui-protocol/ag-ui (17772★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -76,7 +76,7 @@
 
 ---
 
-### ✨ backnotprop/plannotator (11648★)
+### ✨ backnotprop/plannotator (11761★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -157,7 +157,7 @@
 
 ---
 
-### ✨ Tencent/LoopForge (1261★)
+### ✨ Tencent/LoopForge (1398★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -176,7 +176,7 @@
 
 ---
 
-### ✨ ggml-org/ggml (15817★)
+### ✨ ggml-org/ggml (15877★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -195,7 +195,7 @@
 
 ---
 
-### ✨ elementalsouls/Claude-BugHunter (6002★)
+### ✨ elementalsouls/Claude-BugHunter (6277★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -214,7 +214,7 @@
 
 ---
 
-### ✨ GoogleChrome/modern-web-guidance-src (6809★)
+### ✨ GoogleChrome/modern-web-guidance-src (7023★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -233,7 +233,7 @@
 
 ---
 
-### ✨ tradermonty/claude-trading-skills (5257★)
+### ✨ tradermonty/claude-trading-skills (5429★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -252,7 +252,7 @@
 
 ---
 
-### ✨ NVIDIA/SkillEvaluator (1384★)
+### ✨ NVIDIA/SkillEvaluator (1572★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
