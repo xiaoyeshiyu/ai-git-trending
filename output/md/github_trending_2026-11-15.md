@@ -1,7 +1,82 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ backnotprop/plannotator (11295★)
+### ✨ dream-num/univer (14980★)
+
+> **一句话**：Univer 把表格、文档、演示文稿、画布、关系表和 PDF 能力放进同一个可嵌入运行时，让 SaaS 或 AI Agent 可以直接创建、编辑和处理 Office 内容。
+
+- **它是什么**：Univer 是基于 TypeScript 的开源 Office SDK，不提供固定的在线办公产品，而是提供可嵌入应用的表格、文档和演示文稿编辑能力。它通过插件架构、Canvas 渲染、公式引擎和统一 Facade API，支持在浏览器中交互编辑，也支持在 Node.js 中进行无界面处理。
+
+- **能解决什么痛点**：开发者无需从零实现单元格编辑、公式计算、格式刷、粘贴特殊处理、绘图对象和文档布局等复杂 Office 功能。对于 AI 应用，还可以让 Agent 通过结构化 API 修改文件，并结合内容检查、截图和布局诊断验证生成结果。
+
+- **适合谁用**：需要在 SaaS、BI 平台、内部系统中嵌入表格或文档编辑器的前端团队；需要让 AI Agent 在服务端创建、读取、修改和交付 Office 文件的应用开发者。
+
+- **怎么上手**：使用预设模式安装 Sheets 核心能力：`pnpm add @univerjs/presets @univerjs/preset-sheets-core`，然后通过 `createUniver` 和 `UniverSheetsCorePreset` 创建工作簿。
+
+- **可以用在哪些场景**：在企业 SaaS 中嵌入可编辑的预算表、报价单或运营报表；为 AI Agent 提供生成并修改 Excel、文档和演示内容的工作区；在 Node.js 服务中批量处理工作簿、执行公式计算并生成供人工审核的文档草稿。
+
+- **技术看点**：项目采用插件优先架构，功能可以按需组合、替换或懒加载，并提供 Preset Mode 和 Plugin Mode 两种集成方式。浏览器与 Node.js 共用同一套核心架构和 Facade API，适合同时覆盖交互式编辑与服务端自动化。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 20 日至 22 日，项目保持高频维护，且新增功能与缺陷修复并行推进。近期重点包括文档格式刷和粘贴特殊、表格切片器与背景图片、绘图和嵌入对象处理、运行时菜单配置，以及布局和剪贴板兼容性；提交者既有 Univer 官方账号，也有多名社区贡献者，显示项目正持续完善 Office 细节和 AI/嵌入式工作流基础设施。
+
+- **同类对比**：README 未明确列出竞品。相较于只提供现成在线编辑器或文件预览能力的方案，Univer 更强调作为 SDK 嵌入宿主产品，并通过插件和无头 Node.js 运行时支持定制化及 Agent 自动化。
+
+- **注意事项**：项目功能范围较大，完整集成需要理解插件注册、Facade API、样式与本地化资源，直接使用 Plugin Mode 的配置成本不低。项目创建于 2022 年 9 月，已有 14980 个 Stars、77 位贡献者和 1354 个 Forks，近期更新非常活跃；同时仍有 137 个 Open Issues，复杂编辑器场景的边界问题和升级兼容性需要纳入评估。README 提供了较完整的安装、架构和 API 入口，但不同能力的可用范围及部分协作、AI 功能涉及 Web SDK 或额外授权，正式采用前应核对许可证和商业功能边界。
+
+- **GitHub**：[dream-num/univer](https://github.com/dream-num/univer)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：专注在线表格与办公技术，凭借 Luckysheet 和 Univer 等高星开源项目在开发者社区具有较强影响力。
+**技术栈偏好**：以 TypeScript、JavaScript 和 HTML 为主，聚焦 Web 端组件化、表格引擎与办公应用开发。
+**核心领域**：主要聚焦在线协同办公、电子表格与生产力工具。
+
+---
+
+### ✨ ag-ui-protocol/ag-ui (17626★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
+
+
+---
+
+### ✨ google-labs-code/stitch-skills (6556★)
+
+> **一句话**：把 Google Stitch 里的设计稿、设计系统和页面截图接入 Codex、Claude Code、Cursor 等编码 Agent，让 Agent 能生成设计、上传素材、抽取 HTML，并把 Stitch 设计转换成 React 或 React Native 代码。
+
+- **它是什么**：这是 Google Labs 提供的一组 Agent Skills 和插件集合，围绕 Google Stitch 的设计生成、设计系统管理、代码生成和工具化工作流展开。它遵循 Agent Skills 开放标准，可以安装到 Codex、Antigravity、Gemini CLI、Claude Code、Cursor 等编码 Agent 中使用。项目按 `stitch-design`、`stitch-build`、`stitch-utilities` 三类插件组织，覆盖从设计生成、HTML 抽取、上传到 Stitch，到 React / React Native 组件生成的完整链路。
+- **能解决什么痛点**：前端团队把已有 React/Vue 页面迁移进 Stitch 时，通常要手动整理静态 HTML、CSS、图片和设计系统文档，这个项目提供了专门的抽取和上传技能。另一个痛点是从 Stitch 设计稿落到代码时容易出现 token 不一致、样式偏差和重复返工，`stitch::react-components`、`stitch::react-native` 等技能把转换和校验步骤固化进 Agent 工作流。
+- **适合谁用**：适合已经在使用 Google Stitch 做界面设计、并希望把设计和代码生成接入 AI 编码 Agent 的前端团队。也适合需要把 Stitch 页面转换为 React 组件、React Native 页面或 Remotion 演示视频的应用开发者。
+- **怎么上手**：Codex 推荐先添加插件市场：`codex plugin marketplace add google-labs-code/stitch-skills --ref main --sparse .agents/plugins --sparse plugins/stitch-design --sparse plugins/stitch-build --sparse plugins/stitch-utilities`
+- **可以用在哪些场景**：把现有 Web 应用的某个页面抽取成自包含静态 HTML 后上传到 Stitch 项目，用于设计复盘或二次编辑。将 Stitch 项目中的多屏设计同步生成 React 组件系统，并用设计 token 校验样式一致性。把 Stitch HTML 设计转换成 React Native 组件，生成带 StyleSheet 和平台差异处理的移动端代码。
+- **技术看点**：项目不是单一 CLI，而是按 Agent Skills 标准把每个能力拆成 `SKILL.md`、脚本、资源和示例，便于不同编码 Agent 读取并执行同一套任务规范。插件层面区分设计、构建和工具类能力，适合团队按需安装，而不是一次性引入全部工作流。
+- **近期动向与发展方向**：最近 20 条提交主要集中在文档完善、React Native 能力补齐、`stitch::react-components` 命名调整，以及设计生成链路中的 markdown 上传和 provenance tracking。6 月底多次更新 README 和技能说明，说明项目正在打磨 Agent 执行步骤、同步示例和阶段性校验流程；同时有外部贡献者参与修复 JSX className 中 hex 颜色识别、Codex 插件说明等问题，社区参与度不算高但已有实际协作。
+- **同类对比**：README 没有明确列出 Figma 插件、Lovable、v0、Builder.io 等直接竞品。它的差异点更像是深度绑定 Google Stitch 与 Agent Skills 标准，而不是做通用 UI 设计转代码平台。
+- **注意事项**：这些技能依赖 Stitch MCP server，需要先完成 MCP 配置、环境变量和凭证设置，不能只安装插件就直接使用。项目创建时间较新，虽然 stars 增长快、issue 数量目前只有 19 个，但近期仍在重命名、重构和补文档，接口与技能路径存在继续调整的可能。README 的安装说明较完整，但真正落地还需要理解 Stitch 项目 ID、Agent 插件安装方式以及各技能之间的依赖关系。
+
+- **GitHub**：[google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Google Labs Code 作为 Google Labs 相关组织，凭借 design.md 等高星项目在开发者工具与 AI 辅助开发社区具备较高关注度和传播力。
+**技术栈偏好**：其仓库以 TypeScript 为主，技术方向偏向前端工程、SDK、自动化工具与开发者体验建设。
+**核心领域**：主要聚焦 AI 驱动的软件设计、代码生成、开发工作流增强与相关工具生态。
+
+---
+
+### ✨ backnotprop/plannotator (11648★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -16,44 +91,6 @@
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
 - **GitHub**：[backnotprop/plannotator](https://github.com/backnotprop/plannotator)
-
-
----
-
-### ✨ GoogleChrome/modern-web-guidance-src (6251★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Keep your coding agent up to date with the latest web best practices
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[GoogleChrome/modern-web-guidance-src](https://github.com/GoogleChrome/modern-web-guidance-src)
-
-
----
-
-### ✨ tradermonty/claude-trading-skills (4946★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills)
 
 
 ---
@@ -120,158 +157,7 @@
 
 ---
 
-### ✨ QwenLM/qwen-code (30407★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：An open-source AI coding agent that lives in your terminal.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)
-
-
----
-
-### ✨ dream-num/univer (14980★)
-
-> **一句话**：Univer 把表格、文档、演示文稿、画布、关系表和 PDF 能力放进同一个可嵌入运行时，让 SaaS 或 AI Agent 可以直接创建、编辑和处理 Office 内容。
-
-- **它是什么**：Univer 是基于 TypeScript 的开源 Office SDK，不提供固定的在线办公产品，而是提供可嵌入应用的表格、文档和演示文稿编辑能力。它通过插件架构、Canvas 渲染、公式引擎和统一 Facade API，支持在浏览器中交互编辑，也支持在 Node.js 中进行无界面处理。
-
-- **能解决什么痛点**：开发者无需从零实现单元格编辑、公式计算、格式刷、粘贴特殊处理、绘图对象和文档布局等复杂 Office 功能。对于 AI 应用，还可以让 Agent 通过结构化 API 修改文件，并结合内容检查、截图和布局诊断验证生成结果。
-
-- **适合谁用**：需要在 SaaS、BI 平台、内部系统中嵌入表格或文档编辑器的前端团队；需要让 AI Agent 在服务端创建、读取、修改和交付 Office 文件的应用开发者。
-
-- **怎么上手**：使用预设模式安装 Sheets 核心能力：`pnpm add @univerjs/presets @univerjs/preset-sheets-core`，然后通过 `createUniver` 和 `UniverSheetsCorePreset` 创建工作簿。
-
-- **可以用在哪些场景**：在企业 SaaS 中嵌入可编辑的预算表、报价单或运营报表；为 AI Agent 提供生成并修改 Excel、文档和演示内容的工作区；在 Node.js 服务中批量处理工作簿、执行公式计算并生成供人工审核的文档草稿。
-
-- **技术看点**：项目采用插件优先架构，功能可以按需组合、替换或懒加载，并提供 Preset Mode 和 Plugin Mode 两种集成方式。浏览器与 Node.js 共用同一套核心架构和 Facade API，适合同时覆盖交互式编辑与服务端自动化。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 20 日至 22 日，项目保持高频维护，且新增功能与缺陷修复并行推进。近期重点包括文档格式刷和粘贴特殊、表格切片器与背景图片、绘图和嵌入对象处理、运行时菜单配置，以及布局和剪贴板兼容性；提交者既有 Univer 官方账号，也有多名社区贡献者，显示项目正持续完善 Office 细节和 AI/嵌入式工作流基础设施。
-
-- **同类对比**：README 未明确列出竞品。相较于只提供现成在线编辑器或文件预览能力的方案，Univer 更强调作为 SDK 嵌入宿主产品，并通过插件和无头 Node.js 运行时支持定制化及 Agent 自动化。
-
-- **注意事项**：项目功能范围较大，完整集成需要理解插件注册、Facade API、样式与本地化资源，直接使用 Plugin Mode 的配置成本不低。项目创建于 2022 年 9 月，已有 14980 个 Stars、77 位贡献者和 1354 个 Forks，近期更新非常活跃；同时仍有 137 个 Open Issues，复杂编辑器场景的边界问题和升级兼容性需要纳入评估。README 提供了较完整的安装、架构和 API 入口，但不同能力的可用范围及部分协作、AI 功能涉及 Web SDK 或额外授权，正式采用前应核对许可证和商业功能边界。
-
-- **GitHub**：[dream-num/univer](https://github.com/dream-num/univer)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：专注在线表格与办公技术，凭借 Luckysheet 和 Univer 等高星开源项目在开发者社区具有较强影响力。
-**技术栈偏好**：以 TypeScript、JavaScript 和 HTML 为主，聚焦 Web 端组件化、表格引擎与办公应用开发。
-**核心领域**：主要聚焦在线协同办公、电子表格与生产力工具。
-
----
-
-### ✨ ag-ui-protocol/ag-ui (17435★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
-
-
----
-
-### ✨ ashhart/TensorFold (2193★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：LLM Inference Engine for Metal, CUDA and Vulkan.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[ashhart/TensorFold](https://github.com/ashhart/TensorFold)
-
-
----
-
-### ✨ JuliusBrussee/caveman (108913★)
-
-> **一句话**：Caveman 通过压缩 AI 编程代理的回复和输入材料，减少对话中的 token 消耗，同时保留代码、命令和错误信息原样。
-
-- **它是什么**：项目提供三种用法：面向 AI 编程代理的 skill，让回复删去冗长铺垫；本地代理 proxy，压缩日志、测试输出、JSON、diff 和搜索结果；以及供应用集成的 middleware，在模型调用前压缩工具结果。原始内容会保留，代理需要时可以取回。
-- **能解决什么痛点**：代理反复输出客套解释、读取大量构建日志或测试结果时，会产生不必要的 token 消耗。Caveman 分别从回复内容和输入上下文两端压缩，README 还提供 `caveman learn` 分析本地代理历史、定位高消耗来源。
-- **适合谁用**：经常使用 Claude Code、Codex、Gemini、Cursor 等 AI 编程代理的开发者；使用 LangChain、Vercel AI SDK、OpenAI 或 Anthropic SDK 构建代理应用、希望在模型调用前压缩工具结果的开发者。
-- **怎么上手**：安装基础 skill：`npx skills add JuliusBrussee/caveman -g`。使用本地 proxy：`npm install -g @caveman-ai/cli && caveman setup --install`。
-- **可以用在哪些场景**：让代理处理大型测试输出时先压缩结果，减少后续上下文；让 Claude Code 或 Codex 等命令行代理通过本地 proxy 读取日志、diff 和搜索结果；在 LangChain 等应用中压缩工具返回内容，同时保留原始记录供回查。
-- **技术看点**：项目把“让模型少写”和“让模型少读”拆成 skill 与 proxy 两条路径，并提供 middleware 接入自建代理。README 强调代码、路径和精确错误信息不做语言压缩，压缩内容保留备份供代理取回。
-- **近期动向与发展方向**：近 20 条提交集中在 9 月 28 日至 10 月 1 日，持续修复 `learn` 的定价、统计和配置匹配细节，并更新模型目录；9 月 30 日发布 Caveman 3.0.0，涉及 Apache-2.0 许可、Learn v2 和 middleware 1.0，也有部署镜像固定和 Python SDK 发布门禁修复。提交大多由项目作者完成，维护活跃，但提供的历史不足以判断社区贡献者近期是否活跃。
-- **同类对比**：README 未给出明确竞品；其显著特点是同时覆盖代理输出、代理输入和自建应用 middleware，而不只是在提示词中要求模型简短回答。
-- **注意事项**：README 提供了多代理安装说明、命令和 TS/Python middleware 依赖，文档覆盖较广；proxy 和 middleware 比基础 skill 多出运行时或集成配置。项目创建于 2026-04-04，更新至 2026-10-02，拥有 108,913 Stars、61 位贡献者和 158 个开放 Issue；热度和更新频率都高，但 Issue 数也意味着维护负担较重。3.0.0 是重要版本更新，升级前宜核对对应组件的迁移说明；具体破坏性变更内容暂未提供。
-
-- **GitHub**：[JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：以独立开发者身份在 GitHub 形成较强影响力，代表项目累计获得超过 11 万 Star。
-**技术栈偏好**：偏好 TypeScript、Go 与 Swift，兼顾工具链、后端服务及跨平台开发。
-**核心领域**：主要聚焦开发者工具、代码基础设施与 AI 辅助编程生态。
-
----
-
-### ✨ louislam/uptime-kuma (94306★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：A fancy self-hosted monitoring tool
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[louislam/uptime-kuma](https://github.com/louislam/uptime-kuma)
-
-
----
-
-### ✨ we-promise/sure (15406★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：The personal finance app for everyone (by everyone)
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[we-promise/sure](https://github.com/we-promise/sure)
-
-
----
-
-### ✨ Tencent/LoopForge (992★)
+### ✨ Tencent/LoopForge (1261★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -290,11 +176,11 @@
 
 ---
 
-### ✨ Likely7/Veyra-NRVideo (2382★)
+### ✨ ggml-org/ggml (15817★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Bring PS5 GTA6 to 120FPS with DLSS 5. An advanced Windows video player and capture enhancement tool featuring real-time preview for videos, images, and capture card sources. Combine AI-powered Super Resolution, DLSS5 image enhancement, and Frame Generation to deliver a next-generation visual experience.
+- **它是什么**：Tensor library for machine learning
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -304,16 +190,16 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[Likely7/Veyra-NRVideo](https://github.com/Likely7/Veyra-NRVideo)
+- **GitHub**：[ggml-org/ggml](https://github.com/ggml-org/ggml)
 
 
 ---
 
-### ✨ martin-olivier/airgorah (5994★)
+### ✨ elementalsouls/Claude-BugHunter (6002★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：A WiFi security auditing software
+- **它是什么**：A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -323,4 +209,61 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[martin-olivier/airgorah](https://github.com/martin-olivier/airgorah)
+- **GitHub**：[elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter)
+
+
+---
+
+### ✨ GoogleChrome/modern-web-guidance-src (6809★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Keep your coding agent up to date with the latest web best practices
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[GoogleChrome/modern-web-guidance-src](https://github.com/GoogleChrome/modern-web-guidance-src)
+
+
+---
+
+### ✨ tradermonty/claude-trading-skills (5257★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills)
+
+
+---
+
+### ✨ NVIDIA/SkillEvaluator (1384★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Multi-tier framework for evaluating AI agent skills with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[NVIDIA/SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator)
