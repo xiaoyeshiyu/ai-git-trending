@@ -1,0 +1,339 @@
+## 今日热点：GitHub 热门趋势
+今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
+
+### ✨ ag-ui-protocol/ag-ui (19477★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
+
+
+---
+
+### ✨ backnotprop/plannotator (12779★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click. 
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[backnotprop/plannotator](https://github.com/backnotprop/plannotator)
+
+
+---
+
+### ✨ dream-num/univer (14980★)
+
+> **一句话**：Univer 把表格、文档、演示文稿、画布、关系表和 PDF 能力放进同一个可嵌入运行时，让 SaaS 或 AI Agent 可以直接创建、编辑和处理 Office 内容。
+
+- **它是什么**：Univer 是基于 TypeScript 的开源 Office SDK，不提供固定的在线办公产品，而是提供可嵌入应用的表格、文档和演示文稿编辑能力。它通过插件架构、Canvas 渲染、公式引擎和统一 Facade API，支持在浏览器中交互编辑，也支持在 Node.js 中进行无界面处理。
+
+- **能解决什么痛点**：开发者无需从零实现单元格编辑、公式计算、格式刷、粘贴特殊处理、绘图对象和文档布局等复杂 Office 功能。对于 AI 应用，还可以让 Agent 通过结构化 API 修改文件，并结合内容检查、截图和布局诊断验证生成结果。
+
+- **适合谁用**：需要在 SaaS、BI 平台、内部系统中嵌入表格或文档编辑器的前端团队；需要让 AI Agent 在服务端创建、读取、修改和交付 Office 文件的应用开发者。
+
+- **怎么上手**：使用预设模式安装 Sheets 核心能力：`pnpm add @univerjs/presets @univerjs/preset-sheets-core`，然后通过 `createUniver` 和 `UniverSheetsCorePreset` 创建工作簿。
+
+- **可以用在哪些场景**：在企业 SaaS 中嵌入可编辑的预算表、报价单或运营报表；为 AI Agent 提供生成并修改 Excel、文档和演示内容的工作区；在 Node.js 服务中批量处理工作簿、执行公式计算并生成供人工审核的文档草稿。
+
+- **技术看点**：项目采用插件优先架构，功能可以按需组合、替换或懒加载，并提供 Preset Mode 和 Plugin Mode 两种集成方式。浏览器与 Node.js 共用同一套核心架构和 Facade API，适合同时覆盖交互式编辑与服务端自动化。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 20 日至 22 日，项目保持高频维护，且新增功能与缺陷修复并行推进。近期重点包括文档格式刷和粘贴特殊、表格切片器与背景图片、绘图和嵌入对象处理、运行时菜单配置，以及布局和剪贴板兼容性；提交者既有 Univer 官方账号，也有多名社区贡献者，显示项目正持续完善 Office 细节和 AI/嵌入式工作流基础设施。
+
+- **同类对比**：README 未明确列出竞品。相较于只提供现成在线编辑器或文件预览能力的方案，Univer 更强调作为 SDK 嵌入宿主产品，并通过插件和无头 Node.js 运行时支持定制化及 Agent 自动化。
+
+- **注意事项**：项目功能范围较大，完整集成需要理解插件注册、Facade API、样式与本地化资源，直接使用 Plugin Mode 的配置成本不低。项目创建于 2022 年 9 月，已有 14980 个 Stars、77 位贡献者和 1354 个 Forks，近期更新非常活跃；同时仍有 137 个 Open Issues，复杂编辑器场景的边界问题和升级兼容性需要纳入评估。README 提供了较完整的安装、架构和 API 入口，但不同能力的可用范围及部分协作、AI 功能涉及 Web SDK 或额外授权，正式采用前应核对许可证和商业功能边界。
+
+- **GitHub**：[dream-num/univer](https://github.com/dream-num/univer)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：专注在线表格与办公技术，凭借 Luckysheet 和 Univer 等高星开源项目在开发者社区具有较强影响力。
+**技术栈偏好**：以 TypeScript、JavaScript 和 HTML 为主，聚焦 Web 端组件化、表格引擎与办公应用开发。
+**核心领域**：主要聚焦在线协同办公、电子表格与生产力工具。
+
+---
+
+### ✨ tradermonty/claude-trading-skills (6550★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills)
+
+
+---
+
+### ✨ elementalsouls/Claude-BugHunter (7756★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter)
+
+
+---
+
+### ✨ getarcaneapp/arcane (8923★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Modern Docker Management, Designed for Everyone
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[getarcaneapp/arcane](https://github.com/getarcaneapp/arcane)
+
+
+---
+
+### ✨ DeanChensj/jiangshan-map (7272★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：江山时序 · 中国历史交互地图时间轴 (403 BCE – Present) | Interactive Historical Atlas of China across 18 dynasties, 198 territory snapshots, ancient-to-modern place genealogy & classical poetry routes
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[DeanChensj/jiangshan-map](https://github.com/DeanChensj/jiangshan-map)
+
+
+---
+
+### ✨ google-labs-code/stitch-skills (6556★)
+
+> **一句话**：把 Google Stitch 里的设计稿、设计系统和页面截图接入 Codex、Claude Code、Cursor 等编码 Agent，让 Agent 能生成设计、上传素材、抽取 HTML，并把 Stitch 设计转换成 React 或 React Native 代码。
+
+- **它是什么**：这是 Google Labs 提供的一组 Agent Skills 和插件集合，围绕 Google Stitch 的设计生成、设计系统管理、代码生成和工具化工作流展开。它遵循 Agent Skills 开放标准，可以安装到 Codex、Antigravity、Gemini CLI、Claude Code、Cursor 等编码 Agent 中使用。项目按 `stitch-design`、`stitch-build`、`stitch-utilities` 三类插件组织，覆盖从设计生成、HTML 抽取、上传到 Stitch，到 React / React Native 组件生成的完整链路。
+- **能解决什么痛点**：前端团队把已有 React/Vue 页面迁移进 Stitch 时，通常要手动整理静态 HTML、CSS、图片和设计系统文档，这个项目提供了专门的抽取和上传技能。另一个痛点是从 Stitch 设计稿落到代码时容易出现 token 不一致、样式偏差和重复返工，`stitch::react-components`、`stitch::react-native` 等技能把转换和校验步骤固化进 Agent 工作流。
+- **适合谁用**：适合已经在使用 Google Stitch 做界面设计、并希望把设计和代码生成接入 AI 编码 Agent 的前端团队。也适合需要把 Stitch 页面转换为 React 组件、React Native 页面或 Remotion 演示视频的应用开发者。
+- **怎么上手**：Codex 推荐先添加插件市场：`codex plugin marketplace add google-labs-code/stitch-skills --ref main --sparse .agents/plugins --sparse plugins/stitch-design --sparse plugins/stitch-build --sparse plugins/stitch-utilities`
+- **可以用在哪些场景**：把现有 Web 应用的某个页面抽取成自包含静态 HTML 后上传到 Stitch 项目，用于设计复盘或二次编辑。将 Stitch 项目中的多屏设计同步生成 React 组件系统，并用设计 token 校验样式一致性。把 Stitch HTML 设计转换成 React Native 组件，生成带 StyleSheet 和平台差异处理的移动端代码。
+- **技术看点**：项目不是单一 CLI，而是按 Agent Skills 标准把每个能力拆成 `SKILL.md`、脚本、资源和示例，便于不同编码 Agent 读取并执行同一套任务规范。插件层面区分设计、构建和工具类能力，适合团队按需安装，而不是一次性引入全部工作流。
+- **近期动向与发展方向**：最近 20 条提交主要集中在文档完善、React Native 能力补齐、`stitch::react-components` 命名调整，以及设计生成链路中的 markdown 上传和 provenance tracking。6 月底多次更新 README 和技能说明，说明项目正在打磨 Agent 执行步骤、同步示例和阶段性校验流程；同时有外部贡献者参与修复 JSX className 中 hex 颜色识别、Codex 插件说明等问题，社区参与度不算高但已有实际协作。
+- **同类对比**：README 没有明确列出 Figma 插件、Lovable、v0、Builder.io 等直接竞品。它的差异点更像是深度绑定 Google Stitch 与 Agent Skills 标准，而不是做通用 UI 设计转代码平台。
+- **注意事项**：这些技能依赖 Stitch MCP server，需要先完成 MCP 配置、环境变量和凭证设置，不能只安装插件就直接使用。项目创建时间较新，虽然 stars 增长快、issue 数量目前只有 19 个，但近期仍在重命名、重构和补文档，接口与技能路径存在继续调整的可能。README 的安装说明较完整，但真正落地还需要理解 Stitch 项目 ID、Agent 插件安装方式以及各技能之间的依赖关系。
+
+- **GitHub**：[google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Google Labs Code 作为 Google Labs 相关组织，凭借 design.md 等高星项目在开发者工具与 AI 辅助开发社区具备较高关注度和传播力。
+**技术栈偏好**：其仓库以 TypeScript 为主，技术方向偏向前端工程、SDK、自动化工具与开发者体验建设。
+**核心领域**：主要聚焦 AI 驱动的软件设计、代码生成、开发工作流增强与相关工具生态。
+
+---
+
+### ✨ mvanhorn/last30days-skill (60331★)
+
+> **一句话**：在 Claude Code、Codex、Cursor 等 Agent 环境里输入 `/last30days 主题`，它会并行搜索 Reddit、X、YouTube、HN、Polymarket、GitHub 等来源，并把最近 30 天的真实讨论、数据和引用整理成一份简报。
+
+- **它是什么**：这是一个面向 AI Agent 的搜索与综合分析 Skill，核心不是传统网页搜索，而是把社交平台、开发者社区、视频字幕、预测市场和网页内容放到同一条检索管线里处理。它会根据 Reddit upvotes、X likes、YouTube views、Polymarket 资金赔率、GitHub 活跃度等信号排序，再由 Agent 汇总成带依据的短报告。
+
+- **能解决什么痛点**：开发者或研究人员想了解“最近 30 天真实发生了什么”时，常常需要手动翻 Reddit、X、YouTube、HN、GitHub issue 和新闻页面，信息分散且很难判断热度。它适合处理 Google 搜索、LLM 训练数据或单一平台都覆盖不到的近期动态，例如某个 AI 工具社区反馈、人物近期动向、产品发布后的真实评价。
+
+- **适合谁用**：适合已经在使用 Claude Code、OpenAI Codex、Cursor、Copilot、Gemini CLI 等 Agent 编程环境的开发者和技术研究者。也适合需要在会议、竞品调研、开源项目跟踪、AI 行业动态分析前快速获取多源近期信号的产品、销售工程师和技术内容创作者。
+
+- **怎么上手**：Claude Code 推荐方式：`/plugin marketplace add mvanhorn/last30days-skill && /plugin install last30days`。其他 Agent Skills 宿主可用：`npx skills add mvanhorn/last30days-skill -g`。
+
+- **可以用在哪些场景**：跟踪某个开源项目最近一个月的 GitHub PR、issue、Reddit/HN 讨论和发布反馈。会议前检索某个人或公司的近期公开动态，比如 X 发言、YouTube 访谈、GitHub 提交和社区讨论。研究某个 AI 工具、框架或消费产品的真实口碑，把 Reddit 评论、视频字幕、预测市场和网页报道放在同一份摘要里看。
+
+- **技术看点**：项目的关键设计是多来源并行检索加基于平台原生信号的排序，而不是只依赖网页搜索结果；README 中明确强调 Reddit、HN、Polymarket、GitHub 可零配置使用，X、YouTube、TikTok、arXiv、Techmeme 等通过向导或本地 CLI 解锁。它还把评论层、时间窗口、引用渲染和 Agent judge 纳入管线，目标是让输出能追溯到具体证据。
+
+- **近期动向与发展方向**：最近 20 条提交显示项目仍在高频迭代，8 月集中发布了 3.19.0 到 3.21.1 多个版本。近期重点包括新增 Parallel Search MCP 后端、Telegram 公共频道来源、Perplexity Sonar 迁移到 Agent API、X/Grok 检索改进、Reddit arctic-shift fallback，以及排名与预算控制修复；同时 Dependabot、安全扫描和 GitHub Actions 依赖更新也比较密集，说明项目维护节奏活跃且在扩展数据源与稳定性。
+
+- **同类对比**：README 明确拿 Google、ChatGPT、Gemini、Claude 做了边界对比：Google 更偏网页和编辑型结果，ChatGPT 虽可接触 Reddit 但不能完整覆盖 X、TikTok 等，Gemini 有 YouTube 但不覆盖 Reddit，Claude 原生没有这些平台搜索能力。last30days 的差异点是让用户带自己的 key 或浏览器 session，把多个封闭平台接入同一 Agent 检索流程。
+
+- **注意事项**：项目 Stars 和 Forks 很高，Contributor Count 达 119，近期提交和版本发布活跃，但 Open Issues 仍有 179 个，说明功能面广、边界情况也不少。部分来源依赖 API key、本地 CLI、浏览器登录态或可选 MCP 服务，零配置并不等于所有平台立即可用；同时项目创建时间为 2026-01-23，更新很快，版本演进中存在行为变化和集成方式调整的可能。README 信息量很大且有多语言文档，对快速理解有帮助，但实际部署时仍需要关注 `skills/last30days/SKILL.md` 作为最新运行规范。
+
+- **GitHub**：[mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：资深连续创业者与开源创作者，凭借高星级自动化工具项目在开发者社区具有较强影响力。
+**技术栈偏好**：偏好 Go、Python 与 TypeScript，侧重命令行工具、开发者工具及智能代理相关实现。
+**核心领域**：主要聚焦 AI Agent、自动化工作流、CLI 工具与软硬件产品创新。
+
+---
+
+### ✨ NVIDIA/SkillEvaluator (2991★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Multi-tier framework for evaluating AI agent skills and plugins with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[NVIDIA/SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator)
+
+
+---
+
+### ✨ alibaba/open-code-review (22910★)
+
+> **一句话**：把 Git diff 或完整文件交给可配置的 LLM Agent，结合确定性的文件筛选、规则匹配和行号定位，输出可直接落到代码行上的审查意见。
+
+- **它是什么**：OpenCodeReview 是阿里巴巴开源的 AI 代码审查 CLI，能够审查暂存区、未提交改动、分支差异和单个提交，也支持对整个目录或文件做全量扫描。它会读取相关源码、搜索代码库上下文，并通过 OpenAI、Anthropic 等兼容接口生成结构化的行级评论，同时内置 NPE、线程安全、XSS、SQL 注入等多语言规则。
+
+- **能解决什么痛点**：大规模变更中，通用 Agent 可能只抽查部分文件，导致重要改动漏审；它通过确定性的文件选择、文件分组和规则匹配约束审查范围。AI 评论经常出现文件或行号漂移、误报过多时，它还通过独立的定位与反思模块提高评论落点准确性，并以较低 token 消耗换取更高 Precision。
+
+- **适合谁用**：需要在 GitHub Actions、GitLab CI、Gerrit 等流水线中执行自动审查的团队；维护 Java、Go、Python、JavaScript/TypeScript 等多语言代码库，并希望统一配置安全、并发和缺陷规则的研发组织。
+
+- **怎么上手**：先安装并配置模型，再在项目目录执行：
+
+- **可以用在哪些场景**：
+  - 在合并请求或分支合并前审查新增代码，自动输出带文件和行号的 JSON 报告供 CI 消费。
+  - 对接企业内部 OpenAI 兼容模型或 Anthropic API，在 Java 后端、Go 服务和前端项目中统一执行安全与可靠性审查。
+  - 接手缺少 Git 历史或审查规则不完整的遗留目录时，通过 `ocr scan --path` 对整个目录进行代码审计。
+
+- **技术看点**：项目采用“确定性流水线 + LLM Agent”的混合架构：文件选择、分组、规则匹配和评论定位由工程逻辑约束，Agent 负责动态读取上下文和分析问题。README 给出的基准测试覆盖 50 个开源仓库、200 个真实 PR 和 10 种语言，强调在降低 token 消耗的同时提升 Precision 和 F1，但 Recall 低于通用 Agent，明确选择了“少报误报、接受部分漏报”的取舍。
+
+- **近期动向与发展方向**：最近 20 条提交覆盖 2026-09-07 至 2026-09-12，提交频率高，153 名贡献者仍在持续参与。近期重点以稳定性和工程化修复为主，包括让预览与实际执行使用同一文件选择逻辑、原子写入报告、完善信号转发和超时处理、限制 MCP 关闭阶段；同时持续扩展能力，如加入 Rego 策略审查、OCaml/ReasonML 支持、会话对比页面，以及 effort、token 预算和推理强度等审查控制。整体方向是增强 CI 和多 Agent 集成能力，并提高大规模审查的可控性。
+
+- **同类对比**：README 明确将 Claude Code 等通用 Agent 作为对比对象。OpenCodeReview 更强调固定的审查流程、精确的评论定位和较低 token 消耗，适合批量、可重复的 CI 审查；通用 Agent 在 Recall 和开放式探索能力上可能更强，但审查范围、输出位置和质量稳定性更难约束。
+
+- **注意事项**：首次使用需要配置 LLM 提供商、API Key 和模型，并要求 Git `>= 2.41`，实际成本和效果仍取决于模型及上下文配置。项目近期更新活跃，但仍有 150 个 Open Issues，新增模型、规则、Agent 行为和 CLI 参数较多，接入生产流水线前应固定版本并验证输出格式。README 也明确承认其 Recall 低于通用 Agent，因此不应把自动审查结果视为完整缺陷证明；同时需要结合企业代码保密要求评估源码发送到外部模型的风险。
+
+- **GitHub**：[alibaba/open-code-review](https://github.com/alibaba/open-code-review)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：阿里巴巴是全球知名的开源技术组织，在 Java 生态与企业级软件领域拥有广泛影响力。
+**技术栈偏好**：以 Java 为核心，辅以 Kotlin，重点投入于高性能基础组件、开发工具与分布式技术。
+**核心领域**：主要聚焦云原生、微服务、中间件、数据集成及企业级应用开发。
+
+---
+
+### ✨ google-research/paper-orchestra (1835★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：PaperOrchestra is a multi-agent framework for automated AI research paper writing.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[google-research/paper-orchestra](https://github.com/google-research/paper-orchestra)
+
+
+---
+
+### ✨ ChromeDevTools/chrome-devtools-mcp (49940★)
+
+> **一句话**：让 Claude、Cursor、Copilot 等编码代理直接连接并操作真实 Chrome 浏览器，同时调用 DevTools 完成页面调试、性能分析和自动化测试。
+
+- **它是什么**：这是一个基于 Model Context Protocol（MCP）的 Chrome DevTools 服务端，编码代理可以通过它检查页面结构、网络请求、控制台消息并执行浏览器操作。项目底层结合 Chrome DevTools 和 Puppeteer，支持录制性能 Trace、分析性能瓶颈、截图以及等待操作结果；同时也提供不依赖 MCP 客户端的 CLI。
+- **能解决什么痛点**：编码代理无法直接观察真实浏览器中的控制台报错、网络失败和页面渲染结果时，它可以提供这些运行时信息，减少开发者在代理与浏览器开发者工具之间反复切换。对于性能问题，还能将实验室 Trace 分析与 CrUX 真实用户数据结合，避免只凭静态代码猜测页面瓶颈。
+- **适合谁用**：使用 Claude Code、Cursor、Copilot、Codex 等 AI 编码代理进行前端开发和调试的开发者。需要自动化回归、页面性能诊断或浏览器端问题排查的前端工程师和测试工程师也适合使用。
+- **怎么上手**：确保已安装 Node.js LTS、npm 和当前稳定版 Chrome，然后在 MCP 客户端配置中使用 `npx -y chrome-devtools-mcp@latest` 启动服务；例如 Claude Code 可执行 `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`。
+- **可以用在哪些场景**：
+  - 让 AI 代理打开本地前端项目，读取控制台异常、检查网络请求并定位源码映射后的报错位置。
+  - 对电商详情页、后台列表等真实页面录制 Trace，分析加载性能并结合 CrUX 数据评估用户体验。
+  - 在发布前自动执行页面点击、表单填写、截图和结果校验，用于浏览器端回归测试和问题复现。
+- **技术看点**：项目以 MCP 作为代理与浏览器之间的标准通信层，以 Puppeteer 负责可靠的浏览器动作执行，以 Chrome DevTools 能力提供网络、控制台、截图和性能 Trace 分析。支持完整模式与 `--slim` 模式，并通过 page ID 路由页面级工具，体现出对多页面控制和工具数量管理的针对性设计。
+- **近期动向与发展方向**：最近提交非常密集，20 条记录覆盖 2026 年 8 月 18 日至 28 日，当前主要在持续修复边界问题、同步 DevTools 依赖并完善 CLI 行为，而非进行大规模重构。近期重点包括将默认 Trace 缓冲区调整为 1.2GB、改进 HiDPI 截图和 Puppeteer 符号链接处理、强化 page ID 要求、调整启动参数与路径权限，并发布 1.8.0；同时还更新了安全文档、遥测匹配和测试，说明项目正处于快速迭代和稳定性加固阶段。118 位贡献者和 94 个开放 Issue 表明社区参与度较高，但也意味着版本行为仍可能快速变化。
+- **同类对比**：README 未明确列出竞品。与只提供通用浏览器自动化能力的方案相比，该项目的定位更偏向编码代理使用 Chrome DevTools 进行运行时调试和性能诊断，同时保留 Puppeteer 自动化能力。
+- **注意事项**：项目创建时间较新，但已达到 49,940 Stars，且近期更新频繁，成熟度和影响力增长很快，配置参数和页面级工具行为仍可能随版本调整。服务端会将浏览器内容暴露给 MCP 客户端，浏览器中的敏感数据可能被代理读取或修改；使用时应避免连接包含个人信息、登录凭据或生产数据的浏览器。使用统计默认开启，可通过 `--no-usage-statistics` 关闭；性能工具还可能向 Google CrUX API 发送 Trace URL。官方仅保证 Google Chrome 和 Chrome for Testing，其他 Chromium 浏览器不保证兼容，CLI 的 `--allow-unrestricted-paths` 等路径权限设置也应结合运行环境谨慎使用。
+
+- **GitHub**：[ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Chrome 开发者工具生态中的高影响力组织，围绕浏览器调试、协议与工具链建设，对前端和浏览器开发社区有明显带动作用。
+**技术栈偏好**：以 TypeScript 为主、JavaScript 为辅，技术方向集中在浏览器开发工具、调试协议和开发者自动化集成。
+**核心领域**：主要聚焦 Chrome DevTools 相关的前端调试、协议规范与开发者工具基础设施。
+
+---
+
+### ✨ sveltejs/svelte (89113★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：web development for the rest of us
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[sveltejs/svelte](https://github.com/sveltejs/svelte)
+
+
+---
+
+### ✨ kajisho5/ffmpeg-skill (7212★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Local video editor for coding agents: 42 FFmpeg tools with a machine-readable contract and an MCP server, for Claude Code, Cursor and Codex. Cut, captions, reframe, loudness, platform exports. No cloud, no API keys.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[kajisho5/ffmpeg-skill](https://github.com/kajisho5/ffmpeg-skill)
