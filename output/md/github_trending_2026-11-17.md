@@ -1,96 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ ag-ui-protocol/ag-ui (19477★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
-
-
----
-
-### ✨ backnotprop/plannotator (12779★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click. 
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[backnotprop/plannotator](https://github.com/backnotprop/plannotator)
-
-
----
-
-### ✨ dream-num/univer (14980★)
-
-> **一句话**：Univer 把表格、文档、演示文稿、画布、关系表和 PDF 能力放进同一个可嵌入运行时，让 SaaS 或 AI Agent 可以直接创建、编辑和处理 Office 内容。
-
-- **它是什么**：Univer 是基于 TypeScript 的开源 Office SDK，不提供固定的在线办公产品，而是提供可嵌入应用的表格、文档和演示文稿编辑能力。它通过插件架构、Canvas 渲染、公式引擎和统一 Facade API，支持在浏览器中交互编辑，也支持在 Node.js 中进行无界面处理。
-
-- **能解决什么痛点**：开发者无需从零实现单元格编辑、公式计算、格式刷、粘贴特殊处理、绘图对象和文档布局等复杂 Office 功能。对于 AI 应用，还可以让 Agent 通过结构化 API 修改文件，并结合内容检查、截图和布局诊断验证生成结果。
-
-- **适合谁用**：需要在 SaaS、BI 平台、内部系统中嵌入表格或文档编辑器的前端团队；需要让 AI Agent 在服务端创建、读取、修改和交付 Office 文件的应用开发者。
-
-- **怎么上手**：使用预设模式安装 Sheets 核心能力：`pnpm add @univerjs/presets @univerjs/preset-sheets-core`，然后通过 `createUniver` 和 `UniverSheetsCorePreset` 创建工作簿。
-
-- **可以用在哪些场景**：在企业 SaaS 中嵌入可编辑的预算表、报价单或运营报表；为 AI Agent 提供生成并修改 Excel、文档和演示内容的工作区；在 Node.js 服务中批量处理工作簿、执行公式计算并生成供人工审核的文档草稿。
-
-- **技术看点**：项目采用插件优先架构，功能可以按需组合、替换或懒加载，并提供 Preset Mode 和 Plugin Mode 两种集成方式。浏览器与 Node.js 共用同一套核心架构和 Facade API，适合同时覆盖交互式编辑与服务端自动化。
-
-- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 20 日至 22 日，项目保持高频维护，且新增功能与缺陷修复并行推进。近期重点包括文档格式刷和粘贴特殊、表格切片器与背景图片、绘图和嵌入对象处理、运行时菜单配置，以及布局和剪贴板兼容性；提交者既有 Univer 官方账号，也有多名社区贡献者，显示项目正持续完善 Office 细节和 AI/嵌入式工作流基础设施。
-
-- **同类对比**：README 未明确列出竞品。相较于只提供现成在线编辑器或文件预览能力的方案，Univer 更强调作为 SDK 嵌入宿主产品，并通过插件和无头 Node.js 运行时支持定制化及 Agent 自动化。
-
-- **注意事项**：项目功能范围较大，完整集成需要理解插件注册、Facade API、样式与本地化资源，直接使用 Plugin Mode 的配置成本不低。项目创建于 2022 年 9 月，已有 14980 个 Stars、77 位贡献者和 1354 个 Forks，近期更新非常活跃；同时仍有 137 个 Open Issues，复杂编辑器场景的边界问题和升级兼容性需要纳入评估。README 提供了较完整的安装、架构和 API 入口，但不同能力的可用范围及部分协作、AI 功能涉及 Web SDK 或额外授权，正式采用前应核对许可证和商业功能边界。
-
-- **GitHub**：[dream-num/univer](https://github.com/dream-num/univer)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：专注在线表格与办公技术，凭借 Luckysheet 和 Univer 等高星开源项目在开发者社区具有较强影响力。
-**技术栈偏好**：以 TypeScript、JavaScript 和 HTML 为主，聚焦 Web 端组件化、表格引擎与办公应用开发。
-**核心领域**：主要聚焦在线协同办公、电子表格与生产力工具。
-
----
-
-### ✨ tradermonty/claude-trading-skills (6550★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills)
-
-
----
-
-### ✨ elementalsouls/Claude-BugHunter (7756★)
+### ✨ elementalsouls/Claude-BugHunter (8681★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -106,68 +17,6 @@
 
 - **GitHub**：[elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter)
 
-
----
-
-### ✨ getarcaneapp/arcane (8923★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Modern Docker Management, Designed for Everyone
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[getarcaneapp/arcane](https://github.com/getarcaneapp/arcane)
-
-
----
-
-### ✨ DeanChensj/jiangshan-map (7272★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：江山时序 · 中国历史交互地图时间轴 (403 BCE – Present) | Interactive Historical Atlas of China across 18 dynasties, 198 territory snapshots, ancient-to-modern place genealogy & classical poetry routes
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[DeanChensj/jiangshan-map](https://github.com/DeanChensj/jiangshan-map)
-
-
----
-
-### ✨ google-labs-code/stitch-skills (6556★)
-
-> **一句话**：把 Google Stitch 里的设计稿、设计系统和页面截图接入 Codex、Claude Code、Cursor 等编码 Agent，让 Agent 能生成设计、上传素材、抽取 HTML，并把 Stitch 设计转换成 React 或 React Native 代码。
-
-- **它是什么**：这是 Google Labs 提供的一组 Agent Skills 和插件集合，围绕 Google Stitch 的设计生成、设计系统管理、代码生成和工具化工作流展开。它遵循 Agent Skills 开放标准，可以安装到 Codex、Antigravity、Gemini CLI、Claude Code、Cursor 等编码 Agent 中使用。项目按 `stitch-design`、`stitch-build`、`stitch-utilities` 三类插件组织，覆盖从设计生成、HTML 抽取、上传到 Stitch，到 React / React Native 组件生成的完整链路。
-- **能解决什么痛点**：前端团队把已有 React/Vue 页面迁移进 Stitch 时，通常要手动整理静态 HTML、CSS、图片和设计系统文档，这个项目提供了专门的抽取和上传技能。另一个痛点是从 Stitch 设计稿落到代码时容易出现 token 不一致、样式偏差和重复返工，`stitch::react-components`、`stitch::react-native` 等技能把转换和校验步骤固化进 Agent 工作流。
-- **适合谁用**：适合已经在使用 Google Stitch 做界面设计、并希望把设计和代码生成接入 AI 编码 Agent 的前端团队。也适合需要把 Stitch 页面转换为 React 组件、React Native 页面或 Remotion 演示视频的应用开发者。
-- **怎么上手**：Codex 推荐先添加插件市场：`codex plugin marketplace add google-labs-code/stitch-skills --ref main --sparse .agents/plugins --sparse plugins/stitch-design --sparse plugins/stitch-build --sparse plugins/stitch-utilities`
-- **可以用在哪些场景**：把现有 Web 应用的某个页面抽取成自包含静态 HTML 后上传到 Stitch 项目，用于设计复盘或二次编辑。将 Stitch 项目中的多屏设计同步生成 React 组件系统，并用设计 token 校验样式一致性。把 Stitch HTML 设计转换成 React Native 组件，生成带 StyleSheet 和平台差异处理的移动端代码。
-- **技术看点**：项目不是单一 CLI，而是按 Agent Skills 标准把每个能力拆成 `SKILL.md`、脚本、资源和示例，便于不同编码 Agent 读取并执行同一套任务规范。插件层面区分设计、构建和工具类能力，适合团队按需安装，而不是一次性引入全部工作流。
-- **近期动向与发展方向**：最近 20 条提交主要集中在文档完善、React Native 能力补齐、`stitch::react-components` 命名调整，以及设计生成链路中的 markdown 上传和 provenance tracking。6 月底多次更新 README 和技能说明，说明项目正在打磨 Agent 执行步骤、同步示例和阶段性校验流程；同时有外部贡献者参与修复 JSX className 中 hex 颜色识别、Codex 插件说明等问题，社区参与度不算高但已有实际协作。
-- **同类对比**：README 没有明确列出 Figma 插件、Lovable、v0、Builder.io 等直接竞品。它的差异点更像是深度绑定 Google Stitch 与 Agent Skills 标准，而不是做通用 UI 设计转代码平台。
-- **注意事项**：这些技能依赖 Stitch MCP server，需要先完成 MCP 配置、环境变量和凭证设置，不能只安装插件就直接使用。项目创建时间较新，虽然 stars 增长快、issue 数量目前只有 19 个，但近期仍在重命名、重构和补文档，接口与技能路径存在继续调整的可能。README 的安装说明较完整，但真正落地还需要理解 Stitch 项目 ID、Agent 插件安装方式以及各技能之间的依赖关系。
-
-- **GitHub**：[google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)
-
-#### 开发者 / 组织速览
-
-**技术影响力**：Google Labs Code 作为 Google Labs 相关组织，凭借 design.md 等高星项目在开发者工具与 AI 辅助开发社区具备较高关注度和传播力。
-**技术栈偏好**：其仓库以 TypeScript 为主，技术方向偏向前端工程、SDK、自动化工具与开发者体验建设。
-**核心领域**：主要聚焦 AI 驱动的软件设计、代码生成、开发工作流增强与相关工具生态。
 
 ---
 
@@ -200,25 +49,6 @@
 **技术影响力**：资深连续创业者与开源创作者，凭借高星级自动化工具项目在开发者社区具有较强影响力。
 **技术栈偏好**：偏好 Go、Python 与 TypeScript，侧重命令行工具、开发者工具及智能代理相关实现。
 **核心领域**：主要聚焦 AI Agent、自动化工作流、CLI 工具与软硬件产品创新。
-
----
-
-### ✨ NVIDIA/SkillEvaluator (2991★)
-
-> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
-
-- **它是什么**：Multi-tier framework for evaluating AI agent skills and plugins with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior.
-- **能解决什么痛点**：暂未提供。
-- **适合谁用**：暂未提供。
-- **怎么上手**：文档未提供快速上手示例。
-- **可以用在哪些场景**：暂未提供。
-- **技术看点**：暂未提供。
-- **近期动向与发展方向**：暂无 commit 数据可用。
-- **同类对比**：暂无明显同类对标。
-- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
-
-- **GitHub**：[NVIDIA/SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator)
-
 
 ---
 
@@ -257,11 +87,11 @@
 
 ---
 
-### ✨ google-research/paper-orchestra (1835★)
+### ✨ Tencent/LoopForge (2967★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：PaperOrchestra is a multi-agent framework for automated AI research paper writing.
+- **它是什么**：Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -271,39 +101,209 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[google-research/paper-orchestra](https://github.com/google-research/paper-orchestra)
+- **GitHub**：[Tencent/LoopForge](https://github.com/Tencent/LoopForge)
 
 
 ---
 
-### ✨ ChromeDevTools/chrome-devtools-mcp (49940★)
+### ✨ dream-num/univer (14980★)
 
-> **一句话**：让 Claude、Cursor、Copilot 等编码代理直接连接并操作真实 Chrome 浏览器，同时调用 DevTools 完成页面调试、性能分析和自动化测试。
+> **一句话**：Univer 把表格、文档、演示文稿、画布、关系表和 PDF 能力放进同一个可嵌入运行时，让 SaaS 或 AI Agent 可以直接创建、编辑和处理 Office 内容。
 
-- **它是什么**：这是一个基于 Model Context Protocol（MCP）的 Chrome DevTools 服务端，编码代理可以通过它检查页面结构、网络请求、控制台消息并执行浏览器操作。项目底层结合 Chrome DevTools 和 Puppeteer，支持录制性能 Trace、分析性能瓶颈、截图以及等待操作结果；同时也提供不依赖 MCP 客户端的 CLI。
-- **能解决什么痛点**：编码代理无法直接观察真实浏览器中的控制台报错、网络失败和页面渲染结果时，它可以提供这些运行时信息，减少开发者在代理与浏览器开发者工具之间反复切换。对于性能问题，还能将实验室 Trace 分析与 CrUX 真实用户数据结合，避免只凭静态代码猜测页面瓶颈。
-- **适合谁用**：使用 Claude Code、Cursor、Copilot、Codex 等 AI 编码代理进行前端开发和调试的开发者。需要自动化回归、页面性能诊断或浏览器端问题排查的前端工程师和测试工程师也适合使用。
-- **怎么上手**：确保已安装 Node.js LTS、npm 和当前稳定版 Chrome，然后在 MCP 客户端配置中使用 `npx -y chrome-devtools-mcp@latest` 启动服务；例如 Claude Code 可执行 `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`。
-- **可以用在哪些场景**：
-  - 让 AI 代理打开本地前端项目，读取控制台异常、检查网络请求并定位源码映射后的报错位置。
-  - 对电商详情页、后台列表等真实页面录制 Trace，分析加载性能并结合 CrUX 数据评估用户体验。
-  - 在发布前自动执行页面点击、表单填写、截图和结果校验，用于浏览器端回归测试和问题复现。
-- **技术看点**：项目以 MCP 作为代理与浏览器之间的标准通信层，以 Puppeteer 负责可靠的浏览器动作执行，以 Chrome DevTools 能力提供网络、控制台、截图和性能 Trace 分析。支持完整模式与 `--slim` 模式，并通过 page ID 路由页面级工具，体现出对多页面控制和工具数量管理的针对性设计。
-- **近期动向与发展方向**：最近提交非常密集，20 条记录覆盖 2026 年 8 月 18 日至 28 日，当前主要在持续修复边界问题、同步 DevTools 依赖并完善 CLI 行为，而非进行大规模重构。近期重点包括将默认 Trace 缓冲区调整为 1.2GB、改进 HiDPI 截图和 Puppeteer 符号链接处理、强化 page ID 要求、调整启动参数与路径权限，并发布 1.8.0；同时还更新了安全文档、遥测匹配和测试，说明项目正处于快速迭代和稳定性加固阶段。118 位贡献者和 94 个开放 Issue 表明社区参与度较高，但也意味着版本行为仍可能快速变化。
-- **同类对比**：README 未明确列出竞品。与只提供通用浏览器自动化能力的方案相比，该项目的定位更偏向编码代理使用 Chrome DevTools 进行运行时调试和性能诊断，同时保留 Puppeteer 自动化能力。
-- **注意事项**：项目创建时间较新，但已达到 49,940 Stars，且近期更新频繁，成熟度和影响力增长很快，配置参数和页面级工具行为仍可能随版本调整。服务端会将浏览器内容暴露给 MCP 客户端，浏览器中的敏感数据可能被代理读取或修改；使用时应避免连接包含个人信息、登录凭据或生产数据的浏览器。使用统计默认开启，可通过 `--no-usage-statistics` 关闭；性能工具还可能向 Google CrUX API 发送 Trace URL。官方仅保证 Google Chrome 和 Chrome for Testing，其他 Chromium 浏览器不保证兼容，CLI 的 `--allow-unrestricted-paths` 等路径权限设置也应结合运行环境谨慎使用。
+- **它是什么**：Univer 是基于 TypeScript 的开源 Office SDK，不提供固定的在线办公产品，而是提供可嵌入应用的表格、文档和演示文稿编辑能力。它通过插件架构、Canvas 渲染、公式引擎和统一 Facade API，支持在浏览器中交互编辑，也支持在 Node.js 中进行无界面处理。
 
-- **GitHub**：[ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+- **能解决什么痛点**：开发者无需从零实现单元格编辑、公式计算、格式刷、粘贴特殊处理、绘图对象和文档布局等复杂 Office 功能。对于 AI 应用，还可以让 Agent 通过结构化 API 修改文件，并结合内容检查、截图和布局诊断验证生成结果。
+
+- **适合谁用**：需要在 SaaS、BI 平台、内部系统中嵌入表格或文档编辑器的前端团队；需要让 AI Agent 在服务端创建、读取、修改和交付 Office 文件的应用开发者。
+
+- **怎么上手**：使用预设模式安装 Sheets 核心能力：`pnpm add @univerjs/presets @univerjs/preset-sheets-core`，然后通过 `createUniver` 和 `UniverSheetsCorePreset` 创建工作簿。
+
+- **可以用在哪些场景**：在企业 SaaS 中嵌入可编辑的预算表、报价单或运营报表；为 AI Agent 提供生成并修改 Excel、文档和演示内容的工作区；在 Node.js 服务中批量处理工作簿、执行公式计算并生成供人工审核的文档草稿。
+
+- **技术看点**：项目采用插件优先架构，功能可以按需组合、替换或懒加载，并提供 Preset Mode 和 Plugin Mode 两种集成方式。浏览器与 Node.js 共用同一套核心架构和 Facade API，适合同时覆盖交互式编辑与服务端自动化。
+
+- **近期动向与发展方向**：最近 20 条提交集中在 2026 年 9 月 20 日至 22 日，项目保持高频维护，且新增功能与缺陷修复并行推进。近期重点包括文档格式刷和粘贴特殊、表格切片器与背景图片、绘图和嵌入对象处理、运行时菜单配置，以及布局和剪贴板兼容性；提交者既有 Univer 官方账号，也有多名社区贡献者，显示项目正持续完善 Office 细节和 AI/嵌入式工作流基础设施。
+
+- **同类对比**：README 未明确列出竞品。相较于只提供现成在线编辑器或文件预览能力的方案，Univer 更强调作为 SDK 嵌入宿主产品，并通过插件和无头 Node.js 运行时支持定制化及 Agent 自动化。
+
+- **注意事项**：项目功能范围较大，完整集成需要理解插件注册、Facade API、样式与本地化资源，直接使用 Plugin Mode 的配置成本不低。项目创建于 2022 年 9 月，已有 14980 个 Stars、77 位贡献者和 1354 个 Forks，近期更新非常活跃；同时仍有 137 个 Open Issues，复杂编辑器场景的边界问题和升级兼容性需要纳入评估。README 提供了较完整的安装、架构和 API 入口，但不同能力的可用范围及部分协作、AI 功能涉及 Web SDK 或额外授权，正式采用前应核对许可证和商业功能边界。
+
+- **GitHub**：[dream-num/univer](https://github.com/dream-num/univer)
 
 #### 开发者 / 组织速览
 
-**技术影响力**：Chrome 开发者工具生态中的高影响力组织，围绕浏览器调试、协议与工具链建设，对前端和浏览器开发社区有明显带动作用。
-**技术栈偏好**：以 TypeScript 为主、JavaScript 为辅，技术方向集中在浏览器开发工具、调试协议和开发者自动化集成。
-**核心领域**：主要聚焦 Chrome DevTools 相关的前端调试、协议规范与开发者工具基础设施。
+**技术影响力**：专注在线表格与办公技术，凭借 Luckysheet 和 Univer 等高星开源项目在开发者社区具有较强影响力。
+**技术栈偏好**：以 TypeScript、JavaScript 和 HTML 为主，聚焦 Web 端组件化、表格引擎与办公应用开发。
+**核心领域**：主要聚焦在线协同办公、电子表格与生产力工具。
 
 ---
 
-### ✨ sveltejs/svelte (89113★)
+### ✨ getarcaneapp/arcane (9172★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：Modern Docker Management, Designed for Everyone
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[getarcaneapp/arcane](https://github.com/getarcaneapp/arcane)
+
+
+---
+
+### ✨ google-labs-code/stitch-skills (6556★)
+
+> **一句话**：把 Google Stitch 里的设计稿、设计系统和页面截图接入 Codex、Claude Code、Cursor 等编码 Agent，让 Agent 能生成设计、上传素材、抽取 HTML，并把 Stitch 设计转换成 React 或 React Native 代码。
+
+- **它是什么**：这是 Google Labs 提供的一组 Agent Skills 和插件集合，围绕 Google Stitch 的设计生成、设计系统管理、代码生成和工具化工作流展开。它遵循 Agent Skills 开放标准，可以安装到 Codex、Antigravity、Gemini CLI、Claude Code、Cursor 等编码 Agent 中使用。项目按 `stitch-design`、`stitch-build`、`stitch-utilities` 三类插件组织，覆盖从设计生成、HTML 抽取、上传到 Stitch，到 React / React Native 组件生成的完整链路。
+- **能解决什么痛点**：前端团队把已有 React/Vue 页面迁移进 Stitch 时，通常要手动整理静态 HTML、CSS、图片和设计系统文档，这个项目提供了专门的抽取和上传技能。另一个痛点是从 Stitch 设计稿落到代码时容易出现 token 不一致、样式偏差和重复返工，`stitch::react-components`、`stitch::react-native` 等技能把转换和校验步骤固化进 Agent 工作流。
+- **适合谁用**：适合已经在使用 Google Stitch 做界面设计、并希望把设计和代码生成接入 AI 编码 Agent 的前端团队。也适合需要把 Stitch 页面转换为 React 组件、React Native 页面或 Remotion 演示视频的应用开发者。
+- **怎么上手**：Codex 推荐先添加插件市场：`codex plugin marketplace add google-labs-code/stitch-skills --ref main --sparse .agents/plugins --sparse plugins/stitch-design --sparse plugins/stitch-build --sparse plugins/stitch-utilities`
+- **可以用在哪些场景**：把现有 Web 应用的某个页面抽取成自包含静态 HTML 后上传到 Stitch 项目，用于设计复盘或二次编辑。将 Stitch 项目中的多屏设计同步生成 React 组件系统，并用设计 token 校验样式一致性。把 Stitch HTML 设计转换成 React Native 组件，生成带 StyleSheet 和平台差异处理的移动端代码。
+- **技术看点**：项目不是单一 CLI，而是按 Agent Skills 标准把每个能力拆成 `SKILL.md`、脚本、资源和示例，便于不同编码 Agent 读取并执行同一套任务规范。插件层面区分设计、构建和工具类能力，适合团队按需安装，而不是一次性引入全部工作流。
+- **近期动向与发展方向**：最近 20 条提交主要集中在文档完善、React Native 能力补齐、`stitch::react-components` 命名调整，以及设计生成链路中的 markdown 上传和 provenance tracking。6 月底多次更新 README 和技能说明，说明项目正在打磨 Agent 执行步骤、同步示例和阶段性校验流程；同时有外部贡献者参与修复 JSX className 中 hex 颜色识别、Codex 插件说明等问题，社区参与度不算高但已有实际协作。
+- **同类对比**：README 没有明确列出 Figma 插件、Lovable、v0、Builder.io 等直接竞品。它的差异点更像是深度绑定 Google Stitch 与 Agent Skills 标准，而不是做通用 UI 设计转代码平台。
+- **注意事项**：这些技能依赖 Stitch MCP server，需要先完成 MCP 配置、环境变量和凭证设置，不能只安装插件就直接使用。项目创建时间较新，虽然 stars 增长快、issue 数量目前只有 19 个，但近期仍在重命名、重构和补文档，接口与技能路径存在继续调整的可能。README 的安装说明较完整，但真正落地还需要理解 Stitch 项目 ID、Agent 插件安装方式以及各技能之间的依赖关系。
+
+- **GitHub**：[google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：Google Labs Code 作为 Google Labs 相关组织，凭借 design.md 等高星项目在开发者工具与 AI 辅助开发社区具备较高关注度和传播力。
+**技术栈偏好**：其仓库以 TypeScript 为主，技术方向偏向前端工程、SDK、自动化工具与开发者体验建设。
+**核心领域**：主要聚焦 AI 驱动的软件设计、代码生成、开发工作流增强与相关工具生态。
+
+---
+
+### ✨ cursor/plugins (9266★)
+
+> **一句话**：把 Cursor 的开发工作流、企业 SaaS、办公协作和金融服务接入整理成可安装的插件目录，让 AI 编程代理能够直接调用这些服务完成具体任务。
+
+- **它是什么**：这是 Cursor 官方插件规范和插件集合仓库，每个插件都是独立目录，并通过 `.cursor-plugin/plugin.json` 描述插件元数据。内容覆盖两类能力：一类是代码开发与代理工作流，例如 `cursor-sdk`、`orchestrate`、`pr-review-canvas`；另一类是 Gmail、Google Drive、Salesforce、GitHub、Zoom、HubSpot 等服务的远程 MCP 集成。
+
+- **能解决什么痛点**：开发者不必为每个 SaaS 服务单独查找 MCP 配置、认证方式和 Cursor 使用说明。团队也可以用统一的插件清单和 manifest 管理代码审查、文档处理、并行代理、CRM 查询等重复性工作流。
+
+- **适合谁用**：使用 Cursor 编写代码、做代码审查或构建 Agent 工作流的开发者；需要让 AI 访问企业邮箱、日历、CRM、会议记录、财务系统或营销平台的工程团队。
+
+- **怎么上手**：README 只展示插件目录和市场描述，未提供统一的安装命令或最小代码示例；可先进入目标插件目录查看其 `.cursor-plugin/plugin.json` 和对应 README。文档未提供快速上手示例。
+
+- **可以用在哪些场景**：
+  - 在 Cursor 中连接 GitHub、Linear 类似的研发协作服务，查询 Issue、管理 Pull Request 并辅助 Actions 或代码审查。
+  - 让销售或客户成功团队通过 Cursor 搜索 Salesforce、HubSpot、Intercom 中的客户、交易和工单信息。
+  - 在编写方案或汇报材料时，读取 Google Drive、Docs、Sheets、Slides，并结合 Gamma、Excalidraw 等插件生成内容。
+
+- **技术看点**：项目采用“每个插件一个独立目录”的组织方式，并以 `.cursor-plugin/plugin.json` 作为统一清单入口，便于扩展和市场发现。大量第三方插件围绕远程 MCP 服务提供 OAuth、服务端位置和可选凭据配置，近期提交也持续修正这些集成细节。
+
+- **近期动向与发展方向**：最近提交非常活跃，重点集中在扩充插件数量和修复第三方服务集成：新增了 Greenhouse、`dyl-stack` 等插件，并持续调整 X、Zoom、HubSpot、Google Drive、eToro、PostHog 等插件的认证、工具命名和 server placement。20 条提交中包含多次合并请求，说明官方维护和外部贡献同时存在；演进方向明显偏向覆盖更多企业 SaaS，并降低 OAuth 配置和 MCP 工具变更带来的使用成本。
+
+- **同类对比**：暂无明显同类对标。它更接近 Cursor 官方插件市场的规范仓库和集成目录，而不是单一 MCP 服务或通用 Agent 框架。
+
+- **注意事项**：项目创建于 2026 年 1 月，当前已有 9266 个 Stars、875 个 Forks 和 174 个开放 Issue，但贡献者数量为 21，说明关注度较高、维护仍相对集中。第三方服务插件通常依赖各自的 OAuth、API 权限或远程 MCP 服务，实际可用性会受供应商接口和凭据配置影响；近期多次出现工具重命名、认证字段调整和 server placement 修复，升级时应检查插件 README 与 manifest，避免配置不兼容。README 主要是插件索引，单个插件的安装和权限说明需要进一步查看对应目录。
+
+- **GitHub**：[cursor/plugins](https://github.com/cursor/plugins)### ✨ cursor/plugins (9266★)
+
+> **一句话**：把 Cursor 的开发工作流、企业 SaaS、办公协作和金融服务接入整理成可安装的插件目录，让 AI 编程代理能够直接调用这些服务完成具体任务。
+
+- **它是什么**：这是 Cursor 官方插件规范和插件集合仓库，每个插件都是独立目录，并通过 `.cursor-plugin/plugin.json` 描述插件元数据。内容覆盖两类能力：一类是代码开发与代理工作流，例如 `cursor-sdk`、`orchestrate`、`pr-review-canvas`；另一类是 Gmail、Google Drive、Salesforce、GitHub、Zoom、HubSpot 等服务的远程 MCP 集成。
+
+- **能解决什么痛点**：开发者不必为每个 SaaS 服务单独查找 MCP 配置、认证方式和 Cursor 使用说明。团队也可以用统一的插件清单和 manifest 管理代码审查、文档处理、并行代理、CRM 查询等重复性工作流。
+
+- **适合谁用**：使用 Cursor 编写代码、做代码审查或构建 Agent 工作流的开发者；需要让 AI 访问企业邮箱、日历、CRM、会议记录、财务系统或营销平台的工程团队。
+
+- **怎么上手**：README 只展示插件目录和市场描述，未提供统一的安装命令或最小代码示例；可先进入目标插件目录查看其 `.cursor-plugin/plugin.json` 和对应 README。文档未提供快速上手示例。
+
+- **可以用在哪些场景**：
+  - 在 Cursor 中连接 GitHub、Linear 类似的研发协作服务，查询 Issue、管理 Pull Request 并辅助 Actions 或代码审查。
+  - 让销售或客户成功团队通过 Cursor 搜索 Salesforce、HubSpot、Intercom 中的客户、交易和工单信息。
+  - 在编写方案或汇报材料时，读取 Google Drive、Docs、Sheets、Slides，并结合 Gamma、Excalidraw 等插件生成内容。
+
+- **技术看点**：项目采用“每个插件一个独立目录”的组织方式，并以 `.cursor-plugin/plugin.json` 作为统一清单入口，便于扩展和市场发现。大量第三方插件围绕远程 MCP 服务提供 OAuth、服务端位置和可选凭据配置，近期提交也持续修正这些集成细节。
+
+- **近期动向与发展方向**：最近提交非常活跃，重点集中在扩充插件数量和修复第三方服务集成：新增了 Greenhouse、`dyl-stack` 等插件，并持续调整 X、Zoom、HubSpot、Google Drive、eToro、PostHog 等插件的认证、工具命名和 server placement。20 条提交中包含多次合并请求，说明官方维护和外部贡献同时存在；演进方向明显偏向覆盖更多企业 SaaS，并降低 OAuth 配置和 MCP 工具变更带来的使用成本。
+
+- **同类对比**：暂无明显同类对标。它更接近 Cursor 官方插件市场的规范仓库和集成目录，而不是单一 MCP 服务或通用 Agent 框架。
+
+- **注意事项**：项目创建于 2026 年 1 月，当前已有 9266 个 Stars、875 个 Forks 和 174 个开放 Issue，但贡献者数量为 21，说明关注度较高、维护仍相对集中。第三方服务插件通常依赖各自的 OAuth、API 权限或远程 MCP 服务，实际可用性会受供应商接口和凭据配置影响；近期多次出现工具重命名、认证字段调整和 server placement 修复，升级时应检查插件 README 与 manifest，避免配置不兼容。README 主要是插件索引，单个插件的安装和权限说明需要进一步查看对应目录。
+
+- **GitHub**：[cursor/plugins](https://github.com/cursor/plugins)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：AI 编程工具领域的高影响力组织，拥有广泛开发者关注度和活跃生态。
+**技术栈偏好**：以 TypeScript 为主、Python 为辅，侧重插件系统、开发者工具与 AI 应用集成。
+**核心领域**：聚焦 AI 辅助编程、代码编辑器及开发者生产力生态。
+
+---
+
+### ✨ obra/superpowers (290463★)
+
+> **一句话**：它让编码代理先和开发者敲定需求与设计，再按计划、测试和代码审查流程逐步实现软件。
+
+- **它是什么**：Superpowers 是一套面向编码代理的开发方法与可组合技能库，会在开发流程的不同阶段触发相应技能。从需求梳理、设计确认和任务拆分，到测试驱动开发、子代理协作、代码审查与分支收尾，都有明确的流程约束。
+- **能解决什么痛点**：代理容易在需求还没讲清楚时就开始写代码，或偏离计划、跳过测试；Superpowers 用设计确认、细化任务和 RED-GREEN-REFACTOR 流程减少这类问题。任务执行中出现重复劳动或修复循环难以推进时，也提供了诊断与分轮复审流程。
+- **适合谁用**：使用 Claude Code、Codex、Cursor、OpenCode 等编码代理进行日常开发的个人开发者与团队；需要让多个代理按任务分工、同时保持计划和审查流程一致的工程团队。
+- **怎么上手**：以 Claude Code 为例，运行 `/plugin install superpowers@claude-plugins-official`；其他编码代理有各自的安装方式，需按 README 分别配置。
+- **可以用在哪些场景**：从模糊需求出发开发一个新功能，先形成并确认设计再拆解实现任务；让子代理按计划并行完成多个工程任务，同时逐项审查；在代理行为异常、重复修改或忽略计划时，分析会话记录并定位问题。
+- **技术看点**：核心设计是把开发方法拆成可组合技能，并通过启动指令让代理按任务自动检查并触发相关流程。它覆盖多个编码代理平台，但安装与钩子机制依赖各平台自身能力，需要分别适配。
+- **近期动向与发展方向**：提交记录显示项目持续发布版本并扩展平台支持，近期覆盖 Devin CLI、Hermes Agent、OpenCode 2.0 和 Muse。开发重点还包括 SDD（规范驱动开发）的计划级工作区、可恢复修复循环，以及 Windows 钩子兼容和跨平台脚本修复；近 20 条记录以 Jesse Vincent 的工作为主，也有少量社区贡献。
+- **同类对比**：README 未明确列出竞品或直接对标项目；其定位区别于单一代码生成插件，重点是把需求设计、实施、测试和审查组织成完整工作流。
+- **注意事项**：需要接受较强的流程约束，特别是需求澄清、设计确认和测试步骤；习惯直接让代理改代码的用户可能觉得流程较重。项目支持多种代理平台，但各平台的安装和钩子行为并不完全相同。项目于 2025-10-09 创建，最近更新日期为 2026-09-23；398 个开放 Issue 说明维护者仍需处理不少反馈，但仅凭数量无法判断问题严重程度。
+
+- **GitHub**：[obra/superpowers](https://github.com/obra/superpowers)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：拥有较高社区影响力，代表作在 GitHub 获得大规模关注，具备开源生态号召力
+**技术栈偏好**：偏好 Shell、JavaScript 与 TypeScript，侧重自动化脚本、开发工具和可扩展技能生态
+**核心领域**：主要聚焦 AI 辅助软件开发、开发者生产力工具与内容处理自动化
+
+---
+
+### ✨ ag-ui-protocol/ag-ui (19878★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
+
+
+---
+
+### ✨ backnotprop/plannotator (12962★)
+
+> **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
+
+- **它是什么**：The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click. 
+- **能解决什么痛点**：暂未提供。
+- **适合谁用**：暂未提供。
+- **怎么上手**：文档未提供快速上手示例。
+- **可以用在哪些场景**：暂未提供。
+- **技术看点**：暂未提供。
+- **近期动向与发展方向**：暂无 commit 数据可用。
+- **同类对比**：暂无明显同类对标。
+- **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
+
+- **GitHub**：[backnotprop/plannotator](https://github.com/backnotprop/plannotator)
+
+
+---
+
+### ✨ sveltejs/svelte (89478★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -322,11 +322,62 @@
 
 ---
 
-### ✨ kajisho5/ffmpeg-skill (7212★)
+### ✨ affaan-m/ECC (263904★)
+
+> **一句话**：ECC 把 Claude Code、Codex、Cursor 等 AI 编程助手接入一套可复用的工程流程，让代理按“规划、测试、实现、审查、验证、记忆、改进”的方式持续工作。
+
+- **它是什么**：ECC 是面向 AI 编程代理的工程化运行框架，提供 68 个专用代理、292 个技能、94 个命令，以及 hooks、规则、记忆和持续学习机制。它还能通过 AgentShield 扫描提示词、hooks、MCP 配置、权限、密钥和代理相关文件，并为 Claude Code 提供完整支持，为 Codex、Cursor、OpenCode、Gemini、Zed、GitHub Copilot 等提供不同程度的适配。
+- **能解决什么痛点**：开发者不必在每次对话中重复描述“先规划、写测试、实现、审查、验证”的流程，代理可以通过预设技能和 hooks 固化这些步骤。跨项目或跨会话工作时，ECC 的 memory、session summary 和 instincts 机制也能减少上下文丢失，以及代理反复犯同类错误的问题。
+- **适合谁用**：长期使用 Claude Code、Codex 等 AI 编程代理进行实际项目开发的个人开发者和团队。尤其适合需要代码审查、安全检查、测试驱动开发、跨语言规范或统一代理工作流的工程团队。
+- **怎么上手**：Node.js 18 及以上环境执行 `npx ecc-universal@2.2.2 setup`，按向导完成 Claude Code、Codex 或 Kimi Code 的配置；Claude Code 插件安装还需要 Git 和 Claude Code 2.1 或更高版本。
+- **可以用在哪些场景**：
+  - 在大型 JavaScript、Python 或 Go 项目中，让 AI 代理按统一的测试、审查和安全检查流程提交改动。
+  - 为多个仓库配置共享的编码规则、项目记忆和专用技能，避免每个项目重复维护提示词。
+  - 在引入第三方 MCP、hooks 或代理配置前，使用 AgentShield 检查潜在的提示注入、密钥泄露和权限风险。
+- **技术看点**：项目没有把能力局限在单一提示词，而是组合了 skills、agents、hooks、rules 和持久化 memory，形成可执行的代理工作流。它采用 MIT 开源许可，并通过 `ecc-universal`、Claude 插件和多个 harness 适配层覆盖不同 AI 编程环境，但各平台之间存在功能差异。
+- **近期动向与发展方向**：项目近期非常活跃，最近 20 条提交集中在安全加固、错误处理、跨平台启动、Claude hooks 与 ESM 兼容、控制面板可访问性和性能优化等方向，同时持续合并 Codex 配置保留、OpenCode 输出契约、SDK 版本审计、Cursor 仪表盘和指标读取优化。9 月 19 至 20 日连续合并大量社区贡献，说明项目正从功能扩张转向多平台稳定性、安全性和运维细节打磨；近期还发布了 `ecc-universal 2.2.2`。
+- **同类对比**：README 未明确列出直接竞品；ECC 的差异点在于它同时覆盖代理技能库、工程流程、记忆机制、安全扫描和多种 AI 编程 harness，而不是只提供单一 CLI、提示词集合或某个编辑器插件。
+- **注意事项**：项目创建于 2026 年 1 月，但目前已达到 263904 个 Stars、39479 个 Forks 和 377 位贡献者，发展速度很快；同时有 209 个 Open Issues，使用时应关注版本说明和已知问题。README 明确提醒只从官方仓库、npm 包、GitHub App、插件 `ecc@ecc` 或 `ecc.tools` 获取安装源，第三方镜像可能包含恶意代码；此外，不同平台存在能力限制，不能默认 Claude Code 上可用的功能在 Cursor、OpenCode 或其他适配器中完全一致。
+
+- **GitHub**：[affaan-m/ECC](https://github.com/affaan-m/ECC)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：高影响力 AI 开源开发者，凭借 ECC 等热门项目在开发者社区拥有广泛关注。
+**技术栈偏好**：以 Python、JavaScript 和 TypeScript 为主，偏好构建 AI Agent、自动化工具与安全基础设施。
+**核心领域**：聚焦 Agentic AI、智能体编排、AI 开发工具链及智能体安全。
+
+---
+
+### ✨ jingyaogong/minimind (55891★)
+
+> **一句话**：MiniMind 把一个约 64M 参数语言模型从 tokenizer、预训练、SFT、LoRA 到 RLHF/RLAIF 的训练链路完整摊开，让个人开发者用普通 GPU 也能从零复现一个小型 LLM。
+
+- **它是什么**：这是一个面向 LLM 学习与复现的 Python/PyTorch 项目，目标是在低成本、短时间内训练出 MiniMind 系列超小语言模型。README 中明确提供了 Dense、MoE、Tokenizer、数据清洗、预训练、监督微调、LoRA、DPO、PPO、GRPO、CISPO、Tool Use、Agentic RL、模型蒸馏等完整流程代码。项目还提供已发布模型、开源数据、CLI 推理、Streamlit WebUI、OpenAI API 兼容服务端，以及 Hugging Face / ModelScope / ollama / vllm 等生态接入方式。
+- **能解决什么痛点**：很多开发者想理解 LLM 训练细节，但直接看大模型工程成本高、依赖框架抽象多，难以看到 tokenizer、训练循环、强化学习对齐等底层实现。MiniMind 用 26M、64M、104M、MoE 等小规模模型，把从零训练、微调、推理部署的全流程压到个人 GPU 可复现的范围内。
+- **适合谁用**：适合想系统学习 LLM 训练流程的 Python/PyTorch 开发者、AI 入门研究者，以及需要用小模型验证训练算法、数据流程、Tool Call 或 RLAIF 实验的工程师。也适合有单张消费级 GPU、希望自己跑通完整大模型训练链路的个人开发者。
+- **怎么上手**：`git clone --depth 1 https://github.com/jingyaogong/minimind && cd minimind && pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple`
+- **可以用在哪些场景**：用于教学或自学 LLM，从 tokenizer 训练到 SFT/RLHF 逐步拆解每个阶段；用于在低显存机器上验证 LoRA、DPO、PPO、GRPO、Agentic RL 等训练脚本的行为；用于搭建一个小型本地聊天模型，并通过 Streamlit WebUI 或 OpenAI API 兼容服务接入 Open-WebUI、FastGPT 等界面。
+- **技术看点**：核心算法强调从 0 使用 PyTorch 原生实现，不依赖 `transformers`、`trl`、`peft` 的高层训练封装，因此更适合阅读训练细节。当前主线结构对齐 `Qwen3 / Qwen3-MoE` 生态，同时兼容 `llama.cpp`、`vllm`、`ollama`、`Llama-Factory` 等常见推理和训练生态。
+- **近期动向与发展方向**：最近 20 条提交显示，8 月底主要在更新 README 和依赖版本，7 月集中处理 PPO 相关重构与 autocast 下 logp 对齐问题，5-6 月则修复 DDP 退出挂起、LoRA 维度、repetition_penalty、RL 显存占用和 GRPO OOM 等训练稳定性问题。整体看项目仍保持维护，近期重点不是大规模新增功能，而是围绕 RL/RLAIF 训练链路、低显存可用性和文档可读性做修补与整理；近期也有外部贡献者提交 PPO/GRPO 相关修复，但核心维护仍主要由作者推进。
+- **同类对比**：README 明确提到 `transformers` / `trl` / `peft` 等库的高层封装，MiniMind 的差异在于把模型结构、LoRA、DPO、PPO、GRPO 等过程尽量用原生 PyTorch 展开，牺牲一部分工程封装便利性，换取更强的可读性和教学价值。它不是要替代 Qwen、DeepSeek、Llama 这类大模型，而是提供一个能在个人硬件上跑通的缩小版训练实验场。
+- **注意事项**：项目创建于 2024 年 7 月，迭代速度快，README 也提示过 2025-04-26 之后存在模型命名、生成方式、词表标记和旧模型兼容性的破坏性变化，追随主线时要注意版本和权重格式。当前有 56 个 open issues，说明社区使用活跃但也可能遇到环境、训练稳定性、显存和兼容性问题；训练虽然主打低成本，但 README 中“2 小时”特指单张 NVIDIA 3090 上 SFT 阶段跑完 1 epoch，不应理解为所有训练阶段都能在任意设备上快速完成。文档内容很丰富，但覆盖面很广，新手最好从默认 mini 数据集、预训练和 SFT 两步开始，不要一上来同时尝试 RL、Tool Use 和多卡训练。
+
+- **GitHub**：[jingyaogong/minimind](https://github.com/jingyaogong/minimind)
+
+#### 开发者 / 组织速览
+
+**技术影响力**：以 MiniMind 系列高星开源项目为核心，在中文开源人工智能社区具有较高影响力。
+**技术栈偏好**：主要使用 Python，辅以 Java，聚焦深度学习、自然语言处理与大模型开发。
+**核心领域**：专注于轻量级大语言模型及多模态模型的研究、实现与教学。
+
+---
+
+### ✨ google-research/paper-orchestra (2641★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Local video editor for coding agents: 42 FFmpeg tools with a machine-readable contract and an MCP server, for Claude Code, Cursor and Codex. Cut, captions, reframe, loudness, platform exports. No cloud, no API keys.
+- **它是什么**：PaperOrchestra is a multi-agent framework for automated AI research paper writing.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -336,4 +387,4 @@
 - **同类对比**：暂无明显同类对标。
 - **注意事项**：AI 分析暂未生成，建议直接查看项目 README 和 Issue 状态。
 
-- **GitHub**：[kajisho5/ffmpeg-skill](https://github.com/kajisho5/ffmpeg-skill)
+- **GitHub**：[google-research/paper-orchestra](https://github.com/google-research/paper-orchestra)
