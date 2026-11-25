@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ elementalsouls/Claude-BugHunter (21456★)
+### ✨ elementalsouls/Claude-BugHunter (22679★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -187,7 +187,7 @@
 
 ---
 
-### ✨ nginx/nginx (33217★)
+### ✨ nginx/nginx (33333★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -206,7 +206,7 @@
 
 ---
 
-### ✨ openvinotoolkit/openvino (12462★)
+### ✨ openvinotoolkit/openvino (12614★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -316,11 +316,11 @@
 
 ---
 
-### ✨ mjmirza/app-store-compliance (5848★)
+### ✨ mjmirza/app-store-compliance (6367★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
-- **它是什么**：Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 124 documented rejection patterns and fixes, privacy manifest and Data safety checks, 112 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents.
+- **它是什么**：Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 124 documented rejection patterns and fixes, privacy manifest and Data safety checks, 114 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents.
 - **能解决什么痛点**：暂未提供。
 - **适合谁用**：暂未提供。
 - **怎么上手**：文档未提供快速上手示例。
@@ -335,7 +335,7 @@
 
 ---
 
-### ✨ Tracer-Cloud/opensre (15183★)
+### ✨ Tracer-Cloud/opensre (15451★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -354,7 +354,7 @@
 
 ---
 
-### ✨ toeverything/AFFiNE (77985★)
+### ✨ toeverything/AFFiNE (78356★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -373,7 +373,7 @@
 
 ---
 
-### ✨ XiaoYouChR/Ghost-Downloader-3 (17311★)
+### ✨ XiaoYouChR/Ghost-Downloader-3 (18104★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
