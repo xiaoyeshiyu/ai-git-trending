@@ -1,7 +1,7 @@
 ## 今日热点：GitHub 热门趋势
 今天的热门项目覆盖了多个技术方向，具体项目摘要如下：
 
-### ✨ elementalsouls/Claude-BugHunter (25047★)
+### ✨ elementalsouls/Claude-BugHunter (25722★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -187,7 +187,7 @@
 
 ---
 
-### ✨ nginx/nginx (33564★)
+### ✨ nginx/nginx (33637★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -206,7 +206,7 @@
 
 ---
 
-### ✨ openvinotoolkit/openvino (12861★)
+### ✨ openvinotoolkit/openvino (12916★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -316,7 +316,7 @@
 
 ---
 
-### ✨ mjmirza/app-store-compliance (7192★)
+### ✨ mjmirza/app-store-compliance (7662★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -335,7 +335,7 @@
 
 ---
 
-### ✨ Tracer-Cloud/opensre (15928★)
+### ✨ Tracer-Cloud/opensre (16048★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -354,7 +354,7 @@
 
 ---
 
-### ✨ toeverything/AFFiNE (79110★)
+### ✨ toeverything/AFFiNE (79323★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
@@ -373,7 +373,7 @@
 
 ---
 
-### ✨ XiaoYouChR/Ghost-Downloader-3 (19416★)
+### ✨ XiaoYouChR/Ghost-Downloader-3 (19718★)
 
 > **一句话**：该项目已进入今日 GitHub Trending，但本次暂未成功生成 AI 分析。
 
